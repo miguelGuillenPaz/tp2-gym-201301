@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PresupuestoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PresupuestoModelStoreContainer">
+          <EntitySet Name="Presupuesto" EntityType="PresupuestoModel.Store.Presupuesto" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Presupuesto">
+          <Key>
+            <PropertyRef Name="codPre" />
+          </Key>
+          <Property Name="codPre" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="verPre" Type="varchar" MaxLength="50" />
+          <Property Name="monPre" Type="numeric" />
+          <Property Name="impPre" Type="numeric" />
+          <Property Name="estPre" Type="varchar" MaxLength="50" />
+          <Property Name="nroordejePre" Type="int" />
+          <Property Name="impconPre" Type="numeric" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PresupuestoModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PresupuestoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Presupuesto" EntityType="PresupuestoModel.Presupuesto" />
+        </EntityContainer>
+        <EntityType Name="Presupuesto">
+          <Key>
+            <PropertyRef Name="codPre" />
+          </Key>
+          <Property Name="codPre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="verPre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="monPre" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="impPre" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="estPre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="nroordejePre" Type="Int32" />
+          <Property Name="impconPre" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PresupuestoModelStoreContainer" CdmEntityContainer="PresupuestoEntities">
+          <EntitySetMapping Name="Presupuesto"><EntityTypeMapping TypeName="PresupuestoModel.Presupuesto"><MappingFragment StoreEntitySet="Presupuesto">
+            <ScalarProperty Name="codPre" ColumnName="codPre" />
+            <ScalarProperty Name="verPre" ColumnName="verPre" />
+            <ScalarProperty Name="monPre" ColumnName="monPre" />
+            <ScalarProperty Name="impPre" ColumnName="impPre" />
+            <ScalarProperty Name="estPre" ColumnName="estPre" />
+            <ScalarProperty Name="nroordejePre" ColumnName="nroordejePre" />
+            <ScalarProperty Name="impconPre" ColumnName="impconPre" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Presupuesto">
+        <EntityTypeShape EntityType="PresupuestoModel.Presupuesto" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3648893229166665" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
