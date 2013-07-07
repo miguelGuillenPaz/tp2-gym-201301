@@ -81,19 +81,46 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\ListarForm.cs" />
-    <Compile Include="Models\Presupuesto.Designer.cs" />
-    <Compile Include="Models\Presupuesto1.Designer.cs">
+    <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Presupuesto.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Actividad.cs" />
+    <Compile Include="Models\ActividadHist.cs" />
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\DetallePresupuesto.cs" />
+    <Compile Include="Models\Entregable.cs" />
+    <Compile Include="Models\EstimadoRapidoForm.cs" />
+    <Compile Include="Models\ListarForm.cs" />
+    <Compile Include="Models\PlanProyecto.cs" />
+    <Compile Include="Models\PlanProyectoHist.cs" />
+    <Compile Include="Models\Presupuesto.cs" />
+    <Compile Include="Models\Proyecto.cs" />
+    <Compile Include="Models\ProyectoHist.cs" />
+    <Compile Include="Models\TipoProyecto.cs" />
+    <Compile Include="Models\Ubigeo.cs" />
+    <Compile Include="Models\VariablesPresupuesto.cs" />
+    <Compile Include="Persistencia\ActividadDAO.cs" />
+    <Compile Include="Persistencia\ActividadHistDAO.cs" />
+    <Compile Include="Persistencia\ConexionUtil.cs" />
+    <Compile Include="Persistencia\DetallePresupuestoDAO.cs" />
+    <Compile Include="Persistencia\EntregableDAO.cs" />
+    <Compile Include="Persistencia\PlanProyectoDAO.cs" />
+    <Compile Include="Persistencia\PlanProyectoHistDAO.cs" />
+    <Compile Include="Persistencia\PresupuestoDAO.cs" />
+    <Compile Include="Persistencia\ProyectoDAO.cs" />
+    <Compile Include="Persistencia\TipoProyectoDAO.cs" />
+    <Compile Include="Persistencia\ProyectoHistDAO.cs" />
+    <Compile Include="Persistencia\UbigeoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\GYM.mdf" />
+    <Content Include="App_Data\GYM_log.ldf">
+      <DependentUpon>GYM.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Site2.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\arrow2.png" />
@@ -133,8 +160,11 @@
     <Content Include="Views\Legal\Requerimientos.aspx" />
     <Content Include="Views\Logistica\Logistica.aspx" />
     <Content Include="Views\Planificacion\CrearPlan.aspx" />
+    <Content Include="Views\Planificacion\DetallePlanHistorico.aspx" />
+    <Content Include="Views\Planificacion\EstimadoRapido.aspx" />
     <Content Include="Views\Planificacion\IngresoActividades.aspx" />
     <Content Include="Views\Planificacion\ListadoProyPlan.aspx" />
+    <Content Include="Views\Planificacion\ListadoProyPlan2.aspx" />
     <Content Include="Views\Recursos\Recursos.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -174,9 +204,9 @@
     <Folder Include="Images\Seguridad\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\Presupuesto.edmx">
+    <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Presupuesto1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

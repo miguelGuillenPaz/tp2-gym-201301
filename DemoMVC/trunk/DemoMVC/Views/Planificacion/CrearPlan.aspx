@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<DemoMVC.Models.DetallePresupuesto>>" %>
 
 <asp:Content ID="PlanTitle" ContentPlaceHolderID="TitleContent" runat="server">
 	CrearPlan
@@ -6,9 +6,9 @@
 
 <asp:Content ID="PlanContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Planificación de Proyectos > Crear Plan de Proyecto</h2>
+    <h2>Planificación de Proyectos > Creación de Plan</h2>
     <p>
-        Cree un nuevo Plan de Proyecto - <b>PROYXXXXXXXX01</b>:
+        Cree un nuevo Plan de Proyecto - PROY<b><%: ViewData["codProy"]%></b>:
     </p>
 
     <% using (Html.BeginForm()) { %>
@@ -19,28 +19,28 @@
 		    <h3>Detalle del Proyecto:</h3>
 		    <table border="0">
 			<tr>
-			   <td border="0" width="200px" >Nombre de Proyecto:</td><td border=0>Proyecto "Casa de Playa del Gerente"</td>
+			   <td border="0" width="200px" >Nombre de Proyecto:</td><td border=0><%: ViewData["nomProy"]%></td>
 			</tr>
 			<tr>
-			   <td border="0" width="200px" >Presupuesto:</td><td border=0>S/. 7'755,000.000</td>
+			   <td border="0" width="200px" >Presupuesto:</td><td border=0><%: ViewData["preProy"]%></td>
 			</tr>
 			<tr>
-			   <td border="0" width="200px" >Fecha Inicio Proyecto:</td><td border=0>01/06/2013</td>
+			   <td border="0" width="200px" >Fecha Inicio Proyecto:</td><td border=0><%: ViewData["fecIniP"]%></td>
 			</tr>
 			<tr>
-			   <td border="0" width="200px" >Fecha Fin Proyecto:</td><td border=0>01/06/2014</td>
+			   <td border="0" width="200px" >Fecha Fin Proyecto:</td><td border=0><%: ViewData["fecFinP"]%></td>
 			</tr>
 			<tr>
-			   <td border="0" width="200px" >Descripción:</td><td border=0>La casa de playa del gerente en Asia</td>
+			   <td border="0" width="200px" >Descripción:</td><td border=0><%: ViewData["desProy"]%></td>
 			</tr>
 			<tr>
-			   <td border="0" width="200px" >Tipo de Proyecto:</td><td border=0>Casa</td>
+			   <td border="0" width="200px" >Tipo de Proyecto:</td><td border=0><%: ViewData["tipProy"]%></td>
 			</tr>
 			<tr>
-			   <td border="0" width="200px" >Prioridad:</td><td border=0>Intermedia</td>
+			   <td border="0" width="200px" >Prioridad:</td><td border=0><%: ViewData["priProy"]%></td>
 			</tr>
 			<tr>
-			   <td border="0" width="200px" >Ubicación:</td><td border=0>Asia, Lima, Lima</td>
+			   <td border="0" width="200px" >Ubicación:</td><td border=0><%: ViewData["ubiProy"]%></td>
 			</tr>
 		     </table>
                 </div>
@@ -52,47 +52,23 @@
 			    <th>Tipo</th>
 			    <th>Presupuesto</th>
 			    <th>Porcentaje</th>
-    			  </tr>
-			  <tr>
-			    <td>Equipos</td>
-			    <td>S/. 150,000.00</td>
-			    <td>20%</td>
-    			  </tr>
-			  <tr>
-			    <td>Materiales</td>
-			    <td>S/. 75,000.00</td>
-			    <td>10%</td>
-    			  </tr>
-			  <tr>
-			    <td>Artículos</td>
-			    <td>S/. 150,000.00</td>
-			    <td>15%</td>
-    			  </tr>
-			  <tr>
-			    <td>Personal</td>
-			    <td>S/. 225,000.00</td>
-			    <td>20%</td>
-    			  </tr>
-			  <tr>
-			    <td>Gastos Administrativos</td>
-			    <td>S/. 225,000.00</td>
-			    <td>15%</td>
-    			  </tr>
-			  <tr>
-			    <td>Otros Gastos</td>
-			    <td>S/. 225,000.00</td>
-			    <td>10%</td>
-    			  </tr>
-			  <tr>
-			    <td>Contingencia</td>
-			    <td>S/. 750,000.00</td>
-			    <td>10%</td>
-    			  </tr>
+    		  </tr>
+              <% 
+                  if (Model != null) { 
+                  foreach (var item in Model) { %>
+			      <tr>
+			        <td><%: item.desDetPre %></td>
+			        <td><%: item.valDetPre %></td>
+			        <td><%: item.porDetPre %>%</td>
+    		      </tr>
+                  <% } %>
+              <% } %>
 			</table>
 		</div>
             <br>
-            <input type="submit" value="Importar Plan Existente" />&nbsp;&nbsp;
-            <input type="submit" value="Generar Nuevo Plan" />
+            <%= Html.ActionLink("Importar Plan Existente", "EstimadoRapido", "Planificacion", new { option = "2", txtCodigo = ViewData["codProy"] }, null)%>
+            <input type="submit" value="Generar Plan" />
+            <input type ="hidden" name="txtCodProyAct" id="txtCodProyAct" value="<%: ViewData["codProy"]%>" />
             </fieldset>
         </div>
     <% } %>

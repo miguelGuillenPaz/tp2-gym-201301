@@ -53,9 +53,6 @@ namespace DemoMVC.Controllers
             return View(parametros);
         }
 
-
-
-
         public ActionResult About()
         {
             return View();
