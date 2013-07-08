@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <link href="../../Content/Site2.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="page">
+
+        <div id="header" class="fondo_logo">
+            <div id="title">
+                </br>
+                &nbsp;&nbsp;&nbsp;<img src="../Images/logo_GYM.png"></img><br>
+                &nbsp;&nbsp;&nbsp;<b>Intranet</b>
+            </div>
+              
+            <div id="logindisplay">
+                <% Html.RenderPartial("LogOnUserControl"); %>
+            </div> 
+            
+            <div id="menucontainer">
+            
+                <ul id="menu">              
+                    <li><%: Html.ActionLink("Gestión", "Gestion", "GestionProy")%></li>
+                    <li><%: Html.ActionLink("Planificación", "ListadoProyPlan", "Planificacion")%></li> 
+                    <li><%: Html.ActionLink("Compras", "Compras", "Compras")%></li>                   
+                    <li><%: Html.ActionLink("Finanzas", "Finanzas", "Finanzas")%></li>
+                    <li><%: Html.ActionLink("Logistica", "Logistica", "Logistica")%></li>
+                    <li><%: Html.ActionLink("Area Legal", "Requerimientos", "Legal")%></li> 
+                    <li><%: Html.ActionLink("Recursos", "Recursos", "Recursos")%></li>
+                    <li><%: Html.ActionLink("Contenidos", "Contenidos", "Contenidos")%></li>   
+                    <li><%: Html.ActionLink("Seguridad", "Register", "Account")%></li>
+                </ul>
+            
+            </div>
+        </div>
+
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
