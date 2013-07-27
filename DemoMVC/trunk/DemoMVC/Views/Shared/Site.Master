@@ -43,7 +43,7 @@
                     <%= Html.ActionLink("Area Legal", "Requerimientos", "Legal")%></li>
                 <li>
                     <%--<%= Html.ActionLink("Recursos","/","Convocatoria")%>--%>
-                    <p>Recursos</p></li>
+                    <p>Recursos Humanos</p></li>
                 <li>
                     <%= Html.ActionLink("Contenidos", "Contenidos", "Contenidos")%></li>
                 <li>
@@ -57,19 +57,18 @@
     <div id="ticker">
         <div id="contenido-ticker">
             <ul id="webticker">
-                <li><span>Grupo Graña y Montero cumple 80 años<a href="noticias.aspx?noti_id=16"> 1</a></span></li>
-                <li><span>Certificación ISO<a href="noticias.aspx?noti_id=11">1</a></span></li>
-                <li><span>IGLC Lima 2011<a href="noticias.aspx?noti_id=10">1</a> </span></li>
-                <li><span>Gran Teatro Nacional<a href="noticias.aspx?noti_id=9">1</a></span></li>
-                <li><span>Proyecto Punta de Lobos<a href="noticias.aspx?noti_id=8">1 </a></span>
-                </li>
-                <li><span>Tren Eléctrico<a href="noticias.aspx?noti_id=7">1</a></span></li>
-                <li><span>Tajo Norte Brocal<a href="noticias.aspx?noti_id=6">1</a></span></li>
-                <li><span>Central Hidroeléctrica Machu Picchu<a href="noticias.aspx?noti_id=5">1</a></span></li>
-                <li><span>Concentradora Bayóvar<a href="noticias.aspx?noti_id=4">1</a></span></li>
-                <li><span>CADE 2008<a href="noticias.aspx?noti_id=3">1</a></span></li>
-                <li><span>Premio Perú 2021<a href="noticias.aspx?noti_id=2">1</a></span></li>
-                <li><span>Westin Lima Hotel & Convention Center<a href="noticias.aspx?noti_id=1">1</a></span></li>
+                <li><span>Grupo Graña y Montero cumple 80 años<a href="/"> 1</a></span></li>
+                <li><span>Certificación ISO<a href="/">1</a></span></li>
+                <li><span>IGLC Lima 2011<a href="/">1</a> </span></li>
+                <li><span>Gran Teatro Nacional<a href="/">1</a></span></li>
+                <li><span>Proyecto Punta de Lobos<a href="/">1 </a></span></li>
+                <li><span>Tren Eléctrico<a href="/">1</a></span></li>
+                <li><span>Tajo Norte Brocal<a href="/">1</a></span></li>
+                <li><span>Central Hidroeléctrica Machu Picchu<a href="/">1</a></span></li>
+                <li><span>Concentradora Bayóvar<a href="/">1</a></span></li>
+                <li><span>CADE 2008<a href="/">1</a></span></li>
+                <li><span>Premio Perú 2021<a href="/">1</a></span></li>
+                <li><span>Westin Lima Hotel & Convention Center<a href="/">1</a></span></li>
             </ul>
         </div>
     </div>
