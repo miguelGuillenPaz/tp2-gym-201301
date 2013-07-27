@@ -14,6 +14,7 @@
     <AssemblyName>DemoMVC</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -144,6 +145,11 @@
     <Content Include="Images\under_construction.jpg" />
     <Content Include="Images\Usuarios\usuario_codigo_xxxxxxx.jpg" />
     <Content Include="Images\vial_y_vives.png" />
+    <Content Include="Scripts\active.marker.js" />
+    <Content Include="Scripts\jquery.webticker.js" />
+    <Content Include="Scripts\jscript.js" />
+    <Content Include="Scripts\show.me.js" />
+    <Content Include="Scripts\sliderman.1.3.7.js" />
     <Content Include="Views\Compras\infoItemSolAdq.aspx" />
     <Content Include="Views\Compras\infoPlanAba.aspx" />
     <Content Include="Views\Compras\mainItemsSolAdq.aspx" />
