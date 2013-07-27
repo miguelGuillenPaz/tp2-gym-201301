@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 
 namespace DemoMVC.Persistencia
 {
@@ -10,8 +7,8 @@ namespace DemoMVC.Persistencia
         public static string Cadena
         {
             get
-            {
-                return "Data Source=.\\SQLEXPRESS;Initial Catalog=GyM;Integrated Security=SSPI;";
+            {                
+                return ConfigurationManager.ConnectionStrings["GyMAdo"].ToString();
             }
 
         }
