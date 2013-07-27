@@ -32,15 +32,18 @@
                 <li>
                     <%= Html.ActionLink("Planificación", "ListadoProyPlan", "Planificacion")%></li>
                 <li>
-                    <%= Html.ActionLink("Compras", "Compras", "Compras")%></li>
+                    <%--<%= Html.ActionLink("Compras", "Compras", "Compras")%>--%>
+                    <p>Compras</p></li>
                 <li>
-                    <%= Html.ActionLink("Finanzas", "Finanzas", "Finanzas")%></li>
+                    <%--<%= Html.ActionLink("Finanzas", "Finanzas", "Finanzas")%>--%>
+                    <p>Finanzas</p></li>
                 <li>
                     <%= Html.ActionLink("Logistica", "Logistica", "Logistica")%></li>
                 <li>
                     <%= Html.ActionLink("Area Legal", "Requerimientos", "Legal")%></li>
                 <li>
-                    <%= Html.ActionLink("Recursos","/","Convocatoria")%></li>
+                    <%--<%= Html.ActionLink("Recursos","/","Convocatoria")%>--%>
+                    <p>Recursos</p></li>
                 <li>
                     <%= Html.ActionLink("Contenidos", "Contenidos", "Contenidos")%></li>
                 <li>
