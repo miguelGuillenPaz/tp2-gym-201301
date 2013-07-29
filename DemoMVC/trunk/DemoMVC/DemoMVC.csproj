@@ -95,8 +95,12 @@
     <Compile Include="Models\DetallePresupuesto.cs" />
     <Compile Include="Models\Entregable.cs" />
     <Compile Include="Models\EstimadoRapidoForm.cs" />
+    <Compile Include="Models\GRH_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GRH_DB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\ListarForm.cs" />
-    <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\PlanProyecto.cs" />
     <Compile Include="Models\PlanProyectoHist.cs" />
     <Compile Include="Models\Presupuesto.cs" />
@@ -254,6 +258,10 @@
     <None Include="Content\fonts\VAGRounded-Light.eot" />
     <None Include="Content\fonts\VAGRounded-Light.ttf" />
     <None Include="Content\fonts\VAGRounded-Light.woff" />
+    <EntityDeploy Include="Models\GRH_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GRH_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

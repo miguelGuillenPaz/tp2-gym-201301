@@ -248,6 +248,7 @@ a img
     clear: both;
     display:block;
 }
+
 .areas-negocios
 {    
     /*height: 230px;*/
@@ -1838,8 +1839,17 @@ ul.politicas_pdf li.ambiental
 
 .lista-central
 {
-    width: 940px;       
+    width: 940px;    
 }
+.lista-central table {
+    width: 100%;
+}
+
+.lista-central table input, .lista-central table select {
+    font-family: PTSansRegular;
+    font-size: 12px;    
+}
+
 .lista-central .contenedor-noticias
 {
     border-top: dotted 1px #58595B;
@@ -1924,6 +1934,7 @@ ul.politicas_pdf li.ambiental
     display: none;
     text-align: justify;
     color: #6D6E71;
+    margin: 5px;
 }
 
 .lista-central .noticia .texto-noticia .ancho-completo
