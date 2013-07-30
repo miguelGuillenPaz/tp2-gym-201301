@@ -176,6 +176,8 @@
     <Content Include="Images\Usuarios\usuario_codigo_xxxxxxx.jpg" />
     <Content Include="Images\vial_y_vives.png" />
     <Content Include="Scripts\active.marker.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.webticker.js" />
     <Content Include="Scripts\jscript.js" />
     <Content Include="Scripts\show.me.js" />

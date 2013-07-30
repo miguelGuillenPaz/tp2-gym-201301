@@ -211,8 +211,7 @@ a img
     border-top-left-radius: 5px;
     padding-top: 35px;
     box-shadow: 0 3px 5px rgba(50, 50, 50, 0.4);
-    position: relative;
-    z-index: 999;
+    position: relative;    
 }
 .contenido-bottom
 {
@@ -1949,3 +1948,8 @@ ul.politicas_pdf li.ambiental
 }
 
 
+.editar {
+    
+}
+
+ .eliminar { }

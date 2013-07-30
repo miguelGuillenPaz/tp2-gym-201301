@@ -19,29 +19,29 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
 
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Emple__idAre__430CD787", "GRH_Area", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Area), "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Empleado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Emple__idCar__4400FBC0", "GRH_Cargo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Cargo), "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Empleado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Contr__idEmp__3C5FD9F8", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_ContratoPersonal", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ContratoPersonal), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Corre__idPer__3D53FE31", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Correo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Correo), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Derec__idEmp__3F3C46A3", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_DerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DerechoHabiente), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Derec__idPer__40306ADC", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_DerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DerechoHabiente), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Derec__idTip__3E48226A", "GRH_TipoDerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_TipoDerechoHabiente), "GRH_DerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DerechoHabiente), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Docum__idPer__4218B34E", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Documento), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Docum__idTip__41248F15", "GRH_TipoDocumento", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_TipoDocumento), "GRH_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Documento), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Emple__idPer__44F51FF9", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Empleado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Estud__idEsp__47D18CA4", "GRH_Especialidad", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Especialidad), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Perso__idEst__4D8A65FA", "GRH_EstadoCivil", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_EstadoCivil), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Estud__idNiv__46DD686B", "GRH_NivelEducativo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_NivelEducativo), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Estud__idPer__48C5B0DD", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Estud__idSit__45E94432", "GRH_SituacionEstudio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_SituacionEstudio), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Exper__idPer__49B9D516", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_ExperienciaLaboral", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ExperienciaLaboral), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Idiom__idIdi__4BA21D88", "GRH_Idioma", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GRH_Idioma), "GRH_IdiomaPersona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_IdiomaPersona), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Idiom__idNiv__4AADF94F", "GRH_NivelIdioma", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_NivelIdioma), "GRH_IdiomaPersona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_IdiomaPersona), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Idiom__idPer__4C9641C1", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GRH_Persona), "GRH_IdiomaPersona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_IdiomaPersona), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Perso__idPai__4E7E8A33", "GRH_Pais", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Pais), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Perso__idPai__4F72AE6C", "GRH_Pais", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Pais), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Postu__idPer__5066D2A5", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Postulante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Postulante), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "FK__GRH_Telef__idPer__515AF6DE", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Telefono", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Telefono), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_28", "GRH_Area", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Area), "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Empleado), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_27", "GRH_Cargo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Cargo), "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Empleado), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_31", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_ContratoPersonal", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ContratoPersonal), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_20", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Correo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Correo), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_26", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_DerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DerechoHabiente), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_29", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_DerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DerechoHabiente), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_30", "GRH_TipoDerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_TipoDerechoHabiente), "GRH_DerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DerechoHabiente), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_18", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Documento), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_19", "GRH_TipoDocumento", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_TipoDocumento), "GRH_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Documento), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_1", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Empleado), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "X_22", "GRH_Especialidad", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Especialidad), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_13", "GRH_EstadoCivil", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_EstadoCivil), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_21", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_25", "GRH_SituacionEstudio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_SituacionEstudio), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "X_24", "GRH_NivelEducativo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_NivelEducativo), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_3", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_ExperienciaLaboral", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ExperienciaLaboral), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_16", "GRH_Idioma", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GRH_Idioma), "GRH_IdiomaPersona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_IdiomaPersona), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_15", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GRH_Persona), "GRH_IdiomaPersona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_IdiomaPersona), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_17", "GRH_NivelIdioma", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_NivelIdioma), "GRH_IdiomaPersona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_IdiomaPersona), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_6", "GRH_Pais", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Pais), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_8", "GRH_Pais", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Pais), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_2", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Postulante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Postulante), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_4", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Telefono", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Telefono), true)]
 
 #endregion
 
@@ -720,18 +720,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Emple__idAre__430CD787", "GRH_Empleado")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_28", "GRH_Empleado")]
         public EntityCollection<GRH_Empleado> GRH_Empleado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Empleado>("GRH_Model.FK__GRH_Emple__idAre__430CD787", "GRH_Empleado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Empleado>("GRH_Model.R_28", "GRH_Empleado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Empleado>("GRH_Model.FK__GRH_Emple__idAre__430CD787", "GRH_Empleado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Empleado>("GRH_Model.R_28", "GRH_Empleado", value);
                 }
             }
         }
@@ -827,18 +827,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Emple__idCar__4400FBC0", "GRH_Empleado")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_27", "GRH_Empleado")]
         public EntityCollection<GRH_Empleado> GRH_Empleado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Empleado>("GRH_Model.FK__GRH_Emple__idCar__4400FBC0", "GRH_Empleado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Empleado>("GRH_Model.R_27", "GRH_Empleado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Empleado>("GRH_Model.FK__GRH_Emple__idCar__4400FBC0", "GRH_Empleado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Empleado>("GRH_Model.R_27", "GRH_Empleado", value);
                 }
             }
         }
@@ -1006,16 +1006,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Contr__idEmp__3C5FD9F8", "GRH_Empleado")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_31", "GRH_Empleado")]
         public GRH_Empleado GRH_Empleado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.FK__GRH_Contr__idEmp__3C5FD9F8", "GRH_Empleado").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_31", "GRH_Empleado").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.FK__GRH_Contr__idEmp__3C5FD9F8", "GRH_Empleado").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_31", "GRH_Empleado").Value = value;
             }
         }
         /// <summary>
@@ -1027,13 +1027,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.FK__GRH_Contr__idEmp__3C5FD9F8", "GRH_Empleado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_31", "GRH_Empleado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Empleado>("GRH_Model.FK__GRH_Contr__idEmp__3C5FD9F8", "GRH_Empleado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Empleado>("GRH_Model.R_31", "GRH_Empleado", value);
                 }
             }
         }
@@ -1153,16 +1153,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Corre__idPer__3D53FE31", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_20", "GRH_Persona")]
         public GRH_Persona GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Corre__idPer__3D53FE31", "GRH_Persona").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_20", "GRH_Persona").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Corre__idPer__3D53FE31", "GRH_Persona").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_20", "GRH_Persona").Value = value;
             }
         }
         /// <summary>
@@ -1174,13 +1174,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Corre__idPer__3D53FE31", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_20", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Corre__idPer__3D53FE31", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.R_20", "GRH_Persona", value);
                 }
             }
         }
@@ -1324,54 +1324,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Derec__idEmp__3F3C46A3", "GRH_Empleado")]
-        public GRH_Empleado GRH_Empleado
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.FK__GRH_Derec__idEmp__3F3C46A3", "GRH_Empleado").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.FK__GRH_Derec__idEmp__3F3C46A3", "GRH_Empleado").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GRH_Empleado> GRH_EmpleadoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.FK__GRH_Derec__idEmp__3F3C46A3", "GRH_Empleado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Empleado>("GRH_Model.FK__GRH_Derec__idEmp__3F3C46A3", "GRH_Empleado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Derec__idPer__40306ADC", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_26", "GRH_Persona")]
         public GRH_Persona GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Derec__idPer__40306ADC", "GRH_Persona").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_26", "GRH_Persona").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Derec__idPer__40306ADC", "GRH_Persona").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_26", "GRH_Persona").Value = value;
             }
         }
         /// <summary>
@@ -1383,13 +1345,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Derec__idPer__40306ADC", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_26", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Derec__idPer__40306ADC", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.R_26", "GRH_Persona", value);
                 }
             }
         }
@@ -1400,16 +1362,54 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Derec__idTip__3E48226A", "GRH_TipoDerechoHabiente")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_29", "GRH_Empleado")]
+        public GRH_Empleado GRH_Empleado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_29", "GRH_Empleado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_29", "GRH_Empleado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GRH_Empleado> GRH_EmpleadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_29", "GRH_Empleado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Empleado>("GRH_Model.R_29", "GRH_Empleado", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_30", "GRH_TipoDerechoHabiente")]
         public GRH_TipoDerechoHabiente GRH_TipoDerechoHabiente
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDerechoHabiente>("GRH_Model.FK__GRH_Derec__idTip__3E48226A", "GRH_TipoDerechoHabiente").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDerechoHabiente>("GRH_Model.R_30", "GRH_TipoDerechoHabiente").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDerechoHabiente>("GRH_Model.FK__GRH_Derec__idTip__3E48226A", "GRH_TipoDerechoHabiente").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDerechoHabiente>("GRH_Model.R_30", "GRH_TipoDerechoHabiente").Value = value;
             }
         }
         /// <summary>
@@ -1421,13 +1421,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDerechoHabiente>("GRH_Model.FK__GRH_Derec__idTip__3E48226A", "GRH_TipoDerechoHabiente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDerechoHabiente>("GRH_Model.R_30", "GRH_TipoDerechoHabiente");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_TipoDerechoHabiente>("GRH_Model.FK__GRH_Derec__idTip__3E48226A", "GRH_TipoDerechoHabiente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_TipoDerechoHabiente>("GRH_Model.R_30", "GRH_TipoDerechoHabiente", value);
                 }
             }
         }
@@ -1571,16 +1571,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Docum__idPer__4218B34E", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_18", "GRH_Persona")]
         public GRH_Persona GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Docum__idPer__4218B34E", "GRH_Persona").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_18", "GRH_Persona").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Docum__idPer__4218B34E", "GRH_Persona").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_18", "GRH_Persona").Value = value;
             }
         }
         /// <summary>
@@ -1592,13 +1592,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Docum__idPer__4218B34E", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_18", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Docum__idPer__4218B34E", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.R_18", "GRH_Persona", value);
                 }
             }
         }
@@ -1609,16 +1609,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Docum__idTip__41248F15", "GRH_TipoDocumento")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_19", "GRH_TipoDocumento")]
         public GRH_TipoDocumento GRH_TipoDocumento
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDocumento>("GRH_Model.FK__GRH_Docum__idTip__41248F15", "GRH_TipoDocumento").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDocumento>("GRH_Model.R_19", "GRH_TipoDocumento").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDocumento>("GRH_Model.FK__GRH_Docum__idTip__41248F15", "GRH_TipoDocumento").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDocumento>("GRH_Model.R_19", "GRH_TipoDocumento").Value = value;
             }
         }
         /// <summary>
@@ -1630,13 +1630,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDocumento>("GRH_Model.FK__GRH_Docum__idTip__41248F15", "GRH_TipoDocumento");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_TipoDocumento>("GRH_Model.R_19", "GRH_TipoDocumento");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_TipoDocumento>("GRH_Model.FK__GRH_Docum__idTip__41248F15", "GRH_TipoDocumento", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_TipoDocumento>("GRH_Model.R_19", "GRH_TipoDocumento", value);
                 }
             }
         }
@@ -1828,16 +1828,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Emple__idAre__430CD787", "GRH_Area")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_28", "GRH_Area")]
         public GRH_Area GRH_Area
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Area>("GRH_Model.FK__GRH_Emple__idAre__430CD787", "GRH_Area").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Area>("GRH_Model.R_28", "GRH_Area").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Area>("GRH_Model.FK__GRH_Emple__idAre__430CD787", "GRH_Area").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Area>("GRH_Model.R_28", "GRH_Area").Value = value;
             }
         }
         /// <summary>
@@ -1849,13 +1849,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Area>("GRH_Model.FK__GRH_Emple__idAre__430CD787", "GRH_Area");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Area>("GRH_Model.R_28", "GRH_Area");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Area>("GRH_Model.FK__GRH_Emple__idAre__430CD787", "GRH_Area", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Area>("GRH_Model.R_28", "GRH_Area", value);
                 }
             }
         }
@@ -1866,16 +1866,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Emple__idCar__4400FBC0", "GRH_Cargo")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_27", "GRH_Cargo")]
         public GRH_Cargo GRH_Cargo
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Cargo>("GRH_Model.FK__GRH_Emple__idCar__4400FBC0", "GRH_Cargo").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Cargo>("GRH_Model.R_27", "GRH_Cargo").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Cargo>("GRH_Model.FK__GRH_Emple__idCar__4400FBC0", "GRH_Cargo").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Cargo>("GRH_Model.R_27", "GRH_Cargo").Value = value;
             }
         }
         /// <summary>
@@ -1887,13 +1887,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Cargo>("GRH_Model.FK__GRH_Emple__idCar__4400FBC0", "GRH_Cargo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Cargo>("GRH_Model.R_27", "GRH_Cargo");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Cargo>("GRH_Model.FK__GRH_Emple__idCar__4400FBC0", "GRH_Cargo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Cargo>("GRH_Model.R_27", "GRH_Cargo", value);
                 }
             }
         }
@@ -1904,18 +1904,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Contr__idEmp__3C5FD9F8", "GRH_ContratoPersonal")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_31", "GRH_ContratoPersonal")]
         public EntityCollection<GRH_ContratoPersonal> GRH_ContratoPersonal
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_ContratoPersonal>("GRH_Model.FK__GRH_Contr__idEmp__3C5FD9F8", "GRH_ContratoPersonal");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_ContratoPersonal>("GRH_Model.R_31", "GRH_ContratoPersonal");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_ContratoPersonal>("GRH_Model.FK__GRH_Contr__idEmp__3C5FD9F8", "GRH_ContratoPersonal", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_ContratoPersonal>("GRH_Model.R_31", "GRH_ContratoPersonal", value);
                 }
             }
         }
@@ -1926,18 +1926,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Derec__idEmp__3F3C46A3", "GRH_DerechoHabiente")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_29", "GRH_DerechoHabiente")]
         public EntityCollection<GRH_DerechoHabiente> GRH_DerechoHabiente
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_DerechoHabiente>("GRH_Model.FK__GRH_Derec__idEmp__3F3C46A3", "GRH_DerechoHabiente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_DerechoHabiente>("GRH_Model.R_29", "GRH_DerechoHabiente");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_DerechoHabiente>("GRH_Model.FK__GRH_Derec__idEmp__3F3C46A3", "GRH_DerechoHabiente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_DerechoHabiente>("GRH_Model.R_29", "GRH_DerechoHabiente", value);
                 }
             }
         }
@@ -1948,16 +1948,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Emple__idPer__44F51FF9", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_1", "GRH_Persona")]
         public GRH_Persona GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Emple__idPer__44F51FF9", "GRH_Persona").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_1", "GRH_Persona").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Emple__idPer__44F51FF9", "GRH_Persona").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_1", "GRH_Persona").Value = value;
             }
         }
         /// <summary>
@@ -1969,13 +1969,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Emple__idPer__44F51FF9", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_1", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Emple__idPer__44F51FF9", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.R_1", "GRH_Persona", value);
                 }
             }
         }
@@ -2071,18 +2071,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Estud__idEsp__47D18CA4", "GRH_EstudioRealizado")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "X_22", "GRH_EstudioRealizado")]
         public EntityCollection<GRH_EstudioRealizado> GRH_EstudioRealizado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EstudioRealizado>("GRH_Model.FK__GRH_Estud__idEsp__47D18CA4", "GRH_EstudioRealizado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EstudioRealizado>("GRH_Model.X_22", "GRH_EstudioRealizado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EstudioRealizado>("GRH_Model.FK__GRH_Estud__idEsp__47D18CA4", "GRH_EstudioRealizado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EstudioRealizado>("GRH_Model.X_22", "GRH_EstudioRealizado", value);
                 }
             }
         }
@@ -2178,18 +2178,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Perso__idEst__4D8A65FA", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_13", "GRH_Persona")]
         public EntityCollection<GRH_Persona> GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Persona>("GRH_Model.FK__GRH_Perso__idEst__4D8A65FA", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Persona>("GRH_Model.R_13", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Persona>("GRH_Model.FK__GRH_Perso__idEst__4D8A65FA", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Persona>("GRH_Model.R_13", "GRH_Persona", value);
                 }
             }
         }
@@ -2453,16 +2453,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Estud__idEsp__47D18CA4", "GRH_Especialidad")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "X_22", "GRH_Especialidad")]
         public GRH_Especialidad GRH_Especialidad
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Especialidad>("GRH_Model.FK__GRH_Estud__idEsp__47D18CA4", "GRH_Especialidad").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Especialidad>("GRH_Model.X_22", "GRH_Especialidad").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Especialidad>("GRH_Model.FK__GRH_Estud__idEsp__47D18CA4", "GRH_Especialidad").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Especialidad>("GRH_Model.X_22", "GRH_Especialidad").Value = value;
             }
         }
         /// <summary>
@@ -2474,13 +2474,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Especialidad>("GRH_Model.FK__GRH_Estud__idEsp__47D18CA4", "GRH_Especialidad");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Especialidad>("GRH_Model.X_22", "GRH_Especialidad");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Especialidad>("GRH_Model.FK__GRH_Estud__idEsp__47D18CA4", "GRH_Especialidad", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Especialidad>("GRH_Model.X_22", "GRH_Especialidad", value);
                 }
             }
         }
@@ -2491,54 +2491,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Estud__idNiv__46DD686B", "GRH_NivelEducativo")]
-        public GRH_NivelEducativo GRH_NivelEducativo
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelEducativo>("GRH_Model.FK__GRH_Estud__idNiv__46DD686B", "GRH_NivelEducativo").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelEducativo>("GRH_Model.FK__GRH_Estud__idNiv__46DD686B", "GRH_NivelEducativo").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GRH_NivelEducativo> GRH_NivelEducativoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelEducativo>("GRH_Model.FK__GRH_Estud__idNiv__46DD686B", "GRH_NivelEducativo");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_NivelEducativo>("GRH_Model.FK__GRH_Estud__idNiv__46DD686B", "GRH_NivelEducativo", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Estud__idPer__48C5B0DD", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_21", "GRH_Persona")]
         public GRH_Persona GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Estud__idPer__48C5B0DD", "GRH_Persona").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_21", "GRH_Persona").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Estud__idPer__48C5B0DD", "GRH_Persona").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_21", "GRH_Persona").Value = value;
             }
         }
         /// <summary>
@@ -2550,13 +2512,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Estud__idPer__48C5B0DD", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_21", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Estud__idPer__48C5B0DD", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.R_21", "GRH_Persona", value);
                 }
             }
         }
@@ -2567,16 +2529,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Estud__idSit__45E94432", "GRH_SituacionEstudio")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_25", "GRH_SituacionEstudio")]
         public GRH_SituacionEstudio GRH_SituacionEstudio
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_SituacionEstudio>("GRH_Model.FK__GRH_Estud__idSit__45E94432", "GRH_SituacionEstudio").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_SituacionEstudio>("GRH_Model.R_25", "GRH_SituacionEstudio").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_SituacionEstudio>("GRH_Model.FK__GRH_Estud__idSit__45E94432", "GRH_SituacionEstudio").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_SituacionEstudio>("GRH_Model.R_25", "GRH_SituacionEstudio").Value = value;
             }
         }
         /// <summary>
@@ -2588,13 +2550,51 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_SituacionEstudio>("GRH_Model.FK__GRH_Estud__idSit__45E94432", "GRH_SituacionEstudio");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_SituacionEstudio>("GRH_Model.R_25", "GRH_SituacionEstudio");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_SituacionEstudio>("GRH_Model.FK__GRH_Estud__idSit__45E94432", "GRH_SituacionEstudio", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_SituacionEstudio>("GRH_Model.R_25", "GRH_SituacionEstudio", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "X_24", "GRH_NivelEducativo")]
+        public GRH_NivelEducativo GRH_NivelEducativo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelEducativo>("GRH_Model.X_24", "GRH_NivelEducativo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelEducativo>("GRH_Model.X_24", "GRH_NivelEducativo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GRH_NivelEducativo> GRH_NivelEducativoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelEducativo>("GRH_Model.X_24", "GRH_NivelEducativo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_NivelEducativo>("GRH_Model.X_24", "GRH_NivelEducativo", value);
                 }
             }
         }
@@ -2810,16 +2810,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Exper__idPer__49B9D516", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_3", "GRH_Persona")]
         public GRH_Persona GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Exper__idPer__49B9D516", "GRH_Persona").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_3", "GRH_Persona").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Exper__idPer__49B9D516", "GRH_Persona").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_3", "GRH_Persona").Value = value;
             }
         }
         /// <summary>
@@ -2831,13 +2831,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Exper__idPer__49B9D516", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_3", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Exper__idPer__49B9D516", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.R_3", "GRH_Persona", value);
                 }
             }
         }
@@ -2933,18 +2933,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Idiom__idIdi__4BA21D88", "GRH_IdiomaPersona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_16", "GRH_IdiomaPersona")]
         public EntityCollection<GRH_IdiomaPersona> GRH_IdiomaPersona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_IdiomaPersona>("GRH_Model.FK__GRH_Idiom__idIdi__4BA21D88", "GRH_IdiomaPersona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_IdiomaPersona>("GRH_Model.R_16", "GRH_IdiomaPersona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_IdiomaPersona>("GRH_Model.FK__GRH_Idiom__idIdi__4BA21D88", "GRH_IdiomaPersona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_IdiomaPersona>("GRH_Model.R_16", "GRH_IdiomaPersona", value);
                 }
             }
         }
@@ -2968,11 +2968,13 @@ namespace DemoMVC.Models
         /// </summary>
         /// <param name="idPersona">Valor inicial de la propiedad idPersona.</param>
         /// <param name="idIdioma">Valor inicial de la propiedad idIdioma.</param>
-        public static GRH_IdiomaPersona CreateGRH_IdiomaPersona(global::System.Int32 idPersona, global::System.Int32 idIdioma)
+        /// <param name="idIdiomaPersona">Valor inicial de la propiedad idIdiomaPersona.</param>
+        public static GRH_IdiomaPersona CreateGRH_IdiomaPersona(global::System.Int32 idPersona, global::System.Int32 idIdioma, global::System.Int32 idIdiomaPersona)
         {
             GRH_IdiomaPersona gRH_IdiomaPersona = new GRH_IdiomaPersona();
             gRH_IdiomaPersona.idPersona = idPersona;
             gRH_IdiomaPersona.idIdioma = idIdioma;
+            gRH_IdiomaPersona.idIdiomaPersona = idIdiomaPersona;
             return gRH_IdiomaPersona;
         }
 
@@ -2983,7 +2985,7 @@ namespace DemoMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 idPersona
         {
@@ -2993,14 +2995,11 @@ namespace DemoMVC.Models
             }
             set
             {
-                if (_idPersona != value)
-                {
-                    OnidPersonaChanging(value);
-                    ReportPropertyChanging("idPersona");
-                    _idPersona = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idPersona");
-                    OnidPersonaChanged();
-                }
+                OnidPersonaChanging(value);
+                ReportPropertyChanging("idPersona");
+                _idPersona = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idPersona");
+                OnidPersonaChanged();
             }
         }
         private global::System.Int32 _idPersona;
@@ -3010,7 +3009,7 @@ namespace DemoMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 idIdioma
         {
@@ -3020,14 +3019,11 @@ namespace DemoMVC.Models
             }
             set
             {
-                if (_idIdioma != value)
-                {
-                    OnidIdiomaChanging(value);
-                    ReportPropertyChanging("idIdioma");
-                    _idIdioma = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idIdioma");
-                    OnidIdiomaChanged();
-                }
+                OnidIdiomaChanging(value);
+                ReportPropertyChanging("idIdioma");
+                _idIdioma = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idIdioma");
+                OnidIdiomaChanged();
             }
         }
         private global::System.Int32 _idIdioma;
@@ -3081,6 +3077,33 @@ namespace DemoMVC.Models
         private Nullable<global::System.Boolean> _nativo;
         partial void OnnativoChanging(Nullable<global::System.Boolean> value);
         partial void OnnativoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idIdiomaPersona
+        {
+            get
+            {
+                return _idIdiomaPersona;
+            }
+            set
+            {
+                if (_idIdiomaPersona != value)
+                {
+                    OnidIdiomaPersonaChanging(value);
+                    ReportPropertyChanging("idIdiomaPersona");
+                    _idIdiomaPersona = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idIdiomaPersona");
+                    OnidIdiomaPersonaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idIdiomaPersona;
+        partial void OnidIdiomaPersonaChanging(global::System.Int32 value);
+        partial void OnidIdiomaPersonaChanged();
 
         #endregion
 
@@ -3093,16 +3116,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Idiom__idIdi__4BA21D88", "GRH_Idioma")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_16", "GRH_Idioma")]
         public GRH_Idioma GRH_Idioma
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Idioma>("GRH_Model.FK__GRH_Idiom__idIdi__4BA21D88", "GRH_Idioma").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Idioma>("GRH_Model.R_16", "GRH_Idioma").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Idioma>("GRH_Model.FK__GRH_Idiom__idIdi__4BA21D88", "GRH_Idioma").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Idioma>("GRH_Model.R_16", "GRH_Idioma").Value = value;
             }
         }
         /// <summary>
@@ -3114,13 +3137,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Idioma>("GRH_Model.FK__GRH_Idiom__idIdi__4BA21D88", "GRH_Idioma");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Idioma>("GRH_Model.R_16", "GRH_Idioma");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Idioma>("GRH_Model.FK__GRH_Idiom__idIdi__4BA21D88", "GRH_Idioma", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Idioma>("GRH_Model.R_16", "GRH_Idioma", value);
                 }
             }
         }
@@ -3131,54 +3154,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Idiom__idNiv__4AADF94F", "GRH_NivelIdioma")]
-        public GRH_NivelIdioma GRH_NivelIdioma
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelIdioma>("GRH_Model.FK__GRH_Idiom__idNiv__4AADF94F", "GRH_NivelIdioma").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelIdioma>("GRH_Model.FK__GRH_Idiom__idNiv__4AADF94F", "GRH_NivelIdioma").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GRH_NivelIdioma> GRH_NivelIdiomaReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelIdioma>("GRH_Model.FK__GRH_Idiom__idNiv__4AADF94F", "GRH_NivelIdioma");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_NivelIdioma>("GRH_Model.FK__GRH_Idiom__idNiv__4AADF94F", "GRH_NivelIdioma", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Idiom__idPer__4C9641C1", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_15", "GRH_Persona")]
         public GRH_Persona GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Idiom__idPer__4C9641C1", "GRH_Persona").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_15", "GRH_Persona").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Idiom__idPer__4C9641C1", "GRH_Persona").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_15", "GRH_Persona").Value = value;
             }
         }
         /// <summary>
@@ -3190,13 +3175,51 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Idiom__idPer__4C9641C1", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_15", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Idiom__idPer__4C9641C1", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.R_15", "GRH_Persona", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_17", "GRH_NivelIdioma")]
+        public GRH_NivelIdioma GRH_NivelIdioma
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelIdioma>("GRH_Model.R_17", "GRH_NivelIdioma").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelIdioma>("GRH_Model.R_17", "GRH_NivelIdioma").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GRH_NivelIdioma> GRH_NivelIdiomaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_NivelIdioma>("GRH_Model.R_17", "GRH_NivelIdioma");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_NivelIdioma>("GRH_Model.R_17", "GRH_NivelIdioma", value);
                 }
             }
         }
@@ -3292,18 +3315,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Estud__idNiv__46DD686B", "GRH_EstudioRealizado")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "X_24", "GRH_EstudioRealizado")]
         public EntityCollection<GRH_EstudioRealizado> GRH_EstudioRealizado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EstudioRealizado>("GRH_Model.FK__GRH_Estud__idNiv__46DD686B", "GRH_EstudioRealizado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EstudioRealizado>("GRH_Model.X_24", "GRH_EstudioRealizado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EstudioRealizado>("GRH_Model.FK__GRH_Estud__idNiv__46DD686B", "GRH_EstudioRealizado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EstudioRealizado>("GRH_Model.X_24", "GRH_EstudioRealizado", value);
                 }
             }
         }
@@ -3399,18 +3422,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Idiom__idNiv__4AADF94F", "GRH_IdiomaPersona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_17", "GRH_IdiomaPersona")]
         public EntityCollection<GRH_IdiomaPersona> GRH_IdiomaPersona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_IdiomaPersona>("GRH_Model.FK__GRH_Idiom__idNiv__4AADF94F", "GRH_IdiomaPersona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_IdiomaPersona>("GRH_Model.R_17", "GRH_IdiomaPersona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_IdiomaPersona>("GRH_Model.FK__GRH_Idiom__idNiv__4AADF94F", "GRH_IdiomaPersona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_IdiomaPersona>("GRH_Model.R_17", "GRH_IdiomaPersona", value);
                 }
             }
         }
@@ -3506,18 +3529,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Perso__idPai__4E7E8A33", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_6", "GRH_Persona")]
         public EntityCollection<GRH_Persona> GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Persona>("GRH_Model.FK__GRH_Perso__idPai__4E7E8A33", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Persona>("GRH_Model.R_6", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Persona>("GRH_Model.FK__GRH_Perso__idPai__4E7E8A33", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Persona>("GRH_Model.R_6", "GRH_Persona", value);
                 }
             }
         }
@@ -3528,18 +3551,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Perso__idPai__4F72AE6C", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_8", "GRH_Persona")]
         public EntityCollection<GRH_Persona> GRH_Persona1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Persona>("GRH_Model.FK__GRH_Perso__idPai__4F72AE6C", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Persona>("GRH_Model.R_8", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Persona>("GRH_Model.FK__GRH_Perso__idPai__4F72AE6C", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Persona>("GRH_Model.R_8", "GRH_Persona", value);
                 }
             }
         }
@@ -3827,18 +3850,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Corre__idPer__3D53FE31", "GRH_Correo")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_20", "GRH_Correo")]
         public EntityCollection<GRH_Correo> GRH_Correo
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Correo>("GRH_Model.FK__GRH_Corre__idPer__3D53FE31", "GRH_Correo");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Correo>("GRH_Model.R_20", "GRH_Correo");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Correo>("GRH_Model.FK__GRH_Corre__idPer__3D53FE31", "GRH_Correo", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Correo>("GRH_Model.R_20", "GRH_Correo", value);
                 }
             }
         }
@@ -3849,18 +3872,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Derec__idPer__40306ADC", "GRH_DerechoHabiente")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_26", "GRH_DerechoHabiente")]
         public EntityCollection<GRH_DerechoHabiente> GRH_DerechoHabiente
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_DerechoHabiente>("GRH_Model.FK__GRH_Derec__idPer__40306ADC", "GRH_DerechoHabiente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_DerechoHabiente>("GRH_Model.R_26", "GRH_DerechoHabiente");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_DerechoHabiente>("GRH_Model.FK__GRH_Derec__idPer__40306ADC", "GRH_DerechoHabiente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_DerechoHabiente>("GRH_Model.R_26", "GRH_DerechoHabiente", value);
                 }
             }
         }
@@ -3871,18 +3894,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Docum__idPer__4218B34E", "GRH_Documento")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_18", "GRH_Documento")]
         public EntityCollection<GRH_Documento> GRH_Documento
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Documento>("GRH_Model.FK__GRH_Docum__idPer__4218B34E", "GRH_Documento");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Documento>("GRH_Model.R_18", "GRH_Documento");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Documento>("GRH_Model.FK__GRH_Docum__idPer__4218B34E", "GRH_Documento", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Documento>("GRH_Model.R_18", "GRH_Documento", value);
                 }
             }
         }
@@ -3893,18 +3916,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Emple__idPer__44F51FF9", "GRH_Empleado")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_1", "GRH_Empleado")]
         public EntityCollection<GRH_Empleado> GRH_Empleado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Empleado>("GRH_Model.FK__GRH_Emple__idPer__44F51FF9", "GRH_Empleado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Empleado>("GRH_Model.R_1", "GRH_Empleado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Empleado>("GRH_Model.FK__GRH_Emple__idPer__44F51FF9", "GRH_Empleado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Empleado>("GRH_Model.R_1", "GRH_Empleado", value);
                 }
             }
         }
@@ -3915,16 +3938,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Perso__idEst__4D8A65FA", "GRH_EstadoCivil")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_13", "GRH_EstadoCivil")]
         public GRH_EstadoCivil GRH_EstadoCivil
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_EstadoCivil>("GRH_Model.FK__GRH_Perso__idEst__4D8A65FA", "GRH_EstadoCivil").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_EstadoCivil>("GRH_Model.R_13", "GRH_EstadoCivil").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_EstadoCivil>("GRH_Model.FK__GRH_Perso__idEst__4D8A65FA", "GRH_EstadoCivil").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_EstadoCivil>("GRH_Model.R_13", "GRH_EstadoCivil").Value = value;
             }
         }
         /// <summary>
@@ -3936,13 +3959,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_EstadoCivil>("GRH_Model.FK__GRH_Perso__idEst__4D8A65FA", "GRH_EstadoCivil");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_EstadoCivil>("GRH_Model.R_13", "GRH_EstadoCivil");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_EstadoCivil>("GRH_Model.FK__GRH_Perso__idEst__4D8A65FA", "GRH_EstadoCivil", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_EstadoCivil>("GRH_Model.R_13", "GRH_EstadoCivil", value);
                 }
             }
         }
@@ -3953,18 +3976,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Estud__idPer__48C5B0DD", "GRH_EstudioRealizado")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_21", "GRH_EstudioRealizado")]
         public EntityCollection<GRH_EstudioRealizado> GRH_EstudioRealizado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EstudioRealizado>("GRH_Model.FK__GRH_Estud__idPer__48C5B0DD", "GRH_EstudioRealizado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EstudioRealizado>("GRH_Model.R_21", "GRH_EstudioRealizado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EstudioRealizado>("GRH_Model.FK__GRH_Estud__idPer__48C5B0DD", "GRH_EstudioRealizado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EstudioRealizado>("GRH_Model.R_21", "GRH_EstudioRealizado", value);
                 }
             }
         }
@@ -3975,18 +3998,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Exper__idPer__49B9D516", "GRH_ExperienciaLaboral")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_3", "GRH_ExperienciaLaboral")]
         public EntityCollection<GRH_ExperienciaLaboral> GRH_ExperienciaLaboral
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_ExperienciaLaboral>("GRH_Model.FK__GRH_Exper__idPer__49B9D516", "GRH_ExperienciaLaboral");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_ExperienciaLaboral>("GRH_Model.R_3", "GRH_ExperienciaLaboral");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_ExperienciaLaboral>("GRH_Model.FK__GRH_Exper__idPer__49B9D516", "GRH_ExperienciaLaboral", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_ExperienciaLaboral>("GRH_Model.R_3", "GRH_ExperienciaLaboral", value);
                 }
             }
         }
@@ -3997,18 +4020,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Idiom__idPer__4C9641C1", "GRH_IdiomaPersona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_15", "GRH_IdiomaPersona")]
         public EntityCollection<GRH_IdiomaPersona> GRH_IdiomaPersona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_IdiomaPersona>("GRH_Model.FK__GRH_Idiom__idPer__4C9641C1", "GRH_IdiomaPersona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_IdiomaPersona>("GRH_Model.R_15", "GRH_IdiomaPersona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_IdiomaPersona>("GRH_Model.FK__GRH_Idiom__idPer__4C9641C1", "GRH_IdiomaPersona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_IdiomaPersona>("GRH_Model.R_15", "GRH_IdiomaPersona", value);
                 }
             }
         }
@@ -4019,16 +4042,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Perso__idPai__4E7E8A33", "GRH_Pais")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_6", "GRH_Pais")]
         public GRH_Pais GRH_Pais
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.FK__GRH_Perso__idPai__4E7E8A33", "GRH_Pais").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.R_6", "GRH_Pais").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.FK__GRH_Perso__idPai__4E7E8A33", "GRH_Pais").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.R_6", "GRH_Pais").Value = value;
             }
         }
         /// <summary>
@@ -4040,13 +4063,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.FK__GRH_Perso__idPai__4E7E8A33", "GRH_Pais");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.R_6", "GRH_Pais");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Pais>("GRH_Model.FK__GRH_Perso__idPai__4E7E8A33", "GRH_Pais", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Pais>("GRH_Model.R_6", "GRH_Pais", value);
                 }
             }
         }
@@ -4057,16 +4080,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Perso__idPai__4F72AE6C", "GRH_Pais")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_8", "GRH_Pais")]
         public GRH_Pais GRH_Pais1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.FK__GRH_Perso__idPai__4F72AE6C", "GRH_Pais").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.R_8", "GRH_Pais").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.FK__GRH_Perso__idPai__4F72AE6C", "GRH_Pais").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.R_8", "GRH_Pais").Value = value;
             }
         }
         /// <summary>
@@ -4078,13 +4101,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.FK__GRH_Perso__idPai__4F72AE6C", "GRH_Pais");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Pais>("GRH_Model.R_8", "GRH_Pais");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Pais>("GRH_Model.FK__GRH_Perso__idPai__4F72AE6C", "GRH_Pais", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Pais>("GRH_Model.R_8", "GRH_Pais", value);
                 }
             }
         }
@@ -4095,18 +4118,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Postu__idPer__5066D2A5", "GRH_Postulante")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_2", "GRH_Postulante")]
         public EntityCollection<GRH_Postulante> GRH_Postulante
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Postulante>("GRH_Model.FK__GRH_Postu__idPer__5066D2A5", "GRH_Postulante");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Postulante>("GRH_Model.R_2", "GRH_Postulante");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Postulante>("GRH_Model.FK__GRH_Postu__idPer__5066D2A5", "GRH_Postulante", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Postulante>("GRH_Model.R_2", "GRH_Postulante", value);
                 }
             }
         }
@@ -4117,18 +4140,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Telef__idPer__515AF6DE", "GRH_Telefono")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_4", "GRH_Telefono")]
         public EntityCollection<GRH_Telefono> GRH_Telefono
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Telefono>("GRH_Model.FK__GRH_Telef__idPer__515AF6DE", "GRH_Telefono");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Telefono>("GRH_Model.R_4", "GRH_Telefono");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Telefono>("GRH_Model.FK__GRH_Telef__idPer__515AF6DE", "GRH_Telefono", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Telefono>("GRH_Model.R_4", "GRH_Telefono", value);
                 }
             }
         }
@@ -4218,7 +4241,7 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> disponibilidad
+        public global::System.String disponibilidad
         {
             get
             {
@@ -4228,13 +4251,13 @@ namespace DemoMVC.Models
             {
                 OndisponibilidadChanging(value);
                 ReportPropertyChanging("disponibilidad");
-                _disponibilidad = StructuralObject.SetValidValue(value);
+                _disponibilidad = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("disponibilidad");
                 OndisponibilidadChanged();
             }
         }
-        private Nullable<global::System.Boolean> _disponibilidad;
-        partial void OndisponibilidadChanging(Nullable<global::System.Boolean> value);
+        private global::System.String _disponibilidad;
+        partial void OndisponibilidadChanging(global::System.String value);
         partial void OndisponibilidadChanged();
 
         #endregion
@@ -4248,16 +4271,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Postu__idPer__5066D2A5", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_2", "GRH_Persona")]
         public GRH_Persona GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Postu__idPer__5066D2A5", "GRH_Persona").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_2", "GRH_Persona").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Postu__idPer__5066D2A5", "GRH_Persona").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_2", "GRH_Persona").Value = value;
             }
         }
         /// <summary>
@@ -4269,13 +4292,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Postu__idPer__5066D2A5", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_2", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Postu__idPer__5066D2A5", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.R_2", "GRH_Persona", value);
                 }
             }
         }
@@ -4371,18 +4394,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Estud__idSit__45E94432", "GRH_EstudioRealizado")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_25", "GRH_EstudioRealizado")]
         public EntityCollection<GRH_EstudioRealizado> GRH_EstudioRealizado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EstudioRealizado>("GRH_Model.FK__GRH_Estud__idSit__45E94432", "GRH_EstudioRealizado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EstudioRealizado>("GRH_Model.R_25", "GRH_EstudioRealizado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EstudioRealizado>("GRH_Model.FK__GRH_Estud__idSit__45E94432", "GRH_EstudioRealizado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EstudioRealizado>("GRH_Model.R_25", "GRH_EstudioRealizado", value);
                 }
             }
         }
@@ -4502,16 +4525,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Telef__idPer__515AF6DE", "GRH_Persona")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_4", "GRH_Persona")]
         public GRH_Persona GRH_Persona
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Telef__idPer__515AF6DE", "GRH_Persona").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_4", "GRH_Persona").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Telef__idPer__515AF6DE", "GRH_Persona").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_4", "GRH_Persona").Value = value;
             }
         }
         /// <summary>
@@ -4523,13 +4546,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Telef__idPer__515AF6DE", "GRH_Persona");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Persona>("GRH_Model.R_4", "GRH_Persona");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.FK__GRH_Telef__idPer__515AF6DE", "GRH_Persona", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Persona>("GRH_Model.R_4", "GRH_Persona", value);
                 }
             }
         }
@@ -4625,18 +4648,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Derec__idTip__3E48226A", "GRH_DerechoHabiente")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_30", "GRH_DerechoHabiente")]
         public EntityCollection<GRH_DerechoHabiente> GRH_DerechoHabiente
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_DerechoHabiente>("GRH_Model.FK__GRH_Derec__idTip__3E48226A", "GRH_DerechoHabiente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_DerechoHabiente>("GRH_Model.R_30", "GRH_DerechoHabiente");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_DerechoHabiente>("GRH_Model.FK__GRH_Derec__idTip__3E48226A", "GRH_DerechoHabiente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_DerechoHabiente>("GRH_Model.R_30", "GRH_DerechoHabiente", value);
                 }
             }
         }
@@ -4732,18 +4755,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK__GRH_Docum__idTip__41248F15", "GRH_Documento")]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_19", "GRH_Documento")]
         public EntityCollection<GRH_Documento> GRH_Documento
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Documento>("GRH_Model.FK__GRH_Docum__idTip__41248F15", "GRH_Documento");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Documento>("GRH_Model.R_19", "GRH_Documento");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Documento>("GRH_Model.FK__GRH_Docum__idTip__41248F15", "GRH_Documento", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Documento>("GRH_Model.R_19", "GRH_Documento", value);
                 }
             }
         }
