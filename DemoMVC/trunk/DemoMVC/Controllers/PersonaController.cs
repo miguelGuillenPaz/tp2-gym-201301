@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Web.Mvc;
@@ -25,31 +26,12 @@ namespace DemoMVC.Controllers
             return View(persona);
         }
 
-        public virtual ActionResult DelDocumento(int idDocumento)
+        
+
+        private int StartPersona()
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_Documento where r.idDocumento == idDocumento select r).FirstOrDefault();            
-            if (res != null)
-            {
-                _entities.DeleteObject(res);
-                _entities.SaveChanges();            
-            }
-
-            // ReSharper disable RedundantArgumentName
-            return Json(data: new { result = true},
-                        behavior: JsonRequestBehavior.AllowGet);
-            // ReSharper restore RedundantArgumentName
-        }
-
-        public virtual ActionResult SetDocumento(int idPersona,int idDocumento, int idTipoDocumento, string numeroDocumento)
-        {
-            var resultado = false;
-
-            _entities = new GRH_Entities();
-
-            if (idPersona == 0)
-            {
-                var persona = new GRH_Persona
+            var persona = new GRH_Persona
                     {                        
                         nombre = string.Empty,
                         apellidoMaterno = string.Empty,
@@ -57,9 +39,103 @@ namespace DemoMVC.Controllers
                     };
                 _entities.AddToGRH_Persona(persona);
                 _entities.SaveChanges();
-                idPersona = persona.idPersona;
+          return persona.idPersona;
+        }
+
+        public virtual ActionResult DelExperienciaLaboral(int idExperienciaLaboral)
+        {
+            _entities = new GRH_Entities();
+            var res = (from r in _entities.GRH_ExperienciaLaboral where r.idExperienciaLaboral == idExperienciaLaboral select r).FirstOrDefault();
+            if (res != null)
+            {
+                _entities.DeleteObject(res);
+                _entities.SaveChanges();
             }
 
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+
+        public virtual ActionResult SetExperienciaLaboral(int idPersona, int idExperienciaLaboral , string fechaInicio, string fechaFin, string conocimientos, string cargo,string empresa )
+        {
+            var resultado = false;
+            if (idPersona == 0)
+                idPersona = StartPersona();
+
+            _entities = new GRH_Entities();
+            if (idExperienciaLaboral == 0)
+            {
+                var experienciaLaboral = new GRH_ExperienciaLaboral
+                {
+                    idPersona = idPersona,
+                    fechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)), Convert.ToInt32(fechaInicio.Substring(4, 2)), Convert.ToInt32(fechaInicio.Substring(6, 2))),
+                    FechaFin = new DateTime(Convert.ToInt32(fechaFin.Substring(0, 4)), Convert.ToInt32(fechaFin.Substring(4, 2)), Convert.ToInt32(fechaFin.Substring(6, 2))),
+                    conocimientos = conocimientos,
+                    cargo = cargo,
+                    empresa = empresa
+                };
+                _entities.AddToGRH_ExperienciaLaboral(experienciaLaboral);
+                _entities.SaveChanges();
+                idExperienciaLaboral = experienciaLaboral.idExperienciaLaboral;
+                resultado = true;
+            }
+            else
+            {
+                var res = (from r in _entities.GRH_ExperienciaLaboral where r.idExperienciaLaboral == idExperienciaLaboral select r).FirstOrDefault();
+                if (res != null)
+                {
+                    res.idPersona = idPersona;
+                    res.fechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)),
+                                                   Convert.ToInt32(fechaInicio.Substring(4, 2)),
+                                                   Convert.ToInt32(fechaInicio.Substring(6, 2)));
+                    res.FechaFin = new DateTime(Convert.ToInt32(fechaFin.Substring(0, 4)),
+                                                Convert.ToInt32(fechaFin.Substring(4, 2)),
+                                                Convert.ToInt32(fechaFin.Substring(6, 2)));
+                    res.conocimientos = conocimientos;
+                    res.cargo = cargo;
+                    res.empresa = empresa;
+                    _entities.SaveChanges();
+                    resultado = true;
+                }
+                else
+                {
+                    resultado = false;
+                }
+            }
+
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = resultado, Persona = idPersona, ExperienciaLaboral = idExperienciaLaboral },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+        public virtual ActionResult DelDocumento(int idDocumento)
+        {
+            _entities = new GRH_Entities();
+            var res = (from r in _entities.GRH_Documento where r.idDocumento == idDocumento select r).FirstOrDefault();
+            if (res != null)
+            {
+                _entities.DeleteObject(res);
+                _entities.SaveChanges();
+            }
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+        public virtual ActionResult SetDocumento(int idPersona,int idDocumento, int idTipoDocumento, string numeroDocumento)
+        {
+            var resultado = false;            
+            if (idPersona == 0)            
+                idPersona = StartPersona();
+
+            _entities = new GRH_Entities();
             if (idDocumento == 0)
             {
                 var documento = new GRH_Documento
