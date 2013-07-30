@@ -61,7 +61,7 @@ namespace DemoMVC.Controllers
 
         public virtual ActionResult SetExperienciaLaboral(int idPersona, int idExperienciaLaboral , string fechaInicio, string fechaFin, string conocimientos, string cargo,string empresa )
         {
-            var resultado = false;
+            bool resultado;
             if (idPersona == 0)
                 idPersona = StartPersona();
 
@@ -131,7 +131,7 @@ namespace DemoMVC.Controllers
 
         public virtual ActionResult SetDocumento(int idPersona,int idDocumento, int idTipoDocumento, string numeroDocumento)
         {
-            var resultado = false;            
+            bool resultado;            
             if (idPersona == 0)            
                 idPersona = StartPersona();
 
