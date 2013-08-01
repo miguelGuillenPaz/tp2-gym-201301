@@ -35,7 +35,7 @@
         $('#hdnEstudioRealizado').val($.trim($('td:eq(0)', tr).text()));
         $('#txtCentro').val($.trim($('td:eq(1)', tr).text()));
         $('#txtNombre').val($.trim($('td:eq(2)', tr).text()));
-        $('#ddlNivel').val($.trim($('td:eq(3)', tr).text()));        
+        $('#ddlNivel').val($.trim($('td:eq(3)', tr).text()));
         $('#ddlEspecialidad').val($.trim($('td:eq(5)', tr).text()));
         $('#ddlSituacion').val($.trim($('td:eq(7)', tr).text()));
         if ($('#ddlSituacion').val() == 2) {
@@ -77,10 +77,12 @@
         if ($(this).val() == 2) {
             $('#txtFinE').val('');
             $('#txtFinE').css('display', 'none');
+            $('#txtFinE').removeClass('required');
             $('#lblFinE').css('display', 'none');
             $('#sepFinE').css('display', 'none');
         } else {
             $('#txtFinE').css('display', 'inline');
+            $('#txtFinE').addClass('required');
             $('#lblFinE').css('display', 'inline');
             $('#sepFinE').css('display', 'inline');
         }
@@ -94,40 +96,51 @@
         modal: true,
         buttons: {
             'Enviar': function () {
-                var idPersona = $.trim($('#idPersona').val());
-                if (idPersona == '') {
-                    idPersona = '0';
-                }
-                var idEstudioRealizado = $.trim($('#hdnEstudioRealizado').val());
-                var txtCentro = $.trim($('#txtCentro').val());
-                var txtNombre = $.trim($('#txtNombre').val());
-                var idNivel = $.trim($('#ddlNivel').val());
-                var idEspecialidad = $.trim($('#ddlEspecialidad').val());
-                var idSituacion = $.trim($('#ddlSituacion').val());
-                var txtInicio = $.trim($('#txtInicioE').val());
-                var txtFin = $.trim($('#txtFinE').val());
-                var data = {
-                    idPersona: idPersona,
-                    idEstudioRealizado: idEstudioRealizado,
-                    idEspecialidad: idEspecialidad,
-                    idNivel: idNivel,
-                    idSituacion: idSituacion,
-                    centroEstudio: txtCentro,
-                    fechaInicio: txtInicio,
-                    fechaFin: txtFin,
-                    nombreEstudio: txtNombre
-                };
-                var url = '/Persona/SetEstudioRealizado';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            $('#hdnEstudioRealizado').val(result.EstudioRealizado);
-                            $('#idPersona').val(result.Persona);
-                            if ($('#hdnAccionEstudioRealizado').val() == 'I') {
-                                var fila = "<tr>" +
+                var nroRequeridos = 0;
+                $('#dialogEstudioRealizado .required').each(function () {
+                    if ($(this).val() == '' || $(this).val() == '0') {
+                        nroRequeridos = nroRequeridos + 1;
+                        $(this).addClass('required-control');
+                    } else {
+                        $(this).removeClass('required-control');
+                    }
+                });
+
+                if (nroRequeridos == 0) {
+                    var idPersona = $.trim($('#idPersona').val());
+                    if (idPersona == '') {
+                        idPersona = '0';
+                    }
+                    var idEstudioRealizado = $.trim($('#hdnEstudioRealizado').val());
+                    var txtCentro = $.trim($('#txtCentro').val());
+                    var txtNombre = $.trim($('#txtNombre').val());
+                    var idNivel = $.trim($('#ddlNivel').val());
+                    var idEspecialidad = $.trim($('#ddlEspecialidad').val());
+                    var idSituacion = $.trim($('#ddlSituacion').val());
+                    var txtInicio = $.trim($('#txtInicioE').val());
+                    var txtFin = $.trim($('#txtFinE').val());
+                    var data = {
+                        idPersona: idPersona,
+                        idEstudioRealizado: idEstudioRealizado,
+                        idEspecialidad: idEspecialidad,
+                        idNivel: idNivel,
+                        idSituacion: idSituacion,
+                        centroEstudio: txtCentro,
+                        fechaInicio: txtInicio,
+                        fechaFin: txtFin,
+                        nombreEstudio: txtNombre
+                    };
+                    var url = '/Persona/SetEstudioRealizado';
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: data,
+                        success: function (result) {
+                            if (result.result) {
+                                $('#hdnEstudioRealizado').val(result.EstudioRealizado);
+                                $('#idPersona').val(result.Persona);
+                                if ($('#hdnAccionEstudioRealizado').val() == 'I') {
+                                    var fila = "<tr>" +
                                         "<td style=\"display: none;\">" + $('#hdnEstudioRealizado').val() + "</td>" +
                                         "<td>" + $('#txtCentro').val() + "</td>" +
                                         "<td>" + $('#txtNombre').val() + "</td>" +
@@ -141,29 +154,31 @@
                                         "<td>" + $('#txtFinE').val() + "</td>" +
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
-                                $('#tblEstudioRealizado tbody').append(fila);
-                            } else {
-                                var tr = selectedEstudioRealizado;
-                                $('td:eq(0)', tr).text($('#hdnEstudioRealizado').val());
-                                $('td:eq(1)', tr).text($('#txtCentro').val());
-                                $('td:eq(2)', tr).text($('#txtNombre').val());
-                                $('td:eq(3)', tr).text($('#ddlNivel').val());
-                                $('td:eq(4)', tr).text($('#ddlNivel option:selected').text());
-                                $('td:eq(5)', tr).text($('#ddlEspecialidad').val());
-                                $('td:eq(6)', tr).text($('#ddlEspecialidad option:selected').text());
-                                $('td:eq(7)', tr).text($('#ddlSituacion').val());
-                                $('td:eq(8)', tr).text($('#ddlSituacion option:selected').text());
-                                $('td:eq(9)', tr).text($('#txtInicioE').val());
-                                $('td:eq(10)', tr).text($('#txtFinE').val());
+                                    $('#tblEstudioRealizado tbody').append(fila);
+                                } else {
+                                    var tr = selectedEstudioRealizado;
+                                    $('td:eq(0)', tr).text($('#hdnEstudioRealizado').val());
+                                    $('td:eq(1)', tr).text($('#txtCentro').val());
+                                    $('td:eq(2)', tr).text($('#txtNombre').val());
+                                    $('td:eq(3)', tr).text($('#ddlNivel').val());
+                                    $('td:eq(4)', tr).text($('#ddlNivel option:selected').text());
+                                    $('td:eq(5)', tr).text($('#ddlEspecialidad').val());
+                                    $('td:eq(6)', tr).text($('#ddlEspecialidad option:selected').text());
+                                    $('td:eq(7)', tr).text($('#ddlSituacion').val());
+                                    $('td:eq(8)', tr).text($('#ddlSituacion option:selected').text());
+                                    $('td:eq(9)', tr).text($('#txtInicioE').val());
+                                    $('td:eq(10)', tr).text($('#txtFinE').val());
+                                }
+                                $('#dialogEstudioRealizado').dialog('close');
                             }
-                            $('#dialogEstudioRealizado').dialog('close');
+                        },
+                        error: function () {
+                            __ShowMessage('No se pudo actualizar');
                         }
-                    },
-                    error: function () {
-                        __ShowMessage('No se pudo actualizar');
-                    }
-                });
-
+                    });
+                } else {
+                    __ShowMessage('Existen campos obligatorios sin llenar.');
+                }
 
             },
             Cancel: function () {

@@ -1973,4 +1973,10 @@ ul.politicas_pdf li.ambiental
     
 }
 
- .eliminar { }
+.eliminar { }
+ 
+.required-control {
+    border: 2px solid #EB1C24;
+}
+
+.required{}

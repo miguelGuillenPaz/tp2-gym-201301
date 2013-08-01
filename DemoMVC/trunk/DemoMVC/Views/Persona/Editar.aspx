@@ -40,7 +40,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.TextBoxFor(m=> m.nombre) %>
+                                        <%= Html.TextBoxFor(m=> m.nombre , new {@class="required"}) %>
                                     </td>
                                     <td>
                                     </td>
@@ -59,7 +59,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.TextBoxFor(m=> m.apellidoPaterno) %>
+                                        <%= Html.TextBoxFor(m => m.apellidoPaterno, new { @class = "required" })%>
                                     </td>
                                     <td>
                                     </td>
@@ -70,7 +70,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.TextBoxFor(m=> m.apellidoMaterno) %>
+                                        <%= Html.TextBoxFor(m => m.apellidoMaterno, new { @class = "required" })%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -81,7 +81,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DropDownListFor(m => m.idEstadoCivil, (IEnumerable<SelectListItem>)ViewData["EstadoCivil"]) %>
+                                        <%= Html.DropDownListFor(m => m.idEstadoCivil, (IEnumerable<SelectListItem>)ViewData["EstadoCivil"], new { @class = "required" })%>
                                     </td>
                                     <td>
                                     </td>
@@ -92,9 +92,9 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.RadioButtonFor(m => m.sexo,true) %>
+                                        <%= Html.RadioButtonFor(m => m.sexo, true, new { @class = "required" })%>
                                         Masculino
-                                        <%= Html.RadioButtonFor(m=> m.sexo,false)%>
+                                        <%= Html.RadioButtonFor(m => m.sexo, false, new { @class = "required" })%>
                                         Femenino
                                     </td>
                                 </tr>
@@ -117,7 +117,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DropDownListFor(m => m.idPais_R, (IEnumerable<SelectListItem>)ViewData["Pais"]) %>
+                                        <%= Html.DropDownListFor(m => m.idPais_R, (IEnumerable<SelectListItem>)ViewData["Pais"], new { @class = "required" })%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -127,14 +127,13 @@
                                     <td>
                                         :
                                     </td>
-                                    <td>
-                                        <%--<%= Html.TextBoxFor(m=> m.fechaNacimiento, new {@type ="date"}) %>--%>
+                                    <td>                                        
                                         <% var fechaNac=string.Empty;
                                             if (Model.fechaNacimiento != null)
                                            {
                                                fechaNac= Model.fechaNacimiento.ToString().Substring(6,4)+"-"+Model.fechaNacimiento.ToString().Substring(3,2) +"-"+Model.fechaNacimiento.ToString().Substring(0, 2);
                                            } %>                                           
-                                        <input id="fechaNacimiento" type="date" value="<%= fechaNac %>" />
+                                        <input id="fechaNacimiento" type="date" value="<%= fechaNac %>" class="required" />
                                     </td>
                                     <td>
                                     </td>
@@ -145,7 +144,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DropDownListFor(m => m.idPais_N, (IEnumerable<SelectListItem>)ViewData["Pais"]) %>
+                                        <%= Html.DropDownListFor(m => m.idPais_N, (IEnumerable<SelectListItem>)ViewData["Pais"], new { @class = "required" })%>
                                     </td>
                                 </tr>                               
                             </table>                            

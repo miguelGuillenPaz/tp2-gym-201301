@@ -493,7 +493,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_Telefono.FirstOrDefault().nroTelefono, new { @id = "txtTelefono" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_Telefono.FirstOrDefault().nroTelefono, new { @id = "txtTelefono", @class = "required" })%>
                 </td>
             </tr>
         </table>
@@ -510,7 +510,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_Correo.FirstOrDefault().cuentaCorreo, new { @id = "txtCorreo" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_Correo.FirstOrDefault().cuentaCorreo, new { @id = "txtCorreo", @class = "required" })%>
                 </td>
             </tr>
         </table>
@@ -527,7 +527,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_Documento.FirstOrDefault().idTipoDocumento, (IEnumerable<SelectListItem>)ViewData["TipoDocumento"], new { @id = "ddlTipoDocumento" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_Documento.FirstOrDefault().idTipoDocumento, (IEnumerable<SelectListItem>)ViewData["TipoDocumento"], new { @id = "ddlTipoDocumento", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -538,7 +538,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_Documento.FirstOrDefault().nroDocumento, new { @id = "txtDocumento" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_Documento.FirstOrDefault().nroDocumento, new { @id = "txtDocumento", @class = "required" })%>
                 </td>
             </tr>
         </table>
@@ -555,7 +555,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().empresa, new { @id = "txtEmpresa" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().empresa, new { @id = "txtEmpresa", @class="required" })%>
                 </td>
             </tr>
             <tr>
@@ -566,7 +566,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().cargo, new { @id = "txtCargo" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().cargo, new { @id = "txtCargo", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -577,7 +577,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().fechaInicio, new { @id = "txtInicio",@type="date" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().fechaInicio, new { @id = "txtInicio", @type = "date", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -599,7 +599,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextAreaFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().conocimientos, new { @id = "txtConocimiento"})%>
+                    <%= Html.TextAreaFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().conocimientos, new { @id = "txtConocimiento", @class = "required" })%>
                 </td>
             </tr>
         </table>
@@ -616,7 +616,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().centroEstudio, new { @id = "txtCentro" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().centroEstudio, new { @id = "txtCentro", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -627,7 +627,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().nombreEstudio, new { @id = "txtNombre" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().nombreEstudio, new { @id = "txtNombre", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -638,7 +638,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().idNivelEducativo, (IEnumerable<SelectListItem>)ViewData["NivelEducativo"], new { @id = "ddlNivel" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().idNivelEducativo, (IEnumerable<SelectListItem>)ViewData["NivelEducativo"], new { @id = "ddlNivel", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -649,7 +649,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().idEspecialidad, (IEnumerable<SelectListItem>)ViewData["Especialidad"], new { @id = "ddlEspecialidad" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().idEspecialidad, (IEnumerable<SelectListItem>)ViewData["Especialidad"], new { @id = "ddlEspecialidad", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -660,7 +660,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().idSituacionEstudio, (IEnumerable<SelectListItem>)ViewData["SituacionEstudio"], new { @id = "ddlSituacion" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().idSituacionEstudio, (IEnumerable<SelectListItem>)ViewData["SituacionEstudio"], new { @id = "ddlSituacion", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -671,7 +671,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().fechaInicio, new { @id = "txtInicioE",@type="date" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().fechaInicio, new { @id = "txtInicioE", @type = "date", @class = "required" })%>
                 </td>
             </tr>
             <tr id="trFinE">
@@ -701,7 +701,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_IdiomaPersona.FirstOrDefault().idIdioma, (IEnumerable<SelectListItem>)ViewData["Idioma"], new { @id = "ddlIdioma" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_IdiomaPersona.FirstOrDefault().idIdioma, (IEnumerable<SelectListItem>)ViewData["Idioma"], new { @id = "ddlIdioma", @class = "required" })%>
                 </td>
             </tr>
             <tr>

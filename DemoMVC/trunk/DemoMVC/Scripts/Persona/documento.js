@@ -18,7 +18,7 @@
                             tr.remove();
                         }
                     },
-                    error: function () {                        
+                    error: function () {
                         __ShowMessage('No se pudo eliminar');
                     }
                 });
@@ -57,55 +57,69 @@
         modal: true,
         buttons: {
             'Enviar': function () {
-                var idPersona = $.trim($('#idPersona').val());
-                if (idPersona == '') {
-                    idPersona = '0';
-                }
-                var idDocumento = $.trim($('#hdnDocumento').val());
-                var idTipoDocumento = $.trim($('#ddlTipoDocumento').val());
-                var numeroDocumento = $.trim($('#txtDocumento').val());
-                var data = {
-                    idPersona: idPersona,
-                    idDocumento: idDocumento,
-                    idTipoDocumento: idTipoDocumento,
-                    numeroDocumento: numeroDocumento
-                };
-                var url = '/Persona/SetDocumento';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            $('#hdnDocumento').val(result.Documento);
-                            $('#idPersona').val(result.Persona);
-                            if ($('#hdnAccionDocumento').val() == 'I') {
-                                var fila = "<tr>" +
+                var nroRequeridos = 0;
+                $('#dialogDocumento .required').each(function () {
+                    if ($(this).val() == '' || $(this).val() == '0') {
+                        nroRequeridos = nroRequeridos + 1;
+                        $(this).addClass('required-control');
+                    } else {
+                        $(this).removeClass('required-control');
+                    }
+                });
+
+                if (nroRequeridos == 0) {
+
+                    var idPersona = $.trim($('#idPersona').val());
+                    if (idPersona == '') {
+                        idPersona = '0';
+                    }
+                    var idDocumento = $.trim($('#hdnDocumento').val());
+                    var idTipoDocumento = $.trim($('#ddlTipoDocumento').val());
+                    var numeroDocumento = $.trim($('#txtDocumento').val());
+                    var data = {
+                        idPersona: idPersona,
+                        idDocumento: idDocumento,
+                        idTipoDocumento: idTipoDocumento,
+                        numeroDocumento: numeroDocumento
+                    };
+                    var url = '/Persona/SetDocumento';
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: data,
+                        success: function (result) {
+                            if (result.result) {
+                                $('#hdnDocumento').val(result.Documento);
+                                $('#idPersona').val(result.Persona);
+                                if ($('#hdnAccionDocumento').val() == 'I') {
+                                    var fila = "<tr>" +
                                         "<td style=\"display: none;\">" + $('#hdnDocumento').val() + "</td>" +
                                         "<td style=\"display: none;\">" + $('#ddlTipoDocumento').val() + "</td>" +
                                         "<td>" + $('#ddlTipoDocumento option:selected').text() + "</td>" +
                                         "<td>" + $('#txtDocumento').val() + "</td>" +
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
-                                $('#tblDocumento tbody').append(fila);
+                                    $('#tblDocumento tbody').append(fila);
+                                } else {
+                                    var tr = selectedDocumento;
+                                    $('td:eq(0)', tr).text($('#hdnDocumento').val());
+                                    $('td:eq(1)', tr).text($('#ddlTipoDocumento').val());
+                                    $('td:eq(2)', tr).text($('#ddlTipoDocumento option:selected').text());
+                                    $('td:eq(3)', tr).text($('#txtDocumento').val());
+                                }
+                                $('#dialogDocumento').dialog('close');
                             } else {
-                                var tr = selectedDocumento;
-                                $('td:eq(0)', tr).text($('#hdnDocumento').val());
-                                $('td:eq(1)', tr).text($('#ddlTipoDocumento').val());
-                                $('td:eq(2)', tr).text($('#ddlTipoDocumento option:selected').text());
-                                $('td:eq(3)', tr).text($('#txtDocumento').val());
+                                __ShowMessage(result.Error);
                             }
-                            $('#dialogDocumento').dialog('close');
-                        } else {                            
-                            __ShowMessage(result.Error);
+                        },
+                        error: function () {
+                            __ShowMessage('No se pudo actualizar');
                         }
-                    },
-                    error: function () {                        
-                        __ShowMessage('No se pudo actualizar');
-                    }
-                });
+                    });
 
-
+                } else {
+                    __ShowMessage('Existen campos obligatorios sin llenar.');
+                }
             },
             Cancel: function () {
                 $(this).dialog('close');

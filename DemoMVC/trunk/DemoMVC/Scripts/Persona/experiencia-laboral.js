@@ -63,36 +63,48 @@
         modal: true,
         buttons: {
             'Enviar': function () {
-                var idPersona = $.trim($('#idPersona').val());
-                if (idPersona == '') {
-                    idPersona = '0';
-                }
-                var idExperienciaLaboral = $.trim($('#hdnExperienciaLaboral').val());
-                var txtCargo = $.trim($('#txtCargo').val());
-                var txtInicio = $.trim($('#txtInicio').val());
-                var txtFin = $.trim($('#txtFin').val());
-                var txtEmpresa = $.trim($('#txtEmpresa').val());
-                var txtConocimiento = $.trim($('#txtConocimiento').val());
-                var data = {
-                    idPersona: idPersona,
-                    idExperienciaLaboral: idExperienciaLaboral,
-                    fechaInicio: txtInicio,
-                    fechaFin: txtFin,
-                    conocimientos: txtConocimiento,
-                    cargo: txtCargo,
-                    empresa: txtEmpresa
-                };                
-                var url = '/Persona/SetExperienciaLaboral';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            $('#hdnExperienciaLaboral').val(result.ExperienciaLaboral);
-                            $('#idPersona').val(result.Persona);
-                            if ($('#hdnAccionExperienciaLaboral').val() == 'I') {
-                                var fila = "<tr>" +
+
+                var nroRequeridos = 0;
+                $('#dialogExperienciaLaboral .required').each(function () {
+                    if ($(this).val() == '' || $(this).val() == '0') {
+                        nroRequeridos = nroRequeridos + 1;
+                        $(this).addClass('required-control');
+                    } else {
+                        $(this).removeClass('required-control');
+                    }
+                });
+
+                if (nroRequeridos == 0) {
+                    var idPersona = $.trim($('#idPersona').val());
+                    if (idPersona == '') {
+                        idPersona = '0';
+                    }
+                    var idExperienciaLaboral = $.trim($('#hdnExperienciaLaboral').val());
+                    var txtCargo = $.trim($('#txtCargo').val());
+                    var txtInicio = $.trim($('#txtInicio').val());
+                    var txtFin = $.trim($('#txtFin').val());
+                    var txtEmpresa = $.trim($('#txtEmpresa').val());
+                    var txtConocimiento = $.trim($('#txtConocimiento').val());
+                    var data = {
+                        idPersona: idPersona,
+                        idExperienciaLaboral: idExperienciaLaboral,
+                        fechaInicio: txtInicio,
+                        fechaFin: txtFin,
+                        conocimientos: txtConocimiento,
+                        cargo: txtCargo,
+                        empresa: txtEmpresa
+                    };
+                    var url = '/Persona/SetExperienciaLaboral';
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: data,
+                        success: function (result) {
+                            if (result.result) {
+                                $('#hdnExperienciaLaboral').val(result.ExperienciaLaboral);
+                                $('#idPersona').val(result.Persona);
+                                if ($('#hdnAccionExperienciaLaboral').val() == 'I') {
+                                    var fila = "<tr>" +
                                         "<td style=\"display: none;\">" + $('#hdnExperienciaLaboral').val() + "</td>" +
                                         "<td>" + $('#txtEmpresa').val() + "</td>" +
                                         "<td>" + $('#txtCargo').val() + "</td>" +
@@ -101,24 +113,26 @@
                                         "<td style=\"display: none;\">" + $('#txtConocimiento').val() + "</td>" +
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
-                                $('#tblExperienciaLaboral tbody').append(fila);
-                            } else {
-                                var tr = selectedExperienciaLaboral;
-                                $('td:eq(0)', tr).text($('#hdnExperienciaLaboral').val());
-                                $('td:eq(1)', tr).text($('#txtEmpresa').val());
-                                $('td:eq(2)', tr).text($('#txtCargo').val());
-                                $('td:eq(3)', tr).text($('#txtInicio').val());
-                                $('td:eq(4)', tr).text($('#txtFin').val());
-                                $('td:eq(5)', tr).text($('#txtConocimiento').val());
+                                    $('#tblExperienciaLaboral tbody').append(fila);
+                                } else {
+                                    var tr = selectedExperienciaLaboral;
+                                    $('td:eq(0)', tr).text($('#hdnExperienciaLaboral').val());
+                                    $('td:eq(1)', tr).text($('#txtEmpresa').val());
+                                    $('td:eq(2)', tr).text($('#txtCargo').val());
+                                    $('td:eq(3)', tr).text($('#txtInicio').val());
+                                    $('td:eq(4)', tr).text($('#txtFin').val());
+                                    $('td:eq(5)', tr).text($('#txtConocimiento').val());
+                                }
+                                $('#dialogExperienciaLaboral').dialog('close');
                             }
-                            $('#dialogExperienciaLaboral').dialog('close');
+                        },
+                        error: function () {
+                            __ShowMessage('No se pudo actualizar');
                         }
-                    },
-                    error: function () {
-                        __ShowMessage('No se pudo actualizar');
-                    }
-                });
-
+                    });
+                } else {
+                    __ShowMessage('Existen campos obligatorios sin llenar.');
+                }
 
             },
             Cancel: function () {

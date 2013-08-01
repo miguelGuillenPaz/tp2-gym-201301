@@ -32,7 +32,7 @@
     $('#tblTelefono').delegate('.editar', "click", function () {
         $('#hdnAccionTelefono').val('U');
         var tr = $(this).parent().parent();
-        $('#hdnTelefono').val($.trim($('td:eq(0)', tr).text()));        
+        $('#hdnTelefono').val($.trim($('td:eq(0)', tr).text()));
         $('#txtTelefono').val($.trim($('td:eq(1)', tr).text()));
         selectedTelefono = tr;
         $('#dialogTelefono').dialog('option', 'title', 'Editar Teléfono');
@@ -55,46 +55,59 @@
         modal: true,
         buttons: {
             'Enviar': function () {
-                var idPersona = $.trim($('#idPersona').val());
-                if (idPersona == '') {
-                    idPersona = '0';
-                }
-                var idTelefono = $.trim($('#hdnTelefono').val());
-                var numeroTelefono = $.trim($('#txtTelefono').val());
-                var data = {
-                    idPersona: idPersona,
-                    idTelefono: idTelefono,
-                    numeroTelefono: numeroTelefono
-                };
-                var url = '/Persona/SetTelefono';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            $('#hdnTelefono').val(result.Telefono);
-                            $('#idPersona').val(result.Persona);
-                            if ($('#hdnAccionTelefono').val() == 'I') {
-                                var fila = "<tr>" +
+                var nroRequeridos = 0;
+                $('#dialogTelefono .required').each(function () {
+                    if ($(this).val() == '' || $(this).val() == '0') {
+                        nroRequeridos = nroRequeridos + 1;
+                        $(this).addClass('required-control');
+                    } else {
+                        $(this).removeClass('required-control');
+                    }
+                });
+
+                if (nroRequeridos == 0) {
+                    var idPersona = $.trim($('#idPersona').val());
+                    if (idPersona == '') {
+                        idPersona = '0';
+                    }
+                    var idTelefono = $.trim($('#hdnTelefono').val());
+                    var numeroTelefono = $.trim($('#txtTelefono').val());
+                    var data = {
+                        idPersona: idPersona,
+                        idTelefono: idTelefono,
+                        numeroTelefono: numeroTelefono
+                    };
+                    var url = '/Persona/SetTelefono';
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: data,
+                        success: function (result) {
+                            if (result.result) {
+                                $('#hdnTelefono').val(result.Telefono);
+                                $('#idPersona').val(result.Persona);
+                                if ($('#hdnAccionTelefono').val() == 'I') {
+                                    var fila = "<tr>" +
                                         "<td style=\"display: none;\">" + $('#hdnTelefono').val() + "</td>" +
                                         "<td>" + $('#txtTelefono').val() + "</td>" +
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
-                                $('#tblTelefono tbody').append(fila);
-                            } else {
-                                var tr = selectedTelefono;
-                                $('td:eq(0)', tr).text($('#hdnTelefono').val());
-                                $('td:eq(1)', tr).text($('#txtTelefono').val());
+                                    $('#tblTelefono tbody').append(fila);
+                                } else {
+                                    var tr = selectedTelefono;
+                                    $('td:eq(0)', tr).text($('#hdnTelefono').val());
+                                    $('td:eq(1)', tr).text($('#txtTelefono').val());
+                                }
+                                $('#dialogTelefono').dialog('close');
                             }
-                            $('#dialogTelefono').dialog('close');
+                        },
+                        error: function () {
+                            __ShowMessage('No se pudo actualizar');
                         }
-                    },
-                    error: function () {
-                        __ShowMessage('No se pudo actualizar');
-                    }
-                });
-
+                    });
+                } else {
+                    __ShowMessage('Existen campos obligatorios sin llenar.');
+                }
 
             },
             Cancel: function () {
