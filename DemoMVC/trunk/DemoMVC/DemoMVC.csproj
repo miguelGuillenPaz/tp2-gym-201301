@@ -180,6 +180,7 @@
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.webticker.js" />
     <Content Include="Scripts\jscript.js" />
+    <Content Include="Scripts\Persona\crear.js" />
     <Content Include="Scripts\Persona\idioma-persona.js" />
     <Content Include="Scripts\Persona\correo.js" />
     <Content Include="Scripts\Persona\telefono.js" />
@@ -203,6 +204,7 @@
     <Content Include="Views\Home\Prueba.aspx" />
     <Content Include="Views\Legal\Requerimientos.aspx" />
     <Content Include="Views\Logistica\Logistica.aspx" />
+    <Content Include="Views\Persona\Crear.aspx" />
     <Content Include="Views\Persona\Editar.aspx" />
     <Content Include="Views\Persona\Mostrar.aspx" />
     <Content Include="Views\Persona\RegistrarPostulante.aspx" />

@@ -355,7 +355,7 @@ $(document).ready(function () {
     });
 
 
-    $('.head-noticia').click(function () {
+    $('.head-noticia').click(function () {        
         var texto_noticia = $(this).next();
         if (texto_noticia.hasClass('texto-noticia')) {
             if (texto_noticia.css('display') == 'none') {
@@ -368,7 +368,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.titulo_noticia').click(function () {
+    $('.titulo_noticia').click(function () {        
         var detalle_noticia = $(this).next();
         if (detalle_noticia.hasClass('detalle_noticia')) {
 

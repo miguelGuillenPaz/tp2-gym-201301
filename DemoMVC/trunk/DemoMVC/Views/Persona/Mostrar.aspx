@@ -1,9 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DemoMVC.Models.GRH_Persona>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                var textoNoticia = $('.head-noticia').next();
+                if (textoNoticia.hasClass('texto-noticia')) {
+                    if (textoNoticia.css('display') == 'none') {
+                        textoNoticia.slideDown();
+                    }
+                    else {
+                        textoNoticia.slideUp();
+                    }
+                }
+            } catch (ex) {
+            }
+        });
+    </script>
     <script src="../../Scripts/Persona/documento.js" type="text/javascript"></script>
     <script src="../../Scripts/Persona/telefono.js" type="text/javascript"></script>
     <script src="../../Scripts/Persona/correo.js" type="text/javascript"></script>
+    <script src="../../Scripts/Persona/idioma-persona.js" type="text/javascript"></script>
     <script src="../../Scripts/Persona/experiencia-laboral.js" type="text/javascript"></script>
     <script src="../../Scripts/Persona/estudio-realizado.js" type="text/javascript"></script>
     <div class="contenido-top">
@@ -169,6 +186,7 @@
                                     </td>
                                     <td>
                                         <table id="tblTelefono">
+                                            <tbody>
                                             <% if (Model != null)
                                                {
                                                    foreach (var telefono in Model.GRH_Telefono)
@@ -189,6 +207,7 @@
                                             <%
                                                    }
                                                } %>
+                                               </tbody>
                                         </table>
                                         <a id="addTelefono" href="javascript:;">Agregar</a>
                                     </td>
@@ -202,6 +221,7 @@
                                     </td>
                                     <td>
                                         <table id="tblCorreo">
+                                            <tbody>
                                             <% if (Model != null)
                                                {
                                                    foreach (var correo in Model.GRH_Correo)
@@ -222,6 +242,7 @@
                                             <%
                                                    }
                                                } %>
+                                               </tbody>
                                         </table>
                                         <a id="addCorreo" href="javascript:;">Agregar</a>
                                     </td>
@@ -400,7 +421,7 @@
                             <span class="titulo-noticia">Idiomas</span>
                         </div>
                         <div class="texto-noticia">
-                            <table id="tblIdioma">
+                            <table id="tblIdiomaPersona">
                                 <thead>
                                     <tr>
                                         <th>
@@ -441,7 +462,7 @@
                                        } %>
                                 </tbody>
                             </table>
-                            <a href="">Agregar</a>
+                            <a id="addIdiomaPersona" href="javascript:;">Agregar</a>
                         </div>
                     </div>
                 </div>

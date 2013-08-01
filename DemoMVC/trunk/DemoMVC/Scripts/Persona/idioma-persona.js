@@ -28,7 +28,6 @@
         }
     });
 
-
     $('#tblIdiomaPersona').delegate('.editar', "click", function () {
         $('#hdnAccionIdiomaPersona').val('U');
         var tr = $(this).parent().parent();

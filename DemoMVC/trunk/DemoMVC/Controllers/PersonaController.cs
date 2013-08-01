@@ -39,6 +39,17 @@ namespace DemoMVC.Controllers
             ViewData["Especialidad"] = Especialidad();
             ViewData["NivelEducativo"] = NivelEducativo();
             ViewData["SituacionEstudio"] = SituacionEstudio();
+            ViewData["NivelIdioma"] = NivelIdioma();
+            var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
+            return View(persona);
+        }
+
+        public ActionResult Crear(int? id)
+        {
+            _entities = new GRH_Entities();
+
+            ViewData["EstadoCivil"] = EstadoCivil();
+            ViewData["Pais"] = Pais();            
             var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
             return View(persona);
         }
@@ -488,6 +499,41 @@ namespace DemoMVC.Controllers
         }
 
         #endregion
+
+        public virtual ActionResult SetPersona(string nombre, string apellidoPaterno, string apellidoMaterno, int idEstadoCivil, bool sexo, 
+            string direccion, int idPaisR, string fechaNacimiento, int idPaisN)
+        {
+        
+            _entities = new GRH_Entities();
+            
+                var persona = new GRH_Persona
+                {                    
+                    nombre = nombre,
+                    apellidoPaterno = apellidoPaterno,
+                    apellidoMaterno = apellidoMaterno,
+                    idEstadoCivil = idEstadoCivil,
+                    sexo = sexo,
+                    direccion = direccion,
+                    idPais_R = idPaisR,
+                    idPais_N = idPaisN
+                };
+                if (!string.IsNullOrEmpty(fechaNacimiento))
+                    persona.fechaNacimiento = new DateTime(Convert.ToInt32(fechaNacimiento.Substring(0, 4)),
+                                                   Convert.ToInt32(fechaNacimiento.Substring(5, 2)),
+                                                   Convert.ToInt32(fechaNacimiento.Substring(8, 2)));
+                else
+                    persona.fechaNacimiento = null;
+
+                _entities.AddToGRH_Persona(persona);
+                _entities.SaveChanges();
+                var idPersona = persona.idPersona;
+                
+            
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true, Persona = idPersona },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
 
         #region Tablas Paramétricas
         private IEnumerable EstadoCivil()
