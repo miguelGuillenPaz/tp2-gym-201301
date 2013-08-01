@@ -15,7 +15,21 @@ namespace DemoMVC.Controllers
         private GRH_Entities _entities;
         private readonly string[] _seleccione = new[] { "0", "--Seleccione--" };
 
-        public ActionResult RegistrarPostulante(int? id)
+        //public ActionResult RegistrarPostulante(int id)
+        //{
+        //    _entities = new GRH_Entities();
+
+        //    ViewData["EstadoCivil"] = EstadoCivil();
+        //    ViewData["Pais"] = Pais();
+        //    ViewData["TipoDocumento"] = TipoDocumento();
+        //    ViewData["Especialidad"] = Especialidad();
+        //    ViewData["NivelEducativo"] = NivelEducativo();
+        //    ViewData["SituacionEstudio"] = SituacionEstudio();
+        //    var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
+        //    return View(persona);
+        //}
+
+        public ActionResult Mostrar(int? id)
         {
             _entities = new GRH_Entities();
 
@@ -28,6 +42,18 @@ namespace DemoMVC.Controllers
             var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
             return View(persona);
         }
+
+        public ActionResult Editar(int id)
+        {
+            _entities = new GRH_Entities();
+
+            ViewData["EstadoCivil"] = EstadoCivil();
+            ViewData["Pais"] = Pais();
+            ViewData["TipoDocumento"] = TipoDocumento();            
+            var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
+            return View(persona);
+        }
+
 
         private int StartPersona()
         {

@@ -203,6 +203,8 @@
     <Content Include="Views\Home\Prueba.aspx" />
     <Content Include="Views\Legal\Requerimientos.aspx" />
     <Content Include="Views\Logistica\Logistica.aspx" />
+    <Content Include="Views\Persona\Editar.aspx" />
+    <Content Include="Views\Persona\Mostrar.aspx" />
     <Content Include="Views\Persona\RegistrarPostulante.aspx" />
     <Content Include="Views\Planificacion\CrearPlan.aspx" />
     <Content Include="Views\Planificacion\DetallePlanHistorico.aspx" />
