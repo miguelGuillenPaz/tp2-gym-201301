@@ -100,22 +100,49 @@ namespace DemoMVC.Controllers
         public virtual ActionResult SetDocumento(int idPersona, int idDocumento, int idTipoDocumento, string numeroDocumento)
         {
             bool resultado;
+            var error=string.Empty;
             if (idPersona == 0)
                 idPersona = StartPersona();
 
             _entities = new GRH_Entities();
             if (idDocumento == 0)
             {
-                var documento = new GRH_Documento
+                //verifica que no exista el documento
+                var doc = (from r in _entities.GRH_Documento where                                                               
+                               r.idTipoDocumento ==idTipoDocumento &&
+                               r.nroDocumento== numeroDocumento
+                           select r).FirstOrDefault();
+                if (doc == null)
+                {
+                    var docper = (from r in _entities.GRH_Documento
+                               where
+                                   r.idTipoDocumento == idTipoDocumento &&
+                                   r.idPersona==idPersona
+                               select r).FirstOrDefault();
+                    if (docper == null)
                     {
-                        idPersona = idPersona,
-                        idTipoDocumento = idTipoDocumento,
-                        nroDocumento = numeroDocumento
-                    };
-                _entities.AddToGRH_Documento(documento);
-                _entities.SaveChanges();
-                idDocumento = documento.idDocumento;
-                resultado = true;
+                        var documento = new GRH_Documento
+                            {
+                                idPersona = idPersona,
+                                idTipoDocumento = idTipoDocumento,
+                                nroDocumento = numeroDocumento
+                            };
+                        _entities.AddToGRH_Documento(documento);
+                        _entities.SaveChanges();
+                        idDocumento = documento.idDocumento;
+                        resultado = true;
+                    }
+                    else
+                    {
+                        error = "La persona tiene registrado el tipo de documento.";
+                        resultado = false;
+                    }
+                }
+                else
+                {
+                    error = "El documento fue registrado previamente";
+                    resultado = false;
+                }
             }
             else
             {
@@ -130,12 +157,13 @@ namespace DemoMVC.Controllers
                 }
                 else
                 {
+                    error = "No se encontro el registro a actualizar";
                     resultado = false;
                 }
             }
 
             // ReSharper disable RedundantArgumentName
-            return Json(data: new { result = resultado, Persona = idPersona, Documento = idDocumento },
+            return Json(data: new { result = resultado, Persona = idPersona, Documento = idDocumento, Error= error },
                         behavior: JsonRequestBehavior.AllowGet);
             // ReSharper restore RedundantArgumentName
         }

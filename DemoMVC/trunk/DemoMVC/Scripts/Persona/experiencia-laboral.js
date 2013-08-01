@@ -19,7 +19,7 @@
                         }
                     },
                     error: function () {
-                        alert('No se pudo eliminar');
+                        __ShowMessage('No se pudo eliminar');
                     }
                 });
             }
@@ -115,7 +115,7 @@
                         }
                     },
                     error: function () {
-                        alert('No se pudo actualizar');
+                        __ShowMessage('No se pudo actualizar');
                     }
                 });
 

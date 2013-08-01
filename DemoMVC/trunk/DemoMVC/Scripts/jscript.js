@@ -356,28 +356,28 @@ $(document).ready(function () {
 
 
     $('.head-noticia').click(function () {        
-        var texto_noticia = $(this).next();
-        if (texto_noticia.hasClass('texto-noticia')) {
-            if (texto_noticia.css('display') == 'none') {
+        var textoNoticia = $(this).next();
+        if (textoNoticia.hasClass('texto-noticia')) {
+            if (textoNoticia.css('display') == 'none') {
 
-                texto_noticia.slideDown();
+                textoNoticia.slideDown();
             }
             else {
-                texto_noticia.slideUp();
+                textoNoticia.slideUp();
             }
         }
     });
 
     $('.titulo_noticia').click(function () {        
-        var detalle_noticia = $(this).next();
-        if (detalle_noticia.hasClass('detalle_noticia')) {
+        var detalleNoticia = $(this).next();
+        if (detalleNoticia.hasClass('detalle_noticia')) {
 
-            if (detalle_noticia.css('display') == 'none') {
+            if (detalleNoticia.css('display') == 'none') {
 
-                detalle_noticia.slideDown();
+                detalleNoticia.slideDown();
             }
             else {
-                detalle_noticia.slideUp();
+                detalleNoticia.slideUp();
             }
         }
 
@@ -391,4 +391,19 @@ $(document).ready(function () {
         $(this).find('a').removeClass('active');
         $(this).find('ul').slideUp();
     });
+
+    $("#dialogMessage").dialog({
+        modal: true,
+        autoOpen: false,
+        buttons: {
+            'Aceptar': function () {
+                $(this).dialog("close");
+            }
+        }
+    });
 });
+
+function __ShowMessage(message) {
+    $('#dialogMessage #message').text(message);
+    $('#dialogMessage').dialog('open');
+}

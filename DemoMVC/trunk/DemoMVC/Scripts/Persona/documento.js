@@ -18,8 +18,8 @@
                             tr.remove();
                         }
                     },
-                    error: function () {
-                        alert('No se pudo eliminar');
+                    error: function () {                        
+                        __ShowMessage('No se pudo eliminar');
                     }
                 });
             }
@@ -96,10 +96,12 @@
                                 $('td:eq(3)', tr).text($('#txtDocumento').val());
                             }
                             $('#dialogDocumento').dialog('close');
+                        } else {                            
+                            __ShowMessage(result.Error);
                         }
                     },
-                    error: function () {
-                        alert('No se pudo actualizar');
+                    error: function () {                        
+                        __ShowMessage('No se pudo actualizar');
                     }
                 });
 

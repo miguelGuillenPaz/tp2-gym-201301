@@ -36,8 +36,8 @@
                     window.location.href = '/Persona/Mostrar/' + result.Persona;
                 }
             },
-            error: function () {
-                alert('No se pudo crear');
+            error: function () {                
+                __ShowMessage('No se pudo actualizar');
             }
         });
     });

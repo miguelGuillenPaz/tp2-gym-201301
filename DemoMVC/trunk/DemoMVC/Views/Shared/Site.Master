@@ -6,16 +6,16 @@
     <title>
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />    
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <link href="/Content/sliderman.css" rel="stylesheet" type="text/css" />
     <link href="/Content/reset.css" rel="stylesheet" type="text/css" />
     <link href="/Content/style.css" rel="stylesheet" type="text/css" />
     <!--[if lte IE 9]>
           <link rel="stylesheet" href="/Content/style_ie.css" type="text/css" />
     <![endif]-->
-    <link href="/Content/webticker.css" rel="stylesheet" type="text/css" />        
+    <link href="/Content/webticker.css" rel="stylesheet" type="text/css" />
     <script src="/Scripts/jquery-1.9.1.js" type="text/javascript"></script>
-    <script src="/Scripts/jquery-ui.js" type="text/javascript"></script>     
+    <script src="/Scripts/jquery-ui.js" type="text/javascript"></script>
     <script src="/Scripts/jquery.webticker.js" type="text/javascript"></script>
     <script src="/Scripts/active.marker.js" type="text/javascript"></script>
     <script src="/Scripts/show.me.js" type="text/javascript"></script>
@@ -90,6 +90,10 @@
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         <div id="footer">
         </div>
+    </div>
+    <div id="dialogMessage" title="GyM">
+        <p id="message">       
+        </p>
     </div>
 </body>
 </html>
