@@ -578,6 +578,13 @@ namespace DemoMVC.Controllers
                     res.direccion = direccion;
                     res.idPais_N = idPaisN;
                     res.idPais_R = idPaisR;
+                    if (!string.IsNullOrEmpty(fechaNacimiento))
+                        res.fechaNacimiento = new DateTime(Convert.ToInt32(fechaNacimiento.Substring(0, 4)),
+                                                               Convert.ToInt32(fechaNacimiento.Substring(5, 2)),
+                                                               Convert.ToInt32(fechaNacimiento.Substring(8, 2)));
+                    else
+                        res.fechaNacimiento = null;
+
                     _entities.SaveChanges();
                     resultado = true;
                 }

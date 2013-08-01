@@ -128,7 +128,13 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.TextBoxFor(m=> m.fechaNacimiento, new {@type ="date"}) %>
+                                        <%--<%= Html.TextBoxFor(m=> m.fechaNacimiento, new {@type ="date"}) %>--%>
+                                        <% var fechaNac=string.Empty;
+                                            if (Model.fechaNacimiento != null)
+                                           {
+                                               fechaNac= Model.fechaNacimiento.ToString().Substring(6,4)+"-"+Model.fechaNacimiento.ToString().Substring(3,2) +"-"+Model.fechaNacimiento.ToString().Substring(0, 2);
+                                           } %>                                           
+                                        <input id="fechaNacimiento" type="date" value="<%= fechaNac %>" />
                                     </td>
                                     <td>
                                     </td>

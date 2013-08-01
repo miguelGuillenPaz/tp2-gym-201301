@@ -25,6 +25,7 @@
             fechaNacimiento: fechaNacimiento,
             idPaisN: idPaisN
         };
+        alert(JSON.stringify(data));
         var url = '/Persona/SetPersona';
         $.ajax({
             type: 'POST',
@@ -36,7 +37,7 @@
                     window.location.href = '/Persona/Mostrar/' + result.Persona;
                 }
             },
-            error: function () {                
+            error: function () {
                 __ShowMessage('No se pudo actualizar');
             }
         });
