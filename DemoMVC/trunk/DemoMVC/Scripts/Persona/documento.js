@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     var selectedDocumento;
 
@@ -6,7 +6,7 @@ $(document).ready(function () {
         var tr = $(this).parent().parent();
         var idDocumento = $.trim($('td:eq(0)', tr).text());
         if (idDocumento != 0) {
-            if (confirm('�Desea eliminar el documento?')) {
+            if (confirm('¿Desea eliminar el documento?')) {
                 var data = { idDocumento: idDocumento };
                 var url = '/Persona/DelDocumento';
                 $.ajax({

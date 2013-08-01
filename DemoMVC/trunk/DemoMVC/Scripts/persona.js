@@ -1,7 +1,9 @@
 ﻿$(document).ready(function () {
 
     $('#btnEnviar').click(function () {
-        alert('here');
+        var idPersona = $.trim($('#idPersona').val());
+        if (idPersona == '')
+            idPersona = 0;
         var nombre = $.trim($('#nombre').val());
         var apellidoPaterno = $.trim($('#apellidoPaterno').val());
         var apellidoMaterno = $.trim($('#apellidoMaterno').val());
@@ -12,6 +14,7 @@
         var fechaNacimiento = $.trim($('#fechaNacimiento').val());
         var idPaisN = $.trim($('#idPais_N').val());
         var data = {
+            idPersona: idPersona,
             nombre: nombre,
             apellidoPaterno: apellidoPaterno,
             apellidoMaterno: apellidoMaterno,

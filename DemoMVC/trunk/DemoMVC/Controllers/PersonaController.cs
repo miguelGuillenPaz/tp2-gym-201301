@@ -29,13 +29,12 @@ namespace DemoMVC.Controllers
         //    return View(persona);
         //}
 
-        public ActionResult Mostrar(int? id)
+        public ActionResult Mostrar(int id)
         {
             _entities = new GRH_Entities();
-
+            ViewData["TipoDocumento"] = TipoDocumento();
             ViewData["EstadoCivil"] = EstadoCivil();
             ViewData["Pais"] = Pais();
-            ViewData["TipoDocumento"] = TipoDocumento();
             ViewData["Especialidad"] = Especialidad();
             ViewData["NivelEducativo"] = NivelEducativo();
             ViewData["SituacionEstudio"] = SituacionEstudio();
@@ -260,7 +259,6 @@ namespace DemoMVC.Controllers
         }
         #endregion
 
-
         #region IdiomaPersona
         public virtual ActionResult DelIdiomaPersona(int idIdiomaPersona)
         {
@@ -331,7 +329,6 @@ namespace DemoMVC.Controllers
             // ReSharper restore RedundantArgumentName
         }
         #endregion
-
 
         #region Experiencia Laboral
 
@@ -509,37 +506,61 @@ namespace DemoMVC.Controllers
 
         #endregion
 
-        public virtual ActionResult SetPersona(string nombre, string apellidoPaterno, string apellidoMaterno, int idEstadoCivil, bool sexo, 
+        public virtual ActionResult SetPersona(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, int idEstadoCivil, bool sexo, 
             string direccion, int idPaisR, string fechaNacimiento, int idPaisN)
         {
-        
+            bool resultado;
             _entities = new GRH_Entities();
-            
+
+            if (idPersona == 0)
+            {
                 var persona = new GRH_Persona
-                {                    
-                    nombre = nombre,
-                    apellidoPaterno = apellidoPaterno,
-                    apellidoMaterno = apellidoMaterno,
-                    idEstadoCivil = idEstadoCivil,
-                    sexo = sexo,
-                    direccion = direccion,
-                    idPais_R = idPaisR,
-                    idPais_N = idPaisN
-                };
+                    {
+                        nombre = nombre,
+                        apellidoPaterno = apellidoPaterno,
+                        apellidoMaterno = apellidoMaterno,
+                        idEstadoCivil = idEstadoCivil,
+                        sexo = sexo,
+                        direccion = direccion,
+                        idPais_R = idPaisR,
+                        idPais_N = idPaisN
+                    };
                 if (!string.IsNullOrEmpty(fechaNacimiento))
                     persona.fechaNacimiento = new DateTime(Convert.ToInt32(fechaNacimiento.Substring(0, 4)),
-                                                   Convert.ToInt32(fechaNacimiento.Substring(5, 2)),
-                                                   Convert.ToInt32(fechaNacimiento.Substring(8, 2)));
+                                                           Convert.ToInt32(fechaNacimiento.Substring(5, 2)),
+                                                           Convert.ToInt32(fechaNacimiento.Substring(8, 2)));
                 else
                     persona.fechaNacimiento = null;
 
                 _entities.AddToGRH_Persona(persona);
                 _entities.SaveChanges();
-                var idPersona = persona.idPersona;
-                
-            
+                idPersona = persona.idPersona;
+                resultado = true;
+            }
+            else
+            {
+                var res = (from r in _entities.GRH_Persona where r.idPersona == idPersona select r).FirstOrDefault();
+                if (res != null)
+                {                    
+                    res.nombre = nombre;
+                    res.apellidoPaterno = apellidoPaterno;
+                    res.apellidoMaterno = apellidoMaterno;
+                    res.idEstadoCivil = idEstadoCivil;
+                    res.sexo = sexo;
+                    res.direccion = direccion;
+                    res.idPais_N = idPaisN;
+                    res.idPais_R = idPaisR;
+                    _entities.SaveChanges();
+                    resultado = true;
+                }
+                else
+                {
+                    resultado = false;
+                }
+            }
+
             // ReSharper disable RedundantArgumentName
-            return Json(data: new { result = true, Persona = idPersona },
+            return Json(data: new { result = resultado, Persona = idPersona },
                         behavior: JsonRequestBehavior.AllowGet);
             // ReSharper restore RedundantArgumentName
         }

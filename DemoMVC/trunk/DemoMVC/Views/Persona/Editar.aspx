@@ -1,11 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DemoMVC.Models.GRH_Persona>" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">    
-    <script src="../../Scripts/Persona/documento.js" type="text/javascript"></script>
-    <script src="../../Scripts/Persona/telefono.js" type="text/javascript"></script>
-    <script src="../../Scripts/Persona/correo.js" type="text/javascript"></script>
-    <script src="../../Scripts/Persona/experiencia-laboral.js" type="text/javascript"></script>
-    <script src="../../Scripts/Persona/estudio-realizado.js" type="text/javascript"></script>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script src="../../Scripts/persona.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                var textoNoticia = $('.head-noticia').next();
+                if (textoNoticia.hasClass('texto-noticia')) {
+                    if (textoNoticia.css('display') == 'none') {
+                        textoNoticia.slideDown();
+                    }
+                    else {
+                        textoNoticia.slideUp();
+                    }
+                }
+            } catch (ex) {
+            }
+        });
+    </script>        
     <div class="contenido-top">
         <div>
             <h1>
@@ -130,11 +142,13 @@
                                         <%= Html.DropDownListFor(m => m.idPais_N, (IEnumerable<SelectListItem>)ViewData["Pais"]) %>
                                     </td>
                                 </tr>                               
-                            </table>
+                            </table>                            
                         </div>
                     </div>               
+                    
+                    <a id="btnEnviar" href="javascript:;">Enviar</a>
                 </div>
             </div>
         </div>
-    </div>     
+    </div>        
 </asp:Content>

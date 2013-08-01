@@ -28,12 +28,13 @@
             <h1>
                 Registrar Postulante
                 <%= Html.HiddenFor(m=> m.idPersona) %>
-            </h1>
-            <div class="areas-negocios">
+            </h1>            
+            <div class="areas-negocios">                                
                 <div class="lista-central">
                     <div class="noticia">
                         <div class="head-noticia">
                             <span class="titulo-noticia">Información Personal</span>
+                            <a style="float: right;" href="/Persona/Editar/<%= Model.idPersona %>">Editar</a>
                         </div>
                         <div class="texto-noticia">
                             <table>
