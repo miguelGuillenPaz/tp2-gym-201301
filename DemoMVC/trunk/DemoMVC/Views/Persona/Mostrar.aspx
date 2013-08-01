@@ -404,8 +404,7 @@
                                             <%= item.fechaFin != null ? item.fechaFin.ToString().Substring(6, 4) + "-" + item.fechaFin.ToString().Substring(3, 2) + "-" + item.fechaFin.ToString().Substring(0, 2) : string.Empty%>
                                         </td>
                                         <td>
-                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
-                                                Eliminar</a>
+                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">Eliminar</a>
                                         </td>
                                     </tr>
                                     <%
@@ -424,11 +423,17 @@
                             <table id="tblIdiomaPersona">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th style="display: none;">
                                             <b>Id</b>
+                                        </th>
+                                        <th style="display: none;">
+                                            idIdioma
                                         </th>
                                         <th>
                                             <b>Idioma</b>
+                                        </th>
+                                        <th style="display: none;">
+                                            idNivel
                                         </th>
                                         <th>
                                             <b>Nivel</b>
@@ -447,14 +452,20 @@
                                         <td style="display: none;">
                                             <%= item.idIdiomaPersona %>
                                         </td>
+                                        <td style="display: none;">
+                                            <%= item.GRH_Idioma!=null? item.idIdioma:0 %>
+                                        </td>
                                         <td>
                                             <%= item.GRH_Idioma!=null? item.GRH_Idioma.descripcion:string.Empty %>
                                         </td>
-                                        <td>
-                                            <%= item.nativo == true ? "Nativo" : (item.GRH_NivelIdioma!=null?item.GRH_NivelIdioma.descripcion:string.Empty)%>
+                                        <td style="display: none;">
+                                            <%= item.GRH_NivelIdioma!=null? item.idNivelIdioma:0 %>
                                         </td>
                                         <td>
-                                            <a href="">Editar</a> | <a href="">Eliminar</a>
+                                            <%= item.nativo == true ? "Nativo" : (item.GRH_NivelIdioma!=null?item.GRH_NivelIdioma.descripcion:string.Empty)%>   
+                                        </td>
+                                        <td>
+                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">Eliminar</a>
                                         </td>
                                     </tr>
                                     <%
@@ -677,4 +688,46 @@
             </tr>
         </table>
     </div>
+    <div id="dialogIdiomaPersona" title="" style="display: none; z-index: 1000;">
+        <input type="hidden" id="hdnIdiomaPersona" />
+        <input type="hidden" id="hdnAccionIdiomaPersona" />
+        <table>
+            <tr>
+                <td>
+                    Idioma
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <%= Html.DropDownListFor(m => m.GRH_IdiomaPersona.FirstOrDefault().idIdioma, (IEnumerable<SelectListItem>)ViewData["Idioma"], new { @id = "ddlIdioma" })%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nativo
+                </td>
+                <td>
+                    :
+                </td>
+                <td>                                         
+                    <input type="checkbox" id="chkNativo" name="nativo" checked="checked"/>
+                </td>
+            </tr>
+            <tr>
+                <td>                    
+                    <label id="lblNivelIdioma">Nivel</label>
+                </td>
+                <td>                    
+                    <label id="sepNivelIdioma">:</label>
+                </td>
+                <td>
+                    <%= Html.DropDownListFor(m => m.GRH_IdiomaPersona.FirstOrDefault().idNivelIdioma, (IEnumerable<SelectListItem>)ViewData["NivelIdioma"], new { @id = "ddlNivelIdioma" })%>
+                </td>
+            </tr>
+            
+            
+        </table>
+    </div>
+
 </asp:Content>

@@ -40,6 +40,7 @@ namespace DemoMVC.Controllers
             ViewData["NivelEducativo"] = NivelEducativo();
             ViewData["SituacionEstudio"] = SituacionEstudio();
             ViewData["NivelIdioma"] = NivelIdioma();
+            ViewData["Idioma"] = Idioma();
             var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
             return View(persona);
         }
@@ -289,10 +290,14 @@ namespace DemoMVC.Controllers
                 var idioma = new GRH_IdiomaPersona
                 {
                     idPersona = idPersona,
-                    idIdioma = idIdioma,
-                    idNivelIdioma = idNivelIdioma,
+                    idIdioma = idIdioma,                    
                     nativo = nativo
                 };
+                if (idNivelIdioma == 0)
+                    idioma.idNivelIdioma = null;
+                else
+                    idioma.idNivelIdioma = idNivelIdioma;
+                
                 _entities.AddToGRH_IdiomaPersona(idioma);
                 _entities.SaveChanges();
                 idIdiomaPersona = idioma.idIdiomaPersona;
@@ -305,7 +310,11 @@ namespace DemoMVC.Controllers
                 {
                     res.idPersona = idPersona;
                     res.idIdioma = idIdioma;
-                    res.idNivelIdioma = idNivelIdioma;
+                    if (idNivelIdioma == 0)
+                        res.idNivelIdioma = null;
+                    else
+                        res.idNivelIdioma = idNivelIdioma;
+
                     res.nativo = nativo;
                     _entities.SaveChanges();
                     resultado = true;
@@ -684,6 +693,28 @@ namespace DemoMVC.Controllers
             foreach (var item in lista)
             {
                 var selListItem = new SelectListItem { Value = item.idNivelIdioma.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
+                resultado.Add(selListItem);
+            }
+
+            return resultado;
+        }
+
+        private IEnumerable Idioma()
+        {
+
+            var resultado = new List<SelectListItem>();
+
+            var lista = (from r in _entities.GRH_Idioma select r);
+
+            resultado.Add(new SelectListItem
+            {
+                Value = _seleccione[0],
+                Text = _seleccione[1]
+            });
+
+            foreach (var item in lista)
+            {
+                var selListItem = new SelectListItem { Value = item.idIdioma.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
                 resultado.Add(selListItem);
             }
 

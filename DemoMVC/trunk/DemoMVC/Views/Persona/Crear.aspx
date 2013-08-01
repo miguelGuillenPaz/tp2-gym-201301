@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DemoMVC.Models.GRH_Persona>" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">        
-    <script src="../../Scripts/Persona/crear.js" type="text/javascript"></script>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">            
+    <script src="../../Scripts/persona.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             try {
