@@ -383,5 +383,12 @@ $(document).ready(function () {
 
     });
 
-
+    $('.navigation_menu li ul').hide();
+    $('.navigation_menu li').hover(function () {
+        $(this).find('a').addClass('active');
+        $(this).find('ul').slideDown();
+    }, function () {
+        $(this).find('a').removeClass('active');
+        $(this).find('ul').slideUp();
+    });
 });
