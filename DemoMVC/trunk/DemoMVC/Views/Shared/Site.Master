@@ -54,6 +54,9 @@
                         <li>
                             <%= Html.ActionLink("Postular", "Crear", "Postulante")%>
                         </li>
+                        <li>
+                            <%= Html.ActionLink("Alta de Empleado", "Alta", "Empleado")%>
+                        </li>
                     </ul>
                 </li>
                 <li>

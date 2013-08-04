@@ -72,6 +72,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
+    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\FinanzasController.cs" />
     <Compile Include="Controllers\GestionProyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -195,6 +196,8 @@
     <Content Include="Views\Compras\mainPlanAba.aspx" />
     <Content Include="Views\Compras\mainSolAdq.aspx" />
     <Content Include="Views\Contenidos\Contenidos.aspx" />
+    <Content Include="Views\Empleado\Alta.aspx" />
+    <Content Include="Views\Empleado\DatosAdicionales.aspx" />
     <Content Include="Views\Finanzas\Index.aspx" />
     <Content Include="Views\GestionProy\Gestion.aspx" />
     <Content Include="Views\GestionProy\ModPresupuesto.aspx" />
@@ -249,7 +252,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Seguridad\" />
-    <Folder Include="Views\Empleado\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model1.edmx">
