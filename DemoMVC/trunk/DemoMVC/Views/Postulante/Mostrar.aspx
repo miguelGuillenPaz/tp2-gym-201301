@@ -17,12 +17,12 @@
             }
         });
     </script>
-    <script src="../../Scripts/Persona/documento.js" type="text/javascript"></script>
-    <script src="../../Scripts/Persona/telefono.js" type="text/javascript"></script>
-    <script src="../../Scripts/Persona/correo.js" type="text/javascript"></script>
-    <script src="../../Scripts/Persona/idioma-persona.js" type="text/javascript"></script>
-    <script src="../../Scripts/Persona/experiencia-laboral.js" type="text/javascript"></script>
-    <script src="../../Scripts/Persona/estudio-realizado.js" type="text/javascript"></script>
+    <script src="../../Scripts/Postulante/documento.js" type="text/javascript"></script>
+    <script src="../../Scripts/Postulante/telefono.js" type="text/javascript"></script>
+    <script src="../../Scripts/Postulante/correo.js" type="text/javascript"></script>
+    <script src="../../Scripts/Postulante/idioma-persona.js" type="text/javascript"></script>
+    <script src="../../Scripts/Postulante/experiencia-laboral.js" type="text/javascript"></script>
+    <script src="../../Scripts/Postulante/estudio-realizado.js" type="text/javascript"></script>
     <div class="contenido-top">
         <div>
             <h1>
@@ -34,7 +34,7 @@
                     <div class="noticia">
                         <div class="head-noticia">
                             <span class="titulo-noticia">Información Personal</span>
-                            <a style="float: right;" href="/Persona/Editar/<%= Model.idPersona %>">Editar</a>
+                            <a style="float: right;" href="/Postulante/Editar/<%= Model.idPersona %>">Editar</a>
                         </div>
                         <div class="texto-noticia">
                             <table>

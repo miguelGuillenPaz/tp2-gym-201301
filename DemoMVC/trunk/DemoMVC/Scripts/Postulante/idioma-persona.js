@@ -8,7 +8,7 @@
         if (idIdiomaPersona != 0) {
             if (confirm('¿Desea eliminar el idioma?')) {
                 var data = { idIdiomaPersona: idIdiomaPersona };
-                var url = '/Persona/DelIdiomaPersona';
+                var url = '/Postulante/DelIdiomaPersona';
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -119,7 +119,7 @@
                         idNivelIdioma: idNivelIdioma,
                         nativo: nativo
                     };
-                    var url = '/Persona/SetIdiomaPersona';
+                    var url = '/Postulante/SetIdiomaPersona';
                     $.ajax({
                         type: 'POST',
                         url: url,

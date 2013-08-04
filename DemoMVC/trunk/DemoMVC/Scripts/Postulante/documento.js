@@ -8,7 +8,7 @@
         if (idDocumento != 0) {
             if (confirm('¿Desea eliminar el documento?')) {
                 var data = { idDocumento: idDocumento };
-                var url = '/Persona/DelDocumento';
+                var url = '/Postulante/DelDocumento';
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -82,7 +82,7 @@
                         idTipoDocumento: idTipoDocumento,
                         numeroDocumento: numeroDocumento
                     };
-                    var url = '/Persona/SetDocumento';
+                    var url = '/Postulante/SetDocumento';
                     $.ajax({
                         type: 'POST',
                         url: url,

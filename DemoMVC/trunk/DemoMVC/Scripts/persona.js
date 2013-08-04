@@ -38,7 +38,7 @@
                 idPaisN: idPaisN
             };
 
-            var url = '/Persona/SetPersona';
+            var url = '/Postulante/SetPersona';
             $.ajax({
                 type: 'POST',
                 url: url,
@@ -46,7 +46,7 @@
                 success: function (result) {
                     if (result.result) {
                         $('#idPersona').val(result.Persona);
-                        window.location.href = '/Persona/Mostrar/' + result.Persona;
+                        window.location.href = '/Postulante/Mostrar/' + result.Persona;
                     }
                 },
                 error: function () {

@@ -8,7 +8,7 @@
         if (idExperienciaLaboral != 0) {
             if (confirm('¿Desea eliminar la experiencia laboral?')) {
                 var data = { idExperienciaLaboral: idExperienciaLaboral };
-                var url = '/Persona/DelExperienciaLaboral';
+                var url = '/Postulante/DelExperienciaLaboral';
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -94,7 +94,7 @@
                         cargo: txtCargo,
                         empresa: txtEmpresa
                     };
-                    var url = '/Persona/SetExperienciaLaboral';
+                    var url = '/Postulante/SetExperienciaLaboral';
                     $.ajax({
                         type: 'POST',
                         url: url,

@@ -52,7 +52,7 @@
                     <a href="#">Recursos Humanos</a>
                     <ul>
                         <li>
-                            <%= Html.ActionLink("Postular", "Crear", "Persona")%>
+                            <%= Html.ActionLink("Postular", "Crear", "Postulante")%>
                         </li>
                     </ul>
                 </li>

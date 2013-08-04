@@ -1,14 +1,14 @@
 ﻿$(document).ready(function () {
 
-    var selectedTelefono;
+    var selectedCorreo;
 
-    $('#tblTelefono').delegate('.eliminar', "click", function () {
+    $('#tblCorreo').delegate('.eliminar', "click", function () {
         var tr = $(this).parent().parent();
-        var idTelefono = $.trim($('td:eq(0)', tr).text());
-        if (idTelefono != 0) {
-            if (confirm('¿Desea eliminar el teléfono?')) {
-                var data = { idTelefono: idTelefono };
-                var url = '/Persona/DelTelefono';
+        var idCorreo = $.trim($('td:eq(0)', tr).text());
+        if (idCorreo != 0) {
+            if (confirm('¿Desea eliminar el correo?')) {
+                var data = { idCorreo: idCorreo };
+                var url = '/Postulante/DelCorreo';
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -29,25 +29,25 @@
     });
 
 
-    $('#tblTelefono').delegate('.editar', "click", function () {
-        $('#hdnAccionTelefono').val('U');
+    $('#tblCorreo').delegate('.editar', "click", function () {
+        $('#hdnAccionCorreo').val('U');
         var tr = $(this).parent().parent();
-        $('#hdnTelefono').val($.trim($('td:eq(0)', tr).text()));
-        $('#txtTelefono').val($.trim($('td:eq(1)', tr).text()));
-        selectedTelefono = tr;
-        $('#dialogTelefono').dialog('option', 'title', 'Editar Teléfono');
-        $('#dialogTelefono').dialog('open');
+        $('#hdnCorreo').val($.trim($('td:eq(0)', tr).text()));
+        $('#txtCorreo').val($.trim($('td:eq(1)', tr).text()));
+        selectedCorreo = tr;
+        $('#dialogCorreo').dialog('option', 'title', 'Editar Correo');
+        $('#dialogCorreo').dialog('open');
     });
 
-    $('#addTelefono').click(function () {
-        $('#hdnAccionTelefono').val('I');
-        $('#hdnTelefono').val('0');
-        $('#txtTelefono').val('');
-        $('#dialogTelefono').dialog('option', 'title', 'Agregar Teléfono');
-        $('#dialogTelefono').dialog('open');
+    $('#addCorreo').click(function () {
+        $('#hdnAccionCorreo').val('I');
+        $('#hdnCorreo').val('0');
+        $('#txtCorreo').val('');
+        $('#dialogCorreo').dialog('option', 'title', 'Agregar Correo');
+        $('#dialogCorreo').dialog('open');
     });
 
-    $('#dialogTelefono').dialog({
+    $('#dialogCorreo').dialog({
         autoOpen: false,
         height: 130,
         width: 300,
@@ -55,8 +55,9 @@
         modal: true,
         buttons: {
             'Enviar': function () {
+
                 var nroRequeridos = 0;
-                $('#dialogTelefono .required').each(function () {
+                $('#dialogCorreo .required').each(function () {
                     if ($(this).val() == '') {
                         nroRequeridos = nroRequeridos + 1;
                         $(this).addClass('required-control');
@@ -70,35 +71,35 @@
                     if (idPersona == '') {
                         idPersona = '0';
                     }
-                    var idTelefono = $.trim($('#hdnTelefono').val());
-                    var numeroTelefono = $.trim($('#txtTelefono').val());
+                    var idCorreo = $.trim($('#hdnCorreo').val());
+                    var cuentaCorreo = $.trim($('#txtCorreo').val());
                     var data = {
                         idPersona: idPersona,
-                        idTelefono: idTelefono,
-                        numeroTelefono: numeroTelefono
+                        idCorreo: idCorreo,
+                        cuentaCorreo: cuentaCorreo
                     };
-                    var url = '/Persona/SetTelefono';
+                    var url = '/Postulante/SetCorreo';
                     $.ajax({
                         type: 'POST',
                         url: url,
                         data: data,
                         success: function (result) {
                             if (result.result) {
-                                $('#hdnTelefono').val(result.Telefono);
+                                $('#hdnCorreo').val(result.Correo);
                                 $('#idPersona').val(result.Persona);
-                                if ($('#hdnAccionTelefono').val() == 'I') {
+                                if ($('#hdnAccionCorreo').val() == 'I') {
                                     var fila = "<tr>" +
-                                        "<td style=\"display: none;\">" + $('#hdnTelefono').val() + "</td>" +
-                                        "<td>" + $('#txtTelefono').val() + "</td>" +
+                                        "<td style=\"display: none;\">" + $('#hdnCorreo').val() + "</td>" +
+                                        "<td>" + $('#txtCorreo').val() + "</td>" +
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
-                                    $('#tblTelefono tbody').append(fila);
+                                    $('#tblCorreo tbody').append(fila);
                                 } else {
-                                    var tr = selectedTelefono;
-                                    $('td:eq(0)', tr).text($('#hdnTelefono').val());
-                                    $('td:eq(1)', tr).text($('#txtTelefono').val());
+                                    var tr = selectedCorreo;
+                                    $('td:eq(0)', tr).text($('#hdnCorreo').val());
+                                    $('td:eq(1)', tr).text($('#txtCorreo').val());
                                 }
-                                $('#dialogTelefono').dialog('close');
+                                $('#dialogCorreo').dialog('close');
                             }
                         },
                         error: function () {

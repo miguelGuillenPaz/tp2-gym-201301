@@ -8,7 +8,7 @@
         if (idEstudioRealizado != 0) {
             if (confirm('¿Desea eliminar el estudio realizado?')) {
                 var data = { idEstudioRealizado: idEstudioRealizado };
-                var url = '/Persona/DelEstudioRealizado';
+                var url = '/Postulante/DelEstudioRealizado';
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -130,7 +130,7 @@
                         fechaFin: txtFin,
                         nombreEstudio: txtNombre
                     };
-                    var url = '/Persona/SetEstudioRealizado';
+                    var url = '/Postulante/SetEstudioRealizado';
                     $.ajax({
                         type: 'POST',
                         url: url,
