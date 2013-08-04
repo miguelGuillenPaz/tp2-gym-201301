@@ -141,18 +141,7 @@
                                     <td>
                                         <%= Html.DropDownListFor(m => m.idPais_N, (IEnumerable<SelectListItem>)ViewData["Pais"], new { @class = "required" })%>
                                     </td>
-                                </tr>         
-                                 <tr>
-                                    <td>
-                                        Disponibilidad
-                                    </td>
-                                    <td>
-                                        :
-                                    </td>
-                                    <td colspan="5">
-                                        <%= Html.TextBoxFor(m=> m.GRH_Postulante.FirstOrDefault().disponibilidad, new {@class="required"}) %>
-                                    </td>                                    
-                                </tr>                         
+                                </tr>                                                      
                             </table>                            
                         </div>
                     </div>               

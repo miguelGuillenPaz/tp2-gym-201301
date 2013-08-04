@@ -520,7 +520,7 @@ namespace DemoMVC.Controllers
         #endregion
 
         public virtual ActionResult SetPersona(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, int idEstadoCivil, bool sexo,
-            string direccion, int idPaisR, string fechaNacimiento, int idPaisN, string disponibilidad)
+            string direccion, int idPaisR, string fechaNacimiento, int idPaisN)
         {
             bool resultado;
             _entities = new GRH_Entities();
