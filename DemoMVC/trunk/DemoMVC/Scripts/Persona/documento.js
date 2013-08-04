@@ -59,7 +59,7 @@
             'Enviar': function () {
                 var nroRequeridos = 0;
                 $('#dialogDocumento .required').each(function () {
-                    if ($(this).val() == '' || $(this).val() == '0') {
+                    if ($(this).val() == '') {
                         nroRequeridos = nroRequeridos + 1;
                         $(this).addClass('required-control');
                     } else {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Web.Mvc;
 using System.Linq;
 using DemoMVC.Models;
@@ -13,22 +12,8 @@ namespace DemoMVC.Controllers
         //
         // GET: /Persona/
         private GRH_Entities _entities;
-        private readonly string[] _seleccione = new[] { "0", "--Seleccione--" };
-
-        //public ActionResult RegistrarPostulante(int id)
-        //{
-        //    _entities = new GRH_Entities();
-
-        //    ViewData["EstadoCivil"] = EstadoCivil();
-        //    ViewData["Pais"] = Pais();
-        //    ViewData["TipoDocumento"] = TipoDocumento();
-        //    ViewData["Especialidad"] = Especialidad();
-        //    ViewData["NivelEducativo"] = NivelEducativo();
-        //    ViewData["SituacionEstudio"] = SituacionEstudio();
-        //    var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
-        //    return View(persona);
-        //}
-
+        private readonly string[] _seleccione = new[] { string.Empty, "--Seleccione--" };
+        
         public ActionResult Mostrar(int id)
         {
             _entities = new GRH_Entities();
@@ -534,8 +519,8 @@ namespace DemoMVC.Controllers
 
         #endregion
 
-        public virtual ActionResult SetPersona(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, int idEstadoCivil, bool sexo, 
-            string direccion, int idPaisR, string fechaNacimiento, int idPaisN)
+        public virtual ActionResult SetPersona(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, int idEstadoCivil, bool sexo,
+            string direccion, int idPaisR, string fechaNacimiento, int idPaisN, string disponibilidad)
         {
             bool resultado;
             _entities = new GRH_Entities();
@@ -601,22 +586,29 @@ namespace DemoMVC.Controllers
         }
 
         #region Tablas Paramétricas
+
+        private List<SelectListItem> CargaInicial()
+        {
+            return new List<SelectListItem>
+                {
+                    new SelectListItem
+                        {
+                            Value = _seleccione[0],
+                            Text = _seleccione[1]
+                        }
+                };
+        }
+
         private IEnumerable EstadoCivil()
         {
 
-            var resultado = new List<SelectListItem>();
+            var resultado = CargaInicial();
 
             var lista = (from r in _entities.GRH_EstadoCivil select r);
 
-            resultado.Add(new SelectListItem
-                {
-                    Value = _seleccione[0],
-                    Text = _seleccione[1]
-                });
-
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idEstadoCivil.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.idEstadoCivil +string.Empty, Text = item.descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -626,19 +618,14 @@ namespace DemoMVC.Controllers
         private IEnumerable Pais()
         {
 
-            var resultado = new List<SelectListItem>();
+            var resultado = CargaInicial();
 
             var lista = (from r in _entities.GRH_Pais select r);
 
-            resultado.Add(new SelectListItem
-            {
-                Value = _seleccione[0],
-                Text = _seleccione[1]
-            });
-
+            
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idPais.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.idPais + string.Empty, Text = item.descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -648,19 +635,12 @@ namespace DemoMVC.Controllers
         private IEnumerable TipoDocumento()
         {
 
-            var resultado = new List<SelectListItem>();
+            var resultado = CargaInicial();
 
-            var lista = (from r in _entities.GRH_TipoDocumento select r);
-
-            resultado.Add(new SelectListItem
-            {
-                Value = _seleccione[0],
-                Text = _seleccione[1]
-            });
-
+            var lista = (from r in _entities.GRH_TipoDocumento select r);            
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idTipoDocumento.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.idTipoDocumento + string.Empty, Text = item.descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -670,19 +650,13 @@ namespace DemoMVC.Controllers
         private IEnumerable Especialidad()
         {
 
-            var resultado = new List<SelectListItem>();
+            var resultado = CargaInicial();
 
             var lista = (from r in _entities.GRH_Especialidad select r);
 
-            resultado.Add(new SelectListItem
-            {
-                Value = _seleccione[0],
-                Text = _seleccione[1]
-            });
-
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idEspecialidad.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.idEspecialidad + string.Empty, Text = item.descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -692,19 +666,13 @@ namespace DemoMVC.Controllers
         private IEnumerable NivelEducativo()
         {
 
-            var resultado = new List<SelectListItem>();
+            var resultado = CargaInicial();
 
-            var lista = (from r in _entities.GRH_NivelEducativo select r);
-
-            resultado.Add(new SelectListItem
-            {
-                Value = _seleccione[0],
-                Text = _seleccione[1]
-            });
+            var lista = (from r in _entities.GRH_NivelEducativo select r);           
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idNivelEducativo.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.idNivelEducativo + string.Empty, Text = item.descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -714,19 +682,13 @@ namespace DemoMVC.Controllers
         private IEnumerable SituacionEstudio()
         {
 
-            var resultado = new List<SelectListItem>();
+            var resultado = CargaInicial();
 
             var lista = (from r in _entities.GRH_SituacionEstudio select r);
 
-            resultado.Add(new SelectListItem
-            {
-                Value = _seleccione[0],
-                Text = _seleccione[1]
-            });
-
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idSituacionEstudio.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.idSituacionEstudio + string.Empty, Text = item.descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -736,19 +698,13 @@ namespace DemoMVC.Controllers
         private IEnumerable NivelIdioma()
         {
 
-            var resultado = new List<SelectListItem>();
+            var resultado = CargaInicial();
 
-            var lista = (from r in _entities.GRH_NivelIdioma select r);
-
-            resultado.Add(new SelectListItem
-            {
-                Value = _seleccione[0],
-                Text = _seleccione[1]
-            });
+            var lista = (from r in _entities.GRH_NivelIdioma select r);            
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idNivelIdioma.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.idNivelIdioma + string.Empty, Text = item.descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -758,19 +714,13 @@ namespace DemoMVC.Controllers
         private IEnumerable Idioma()
         {
 
-            var resultado = new List<SelectListItem>();
+            var resultado = CargaInicial();
 
             var lista = (from r in _entities.GRH_Idioma select r);
 
-            resultado.Add(new SelectListItem
-            {
-                Value = _seleccione[0],
-                Text = _seleccione[1]
-            });
-
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idIdioma.ToString(CultureInfo.InvariantCulture), Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.idIdioma + string.Empty, Text = item.descripcion };
                 resultado.Add(selListItem);
             }
 

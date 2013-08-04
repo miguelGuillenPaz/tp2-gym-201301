@@ -17,7 +17,7 @@
             } catch (ex) {
             }
         });
-    </script>        
+    </script>
     <div class="contenido-top">
         <div>
             <h1>
@@ -44,9 +44,9 @@
                                     </td>
                                     <td>
                                     </td>
-                                    <td>                                        
+                                    <td>
                                     </td>
-                                    <td>                                        
+                                    <td>
                                     </td>
                                     <td>
                                     </td>
@@ -127,12 +127,12 @@
                                     <td>
                                         :
                                     </td>
-                                    <td>                                        
-                                        <% var fechaNac=string.Empty;
-                                            if (Model.fechaNacimiento != null)
+                                    <td>
+                                        <% var fechaNac = string.Empty;
+                                           if (Model.fechaNacimiento != null)
                                            {
-                                               fechaNac= Model.fechaNacimiento.ToString().Substring(6,4)+"-"+Model.fechaNacimiento.ToString().Substring(3,2) +"-"+Model.fechaNacimiento.ToString().Substring(0, 2);
-                                           } %>                                           
+                                               fechaNac = Model.fechaNacimiento.ToString().Substring(6, 4) + "-" + Model.fechaNacimiento.ToString().Substring(3, 2) + "-" + Model.fechaNacimiento.ToString().Substring(0, 2);
+                                           } %>
                                         <input id="fechaNacimiento" type="date" value="<%= fechaNac %>" class="required" />
                                     </td>
                                     <td>
@@ -146,14 +146,24 @@
                                     <td>
                                         <%= Html.DropDownListFor(m => m.idPais_N, (IEnumerable<SelectListItem>)ViewData["Pais"], new { @class = "required" })%>
                                     </td>
-                                </tr>                               
-                            </table>                            
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Disponibilidad
+                                    </td>
+                                    <td>
+                                        :
+                                    </td>
+                                    <td colspan="5">
+                                        <%= Html.TextBoxFor(m=> m.GRH_Postulante.FirstOrDefault().disponibilidad, new {@class="required"}) %>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                    </div>               
-                    
+                    </div>
                     <a id="btnEnviar" href="javascript:;">Enviar</a>
                 </div>
             </div>
         </div>
-    </div>        
+    </div>
 </asp:Content>

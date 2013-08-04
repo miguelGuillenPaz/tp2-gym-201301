@@ -4,15 +4,16 @@
 
         var nroRequeridos = 0;
         $('.required').each(function () {
-            if ($(this).val() == '' || $(this).val() == '0') {
+            if ($(this).val() == '') {
                 nroRequeridos = nroRequeridos + 1;
                 $(this).addClass('required-control');
             } else {
                 $(this).removeClass('required-control');
             }
-        });        
+        });
 
         if (nroRequeridos == 0) {
+            alert('here');
             var idPersona = $.trim($('#idPersona').val());
             if (idPersona == '')
                 idPersona = 0;
@@ -25,6 +26,8 @@
             var idPaisR = $.trim($('#idPais_R').val());
             var fechaNacimiento = $.trim($('#fechaNacimiento').val());
             var idPaisN = $.trim($('#idPais_N').val());
+            alert($('#disponibilidad').val());
+            var disponibilidad = $.trim($('#disponibilidad').val());
             var data = {
                 idPersona: idPersona,
                 nombre: nombre,
@@ -35,7 +38,8 @@
                 direccion: direccion,
                 idPaisR: idPaisR,
                 fechaNacimiento: fechaNacimiento,
-                idPaisN: idPaisN
+                idPaisN: idPaisN,
+                disponibilidad: disponibilidad
             };
 
             var url = '/Persona/SetPersona';
