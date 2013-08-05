@@ -20,7 +20,7 @@
     <div class="contenido-top">
         <div>
             <h1>
-                Presupuesto de Mantenimiento Preventivo</h1>
+                Detalle de Presupuesto de Mantenimiento Preventivo</h1>
 
             <% using (Html.BeginForm())
                { %>
@@ -145,7 +145,7 @@
                             <a class="eliminar" href="javascript:;">Eliminar</a>
                         </td>
                         <td>
-                            <a class="detalle" href="/PresupuestoMtoPreventivo/Detalle/<%=pre.idPptoMtoPreventivo%>>">Detalle</a>
+                            <a class="detalle" href="/PresupuestoMtoPreventivo/Detalle/<%=pre.idPptoMtoPreventivo%>">Detalle</a>
                         </td>
                     </tr>
                     <%}

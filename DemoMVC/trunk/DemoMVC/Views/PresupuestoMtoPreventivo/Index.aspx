@@ -146,7 +146,7 @@
                             <a class="eliminar" href="javascript:;">Eliminar</a>
                         </td>
                         <td>
-                            <a class="detalle" href="/PresupuestoMtoPreventivo/Detalle/<%=pre.idPptoMtoPreventivo%>>">Detalle</a>
+                            <a class="detalle" href="/PresupuestoMtoPreventivo/Detalle/<%=pre.idPptoMtoPreventivo.ToString()%>">Detalle</a>
                         </td>
                     </tr>
                     <%}
