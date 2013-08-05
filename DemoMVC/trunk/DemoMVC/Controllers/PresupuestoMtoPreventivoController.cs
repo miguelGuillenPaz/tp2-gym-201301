@@ -70,7 +70,24 @@ namespace DemoMVC.Controllers
                         behavior: JsonRequestBehavior.AllowGet);           
         }
 
-        public ActionResult SetPresupuesto(int idPptoMtoPreventivo, int ano)
+        public ActionResult Enviar(int idPptoMtoPreventivo)
+        {
+            _entities = new PMP_Entities();
+
+            var res = (from r in _entities.PMP_PptoMtoPreventivo where r.idPptoMtoPreventivo == idPptoMtoPreventivo select r).FirstOrDefault();
+            if (res != null)
+            {
+                _entities.DeleteObject(res);
+                res.estado = "PENDIENTE DE APROBACIÓN";
+                _entities.SaveChanges();
+            }
+
+            return Json(data: new { result = true },
+                        behavior: JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SetPresupuesto(int idPptoMtoPreventivo, int ano, string descripcion, decimal montoEstimado,
+            decimal montoFinal, int cantidadMantencion, string estado)
         {
             bool resultado;
            
@@ -80,7 +97,12 @@ namespace DemoMVC.Controllers
                 var presupuesto = new PMP_PptoMtoPreventivo
                 {
                     idPptoMtoPreventivo = idPptoMtoPreventivo,
-                    ano = ano
+                    ano = ano,
+                    descripcion = descripcion,
+                    montoEstimado = montoEstimado,
+                    montoFinal = montoFinal,
+                    cantidadMantencion = cantidadMantencion,
+                    estado = estado
                 };
                 _entities.AddToPMP_PptoMtoPreventivo(presupuesto);
                 _entities.SaveChanges();
@@ -94,6 +116,11 @@ namespace DemoMVC.Controllers
                 {
                     res.idPptoMtoPreventivo = idPptoMtoPreventivo;
                     res.ano = ano;
+                    res.descripcion = descripcion;
+                    res.montoEstimado = montoEstimado;
+                    res.montoFinal = montoFinal;
+                    res.cantidadMantencion = cantidadMantencion;
+                    res.estado = estado;
                     _entities.SaveChanges();
                     resultado = true;
                 }
