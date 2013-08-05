@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<DemoMVC.Models.PMP_PptoMtoPreventivo>>" %>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
@@ -21,7 +20,7 @@
     <div class="contenido-top">
         <div>
             <h1>
-                Detalle de Presupuesto de Mantenimiento Preventivo</h1>
+                Presupuesto de Mantenimiento Preventivo</h1>
 
             <% using (Html.BeginForm())
                { %>

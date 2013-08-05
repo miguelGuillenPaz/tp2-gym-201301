@@ -29,7 +29,7 @@ namespace DemoMVC.Controllers
             return View(presupuesto);
         }
 
-         [HttpPost]
+        [HttpPost]
         public ActionResult Index(FormCollection formCollection)
         {
             _entities = new PMP_Entities();          
@@ -107,9 +107,19 @@ namespace DemoMVC.Controllers
                         behavior: JsonRequestBehavior.AllowGet);
         }
 
-        private int StartPresupuesto()
+        public ActionResult Detalle(int? idPptoMtoPreventivo)
         {
-            throw new NotImplementedException();
+            _entities = new PMP_Entities();
+
+            var presupuesto = _entities.PMP_PptoMtoPreventivo.ToList();
+
+            ViewData["ano"] = "";
+            ViewData["descripcion"] = "";
+            ViewData["estado"] = "TODOS";
+            ViewData["TipoEstado"] = CrearTipoEstado();
+            ViewData["nregistros"] = presupuesto.Count;
+
+            return View(presupuesto);
         }
 
         //

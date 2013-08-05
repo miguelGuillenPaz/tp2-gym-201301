@@ -35,6 +35,10 @@
         $('#hdnPresupuesto').val($.trim($('td:eq(0)', tr).text()));
         $('#txtIdPptoMtoPreventivo').val($.trim($('td:eq(0)', tr).text()));
         $('#txtAno').val($.trim($('td:eq(1)', tr).text()));
+        $('#txtDescripcion').val($.trim($('td:eq(2)', tr).text()));
+        $('#txtCostoTotalFijo').val($.trim($('td:eq(3)', tr).text()));
+        $('#txtCostoTotalFinal').val($.trim($('td:eq(4)', tr).text()));
+        $('#txtCantidad').val($.trim($('td:eq(5)', tr).text()));
         selectedPresupuesto = tr;
         $('#dialogPresupuesto').dialog('option', 'title', 'Editar Presupuesto');
         $('#dialogPresupuesto').dialog('open');
@@ -45,6 +49,10 @@
         $('#hdnPresupuesto').val('0');
         $('#txtIdPptoMtoPreventivo').val('');
         $('#txtAno').val('');
+        $('#txtDescripcion').val('');
+        $('#txtCostoTotalFijo').val('');
+        $('#txtCostoTotalFinal').val('');
+        $('#txtCantidad').val('');
         $('#dialogPresupuesto').dialog('option', 'title', 'Agregar Presupuesto');
         $('#dialogPresupuesto').dialog('open');
     });
