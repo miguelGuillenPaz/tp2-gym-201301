@@ -80,7 +80,7 @@
     <Compile Include="Controllers\LogisticaController.cs" />
     <Compile Include="Controllers\PlanificacionController.cs" />
     <Compile Include="Controllers\PostulanteController.cs" />
-    <Compile Include="Controllers\PresupuestoMtoPreventivoController.cs" />
+    <Compile Include="Controllers\PresupuestoController.cs" />
     <Compile Include="Controllers\ProgramacionPreventivaController.cs" />
     <Compile Include="Controllers\RecursosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,6 +195,7 @@
     <Content Include="Scripts\Postulante\estudio-realizado.js" />
     <Content Include="Scripts\Postulante\experiencia-laboral.js" />
     <Content Include="Scripts\Postulante\documento.js" />
+    <Content Include="Scripts\Presupuesto\crear.js" />
     <Content Include="Scripts\Presupuesto\programacion.js" />
     <Content Include="Scripts\Presupuesto\detalle.js" />
     <Content Include="Scripts\Presupuesto\presupuesto.js" />
@@ -226,9 +227,8 @@
     <Content Include="Views\Planificacion\IngresoActividades.aspx" />
     <Content Include="Views\Planificacion\ListadoProyPlan.aspx" />
     <Content Include="Views\Planificacion\ListadoProyPlan2.aspx" />
-    <Content Include="Views\PresupuestoMtoPreventivo\Crear.aspx" />
-    <Content Include="Views\PresupuestoMtoPreventivo\Detalle.aspx" />
-    <Content Include="Views\PresupuestoMtoPreventivo\Index.aspx" />
+    <Content Include="Views\Presupuesto\Index.aspx" />
+    <Content Include="Views\Presupuesto\Crear.aspx" />
     <Content Include="Views\ProgramacionPreventiva\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

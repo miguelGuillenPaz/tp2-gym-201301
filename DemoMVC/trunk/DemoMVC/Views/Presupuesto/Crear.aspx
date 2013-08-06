@@ -1,65 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<DemoMVC.Models.PMP_MaquinariaEquipo>>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            try {
-                var textoNoticia = $('.head-noticia').next();
-                if (textoNoticia.hasClass('texto-noticia')) {
-                    if (textoNoticia.css('display') == 'none') {
-                        textoNoticia.slideDown();
-                    }
-                    else {
-                        textoNoticia.slideUp();
-                    }
-                }
-            } catch (ex) {
-            }
-
-            $('#btnGrabar').click(function () {
-               var formDataDetalle = new Array();
-                    $('#tblListadoEquipos tbody tr').each(function() {
-                        formDataDetalle.push({
-                                'idMaquinariaEquipo': $.trim($('td:eq(0)', $(this)).text()),
-                                'cantidadMantenimiento':  $(this).find('.cantidad').val(),
-                                'montoAprobado': $.trim($('td:eq(5)', $(this)).text())
-                            }
-                        );
-                    });
-
-
-                    var formData = new Array();
-                    formData.push({
-                        'ano': $('#txtAno').val(), 
-                        'descripcion': $('#txtDescripcion').val(),
-                        'formDataDetalle': formDataDetalle
-                    });
-
-                    alert(JSON.stringify(formData));
-                    
-                    url = '/PresupuestoMtoPreventivo/SetPresupuesto';                   
-                    $.ajax({                        
-                        url: url,
-                        type: 'POST',
-                        datatype: "json",
-                        traditional: true,
-                        data: {
-                            formData: JSON.stringify(formData),
-                        },                        
-                        success: function (result) {                            
-                            if (result.result) {
-                                window.location.href = '/PresupuestoMtoPreventivo';
-                            }                            
-                        },
-                        error: function () {                            
-                            __ShowMessage('No se pudo grabar');
-                        }
-                    });
-            });
-
-        });   
-        
-    </script>
+    <script src="../../Scripts/Presupuesto/crear.js" type="text/javascript"></script>
     <div class="contenido-top">
         <div>
             <h1>
