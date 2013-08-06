@@ -39,10 +39,10 @@
                             <span class="titulo-noticia">Lista de Equipos</span>
                         </div>
                         <div class="texto-noticia">
-                            <table id="tblListadoEquipos" class="table100">
+                            <table id="tblListadoEquipos" class="table100 table100b">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th style="display: none;">
                                             <b>Id</b>
                                         </th>
                                         <th style="width: 150px; text-align: center;">
@@ -72,7 +72,7 @@
                                            {
                                     %>
                                     <tr>
-                                        <td>
+                                        <td style="display: none;">
                                             <%=pre.idMaquinariaEquipo %>
                                         </td>
                                         <td style="text-align: center;">
@@ -100,8 +100,8 @@
                                 </tbody>
                                 <tfoot style="border-top:1px dashed gray">
                                     <tr>
+                                        <td  style="display: none;"></td>
                                         <td style="width: 150px; text-align: right"></td>
-                                        <td></td>
                                         <td></td>
                                         <td style="width: 150px; text-align: right"><b id="costoTotalFijo"><%= Model!=null? Model.montoEstimado + string.Empty:"0.0000"%></b></td>
                                         <td style="width: 150px; text-align: right"><b id="cantidad"><%= Model!=null? Model.cantidadMantencion + string.Empty:"0.0000"%></b></td>

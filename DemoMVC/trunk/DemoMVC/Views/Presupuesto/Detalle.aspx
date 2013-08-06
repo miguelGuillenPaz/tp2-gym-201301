@@ -55,7 +55,7 @@
                             <span class="titulo-noticia">Lista de Equipos</span>
                         </div>
                         <div class="texto-noticia">
-                            <table id="tblListadoEquipos" class="table100">
+                            <table id="tblListadoEquipos" class="table100  table100b">
                                 <thead>
                                     <tr>
                                         <th style="display: none;">
@@ -128,7 +128,7 @@
                             </table>
                         </div>
                     </div>
-                    <a id="btnGrabar" href="javascript:;">Enviar</a> | <a id="btnCancelar" href="/Presupuesto">Cancelar</a>
+                    <a id="btnCancelar" href="/Presupuesto">Regresar</a>
                 </div>
             </div>
         </div>

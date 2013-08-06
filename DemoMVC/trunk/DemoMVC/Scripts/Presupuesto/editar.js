@@ -15,7 +15,7 @@
         formData.push({
             'idPptoMtoPreventivo': $('#idPptoMtoPreventivo').val(),
             'ano': $('#ano').val(),
-            'descripcion': $('#descripcion').val(),
+            'descripcion': $('#descripcion').val().toUpperCase(),
             'costoTotalFijo': $('#costoTotalFijo').text(),
             'cantidad': $('#cantidad').text(),
             'costoTotalFinal': $('#costoTotalFinal').text(),
@@ -33,6 +33,8 @@
             success: function (result) {
                 if (result.result) {
                     window.location.href = '/Presupuesto';
+                } else {
+                    __ShowMessage(result.error);
                 }
             },
             error: function () {

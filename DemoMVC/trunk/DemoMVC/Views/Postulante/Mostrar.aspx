@@ -28,13 +28,13 @@
             <h1>
                 Registrar Postulante
                 <%= Html.HiddenFor(m=> m.idPersona) %>
-            </h1>            
-            <div class="areas-negocios">                                
+            </h1>
+            <div class="areas-negocios">
                 <div class="lista-central">
                     <div class="noticia">
                         <div class="head-noticia">
-                            <span class="titulo-noticia">Información Personal</span>
-                            <a style="float: right;" href="/Postulante/Editar/<%= Model.idPersona %>">Editar</a>
+                            <span class="titulo-noticia">Información Personal</span> <a style="float: right;"
+                                href="/Postulante/Editar/<%= Model.idPersona %>">Editar</a>
                         </div>
                         <div class="texto-noticia">
                             <table>
@@ -188,27 +188,27 @@
                                     <td>
                                         <table id="tblTelefono">
                                             <tbody>
-                                            <% if (Model != null)
-                                               {
-                                                   foreach (var telefono in Model.GRH_Telefono)
+                                                <% if (Model != null)
                                                    {
-                                            %>
-                                            <tr>
-                                                <td style="display: none;">
-                                                    <%= telefono.idTelefono %>
-                                                </td>
-                                                <td>
-                                                    <%= telefono.nroTelefono %>
-                                                </td>
-                                                <td>
-                                                    <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
-                                                        Eliminar</a>
-                                                </td>
-                                            </tr>
-                                            <%
-                                                   }
-                                               } %>
-                                               </tbody>
+                                                       foreach (var telefono in Model.GRH_Telefono)
+                                                       {
+                                                %>
+                                                <tr>
+                                                    <td style="display: none;">
+                                                        <%= telefono.idTelefono %>
+                                                    </td>
+                                                    <td>
+                                                        <%= telefono.nroTelefono %>
+                                                    </td>
+                                                    <td>
+                                                        <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                                            Eliminar</a>
+                                                    </td>
+                                                </tr>
+                                                <%
+                                                       }
+                                                   } %>
+                                            </tbody>
                                         </table>
                                         <a id="addTelefono" href="javascript:;">Agregar</a>
                                     </td>
@@ -223,27 +223,27 @@
                                     <td>
                                         <table id="tblCorreo">
                                             <tbody>
-                                            <% if (Model != null)
-                                               {
-                                                   foreach (var correo in Model.GRH_Correo)
+                                                <% if (Model != null)
                                                    {
-                                            %>
-                                            <tr>
-                                                <td style="display: none;">
-                                                    <%= correo.idCorreo %>
-                                                </td>
-                                                <td>
-                                                    <%= correo.cuentaCorreo %>
-                                                </td>
-                                                <td>
-                                                    <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
-                                                        Eliminar</a>
-                                                </td>
-                                            </tr>
-                                            <%
-                                                   }
-                                               } %>
-                                               </tbody>
+                                                       foreach (var correo in Model.GRH_Correo)
+                                                       {
+                                                %>
+                                                <tr>
+                                                    <td style="display: none;">
+                                                        <%= correo.idCorreo %>
+                                                    </td>
+                                                    <td>
+                                                        <%= correo.cuentaCorreo %>
+                                                    </td>
+                                                    <td>
+                                                        <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                                            Eliminar</a>
+                                                    </td>
+                                                </tr>
+                                                <%
+                                                       }
+                                                   } %>
+                                            </tbody>
                                         </table>
                                         <a id="addCorreo" href="javascript:;">Agregar</a>
                                     </td>
@@ -405,7 +405,8 @@
                                             <%= item.fechaFin != null ? item.fechaFin.ToString().Substring(6, 4) + "-" + item.fechaFin.ToString().Substring(3, 2) + "-" + item.fechaFin.ToString().Substring(0, 2) : string.Empty%>
                                         </td>
                                         <td>
-                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">Eliminar</a>
+                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                                Eliminar</a>
                                         </td>
                                     </tr>
                                     <%
@@ -463,10 +464,11 @@
                                             <%= item.GRH_NivelIdioma!=null? item.idNivelIdioma:0 %>
                                         </td>
                                         <td>
-                                            <%= item.nativo == true ? "Nativo" : (item.GRH_NivelIdioma!=null?item.GRH_NivelIdioma.descripcion:string.Empty)%>   
+                                            <%= item.nativo == true ? "Nativo" : (item.GRH_NivelIdioma!=null?item.GRH_NivelIdioma.descripcion:string.Empty)%>
                                         </td>
                                         <td>
-                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">Eliminar</a>
+                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                                Eliminar</a>
                                         </td>
                                     </tr>
                                     <%
@@ -711,24 +713,23 @@
                 <td>
                     :
                 </td>
-                <td>                                         
-                    <input type="checkbox" id="chkNativo" name="nativo" checked="checked"/>
+                <td>
+                    <input type="checkbox" id="chkNativo" name="nativo" checked="checked" />
                 </td>
             </tr>
             <tr>
-                <td>                    
-                    <label id="lblNivelIdioma">Nivel</label>
+                <td>
+                    <label id="lblNivelIdioma">
+                        Nivel</label>
                 </td>
-                <td>                    
-                    <label id="sepNivelIdioma">:</label>
+                <td>
+                    <label id="sepNivelIdioma">
+                        :</label>
                 </td>
                 <td>
                     <%= Html.DropDownListFor(m => m.GRH_IdiomaPersona.FirstOrDefault().idNivelIdioma, (IEnumerable<SelectListItem>)ViewData["NivelIdioma"], new { @id = "ddlNivelIdioma" })%>
                 </td>
             </tr>
-            
-            
         </table>
     </div>
-
 </asp:Content>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using DemoMVC.Models;
 
@@ -17,7 +14,7 @@ namespace DemoMVC.Controllers
         public ActionResult Alta()
         {
             _entities = new GRH_Entities();            
-            var persona = (from r in _entities.GRH_Persona where r.idPersona > 0 select r).ToList();
+            var persona = (from r in _entities.GRH_Persona where r.GRH_Postulante.Count != 0 select r).ToList();
             return View(persona);            
         }
 

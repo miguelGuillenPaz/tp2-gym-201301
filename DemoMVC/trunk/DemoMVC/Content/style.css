@@ -1991,3 +1991,21 @@ ul.politicas_pdf li.ambiental
  .table100 {
      width: 100%;
  }
+ .table100b thead {
+    background:  #EB1C24;
+     color: white;
+     border: 1px solid #EB1C24;
+ }
+ .table100b tfoot {
+    background:  #EB1C24;
+     color: white;
+     border: 1px solid #EB1C24;
+ }
+ .table100b td {
+    border: 1px solid #EB1C24;
+    padding: 2px;
+ }
+ 
+input{  
+text-transform: uppercase;  
+} 

@@ -17,7 +17,7 @@
         var tr = $(this).parent().parent();
         var montoFijo = $.trim($('td:eq(3)', tr).text());
         var cantidad = $(this).val();
-        $('td:eq(5)', tr).text(montoFijo * cantidad);
+        $('td:eq(5)', tr).text((montoFijo * cantidad).toFixed(2));
         calcularTotales();
     });
 
@@ -31,9 +31,9 @@
             cantidad += parseFloat($(this).find('.cantidad').val());
             costoTotalFinal += parseFloat($.trim($('td:eq(5)', $(this)).text()));            
         });
-        $('#costoTotalFijo').text(costoTotalFijo);
-        $('#cantidad').text(cantidad);
-        $('#costoTotalFinal').text(costoTotalFinal);
+        $('#costoTotalFijo').text(costoTotalFijo.toFixed(2));
+        $('#cantidad').text(cantidad.toFixed(0));
+        $('#costoTotalFinal').text(costoTotalFinal.toFixed(2));
     }
     
 });   

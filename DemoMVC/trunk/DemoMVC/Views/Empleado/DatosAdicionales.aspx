@@ -27,7 +27,7 @@
                 <div class="lista-central">
                     <div class="noticia">
                         <div class="head-noticia">
-                            <span class="titulo-noticia">Información Personal</span> 
+                            <span class="titulo-noticia">Información Personal</span>
                         </div>
                         <div class="texto-noticia">
                             <table>
@@ -45,7 +45,7 @@
                                     </td>
                                     <td>
                                     </td>
-                                    <td>                                        
+                                    <td>
                                     </td>
                                     <td>
                                     </td>
@@ -137,10 +137,11 @@
                                     <td>
                                         <%= Html.DisplayFor(m => m.GRH_Pais1.descripcion)%>
                                     </td>
-                                </tr>                                
+                                </tr>
                             </table>
                         </div>
-                    </div>                    
+                    </div>
+                    <%= Html.HiddenFor(m=> m.GRH_Empleado.FirstOrDefault().idEmpleado) %>
                     <div class="noticia">
                         <div class="head-noticia">
                             <span class="titulo-noticia">Derecho Habientes</span>
@@ -166,19 +167,19 @@
                                         </th>
                                         <th>
                                             <b>Número de Documento</b>
-                                        </th>                                        
+                                        </th>
                                         <th style="display: none;">
                                             idSexo
                                         </th>
                                         <th>
                                             <b>Sexo</b>
-                                        </th>                                        
+                                        </th>
                                         <th style="display: none;">
                                             idTipoRelacion
                                         </th>
                                         <th>
                                             <b>Tipo de Relación</b>
-                                        </th>                                        
+                                        </th>
                                         <th>
                                             <b>Opciones</b>
                                         </th>
@@ -187,36 +188,46 @@
                                 <tbody>
                                     <% if (Model != null)
                                        {
-                                           foreach (var item in Model.GRH_DerechoHabiente)
+                                           foreach (var item in Model.GRH_Empleado)
                                            { %>
                                     <tr>
                                         <td style="display: none;">
-                                            <%= item.idPersona %>
+                                            <%= item.idEmpleado %>
+                                        </td>                                        
+                                        <%
+                                               foreach (var der in item.GRH_DerechoHabiente)
+                                               {
+                                        %>
+                                        <td>
+                                            <%= der.GRH_Persona.nombre %>
                                         </td>
                                         <td>
-                                            <%= item.GRH_Persona.nombre %>                                            
+                                            <%= der.GRH_Persona.fechaNacimiento != null ? der.GRH_Persona.fechaNacimiento.Value.Year + "-" + der.GRH_Persona.fechaNacimiento.Value.Month.ToString().PadLeft(2, '0') + "-" + der.GRH_Persona.fechaNacimiento.Value.Day.ToString().PadLeft(2, '0') : string.Empty %>
+                                        </td>
+                                        <td style="display: none;">
+                                            <%= der.GRH_Persona.GRH_Documento.Count > 0? der.GRH_Persona.GRH_Documento.FirstOrDefault().GRH_TipoDocumento.idTipoDocumento:0  %>
                                         </td>
                                         <td>
-                                            
-                                        </td>
-                                        <td style="display: none;">                                            
-                                        </td>
-                                        <td>                                            
-                                        </td>
-                                        <td style="display: none;">                                            
+                                            <%= der.GRH_Persona.GRH_Documento.Count > 0? der.GRH_Persona.GRH_Documento.FirstOrDefault().GRH_TipoDocumento.descripcion : string.Empty%>
+                                        </td>                                        
+                                        <td>
+                                            <%= der.GRH_Persona.GRH_Documento.Count > 0? der.GRH_Persona.GRH_Documento.FirstOrDefault().nroDocumento : string.Empty%>
                                         </td>
                                         <td>                                            
+                                            <%= (bool)der.GRH_Persona.sexo ?"Masculino":"Femenino" %>
                                         </td>
-                                        <td style="display: none;">                                            
+                                        <td style="display: none;">
+                                            <%= der.idTipoDerechoHabiente %>
                                         </td>
-                                        <td>                                            
-                                        </td>
-                                        <td>                                            
-                                        </td>
+                                        <td>
+                                            <%= der.GRH_TipoDerechoHabiente.descripcion %>
+                                        </td>                                        
                                         <td>
                                             <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
                                                 Eliminar</a>
                                         </td>
+                                        <%
+                                                } %>
                                     </tr>
                                     <%
                                            }
@@ -225,7 +236,7 @@
                             </table>
                             <a id="addEstudioRealizado" href="javascript:;">Agregar</a>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>

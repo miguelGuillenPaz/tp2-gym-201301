@@ -81,7 +81,7 @@
                         <div class="head-noticia">
                             <span class="titulo-noticia">Lista de Presupuestos</span>
                         </div>
-                        <table id="tblListadoPresupuesto" class="table100">
+                        <table id="tblListadoPresupuesto" class="table100 table100b">
                             <thead>
                                 <tr>
                                     <th style="display: none;">
@@ -96,12 +96,13 @@
                                     <th>
                                         <b>Costo total fijo</b>
                                     </th>
+                                     <th>
+                                        <b>Cantidad</b>
+                                    </th>
                                     <th>
                                         <b>Costo total final</b>
                                     </th>
-                                    <th>
-                                        <b>Cantidad</b>
-                                    </th>
+                                   
                                     <th>
                                         <b>Estado</b>
                                     </th>
@@ -129,17 +130,25 @@
                                     <td style="text-align: right;">
                                         <%=pre.montoEstimado%>
                                     </td>
-                                    <td style="text-align: right;">
-                                        <%=pre.montoFinal %>
-                                    </td>
+                                    
                                     <td style="text-align: right;">
                                         <%=pre.cantidadMantencion %>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <%=pre.montoFinal %>
                                     </td>
                                     <td style="text-align: center;">
                                         <%=pre.estado %>
                                     </td>
                                     <td>
-                                        <a class="enviar" href="javascript:;">Enviar</a> | <a class="editar" href="/Presupuesto/Editar/<%= pre.idPptoMtoPreventivo %>">Editar</a> | <a class="eliminar" href="javascript:;">Eliminar</a> | <a class="detalle" href="/Presupuesto/Detalle/<%=pre.idPptoMtoPreventivo.ToString()%>">Detalle</a>
+                                        <% if (pre.estado == "CREADO" || pre.estado == "RECHAZADO")
+                                           { %>
+                                        <a class="enviar" href="javascript:;">Enviar</a> | 
+                                        <a class="editar" href="/Presupuesto/Editar/<%= pre.idPptoMtoPreventivo %>">Editar</a> | 
+                                        <a class="eliminar" href="javascript:;">Eliminar</a> | 
+                                        
+                                        <% } %>
+                                        <a class="detalle" href="/Presupuesto/Detalle/<%= pre.idPptoMtoPreventivo.ToString() %>">Detalle</a>
                                     </td>
                                 </tr>
                                 <%}

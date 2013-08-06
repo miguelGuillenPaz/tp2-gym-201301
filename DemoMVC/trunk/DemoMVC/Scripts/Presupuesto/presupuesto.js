@@ -41,7 +41,10 @@
                     data: data,
                     success: function (result) {
                         if (result.result) {
-                            $('td:eq(6)', tr).text('APROBADO');
+                            $('td:eq(6)', tr).text('PENDIENTE DE APROBACIÓN');
+                            tr.find('.editar').css('display', 'none');
+                            tr.find('.eliminar').css('display', 'none');
+                            tr.find('.enviar').css('display', 'none');
                         }
                     },
                     error: function () {

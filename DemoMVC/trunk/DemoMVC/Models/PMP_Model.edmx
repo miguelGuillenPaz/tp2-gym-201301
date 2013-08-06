@@ -39,8 +39,8 @@
           <Property Name="idDetallePptoMtoPreventivo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="idPptoMtoPreventivo" Type="int" Nullable="false" />
           <Property Name="idMaquinariaEquipo" Type="int" Nullable="false" />
-          <Property Name="cantidadMantenimiento" Type="decimal" Scale="4" />
-          <Property Name="montoAprobado" Type="decimal" Scale="4" />
+          <Property Name="cantidadMantenimiento" Type="int" />
+          <Property Name="montoAprobado" Type="decimal" Scale="2" />
         </EntityType>
         <EntityType Name="PMP_DetalleProgramacionPreventiva">
           <Key>
@@ -63,7 +63,7 @@
           <Property Name="fechaRegistro" Type="datetime" />
           <Property Name="fechaBaja" Type="datetime" />
           <Property Name="fechaExpiracionGarantia" Type="datetime" />
-          <Property Name="costoMantenimiento" Type="decimal" Scale="4" />
+          <Property Name="costoMantenimiento" Type="decimal" Scale="2" />
         </EntityType>
         <EntityType Name="PMP_PptoMtoPreventivo">
           <Key>
@@ -188,8 +188,8 @@
           <Property Type="Int32" Name="idDetallePptoMtoPreventivo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="idPptoMtoPreventivo" Nullable="false" />
           <Property Type="Int32" Name="idMaquinariaEquipo" Nullable="false" />
-          <Property Type="Decimal" Name="cantidadMantenimiento" Precision="18" Scale="4" />
-          <Property Type="Decimal" Name="montoAprobado" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="cantidadMantenimiento" />
+          <Property Type="Decimal" Name="montoAprobado" Precision="18" Scale="2" />
           <NavigationProperty Name="PMP_MaquinariaEquipo" Relationship="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" FromRole="PMP_DetallePptoMtoPreventivo" ToRole="PMP_MaquinariaEquipo" />
           <NavigationProperty Name="PMP_PptoMtoPreventivo" Relationship="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_PptoMtoPreventivo" FromRole="PMP_DetallePptoMtoPreventivo" ToRole="PMP_PptoMtoPreventivo" />
         </EntityType>
@@ -215,7 +215,7 @@
           <Property Type="DateTime" Name="fechaRegistro" />
           <Property Type="DateTime" Name="fechaBaja" />
           <Property Type="DateTime" Name="fechaExpiracionGarantia" />
-          <Property Type="Decimal" Name="costoMantenimiento" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="costoMantenimiento" Precision="18" Scale="2" />
           <NavigationProperty Name="PMP_DetallePptoMtoPreventivo" Relationship="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" FromRole="PMP_MaquinariaEquipo" ToRole="PMP_DetallePptoMtoPreventivo" />
           <NavigationProperty Name="PMP_ProgramacionPreventiva" Relationship="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" FromRole="PMP_MaquinariaEquipo" ToRole="PMP_ProgramacionPreventiva" />
         </EntityType>
@@ -398,7 +398,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="PMP_Model" ZoomLevel="45">
+      <Diagram Name="PMP_Model" ZoomLevel="74">
         <EntityTypeShape EntityType="PMPDBModel.PMP_DetallePptoMtoPreventivo" Width="1.5" PointX="3" PointY="5" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="PMPDBModel.PMP_DetalleProgramacionPreventiva" Width="1.5" PointX="8.25" PointY="5.25" Height="1.9802864583333317" />
         <EntityTypeShape EntityType="PMPDBModel.PMP_MaquinariaEquipo" Width="1.5" PointX="0.75" PointY="4.625" Height="3.1340950520833317" />

@@ -26,10 +26,10 @@
         var cantidad = 0;
         var costoTotalFinal = 0;
 
-        $('#tblListadoEquipos tbody tr').each(function () {            
-            costoTotalFijo +=parseFloat($.trim($('td:eq(3)', $(this)).text()));
-            cantidad += parseFloat($.trim($('td:eq(4)', $(this)).text()));
-            costoTotalFinal += parseFloat($.trim($('td:eq(5)', $(this)).text()));            
+        $('#tblListadoEquipos tbody tr').each(function () {
+            costoTotalFijo += parseFloat($.trim($('td:eq(3)', $(this)).text())).toFixed(2);
+            cantidad += parseFloat($.trim($('td:eq(4)', $(this)).text())).toFixed(0);
+            costoTotalFinal += parseFloat($.trim($('td:eq(5)', $(this)).text())).toFixed(2);            
         });
         $('#costoTotalFijo').text(costoTotalFijo);
         $('#cantidad').text(cantidad);

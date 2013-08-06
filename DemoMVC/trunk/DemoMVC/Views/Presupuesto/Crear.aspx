@@ -38,16 +38,16 @@
                             <span class="titulo-noticia">Lista de Equipos</span>
                         </div>
                         <div class="texto-noticia">
-                            <table id="tblListadoEquipos" class="table100">
+                            <table id="tblListadoEquipos" class="table100 table100b">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th style="display: none;">
                                             <b>Id</b>
                                         </th>
                                         <th style="width: 150px; text-align: center;">
                                             <b>Modelo</b>
                                         </th>
-                                        <th>
+                                        <th style="text-align: center;">
                                             <b>Descripción</b>
                                         </th>
                                         <th style="width: 150px; text-align: right">
@@ -68,7 +68,7 @@
                                            {
                                     %>
                                     <tr>
-                                        <td>
+                                        <td style="display: none;">
                                             <%=pre.idMaquinariaEquipo %>
                                         </td>
                                         <td style="text-align: center;">
@@ -90,9 +90,9 @@
                                     <%}
                                        } %>
                                 </tbody>
-                                <tfoot style="border-top: 1px dashed gray">
+                                <tfoot>
                                     <tr>
-                                        <td style="width: 150px; text-align: right">
+                                        <td style="display: none;">
                                         </td>
                                         <td>
                                         </td>
@@ -112,7 +112,7 @@
                             </table>
                         </div>
                     </div>
-                    <a id="btnGrabar" href="javascript:;">Crear</a>
+                    <a id="btnGrabar" href="javascript:;">Enviar</a> | <a id="btnCancelar" href="/Presupuesto">Cancelar</a>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@
         var formData = new Array();
         formData.push({
             'ano': $('#txtAno').val(),
-            'descripcion': $('#txtDescripcion').val(),
+            'descripcion': $('#txtDescripcion').val().toUpperCase(),
             'costoTotalFijo': $('#costoTotalFijo').text(),
             'cantidad':$('#cantidad').text(),
             'costoTotalFinal':$('#costoTotalFinal').text(),
@@ -35,6 +35,8 @@
             success: function (result) {
                 if (result.result) {
                     window.location.href = '/Presupuesto';
+                } else {
+                    __ShowMessage(result.error);
                 }
             },
             error: function () {
