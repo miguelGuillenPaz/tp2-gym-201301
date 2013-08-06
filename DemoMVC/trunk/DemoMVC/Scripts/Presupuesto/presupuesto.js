@@ -8,7 +8,7 @@
         if (idPptoMtoPreventivo != 0) {
             if (confirm('¿Desea eliminar el Presupuesto?')) {
                 var data = { idPptoMtoPreventivo: idPptoMtoPreventivo };
-                var url = '/PresupuestoMtoPreventivo/Eliminar';
+                var url = '/Presupuesto/EliminarPresupuesto';
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -34,14 +34,14 @@
         if (idPptoMtoPreventivo != 0) {
             if (confirm('¿Desea enviar el Presupuesto?')) {
                 var data = { idPptoMtoPreventivo: idPptoMtoPreventivo };
-                var url = '/PresupuestoMtoPreventivo/Enviar';
+                var url = '/Presupuesto/EnviarPresupuesto';
                 $.ajax({
                     type: 'POST',
                     url: url,
                     data: data,
                     success: function (result) {
                         if (result.result) {
-                            tr.remove();
+                            $('td:eq(6)', tr).text('APROBADO');
                         }
                     },
                     error: function () {
@@ -54,7 +54,7 @@
         }
     });
 
-    
+
     $('#addPresupuesto').click(function () {
         $('#hdnAccionPresupuesto').val('I');
         $('#hdnPresupuesto').val('0');
@@ -67,7 +67,7 @@
         $('#dialogPresupuesto').dialog('option', 'title', 'Agregar Presupuesto');
         $('#dialogPresupuesto').dialog('open');
     });
-     
+
     $('#dialogPresupuesto').dialog({
         autoOpen: false,
         height: 300,
@@ -96,11 +96,11 @@
                 var data = {
                     idPptoMtoPreventivo: idPptoMtoPreventivo,
                     ano: ano,
-                    descripcion : descripcion,
-                    montoEstimado : montoEstimado,
-                    montoFinal : montoFinal,  
-                    cantidadMantencion : cantidadMantencion,  
-                    estado : estado
+                    descripcion: descripcion,
+                    montoEstimado: montoEstimado,
+                    montoFinal: montoFinal,
+                    cantidadMantencion: cantidadMantencion,
+                    estado: estado
                 };
                 var url = '/PresupuestoMtoPreventivo/SetPresupuesto';
                 $.ajax({

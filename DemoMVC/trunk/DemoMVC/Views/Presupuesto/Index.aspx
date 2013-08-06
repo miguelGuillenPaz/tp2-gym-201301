@@ -21,11 +21,9 @@
     <div class="contenido-top">
         <div>
             <h1>
-                Detalle de Presupuesto de Mantenimiento Preventivo</h1>
-
+                Presupuesto de Mantenimiento Preventivo</h1>
             <% using (Html.BeginForm())
                { %>
-            
             <div class="editor-label">
                 <table>
                     <tr>
@@ -64,97 +62,114 @@
                 </table>
                 <input type="submit" value="Consultar" />
                 <p>
-                Filtros [Año: <%=ViewData["ano"]  %>  ]</p>
-                <p>Descripción: [<%=ViewData["descripcion"]%> Estado: <%=ViewData["estado"] %>]</p>
-                <p>Nro. de Registros: [<%=ViewData["nregistros"] %>]
+                    Filtros [Año:
+                    <%=ViewData["ano"]  %>
+                    ]</p>
+                <p>
+                    Descripción: [<%=ViewData["descripcion"]%>
+                    Estado:
+                    <%=ViewData["estado"] %>]</p>
+                <p>
+                    Nro. de Registros: [<%=ViewData["nregistros"] %>]
                 </p>
             </div>
             <hr>
             <% } %>
-            <table id="tblListadoPresupuesto" class="table100">
-                <thead>
-                    <tr>
-                        <th>
-                            <b>Id</b>
-                        </th>
-                        <th>
-                            <b>Año Presupuesto</b>
-                        </th>
-                        <th>
-                            <b>Descripción Presupuesto</b>
-                        </th>
-                        <th>
-                            <b>Costo total fijo</b>
-                        </th>
-                        <th>
-                            <b>Costo total final</b>
-                        </th>
-                        <th>
-                            <b>Cantidad</b>
-                        </th>
-                        <th>
-                            <b>Estado</b>
-                        </th>
-                        <th>
-                            <b>Enviar</b>
-                        </th>
-                        <th>
-                            <b>Editar</b>
-                        </th>
-                        <th>
-                            <b>Eliminar</b>
-                        </th>
-                        <th>
-                            <b>Detalle</b>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (Model != null)
-                       {
-                           foreach (var pre in Model)
-                           {
-                    %>
-                    <tr>
-                        <td>
-                            <%=pre.idPptoMtoPreventivo %>
-                        </td>
-                        <td>
-                            <%=pre.ano%>
-                        </td>
-                        <td>
-                            <%=pre.descripcion %>
-                        </td>
-                        <td>
-                            <%=pre.montoEstimado%>
-                        </td>
-                        <td>
-                            <%=pre.montoFinal %>
-                        </td>
-                        <td>
-                            <%=pre.cantidadMantencion %>
-                        </td>
-                        <td>
-                            <%=pre.estado %>
-                        </td>
-                        <td>
-                            <a class="enviar" href="javascript:;">Enviar</a>
-                        </td>
-                        <td>
-                            <a class="editar" href="/Presupuesto/Editar/<%= pre.idPptoMtoPreventivo %>">Editar</a>
-                        </td>
-                        <td>
-                            <a class="eliminar" href="javascript:;">Eliminar</a>
-                        </td>
-                        <td>
-                            <a class="detalle" href="/Presupuesto/Detalle/<%=pre.idPptoMtoPreventivo.ToString()%>">Detalle</a>
-                        </td>
-                    </tr>
-                    <%}
+            <div class="areas-negocios">
+                <div class="lista-central">
+                    <div class="noticia">
+                        <div class="head-noticia">
+                            <span class="titulo-noticia">Lista de Presupuestos</span>
+                        </div>
+                        <table id="tblListadoPresupuesto" class="table100">
+                            <thead>
+                                <tr>
+                                    <th style="display: none;">
+                                        <b>Id</b>
+                                    </th>
+                                    <th>
+                                        <b>Año</b>
+                                    </th>
+                                    <th>
+                                        <b>Descripción</b>
+                                    </th>
+                                    <th>
+                                        <b>Costo total fijo</b>
+                                    </th>
+                                    <th>
+                                        <b>Costo total final</b>
+                                    </th>
+                                    <th>
+                                        <b>Cantidad</b>
+                                    </th>
+                                    <th>
+                                        <b>Estado</b>
+                                    </th>
+                                    <th>
+                                        <b>Enviar</b>
+                                    </th>
+                                    <th>
+                                        <b>Editar</b>
+                                    </th>
+                                    <th>
+                                        <b>Eliminar</b>
+                                    </th>
+                                    <th>
+                                        <b>Detalle</b>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (Model != null)
+                                   {
+                                       foreach (var pre in Model)
+                                       {
+                                %>
+                                <tr>
+                                    <td style="display: none;">
+                                        <%=pre.idPptoMtoPreventivo %>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <%=pre.ano%>
+                                    </td>
+                                    <td>
+                                        <%=pre.descripcion %>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <%=pre.montoEstimado%>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <%=pre.montoFinal %>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <%=pre.cantidadMantencion %>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <%=pre.estado %>
+                                    </td>
+                                    <td>
+                                        <a class="enviar" href="javascript:;">Enviar</a>
+                                    </td>
+                                    <td>
+                                        <a class="editar" href="/Presupuesto/Editar/<%= pre.idPptoMtoPreventivo %>">Editar</a>
+                                    </td>
+                                    <td>
+                                        <a class="eliminar" href="javascript:;">Eliminar</a>
+                                    </td>
+                                    <td>
+                                        <a class="detalle" href="/Presupuesto/Detalle/<%=pre.idPptoMtoPreventivo.ToString()%>">
+                                            Detalle</a>
+                                    </td>
+                                </tr>
+                                <%}
                        } %>
-                </tbody>
-            </table>
-            <a id="addPresupuesto" href="/Presupuesto/Crear">Crear</a>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <a id="addPresupuesto" href="/Presupuesto/Crear">Crear</a>
+            </div>
         </div>
-    </div>    
+    </div>
+    </div>
 </asp:Content>

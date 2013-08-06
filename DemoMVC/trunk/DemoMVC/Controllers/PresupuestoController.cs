@@ -145,6 +145,34 @@ namespace DemoMVC.Controllers
             // ReSharper restore RedundantArgumentName
         }
 
+        public virtual ActionResult EnviarPresupuesto(int idPptoMtoPreventivo)
+        {
+            _entities = new PMP_Entities();
+            var res = (from r in _entities.PMP_PptoMtoPreventivo where r.idPptoMtoPreventivo == idPptoMtoPreventivo select r).FirstOrDefault();
+            if (res != null)
+            {
+                res.estado = "APROBADO";
+                _entities.SaveChanges();
+            }                
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true }, behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+        public virtual ActionResult EliminarPresupuesto(int idPptoMtoPreventivo)
+        {
+            _entities = new PMP_Entities();
+            var res = (from r in _entities.PMP_PptoMtoPreventivo where r.idPptoMtoPreventivo == idPptoMtoPreventivo select r).FirstOrDefault();
+            if (res != null)
+            {
+                _entities.DeleteObject(res);
+                _entities.SaveChanges();
+            }                
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true }, behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
         public virtual ActionResult EditarPresupuesto(string formData)
         {
             _entities = new PMP_Entities();            
