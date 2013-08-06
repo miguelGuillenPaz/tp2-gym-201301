@@ -71,7 +71,7 @@
             </div>
             <hr>
             <% } %>
-            <table id="tblListadoPresupuesto">
+            <table id="tblListadoPresupuesto" class="table100">
                 <thead>
                     <tr>
                         <th>
@@ -141,7 +141,7 @@
                             <a class="enviar" href="javascript:;">Enviar</a>
                         </td>
                         <td>
-                            <a class="editar" href="javascript:;">Editar</a>
+                            <a class="editar" href="/Presupuesto/Editar/<%= pre.idPptoMtoPreventivo %>">Editar</a>
                         </td>
                         <td>
                             <a class="eliminar" href="javascript:;">Eliminar</a>

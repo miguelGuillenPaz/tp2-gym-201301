@@ -74,7 +74,7 @@ namespace DemoMVC.Controllers
         {
             return View(new PMP_Entities().PMP_MaquinariaEquipo.ToList());
         }
-        public virtual ActionResult SetPresupuesto(string formData)
+        public virtual ActionResult CrearPresupuesto(string formData)
         {
             _entities = new PMP_Entities();
             var pmpPptoMtoPreventivo = new PMP_PptoMtoPreventivo();            
@@ -143,6 +143,91 @@ namespace DemoMVC.Controllers
             // ReSharper disable RedundantArgumentName
             return Json(data: new { result = true }, behavior: JsonRequestBehavior.AllowGet);
             // ReSharper restore RedundantArgumentName
+        }
+
+        public virtual ActionResult EditarPresupuesto(string formData)
+        {
+            _entities = new PMP_Entities();            
+            var js = new JavaScriptSerializer();
+            var presupuesto = (object[])js.DeserializeObject(formData);
+            if (presupuesto != null)
+            {
+                foreach (Dictionary<string, object> itemsJson in presupuesto)
+                {
+                    bool resultTry;
+                    int idPptoMtoPreventivo;
+                    resultTry = int.TryParse((string)itemsJson["idPptoMtoPreventivo"], out idPptoMtoPreventivo);
+                    if (resultTry)
+                    {
+                        var res = (from r in _entities.PMP_PptoMtoPreventivo where r.idPptoMtoPreventivo == idPptoMtoPreventivo select r).FirstOrDefault();
+                        if (res != null)
+                        {
+                            int ano;
+                            resultTry = int.TryParse((string)itemsJson["ano"], out ano);
+                            if (resultTry)
+                                res.ano = ano;
+
+                            decimal costoTotalFijo;
+                            resultTry = decimal.TryParse((string)itemsJson["costoTotalFijo"], out costoTotalFijo);
+                            if (resultTry)
+                                res.montoEstimado = costoTotalFijo;
+
+                            int cantidad;
+                            resultTry = int.TryParse((string)itemsJson["cantidad"], out cantidad);
+                            if (resultTry)
+                                res.cantidadMantencion = cantidad;
+
+
+                            decimal costoTotalFinal;
+                            resultTry = decimal.TryParse((string)itemsJson["costoTotalFinal"], out costoTotalFinal);
+                            if (resultTry)
+                                res.montoFinal = costoTotalFinal;
+
+                            res.descripcion = (string)itemsJson["descripcion"];
+
+                            _entities.SaveChanges();
+
+                            var subItemsJsons = (object[])itemsJson["formDataDetalle"];
+                            foreach (Dictionary<string, object> subItemsJson in subItemsJsons)
+                            {
+                                int idDetallePptoMtoPreventivo;
+                                resultTry = int.TryParse((string)subItemsJson["idDetallePptoMtoPreventivo"], out idDetallePptoMtoPreventivo);
+                                if (resultTry)
+                                {
+                                    var det = (from r in _entities.PMP_DetallePptoMtoPreventivo where r.idDetallePptoMtoPreventivo == idDetallePptoMtoPreventivo select r).FirstOrDefault();
+                                    if (det != null)
+                                    {
+                                        int cantidadMantenimiento;
+                                        resultTry = int.TryParse((string) subItemsJson["cantidadMantenimiento"],
+                                                                 out cantidadMantenimiento);
+                                        if (resultTry)
+                                            det.cantidadMantenimiento = cantidadMantenimiento;
+
+                                        decimal montoAprobado;
+                                        resultTry = decimal.TryParse((string) subItemsJson["montoAprobado"],
+                                                                     out montoAprobado);
+                                        if (resultTry)
+                                            det.montoAprobado = montoAprobado;
+                                        
+                                        _entities.SaveChanges();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true }, behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+        public ActionResult Editar(int id)
+        {
+            _entities = new PMP_Entities();
+            var res = (from r in _entities.PMP_PptoMtoPreventivo where r.idPptoMtoPreventivo == id select r).FirstOrDefault();
+            return View(res);
         }
 
     }

@@ -54,26 +54,7 @@
         }
     });
 
-
-    $('#tblListadoPresupuesto').delegate('.editar', "click", function () {
-        $('#hdnAccionPresupuesto').val('U');
-        var tr = $(this).parent().parent();
-
-        $('#hdnPresupuesto').val($.trim($('td:eq(0)', tr).text()));
-        $('#txtIdPptoMtoPreventivo').val($.trim($('td:eq(0)', tr).text()));
-        $('#txtAno').val($.trim($('td:eq(1)', tr).text()));
-        $('#txtDescripcion').val($.trim($('td:eq(2)', tr).text()));
-        $('#txtCostoTotalFijo').val($.trim($('td:eq(3)', tr).text()));
-        $('#txtCostoTotalFinal').val($.trim($('td:eq(4)', tr).text()));
-        $('#txtCantidad').val($.trim($('td:eq(5)', tr).text()));
-
-        $('#txtAno').val('2077');
-
-        selectedPresupuesto = tr;
-        $('#dialogPresupuesto').dialog('option', 'title', 'Editar Presupuesto');
-        $('#dialogPresupuesto').dialog('open');
-    });
-
+    
     $('#addPresupuesto').click(function () {
         $('#hdnAccionPresupuesto').val('I');
         $('#hdnPresupuesto').val('0');
