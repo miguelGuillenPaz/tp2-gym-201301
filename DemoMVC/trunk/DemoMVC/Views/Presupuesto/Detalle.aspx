@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DemoMVC.Models.PMP_PptoMtoPreventivo>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="/Scripts/Presupuesto/refresh.js" type="text/javascript"></script>
+    <script src="/Scripts/Presupuesto/refresh_.js" type="text/javascript"></script>
     <script src="/Scripts/Presupuesto/buscar.js" type="text/javascript"></script>
     <div class="contenido-top">
         <div>

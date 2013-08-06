@@ -196,6 +196,7 @@
     <Content Include="Scripts\Postulante\experiencia-laboral.js" />
     <Content Include="Scripts\Postulante\documento.js" />
     <Content Include="Scripts\Presupuesto\buscar.js" />
+    <Content Include="Scripts\Presupuesto\refresh_.js" />
     <Content Include="Scripts\Presupuesto\editar.js" />
     <Content Include="Scripts\Presupuesto\refresh.js" />
     <Content Include="Scripts\Presupuesto\crear.js" />
