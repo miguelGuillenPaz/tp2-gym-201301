@@ -62,7 +62,7 @@
                                 </thead>
                                 <tbody>
                                     <% if (Model != null)
-                                       {
+                                       {                                           
                                            foreach (var pre in Model)
                                            {
                                     %>
@@ -80,7 +80,7 @@
                                             <%=pre.costoMantenimiento%>
                                         </td>
                                         <td style="text-align: right;">
-                                            <input class=".cantidad" type="number" value="1" min="0" />
+                                            <input class="cantidad" type="number" value="1" min="0" />
                                         </td>
                                         <td style="text-align: right;">
                                             <%=pre.costoMantenimiento %>
@@ -88,7 +88,18 @@
                                     </tr>
                                     <%}
                                        } %>
+
                                 </tbody>
+                                <tfoot style="border-top:1px dashed gray">
+                                    <tr>
+                                        <td style="width: 150px; text-align: right"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="width: 150px; text-align: right"><b id="costoTotalFijo">0.0000</b></td>
+                                        <td style="width: 150px; text-align: right"><b id="cantidad">0.0000</b></td>
+                                        <td style="width: 150px; text-align: right"><b id="costoTotalFinal">0.0000</b></td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

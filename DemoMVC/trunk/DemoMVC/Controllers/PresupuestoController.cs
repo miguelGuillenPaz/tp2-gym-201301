@@ -77,14 +77,66 @@ namespace DemoMVC.Controllers
         public virtual ActionResult SetPresupuesto(string formData)
         {
             _entities = new PMP_Entities();
-
+            var pmpPptoMtoPreventivo = new PMP_PptoMtoPreventivo();            
             var js = new JavaScriptSerializer();
             var presupuesto = (object[])js.DeserializeObject(formData);
             if (presupuesto != null)
             {
                 foreach (Dictionary<string, object> itemsJson in presupuesto)
                 {
-                    var x = itemsJson;
+                    bool resultTry;
+                    int ano;
+                    resultTry = int.TryParse((string)itemsJson["ano"], out ano);
+                    if (resultTry)
+                        pmpPptoMtoPreventivo.ano = ano;
+
+                    decimal costoTotalFijo;
+                    resultTry = decimal.TryParse((string)itemsJson["costoTotalFijo"], out costoTotalFijo);
+                    if (resultTry)
+                        pmpPptoMtoPreventivo.montoEstimado = costoTotalFijo;
+
+                    int cantidad;
+                    resultTry = int.TryParse((string)itemsJson["cantidad"], out cantidad);
+                    if (resultTry)
+                        pmpPptoMtoPreventivo.cantidadMantencion = cantidad;
+
+                    decimal costoTotalFinal;
+                    resultTry = decimal.TryParse((string)itemsJson["costoTotalFinal"], out costoTotalFinal);
+                    if (resultTry)
+                        pmpPptoMtoPreventivo.montoFinal = costoTotalFinal;
+
+                    pmpPptoMtoPreventivo.descripcion = (string)itemsJson["descripcion"];
+                    pmpPptoMtoPreventivo.fechaRegistro = DateTime.Now;
+                    pmpPptoMtoPreventivo.estado = "CREADO";
+
+                    _entities.AddToPMP_PptoMtoPreventivo(pmpPptoMtoPreventivo);
+                    _entities.SaveChanges();
+                    
+                    var deserializedLeanExcepcionDetalleModel = (object[])itemsJson["formDataDetalle"];
+                    foreach (Dictionary<string, object> subItemsJson in deserializedLeanExcepcionDetalleModel)
+                    {
+                        var pmpDetallePptoMtoPreventivo = new PMP_DetallePptoMtoPreventivo();
+                        int idMaquinariaEquipo;
+                        resultTry = int.TryParse((string)subItemsJson["idMaquinariaEquipo"], out idMaquinariaEquipo);
+                        if (resultTry)
+                            pmpDetallePptoMtoPreventivo.idMaquinariaEquipo = idMaquinariaEquipo;
+
+                        int cantidadMantenimiento;
+                        resultTry = int.TryParse((string)subItemsJson["cantidadMantenimiento"], out cantidadMantenimiento);
+                        if (resultTry)
+                            pmpDetallePptoMtoPreventivo.cantidadMantenimiento = cantidadMantenimiento;
+
+                        decimal montoAprobado;
+                        resultTry = decimal.TryParse((string)subItemsJson["montoAprobado"], out montoAprobado);
+                        if (resultTry)
+                            pmpDetallePptoMtoPreventivo.montoAprobado = montoAprobado;
+
+                        pmpDetallePptoMtoPreventivo.idPptoMtoPreventivo = pmpPptoMtoPreventivo.idPptoMtoPreventivo;
+
+                        _entities.AddToPMP_DetallePptoMtoPreventivo(pmpDetallePptoMtoPreventivo);
+                        _entities.SaveChanges();
+                    }
+                    
                 }
             }
 
