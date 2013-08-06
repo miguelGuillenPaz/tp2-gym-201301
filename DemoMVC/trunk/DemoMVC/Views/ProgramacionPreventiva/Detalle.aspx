@@ -23,7 +23,7 @@
             <h1>
                 Programacion Maquinarias y Equipo </h1>
 
-            <table id="datos">
+            <table id="datos"  class="table100">
                 <tr>
                     <td>
                         Código
@@ -59,7 +59,7 @@
                 </tr>
             </table>
 
-            <table id="tblListadoProgramacion">
+            <table id="tblListadoProgramacion"  class="table100 table100b">
                 <thead>
                     <tr>
                         <th style="display: none;">

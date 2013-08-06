@@ -22,8 +22,15 @@
         <div>
             <h1>
                 Programacion Preventiva de Maquinarias y Equipos </h1>
-
-            <table id="tblListadoProgramacion">
+                <br/>
+                <br/>
+                  <% using (Html.BeginForm())
+               { %>
+                <%= Html.DropDownList("ddlPresupuestosAprobados", (IEnumerable<SelectListItem>)ViewData["PresupuestosAprobados"])%>
+                <br/>
+                <input type="submit" value="Cargar" />
+                 <% } %>
+            <table id="tblListadoProgramacion" class="table100 table100b">
                 <thead>
                     <tr>
                         <th>
