@@ -66,16 +66,16 @@ namespace DemoMVC.Controllers
         {
             _entities = new PMP_Entities();
 
-            var res = (from r in _entities.PMP_DetalleProgramacionPreventiva where r.idProgramacionPreventiva == id select r).ToList();
-            var res2 = (from r in _entities.PMP_ProgramacionPreventiva where r.idProgramacionPreventiva == id select r).FirstOrDefault();
+            //var res = (from r in _entities.PMP_DetalleProgramacionPreventiva where r.idProgramacionPreventiva == id select r).ToList();
+            var res = (from r in _entities.PMP_ProgramacionPreventiva where r.PMP_PptoMtoPreventivo.idPptoMtoPreventivo == id select r).FirstOrDefault();
 
-            if (res2 != null)
-            {
-                ViewData["idProgramacion"] = id;
-                ViewData["codigo"] = res2.PMP_MaquinariaEquipo.idMaquinariaEquipo;
-                ViewData["descripcion"] = res2.PMP_MaquinariaEquipo.descripcion;
-                ViewData["fechaadquisicion"] = res2.PMP_MaquinariaEquipo.fechaRegistro;
-            }
+            ////if (res2 != null)
+            ////{
+            ////    ViewData["idProgramacion"] = id;
+            ////    ViewData["codigo"] = res2.PMP_MaquinariaEquipo.idMaquinariaEquipo;
+            ////    ViewData["descripcion"] = res2.PMP_MaquinariaEquipo.descripcion;
+            ////    ViewData["fechaadquisicion"] = res2.PMP_MaquinariaEquipo.fechaRegistro;
+            ////}
 
             return View(res);
         }

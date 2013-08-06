@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<DemoMVC.Models.PMP_DetalleProgramacionPreventiva>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DemoMVC.Models.PMP_ProgramacionPreventiva>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
@@ -23,7 +23,7 @@
             <h1>
                 Programacion Maquinarias y Equipo </h1>
 
-            <table id="datos"  class="table100">
+       <%--     <table id="datos"  class="table100">
                 <tr>
                     <td>
                         Código
@@ -32,7 +32,7 @@
                         :
                     </td>
                     <td>
-                        <%: ViewData["codigo"]%>
+                        <%: Model.PMP_MaquinariaEquipo.idMaquinariaEquipo %>
                     </td>
                 </tr>
                 <tr>
@@ -43,7 +43,7 @@
                         :
                     </td>
                     <td>
-                        <%: ViewData["descripcion"]%>
+                        <%: Model.PMP_MaquinariaEquipo.descripcion %>
                     </td>
                 </tr>
                 <tr>
@@ -54,11 +54,11 @@
                         :
                     </td>
                     <td>
-                         <%: ViewData["fechaadquisicion"]%>
+                         <%: Model.PMP_MaquinariaEquipo.fechaRegistro %>
                     </td>
                 </tr>
             </table>
-
+--%>
             <table id="tblListadoProgramacion"  class="table100 table100b">
                 <thead>
                     <tr>
@@ -83,7 +83,7 @@
                     <% if (Model != null)
                        {
                            var i = 0;
-                           foreach (var item in Model)
+                           foreach (var item in Model.PMP_DetalleProgramacionPreventiva)
                            {
                     %>
                     <tr>
