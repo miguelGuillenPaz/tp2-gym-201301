@@ -162,7 +162,7 @@
                                     </td>
                                 </tr>
                                 <%}
-                       } %>
+                                   } %>
                             </tbody>
                         </table>
                     </div>
@@ -170,6 +170,5 @@
                 <a id="addPresupuesto" href="/Presupuesto/Crear">Crear</a>
             </div>
         </div>
-    </div>
     </div>
 </asp:Content>

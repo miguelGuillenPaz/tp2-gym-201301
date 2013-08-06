@@ -112,7 +112,7 @@
                             </table>
                         </div>
                     </div>
-                    <a id="btnGrabar" href="javascript:;">Enviar</a>
+                    <a id="btnGrabar" href="javascript:;">Enviar</a> | <a id="btnCancelar" href="/Presupuesto">Cancelar</a>
                 </div>
             </div>
         </div>
