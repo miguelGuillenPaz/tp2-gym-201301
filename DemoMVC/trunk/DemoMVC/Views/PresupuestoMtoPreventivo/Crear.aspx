@@ -15,42 +15,87 @@
                 }
             } catch (ex) {
             }
-        });
+
+            $('#btnGrabar').click(function () {
+               var formDataDetalle = new Array();
+                    $('#tblListadoEquipos tbody tr').each(function() {
+                        formDataDetalle.push({
+                                'idMaquinariaEquipo': $.trim($('td:eq(0)', $(this)).text()),
+                                'cantidadMantenimiento':  $(this).find('.cantidad').val(),
+                                'montoAprobado': $.trim($('td:eq(5)', $(this)).text())
+                            }
+                        );
+                    });
+
+
+                    var formData = new Array();
+                    formData.push({
+                        'ano': $('#txtAno').val(), 
+                        'descripcion': $('#txtDescripcion').val(),
+                        'formDataDetalle': formDataDetalle
+                    });
+
+                    alert(JSON.stringify(formData));
+                    
+                    url = '/PresupuestoMtoPreventivo/SetPresupuesto';                   
+                    $.ajax({                        
+                        url: url,
+                        type: 'POST',
+                        datatype: "json",
+                        traditional: true,
+                        data: {
+                            formData: JSON.stringify(formData),
+                        },                        
+                        success: function (result) {                            
+                            if (result.result) {
+                                window.location.href = '/PresupuestoMtoPreventivo';
+                            }                            
+                        },
+                        error: function () {                            
+                            __ShowMessage('No se pudo grabar');
+                        }
+                    });
+            });
+
+        });   
+        
     </script>
     <div class="contenido-top">
         <div>
             <h1>
                 Crear Presupuesto</h1>
-            <div class="editor-label">
-                <table>
-                    <tr>
-                        <td>
-                            <label for="txtAno">
-                                Año:</label>
-                        </td>
-                        <td>
-                            <input id="txtAno" type="number" max="9999" min="1900" value="" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="txtDescripcion">
-                                Descripción:</label>
-                        </td>
-                        <td>
-                            <input id="txtDescripcion" type="text" />
-                        </td>
-                    </tr>
-                </table>
+            <div class="areas-negocios">
+                <div class="noticia">
+                    <table class="table100">
+                        <tr>
+                            <td>
+                                <label for="txtAno">
+                                    Año:</label>
+                            </td>
+                            <td>
+                                <input id="txtAno" type="number" max="9999" min="1900" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="txtDescripcion">
+                                    Descripción:</label>
+                            </td>
+                            <td>
+                                <input id="txtDescripcion" type="text" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div class="areas-negocios">
                 <div class="lista-central">
                     <div class="noticia">
                         <div class="head-noticia">
-                            <span class="titulo-noticia">Información Personal</span>
+                            <span class="titulo-noticia">Lista de Equipos</span>
                         </div>
                         <div class="texto-noticia">
-                            <table id="tblListadoEquipos">
+                            <table id="tblListadoEquipos" class="table100">
                                 <thead>
                                     <tr>
                                         <th>
@@ -93,20 +138,21 @@
                                             <%=pre.costoMantenimiento%>
                                         </td>
                                         <td style="text-align: right;">
-                                            <input class=".cantidad" type="number" value="1" />
+                                            <input class=".cantidad" type="number" value="1" min="0" />
                                         </td>
                                         <td style="text-align: right;">
                                             <%=pre.costoMantenimiento %>
                                         </td>
                                     </tr>
                                     <%}
-                           } %>
+                                       } %>
                                 </tbody>
                             </table>
-                        </div>                        
+                        </div>
                     </div>
-                    <a id="addPresupuesto" href="javascript:;">Crear</a>
+                    <a id="btnGrabar" href="javascript:;">Crear</a>
                 </div>
             </div>
-    </div> </div>
+        </div>
+    </div>
 </asp:Content>

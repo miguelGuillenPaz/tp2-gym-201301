@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using DemoMVC.Models;
 using System.Collections;
 using System.Globalization;
@@ -59,22 +60,29 @@ namespace DemoMVC.Controllers
         {              
             return View(new PMP_Entities().PMP_MaquinariaEquipo.ToList());
         }
-        [HttpPost]
-        public ActionResult Crear(FormCollection formCollection)
+
+
+        public virtual ActionResult SetPresupuesto(string formData)
         {
             _entities = new PMP_Entities();
-            
-            int? ano = formCollection["txtAno"].ToString() == "" ? 0 : int.Parse(formCollection["txtAno"].ToString());
-            String descripcion = formCollection["txtDescripcion"].ToString().Trim();
-            String estado = formCollection["ddlEstado"].ToString().Trim();
 
-            var res = (from r in _entities.PMP_PptoMtoPreventivo where (ano == 0 || r.ano == ano) select r).ToList();
+            var js = new JavaScriptSerializer();
+            var presupuesto = (object[])js.DeserializeObject(formData);
+            if (presupuesto != null)
+            {
+                foreach (Dictionary<string, object> itemsJson in presupuesto)
+                {
+                    var x = itemsJson;
+                }
+            }
 
-            ViewData["idPresupuesto"] = "0";
-            ViewData["accionPresupuesto"] = "I";         
-
-            return View(res);
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true }, behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
         }
+
+        
+
 
         public ActionResult Eliminar(int idPptoMtoPreventivo)
         {
