@@ -122,7 +122,7 @@
                    :
                </td>
                <td>
-                    <%= Html.TextBoxFor(m => m.FirstOrDefault().fechaProgramacion, new { @id = "txtFecha",@type="date" })%>
+                   <input id="txtFecha" type="date" />
                </td>
            </tr>
     

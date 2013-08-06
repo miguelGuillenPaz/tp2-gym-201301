@@ -36,18 +36,18 @@ namespace DemoMVC.Controllers
             var res = (from r in _entities.PMP_DetalleProgramacionPreventiva where r.idProgramacionPreventiva == id select r).ToList();
             var res2 = (from r in _entities.PMP_ProgramacionPreventiva where r.idProgramacionPreventiva == id select r).FirstOrDefault();
 
-            if (res2!=null)
+            if (res2 != null)
             {
                 ViewData["idProgramacion"] = id;
                 ViewData["codigo"] = res2.PMP_MaquinariaEquipo.idMaquinariaEquipo;
                 ViewData["descripcion"] = res2.PMP_MaquinariaEquipo.descripcion;
                 ViewData["fechaadquisicion"] = res2.PMP_MaquinariaEquipo.fechaRegistro;
-            }          
+            }
 
             return View(res);
         }
 
-        public ActionResult SetFecha(int id, DateTime fecha)
+        public ActionResult SetFecha(int id, string fecha)
         { 
             _entities = new PMP_Entities();
             bool resultado;
@@ -56,7 +56,7 @@ namespace DemoMVC.Controllers
                 var prog = new PMP_DetalleProgramacionPreventiva
                 {
                     idProgramacionPreventiva = id,
-                    fechaProgramacion = fecha
+                    fechaProgramacion = DateTime.Parse(fecha)
                 };
                _entities.AddToPMP_DetalleProgramacionPreventiva(prog);
                _entities.SaveChanges();
@@ -173,7 +173,7 @@ namespace DemoMVC.Controllers
                         behavior: JsonRequestBehavior.AllowGet);
         }
 
-      
+
 
         //
         // GET: /PresupuestoMtoPreventivo/Details/5
