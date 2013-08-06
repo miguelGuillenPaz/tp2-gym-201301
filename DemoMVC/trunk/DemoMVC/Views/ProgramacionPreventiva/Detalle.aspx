@@ -17,7 +17,7 @@
             }
         });
     </script>
-    <script src="../../Scripts/Presupuesto/presupuesto.js" type="text/javascript"></script>
+    <script src="../../Scripts/Presupuesto/programacion.js" type="text/javascript"></script>
     <div class="contenido-top">
         <div>
             <h1>
@@ -32,29 +32,29 @@
                         :
                     </td>
                     <td>
-                        <%: ViewData[""] %>
+                        <%: ViewData["codigo"]%>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        &nbsp;
+                        Descripción
                     </td>
                     <td>
-                        &nbsp;
+                        :
                     </td>
                     <td>
-                        &nbsp;
+                        <%: ViewData["descripcion"]%>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        &nbsp;
+                        Fecha de adquisición
                     </td>
                     <td>
-                        &nbsp;
+                        :
                     </td>
                     <td>
-                        &nbsp;
+                         <%: ViewData["fechaadquisicion"]%>
                     </td>
                 </tr>
             </table>
@@ -62,27 +62,21 @@
             <table id="tblListadoProgramacion">
                 <thead>
                     <tr>
-                        <th>
-                            <b>Código</b>
+                        <th style="display: none;">
+                            <b>id</b>
                         </th>
                         <th>
-                            <b>Descripción</b>
+                            <b>Nro.</b>
                         </th>
                         <th>
-                            <b>Mtos.</b>
+                            <b>Fecha Programación</b>
                         </th>
                         <th>
-                            <b>Fecha Máx.</b>
-                        </th>
+                            <b>Dias Faltantes</b>
+                        </th>  
                         <th>
-                            <b>Máx.</b>
-                        </th>
-                        <th>
-                            <b>Estado Actual del Equipo</b>
-                        </th>
-                        <th>
-                            <b>Detalle</b>
-                        </th>
+                            <b>Eliminar</b>
+                        </th>                       
                     </tr>
                 </thead>
                 <tbody>
@@ -92,27 +86,21 @@
                            {
                     %>
                     <tr>
-                        <td>
-                            <%=item.idMaquinariaEquipo%>
+                        <td style="display: none;">
+                            <%= item.idDetalleProgramacionPreventiva %>
                         </td>
                         <td>
-                            <%=item.PMP_MaquinariaEquipo.descripcion%>
+                            <%=item.numeroProgramacion%>
                         </td>
                         <td>
-                            <%=item.cantidadMantenimientos %>
+                            <%=item.fechaProgramacion %>
                         </td>
                         <td>
-                            <%=item.fechaMaxima%>
-                        </td>
-                        <td>
-                            <%=item.maximaCantidadMantenimientos %>
-                        </td>
-                        <td>
-                            <%=item.estadoActualEquipo %>
-                        </td>
-                        <td>
-                            <a class="detalle" href="/ProgramacionPreventiva/Detalle/<%=item.idProgramacionPreventiva%>">Detalle</a>
-                        </td>
+                            0
+                        </td>       
+                         <td>
+                            <a class="eliminar" href="javascript:;">Eliminar</a>
+                        </td>                   
                     </tr>
                     <%}
                        } %>

@@ -229,6 +229,7 @@
     <Content Include="Views\Planificacion\ListadoProyPlan2.aspx" />
     <Content Include="Views\Presupuesto\Index.aspx" />
     <Content Include="Views\Presupuesto\Crear.aspx" />
+    <Content Include="Views\ProgramacionPreventiva\Crear.aspx" />
     <Content Include="Views\ProgramacionPreventiva\Detalle.aspx" />
     <Content Include="Views\ProgramacionPreventiva\Index.aspx" />
     <Content Include="Web.config" />

@@ -2,13 +2,13 @@
 
     var selectedPresupuesto;
 
-    $('#tblListadoPresupuesto').delegate('.eliminar', "click", function () {
+    $('#tblListadoProgramacion').delegate('.eliminar', "click", function () {
         var tr = $(this).parent().parent();
-        var idPptoMtoPreventivo = $.trim($('td:eq(0)', tr).text());
-        if (idPptoMtoPreventivo != 0) {
-            if (confirm('¿Desea eliminar el Presupuesto?')) {
-                var data = { idPptoMtoPreventivo: idPptoMtoPreventivo };
-                var url = '/PresupuestoMtoPreventivo/Eliminar';
+        var id = $.trim($('td:eq(0)', tr).text());
+        if (id != 0) {
+            if (confirm('¿Desea eliminar la Programación?')) {
+                var data = { id: id };
+                var url = '/ProgramacionPreventiva/Eliminar';
                 $.ajax({
                     type: 'POST',
                     url: url,

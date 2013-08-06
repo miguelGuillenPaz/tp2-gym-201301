@@ -71,11 +71,11 @@ namespace DemoMVC.Controllers
             return View(res);
         }
 
-        public ActionResult Eliminar(int idPptoMtoPreventivo)
+        public ActionResult Eliminar(int id)
         {
             _entities = new PMP_Entities();
 
-            var res = (from r in _entities.PMP_PptoMtoPreventivo where r.idPptoMtoPreventivo == idPptoMtoPreventivo select r).FirstOrDefault();
+            var res = (from r in _entities.PMP_DetalleProgramacionPreventiva where r.idDetalleProgramacionPreventiva == id select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -163,7 +163,7 @@ namespace DemoMVC.Controllers
         //
         // GET: /PresupuestoMtoPreventivo/Create
 
-        public ActionResult Create()
+        public ActionResult Crear()
         {
             return View();
         }
