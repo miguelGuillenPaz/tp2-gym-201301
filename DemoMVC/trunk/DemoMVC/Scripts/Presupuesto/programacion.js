@@ -38,12 +38,12 @@
     $('#dialogFechaProgramacion').dialog({
         autoOpen: false,
         height: 200,
-        width: 200,
+        width: 400,
         resizable: false,
         modal: true,
         buttons: {
             'Enviar': function () {
-                var id = $('#hdnIdDetalle')
+                var id = $('#hdnIdDetalle').val();
                 var fecha = $.trim($('#txtFecha').val());
                 var data = {
                     id: id,
