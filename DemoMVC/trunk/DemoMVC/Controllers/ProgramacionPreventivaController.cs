@@ -35,11 +35,12 @@ namespace DemoMVC.Controllers
 
             var res = (from r in _entities.PMP_DetalleProgramacionPreventiva where r.idProgramacionPreventiva == id select r).ToList();
 
-            ViewData["ano"] = "";
-            ViewData["descripcion"] = "";
-            ViewData["estado"] = "TODOS";
-            ViewData["TipoEstado"] = CrearTipoEstado();
-            ViewData["nregistros"] = res.Count;
+            if (res!=null)
+            {
+                ViewData["codigo"] = res[0].PMP_ProgramacionPreventiva.PMP_MaquinariaEquipo.idMaquinariaEquipo;
+                ViewData["descripcion"] = res[0].PMP_ProgramacionPreventiva.PMP_MaquinariaEquipo.descripcion;
+                ViewData["fechaadquisicion"] = res[0].PMP_ProgramacionPreventiva.PMP_MaquinariaEquipo.fechaRegistro;
+            }          
 
             return View(res);
         }
