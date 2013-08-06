@@ -121,8 +121,8 @@ namespace DemoMVC.Controllers
                         if (resultTry)
                             pmpDetallePptoMtoPreventivo.idMaquinariaEquipo = idMaquinariaEquipo;
 
-                        int cantidadMantenimiento;
-                        resultTry = int.TryParse((string)subItemsJson["cantidadMantenimiento"], out cantidadMantenimiento);
+                        decimal cantidadMantenimiento;
+                        resultTry = decimal.TryParse((string)subItemsJson["cantidadMantenimiento"], out cantidadMantenimiento);
                         if (resultTry)
                             pmpDetallePptoMtoPreventivo.cantidadMantenimiento = cantidadMantenimiento;
 
@@ -197,8 +197,8 @@ namespace DemoMVC.Controllers
                                     var det = (from r in _entities.PMP_DetallePptoMtoPreventivo where r.idDetallePptoMtoPreventivo == idDetallePptoMtoPreventivo select r).FirstOrDefault();
                                     if (det != null)
                                     {
-                                        int cantidadMantenimiento;
-                                        resultTry = int.TryParse((string) subItemsJson["cantidadMantenimiento"],
+                                        decimal cantidadMantenimiento;
+                                        resultTry = decimal.TryParse((string)subItemsJson["cantidadMantenimiento"],
                                                                  out cantidadMantenimiento);
                                         if (resultTry)
                                             det.cantidadMantenimiento = cantidadMantenimiento;

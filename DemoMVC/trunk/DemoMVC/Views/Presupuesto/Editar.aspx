@@ -60,7 +60,7 @@
                                         <th style="width: 150px; text-align: right">
                                             <b>Costo total final</b>
                                         </th>
-                                        <th>
+                                        <th style="display: none;">
                                             <b>IdDetalle</b>
                                         </th>
                                     </tr>
@@ -90,7 +90,7 @@
                                         <td style="text-align: right;">
                                             <%=pre.montoAprobado %>
                                         </td>
-                                        <td>
+                                        <td style="display: none;">
                                             <%=pre.idDetallePptoMtoPreventivo %>
                                         </td>
                                     </tr>
@@ -106,6 +106,7 @@
                                         <td style="width: 150px; text-align: right"><b id="costoTotalFijo"><%= Model!=null? Model.montoEstimado + string.Empty:"0.0000"%></b></td>
                                         <td style="width: 150px; text-align: right"><b id="cantidad"><%= Model!=null? Model.cantidadMantencion + string.Empty:"0.0000"%></b></td>
                                         <td style="width: 150px; text-align: right"><b id="costoTotalFinal"><%= Model!=null? Model.montoFinal + string.Empty:"0.0000"%></b></td>
+                                        <td style="display: none;"></td>
                                     </tr>
                                 </tfoot>
                             </table>

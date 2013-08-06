@@ -23,9 +23,9 @@
             'formDataDetalle': formDataDetalle
         });
 
-        url = '/Presupuesto/CrearPresupuesto';
+        
         $.ajax({
-            url: url,
+            url: '/Presupuesto/CrearPresupuesto',
             type: 'POST',
             datatype: "json",
             traditional: true,

@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $('#btnGrabar').click(function () {
-
+    $('#btnGrabar').click(function () {        
         var formDataDetalle = new Array();
         $('#tblListadoEquipos tbody tr').each(function () {
             formDataDetalle.push({
@@ -14,18 +13,17 @@
 
         var formData = new Array();
         formData.push({
-            'idPptoMtoPreventivo': $('idPptoMtoPreventivo').val(),
-            'ano': $('#txtAno').val(),
-            'descripcion': $('#txtDescripcion').val(),
+            'idPptoMtoPreventivo': $('#idPptoMtoPreventivo').val(),
+            'ano': $('#ano').val(),
+            'descripcion': $('#descripcion').val(),
             'costoTotalFijo': $('#costoTotalFijo').text(),
             'cantidad': $('#cantidad').text(),
             'costoTotalFinal': $('#costoTotalFinal').text(),
             'formDataDetalle': formDataDetalle
         });
-        alert(JSON.stringify(formData));
-        url = '/Presupuesto/EditarPresupuesto';
+        
         $.ajax({
-            url: url,
+            url: '/Presupuesto/EditarPresupuesto',
             type: 'POST',
             datatype: "json",
             traditional: true,
