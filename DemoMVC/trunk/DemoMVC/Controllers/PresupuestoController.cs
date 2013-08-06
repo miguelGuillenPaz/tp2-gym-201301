@@ -258,5 +258,13 @@ namespace DemoMVC.Controllers
             return View(res);
         }
 
+        public ActionResult Detalle(int id)
+        {
+            _entities = new PMP_Entities();
+            var res = (from r in _entities.PMP_PptoMtoPreventivo where r.idPptoMtoPreventivo == id select r).FirstOrDefault();
+            return View(res);
+        }
+
+
     }
 }

@@ -105,17 +105,8 @@
                                     <th>
                                         <b>Estado</b>
                                     </th>
-                                    <th>
-                                        <b>Enviar</b>
-                                    </th>
-                                    <th>
-                                        <b>Editar</b>
-                                    </th>
-                                    <th>
-                                        <b>Eliminar</b>
-                                    </th>
-                                    <th>
-                                        <b>Detalle</b>
+                                    <th style="width: 175px;">
+                                        <b>Opciones</b>
                                     </th>
                                 </tr>
                             </thead>
@@ -148,17 +139,7 @@
                                         <%=pre.estado %>
                                     </td>
                                     <td>
-                                        <a class="enviar" href="javascript:;">Enviar</a>
-                                    </td>
-                                    <td>
-                                        <a class="editar" href="/Presupuesto/Editar/<%= pre.idPptoMtoPreventivo %>">Editar</a>
-                                    </td>
-                                    <td>
-                                        <a class="eliminar" href="javascript:;">Eliminar</a>
-                                    </td>
-                                    <td>
-                                        <a class="detalle" href="/Presupuesto/Detalle/<%=pre.idPptoMtoPreventivo.ToString()%>">
-                                            Detalle</a>
+                                        <a class="enviar" href="javascript:;">Enviar</a> | <a class="editar" href="/Presupuesto/Editar/<%= pre.idPptoMtoPreventivo %>">Editar</a> | <a class="eliminar" href="javascript:;">Eliminar</a> | <a class="detalle" href="/Presupuesto/Detalle/<%=pre.idPptoMtoPreventivo.ToString()%>">Detalle</a>
                                     </td>
                                 </tr>
                                 <%}

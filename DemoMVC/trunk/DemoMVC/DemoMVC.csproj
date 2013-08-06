@@ -195,6 +195,7 @@
     <Content Include="Scripts\Postulante\estudio-realizado.js" />
     <Content Include="Scripts\Postulante\experiencia-laboral.js" />
     <Content Include="Scripts\Postulante\documento.js" />
+    <Content Include="Scripts\Presupuesto\buscar.js" />
     <Content Include="Scripts\Presupuesto\editar.js" />
     <Content Include="Scripts\Presupuesto\refresh.js" />
     <Content Include="Scripts\Presupuesto\crear.js" />
@@ -229,6 +230,7 @@
     <Content Include="Views\Planificacion\IngresoActividades.aspx" />
     <Content Include="Views\Planificacion\ListadoProyPlan.aspx" />
     <Content Include="Views\Planificacion\ListadoProyPlan2.aspx" />
+    <Content Include="Views\Presupuesto\Detalle.aspx" />
     <Content Include="Views\Presupuesto\Editar.aspx" />
     <Content Include="Views\Presupuesto\Index.aspx" />
     <Content Include="Views\Presupuesto\Crear.aspx" />
