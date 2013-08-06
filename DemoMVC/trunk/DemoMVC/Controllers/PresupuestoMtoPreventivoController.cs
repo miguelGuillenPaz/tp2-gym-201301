@@ -55,6 +55,23 @@ namespace DemoMVC.Controllers
             return View(res);
         }
 
+        [HttpPost]
+        public ActionResult Crear(FormCollection formCollection)
+        {
+            _entities = new PMP_Entities();
+            
+            int? ano = formCollection["txtAno"].ToString() == "" ? 0 : int.Parse(formCollection["txtAno"].ToString());
+            String descripcion = formCollection["txtDescripcion"].ToString().Trim();
+            String estado = formCollection["ddlEstado"].ToString().Trim();
+
+            var res = (from r in _entities.PMP_PptoMtoPreventivo where (ano == 0 || r.ano == ano) select r).ToList();
+
+            ViewData["idPresupuesto"] = "0";
+            ViewData["accionPresupuesto"] = "I";         
+
+            return View(res);
+        }
+
         public ActionResult Eliminar(int idPptoMtoPreventivo)
         {
             _entities = new PMP_Entities();

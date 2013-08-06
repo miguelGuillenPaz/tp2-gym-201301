@@ -153,7 +153,7 @@
                        } %>
                 </tbody>
             </table>
-            <a id="addPresupuesto" href="javascript:;">Crear</a>
+            <a id="addPresupuesto" href="/PresupuestoMtoPreventivo/Crear">Crear</a>
         </div>
     </div>
     <div id="dialogPresupuesto" title="" style="display: none; z-index: 1000;">

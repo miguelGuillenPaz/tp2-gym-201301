@@ -63,10 +63,10 @@
                     <a href="#">Gestión de Maquinarias y Equipos</a>
                     <ul>
                         <li>
-                            <%= Html.ActionLink("Generar Pres. Mto. Prev.", "Index", "PresupuestoMtoPreventivo")%>
+                            <%= Html.ActionLink("Generar Presupuesto", "Index", "PresupuestoMtoPreventivo")%>
                         </li>
                         <li>
-                            <%= Html.ActionLink("Programación Prev. Maq.", "Index", "ProgramacionPreventiva")%>
+                            <%= Html.ActionLink("Programación Mantenimiento", "Index", "ProgramacionPreventiva")%>
                         </li>
                     </ul>
                 </li>

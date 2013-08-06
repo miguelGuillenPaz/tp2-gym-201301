@@ -19,8 +19,9 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("PMPDBModel", "FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo", "PMP_MaquinariaEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.PMP_MaquinariaEquipo), "PMP_DetallePptoMtoPreventivo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.PMP_DetallePptoMtoPreventivo), true)]
-[assembly: EdmRelationshipAttribute("PMPDBModel", "FK_PMP_DetalleProgramacionPreventiva_PMP_ProgramacionPreventiva", "PMP_ProgramacionPreventiva", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.PMP_ProgramacionPreventiva), "PMP_DetalleProgramacionPreventiva", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.PMP_DetalleProgramacionPreventiva), true)]
 [assembly: EdmRelationshipAttribute("PMPDBModel", "FK_PMP_DetallePptoMtoPreventivo_PMP_PptoMtoPreventivo", "PMP_PptoMtoPreventivo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.PMP_PptoMtoPreventivo), "PMP_DetallePptoMtoPreventivo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.PMP_DetallePptoMtoPreventivo), true)]
+[assembly: EdmRelationshipAttribute("PMPDBModel", "FK_PMP_DetalleProgramacionPreventiva_PMP_ProgramacionPreventiva", "PMP_ProgramacionPreventiva", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.PMP_ProgramacionPreventiva), "PMP_DetalleProgramacionPreventiva", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.PMP_DetalleProgramacionPreventiva), true)]
+[assembly: EdmRelationshipAttribute("PMPDBModel", "FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo", "PMP_MaquinariaEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.PMP_MaquinariaEquipo), "PMP_ProgramacionPreventiva", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.PMP_ProgramacionPreventiva), true)]
 [assembly: EdmRelationshipAttribute("PMPDBModel", "FK_PMP_ProgramacionPreventiva_PMP_PptoMtoPreventivo", "PMP_PptoMtoPreventivo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.PMP_PptoMtoPreventivo), "PMP_ProgramacionPreventiva", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.PMP_ProgramacionPreventiva), true)]
 
 #endregion
@@ -124,22 +125,6 @@ namespace DemoMVC.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<PMP_ProgramacionPreventiva> PMP_ProgramacionPreventiva
-        {
-            get
-            {
-                if ((_PMP_ProgramacionPreventiva == null))
-                {
-                    _PMP_ProgramacionPreventiva = base.CreateObjectSet<PMP_ProgramacionPreventiva>("PMP_ProgramacionPreventiva");
-                }
-                return _PMP_ProgramacionPreventiva;
-            }
-        }
-        private ObjectSet<PMP_ProgramacionPreventiva> _PMP_ProgramacionPreventiva;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<PMP_PptoMtoPreventivo> PMP_PptoMtoPreventivo
         {
             get
@@ -152,6 +137,22 @@ namespace DemoMVC.Models
             }
         }
         private ObjectSet<PMP_PptoMtoPreventivo> _PMP_PptoMtoPreventivo;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<PMP_ProgramacionPreventiva> PMP_ProgramacionPreventiva
+        {
+            get
+            {
+                if ((_PMP_ProgramacionPreventiva == null))
+                {
+                    _PMP_ProgramacionPreventiva = base.CreateObjectSet<PMP_ProgramacionPreventiva>("PMP_ProgramacionPreventiva");
+                }
+                return _PMP_ProgramacionPreventiva;
+            }
+        }
+        private ObjectSet<PMP_ProgramacionPreventiva> _PMP_ProgramacionPreventiva;
 
         #endregion
         #region AddTo Methods
@@ -181,19 +182,19 @@ namespace DemoMVC.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the PMP_ProgramacionPreventiva EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToPMP_ProgramacionPreventiva(PMP_ProgramacionPreventiva pMP_ProgramacionPreventiva)
-        {
-            base.AddObject("PMP_ProgramacionPreventiva", pMP_ProgramacionPreventiva);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the PMP_PptoMtoPreventivo EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToPMP_PptoMtoPreventivo(PMP_PptoMtoPreventivo pMP_PptoMtoPreventivo)
         {
             base.AddObject("PMP_PptoMtoPreventivo", pMP_PptoMtoPreventivo);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PMP_ProgramacionPreventiva EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPMP_ProgramacionPreventiva(PMP_ProgramacionPreventiva pMP_ProgramacionPreventiva)
+        {
+            base.AddObject("PMP_ProgramacionPreventiva", pMP_ProgramacionPreventiva);
         }
 
         #endregion
@@ -874,6 +875,28 @@ namespace DemoMVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PMPDBModel", "FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo", "PMP_ProgramacionPreventiva")]
+        public EntityCollection<PMP_ProgramacionPreventiva> PMP_ProgramacionPreventiva
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PMP_ProgramacionPreventiva>("PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo", "PMP_ProgramacionPreventiva");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PMP_ProgramacionPreventiva>("PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo", "PMP_ProgramacionPreventiva", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -1204,24 +1227,24 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> idEquipo
+        public Nullable<global::System.Int32> idMaquinariaEquipo
         {
             get
             {
-                return _idEquipo;
+                return _idMaquinariaEquipo;
             }
             set
             {
-                OnidEquipoChanging(value);
-                ReportPropertyChanging("idEquipo");
-                _idEquipo = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idEquipo");
-                OnidEquipoChanged();
+                OnidMaquinariaEquipoChanging(value);
+                ReportPropertyChanging("idMaquinariaEquipo");
+                _idMaquinariaEquipo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idMaquinariaEquipo");
+                OnidMaquinariaEquipoChanged();
             }
         }
-        private Nullable<global::System.Int32> _idEquipo;
-        partial void OnidEquipoChanging(Nullable<global::System.Int32> value);
-        partial void OnidEquipoChanged();
+        private Nullable<global::System.Int32> _idMaquinariaEquipo;
+        partial void OnidMaquinariaEquipoChanging(Nullable<global::System.Int32> value);
+        partial void OnidMaquinariaEquipoChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1365,6 +1388,44 @@ namespace DemoMVC.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PMP_DetalleProgramacionPreventiva>("PMPDBModel.FK_PMP_DetalleProgramacionPreventiva_PMP_ProgramacionPreventiva", "PMP_DetalleProgramacionPreventiva", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PMPDBModel", "FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo", "PMP_MaquinariaEquipo")]
+        public PMP_MaquinariaEquipo PMP_MaquinariaEquipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PMP_MaquinariaEquipo>("PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo", "PMP_MaquinariaEquipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PMP_MaquinariaEquipo>("PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo", "PMP_MaquinariaEquipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PMP_MaquinariaEquipo> PMP_MaquinariaEquipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PMP_MaquinariaEquipo>("PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo", "PMP_MaquinariaEquipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PMP_MaquinariaEquipo>("PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo", "PMP_MaquinariaEquipo", value);
                 }
             }
         }

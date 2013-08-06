@@ -137,7 +137,7 @@
                                         "<td>" + $('#txtAno').val() + "</td>" +
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
-                                $('#tblPresupuesto tbody').append(fila);
+                                $('#tblListadoPresupuesto tbody').append(fila);
                             } else {
                                 var tr = selectedTelefono;
                                 $('td:eq(0)', tr).text($('#hdnPresupuesto').val());

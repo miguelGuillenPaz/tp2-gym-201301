@@ -226,6 +226,7 @@
     <Content Include="Views\Planificacion\IngresoActividades.aspx" />
     <Content Include="Views\Planificacion\ListadoProyPlan.aspx" />
     <Content Include="Views\Planificacion\ListadoProyPlan2.aspx" />
+    <Content Include="Views\PresupuestoMtoPreventivo\Crear.aspx" />
     <Content Include="Views\PresupuestoMtoPreventivo\Detalle.aspx" />
     <Content Include="Views\PresupuestoMtoPreventivo\Index.aspx" />
     <Content Include="Views\ProgramacionPreventiva\Index.aspx" />
