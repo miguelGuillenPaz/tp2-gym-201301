@@ -34,15 +34,38 @@ namespace DemoMVC.Controllers
             _entities = new PMP_Entities();
 
             var res = (from r in _entities.PMP_DetalleProgramacionPreventiva where r.idProgramacionPreventiva == id select r).ToList();
+            var res2 = (from r in _entities.PMP_ProgramacionPreventiva where r.idProgramacionPreventiva == id select r).FirstOrDefault();
 
-            if (res!=null)
+            if (res2!=null)
             {
-                ViewData["codigo"] = res[0].PMP_ProgramacionPreventiva.PMP_MaquinariaEquipo.idMaquinariaEquipo;
-                ViewData["descripcion"] = res[0].PMP_ProgramacionPreventiva.PMP_MaquinariaEquipo.descripcion;
-                ViewData["fechaadquisicion"] = res[0].PMP_ProgramacionPreventiva.PMP_MaquinariaEquipo.fechaRegistro;
+                ViewData["idProgramacion"] = id;
+                ViewData["codigo"] = res2.PMP_MaquinariaEquipo.idMaquinariaEquipo;
+                ViewData["descripcion"] = res2.PMP_MaquinariaEquipo.descripcion;
+                ViewData["fechaadquisicion"] = res2.PMP_MaquinariaEquipo.fechaRegistro;
             }          
 
             return View(res);
+        }
+
+        public ActionResult SetFecha(int id, DateTime fecha)
+        { 
+            _entities = new PMP_Entities();
+            bool resultado;
+            int idDetalle = 0;
+          
+                var prog = new PMP_DetalleProgramacionPreventiva
+                {
+                    idProgramacionPreventiva = id,
+                    fechaProgramacion = fecha
+                };
+               _entities.AddToPMP_DetalleProgramacionPreventiva(prog);
+               _entities.SaveChanges();
+               idDetalle = prog.idDetalleProgramacionPreventiva;
+               resultado = true;
+          
+
+            return Json(data: new { result = resultado, id = idDetalle},
+                        behavior: JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

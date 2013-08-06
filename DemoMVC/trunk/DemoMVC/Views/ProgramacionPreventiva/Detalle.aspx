@@ -82,6 +82,7 @@
                 <tbody>
                     <% if (Model != null)
                        {
+                           var i = 0;
                            foreach (var item in Model)
                            {
                     %>
@@ -90,7 +91,7 @@
                             <%= item.idDetalleProgramacionPreventiva %>
                         </td>
                         <td>
-                            <%=item.numeroProgramacion%>
+                            <%=i++%>
                         </td>
                         <td>
                             <%=item.fechaProgramacion %>
@@ -106,7 +107,25 @@
                        } %>
                 </tbody>
             </table>          
+        
+            <a id="addFecha" href="javascript:;">Agregar</a>
         </div>
     </div>
-   
+   <div id="dialogFechaProgramacion" title="" style="display: none; z-index: 1000;">
+        <input type="hidden" id="hdnIdDetalle" value='<%: ViewData["idProgramacion"]%>' />
+       <table style="width: 100%;">
+           <tr>
+               <td>
+                   Fecha
+               </td>
+               <td>
+                   :
+               </td>
+               <td>
+                    <%= Html.TextBoxFor(m => m.FirstOrDefault().fechaProgramacion, new { @id = "txtFecha",@type="date" })%>
+               </td>
+           </tr>
+    
+       </table>
+   </div>
 </asp:Content>

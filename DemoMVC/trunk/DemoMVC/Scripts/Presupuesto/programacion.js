@@ -29,95 +29,51 @@
     });
 
 
-    $('#tblListadoPresupuesto').delegate('.editar', "click", function () {
-        $('#hdnAccionPresupuesto').val('U');
-        var tr = $(this).parent().parent();
-        $('#hdnPresupuesto').val($.trim($('td:eq(0)', tr).text()));
-        $('#txtIdPptoMtoPreventivo').val($.trim($('td:eq(0)', tr).text()));
-        $('#txtAno').val($.trim($('td:eq(1)', tr).text()));
-        $('#txtDescripcion').val($.trim($('td:eq(2)', tr).text()));
-        $('#txtCostoTotalFijo').val($.trim($('td:eq(3)', tr).text()));
-        $('#txtCostoTotalFinal').val($.trim($('td:eq(4)', tr).text()));
-        $('#txtCantidad').val($.trim($('td:eq(5)', tr).text()));
-        selectedPresupuesto = tr;
-        $('#dialogPresupuesto').dialog('option', 'title', 'Editar Presupuesto');
-        $('#dialogPresupuesto').dialog('open');
+    $('#addFecha').click(function () {
+       
+        $('#dialogFechaProgramacion').dialog('option', 'title', 'Agregar Fecha');
+        $('#dialogFechaProgramacion').dialog('open');
     });
 
-    $('#addPresupuesto').click(function () {
-        $('#hdnAccionPresupuesto').val('I');
-        $('#hdnPresupuesto').val('0');
-        $('#txtIdPptoMtoPreventivo').val('');
-        $('#txtAno').val('');
-        $('#txtDescripcion').val('');
-        $('#txtCostoTotalFijo').val('');
-        $('#txtCostoTotalFinal').val('');
-        $('#txtCantidad').val('');
-        $('#dialogPresupuesto').dialog('option', 'title', 'Agregar Presupuesto');
-        $('#dialogPresupuesto').dialog('open');
-    });
-
-    $('#dialogPresupuesto').dialog({
+    $('#dialogFechaProgramacion').dialog({
         autoOpen: false,
-        height: 300,
-        width: 600,
+        height: 100,
+        width: 100,
         resizable: false,
         modal: true,
         buttons: {
             'Enviar': function () {
-               /* var nroRequeridos = 0;
-                $('#dialogPresupuesto .required').each(function () {
-                    if ($(this).val() == '' || $(this).val() == '0') {
-                        nroRequeridos = nroRequeridos + 1;
-                        $(this).addClass('required-control');
-                    } else {
-                        $(this).removeClass('required-control');
-                    }
-                });*/
-
-                //if (nroRequeridos == 0) {
-                    var idPptoMtoPreventivo = $.trim($('#idPptoMtoPreventivo').val());
-                    if (idPptoMtoPreventivo == '') {
-                        idPptoMtoPreventivo = '0';
-                    }
-                    //var idTelefono = $.trim($('#hdnTelefono').val());
-                    var ano = $.trim($('#txtAno').val());
+                    var id = $('#hdnIdDetalle')
+                    var fecha = $.trim($('#txtFecha').val());
                     var data = {
-                        idPptoMtoPreventivo: idPptoMtoPreventivo,
-                        ano: ano
+                        id: id,
+                        fecha: fecha
                     };
-                    var url = '/PresupuestoMtoPreventivo/SetPresupuesto';
+                    var url = '/ProgramacionPreventiva/SetFecha';
                     $.ajax({
                         type: 'POST',
                         url: url,
                         data: data,
                         success: function (result) {
-                            if (result.result) {
-                                $('#hdnPresupuesto').val(result.idPptoMtoPreventivo);
+                            if (result.result) {                               
                                
-                                if ($('#hdnAccionPresupuesto').val() == 'I') {
+                               
                                     var fila = "<tr>" +
-                                        "<td style=\"display: none;\">" + $('#hdnPresupuesto').val() + "</td>" +
-                                        "<td>" + $('#txtIdPptoMtoPreventivo').val() + "</td>" +
-                                        "<td>" + $('#txtAno').val() + "</td>" +
-                                        "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
+                                        "<td style=\"display: none;\">" + "0" + "</td>" +
+                                        "<td>" + "0" + "</td>" +
+                                        "<td>" + $('#txtFecha').val() + "</td>" +
+                                        "<td>" + "0" + "</td>" +
+                                        "<td><a class=\"eliminar\" href=\"javascript:;\">Editar</a></td>" +
                                         "</tr>";
-                                    $('#tblPresupuesto tbody').append(fila);
-                                } else {
-                                    var tr = selectedTelefono;
-                                    $('td:eq(0)', tr).text($('#hdnPresupuesto').val());
-                                    $('td:eq(0)', tr).text($('#txtIdPptoMtoPreventivo').val());
-                                }
-                                $('#dialogPresupuesto').dialog('close');
+                                    $('#tblListadoProgramacion tbody').append(fila);
+
+                                    $('#dialogFechaProgramacion').dialog('close');
                             }
                         },
                         error: function () {
-                            __ShowMessage('No se pudo actualizar');
+                            __ShowMessage('No se pudo agregar');
                         }
-                    });
-                //} else {
-                //    __ShowMessage('Existen campos obligatorios sin llenar.');
-                //}
+                    });              
 
             },
             Cancel: function () {
