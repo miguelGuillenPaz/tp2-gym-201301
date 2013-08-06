@@ -84,20 +84,50 @@ namespace DemoMVC.Controllers
         { 
             _entities = new PMP_Entities();
             bool resultado;
-            int idDetalle = 0;
-          
-                var prog = new PMP_DetalleProgramacionPreventiva
-                {
-                    idProgramacionPreventiva = id,
-                    fechaProgramacion = DateTime.Parse(fecha)
-                };
-               _entities.AddToPMP_DetalleProgramacionPreventiva(prog);
-               _entities.SaveChanges();
-               idDetalle = prog.idDetalleProgramacionPreventiva;
-               resultado = true;
-          
+            var errorMensaje = string.Empty;
+            var diferenciaEnDias = 0;
 
-            return Json(data: new { result = resultado, id = idDetalle},
+            var idDetalle = 0;
+            var head =
+                (from r in _entities.PMP_ProgramacionPreventiva where r.idProgramacionPreventiva == id select r)
+                    .FirstOrDefault();
+
+            if (head != null)
+            {
+                var detail =
+                    (from r in _entities.PMP_DetalleProgramacionPreventiva
+                     where r.idProgramacionPreventiva == id
+                     select r).ToList();
+
+                if (head.maximaCantidadMantenimientos > detail.Count)
+                {
+                    var prog = new PMP_DetalleProgramacionPreventiva
+                        {
+                            idProgramacionPreventiva = id,
+                            fechaProgramacion = DateTime.Parse(fecha)
+                        };
+                    DateTime diaProg = DateTime.Parse(fecha);                    
+                    TimeSpan ts = diaProg - DateTime.Now;
+                    // Diferencia en días.
+                    diferenciaEnDias= ts.Days;
+                    _entities.AddToPMP_DetalleProgramacionPreventiva(prog);
+                    _entities.SaveChanges();
+                    idDetalle = prog.idDetalleProgramacionPreventiva;
+                    resultado = true;
+                }
+                else
+                {
+                    errorMensaje = "Tiene como límite " + head.maximaCantidadMantenimientos + " programaciones.";
+                    resultado = false;
+                }
+            }
+            else
+            {
+                errorMensaje = "No se encontró programación.";
+                resultado = false;
+            }
+
+            return Json(data: new { result = resultado, id = idDetalle, dias= diferenciaEnDias, error = errorMensaje},
                         behavior: JsonRequestBehavior.AllowGet);
         }
 
@@ -208,13 +238,7 @@ namespace DemoMVC.Controllers
 
 
 
-        //
-        // GET: /PresupuestoMtoPreventivo/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+      
 
         //
         // GET: /PresupuestoMtoPreventivo/Create
@@ -278,21 +302,6 @@ namespace DemoMVC.Controllers
 
         //
         // POST: /PresupuestoMtoPreventivo/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         private IEnumerable PresupuestosAprobados()
         {

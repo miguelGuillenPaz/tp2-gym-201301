@@ -43,32 +43,32 @@
         modal: true,
         buttons: {
             'Enviar': function () {
-                var id = $('#hdnIdDetalle').val();
+                var id = $('#idProgramacionPreventiva').val();
                 var fecha = $.trim($('#txtFecha').val());
                 var data = {
                     id: id,
                     fecha: fecha
                 };
+                alert(JSON.stringify(data));
                 var url = '/ProgramacionPreventiva/SetFecha';
                 $.ajax({
                     type: 'POST',
                     url: url,
                     data: data,
                     success: function (result) {
+                        $('#dialogFechaProgramacion').dialog('close');    
                         if (result.result) {
-
-
                             var fila = "<tr>" +
                                         "<td style=\"display: none;\">" + "0" + "</td>" +
-                                        "<td>" + "0" + "</td>" +
+                                        "<td>" + result.id + "</td>" +
                                         "<td>" + $('#txtFecha').val() + "</td>" +
-                                        "<td>" + "0" + "</td>" +
+                                        "<td>" + result.dias + "</td>" +
                                         "<td><a class=\"eliminar\" href=\"javascript:;\">eliminar</a></td>" +
                                         "</tr>";
-                            $('#tblListadoProgramacion tbody').append(fila);
-
-                            $('#dialogFechaProgramacion').dialog('close');
-                        }
+                            $('#tblListadoProgramacion tbody').append(fila);                                                
+                        } else {
+                    __ShowMessage(result.error);
+                }
                     },
                     error: function () {
                         __ShowMessage('No se pudo agregar');

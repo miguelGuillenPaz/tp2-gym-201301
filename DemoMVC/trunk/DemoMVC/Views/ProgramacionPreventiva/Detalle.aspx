@@ -22,8 +22,10 @@
         <div>
             <h1>
                 Programacion Maquinarias y Equipo </h1>
-
-       <%--     <table id="datos"  class="table100">
+                <% if (Model != null)
+                   { %>
+                   <%= Html.HiddenFor(m=>m.idProgramacionPreventiva) %>
+            <table id="datos"  class="table100">
                 <tr>
                     <td>
                         Código
@@ -58,7 +60,7 @@
                     </td>
                 </tr>
             </table>
---%>
+            <% } %>
             <table id="tblListadoProgramacion"  class="table100 table100b">
                 <thead>
                     <tr>
@@ -85,13 +87,14 @@
                            var i = 0;
                            foreach (var item in Model.PMP_DetalleProgramacionPreventiva)
                            {
+                               i = i + 1;
                     %>
                     <tr>
                         <td style="display: none;">
                             <%= item.idDetalleProgramacionPreventiva %>
                         </td>
-                        <td>
-                            <%=i++%>
+                        <td>                            
+                            <%= i%>
                         </td>
                         <td>
                             <%=item.fechaProgramacion %>
@@ -112,7 +115,8 @@
         </div>
     </div>
    <div id="dialogFechaProgramacion" title="" style="display: none; z-index: 1000;">
-        <input type="hidden" id="hdnIdDetalle" value='<%: ViewData["idProgramacion"]%>' />
+        <input type="hidden" id="hdnIdDetalle" value='0' />
+
        <table style="width: 100%;">
            <tr>
                <td>
