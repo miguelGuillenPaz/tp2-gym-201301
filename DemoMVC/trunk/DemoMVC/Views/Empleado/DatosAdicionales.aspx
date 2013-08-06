@@ -191,13 +191,13 @@
                                            { %>
                                     <tr>
                                         <td style="display: none;">
-                                            <%= item.idDerechoHabiente %>
+                                            <%= item.idPersona %>
                                         </td>
                                         <td>
                                             <%= item.GRH_Persona.nombre %>                                            
                                         </td>
                                         <td>
-                                            <%= item.GRH_Persona.GRH_Documento.FirstOrDefault().idTipoDocumento %>                                            
+                                            
                                         </td>
                                         <td style="display: none;">                                            
                                         </td>

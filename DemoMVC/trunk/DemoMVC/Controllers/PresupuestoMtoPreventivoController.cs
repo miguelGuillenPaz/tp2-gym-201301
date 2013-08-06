@@ -55,6 +55,10 @@ namespace DemoMVC.Controllers
             return View(res);
         }
 
+        public ActionResult Crear()
+        {              
+            return View(new PMP_Entities().PMP_MaquinariaEquipo.ToList());
+        }
         [HttpPost]
         public ActionResult Crear(FormCollection formCollection)
         {

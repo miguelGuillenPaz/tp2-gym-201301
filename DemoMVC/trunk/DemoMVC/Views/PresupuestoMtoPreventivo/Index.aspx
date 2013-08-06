@@ -25,12 +25,12 @@
 
             <% using (Html.BeginForm())
                { %>
-            <hr>
+            
             <div class="editor-label">
                 <table>
                     <tr>
                         <td>
-                            <label for="Ano">
+                            <label for="txtAno">
                                 Año:</label>
                         </td>
                         <td>
@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="Descripcion">
+                            <label for="txtDescripcion">
                                 Descripción:</label>
                         </td>
                         <td>
@@ -48,7 +48,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="Estado">
+                            <label for="ddlEstado">
                                 Estado:</label>
                         </td>
                         <td>
@@ -63,10 +63,11 @@
                     </tr>
                 </table>
                 <input type="submit" value="Consultar" />
-                <P>
-                Filtros [Año: <%=ViewData["ano"]  %>  Descripción: <%=ViewData["descripcion"]%> Estado: <%=ViewData["estado"] %>]<br />
-                Nro. de Registros: <%=ViewData["nregistros"] %>
-                </P>
+                <p>
+                Filtros [Año: <%=ViewData["ano"]  %>  ]</p>
+                <p>Descripción: [<%=ViewData["descripcion"]%> Estado: <%=ViewData["estado"] %>]</p>
+                <p>Nro. de Registros: [<%=ViewData["nregistros"] %>]
+                </p>
             </div>
             <hr>
             <% } %>
@@ -155,94 +156,5 @@
             </table>
             <a id="addPresupuesto" href="/PresupuestoMtoPreventivo/Crear">Crear</a>
         </div>
-    </div>
-    <div id="dialogPresupuesto" title="" style="display: none; z-index: 1000;">
-        <input type="hidden" id="hdnPresupuesto" />
-        <input type="hidden" id="hdnAccionPresupuesto" />
-        <table>
-            <tr>
-                <td>
-                    Código Presupuesto
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                    <%= Html.TextBoxFor(m => m.FirstOrDefault().idPptoMtoPreventivo, new { @id = "txtIdPptoMtoPreventivo", @class = "required" })%>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Año Presupuesto
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                    <%= Html.TextBoxFor(m => m.FirstOrDefault().ano, new { @id = "txtAno", @class = "required" })%>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    Descripción Presupuesto
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                    <%= Html.TextBoxFor(m => m.FirstOrDefault().descripcion, new { @id = "txtDescripcion", @class = "required" })%>
-                </td>
-            </tr>
-
-             <tr>
-                <td>
-                    Costo total fijo
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                    <%= Html.TextBoxFor(m => m.FirstOrDefault().montoEstimado, new { @id = "txtCostoTotalFijo", @class = "required" })%>
-                </td>
-            </tr>
-
-             <tr>
-                <td>
-                    Costo total final
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                    <%= Html.TextBoxFor(m => m.FirstOrDefault().montoFinal, new { @id = "txtCostoTotalFinal", @class = "required" })%>
-                </td>
-            </tr>
-
-             <tr>
-                <td>
-                    Cantidad
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                    <%= Html.TextBoxFor(m => m.FirstOrDefault().cantidadMantencion, new { @id = "txtCantidad", @class = "required" })%>
-                </td>
-            </tr>
-
-             <tr>
-                <td>
-                   Estado
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                     <%= Html.DropDownListFor(m => m.FirstOrDefault().estado, (IEnumerable<SelectListItem>)ViewData["TipoEstado"], new { @id = "ddlEstado", @class = "required" })%>
-                </td>
-            </tr>
-
-        </table>
-    </div>
+    </div>    
 </asp:Content>

@@ -1724,7 +1724,7 @@ ul.valores li
     -moz-transition: all 400ms ease-in-out;
     -ms-transition: all 400ms ease-in-out;
     -o-transition: all 400ms ease-in-out;
-    transition: all 400ms ease-in-out;s
+    transition: all 400ms ease-in-out;
 }
 
 #nav_tipos .tipos_shortcuts .shortcut:hover img
@@ -1980,3 +1980,14 @@ ul.politicas_pdf li.ambiental
 }
 
 .required{}
+
+.enviar { }
+.cantidad {
+    text-align: right;
+}
+
+ .detalle { }
+ 
+ #tblListadoEquipos {
+     width: 100%;
+ }
