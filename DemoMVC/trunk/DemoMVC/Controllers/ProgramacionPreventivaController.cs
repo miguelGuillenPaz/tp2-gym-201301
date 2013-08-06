@@ -18,15 +18,30 @@ namespace DemoMVC.Controllers
         {
             _entities = new PMP_Entities();
 
-            var presupuesto = _entities.PMP_PptoMtoPreventivo.ToList();
+            var res = _entities.PMP_ProgramacionPreventiva.ToList();
 
             ViewData["ano"] = "";
             ViewData["descripcion"] = "";
             ViewData["estado"] = "TODOS";
             ViewData["TipoEstado"] = CrearTipoEstado();
-            ViewData["nregistros"] = presupuesto.Count;
+            ViewData["nregistros"] = res.Count;
 
-            return View(presupuesto);
+            return View(res);
+        }
+
+        public ActionResult Detalle(int? id)
+        {
+            _entities = new PMP_Entities();
+
+            var res = (from r in _entities.PMP_DetalleProgramacionPreventiva where r.idProgramacionPreventiva == id select r).ToList();
+
+            ViewData["ano"] = "";
+            ViewData["descripcion"] = "";
+            ViewData["estado"] = "TODOS";
+            ViewData["TipoEstado"] = CrearTipoEstado();
+            ViewData["nregistros"] = res.Count;
+
+            return View(res);
         }
 
         [HttpPost]
@@ -134,20 +149,7 @@ namespace DemoMVC.Controllers
                         behavior: JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Detalle(int? idPptoMtoPreventivo)
-        {
-            _entities = new PMP_Entities();
-
-            var presupuesto = _entities.PMP_PptoMtoPreventivo.ToList();
-
-            ViewData["ano"] = "";
-            ViewData["descripcion"] = "";
-            ViewData["estado"] = "TODOS";
-            ViewData["TipoEstado"] = CrearTipoEstado();
-            ViewData["nregistros"] = presupuesto.Count;
-
-            return View(presupuesto);
-        }
+      
 
         //
         // GET: /PresupuestoMtoPreventivo/Details/5
