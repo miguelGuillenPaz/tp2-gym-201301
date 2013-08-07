@@ -48,8 +48,7 @@
                 var data = {
                     id: id,
                     fecha: fecha
-                };
-                alert(JSON.stringify(data));
+                };                
                 var url = '/ProgramacionPreventiva/SetFecha';
                 $.ajax({
                     type: 'POST',
@@ -59,11 +58,11 @@
                         $('#dialogFechaProgramacion').dialog('close');    
                         if (result.result) {
                             var fila = "<tr>" +
-                                        "<td style=\"display: none;\">" + "0" + "</td>" +
-                                        "<td>" + result.id + "</td>" +
+                                        "<td style=\"display: none;\">" + result.id + "</td>" +
+                                        "<td>" + ($('#tblListadoProgramacion tbody tr').length + 1) + "</td>" +
                                         "<td>" + $('#txtFecha').val() + "</td>" +
                                         "<td>" + result.dias + "</td>" +
-                                        "<td><a class=\"eliminar\" href=\"javascript:;\">eliminar</a></td>" +
+                                        "<td><a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
                             $('#tblListadoProgramacion tbody').append(fila);                                                
                         } else {

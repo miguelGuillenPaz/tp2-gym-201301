@@ -399,33 +399,31 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="PMP_Model" ZoomLevel="74">
-        <EntityTypeShape EntityType="PMPDBModel.PMP_DetallePptoMtoPreventivo" Width="1.5" PointX="3" PointY="5" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="PMPDBModel.PMP_DetalleProgramacionPreventiva" Width="1.5" PointX="8.25" PointY="5.25" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="PMPDBModel.PMP_DetallePptoMtoPreventivo" Width="1.5" PointX="3.625" PointY="3.625" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="PMPDBModel.PMP_DetalleProgramacionPreventiva" Width="1.5" PointX="9.625" PointY="5" Height="1.9802864583333317" />
         <EntityTypeShape EntityType="PMPDBModel.PMP_MaquinariaEquipo" Width="1.5" PointX="0.75" PointY="4.625" Height="3.1340950520833317" />
         <EntityTypeShape EntityType="PMPDBModel.PMP_PptoMtoPreventivo" Width="1.5" PointX="0.75" PointY="0.75" Height="2.9417936197916674" />
         <EntityTypeShape EntityType="PMPDBModel.PMP_ProgramacionPreventiva" Width="1.5" PointX="6" PointY="4.75" Height="2.9417936197916674" />
         <AssociationConnector Association="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" >
-          <ConnectorPoint PointX="2.25" PointY="6.1824446614583337" />
-          <ConnectorPoint PointX="3" PointY="6.1824446614583337" />
+          <ConnectorPoint PointX="2.25" PointY="5.3074446614583337" />
+          <ConnectorPoint PointX="3.625" PointY="5.3074446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_PptoMtoPreventivo" >
-          <ConnectorPoint PointX="2.25" PointY="2.2208968098958337" />
-          <ConnectorPoint PointX="3.75" PointY="2.2208968098958337" />
-          <ConnectorPoint PointX="3.75" PointY="5" />
+          <ConnectorPoint PointX="2.25" PointY="2.1874995" />
+          <ConnectorPoint PointX="4.375" PointY="2.1874995" />
+          <ConnectorPoint PointX="4.375" PointY="3.625" />
         </AssociationConnector>
         <AssociationConnector Association="PMPDBModel.FK_PMP_DetalleProgramacionPreventiva_PMP_ProgramacionPreventiva" >
-          <ConnectorPoint PointX="7.5" PointY="6.2401432291666659" />
-          <ConnectorPoint PointX="8.25" PointY="6.2401432291666659" />
+          <ConnectorPoint PointX="7.5" PointY="5.9901432291666659" />
+          <ConnectorPoint PointX="9.625" PointY="5.9901432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" >
-          <ConnectorPoint PointX="2.25" PointY="7.5595914713541674" />
-          <ConnectorPoint PointX="6" PointY="7.5595914713541674" />
+          <ConnectorPoint PointX="2.25" PointY="6.8720914713541674" />
+          <ConnectorPoint PointX="6" PointY="6.8720914713541674" />
         </AssociationConnector>
         <AssociationConnector Association="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_PptoMtoPreventivo" >
-          <ConnectorPoint PointX="2.25" PointY="2.9875977148437514" />
-          <ConnectorPoint PointX="3.6666666666666665" PointY="2.9875977148437509" />
-          <ConnectorPoint PointX="3.8333333333333335" PointY="2.9875977148437514" />
-          <ConnectorPoint PointX="6.75" PointY="2.9875977148437514" />
+          <ConnectorPoint PointX="2.25" PointY="1.4374972499999992" />
+          <ConnectorPoint PointX="6.75" PointY="1.4374972499999992" />
           <ConnectorPoint PointX="6.75" PointY="4.75" />
         </AssociationConnector>
       </Diagram>

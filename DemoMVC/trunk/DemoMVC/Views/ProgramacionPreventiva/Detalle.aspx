@@ -21,11 +21,10 @@
     <div class="contenido-top">
         <div>
             <h1>
-                Programacion Maquinarias y Equipo </h1>
-                <% if (Model != null)
-                   { %>
-                   <%= Html.HiddenFor(m=>m.idProgramacionPreventiva) %>
-            <table id="datos"  class="table100">
+                Programacion Maquinarias y Equipo
+            </h1>
+            <%= Html.HiddenFor(m=>m.idProgramacionPreventiva) %>
+            <table id="datos" class="table100">
                 <tr>
                     <td>
                         Código
@@ -34,7 +33,7 @@
                         :
                     </td>
                     <td>
-                        <%: Model.PMP_MaquinariaEquipo.idMaquinariaEquipo %>
+                        <%= Model.PMP_MaquinariaEquipo.idMaquinariaEquipo %>
                     </td>
                 </tr>
                 <tr>
@@ -45,7 +44,7 @@
                         :
                     </td>
                     <td>
-                        <%: Model.PMP_MaquinariaEquipo.descripcion %>
+                        <%= Model.PMP_MaquinariaEquipo.descripcion %>
                     </td>
                 </tr>
                 <tr>
@@ -56,12 +55,12 @@
                         :
                     </td>
                     <td>
-                         <%: Model.PMP_MaquinariaEquipo.fechaRegistro %>
+                        <%=  Model.PMP_MaquinariaEquipo.fechaRegistro %>
                     </td>
                 </tr>
             </table>
-            <% } %>
-            <table id="tblListadoProgramacion"  class="table100 table100b">
+            <%= Html.HiddenFor(m=> m.maximaCantidadMantenimientos) %>
+            <table id="tblListadoProgramacion" class="table100 table100b">
                 <thead>
                     <tr>
                         <th style="display: none;">
@@ -75,10 +74,10 @@
                         </th>
                         <th>
                             <b>Dias Faltantes</b>
-                        </th>  
+                        </th>
                         <th>
                             <b>Eliminar</b>
-                        </th>                       
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,48 +87,53 @@
                            foreach (var item in Model.PMP_DetalleProgramacionPreventiva)
                            {
                                i = i + 1;
+                               var ts = new TimeSpan();
                     %>
                     <tr>
                         <td style="display: none;">
                             <%= item.idDetalleProgramacionPreventiva %>
                         </td>
-                        <td>                            
+                        <td>
                             <%= i%>
                         </td>
                         <td>
                             <%=item.fechaProgramacion %>
                         </td>
                         <td>
-                            0
-                        </td>       
-                         <td>
+                            <% 
+                                if (item.fechaProgramacion != null)
+                               {
+                                   var diaProg = (DateTime)item.fechaProgramacion;
+                                   ts = diaProg - DateTime.Now;
+                                   // Diferencia en días.                                   
+                               }%>
+                            <%=  ts.Days %>
+                        </td>
+                        <td>
                             <a class="eliminar" href="javascript:;">Eliminar</a>
-                        </td>                   
+                        </td>
                     </tr>
                     <%}
                        } %>
                 </tbody>
-            </table>          
-        
-            <a id="addFecha" href="javascript:;">Agregar</a>
+            </table>
+            <a id="addFecha" href="javascript:;">Agregar</a> | <a id="a1" href="/ProgramacionPreventiva">Regresar</a>
         </div>
     </div>
-   <div id="dialogFechaProgramacion" title="" style="display: none; z-index: 1000;">
+    <div id="dialogFechaProgramacion" title="" style="display: none; z-index: 1000;">
         <input type="hidden" id="hdnIdDetalle" value='0' />
-
-       <table style="width: 100%;">
-           <tr>
-               <td>
-                   Fecha
-               </td>
-               <td>
-                   :
-               </td>
-               <td>
-                   <input id="txtFecha" type="date" />
-               </td>
-           </tr>
-    
-       </table>
-   </div>
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    Fecha
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <input id="txtFecha" type="date" />
+                </td>
+            </tr>
+        </table>
+    </div>
 </asp:Content>

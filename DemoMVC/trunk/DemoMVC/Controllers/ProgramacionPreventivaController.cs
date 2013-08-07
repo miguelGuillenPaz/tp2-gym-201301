@@ -16,17 +16,15 @@ namespace DemoMVC.Controllers
 
         public ActionResult Index()
         {
-            _entities = new PMP_Entities();            
-
             ViewData["ano"] = "";
             ViewData["descripcion"] = "";
             ViewData["estado"] = "TODOS";
             ViewData["TipoEstado"] = CrearTipoEstado();
             ViewData["PresupuestosAprobados"] = PresupuestosAprobados();
             ViewData["nregistros"] = 0;
-
+            
             return View();
-        }
+        }    
 
         [HttpPost]
         public ActionResult Index(FormCollection formCollection)
@@ -36,21 +34,22 @@ namespace DemoMVC.Controllers
             ViewData["PresupuestosAprobados"] = PresupuestosAprobados();
             int idPresupuesto = Convert.ToInt32(formCollection["ddlPresupuestosAprobados"]);
             var res = (from r in _entities.PMP_ProgramacionPreventiva where r.idPptoMtoPreventivo == idPresupuesto select r).ToList();
-            if (res.Count ==0)
+            if (res.Count == 0)
             {
                 var pre = (from r in _entities.PMP_DetallePptoMtoPreventivo where r.idPptoMtoPreventivo == idPresupuesto select r).ToList();
                 if (pre.Count > 0)
                 {
-                    foreach (var item in pre){
-                         var pro = new PMP_ProgramacionPreventiva
-                             {
-                                 idPptoMtoPreventivo = item.idPptoMtoPreventivo,
-                                 idMaquinariaEquipo = item.idMaquinariaEquipo,
-                                 cantidadMantenimientos = 0,
-                                 fechaMaxima = DateTime.Now.AddDays(100),
-                                 maximaCantidadMantenimientos = item.cantidadMantenimiento,
-                                 estadoActualEquipo = "OPERATIVO"
-                             };
+                    foreach (var item in pre)
+                    {
+                        var pro = new PMP_ProgramacionPreventiva
+                            {
+                                idPptoMtoPreventivo = item.idPptoMtoPreventivo,
+                                idMaquinariaEquipo = item.idMaquinariaEquipo,
+                                cantidadMantenimientos = 0,
+                                fechaMaxima = DateTime.Now.AddDays(100),
+                                maximaCantidadMantenimientos = item.cantidadMantenimiento,
+                                estadoActualEquipo = "OPERATIVO"
+                            };
                         _entities.AddToPMP_ProgramacionPreventiva(pro);
                         _entities.SaveChanges();
                     }
@@ -66,22 +65,13 @@ namespace DemoMVC.Controllers
         {
             _entities = new PMP_Entities();
 
-            //var res = (from r in _entities.PMP_DetalleProgramacionPreventiva where r.idProgramacionPreventiva == id select r).ToList();
-            var res = (from r in _entities.PMP_ProgramacionPreventiva where r.PMP_PptoMtoPreventivo.idPptoMtoPreventivo == id select r).FirstOrDefault();
-
-            ////if (res2 != null)
-            ////{
-            ////    ViewData["idProgramacion"] = id;
-            ////    ViewData["codigo"] = res2.PMP_MaquinariaEquipo.idMaquinariaEquipo;
-            ////    ViewData["descripcion"] = res2.PMP_MaquinariaEquipo.descripcion;
-            ////    ViewData["fechaadquisicion"] = res2.PMP_MaquinariaEquipo.fechaRegistro;
-            ////}
+            var res = (from r in _entities.PMP_ProgramacionPreventiva where r.idProgramacionPreventiva == id select r).FirstOrDefault();
 
             return View(res);
         }
 
         public ActionResult SetFecha(int id, string fecha)
-        { 
+        {
             _entities = new PMP_Entities();
             bool resultado;
             var errorMensaje = string.Empty;
@@ -101,17 +91,19 @@ namespace DemoMVC.Controllers
 
                 if (head.maximaCantidadMantenimientos > detail.Count)
                 {
+                    head.cantidadMantenimientos = detail.Count + 1;
                     var prog = new PMP_DetalleProgramacionPreventiva
                         {
                             idProgramacionPreventiva = id,
                             fechaProgramacion = DateTime.Parse(fecha)
                         };
-                    DateTime diaProg = DateTime.Parse(fecha);                    
+                    DateTime diaProg = DateTime.Parse(fecha);
                     TimeSpan ts = diaProg - DateTime.Now;
                     // Diferencia en días.
-                    diferenciaEnDias= ts.Days;
+                    diferenciaEnDias = ts.Days;
                     _entities.AddToPMP_DetalleProgramacionPreventiva(prog);
                     _entities.SaveChanges();
+
                     idDetalle = prog.idDetalleProgramacionPreventiva;
                     resultado = true;
                 }
@@ -127,35 +119,10 @@ namespace DemoMVC.Controllers
                 resultado = false;
             }
 
-            return Json(data: new { result = resultado, id = idDetalle, dias= diferenciaEnDias, error = errorMensaje},
+            return Json(data: new { result = resultado, id = idDetalle, dias = diferenciaEnDias, error = errorMensaje },
                         behavior: JsonRequestBehavior.AllowGet);
         }
 
-        //[HttpPost]
-        //public ActionResult Index(FormCollection formCollection)
-        //{
-        //    _entities = new PMP_Entities();
-
-        //    int? ano = formCollection["txtAno"].ToString() == "" ? 0 : int.Parse(formCollection["txtAno"].ToString());
-        //    String descripcion = formCollection["txtDescripcion"].ToString().Trim();
-        //    String estado = formCollection["ddlEstado"].ToString().Trim();
-
-        //    var res = (from r in _entities.PMP_PptoMtoPreventivo where (ano == 0 || r.ano == ano) select r).ToList();
-
-        //    if (descripcion != "")
-        //        res = (from r in res where r.descripcion == descripcion select r).ToList();
-
-        //    if (estado != "TODOS")
-        //        res = (from r in res where r.estado == estado select r).ToList();
-
-        //    ViewData["ano"] = ano;
-        //    ViewData["descripcion"] = descripcion;
-        //    ViewData["estado"] = estado;
-        //    ViewData["TipoEstado"] = CrearTipoEstado();
-        //    ViewData["nregistros"] = res.Count;
-
-        //    return View(res);
-        //}
 
         public ActionResult Eliminar(int id)
         {
@@ -238,74 +205,9 @@ namespace DemoMVC.Controllers
 
 
 
-      
-
-        //
-        // GET: /PresupuestoMtoPreventivo/Create
-
-        public ActionResult Crear()
-        {
-            return View();
-        }
-
-        //
-        // POST: /PresupuestoMtoPreventivo/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /PresupuestoMtoPreventivo/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /PresupuestoMtoPreventivo/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /PresupuestoMtoPreventivo/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /PresupuestoMtoPreventivo/Delete/5
-
         private IEnumerable PresupuestosAprobados()
         {
-
+            _entities = new PMP_Entities();
             var resultado = new List<SelectListItem>
                 {
                     new SelectListItem
