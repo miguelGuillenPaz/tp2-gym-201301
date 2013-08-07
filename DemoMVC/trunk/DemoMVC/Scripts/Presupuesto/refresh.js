@@ -14,10 +14,11 @@
     }
 
     $('.cantidad').change(function () {
-        var tr = $(this).parent().parent();
-        var montoFijo = $.trim($('td:eq(3)', tr).text());
-        var cantidad = $(this).val();
-        $('td:eq(5)', tr).text((montoFijo * cantidad).toFixed(2));
+        var tr = $(this).parent().parent();        
+        var montoFijo = parseFloat($.trim($('td:eq(3)', tr).text()));
+        var cantidad = parseFloat($(this).val());
+        var montoTotal = montoFijo * cantidad;
+        $('td:eq(5)', tr).text(montoTotal.toFixed(2));        
         calcularTotales();
     });
 
