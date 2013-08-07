@@ -29,7 +29,7 @@
                             <span class="titulo-noticia">Empleados Aprobados: <%= Model.Count() %></span>
                         </div>
                         <div class="texto-noticia">
-                            <table>
+                            <table class="table100 table100b">
                                 <thead>
                                     <tr>
                                         <th>

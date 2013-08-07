@@ -28,7 +28,20 @@
                             <td>                                
                                 <%= Html.DisplayTextFor(m => m.descripcion)%>
                             </td>
-                        </tr>                        
+                        </tr>          
+                        <tr>
+                            <td>
+                                <label>
+                                    Tipo:</label>
+                            </td>
+                            <td>                                
+                                <select id="ddlTipo">
+                                    <option value="">TODOS</option>
+                                    <option value="MAQUINARIA">MAQUINARIA</option>
+                                    <option value="EQUIPO">EQUIPO</option>
+                                </select>
+                            </td>
+                        </tr>               
                         <tr>
                             <td>
                                 <label>
@@ -66,7 +79,7 @@
                                         </th>
                                         <th>
                                             <b>Descripción</b>
-                                        </th>
+                                        </th>                                        
                                         <th style="width: 150px; text-align: right">
                                             <b>Costo total fijo</b>
                                         </th>
@@ -78,6 +91,9 @@
                                         </th>
                                         <th style="display: none;">
                                             <b>IdDetalle</b>
+                                        </th>
+                                        <th style="text-align: center;">
+                                            <b>Tipo</b>
                                         </th>
                                     </tr>
                                 </thead>
@@ -109,6 +125,9 @@
                                         <td style="display: none;">
                                             <%=pre.idDetallePptoMtoPreventivo %>
                                         </td>
+                                        <td style="text-align: center;">
+                                            <%=pre.PMP_MaquinariaEquipo.tipo %>
+                                        </td>
                                     </tr>
                                     <%}
                                        } %>
@@ -123,12 +142,14 @@
                                         <td style="width: 150px; text-align: right"><b id="cantidad"><%= Model!=null? Model.cantidadMantencion + string.Empty:"0.0000"%></b></td>
                                         <td style="width: 150px; text-align: right"><b id="costoTotalFinal"><%= Model!=null? Model.montoFinal + string.Empty:"0.0000"%></b></td>
                                         <td style="display: none;"></td>
+                                        <td></td>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </div>
-                    <a id="btnCancelar" href="/Presupuesto">Regresar</a>
+                    <%--<a id="btnCancelar" href="/Presupuesto">Regresar</a>--%>
+                    <%= Html.ActionLink("Regresar","Index") %>
                 </div>
             </div>
         </div>

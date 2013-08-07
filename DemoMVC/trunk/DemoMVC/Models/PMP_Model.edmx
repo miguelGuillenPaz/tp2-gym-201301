@@ -64,6 +64,7 @@
           <Property Name="fechaBaja" Type="datetime" />
           <Property Name="fechaExpiracionGarantia" Type="datetime" />
           <Property Name="costoMantenimiento" Type="decimal" Scale="2" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PMP_PptoMtoPreventivo">
           <Key>
@@ -157,13 +158,8 @@
         <EntityContainer Name="PMP_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PMP_DetallePptoMtoPreventivo" EntityType="PMPDBModel.PMP_DetallePptoMtoPreventivo" />
           <EntitySet Name="PMP_DetalleProgramacionPreventiva" EntityType="PMPDBModel.PMP_DetalleProgramacionPreventiva" />
-          <EntitySet Name="PMP_MaquinariaEquipo" EntityType="PMPDBModel.PMP_MaquinariaEquipo" />
           <EntitySet Name="PMP_PptoMtoPreventivo" EntityType="PMPDBModel.PMP_PptoMtoPreventivo" />
           <EntitySet Name="PMP_ProgramacionPreventiva" EntityType="PMPDBModel.PMP_ProgramacionPreventiva" />
-          <AssociationSet Name="FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" Association="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo">
-            <End Role="PMP_MaquinariaEquipo" EntitySet="PMP_MaquinariaEquipo" />
-            <End Role="PMP_DetallePptoMtoPreventivo" EntitySet="PMP_DetallePptoMtoPreventivo" />
-          </AssociationSet>
           <AssociationSet Name="FK_PMP_DetallePptoMtoPreventivo_PMP_PptoMtoPreventivo" Association="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_PptoMtoPreventivo">
             <End Role="PMP_PptoMtoPreventivo" EntitySet="PMP_PptoMtoPreventivo" />
             <End Role="PMP_DetallePptoMtoPreventivo" EntitySet="PMP_DetallePptoMtoPreventivo" />
@@ -172,12 +168,17 @@
             <End Role="PMP_ProgramacionPreventiva" EntitySet="PMP_ProgramacionPreventiva" />
             <End Role="PMP_DetalleProgramacionPreventiva" EntitySet="PMP_DetalleProgramacionPreventiva" />
           </AssociationSet>
-          <AssociationSet Name="FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" Association="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo">
-            <End Role="PMP_MaquinariaEquipo" EntitySet="PMP_MaquinariaEquipo" />
-            <End Role="PMP_ProgramacionPreventiva" EntitySet="PMP_ProgramacionPreventiva" />
-          </AssociationSet>
           <AssociationSet Name="FK_PMP_ProgramacionPreventiva_PMP_PptoMtoPreventivo" Association="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_PptoMtoPreventivo">
             <End Role="PMP_PptoMtoPreventivo" EntitySet="PMP_PptoMtoPreventivo" />
+            <End Role="PMP_ProgramacionPreventiva" EntitySet="PMP_ProgramacionPreventiva" />
+          </AssociationSet>
+          <EntitySet Name="PMP_MaquinariaEquipo" EntityType="PMPDBModel.PMP_MaquinariaEquipo" />
+          <AssociationSet Name="FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" Association="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo">
+            <End Role="PMP_MaquinariaEquipo" EntitySet="PMP_MaquinariaEquipo" />
+            <End Role="PMP_DetallePptoMtoPreventivo" EntitySet="PMP_DetallePptoMtoPreventivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" Association="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo">
+            <End Role="PMP_MaquinariaEquipo" EntitySet="PMP_MaquinariaEquipo" />
             <End Role="PMP_ProgramacionPreventiva" EntitySet="PMP_ProgramacionPreventiva" />
           </AssociationSet>
         </EntityContainer>
@@ -190,8 +191,8 @@
           <Property Type="Int32" Name="idMaquinariaEquipo" Nullable="false" />
           <Property Type="Int32" Name="cantidadMantenimiento" />
           <Property Type="Decimal" Name="montoAprobado" Precision="18" Scale="2" />
-          <NavigationProperty Name="PMP_MaquinariaEquipo" Relationship="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" FromRole="PMP_DetallePptoMtoPreventivo" ToRole="PMP_MaquinariaEquipo" />
           <NavigationProperty Name="PMP_PptoMtoPreventivo" Relationship="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_PptoMtoPreventivo" FromRole="PMP_DetallePptoMtoPreventivo" ToRole="PMP_PptoMtoPreventivo" />
+          <NavigationProperty Name="PMP_MaquinariaEquipo" Relationship="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" FromRole="PMP_DetallePptoMtoPreventivo" ToRole="PMP_MaquinariaEquipo" />
         </EntityType>
         <EntityType Name="PMP_DetalleProgramacionPreventiva">
           <Key>
@@ -202,22 +203,6 @@
           <Property Type="Int32" Name="numeroProgramacion" />
           <Property Type="DateTime" Name="fechaProgramacion" />
           <NavigationProperty Name="PMP_ProgramacionPreventiva" Relationship="PMPDBModel.FK_PMP_DetalleProgramacionPreventiva_PMP_ProgramacionPreventiva" FromRole="PMP_DetalleProgramacionPreventiva" ToRole="PMP_ProgramacionPreventiva" />
-        </EntityType>
-        <EntityType Name="PMP_MaquinariaEquipo">
-          <Key>
-            <PropertyRef Name="idMaquinariaEquipo" />
-          </Key>
-          <Property Type="Int32" Name="idMaquinariaEquipo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="descripcion" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="marca" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="modelo" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="anoFabricacion" />
-          <Property Type="DateTime" Name="fechaRegistro" />
-          <Property Type="DateTime" Name="fechaBaja" />
-          <Property Type="DateTime" Name="fechaExpiracionGarantia" />
-          <Property Type="Decimal" Name="costoMantenimiento" Precision="18" Scale="2" />
-          <NavigationProperty Name="PMP_DetallePptoMtoPreventivo" Relationship="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" FromRole="PMP_MaquinariaEquipo" ToRole="PMP_DetallePptoMtoPreventivo" />
-          <NavigationProperty Name="PMP_ProgramacionPreventiva" Relationship="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" FromRole="PMP_MaquinariaEquipo" ToRole="PMP_ProgramacionPreventiva" />
         </EntityType>
         <EntityType Name="PMP_PptoMtoPreventivo">
           <Key>
@@ -246,21 +231,9 @@
           <Property Type="Int32" Name="maximaCantidadMantenimientos" />
           <Property Type="String" Name="estadoActualEquipo" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PMP_DetalleProgramacionPreventiva" Relationship="PMPDBModel.FK_PMP_DetalleProgramacionPreventiva_PMP_ProgramacionPreventiva" FromRole="PMP_ProgramacionPreventiva" ToRole="PMP_DetalleProgramacionPreventiva" />
-          <NavigationProperty Name="PMP_MaquinariaEquipo" Relationship="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" FromRole="PMP_ProgramacionPreventiva" ToRole="PMP_MaquinariaEquipo" />
           <NavigationProperty Name="PMP_PptoMtoPreventivo" Relationship="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_PptoMtoPreventivo" FromRole="PMP_ProgramacionPreventiva" ToRole="PMP_PptoMtoPreventivo" />
+          <NavigationProperty Name="PMP_MaquinariaEquipo" Relationship="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" FromRole="PMP_ProgramacionPreventiva" ToRole="PMP_MaquinariaEquipo" />
         </EntityType>
-        <Association Name="FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo">
-          <End Type="PMPDBModel.PMP_MaquinariaEquipo" Role="PMP_MaquinariaEquipo" Multiplicity="1" />
-          <End Type="PMPDBModel.PMP_DetallePptoMtoPreventivo" Role="PMP_DetallePptoMtoPreventivo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PMP_MaquinariaEquipo">
-              <PropertyRef Name="idMaquinariaEquipo" />
-            </Principal>
-            <Dependent Role="PMP_DetallePptoMtoPreventivo">
-              <PropertyRef Name="idMaquinariaEquipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PMP_DetallePptoMtoPreventivo_PMP_PptoMtoPreventivo">
           <End Type="PMPDBModel.PMP_PptoMtoPreventivo" Role="PMP_PptoMtoPreventivo" Multiplicity="1" />
           <End Type="PMPDBModel.PMP_DetallePptoMtoPreventivo" Role="PMP_DetallePptoMtoPreventivo" Multiplicity="*" />
@@ -285,18 +258,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo">
-          <End Type="PMPDBModel.PMP_MaquinariaEquipo" Role="PMP_MaquinariaEquipo" Multiplicity="0..1" />
-          <End Type="PMPDBModel.PMP_ProgramacionPreventiva" Role="PMP_ProgramacionPreventiva" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PMP_MaquinariaEquipo">
-              <PropertyRef Name="idMaquinariaEquipo" />
-            </Principal>
-            <Dependent Role="PMP_ProgramacionPreventiva">
-              <PropertyRef Name="idMaquinariaEquipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PMP_ProgramacionPreventiva_PMP_PptoMtoPreventivo">
           <End Type="PMPDBModel.PMP_PptoMtoPreventivo" Role="PMP_PptoMtoPreventivo" Multiplicity="0..1" />
           <End Type="PMPDBModel.PMP_ProgramacionPreventiva" Role="PMP_ProgramacionPreventiva" Multiplicity="*" />
@@ -306,6 +267,47 @@
             </Principal>
             <Dependent Role="PMP_ProgramacionPreventiva">
               <PropertyRef Name="idPptoMtoPreventivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PMP_MaquinariaEquipo">
+          <Key>
+            <PropertyRef Name="idMaquinariaEquipo" />
+          </Key>
+          <Property Type="Int32" Name="idMaquinariaEquipo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="descripcion" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="marca" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="modelo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="anoFabricacion" />
+          <Property Type="DateTime" Name="fechaRegistro" />
+          <Property Type="DateTime" Name="fechaBaja" />
+          <Property Type="DateTime" Name="fechaExpiracionGarantia" />
+          <Property Type="Decimal" Name="costoMantenimiento" Precision="18" Scale="2" />
+          <Property Type="String" Name="tipo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PMP_DetallePptoMtoPreventivo" Relationship="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" FromRole="PMP_MaquinariaEquipo" ToRole="PMP_DetallePptoMtoPreventivo" />
+          <NavigationProperty Name="PMP_ProgramacionPreventiva" Relationship="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" FromRole="PMP_MaquinariaEquipo" ToRole="PMP_ProgramacionPreventiva" />
+        </EntityType>
+        <Association Name="FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo">
+          <End Type="PMPDBModel.PMP_MaquinariaEquipo" Role="PMP_MaquinariaEquipo" Multiplicity="1" />
+          <End Type="PMPDBModel.PMP_DetallePptoMtoPreventivo" Role="PMP_DetallePptoMtoPreventivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PMP_MaquinariaEquipo">
+              <PropertyRef Name="idMaquinariaEquipo" />
+            </Principal>
+            <Dependent Role="PMP_DetallePptoMtoPreventivo">
+              <PropertyRef Name="idMaquinariaEquipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo">
+          <End Type="PMPDBModel.PMP_MaquinariaEquipo" Role="PMP_MaquinariaEquipo" Multiplicity="0..1" />
+          <End Type="PMPDBModel.PMP_ProgramacionPreventiva" Role="PMP_ProgramacionPreventiva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PMP_MaquinariaEquipo">
+              <PropertyRef Name="idMaquinariaEquipo" />
+            </Principal>
+            <Dependent Role="PMP_ProgramacionPreventiva">
+              <PropertyRef Name="idMaquinariaEquipo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -336,21 +338,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PMP_MaquinariaEquipo">
-            <EntityTypeMapping TypeName="PMPDBModel.PMP_MaquinariaEquipo">
-              <MappingFragment StoreEntitySet="PMP_MaquinariaEquipo">
-                <ScalarProperty Name="costoMantenimiento" ColumnName="costoMantenimiento" />
-                <ScalarProperty Name="fechaExpiracionGarantia" ColumnName="fechaExpiracionGarantia" />
-                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
-                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
-                <ScalarProperty Name="anoFabricacion" ColumnName="anoFabricacion" />
-                <ScalarProperty Name="modelo" ColumnName="modelo" />
-                <ScalarProperty Name="marca" ColumnName="marca" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="idMaquinariaEquipo" ColumnName="idMaquinariaEquipo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PMP_PptoMtoPreventivo">
             <EntityTypeMapping TypeName="PMPDBModel.PMP_PptoMtoPreventivo">
               <MappingFragment StoreEntitySet="PMP_PptoMtoPreventivo">
@@ -378,6 +365,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PMP_MaquinariaEquipo">
+            <EntityTypeMapping TypeName="PMPDBModel.PMP_MaquinariaEquipo">
+              <MappingFragment StoreEntitySet="PMP_MaquinariaEquipo">
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="costoMantenimiento" ColumnName="costoMantenimiento" />
+                <ScalarProperty Name="fechaExpiracionGarantia" ColumnName="fechaExpiracionGarantia" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="anoFabricacion" ColumnName="anoFabricacion" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idMaquinariaEquipo" ColumnName="idMaquinariaEquipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -401,13 +404,8 @@
       <Diagram Name="PMP_Model" ZoomLevel="74">
         <EntityTypeShape EntityType="PMPDBModel.PMP_DetallePptoMtoPreventivo" Width="1.5" PointX="3.625" PointY="3.625" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="PMPDBModel.PMP_DetalleProgramacionPreventiva" Width="1.5" PointX="9.625" PointY="5" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="PMPDBModel.PMP_MaquinariaEquipo" Width="1.5" PointX="0.75" PointY="4.625" Height="3.1340950520833317" />
         <EntityTypeShape EntityType="PMPDBModel.PMP_PptoMtoPreventivo" Width="1.5" PointX="0.75" PointY="0.75" Height="2.9417936197916674" />
         <EntityTypeShape EntityType="PMPDBModel.PMP_ProgramacionPreventiva" Width="1.5" PointX="6" PointY="4.75" Height="2.9417936197916674" />
-        <AssociationConnector Association="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" >
-          <ConnectorPoint PointX="2.25" PointY="5.3074446614583337" />
-          <ConnectorPoint PointX="3.625" PointY="5.3074446614583337" />
-        </AssociationConnector>
         <AssociationConnector Association="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_PptoMtoPreventivo" >
           <ConnectorPoint PointX="2.25" PointY="2.1874995" />
           <ConnectorPoint PointX="4.375" PointY="2.1874995" />
@@ -417,14 +415,19 @@
           <ConnectorPoint PointX="7.5" PointY="5.9901432291666659" />
           <ConnectorPoint PointX="9.625" PointY="5.9901432291666659" />
         </AssociationConnector>
-        <AssociationConnector Association="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" >
-          <ConnectorPoint PointX="2.25" PointY="6.8720914713541674" />
-          <ConnectorPoint PointX="6" PointY="6.8720914713541674" />
-        </AssociationConnector>
         <AssociationConnector Association="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_PptoMtoPreventivo" >
           <ConnectorPoint PointX="2.25" PointY="1.4374972499999992" />
           <ConnectorPoint PointX="6.75" PointY="1.4374972499999992" />
           <ConnectorPoint PointX="6.75" PointY="4.75" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PMPDBModel.PMP_MaquinariaEquipo" Width="1.5" PointX="0.75" PointY="5" Height="3.3263964843749987" />
+        <AssociationConnector Association="PMPDBModel.FK_PMP_DetallePptoMtoPreventivo_PMP_MaquinariaEquipo" >
+          <ConnectorPoint PointX="2.25" PointY="5.4949446614583328" />
+          <ConnectorPoint PointX="3.625" PointY="5.4949446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="PMPDBModel.FK_PMP_ProgramacionPreventiva_PMP_MaquinariaEquipo" >
+          <ConnectorPoint PointX="2.25" PointY="6.8720914713541656" />
+          <ConnectorPoint PointX="6" PointY="6.8720914713541656" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
