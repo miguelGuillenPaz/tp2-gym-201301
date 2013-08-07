@@ -1,5 +1,16 @@
 ﻿$(document).ready(function () {
 
+    $('#ano').keypress(
+            function (event) {
+                //Allow only backspace and delete                
+                if (event.keyCode != 48 && event.keyCode != 46 && event.keyCode != 8) {
+                    if (!parseInt(String.fromCharCode(event.which))) {
+                        event.preventDefault();
+                    }
+                }
+            }
+        );
+    
     $('#btnGrabar').click(function () {        
         var formDataDetalle = new Array();
         $('#tblListadoEquipos tbody tr').each(function () {

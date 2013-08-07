@@ -2,6 +2,17 @@
 
     var selectedPresupuesto;
 
+    $('#txtAno').keypress(
+            function (event) {
+                //Allow only backspace and delete                
+                if (event.keyCode != 48 && event.keyCode != 46 && event.keyCode != 8) {
+                    if (!parseInt(String.fromCharCode(event.which))) {
+                        event.preventDefault();
+                    }
+                }
+            }
+        );
+
     $('#tblListadoPresupuesto').delegate('.eliminar', "click", function () {
         var tr = $(this).parent().parent();
         var idPptoMtoPreventivo = $.trim($('td:eq(0)', tr).text());
