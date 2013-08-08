@@ -22,9 +22,9 @@ namespace DemoMVC.Controllers
             ViewData["TipoEstado"] = CrearTipoEstado();
             ViewData["PresupuestosAprobados"] = PresupuestosAprobados();
             ViewData["nregistros"] = 0;
-            
+
             return View();
-        }    
+        }
 
         [HttpPost]
         public ActionResult Index(FormCollection formCollection)
@@ -128,11 +128,25 @@ namespace DemoMVC.Controllers
         {
             _entities = new PMP_Entities();
 
-            var res = (from r in _entities.PMP_DetalleProgramacionPreventiva where r.idDetalleProgramacionPreventiva == id select r).FirstOrDefault();
+            var res =
+                (from r in _entities.PMP_DetalleProgramacionPreventiva
+                 where r.idDetalleProgramacionPreventiva == id
+                 select r).FirstOrDefault();
             if (res != null)
             {
+                int? idProgramacion = res.idProgramacionPreventiva;
                 _entities.DeleteObject(res);
                 _entities.SaveChanges();
+
+                var upd =
+                    (from r in _entities.PMP_ProgramacionPreventiva
+                     where r.idProgramacionPreventiva == idProgramacion
+                     select r).FirstOrDefault();
+                if (upd != null)
+                {
+                    upd.cantidadMantenimientos = upd.cantidadMantenimientos - 1;
+                    _entities.SaveChanges();
+                }
             }
 
             return Json(data: new { result = true },
