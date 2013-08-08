@@ -248,6 +248,15 @@
                                         <a id="addCorreo" href="javascript:;">Agregar</a>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Disponibilidad</td>
+                                    <td>:</td>
+                                    <td><%= Html.DisplayTextFor(m=> m.GRH_Postulante.FirstOrDefault().disponibilidad) %></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                             </table>
                         </div>
                     </div>

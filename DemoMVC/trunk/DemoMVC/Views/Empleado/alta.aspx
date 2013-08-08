@@ -20,7 +20,7 @@
     <div class="contenido-top">
         <div>
             <h1>
-                Procesaro Información del Empleado
+                Seleccionar Persona
             </h1>
             <div class="areas-negocios">
                 <div class="lista-central">
@@ -61,8 +61,8 @@
                                         <td>
                                             <%= grhPersona.apellidoMaterno %>
                                         </td>
-                                        <td>
-                                            <%= Html.ActionLink("Agregar", "DatosAdicionales", new { id = grhPersona.idPersona })%>
+                                        <td style="text-align: center;">
+                                            <%= Html.ActionLink("Procesar", "DatosAdicionales", new { id = grhPersona.idPersona })%>
                                         </td>
                                     </tr>
                                     <%

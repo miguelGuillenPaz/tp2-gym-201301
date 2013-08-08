@@ -520,7 +520,7 @@ namespace DemoMVC.Controllers
         #endregion
 
         public virtual ActionResult SetPersona(int idPersona, string nombre, string apellidoPaterno, string apellidoMaterno, int idEstadoCivil, bool sexo,
-            string direccion, int idPaisR, string fechaNacimiento, int idPaisN)
+            string direccion, int idPaisR, string fechaNacimiento, int idPaisN, string disponibilidad)
         {
             bool resultado;
             _entities = new GRH_Entities();
@@ -548,6 +548,16 @@ namespace DemoMVC.Controllers
                 _entities.AddToGRH_Persona(persona);
                 _entities.SaveChanges();
                 idPersona = persona.idPersona;
+
+                var postulante = new GRH_Postulante
+                    {
+                        idPersona = idPersona,
+                        disponibilidad = disponibilidad,
+                        aprobado = false
+                    };
+                _entities.AddToGRH_Postulante(postulante);
+                _entities.SaveChanges();
+
                 resultado = true;
             }
             else
@@ -569,6 +579,10 @@ namespace DemoMVC.Controllers
                                                                Convert.ToInt32(fechaNacimiento.Substring(8, 2)));
                     else
                         res.fechaNacimiento = null;
+
+                    var firstOrDefault = res.GRH_Postulante.FirstOrDefault();
+                    if (firstOrDefault != null)
+                        firstOrDefault.disponibilidad = disponibilidad;
 
                     _entities.SaveChanges();
                     resultado = true;

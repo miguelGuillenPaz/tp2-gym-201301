@@ -44,10 +44,38 @@
                                     <td>
                                     </td>
                                     <td>
+                                        Documentos
                                     </td>
                                     <td>
+                                        :
                                     </td>
                                     <td>
+                                        <table id="tblDocumento">
+                                            <tbody>
+                                                <% if (Model != null)
+                                                   {
+                                                       foreach (var documento in Model.GRH_Documento)
+                                                       {
+                                                %>
+                                                <tr>
+                                                    <td style="display: none;">
+                                                        <%= documento.idDocumento %>
+                                                    </td>
+                                                    <td style="display: none;">
+                                                        <%= documento.GRH_TipoDocumento!=null? documento.GRH_TipoDocumento.idTipoDocumento+"":string.Empty %>
+                                                    </td>
+                                                    <td>
+                                                        <%= documento.GRH_TipoDocumento!=null? documento.GRH_TipoDocumento.descripcion:string.Empty %>
+                                                    </td>
+                                                    <td>
+                                                        <%= documento.nroDocumento %>
+                                                    </td>                                                
+                                                </tr>
+                                                <%
+                                                       }
+                                                   } %>
+                                            </tbody>
+                                        </table>                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -138,6 +166,68 @@
                                         <%= Html.DisplayFor(m => m.GRH_Pais1.descripcion)%>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        Teléfonos
+                                    </td>
+                                    <td>
+                                        :
+                                    </td>
+                                    <td>
+                                        <table id="tblTelefono">
+                                            <tbody>
+                                                <% if (Model != null)
+                                                   {
+                                                       foreach (var telefono in Model.GRH_Telefono)
+                                                       {
+                                                %>
+                                                <tr>
+                                                    <td style="display: none;">
+                                                        <%= telefono.idTelefono %>
+                                                    </td>
+                                                    <td>
+                                                        <%= telefono.nroTelefono %>
+                                                    </td>                                                
+                                                </tr>
+                                                <%
+                                                       }
+                                                   } %>
+                                            </tbody>
+                                        </table>                                        
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        Correos
+                                    </td>
+                                    <td>
+                                        :
+                                    </td>
+                                    <td>
+                                        <table id="tblCorreo">
+                                            <tbody>
+                                                <% if (Model != null)
+                                                   {
+                                                       foreach (var correo in Model.GRH_Correo)
+                                                       {
+                                                %>
+                                                <tr>
+                                                    <td style="display: none;">
+                                                        <%= correo.idCorreo %>
+                                                    </td>
+                                                    <td>
+                                                        <%= correo.cuentaCorreo %>
+                                                    </td>                                        
+                                                </tr>
+                                                <%
+                                                       }
+                                                   } %>
+                                            </tbody>
+                                        </table>
+                                        
+                                    </td>
+                                </tr>
+                                
                             </table>
                         </div>
                     </div>
@@ -154,19 +244,25 @@
                                             <b>Id</b>
                                         </th>
                                         <th>
-                                            <b>Nombres y Apellidos</b>
+                                            <b>Nombres</b>
                                         </th>
                                         <th>
-                                            <b>Fecha de Nacimiento</b>
+                                            <b>Apellidos Paternos</b>
+                                        </th>
+                                        <th>
+                                            <b>Apellidos Maternos</b>
+                                        </th>
+                                        <th>
+                                            <b>Fec. Nacimiento</b>
                                         </th>
                                         <th style="display: none;">
                                             IdTipoDocumento
                                         </th>
                                         <th>
-                                            <b>Tipo de Documento</b>
+                                            <b>Tipo de Doc.</b>
                                         </th>
                                         <th>
-                                            <b>Número de Documento</b>
+                                            <b>Nro. de Documento</b>
                                         </th>
                                         <th style="display: none;">
                                             idSexo
@@ -178,7 +274,7 @@
                                             idTipoRelacion
                                         </th>
                                         <th>
-                                            <b>Tipo de Relación</b>
+                                            <b>Relación</b>
                                         </th>
                                         <th>
                                             <b>Opciones</b>
@@ -189,17 +285,19 @@
                                     <% if (Model != null)
                                        {
                                            foreach (var item in Model.GRH_Empleado)
-                                           { %>
-                                    <tr>
-                                        <td style="display: none;">
-                                            <%= item.idEmpleado %>
-                                        </td>                                        
-                                        <%
+                                           { 
                                                foreach (var der in item.GRH_DerechoHabiente)
                                                {
                                         %>
+                                        <tr>
                                         <td>
                                             <%= der.GRH_Persona.nombre %>
+                                        </td>
+                                        <td>
+                                            <%= der.GRH_Persona.apellidoPaterno %>
+                                        </td>
+                                        <td>
+                                            <%= der.GRH_Persona.apellidoMaterno %>
                                         </td>
                                         <td>
                                             <%= der.GRH_Persona.fechaNacimiento != null ? der.GRH_Persona.fechaNacimiento.Value.Year + "-" + der.GRH_Persona.fechaNacimiento.Value.Month.ToString().PadLeft(2, '0') + "-" + der.GRH_Persona.fechaNacimiento.Value.Day.ToString().PadLeft(2, '0') : string.Empty %>
@@ -226,15 +324,128 @@
                                             <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
                                                 Eliminar</a>
                                         </td>
+                                        </tr>
                                         <%
-                                                } %>
-                                    </tr>
-                                    <%
+                                                } 
                                            }
                                        } %>
                                 </tbody>
                             </table>
                             <a id="addEstudioRealizado" href="javascript:;">Agregar</a>
+                        </div>
+                    </div>
+                    <div class="noticia">
+                        <div class="head-noticia">
+                            <span class="titulo-noticia">Contrato Personal</span>
+                        </div>
+                        <div class="texto-noticia">
+                            <table id="tblContratoPersonal">
+                                <thead>
+                                    <tr>
+                                        <th style="display: none;">
+                                            <b>Id</b>
+                                        </th>
+                                        <th>
+                                            <b>Nro. Contrato</b>
+                                        </th>
+                                        <th>
+                                            <b>Fecha Inicio</b>
+                                        </th>
+                                        <th>
+                                            <b>Fecha Fin</b>
+                                        </th>                                        
+                                        <th>
+                                            <b>Opciones</b>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (Model != null)
+                                       {
+                                           foreach (var item in Model.GRH_Empleado)
+                                           { 
+                                               foreach (var der in item.GRH_ContratoPersonal)
+                                               {
+                                        %>
+                                        <tr>
+                                        <td style="display: none;">
+                                            <%= der.idContratoPersonal %>
+                                        </td>
+                                        <td>
+                                            <%= der.nroContrato %>
+                                        </td>
+                                        <td>                                            
+                                            <%=der.fechaInicio != null ? (der.fechaInicio.ToString().Substring(6, 4) + "-" + der.fechaInicio.ToString().Substring(3, 2) + "-" + der.fechaInicio.ToString().Substring(0, 2)) : string.Empty%>
+                                        </td>
+                                        <td>
+                                            <%=der.fechaFin != null ? (der.fechaFin.ToString().Substring(6, 4) + "-" + der.fechaFin.ToString().Substring(3, 2) + "-" + der.fechaFin.ToString().Substring(0, 2)) : string.Empty%>
+                                        </td>                                        
+                                        <td>
+                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                                Eliminar</a>
+                                        </td>
+                                        </tr>
+                                        <%
+                                                } 
+                                           }
+                                       } %>
+                                </tbody>
+                            </table>
+                            <a id="a1" href="javascript:;">Agregar</a>
+                        </div>
+                    </div>
+                    <div class="noticia">
+                        <div class="head-noticia">
+                            <span class="titulo-noticia">Legajo</span>
+                        </div>
+                        <div class="texto-noticia">
+                            <table id="Table1">
+                                <thead>
+                                    <tr>
+                                        <th style="display: none;">
+                                            <b>Id</b>
+                                        </th>
+                                        <th>
+                                            <b>Documento</b>
+                                        </th>
+                                        <th>
+                                            <b>Ubicación Física</b>
+                                        </th>                                        
+                                        <th>
+                                            <b>Opciones</b>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (Model != null)
+                                       {
+                                           foreach (var item in Model.GRH_Empleado)
+                                           { 
+                                               foreach (var der in item.GRH_ContratoPersonal)
+                                               {
+                                        %>
+                                        <tr>
+                                        <td style="display: none;">
+                                            <%= der.idContratoPersonal %>
+                                        </td>
+                                        <td>
+                                            <%= der.nroContrato %>
+                                        </td>
+                                        <td>                                            
+                                            <%=der.fechaInicio != null ? (der.fechaInicio.ToString().Substring(6, 4) + "-" + der.fechaInicio.ToString().Substring(3, 2) + "-" + der.fechaInicio.ToString().Substring(0, 2)) : string.Empty%>
+                                        </td>                                        
+                                        <td>
+                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                                Eliminar</a>
+                                        </td>
+                                        </tr>
+                                        <%
+                                                } 
+                                           }
+                                       } %>
+                                </tbody>
+                            </table>
+                            <a id="a2" href="javascript:;">Agregar</a>
                         </div>
                     </div>
                 </div>

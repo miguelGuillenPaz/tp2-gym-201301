@@ -16,15 +16,16 @@
             var idPersona = $.trim($('#idPersona').val());
             if (idPersona == '')
                 idPersona = 0;
-            var nombre = $.trim($('#nombre').val());
-            var apellidoPaterno = $.trim($('#apellidoPaterno').val());
-            var apellidoMaterno = $.trim($('#apellidoMaterno').val());
+            var nombre = $.trim($('#nombre').val()).toUpperCase();
+            var apellidoPaterno = $.trim($('#apellidoPaterno').val()).toUpperCase();
+            var apellidoMaterno = $.trim($('#apellidoMaterno').val()).toUpperCase();
             var idEstadoCivil = $.trim($('#idEstadoCivil').val());
             var sexo = $("input[name='sexo']:checked").val();
-            var direccion = $.trim($('#direccion').val());
+            var direccion = $.trim($('#direccion').val()).toUpperCase();
             var idPaisR = $.trim($('#idPais_R').val());
             var fechaNacimiento = $.trim($('#fechaNacimiento').val());
-            var idPaisN = $.trim($('#idPais_N').val());            
+            var idPaisN = $.trim($('#idPais_N').val());
+            var disponibilidad = $.trim($('#disponibilidad').val()).toUpperCase();
             var data = {
                 idPersona: idPersona,
                 nombre: nombre,
@@ -35,7 +36,8 @@
                 direccion: direccion,
                 idPaisR: idPaisR,
                 fechaNacimiento: fechaNacimiento,
-                idPaisN: idPaisN
+                idPaisN: idPaisN,
+                disponibilidad: disponibilidad
             };
 
             var url = '/Postulante/SetPersona';
