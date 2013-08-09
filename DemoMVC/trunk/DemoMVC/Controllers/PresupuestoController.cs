@@ -174,10 +174,19 @@ namespace DemoMVC.Controllers
         public virtual ActionResult EliminarPresupuesto(int idPptoMtoPreventivo)
         {
             _entities = new PMP_Entities();
-            var res = (from r in _entities.PMP_PptoMtoPreventivo where r.idPptoMtoPreventivo == idPptoMtoPreventivo select r).FirstOrDefault();
-            if (res != null)
+            var details =
+                (from r in _entities.PMP_DetallePptoMtoPreventivo where r.idPptoMtoPreventivo == idPptoMtoPreventivo select r)
+                    .ToList();
+            foreach (var detallePptoMtoPreventivo in details)
             {
-                _entities.DeleteObject(res);
+                _entities.DeleteObject(detallePptoMtoPreventivo);
+                _entities.SaveChanges();
+            }
+
+            var head = (from r in _entities.PMP_PptoMtoPreventivo where r.idPptoMtoPreventivo == idPptoMtoPreventivo select r).FirstOrDefault();
+            if (head != null)
+            {
+                _entities.DeleteObject(head);
                 _entities.SaveChanges();
             }                
             // ReSharper disable RedundantArgumentName

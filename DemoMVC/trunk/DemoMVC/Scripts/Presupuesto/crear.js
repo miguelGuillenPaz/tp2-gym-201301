@@ -44,7 +44,7 @@
             },
             success: function (result) {
                 if (result.result) {
-                    __ShowMessage('El presupuesto ha sido creado.');
+                    alert('El presupuesto ha sido creado.');                    
                     window.location.href = '/Presupuesto';
                 } else {
                     __ShowMessage(result.error);
