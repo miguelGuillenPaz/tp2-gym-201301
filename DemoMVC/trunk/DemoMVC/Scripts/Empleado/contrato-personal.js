@@ -86,7 +86,7 @@
                         fechaInicio: txtInicio,
                         fechaFin: txtFin
                     };
-                    alert(JSON.stringify(data));
+                    
                     var url = '/Empleado/SetContratoPersonal';
                     $.ajax({
                         type: 'POST',

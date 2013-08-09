@@ -42,6 +42,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_8", "GRH_Pais", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Pais), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_2", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Postulante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Postulante), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_4", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Telefono", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Telefono), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_35", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_Legajo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Legajo), true)]
 
 #endregion
 
@@ -444,6 +445,22 @@ namespace DemoMVC.Models
             }
         }
         private ObjectSet<GRH_TipoDocumento> _GRH_TipoDocumento;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_Legajo> GRH_Legajo
+        {
+            get
+            {
+                if ((_GRH_Legajo == null))
+                {
+                    _GRH_Legajo = base.CreateObjectSet<GRH_Legajo>("GRH_Legajo");
+                }
+                return _GRH_Legajo;
+            }
+        }
+        private ObjectSet<GRH_Legajo> _GRH_Legajo;
 
         #endregion
 
@@ -623,6 +640,14 @@ namespace DemoMVC.Models
         public void AddToGRH_TipoDocumento(GRH_TipoDocumento gRH_TipoDocumento)
         {
             base.AddObject("GRH_TipoDocumento", gRH_TipoDocumento);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_Legajo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_Legajo(GRH_Legajo gRH_Legajo)
+        {
+            base.AddObject("GRH_Legajo", gRH_Legajo);
         }
 
         #endregion
@@ -1979,6 +2004,28 @@ namespace DemoMVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_35", "GRH_Legajo")]
+        public EntityCollection<GRH_Legajo> GRH_Legajo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_Legajo>("GRH_Model.R_35", "GRH_Legajo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_Legajo>("GRH_Model.R_35", "GRH_Legajo", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -3220,6 +3267,177 @@ namespace DemoMVC.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_NivelIdioma>("GRH_Model.R_17", "GRH_NivelIdioma", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="GRH_Model", Name="GRH_Legajo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class GRH_Legajo : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto GRH_Legajo.
+        /// </summary>
+        /// <param name="idLegajo">Valor inicial de la propiedad idLegajo.</param>
+        public static GRH_Legajo CreateGRH_Legajo(global::System.Int32 idLegajo)
+        {
+            GRH_Legajo gRH_Legajo = new GRH_Legajo();
+            gRH_Legajo.idLegajo = idLegajo;
+            return gRH_Legajo;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idLegajo
+        {
+            get
+            {
+                return _idLegajo;
+            }
+            set
+            {
+                if (_idLegajo != value)
+                {
+                    OnidLegajoChanging(value);
+                    ReportPropertyChanging("idLegajo");
+                    _idLegajo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idLegajo");
+                    OnidLegajoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idLegajo;
+        partial void OnidLegajoChanging(global::System.Int32 value);
+        partial void OnidLegajoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ubicacion
+        {
+            get
+            {
+                return _ubicacion;
+            }
+            set
+            {
+                OnubicacionChanging(value);
+                ReportPropertyChanging("ubicacion");
+                _ubicacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ubicacion");
+                OnubicacionChanged();
+            }
+        }
+        private global::System.String _ubicacion;
+        partial void OnubicacionChanging(global::System.String value);
+        partial void OnubicacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idEmpleado
+        {
+            get
+            {
+                return _idEmpleado;
+            }
+            set
+            {
+                OnidEmpleadoChanging(value);
+                ReportPropertyChanging("idEmpleado");
+                _idEmpleado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idEmpleado");
+                OnidEmpleadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idEmpleado;
+        partial void OnidEmpleadoChanging(Nullable<global::System.Int32> value);
+        partial void OnidEmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombreArchivo
+        {
+            get
+            {
+                return _nombreArchivo;
+            }
+            set
+            {
+                OnnombreArchivoChanging(value);
+                ReportPropertyChanging("nombreArchivo");
+                _nombreArchivo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombreArchivo");
+                OnnombreArchivoChanged();
+            }
+        }
+        private global::System.String _nombreArchivo;
+        partial void OnnombreArchivoChanging(global::System.String value);
+        partial void OnnombreArchivoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_35", "GRH_Empleado")]
+        public GRH_Empleado GRH_Empleado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_35", "GRH_Empleado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_35", "GRH_Empleado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GRH_Empleado> GRH_EmpleadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_35", "GRH_Empleado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Empleado>("GRH_Model.R_35", "GRH_Empleado", value);
                 }
             }
         }

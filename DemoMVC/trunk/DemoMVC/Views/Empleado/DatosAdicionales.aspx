@@ -19,10 +19,12 @@
     </script>
     <script src="../../Scripts/Empleado/derecho-habiente.js" type="text/javascript"></script>
     <script src="../../Scripts/Empleado/contrato-personal.js" type="text/javascript"></script>
+        <script src="../../Scripts/Empleado/legajo.js" type="text/javascript"></script>
     <div class="contenido-top">
         <div>
             <h1>
                 Registrar Empleado                
+                <%= Html.HiddenFor(m=> m.idPersona) %>
                 <%= Html.HiddenFor(m=> m.idEmpleado) %>
             </h1>
             <div class="areas-negocios">
@@ -330,7 +332,7 @@
                                             <%= item.GRH_TipoDerechoHabiente.descripcion %>
                                         </td>
                                          <td style="display: none;">
-                                            <%= item.idPersona %>
+                                            <%= item.GRH_Persona.idPersona %>
                                         </td>
                                         <td>
                                             <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
@@ -407,7 +409,7 @@
                             <span class="titulo-noticia">Legajo</span>
                         </div>
                         <div class="texto-noticia">
-                            <table id="Table1">
+                            <table id="tblLegajo">
                                 <thead>
                                     <tr>
                                         <th style="display: none;">
@@ -427,18 +429,18 @@
                                 <tbody>
                                     <% if (Model != null)
                                        {
-                                           foreach (var item in Model.GRH_ContratoPersonal)
+                                           foreach (var item in Model.GRH_Legajo)
                                            {                                               
                                     %>
                                     <tr>
                                         <td style="display: none;">
-                                            <%= item.idContratoPersonal %>
+                                            <%= item.idLegajo %>
                                         </td>
                                         <td>
-                                            <%= item.nroContrato %>
+                                            <%= item.nombreArchivo %>
                                         </td>
                                         <td>
-                                            <%=item.fechaInicio != null ? (item.fechaInicio.ToString().Substring(6, 4) + "-" + item.fechaInicio.ToString().Substring(3, 2) + "-" + item.fechaInicio.ToString().Substring(0, 2)) : string.Empty%>
+                                            <%= item.ubicacion %>
                                         </td>
                                         <td>
                                             <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
@@ -450,16 +452,18 @@
                                        } %>
                                 </tbody>
                             </table>
-                            <a id="ddd" href="javascript:;">Agregar</a>
+                            <a id="addLegajo" href="javascript:;">Agregar</a>
                         </div>
                     </div>
                 </div>
+                 <a id="btnEnviar" href="/Empleado/Agregar">Enviar</a> | <a id="btnCancelar" href="javascript:;">Cancelar</a>
             </div>
         </div>
     </div>
     <div id="dialogDerechoHabiente" title="" style="display: none; z-index: 1000;">
         <input type="hidden" id="hdnDerechoHabiente" />
         <input type="hidden" id="hdnPersona" />
+        <input type="hidden" id="hdnEmpleado" />
         <input type="hidden" id="hdnDocumento" />
         <input type="hidden" id="hdnAccionDerechoHabiente" />
         <table>
@@ -609,6 +613,42 @@
                     <%= Html.TextBoxFor(m => m.GRH_ContratoPersonal.FirstOrDefault().fechaFin, new { @id = "txtFin",@type = "date", @class = "required" })%>
                 </td>
             </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="dialogLegajo" title="" style="display: none; z-index: 1000;">
+        <input type="hidden" id="hdnLegajo" />
+        <input type="hidden" id="hdnAccionLegajo" />        
+        <table>
+            <thead><tr>
+                <th style="width: 250px"></th>
+                <th></th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    Documento
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <%= Html.TextBoxFor(m => m.GRH_Legajo.FirstOrDefault().nombreArchivo, new { @id = "txtNombreArchivo", @class = "required" })%>
+                </td>
+            </tr>            
+            <tr>
+                <td>
+                    Ubicación
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <%= Html.TextBoxFor(m => m.GRH_Legajo.FirstOrDefault().ubicacion, new { @id = "txtUbicacion", @class = "required" })%>
+                </td>
+            </tr>            
             </tbody>
         </table>
     </div>

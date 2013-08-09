@@ -64,7 +64,7 @@
         $('#txtApPaterno').val('');
         $('#txtApMaterno').val('');
         $('#txtFecNacimiento').val('');
-        $("input[name='GRH_Persona.sexo']:checked").val(null);
+        $("input[name='GRH_Persona.sexo']:checked").val(true);
         $('#hdnDocumento').val('0');
         $('#ddlTipoDocumento').val(0);
         $('#txtDocumento').val('');
@@ -96,9 +96,9 @@
                     var idPersona = $.trim($('#hdnPersona').val());
                     var idEmpleado = $.trim($('#idEmpleado').val());
                     var idDerechoHabiente = $.trim($('#hdnDerechoHabiente').val());
-                    var nombre = $('#txtNombre').val();
-                    var apPaterno = $('#txtApPaterno').val();
-                    var apMaterno = $('#txtApMaterno').val();
+                    var nombre = $('#txtNombre').val().toUpperCase();
+                    var apPaterno = $('#txtApPaterno').val().toUpperCase();
+                    var apMaterno = $('#txtApMaterno').val().toUpperCase();
                     var fecNacimiento = $('#txtFecNacimiento').val();
                     var sexo = $("input[name='GRH_Persona.sexo']:checked").val();
                     var idDocumento = $.trim($('#hdnDocumento').val());

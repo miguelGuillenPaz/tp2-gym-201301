@@ -184,6 +184,7 @@
     <Content Include="Images\Usuarios\usuario_codigo_xxxxxxx.jpg" />
     <Content Include="Images\vial_y_vives.png" />
     <Content Include="Scripts\active.marker.js" />
+    <Content Include="Scripts\Empleado\legajo.js" />
     <Content Include="Scripts\Empleado\derecho-habiente.js" />
     <Content Include="Scripts\Empleado\contrato-personal.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />

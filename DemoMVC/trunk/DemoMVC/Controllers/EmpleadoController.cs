@@ -18,10 +18,10 @@ namespace DemoMVC.Controllers
         {
             _entities = new GRH_Entities();
             var personas = new List<GRH_Persona>();
-            var postulantes = (from r in _entities.GRH_Postulante where r.aprobado == true select r).ToList();
+            var postulantes = (from r in _entities.GRH_Postulante where r.aprobado == true  select r).ToList();
             foreach (var postulante in postulantes)
             {
-                var items = (from r in _entities.GRH_Persona where r.idPersona == postulante.idPersona select r).ToList();
+                var items = (from r in _entities.GRH_Persona where r.idPersona == postulante.idPersona && r.GRH_Empleado.Count==0 select r).ToList();
                 foreach (var item in items)
                 {
                     personas.Add(item);
@@ -215,6 +215,100 @@ namespace DemoMVC.Controllers
                         behavior: JsonRequestBehavior.AllowGet);
             // ReSharper restore RedundantArgumentName
         }
+
+        public virtual ActionResult DelLegajo(int idLegajo)
+        {
+            _entities = new GRH_Entities();
+            var res = (from r in _entities.GRH_Legajo where r.idLegajo == idLegajo select r).FirstOrDefault();
+            if (res != null)
+            {
+                _entities.DeleteObject(res);
+                _entities.SaveChanges();
+            }
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+
+        public virtual ActionResult Cancelar(int idEmpleado)
+        {
+            _entities = new GRH_Entities();
+            var derechoHabientes = (from r in _entities.GRH_DerechoHabiente where r.idEmpleado == idEmpleado select r).ToList();
+            foreach (var derechoHabiente in derechoHabientes)
+            {
+                _entities.DeleteObject(derechoHabiente);
+                _entities.SaveChanges();
+            }
+            var contratoPersonales = (from r in _entities.GRH_ContratoPersonal where r.idEmpleado == idEmpleado select r).ToList();
+            foreach (var contratoPersonal in contratoPersonales)
+            {
+                _entities.DeleteObject(contratoPersonal);
+                _entities.SaveChanges();
+            }
+            var legajos = (from r in _entities.GRH_Legajo where r.idEmpleado == idEmpleado select r).ToList();
+            foreach (var legajo in legajos)
+            {
+                _entities.DeleteObject(legajo);
+                _entities.SaveChanges();
+            }
+
+            var res = (from r in _entities.GRH_Empleado where r.idEmpleado == idEmpleado select r).FirstOrDefault();
+            if (res != null)
+            {                                                            
+                _entities.DeleteObject(res);
+                _entities.SaveChanges();
+            }
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+        public virtual ActionResult SetLegajo(int idEmpleado, int idLegajo, string nombreArchivo, string ubicacion)
+        {
+            bool resultado;
+
+            _entities = new GRH_Entities();
+            if (idLegajo == 0)
+            {
+                var legajo = new GRH_Legajo
+                {
+                    idEmpleado = idEmpleado,                    
+                    nombreArchivo = nombreArchivo,
+                    ubicacion = ubicacion
+                };
+                _entities.AddToGRH_Legajo(legajo);
+                _entities.SaveChanges();
+                idLegajo = legajo.idLegajo;
+                resultado = true;
+            }
+            else
+            {
+                var res = (from r in _entities.GRH_Legajo where r.idLegajo == idLegajo select r).FirstOrDefault();
+                if (res != null)
+                {
+                    res.idEmpleado = idEmpleado;
+                    res.nombreArchivo = nombreArchivo;
+                    res.ubicacion = ubicacion;
+                    _entities.SaveChanges();
+                    resultado = true;
+                }
+                else
+                {
+                    resultado = false;
+                }
+            }
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = resultado, legajo = idLegajo },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
         #region Tablas Paramétricas
 
         private List<SelectListItem> CargaInicial()
