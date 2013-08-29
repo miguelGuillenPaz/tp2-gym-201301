@@ -73,6 +73,7 @@
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\ExpedienteTecnicoController.cs" />
     <Compile Include="Controllers\FinanzasController.cs" />
     <Compile Include="Controllers\GestionProyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -81,10 +82,16 @@
     <Compile Include="Controllers\PlanificacionController.cs" />
     <Compile Include="Controllers\PostulanteController.cs" />
     <Compile Include="Controllers\PresupuestoController.cs" />
+    <Compile Include="Controllers\PresupuestoObraController.cs" />
     <Compile Include="Controllers\ProgramacionPreventivaController.cs" />
     <Compile Include="Controllers\RecursosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GYM.SIC.GPC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GYM.SIC.GPC.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -94,7 +101,11 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Actividad.cs" />
     <Compile Include="Models\ActividadHist.cs" />
+    <Compile Include="Models\ActividadModel.cs" />
+    <Compile Include="Models\CategoriaModel.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\CronogramaModel.cs" />
+    <Compile Include="Models\DetallePartidaModel.cs" />
     <Compile Include="Models\DetallePresupuesto.cs" />
     <Compile Include="Models\Entregable.cs" />
     <Compile Include="Models\EstimadoRapidoForm.cs" />
@@ -104,6 +115,7 @@
       <DependentUpon>GRH_DB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ListarForm.cs" />
+    <Compile Include="Models\PartidasModel.cs" />
     <Compile Include="Models\PlanProyecto.cs" />
     <Compile Include="Models\PlanProyectoHist.cs" />
     <Compile Include="Models\PMP_Model.Designer.cs">
@@ -112,11 +124,13 @@
       <DependentUpon>PMP_Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Presupuesto.cs" />
+    <Compile Include="Models\PresupuestoModel.cs" />
     <Compile Include="Models\Proyecto.cs" />
     <Compile Include="Models\ProyectoHist.cs" />
     <Compile Include="Models\TipoProyecto.cs" />
     <Compile Include="Models\Ubigeo.cs" />
     <Compile Include="Models\VariablesPresupuesto.cs" />
+    <Compile Include="Parameters\EstadosParameters.cs" />
     <Compile Include="Persistencia\ActividadDAO.cs" />
     <Compile Include="Persistencia\ActividadHistDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
@@ -130,12 +144,28 @@
     <Compile Include="Persistencia\ProyectoHistDAO.cs" />
     <Compile Include="Persistencia\UbigeoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCCronogramaRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCExpedienteTecnicoRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCHistoricoAprobacionesRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCNotificacionesRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCPartidaRespository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCPresupuestoRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCSolicitudesRepository.cs" />
+    <Compile Include="Repositories\S10Repository\S10CronogramaRepository.cs" />
+    <Compile Include="Repositories\S10Repository\S10PartidaRespository.cs" />
+    <Compile Include="Repositories\S10Repository\S10PresupuestoRepository.cs" />
+    <Compile Include="S10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>S10.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\GYM.mdf" />
     <Content Include="App_Data\GYM_log.ldf">
       <DependentUpon>GYM.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\gpc.css" />
     <Content Include="Content\img\left.png" />
     <Content Include="Content\img\link.png" />
     <Content Include="Content\img\novedad.png" />
@@ -189,8 +219,38 @@
     <Content Include="Scripts\Empleado\contrato-personal.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.webticker.js" />
     <Content Include="Scripts\jscript.js" />
+    <Content Include="Scripts\noty-2.1.0\demo\allLayouts.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\allTypes.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\api.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\buttons.css" />
+    <Content Include="Scripts\noty-2.1.0\demo\consumingAlert.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\customContainer.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\index.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\noty-2.1.0\demo\usingMaxVisible.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\usingWithButtons.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\usingWithButtons2.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\usingWithModal.html" />
+    <Content Include="Scripts\noty-2.1.0\demo\usingWithOldOptions.html" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\jquery.noty.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\bottom.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\bottomCenter.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\bottomLeft.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\bottomRight.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\center.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\centerLeft.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\centerRight.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\inline.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\top.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\topCenter.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\topLeft.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\layouts\topRight.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\promise.js" />
+    <Content Include="Scripts\noty-2.1.0\js\noty\themes\default.js" />
+    <Content Include="Scripts\noty-2.1.0\LICENSE.txt" />
     <Content Include="Scripts\persona.js" />
     <Content Include="Scripts\Postulante\idioma-persona.js" />
     <Content Include="Scripts\Postulante\correo.js" />
@@ -216,6 +276,11 @@
     <Content Include="Views\Contenidos\Contenidos.aspx" />
     <Content Include="Views\Empleado\Agregar.aspx" />
     <Content Include="Views\Empleado\DatosAdicionales.aspx" />
+    <Content Include="Views\ExpedienteTecnico\ListarCronograma.aspx" />
+    <Content Include="Views\ExpedienteTecnico\ListarDetalle.aspx" />
+    <Content Include="Views\ExpedienteTecnico\ListarPartidas.aspx" />
+    <Content Include="Views\ExpedienteTecnico\ListarPresupuestos.aspx" />
+    <Content Include="Views\ExpedienteTecnico\RegistrarExpedienteTecnico.aspx" />
     <Content Include="Views\Finanzas\Index.aspx" />
     <Content Include="Views\GestionProy\Gestion.aspx" />
     <Content Include="Views\GestionProy\ModPresupuesto.aspx" />
@@ -234,6 +299,13 @@
     <Content Include="Views\Planificacion\IngresoActividades.aspx" />
     <Content Include="Views\Planificacion\ListadoProyPlan.aspx" />
     <Content Include="Views\Planificacion\ListadoProyPlan2.aspx" />
+    <Content Include="Views\PresupuestoObra\AprobarPresupuesto.aspx" />
+    <Content Include="Views\PresupuestoObra\ListarCategorias.aspx" />
+    <Content Include="Views\PresupuestoObra\ListarCronograma.aspx" />
+    <Content Include="Views\PresupuestoObra\ListarDetalle.aspx" />
+    <Content Include="Views\PresupuestoObra\ListarItems.aspx" />
+    <Content Include="Views\PresupuestoObra\ListarPartidas.aspx" />
+    <Content Include="Views\PresupuestoObra\ListarPresupuestos.aspx" />
     <Content Include="Views\Presupuesto\Detalle.aspx" />
     <Content Include="Views\Presupuesto\Editar.aspx" />
     <Content Include="Views\Presupuesto\Index.aspx" />
@@ -307,6 +379,16 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PMP_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="GYM.SIC.GPC.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GYM.SIC.GPC.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="S10.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>S10.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Scripts\noty-2.1.0\.gitignore" />
+    <None Include="Scripts\noty-2.1.0\README.markdown" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -1,0 +1,460 @@
+﻿/*
+    Estilos para el módulo de presupuestos
+*/
+.gpc-page
+{
+    background-color: #fff;
+    height: auto; /*600px;*/
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    }
+.gpc-tabla
+{
+    height: auto;
+    /*width: 100%;  929px; */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    }
+.gpc-tr
+{    
+    float: left;
+    height: auto;
+    width: 100%; /*  929px; */
+    margin: 0;
+    padding: 0;
+    border-left: solid 1px #a9a7a5;
+    border-top: solid 1px #a9a7a5;
+    border-bottom: solid 1px #a9a7a5;
+    display: block;
+    }    
+.gpc-tr2
+{    
+    float: left;
+    height: auto;
+    width: 100%; /* auto; */ /* 929px; */
+    margin: 0;
+    padding: 0;
+    display: block;
+    }       
+.gpc-th
+{
+    font-size: 9pt;
+    float: left;
+    /*font-weight: bold;*/
+    line-height: 25px;
+    vertical-align: middle;
+    text-align: center;
+    /*color: #EBC924;*/
+    background-color: #FCA802;
+    display: block;
+    border-right: solid 1px #a9a7a5;
+    }
+.gpc-td
+{
+    font-size: 9pt;
+    float: left;
+    line-height: 25px;
+    vertical-align: middle;
+    text-align: left;
+    display: block;
+    border-right: solid 1px #a9a7a5;
+    }
+.gpc-td-center
+{
+    font-size: 9pt;
+    float: left;
+    line-height: 25px;
+    vertical-align: middle;
+    text-align: center;
+    display: block;
+    border-right: solid 1px #a9a7a5;
+    }
+        
+.gpc-separador
+{
+    height:25px;
+    width: 100%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    display: block;
+    border: 0;
+    }    
+.gpc-boton
+{
+    margin: 0 5px 0 5px;
+    padding: 0;
+    }    
+    
+.gpc-aprobar, .gpc-rechazar, .gpc-anular, .gpc-cancelar, 
+.gpc-aprobarOK, .gpc-rechazarOK, .gpc-anularOK, .gpc-registrar{
+    text-decoration: none; 
+    background-color: #4b8efa; 
+    color: #ffffff; 
+    border: 0;
+    font-size: 12px;  
+    display: block; line-height: 20px; float: left;
+    padding: 0 10px 0 10px;
+    margin: 0 5px 0 0;
+    vertical-align: middle; text-align: center;   
+    border: solid 1px #3079ed;   
+    }   
+.gpc-aprobar:hover, .gpc-rechazar:hover, .gpc-anular:hover, .gpc-cancelar:hover, 
+.gpc-aprobarOK:hover, .gpc-rechazarOK:hover, .gpc-anularOK:hover{
+    text-decoration: none; 
+    background-color: #0072bb;
+    border: solid 1px #2f5bb7; 
+    }    
+    
+
+.gpc-subtitulo
+{
+    text-decoration: underline;        
+    }    
+.gpc-filtro
+{
+    text-decoration: none;
+    }    
+.gpc-listas
+{
+    width: 100%;
+    float: left;
+    height: auto;    
+    }    
+    
+    
+/* modals */  
+.gpc-modals
+{
+    width: 500px; 
+    height: 300px; 
+    display: none;
+    margin: 0; 
+    padding: 0;
+    }
+
+.gpc-modals-container
+{
+    width: 100%; 
+    margin: auto; 
+    padding: 0;
+    border: 0;
+    }
+.gpc-modals-row
+{
+    text-align: left; 
+    vertical-align: middle; 
+    width: 100%;    
+    }    
+.gpc-indicaciones
+{
+    text-align: justify;
+    display: block;
+    width: 100%;
+    height: auto;
+    }    
+.gpc-left
+{
+    width: 60%;
+    float: left;
+    }    
+.gpc-right
+{
+    width: 40%;
+    float: right;
+    }    
+    
+    
+/* link detalles grilla */ 
+.gpc-link
+{
+    cursor: pointer;
+    color: #b24926;
+    font-family: Arial;
+    font-size: 8pt;
+    font-weight: bold;
+    }    
+.gpc-link:hover
+{
+    text-decoration: underline;
+    }   
+    
+    
+/* listar partidas */
+.gpc-lista-Partida
+{
+    float: left;
+    height: auto;
+    width: 600px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    vertical-align: middle;
+    }
+.gpc-Partida-header
+{
+    float: left;
+    height: auto;
+    width: 503px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 9pt;
+    background-color: #FCA802;
+    border: solid 1px #a9a7a5;
+    } 
+    .gpc-Partida-nombre-header
+    {
+        width: 400px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        border-right: solid 1px #a9a7a5;
+        }    
+    .gpc-Partida-detalle-header
+    {
+        width: 100px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        } 
+.gpc-Partida
+{
+    float: left;
+    height: auto;
+    width: 503px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    text-align: center;
+    border-left: solid 1px #a9a7a5;
+    border-right: solid 1px #a9a7a5;
+    border-bottom: solid 1px #a9a7a5;
+    } 
+    .gpc-Partida-nombre
+    {
+        width: 400px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        border-right: solid 1px #a9a7a5;
+        text-align: left;
+        }    
+    .gpc-Partida-detalle
+    {
+        width: 100px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        }     
+        
+    
+/* listar categorias */
+
+.gpc-lista-Categoria
+{
+    float: left;
+    height: auto;
+    width: 500px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    vertical-align: middle;
+    }
+.gpc-Categoria-header
+{
+    float: left;
+    height: auto;
+    width: 503px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 9pt;
+    background-color: #FCA802;
+    border: solid 1px #a9a7a5;
+    } 
+    .gpc-Categoria-nombre-header
+    {
+        width: 400px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        border-right: solid 1px #a9a7a5;
+        }    
+    .gpc-Categoria-detalle-header
+    {
+        width: 100px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        } 
+    
+.gpc-Categoria
+{
+    float: left;
+    height: auto;
+    width: 503px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    text-align: center;
+    border-left: solid 1px #a9a7a5;
+    border-right: solid 1px #a9a7a5;
+    border-bottom: solid 1px #a9a7a5;
+    } 
+    .gpc-Categoria-nombre
+    {
+        width: 400px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        border-right: solid 1px #a9a7a5;
+        text-align: left;
+        }    
+    .gpc-Categoria-detalle
+    {
+        width: 100px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        } 
+    
+    
+    
+/* listar detalle partida */
+
+.gpc-lista-detallePartida
+{
+    float: left;
+    height: auto;
+    width: 855px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    vertical-align: middle;
+    }
+.gpc-detallePartida-header
+{
+    float: left;
+    height: auto;
+    width: 855px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+    font-size: 9pt;
+    background-color: #FCA802;
+    border: solid 1px #a9a7a5;
+    } 
+    .gpc-detallePartida-nombre-header
+    {
+        width: 400px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        border-right: solid 1px #a9a7a5;
+        }    
+    .gpc-detallePartida-um-header
+    {
+        width: 150px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        border-right: solid 1px #a9a7a5;
+        }  
+    .gpc-detallePartida-cantidad-header
+    {
+        width: 150px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        border-right: solid 1px #a9a7a5;
+        }  
+    .gpc-detallePartida-precio-header
+    {
+        width: 150px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        } 
+
+.gpc-detallePartida
+{
+    float: left;
+    height: auto;
+    width: 855px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    border-left: solid 1px #a9a7a5;
+    border-right: solid 1px #a9a7a5;
+    border-bottom: solid 1px #a9a7a5;
+    }   
+    .gpc-detallePartida-nombre
+    {
+        width: 400px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        border-right: solid 1px #a9a7a5;
+        }    
+    .gpc-detallePartida-um
+    {
+        width: 150px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        border-right: solid 1px #a9a7a5;
+        }  
+    .gpc-detallePartida-cantidad
+    {
+        width: 150px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        text-align: right;
+        border-right: solid 1px #a9a7a5;
+        }  
+    .gpc-detallePartida-precio
+    {
+        width: 150px;
+        float: left;
+        margin: 0;
+        padding: 0;
+        text-align: right;
+        } 
