@@ -116,17 +116,14 @@ a img
 #menu-top ul.navigation_menu li
 {
     float: left;
-    margin-right: 9px;
-    position: relative;
+    margin-right: 0; /* 9px; */
 }
 #menu-top ul.navigation_menu li a
 {
     text-decoration: none;
-    color: #231F20;
-    letter-spacing: -0.10em;
+    /* color: #231F20; */
+    /* letter-spacing: -0.10em; */
     font-size: 14px;
-    padding: 5px 10px;
-
 }
 #menu-top ul li a:hover, 
 #menu-top ul li a.active
@@ -134,28 +131,11 @@ a img
 
    /* font-family: PTSansBold; */
 
-     color: #000;
+    /* color: #fff; */
     text-decoration: underline;
-    text-shadow: 0px 1px 1px #999;
+    /* text-shadow: 0px 1px 1px #999; */
 }
 
-#menu-top ul.navigation_menu li ul
-{
-    background: white;
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 20px;
-    width: 120px;
-    padding: 5px 10px;
-    z-index: 999;
-}
-#menu-top ul.navigation_menu li ul li a
-{
-    color: #eb1c24;
-    display: block;
-    border:none;
-}
 /*language menu*/
 /*
 
@@ -231,7 +211,8 @@ a img
     border-top-left-radius: 5px;
     padding-top: 35px;
     box-shadow: 0 3px 5px rgba(50, 50, 50, 0.4);
-    position: relative;    
+    position: relative; 
+    /*height: auto;   */
 }
 .contenido-bottom
 {
@@ -604,7 +585,6 @@ a img
     background: url(../images/flechaabajo.jpg);
     background-position: right 5px;
     background-repeat: no-repeat;
-    font-family: arial;
 }
 .contenido-derecha .noticia.video .head-noticia
 {
@@ -1724,7 +1704,7 @@ ul.valores li
     -moz-transition: all 400ms ease-in-out;
     -ms-transition: all 400ms ease-in-out;
     -o-transition: all 400ms ease-in-out;
-    transition: all 400ms ease-in-out;
+    transition: all 400ms ease-in-out;s
 }
 
 #nav_tipos .tipos_shortcuts .shortcut:hover img
@@ -1973,39 +1953,4 @@ ul.politicas_pdf li.ambiental
     
 }
 
-.eliminar { }
- 
-.required-control {
-    border: 2px solid #EB1C24;
-}
-
-.required{}
-
-.enviar { }
-.cantidad {
-    text-align: right;
-}
-
- .detalle { }
- 
- .table100 {
-     width: 100%;
- }
- .table100b thead {
-    background:  #EB1C24;
-     color: white;
-     border: 1px solid #EB1C24;
- }
- .table100b tfoot {
-    background:  #EB1C24;
-     color: white;
-     border: 1px solid #EB1C24;
- }
- .table100b td {
-    border: 1px solid #EB1C24;
-    padding: 2px;
- }
- 
-input{  
-text-transform: uppercase;  
-} 
+ .eliminar { }

@@ -170,6 +170,7 @@
     <Content Include="Content\img\link.png" />
     <Content Include="Content\img\novedad.png" />
     <Content Include="Content\img\right.png" />
+    <Content Include="Content\menu.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\Site2.css" />
     <Content Include="Content\sliderman.css" />
@@ -222,6 +223,7 @@
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.webticker.js" />
     <Content Include="Scripts\jscript.js" />
+    <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\noty-2.1.0\demo\allLayouts.html" />
     <Content Include="Scripts\noty-2.1.0\demo\allTypes.html" />
     <Content Include="Scripts\noty-2.1.0\demo\api.html" />
