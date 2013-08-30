@@ -163,10 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\dbRRHH_inserts_2907.sql" />
-    <Content Include="App_Data\GYM.mdf" />
-    <Content Include="App_Data\GYM_log.ldf">
-      <DependentUpon>GYM.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\gpc.css" />
     <Content Include="Content\img\left.png" />
     <Content Include="Content\img\link.png" />
