@@ -161,6 +161,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\dbRRHH_inserts_2907.sql" />
     <Content Include="App_Data\GYM.mdf" />
     <Content Include="App_Data\GYM_log.ldf">
       <DependentUpon>GYM.mdf</DependentUpon>
@@ -361,6 +362,7 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\dbRRHH.erwin" />
     <None Include="Content\fonts\pt_sans-bold-webfont.eot" />
     <None Include="Content\fonts\pt_sans-bold-webfont.ttf" />
     <None Include="Content\fonts\pt_sans-bold-webfont.woff" />
