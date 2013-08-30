@@ -42,17 +42,7 @@
                 <li>
                     <%= Html.ActionLink("Gestión", "Gestion", "GestionProy")%></li>
                 <li>
-                    <%= Html.ActionLink("Planificación", "ListadoProyPlan", "Planificacion")%></li>
-                <li>
-                    <%--<%= Html.ActionLink("Compras", "Compras", "Compras")%>--%>
-                    <p>
-                        Compras</p>
-                </li>
-                <li>
-                    <%--<%= Html.ActionLink("Finanzas", "Finanzas", "Finanzas")%>--%>
-                    <p>
-                        Finanzas</p>
-                </li>
+                    <%= Html.ActionLink("Planificación", "ListadoProyPlan", "Planificacion")%></li>    
                 <li>
                     <%= Html.ActionLink("Logistica", "Logistica", "Logistica")%></li>
                 <li>
@@ -76,17 +66,7 @@
                         <li>
                             <%= Html.ActionLink("Registro de Expediente Técnico", "RegistrarExpedienteTecnico", "ExpedienteTecnico")%></li>
                     </ul>
-                </li>
-                <li><a href="#">Gestión de Maquinarias y Equipos</a>
-                    <ul>
-                        <li>
-                            <%= Html.ActionLink("Generar Presupuesto", "Index", "Presupuesto")%>
-                        </li>
-                        <li>
-                            <%= Html.ActionLink("Programación Mantenimiento", "Index", "ProgramacionPreventiva")%>
-                        </li>
-                    </ul>
-                </li>
+                </li>                
                 <li>
                     <%= Html.ActionLink("Contenidos", "Contenidos", "Contenidos")%></li>
                 <li>
