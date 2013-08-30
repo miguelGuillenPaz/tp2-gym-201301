@@ -9,6 +9,7 @@
           <EntitySet Name="GRH_Area" EntityType="GRH_Model.Store.GRH_Area" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Cargo" EntityType="GRH_Model.Store.GRH_Cargo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_ContratoPersonal" EntityType="GRH_Model.Store.GRH_ContratoPersonal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GRH_Convocatoria" EntityType="GRH_Model.Store.GRH_Convocatoria" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Correo" EntityType="GRH_Model.Store.GRH_Correo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_DerechoHabiente" EntityType="GRH_Model.Store.GRH_DerechoHabiente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Documento" EntityType="GRH_Model.Store.GRH_Documento" store:Type="Tables" Schema="dbo" />
@@ -149,6 +150,17 @@
           <Property Name="nroContrato" Type="varchar" MaxLength="20" />
           <Property Name="fechaInicio" Type="datetime" />
           <Property Name="fechaFin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GRH_Convocatoria">
+          <Key>
+            <PropertyRef Name="idConvocatoria" />
+          </Key>
+          <Property Name="idConvocatoria" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="fechaFin" Type="datetime" Nullable="false" />
+          <Property Name="titulo" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="detalle" Type="varchar(max)" Nullable="false" />
+          <Property Name="cantidadVacantes" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="GRH_Correo">
           <Key>
@@ -739,6 +751,7 @@
             <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
             <End Role="GRH_Legajo" EntitySet="GRH_Legajo" />
           </AssociationSet>
+          <EntitySet Name="GRH_Convocatoria" EntityType="GRH_Model.GRH_Convocatoria" />
         </EntityContainer>
         <EntityType Name="GRH_Area">
           <Key>
@@ -1277,6 +1290,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="GRH_Convocatoria">
+          <Key>
+            <PropertyRef Name="idConvocatoria" />
+          </Key>
+          <Property Type="Int32" Name="idConvocatoria" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="fechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="fechaFin" Nullable="false" />
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="detalle" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="cantidadVacantes" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1507,6 +1531,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="GRH_Convocatoria">
+            <EntityTypeMapping TypeName="GRH_Model.GRH_Convocatoria">
+              <MappingFragment StoreEntitySet="GRH_Convocatoria">
+                <ScalarProperty Name="cantidadVacantes" ColumnName="cantidadVacantes" />
+                <ScalarProperty Name="detalle" ColumnName="detalle" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="idConvocatoria" ColumnName="idConvocatoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1714,6 +1750,7 @@
           <ConnectorPoint PointX="10.125" PointY="17.875" />
           <ConnectorPoint PointX="10.5" PointY="18.25" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="GRH_Model.GRH_Convocatoria" Width="1.5" PointX="0.75" PointY="0.75" Height="2.1725878906250102" />
       </Diagram>
     </Diagrams>
   </Designer>

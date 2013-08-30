@@ -47,10 +47,12 @@
                     <%= Html.ActionLink("Logistica", "Logistica", "Logistica")%></li>
                 <li>
                     <%= Html.ActionLink("Area Legal", "Requerimientos", "Legal")%></li>
-                <li>
-                    <%--<%= Html.ActionLink("Recursos","/","Convocatoria")%>--%>
+                <li>                    
                     <a href="#">Recursos Humanos</a>
                     <ul>
+                        <li>
+                            <%= Html.ActionLink("Convocatorias", "Index", "Convocatoria")%>
+                        </li>
                         <li>
                             <%= Html.ActionLink("Postular", "Crear", "Postulante")%>
                         </li>

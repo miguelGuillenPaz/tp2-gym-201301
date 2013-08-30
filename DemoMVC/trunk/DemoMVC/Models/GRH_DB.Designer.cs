@@ -8,13 +8,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
@@ -461,9 +460,24 @@ namespace DemoMVC.Models
             }
         }
         private ObjectSet<GRH_Legajo> _GRH_Legajo;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_Convocatoria> GRH_Convocatoria
+        {
+            get
+            {
+                if ((_GRH_Convocatoria == null))
+                {
+                    _GRH_Convocatoria = base.CreateObjectSet<GRH_Convocatoria>("GRH_Convocatoria");
+                }
+                return _GRH_Convocatoria;
+            }
+        }
+        private ObjectSet<GRH_Convocatoria> _GRH_Convocatoria;
 
         #endregion
-
         #region Métodos AddTo
     
         /// <summary>
@@ -649,13 +663,21 @@ namespace DemoMVC.Models
         {
             base.AddObject("GRH_Legajo", gRH_Legajo);
         }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_Convocatoria. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_Convocatoria(GRH_Convocatoria gRH_Convocatoria)
+        {
+            base.AddObject("GRH_Convocatoria", gRH_Convocatoria);
+        }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entidades
     
     /// <summary>
@@ -680,7 +702,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -735,7 +756,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -762,7 +782,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -787,7 +806,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -842,7 +860,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -869,7 +886,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -894,7 +910,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -1021,7 +1036,6 @@ namespace DemoMVC.Models
         partial void OnfechaFinChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -1064,7 +1078,191 @@ namespace DemoMVC.Models
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="GRH_Model", Name="GRH_Convocatoria")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class GRH_Convocatoria : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto GRH_Convocatoria.
+        /// </summary>
+        /// <param name="idConvocatoria">Valor inicial de la propiedad idConvocatoria.</param>
+        /// <param name="fechaInicio">Valor inicial de la propiedad fechaInicio.</param>
+        /// <param name="fechaFin">Valor inicial de la propiedad fechaFin.</param>
+        /// <param name="titulo">Valor inicial de la propiedad titulo.</param>
+        /// <param name="detalle">Valor inicial de la propiedad detalle.</param>
+        /// <param name="cantidadVacantes">Valor inicial de la propiedad cantidadVacantes.</param>
+        public static GRH_Convocatoria CreateGRH_Convocatoria(global::System.Int32 idConvocatoria, global::System.DateTime fechaInicio, global::System.DateTime fechaFin, global::System.String titulo, global::System.String detalle, global::System.Int32 cantidadVacantes)
+        {
+            GRH_Convocatoria gRH_Convocatoria = new GRH_Convocatoria();
+            gRH_Convocatoria.idConvocatoria = idConvocatoria;
+            gRH_Convocatoria.fechaInicio = fechaInicio;
+            gRH_Convocatoria.fechaFin = fechaFin;
+            gRH_Convocatoria.titulo = titulo;
+            gRH_Convocatoria.detalle = detalle;
+            gRH_Convocatoria.cantidadVacantes = cantidadVacantes;
+            return gRH_Convocatoria;
+        }
 
+        #endregion
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idConvocatoria
+        {
+            get
+            {
+                return _idConvocatoria;
+            }
+            set
+            {
+                if (_idConvocatoria != value)
+                {
+                    OnidConvocatoriaChanging(value);
+                    ReportPropertyChanging("idConvocatoria");
+                    _idConvocatoria = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idConvocatoria");
+                    OnidConvocatoriaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idConvocatoria;
+        partial void OnidConvocatoriaChanging(global::System.Int32 value);
+        partial void OnidConvocatoriaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fechaInicio
+        {
+            get
+            {
+                return _fechaInicio;
+            }
+            set
+            {
+                OnfechaInicioChanging(value);
+                ReportPropertyChanging("fechaInicio");
+                _fechaInicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fechaInicio");
+                OnfechaInicioChanged();
+            }
+        }
+        private global::System.DateTime _fechaInicio;
+        partial void OnfechaInicioChanging(global::System.DateTime value);
+        partial void OnfechaInicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fechaFin
+        {
+            get
+            {
+                return _fechaFin;
+            }
+            set
+            {
+                OnfechaFinChanging(value);
+                ReportPropertyChanging("fechaFin");
+                _fechaFin = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fechaFin");
+                OnfechaFinChanged();
+            }
+        }
+        private global::System.DateTime _fechaFin;
+        partial void OnfechaFinChanging(global::System.DateTime value);
+        partial void OnfechaFinChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String titulo
+        {
+            get
+            {
+                return _titulo;
+            }
+            set
+            {
+                OntituloChanging(value);
+                ReportPropertyChanging("titulo");
+                _titulo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("titulo");
+                OntituloChanged();
+            }
+        }
+        private global::System.String _titulo;
+        partial void OntituloChanging(global::System.String value);
+        partial void OntituloChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String detalle
+        {
+            get
+            {
+                return _detalle;
+            }
+            set
+            {
+                OndetalleChanging(value);
+                ReportPropertyChanging("detalle");
+                _detalle = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("detalle");
+                OndetalleChanged();
+            }
+        }
+        private global::System.String _detalle;
+        partial void OndetalleChanging(global::System.String value);
+        partial void OndetalleChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 cantidadVacantes
+        {
+            get
+            {
+                return _cantidadVacantes;
+            }
+            set
+            {
+                OncantidadVacantesChanging(value);
+                ReportPropertyChanging("cantidadVacantes");
+                _cantidadVacantes = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("cantidadVacantes");
+                OncantidadVacantesChanged();
+            }
+        }
+        private global::System.Int32 _cantidadVacantes;
+        partial void OncantidadVacantesChanging(global::System.Int32 value);
+        partial void OncantidadVacantesChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
@@ -1089,7 +1287,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -1168,7 +1365,6 @@ namespace DemoMVC.Models
         partial void OncuentaCorreoChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -1211,7 +1407,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1236,7 +1431,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -1339,7 +1533,6 @@ namespace DemoMVC.Models
         partial void OnidTipoDerechoHabienteChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -1458,7 +1651,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1483,7 +1675,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -1586,7 +1777,6 @@ namespace DemoMVC.Models
         partial void OnnroDocumentoChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -1667,7 +1857,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1692,7 +1881,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -1843,7 +2031,6 @@ namespace DemoMVC.Models
         partial void OnfechaCeseChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -2028,7 +2215,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2053,7 +2239,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -2108,7 +2293,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -2135,7 +2319,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2160,7 +2343,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -2215,7 +2397,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -2242,7 +2423,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2267,7 +2447,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -2490,7 +2669,6 @@ namespace DemoMVC.Models
         partial void OnidEspecialidadChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -2647,7 +2825,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2672,7 +2849,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -2847,7 +3023,6 @@ namespace DemoMVC.Models
         partial void OnempresaChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -2890,7 +3065,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2915,7 +3089,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -2970,7 +3143,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -2997,7 +3169,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3026,7 +3197,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -3153,7 +3323,6 @@ namespace DemoMVC.Models
         partial void OnidIdiomaPersonaChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -3272,7 +3441,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3297,7 +3465,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -3400,7 +3567,6 @@ namespace DemoMVC.Models
         partial void OnnombreArchivoChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -3443,7 +3609,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3468,7 +3633,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -3523,7 +3687,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -3550,7 +3713,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3575,7 +3737,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -3630,7 +3791,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -3657,7 +3817,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3682,7 +3841,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -3737,7 +3895,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -3786,7 +3943,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3811,7 +3967,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -4058,7 +4213,6 @@ namespace DemoMVC.Models
         partial void OnfechaNacimientoChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -4375,7 +4529,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4400,7 +4553,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -4503,7 +4655,6 @@ namespace DemoMVC.Models
         partial void OnaprobadoChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -4546,7 +4697,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4571,7 +4721,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -4626,7 +4775,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -4653,7 +4801,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4678,7 +4825,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -4757,7 +4903,6 @@ namespace DemoMVC.Models
         partial void OnnroTelefonoChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -4800,7 +4945,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4825,7 +4969,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -4880,7 +5023,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -4907,7 +5049,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -4932,7 +5073,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Propiedades primitivas
     
         /// <summary>
@@ -4987,7 +5127,6 @@ namespace DemoMVC.Models
         partial void OndescripcionChanged();
 
         #endregion
-
     
         #region Propiedades de navegación
     
@@ -5014,10 +5153,8 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
 
     #endregion
-
     
 }

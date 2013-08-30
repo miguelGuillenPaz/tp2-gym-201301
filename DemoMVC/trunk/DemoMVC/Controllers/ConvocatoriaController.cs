@@ -3,40 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DemoMVC.Models;
 
 namespace DemoMVC.Controllers
 {
     public class ConvocatoriaController : Controller
     {
+        private GRH_Entities _entities;
         //
         // GET: /Convocatoria/
 
         public ActionResult Index()
         {
-            return View();
+            _entities = new GRH_Entities();
+            var convocatoria = (from r in _entities.GRH_Convocatoria  select r).ToList();
+            return View(convocatoria);
         }
 
         //
-        // GET: /Convocatoria/Details/5
+        // GET: /Convocatoria/Detalle/5
 
-        public ActionResult Details(int id)
+        public ActionResult Detalle(int id)
         {
             return View();
         }
 
         //
-        // GET: /Convocatoria/Create
+        // GET: /Convocatoria/Crear
 
-        public ActionResult Create()
+        public ActionResult Crear()
         {
             return View();
         } 
 
         //
-        // POST: /Convocatoria/Create
+        // POST: /Convocatoria/Crear
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Crear(FormCollection collection)
         {
             try
             {
@@ -51,18 +55,18 @@ namespace DemoMVC.Controllers
         }
         
         //
-        // GET: /Convocatoria/Edit/5
+        // GET: /Convocatoria/Editar/5
  
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
             return View();
         }
 
         //
-        // POST: /Convocatoria/Edit/5
+        // POST: /Convocatoria/Editar/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Editar(int id, FormCollection collection)
         {
             try
             {
@@ -77,22 +81,22 @@ namespace DemoMVC.Controllers
         }
 
         //
-        // GET: /Convocatoria/Delete/5
+        // GET: /Convocatoria/Eliminar/5
  
-        public ActionResult Delete(int id)
+        public ActionResult Eliminar(int id)
         {
             return View();
         }
 
         //
-        // POST: /Convocatoria/Delete/5
+        // POST: /Convocatoria/Eliminar/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Eliminar(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                // TODO: Add Eliminar logic here
  
                 return RedirectToAction("Index");
             }
