@@ -361,6 +361,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\dbRRHH.erwin" />
+    <None Include="App_Data\dbRRHH_v2.erwin" />
     <None Include="Content\fonts\pt_sans-bold-webfont.eot" />
     <None Include="Content\fonts\pt_sans-bold-webfont.ttf" />
     <None Include="Content\fonts\pt_sans-bold-webfont.woff" />

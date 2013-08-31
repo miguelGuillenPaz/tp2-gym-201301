@@ -21,115 +21,119 @@ insert  into grh_tipodocumento (descripcion) values ('DNI'),('Pasaporte'),('Carn
 insert  into grh_especialidad (descripcion) values ('Especialidad 1'),('Especialidad 2'),('Especialidad 3');
 
 declare @idpersona int
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('LORENA','PEREZ','LAZO','LIMA',0,convert(datetime,'1984-01-20',120),1,100,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values(@idpersona,'15 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values (@idpersona,1,'42828282')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9928388737'),(@idpersona,'994737737'),(@idpersona,'992483737')
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values (@idpersona,1,'42828282')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9928388737'),(@idpersona,'994737737'),(@idpersona,'992483737')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'l@c.com'),(@idpersona,'x@u.pe'),(@idpersona,'p@d.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil) 
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil) 
 values ('JUAN','GOMEZ','LINARES','Calle Siempre Viva 1233',0,convert(datetime,'1984-01-20',120),5,43,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'20 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'42536457')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9934588737'),(@idpersona,'9977171877'),(@idpersona,'992481234')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9934588737'),(@idpersona,'9977171877'),(@idpersona,'992481234')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'jgomez@cuenta.com'),(@idpersona,'u838@upc.pe'),(@idpersona,'gomez@diez.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('KARIN','PANIAGUA','LINARES','Av. Los Cabitos 123 dpto 1',0,convert(datetime,'1984-01-20',120),2,1,2)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'10 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'42765432')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9928356374'),(@idpersona,'9947012256'),(@idpersona,'9924122329')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9928356374'),(@idpersona,'9947012256'),(@idpersona,'9924122329')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'kpaniagua@cdez.com'),(@idpersona,'kpaniagua@u.pe'),(@idpersona,'p@d.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('MARIO','PEREZ','SERAS','Av. Luis Roldan 1233',1,convert(datetime,'1984-01-20',120),1,1,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'5 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'42998765')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9928398076'),(@idpersona,'994772727'),(@idpersona,'9999022234')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9928398076'),(@idpersona,'994772727'),(@idpersona,'9999022234')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'mperez@hyper.com'),(@idpersona,'mperez@usil.pe'),(@idpersona,'mperez@d.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('SHELBY','CARRASCO','HUAROTO','Calle Los Jazmines Int A',1,convert(datetime,'1984-01-20',120), 8,8,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'15 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'49987112')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9928273645'),(@idpersona,'994282828'),(@idpersona,'9920009972')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9928273645'),(@idpersona,'994282828'),(@idpersona,'9920009972')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'scarrasco@hotmail.com'),(@idpersona,'scarrsco@utec.pe'),(@idpersona,'pepon@dinners.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('CARLOS','GAVILAN','JIMENEZ','Pasaje Federico Huertas 9',1,convert(datetime,'1984-01-20',120),1,1,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'15 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'41765432')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'997876543'),(@idpersona,'9947234333'),(@idpersona,'992098765')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'997876543'),(@idpersona,'9947234333'),(@idpersona,'992098765')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'gavilano@gmail.com'),(@idpersona,'123@u.pe'),(@idpersona,'cgavilan@d.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('IVAN','MARTEL','BARRIONUEVO','Gallo Viejo Torres de Limatambo',1,convert(datetime,'1984-01-20',120),1,1,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'30 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'41445673')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9928098721'),(@idpersona,'994887737'),(@idpersona,'992433337')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9928098721'),(@idpersona,'994887737'),(@idpersona,'992433337')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'cosito@carter.com'),(@idpersona,'imartel@u.pe'),(@idpersona,'imarte@d.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('CARLA','TACSI','GAMEZ','Calle Batallon Husares 232',0,convert(datetime,'1984-01-20',120),1,100,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'15 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'45374859')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9928383222'),(@idpersona,'9949898989'),(@idpersona,'992422265')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9928383222'),(@idpersona,'9949898989'),(@idpersona,'992422265')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'ctaxi@hot.com'),(@idpersona,'ctaxi@u.pe'),(@idpersona,'ctaxi@d.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('CRISTIAN','TERAN','LONGHI','Av. Canada 34',1,convert(datetime,'1984-01-20',120),1,40,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'15 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'40987654')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9928273653'),(@idpersona,'994777765'),(@idpersona,'992888776')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9928273653'),(@idpersona,'994777765'),(@idpersona,'992888776')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'cteran@juan.com'),(@idpersona,'cteran@upc.pe'),(@idpersona,'cteran@neptas.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('ALBERTO','PEREZ','GARCIA','Av. Mexico 1289',1,convert(datetime,'1984-01-20',120),40,1,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'15 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'41876590')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9928374660'),(@idpersona,'994098776'),(@idpersona,'992472611')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9928374660'),(@idpersona,'994098776'),(@idpersona,'992472611')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'aperez@sigral.com'),(@idpersona,'aperez@u.pe'),(@idpersona,'aperez@poetics.com')
 
-insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, idPais_R, idPais_N, idEstadoCivil)
+insert into grh_persona (nombre,apellidoPaterno,apellidoMaterno, direccion, sexo, fechaNacimiento, IdPaisResidencia, IdPaisNacionalidad, idEstadoCivil)
 values ('ROBERTO','BENGALI','RUIZ','Jr. Zepita 12334',1,convert(datetime,'1984-01-20',120),1,1,1)
 set @idpersona=@@identity
 insert into grh_postulante (idPersona, disponibilidad, aprobado) values
 (@idpersona,'15 DIAS',1)
-insert into grh_documento (idpersona,idtipodocumento,nroDocumento) values
+insert into grh_documento (idpersona,idtipodocumento,NumeroDocumento) values
 (@idpersona,1,'42093748')
-insert into grh_telefono (idpersona,nrotelefono) values (@idpersona,'9928389877'),(@idpersona,'994273648'),(@idpersona,'992400009')
+insert into grh_telefono (idpersona,NumeroTelefono) values (@idpersona,'9928389877'),(@idpersona,'994273648'),(@idpersona,'992400009')
 insert into grh_correo (idpersona,cuentaCorreo) values (@idpersona,'rbengalid@panda.com'),(@idpersona,'rbengali@ulima.pe'),(@idpersona,'rbengali@diametres.com')
 
-insert into GRH_Convocatoria (fechaInicio,fechaFin,titulo,detalle,cantidadVacantes)
+Declare @idperfil int
+insert into GRH_Perfil (Nombre,Descripcion) values ('Perfil 1', 'Perfil 1 Descripcion')
+set @idperfil=@@identity
+
+insert into GRH_Convocatoria (fechaInicio,fechaFin,titulo,detalle,cantidadVacantes,IdPerfil)
 values (convert(datetime,'2013-01-01',120),convert(datetime,'2013-01-30',120),'Analista Control de proyecto','Buscamos Profesionales de Sistemas:
 con experiencia en control de proyectos. Para desempeñar funciones de gestión de proyectos, control de avances, interacción con diferentes frentes (área usuaria, cliente, producción), elaboración de reportes. 
 Requisitos:
@@ -137,5 +141,5 @@ Requisitos:
 - Experiencia mínima de 2 años utilizando las herramientas de Macros, MS Office y MS Project.
 - Se valorará experiencia en el rubro de Banco y/o Seguros
 Los interesados enviar cv a recruiting.peru@accenture.com 
-Visita: cvaccenture.pe',5)
+Visita: cvaccenture.pe',5,@idperfil)
 
