@@ -279,6 +279,7 @@
     <Content Include="Views\Convocatoria\Editar.aspx" />
     <Content Include="Views\Convocatoria\Index.aspx" />
     <Content Include="Views\Empleado\Agregar.aspx" />
+    <Content Include="Views\Empleado\alta.aspx" />
     <Content Include="Views\Empleado\DatosAdicionales.aspx" />
     <Content Include="Views\ExpedienteTecnico\ListarCronograma.aspx" />
     <Content Include="Views\ExpedienteTecnico\ListarDetalle.aspx" />
