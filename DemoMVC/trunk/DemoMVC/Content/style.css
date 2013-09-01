@@ -1989,3 +1989,20 @@ ul.politicas_pdf li.ambiental
 input{  
 text-transform: uppercase;  
 } 
+
+.button
+{
+ background:#EB1C24   ;
+ color:White;
+ padding: 5px;
+ margin:3px;
+ border:0; 
+ font-family: 'VAGRoundedLight';
+ text-transform:none;
+ cursor:pointer;
+}
+.button:hover
+{
+    color:#EB1C24   ;
+    background:#FCA802;
+    }

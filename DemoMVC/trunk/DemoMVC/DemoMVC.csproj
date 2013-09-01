@@ -213,6 +213,7 @@
     <Content Include="Images\Usuarios\usuario_codigo_xxxxxxx.jpg" />
     <Content Include="Images\vial_y_vives.png" />
     <Content Include="Scripts\active.marker.js" />
+    <Content Include="Scripts\convocatoria.js" />
     <Content Include="Scripts\Empleado\legajo.js" />
     <Content Include="Scripts\Empleado\derecho-habiente.js" />
     <Content Include="Scripts\Empleado\contrato-personal.js" />
@@ -274,6 +275,8 @@
     <Content Include="Views\Compras\mainPlanAba.aspx" />
     <Content Include="Views\Compras\mainSolAdq.aspx" />
     <Content Include="Views\Contenidos\Contenidos.aspx" />
+    <Content Include="Views\Convocatoria\Crear.aspx" />
+    <Content Include="Views\Convocatoria\Editar.aspx" />
     <Content Include="Views\Convocatoria\Index.aspx" />
     <Content Include="Views\Empleado\Agregar.aspx" />
     <Content Include="Views\Empleado\DatosAdicionales.aspx" />

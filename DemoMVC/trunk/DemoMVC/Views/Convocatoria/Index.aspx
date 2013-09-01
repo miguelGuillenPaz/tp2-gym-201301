@@ -17,6 +17,7 @@
             }
         });
     </script>
+    <script src="../../Scripts/convocatoria.js" type="text/javascript"></script>
     <div class="contenido-top">
         <div>
             <h1>
@@ -30,9 +31,10 @@
                                 <%= Model.Count() %></span>
                         </div>
                         <div class="texto-noticia">
-                              <table class="table100 table100b">
+                              <table class="table100 table100b" id="tblConvocatoria">
                                 <thead>
                                     <tr>
+                                    <th style="display:none;">Id</th>
                                         <th>
                                             <b>Inicio</b>
                                         </th>
@@ -45,7 +47,7 @@
                                         <th>
                                             <b>Vacantes</b>
                                         </th>
-                                        <th>
+                                        <th><b>Opciones</b>
                                         </th>
                                     </tr>
                                 </thead>
@@ -56,6 +58,9 @@
                                            {
                                     %>
                                     <tr>
+                                        <td style="display:none;">
+                                            <%= grhConvocatoria.IdConvocatoria %>
+                                        </td>
                                         <td>                                            
                                             <%= grhConvocatoria.FechaInicio.ToString().Substring(6, 4) + "-" + grhConvocatoria.FechaInicio.ToString().Substring(3, 2) + "-" + grhConvocatoria.FechaInicio.ToString().Substring(0, 2) %>
                                         </td>
@@ -70,7 +75,7 @@
                                         </td>
                                         <td style="text-align: center;">
                                             <%= Html.ActionLink("Editar","Editar", new { id = grhConvocatoria.IdConvocatoria })%> |
-                                            <%= Html.ActionLink("Eliminar", "Eliminar", new { id = grhConvocatoria.IdConvocatoria })%>
+                                            <a class="eliminar" href="javascript:;">Eliminar</a>
                                         </td>
                                     </tr>
                                     <%
@@ -79,7 +84,8 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div>                    
+                    <a class="button" id="btnAgregar" href="/Convocatoria/Crear">Agregar</a>
                 </div>
             </div>
         </div>

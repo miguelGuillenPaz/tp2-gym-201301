@@ -165,7 +165,7 @@
                         </div>
                     </div>               
                     
-                    <a id="btnEnviar" href="javascript:;">Enviar</a>
+                    <a id="btnEnviar" class="button" href="javascript:;">Enviar</a>
                 </div>
             </div>
         </div>
