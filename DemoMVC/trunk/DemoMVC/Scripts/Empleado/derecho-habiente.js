@@ -6,23 +6,35 @@
         var tr = $(this).parent().parent();
         var idDerechoHabiente = $.trim($('td:eq(0)', tr).text());
         if (idDerechoHabiente != 0) {
-            if (confirm('¿Desea eliminar el derecho habiente?')) {
-                var data = { idDerechoHabiente: idDerechoHabiente };
-                var url = '/Empleado/DelDerechoHabiente';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            tr.remove();
-                        }
+            $("#dialogConfirm #confirm").text('¿Desea eliminar el derecho habiente?');
+            $("#dialogConfirm").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "Aceptar": function () {
+                        var data = { idDerechoHabiente: idDerechoHabiente };
+                        var url = '/Empleado/DelDerechoHabiente';
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            success: function (result) {
+                                if (result.result) {
+                                    tr.remove();
+                                }
+                            },
+                            error: function () {
+                                __ShowMessage('No se pudo eliminar');
+                            }
+                        });
+                        $(this).dialog("close");                        
                     },
-                    error: function () {
-                        __ShowMessage('No se pudo eliminar');
+                    "Cancelar": function () {
+                        $(this).dialog("close");
                     }
-                });
-            }
+                }
+            });            
         } else {
             tr.remove();
         }
@@ -94,13 +106,13 @@
                 if (nroRequeridos == 0) {
 
                     var idPersona = $.trim($('#hdnPersona').val());
-                    var idEmpleado = $.trim($('#idEmpleado').val());
+                    var idEmpleado = $.trim($('#IdEmpleado').val());
                     var idDerechoHabiente = $.trim($('#hdnDerechoHabiente').val());
                     var nombre = $('#txtNombre').val().toUpperCase();
                     var apPaterno = $('#txtApPaterno').val().toUpperCase();
                     var apMaterno = $('#txtApMaterno').val().toUpperCase();
                     var fecNacimiento = $('#txtFecNacimiento').val();
-                    var sexo = $("input[name='GRH_Persona.sexo']:checked").val();
+                    var sexo = $("input[name='GRH_Persona.Sexo']:checked").val();
                     var idDocumento = $.trim($('#hdnDocumento').val());
                     var idTipoDocumento = $('#ddlTipoDocumento').val();
                     var numDocumento = $('#txtDocumento').val();
@@ -118,7 +130,7 @@
                         idTipoDocumento: idTipoDocumento,
                         numDocumento: numDocumento,
                         idTipoDerechoHabiente: idTipoDerechoHabiente
-                    };                    
+                    };
                     var url = '/Empleado/SetDerechoHabiente';
                     $.ajax({
                         type: 'POST',
@@ -139,11 +151,11 @@
                                         "<td style=\"display: none;\">" + idTipoDocumento + "</td>" +
                                         "<td>" + $('#ddlTipoDocumento option:selected').text() + "</td>" +
                                         "<td>" + numDocumento + "</td>" +
-                                        "<td>" + (sexo?'Masculino':'Femenino') + "</td>" +
+                                        "<td>" + (sexo ? 'Masculino' : 'Femenino') + "</td>" +
                                         "<td style=\"display: none;\">" + idTipoDerechoHabiente + "</td>" +
                                         "<td>" + $('#ddlTipoDerechoHabiente option:selected').text() + "</td>" +
                                         "<td style=\"display: none;\">" + result.persona + "</td>" +
-                                        "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +                                        
+                                        "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
                                     $('#tblDerechoHabiente tbody').append(fila);
                                 } else {
@@ -160,9 +172,20 @@
                                     $('td:eq(9)', tr).text((sexo ? 'Masculino' : 'Femenino'));
                                     $('td:eq(10)', tr).text(idTipoDerechoHabiente);
                                     $('td:eq(11)', tr).text($('#ddlTipoDerechoHabiente option:selected').text());
-                                    $('td:eq(12)', tr).text(result.persona);                                    
+                                    $('td:eq(12)', tr).text(result.persona);
                                 }
-                                $('#dialogDerechoHabiente').dialog('close');
+                                $("#dialogConfirm #confirm").text('Actualización satisfactoria.');
+                                $("#dialogConfirm").dialog({
+                                    resizable: false,
+                                    height: 140,
+                                    modal: true,
+                                    buttons: {
+                                        "Aceptar": function () {
+                                            $(this).dialog("close");
+                                            $('#dialogDerechoHabiente').dialog('close');
+                                        }
+                                    }
+                                });                                
                             } else {
                                 __ShowMessage(result.Error);
                             }

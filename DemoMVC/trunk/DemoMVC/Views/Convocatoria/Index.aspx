@@ -56,21 +56,21 @@
                                            {
                                     %>
                                     <tr>
-                                        <td>
-                                            <%= grhConvocatoria.fechaInicio %>
+                                        <td>                                            
+                                            <%= grhConvocatoria.FechaInicio.ToString().Substring(6, 4) + "-" + grhConvocatoria.FechaInicio.ToString().Substring(3, 2) + "-" + grhConvocatoria.FechaInicio.ToString().Substring(0, 2) %>
+                                        </td>
+                                        <td>                                            
+                                            <%= grhConvocatoria.FechaFin.ToString().Substring(6, 4) + "-" + grhConvocatoria.FechaFin.ToString().Substring(3, 2) + "-" + grhConvocatoria.FechaFin.ToString().Substring(0, 2) %>
                                         </td>
                                         <td>
-                                            <%= grhConvocatoria.fechaFin %>
+                                            <%= grhConvocatoria.Titulo %>
                                         </td>
                                         <td>
-                                            <%= grhConvocatoria.titulo %>
-                                        </td>
-                                        <td>
-                                            <%= grhConvocatoria.cantidadVacantes %>
+                                            <%= grhConvocatoria.CantidadVacantes %>
                                         </td>
                                         <td style="text-align: center;">
-                                            <%= Html.ActionLink("Editar","Editar", new { id = grhConvocatoria.idConvocatoria })%> |
-                                            <%= Html.ActionLink("Eliminar", "Eliminar", new { id = grhConvocatoria.idConvocatoria })%>
+                                            <%= Html.ActionLink("Editar","Editar", new { id = grhConvocatoria.IdConvocatoria })%> |
+                                            <%= Html.ActionLink("Eliminar", "Eliminar", new { id = grhConvocatoria.IdConvocatoria })%>
                                         </td>
                                     </tr>
                                     <%

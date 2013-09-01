@@ -53,16 +53,16 @@
                                     %>
                                     <tr>
                                         <td>
-                                            <%= grhPersona.nombre %>
+                                            <%= grhPersona.Nombre %>
                                         </td>
                                         <td>
-                                            <%= grhPersona.apellidoPaterno %>
+                                            <%= grhPersona.ApellidoPaterno %>
                                         </td>
                                         <td>
-                                            <%= grhPersona.apellidoMaterno %>
+                                            <%= grhPersona.ApellidoMaterno %>
                                         </td>
                                         <td style="text-align: center;">
-                                            <%= Html.ActionLink("Agregar", "DatosAdicionales", new { id = grhPersona.idPersona })%>
+                                            <%= Html.ActionLink("Agregar", "DatosAdicionales", new { id = grhPersona.IdPersona })%>
                                         </td>
                                     </tr>
                                     <%

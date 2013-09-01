@@ -6,23 +6,35 @@
         var tr = $(this).parent().parent();
         var idLegajo = $.trim($('td:eq(0)', tr).text());
         if (idLegajo != 0) {
-            if (confirm('¿Desea eliminar el legajo?')) {
-                var data = { idLegajo: idLegajo };
-                var url = '/Empleado/DelLegajo';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            tr.remove();
-                        }
+            $("#dialogConfirm #confirm").text('¿Desea eliminar el legajo?');
+            $("#dialogConfirm").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "Aceptar": function () {
+                        var data = { idLegajo: idLegajo };
+                        var url = '/Empleado/DelLegajo';
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            success: function (result) {
+                                if (result.result) {
+                                    tr.remove();
+                                }
+                            },
+                            error: function () {
+                                __ShowMessage('No se pudo eliminar');
+                            }
+                        });
+                        $(this).dialog("close");
                     },
-                    error: function () {
-                        __ShowMessage('No se pudo eliminar');
+                    "Cancelar": function () {
+                        $(this).dialog("close");
                     }
-                });
-            }
+                }
+            });                            
         } else {
             tr.remove();
         }
@@ -69,7 +81,7 @@
                 });
 
                 if (nroRequeridos == 0) {
-                    var idEmpleado = $.trim($('#idEmpleado').val());
+                    var idEmpleado = $.trim($('#IdEmpleado').val());
                     if (idEmpleado == '') {
                         idEmpleado = '0';
                     }
@@ -94,18 +106,29 @@
                                 if ($('#hdnAccionLegajo').val() == 'I') {
                                     var fila = "<tr>" +
                                         "<td style=\"display: none;\">" + $('#hdnLegajo').val() + "</td>" +
-                                        "<td>" + $('#txtNombreArchivo').val() + "</td>" +
-                                        "<td>" + $('#txtUbicacion').val() + "</td>" +
+                                        "<td>" + nombreArchivo + "</td>" +
+                                        "<td>" + ubicacion + "</td>" +
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
                                     $('#tblLegajo tbody').append(fila);
                                 } else {
                                     var tr = selectedLegajo;
                                     $('td:eq(0)', tr).text($('#hdnLegajo').val());
-                                    $('td:eq(1)', tr).text($('#txtNombreArchivo').val());
-                                    $('td:eq(2)', tr).text($('#txtUbicacion').val());
-                                }
-                                $('#dialogLegajo').dialog('close');
+                                    $('td:eq(1)', tr).text(nombreArchivo);
+                                    $('td:eq(2)', tr).text(ubicacion);
+                                }                                
+                                $("#dialogConfirm #confirm").text('Actualización satisfactoria.');
+                                $("#dialogConfirm").dialog({
+                                    resizable: false,
+                                    height: 140,
+                                    modal: true,
+                                    buttons: {
+                                        "Aceptar": function () {
+                                            $(this).dialog("close");
+                                            $('#dialogLegajo').dialog('close');
+                                        }
+                                    }
+                                }); 
                             }
                         },
                         error: function () {
@@ -127,23 +150,35 @@
     });
 
     $('#btnCancelar').click(function () {
-        if (confirm('¿Desea cancelar el registro de empleado?')) {
-            var idEmpleado = $.trim($('#idEmpleado').val());
-            var data = { idEmpleado: idEmpleado };
-            var url = '/Empleado/Cancelar';
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: data,
-                success: function (result) {
-                    if (result.result) {
-                        window.location.href = '/Empleado/Agregar';
-                    }
+        $("#dialogConfirm #confirm").text('¿Desea cancelar el registro de empleado?');
+        $("#dialogConfirm").dialog({
+            resizable: false,
+            height: 140,
+            modal: true,
+            buttons: {
+                "Aceptar": function () {
+                    $(this).dialog("close");
+                    var idEmpleado = $.trim($('#IdEmpleado').val());
+                    var data = { idEmpleado: idEmpleado };
+                    var url = '/Empleado/Cancelar';
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: data,
+                        success: function (result) {
+                            if (result.result) {
+                                window.location.href = '/Empleado/Agregar';
+                            }
+                        },
+                        error: function () {
+                            __ShowMessage('No se pudo cancelar');
+                        }
+                    });                    
                 },
-                error: function () {
-                    __ShowMessage('No se pudo cancelar');
+                "Cancelar": function () {
+                    $(this).dialog("close");
                 }
-            });
-        }
+            }
+        });                        
     });
 });

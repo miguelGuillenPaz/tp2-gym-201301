@@ -14,7 +14,7 @@ namespace DemoMVC.Controllers
         private GRH_Entities _entities;
         private readonly string[] _seleccione = new[] { string.Empty, "--Seleccione--" };
 
-        public ActionResult Mostrar(int id)
+        public ActionResult Detalle(int id)
         {
             _entities = new GRH_Entities();
             ViewData["TipoDocumento"] = TipoDocumento();
@@ -25,7 +25,7 @@ namespace DemoMVC.Controllers
             ViewData["SituacionEstudio"] = SituacionEstudio();
             ViewData["NivelIdioma"] = NivelIdioma();
             ViewData["Idioma"] = Idioma();
-            var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
+            var persona = (from r in _entities.GRH_Persona where r.IdPersona == id select r).FirstOrDefault();
             return View(persona);
         }
 
@@ -35,7 +35,7 @@ namespace DemoMVC.Controllers
 
             ViewData["EstadoCivil"] = EstadoCivil();
             ViewData["Pais"] = Pais();
-            var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
+            var persona = (from r in _entities.GRH_Persona where r.IdPersona == id select r).FirstOrDefault();
             return View(persona);
         }
 
@@ -46,7 +46,7 @@ namespace DemoMVC.Controllers
             ViewData["EstadoCivil"] = EstadoCivil();
             ViewData["Pais"] = Pais();
             ViewData["TipoDocumento"] = TipoDocumento();
-            var persona = (from r in _entities.GRH_Persona where r.idPersona == id select r).FirstOrDefault();
+            var persona = (from r in _entities.GRH_Persona where r.IdPersona == id select r).FirstOrDefault();
             return View(persona);
         }
 
@@ -55,20 +55,20 @@ namespace DemoMVC.Controllers
             _entities = new GRH_Entities();
             var persona = new GRH_Persona
             {
-                nombre = string.Empty,
-                apellidoMaterno = string.Empty,
-                apellidoPaterno = string.Empty,
+                Nombre = string.Empty,
+                ApellidoMaterno = string.Empty,
+                ApellidoPaterno = string.Empty,
             };
             _entities.AddToGRH_Persona(persona);
             _entities.SaveChanges();
-            return persona.idPersona;
+            return persona.IdPersona;
         }
 
         #region Documento
         public virtual ActionResult DelDocumento(int idDocumento)
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_Documento where r.idDocumento == idDocumento select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_Documento where r.IdDocumento == idDocumento select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -94,27 +94,27 @@ namespace DemoMVC.Controllers
                 //verifica que no exista el documento
                 var doc = (from r in _entities.GRH_Documento
                            where
-                               r.idTipoDocumento == idTipoDocumento &&
-                               r.nroDocumento == numeroDocumento
+                               r.IdTipoDocumento == idTipoDocumento &&
+                               r.NumeroDocumento == numeroDocumento
                            select r).FirstOrDefault();
                 if (doc == null)
                 {
                     var docper = (from r in _entities.GRH_Documento
                                   where
-                                      r.idTipoDocumento == idTipoDocumento &&
-                                      r.idPersona == idPersona
+                                      r.IdTipoDocumento == idTipoDocumento &&
+                                      r.IdPersona == idPersona
                                   select r).FirstOrDefault();
                     if (docper == null)
                     {
                         var documento = new GRH_Documento
                         {
-                            idPersona = idPersona,
-                            idTipoDocumento = idTipoDocumento,
-                            nroDocumento = numeroDocumento
+                            IdPersona = idPersona,
+                            IdTipoDocumento = idTipoDocumento,
+                            NumeroDocumento = numeroDocumento
                         };
                         _entities.AddToGRH_Documento(documento);
                         _entities.SaveChanges();
-                        idDocumento = documento.idDocumento;
+                        idDocumento = documento.IdDocumento;
                         resultado = true;
                     }
                     else
@@ -131,12 +131,12 @@ namespace DemoMVC.Controllers
             }
             else
             {
-                var res = (from r in _entities.GRH_Documento where r.idDocumento == idDocumento select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_Documento where r.IdDocumento == idDocumento select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.idPersona = idPersona;
-                    res.idTipoDocumento = idTipoDocumento;
-                    res.nroDocumento = numeroDocumento;
+                    res.IdPersona = idPersona;
+                    res.IdTipoDocumento = idTipoDocumento;
+                    res.NumeroDocumento = numeroDocumento;
                     _entities.SaveChanges();
                     resultado = true;
                 }
@@ -158,7 +158,7 @@ namespace DemoMVC.Controllers
         public virtual ActionResult DelTelefono(int idTelefono)
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_Telefono where r.idTelefono == idTelefono select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_Telefono where r.IdTelefono == idTelefono select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -182,21 +182,21 @@ namespace DemoMVC.Controllers
             {
                 var documento = new GRH_Telefono
                 {
-                    idPersona = idPersona,
-                    nroTelefono = numeroTelefono
+                    IdPersona = idPersona,
+                    NumeroTelefono = numeroTelefono
                 };
                 _entities.AddToGRH_Telefono(documento);
                 _entities.SaveChanges();
-                idTelefono = documento.idTelefono;
+                idTelefono = documento.IdTelefono;
                 resultado = true;
             }
             else
             {
-                var res = (from r in _entities.GRH_Telefono where r.idTelefono == idTelefono select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_Telefono where r.IdTelefono == idTelefono select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.idPersona = idPersona;
-                    res.nroTelefono = numeroTelefono;
+                    res.IdPersona = idPersona;
+                    res.NumeroTelefono = numeroTelefono;
                     _entities.SaveChanges();
                     resultado = true;
                 }
@@ -217,7 +217,7 @@ namespace DemoMVC.Controllers
         public virtual ActionResult DelCorreo(int idCorreo)
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_Correo where r.idCorreo == idCorreo select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_Correo where r.IdCorreo == idCorreo select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -241,21 +241,21 @@ namespace DemoMVC.Controllers
             {
                 var documento = new GRH_Correo
                 {
-                    idPersona = idPersona,
-                    cuentaCorreo = cuentaCorreo
+                    IdPersona = idPersona,
+                    CuentaCorreo = cuentaCorreo
                 };
                 _entities.AddToGRH_Correo(documento);
                 _entities.SaveChanges();
-                idCorreo = documento.idCorreo;
+                idCorreo = documento.IdCorreo;
                 resultado = true;
             }
             else
             {
-                var res = (from r in _entities.GRH_Correo where r.idCorreo == idCorreo select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_Correo where r.IdCorreo == idCorreo select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.idPersona = idPersona;
-                    res.cuentaCorreo = cuentaCorreo;
+                    res.IdPersona = idPersona;
+                    res.CuentaCorreo = cuentaCorreo;
                     _entities.SaveChanges();
                     resultado = true;
                 }
@@ -276,7 +276,7 @@ namespace DemoMVC.Controllers
         public virtual ActionResult DelIdiomaPersona(int idIdiomaPersona)
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_IdiomaPersona where r.idIdiomaPersona == idIdiomaPersona select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_IdiomaPersona where r.IdIdiomaPersona == idIdiomaPersona select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -300,33 +300,33 @@ namespace DemoMVC.Controllers
             {
                 var idioma = new GRH_IdiomaPersona
                 {
-                    idPersona = idPersona,
-                    idIdioma = idIdioma,
-                    nativo = nativo
+                    IdPersona = idPersona,
+                    IdIdioma = idIdioma,
+                    Nativo = nativo
                 };
                 if (idNivelIdioma == 0)
-                    idioma.idNivelIdioma = null;
+                    idioma.IdNivelIdioma = null;
                 else
-                    idioma.idNivelIdioma = idNivelIdioma;
+                    idioma.IdNivelIdioma = idNivelIdioma;
 
                 _entities.AddToGRH_IdiomaPersona(idioma);
                 _entities.SaveChanges();
-                idIdiomaPersona = idioma.idIdiomaPersona;
+                idIdiomaPersona = idioma.IdIdiomaPersona;
                 resultado = true;
             }
             else
             {
-                var res = (from r in _entities.GRH_IdiomaPersona where r.idIdiomaPersona == idIdiomaPersona select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_IdiomaPersona where r.IdIdiomaPersona == idIdiomaPersona select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.idPersona = idPersona;
-                    res.idIdioma = idIdioma;
+                    res.IdPersona = idPersona;
+                    res.IdIdioma = idIdioma;
                     if (idNivelIdioma == 0)
-                        res.idNivelIdioma = null;
+                        res.IdNivelIdioma = null;
                     else
-                        res.idNivelIdioma = idNivelIdioma;
+                        res.IdNivelIdioma = idNivelIdioma;
 
-                    res.nativo = nativo;
+                    res.Nativo = nativo;
                     _entities.SaveChanges();
                     resultado = true;
                 }
@@ -348,7 +348,7 @@ namespace DemoMVC.Controllers
         public virtual ActionResult DelExperienciaLaboral(int idExperienciaLaboral)
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_ExperienciaLaboral where r.idExperienciaLaboral == idExperienciaLaboral select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_ExperienciaLaboral where r.IdExperienciaLaboral == idExperienciaLaboral select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -372,13 +372,13 @@ namespace DemoMVC.Controllers
             {
                 var experienciaLaboral = new GRH_ExperienciaLaboral
                 {
-                    idPersona = idPersona,
-                    conocimientos = conocimientos,
-                    cargo = cargo,
-                    empresa = empresa
+                    IdPersona = idPersona,
+                    Conocimientos = conocimientos,
+                    Cargo = cargo,
+                    Empresa = empresa
                 };
                 if (!string.IsNullOrEmpty(fechaInicio))
-                    experienciaLaboral.fechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)),
+                    experienciaLaboral.FechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)),
                                                                   Convert.ToInt32(fechaInicio.Substring(5, 2)),
                                                                   Convert.ToInt32(fechaInicio.Substring(8, 2)));
                 if (!string.IsNullOrEmpty(fechaFin))
@@ -388,26 +388,26 @@ namespace DemoMVC.Controllers
 
                 _entities.AddToGRH_ExperienciaLaboral(experienciaLaboral);
                 _entities.SaveChanges();
-                idExperienciaLaboral = experienciaLaboral.idExperienciaLaboral;
+                idExperienciaLaboral = experienciaLaboral.IdExperienciaLaboral;
                 resultado = true;
             }
             else
             {
-                var res = (from r in _entities.GRH_ExperienciaLaboral where r.idExperienciaLaboral == idExperienciaLaboral select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_ExperienciaLaboral where r.IdExperienciaLaboral == idExperienciaLaboral select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.idPersona = idPersona;
+                    res.IdPersona = idPersona;
                     if (!string.IsNullOrEmpty(fechaInicio))
-                        res.fechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)),
+                        res.FechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)),
                                                        Convert.ToInt32(fechaInicio.Substring(5, 2)),
                                                        Convert.ToInt32(fechaInicio.Substring(8, 2)));
                     if (!string.IsNullOrEmpty(fechaFin))
                         res.FechaFin = new DateTime(Convert.ToInt32(fechaFin.Substring(0, 4)),
                                                     Convert.ToInt32(fechaFin.Substring(5, 2)),
                                                     Convert.ToInt32(fechaFin.Substring(8, 2)));
-                    res.conocimientos = conocimientos;
-                    res.cargo = cargo;
-                    res.empresa = empresa;
+                    res.Conocimientos = conocimientos;
+                    res.Cargo = cargo;
+                    res.Empresa = empresa;
                     _entities.SaveChanges();
                     resultado = true;
                 }
@@ -431,7 +431,7 @@ namespace DemoMVC.Controllers
         public virtual ActionResult DelEstudioRealizado(int idEstudioRealizado)
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_EstudioRealizado where r.idEstudioRealizado == idEstudioRealizado select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_EstudioRealizado where r.IdEstudioRealizado == idEstudioRealizado select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -455,51 +455,51 @@ namespace DemoMVC.Controllers
             {
                 var estudioRealizado = new GRH_EstudioRealizado
                 {
-                    idPersona = idPersona,
-                    idEspecialidad = idEspecialidad,
-                    idNivelEducativo = idNivel,
-                    idSituacionEstudio = idSituacion,
-                    centroEstudio = centroEstudio,
-                    nombreEstudio = nombreEstudio
+                    IdPersona = idPersona,
+                    IdEspecialidad = idEspecialidad,
+                    IdNivelEducativo = idNivel,
+                    IdSituacionEstudio = idSituacion,
+                    CentroEstudio = centroEstudio,
+                    NombreEstudio = nombreEstudio
                 };
                 if (!string.IsNullOrEmpty(fechaInicio))
-                    estudioRealizado.fechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)),
+                    estudioRealizado.FechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)),
                                                                   Convert.ToInt32(fechaInicio.Substring(5, 2)),
                                                                   Convert.ToInt32(fechaInicio.Substring(8, 2)));
                 if (!string.IsNullOrEmpty(fechaFin))
-                    estudioRealizado.fechaFin = new DateTime(Convert.ToInt32(fechaFin.Substring(0, 4)),
+                    estudioRealizado.FechaFin = new DateTime(Convert.ToInt32(fechaFin.Substring(0, 4)),
                                             Convert.ToInt32(fechaFin.Substring(5, 2)),
                                             Convert.ToInt32(fechaFin.Substring(8, 2)));
 
                 _entities.AddToGRH_EstudioRealizado(estudioRealizado);
                 _entities.SaveChanges();
-                idEstudioRealizado = estudioRealizado.idEstudioRealizado;
+                idEstudioRealizado = estudioRealizado.IdEstudioRealizado;
                 resultado = true;
             }
             else
             {
-                var res = (from r in _entities.GRH_EstudioRealizado where r.idEstudioRealizado == idEstudioRealizado select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_EstudioRealizado where r.IdEstudioRealizado == idEstudioRealizado select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.idPersona = idPersona;
-                    res.idEspecialidad = idEspecialidad;
-                    res.idNivelEducativo = idNivel;
-                    res.idSituacionEstudio = idSituacion;
-                    res.centroEstudio = centroEstudio;
-                    res.nombreEstudio = nombreEstudio;
+                    res.IdPersona = idPersona;
+                    res.IdEspecialidad = idEspecialidad;
+                    res.IdNivelEducativo = idNivel;
+                    res.IdSituacionEstudio = idSituacion;
+                    res.CentroEstudio = centroEstudio;
+                    res.NombreEstudio = nombreEstudio;
                     if (!string.IsNullOrEmpty(fechaInicio))
-                        res.fechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)),
+                        res.FechaInicio = new DateTime(Convert.ToInt32(fechaInicio.Substring(0, 4)),
                                                        Convert.ToInt32(fechaInicio.Substring(5, 2)),
                                                        Convert.ToInt32(fechaInicio.Substring(8, 2)));
                     else
-                        res.fechaInicio = null;
+                        res.FechaInicio = null;
 
                     if (!string.IsNullOrEmpty(fechaFin))
-                        res.fechaFin = new DateTime(Convert.ToInt32(fechaFin.Substring(0, 4)),
+                        res.FechaFin = new DateTime(Convert.ToInt32(fechaFin.Substring(0, 4)),
                                                     Convert.ToInt32(fechaFin.Substring(5, 2)),
                                                     Convert.ToInt32(fechaFin.Substring(8, 2)));
                     else
-                        res.fechaFin = null;
+                        res.FechaFin = null;
 
                     _entities.SaveChanges();
                     resultado = true;
@@ -529,31 +529,31 @@ namespace DemoMVC.Controllers
             {
                 var persona = new GRH_Persona
                 {
-                    nombre = nombre,
-                    apellidoPaterno = apellidoPaterno,
-                    apellidoMaterno = apellidoMaterno,
-                    idEstadoCivil = idEstadoCivil,
-                    sexo = sexo,
-                    direccion = direccion,
-                    idPais_R = idPaisR,
-                    idPais_N = idPaisN
+                    Nombre = nombre,
+                    ApellidoPaterno = apellidoPaterno,
+                    ApellidoMaterno = apellidoMaterno,
+                    IdEstadoCivil = idEstadoCivil,
+                    Sexo = sexo,
+                    Direccion = direccion,
+                    IdPaisResidencia = idPaisR,
+                    IdPaisNacionalidad = idPaisN
                 };
                 if (!string.IsNullOrEmpty(fechaNacimiento))
-                    persona.fechaNacimiento = new DateTime(Convert.ToInt32(fechaNacimiento.Substring(0, 4)),
+                    persona.FechaNacimiento = new DateTime(Convert.ToInt32(fechaNacimiento.Substring(0, 4)),
                                                            Convert.ToInt32(fechaNacimiento.Substring(5, 2)),
                                                            Convert.ToInt32(fechaNacimiento.Substring(8, 2)));
                 else
-                    persona.fechaNacimiento = null;
+                    persona.FechaNacimiento = null;
 
                 _entities.AddToGRH_Persona(persona);
                 _entities.SaveChanges();
-                idPersona = persona.idPersona;
+                idPersona = persona.IdPersona;
 
                 var postulante = new GRH_Postulante
                     {
-                        idPersona = idPersona,
-                        disponibilidad = disponibilidad,
-                        aprobado = false
+                        IdPersona = idPersona,
+                        Disponibilidad = disponibilidad,
+                        Aprobado = false
                     };
                 _entities.AddToGRH_Postulante(postulante);
                 _entities.SaveChanges();
@@ -562,27 +562,27 @@ namespace DemoMVC.Controllers
             }
             else
             {
-                var res = (from r in _entities.GRH_Persona where r.idPersona == idPersona select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_Persona where r.IdPersona == idPersona select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.nombre = nombre;
-                    res.apellidoPaterno = apellidoPaterno;
-                    res.apellidoMaterno = apellidoMaterno;
-                    res.idEstadoCivil = idEstadoCivil;
-                    res.sexo = sexo;
-                    res.direccion = direccion;
-                    res.idPais_N = idPaisN;
-                    res.idPais_R = idPaisR;
+                    res.Nombre = nombre;
+                    res.ApellidoPaterno = apellidoPaterno;
+                    res.ApellidoMaterno = apellidoMaterno;
+                    res.IdEstadoCivil = idEstadoCivil;
+                    res.Sexo = sexo;
+                    res.Direccion = direccion;
+                    res.IdPaisNacionalidad = idPaisN;
+                    res.IdPaisResidencia = idPaisR;
                     if (!string.IsNullOrEmpty(fechaNacimiento))
-                        res.fechaNacimiento = new DateTime(Convert.ToInt32(fechaNacimiento.Substring(0, 4)),
+                        res.FechaNacimiento = new DateTime(Convert.ToInt32(fechaNacimiento.Substring(0, 4)),
                                                                Convert.ToInt32(fechaNacimiento.Substring(5, 2)),
                                                                Convert.ToInt32(fechaNacimiento.Substring(8, 2)));
                     else
-                        res.fechaNacimiento = null;
+                        res.FechaNacimiento = null;
 
                     var firstOrDefault = res.GRH_Postulante.FirstOrDefault();
                     if (firstOrDefault != null)
-                        firstOrDefault.disponibilidad = disponibilidad;
+                        firstOrDefault.Disponibilidad = disponibilidad;
 
                     _entities.SaveChanges();
                     resultado = true;
@@ -622,7 +622,7 @@ namespace DemoMVC.Controllers
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idEstadoCivil + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdEstadoCivil + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -639,7 +639,7 @@ namespace DemoMVC.Controllers
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idPais + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdPais + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -654,7 +654,7 @@ namespace DemoMVC.Controllers
             var lista = (from r in _entities.GRH_TipoDocumento select r);
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idTipoDocumento + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdTipoDocumento + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -670,7 +670,7 @@ namespace DemoMVC.Controllers
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idEspecialidad + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdEspecialidad + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -686,7 +686,7 @@ namespace DemoMVC.Controllers
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idNivelEducativo + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdNivelEducativo + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -702,7 +702,7 @@ namespace DemoMVC.Controllers
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idSituacionEstudio + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdSituacionEstudio + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -718,7 +718,7 @@ namespace DemoMVC.Controllers
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idNivelIdioma + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdNivelIdioma + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -734,7 +734,7 @@ namespace DemoMVC.Controllers
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idIdioma + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdIdioma + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 

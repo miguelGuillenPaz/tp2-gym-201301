@@ -6,23 +6,35 @@
         var tr = $(this).parent().parent();
         var idContratoPersonal = $.trim($('td:eq(0)', tr).text());
         if (idContratoPersonal != 0) {
-            if (confirm('¿Desea eliminar el contrato personal?')) {
-                var data = { idContratoPersonal: idContratoPersonal };
-                var url = '/Empleado/DelContratoPersonal';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            tr.remove();
-                        }
+            $("#dialogConfirm #confirm").text('¿Desea eliminar el contrato personal?');
+            $("#dialogConfirm").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "Aceptar": function () {
+                        var data = { idContratoPersonal: idContratoPersonal };
+                        var url = '/Empleado/DelContratoPersonal';
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            success: function (result) {
+                                if (result.result) {
+                                    tr.remove();
+                                }
+                            },
+                            error: function () {
+                                __ShowMessage('No se pudo eliminar');
+                            }
+                        });
+                        $(this).dialog("close");                        
                     },
-                    error: function () {
-                        __ShowMessage('No se pudo eliminar');
+                    "Cancelar": function () {
+                        $(this).dialog("close");
                     }
-                });
-            }
+                }
+            });                
         } else {
             tr.remove();
         }
@@ -71,12 +83,12 @@
                 });
 
                 if (nroRequeridos == 0) {
-                    var idEmpleado = $.trim($('#idEmpleado').val());
+                    var idEmpleado = $.trim($('#IdEmpleado').val());
                     if (idEmpleado == '') {
                         idEmpleado = '0';
                     }
                     var idContratoPersonal = $.trim($('#hdnContratoPersonal').val());
-                    var txtNumero = $.trim($('#txtNumero').val());
+                    var txtNumero = $.trim($('#txtNumero').val().toUpperCase());
                     var txtInicio = $.trim($('#txtInicio').val());
                     var txtFin = $.trim($('#txtFin').val());                    
                     var data = {
@@ -98,20 +110,31 @@
                                 if ($('#hdnAccionContratoPersonal').val() == 'I') {
                                     var fila = "<tr>" +
                                         "<td style=\"display: none;\">" + result.contratoPersonal + "</td>" +
-                                        "<td>" + $('#txtNumero').val() + "</td>" +                                        
-                                        "<td>" + $('#txtInicio').val() + "</td>" +
-                                        "<td>" + $('#txtFin').val() + "</td>" +                                        
+                                        "<td>" + txtNumero + "</td>" +
+                                        "<td>" + txtInicio + "</td>" +
+                                        "<td>" + txtFin + "</td>" +                                        
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
                                     $('#tblContratoPersonal tbody').append(fila);
                                 } else {
                                     var tr = selectedContratoPersonal;
-                                    $('td:eq(0)', tr).text($('#hdnContratoPersonal').val());
-                                    $('td:eq(1)', tr).text($('#txtNumero').val());                                    
-                                    $('td:eq(2)', tr).text($('#txtInicio').val());
-                                    $('td:eq(3)', tr).text($('#txtFin').val());                                    
-                                }
-                                $('#dialogContratoPersonal').dialog('close');
+                                    $('td:eq(0)', tr).text(idContratoPersonal);
+                                    $('td:eq(1)', tr).text(txtNumero);                                    
+                                    $('td:eq(2)', tr).text(txtInicio);
+                                    $('td:eq(3)', tr).text(txtFin);                                    
+                                }                                
+                                $("#dialogConfirm #confirm").text('Actualización satisfactoria.');
+                                $("#dialogConfirm").dialog({
+                                    resizable: false,
+                                    height: 140,
+                                    modal: true,
+                                    buttons: {
+                                        "Aceptar": function () {
+                                            $(this).dialog("close");
+                                            $('#dialogContratoPersonal').dialog('close');
+                                        }
+                                    }
+                                }); 
                             }
                         },
                         error: function () {

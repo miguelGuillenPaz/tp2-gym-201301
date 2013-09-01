@@ -23,30 +23,32 @@
     <script src="../../Scripts/Postulante/idioma-persona.js" type="text/javascript"></script>
     <script src="../../Scripts/Postulante/experiencia-laboral.js" type="text/javascript"></script>
     <script src="../../Scripts/Postulante/estudio-realizado.js" type="text/javascript"></script>
+    <% if (Model != null)
+       { %>
     <div class="contenido-top">
         <div>
             <h1>
                 Registrar Postulante
-                <%= Html.HiddenFor(m=> m.idPersona) %>
+                <%= Html.HiddenFor(m => m.IdPersona)%>
             </h1>
             <div class="areas-negocios">
                 <div class="lista-central">
                     <div class="noticia">
                         <div class="head-noticia">
                             <span class="titulo-noticia">Información Personal</span> <a style="float: right;"
-                                href="/Postulante/Editar/<%= Model.idPersona %>">Editar</a>
+                                href="/Postulante/Editar/<%= Model.IdPersona %>">Editar</a>
                         </div>
                         <div class="texto-noticia">
                             <table>
                                 <tr>
                                     <td>
-                                        <%= Html.Label("Nombres") %>
+                                        <%= Html.Label("Nombres")%>
                                     </td>
                                     <td>
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DisplayFor(m=> m.nombre) %>
+                                        <%= Html.DisplayFor(m => m.Nombre)%>
                                     </td>
                                     <td>
                                     </td>
@@ -66,16 +68,16 @@
                                                 %>
                                                 <tr>
                                                     <td style="display: none;">
-                                                        <%= documento.idDocumento %>
+                                                        <%= documento.IdDocumento%>
                                                     </td>
                                                     <td style="display: none;">
-                                                        <%= documento.GRH_TipoDocumento!=null? documento.GRH_TipoDocumento.idTipoDocumento+"":string.Empty %>
+                                                        <%= documento.GRH_TipoDocumento != null ? documento.GRH_TipoDocumento.IdTipoDocumento + "" : string.Empty%>
                                                     </td>
                                                     <td>
-                                                        <%= documento.GRH_TipoDocumento!=null? documento.GRH_TipoDocumento.descripcion:string.Empty %>
+                                                        <%= documento.GRH_TipoDocumento != null ? documento.GRH_TipoDocumento.Descripcion : string.Empty%>
                                                     </td>
                                                     <td>
-                                                        <%= documento.nroDocumento %>
+                                                        <%= documento.NumeroDocumento%>
                                                     </td>
                                                     <td>
                                                         <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
@@ -92,35 +94,35 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <%= Html.Label("Apellido Paterno") %>
+                                        <%= Html.Label("Apellido Paterno")%>
                                     </td>
                                     <td>
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DisplayFor(m=> m.apellidoPaterno) %>
+                                        <%= Html.DisplayFor(m => m.ApellidoPaterno)%>
                                     </td>
                                     <td>
                                     </td>
                                     <td>
-                                        <%= Html.Label("Apellido Materno") %>
+                                        <%= Html.Label("Apellido Materno")%>
                                     </td>
                                     <td>
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DisplayFor(m=> m.apellidoMaterno) %>
+                                        <%= Html.DisplayFor(m => m.ApellidoMaterno)%>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <%= Html.Label("Estado Civil") %>
+                                        <%= Html.Label("Estado Civil")%>
                                     </td>
                                     <td>
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DisplayFor(m => m.GRH_EstadoCivil.descripcion) %>
+                                        <%= Html.DisplayFor(m => m.GRH_EstadoCivil.Descripcion)%>
                                     </td>
                                     <td>
                                     </td>
@@ -131,7 +133,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Model!=null?( Model.sexo==true ? "Masculino":"Femenino"):string.Empty %>
+                                        <%= Model != null ? (Model.Sexo == true ? "Masculino" : "Femenino") : string.Empty%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,7 +144,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DisplayFor(m => m.direccion)%>
+                                        <%= Html.DisplayFor(m => m.Direccion)%>
                                     </td>
                                     <td>
                                     </td>
@@ -153,7 +155,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DisplayFor(m => m.GRH_Pais.descripcion)%>
+                                        <%= Html.DisplayFor(m => m.GRH_Pais.Descripcion)%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -164,18 +166,18 @@
                                         :
                                     </td>
                                     <td>
-                                        <%=Model!=null? (Model.fechaNacimiento != null ? (Model.fechaNacimiento.ToString().Substring(6, 4) + "-" + Model.fechaNacimiento.ToString().Substring(3, 2) + "-" + Model.fechaNacimiento.ToString().Substring(0, 2)) : string.Empty):string.Empty %>
+                                        <%=Model != null ? (Model.FechaNacimiento != null ? (Model.FechaNacimiento.ToString().Substring(6, 4) + "-" + Model.FechaNacimiento.ToString().Substring(3, 2) + "-" + Model.FechaNacimiento.ToString().Substring(0, 2)) : string.Empty) : string.Empty%>
                                     </td>
                                     <td>
                                     </td>
                                     <td>
-                                        <%= Html.Label("Pais de Nacimiento") %>
+                                        <%= Html.Label("Pais de Nacimiento")%>
                                     </td>
                                     <td>
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DisplayFor(m => m.GRH_Pais1.descripcion)%>
+                                        <%= Html.DisplayFor(m => m.GRH_Pais1.Descripcion)%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -195,10 +197,10 @@
                                                 %>
                                                 <tr>
                                                     <td style="display: none;">
-                                                        <%= telefono.idTelefono %>
+                                                        <%= telefono.IdTelefono%>
                                                     </td>
                                                     <td>
-                                                        <%= telefono.nroTelefono %>
+                                                        <%= telefono.NumeroTelefono%>
                                                     </td>
                                                     <td>
                                                         <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
@@ -230,10 +232,10 @@
                                                 %>
                                                 <tr>
                                                     <td style="display: none;">
-                                                        <%= correo.idCorreo %>
+                                                        <%= correo.IdCorreo%>
                                                     </td>
                                                     <td>
-                                                        <%= correo.cuentaCorreo %>
+                                                        <%= correo.CuentaCorreo%>
                                                     </td>
                                                     <td>
                                                         <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
@@ -249,13 +251,23 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Disponibilidad</td>
-                                    <td>:</td>
-                                    <td><%= Html.DisplayTextFor(m=> m.GRH_Postulante.FirstOrDefault().disponibilidad) %></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>
+                                        Disponibilidad
+                                    </td>
+                                    <td>
+                                        :
+                                    </td>
+                                    <td>
+                                        <%= Html.DisplayTextFor(m => m.GRH_Postulante.FirstOrDefault().Disponibilidad)%>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -298,22 +310,22 @@
                                            { %>
                                     <tr>
                                         <td style="display: none;">
-                                            <%= item.idExperienciaLaboral %>
+                                            <%= item.IdExperienciaLaboral%>
                                         </td>
                                         <td>
-                                            <%= item.empresa %>
+                                            <%= item.Empresa%>
                                         </td>
                                         <td>
-                                            <%= item.cargo %>
+                                            <%= item.Cargo%>
                                         </td>
                                         <td>
-                                            <%= item.fechaInicio != null ? item.fechaInicio.ToString().Substring(6, 4) + "-" + item.fechaInicio.ToString().Substring(3, 2) + "-" + item.fechaInicio.ToString().Substring(0, 2) : string.Empty%>
+                                            <%= item.FechaInicio != null ? item.FechaInicio.ToString().Substring(6, 4) + "-" + item.FechaInicio.ToString().Substring(3, 2) + "-" + item.FechaInicio.ToString().Substring(0, 2) : string.Empty%>
                                         </td>
                                         <td>
-                                            <%= item.FechaFin != null ? item.FechaFin.ToString().Substring(6,4 ) + "-" + item.FechaFin.ToString().Substring(3, 2) + "-" + item.FechaFin.ToString().Substring(0, 2) : string.Empty%>
+                                            <%= item.FechaFin != null ? item.FechaFin.ToString().Substring(6, 4) + "-" + item.FechaFin.ToString().Substring(3, 2) + "-" + item.FechaFin.ToString().Substring(0, 2) : string.Empty%>
                                         </td>
                                         <td style="display: none;">
-                                            <%= item.conocimientos %>
+                                            <%= item.Conocimientos%>
                                         </td>
                                         <td>
                                             <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
@@ -381,37 +393,37 @@
                                            { %>
                                     <tr>
                                         <td style="display: none;">
-                                            <%= item.idEstudioRealizado %>
+                                            <%= item.IdEstudioRealizado%>
                                         </td>
                                         <td>
-                                            <%= item.centroEstudio %>
+                                            <%= item.CentroEstudio%>
                                         </td>
                                         <td>
-                                            <%= item.nombreEstudio %>
+                                            <%= item.NombreEstudio%>
                                         </td>
                                         <td style="display: none;">
-                                            <%= item.GRH_NivelEducativo !=null? item.idNivelEducativo:0 %>
+                                            <%= item.GRH_NivelEducativo != null ? item.IdNivelEducativo : 0%>
                                         </td>
                                         <td>
-                                            <%= item.GRH_NivelEducativo !=null? item.GRH_NivelEducativo.descripcion:string.Empty %>
+                                            <%= item.GRH_NivelEducativo != null ? item.GRH_NivelEducativo.Descripcion : string.Empty%>
                                         </td>
                                         <td style="display: none;">
-                                            <%= item.GRH_Especialidad !=null? item.idEspecialidad:0 %>
+                                            <%= item.GRH_Especialidad != null ? item.IdEspecialidad : 0%>
                                         </td>
                                         <td>
-                                            <%= item.GRH_Especialidad !=null? item.GRH_Especialidad.descripcion:string.Empty %>
+                                            <%= item.GRH_Especialidad != null ? item.GRH_Especialidad.Descripcion : string.Empty%>
                                         </td>
                                         <td style="display: none;">
-                                            <%= item.GRH_SituacionEstudio !=null? item.idSituacionEstudio:0 %>
+                                            <%= item.GRH_SituacionEstudio != null ? item.IdSituacionEstudio : 0%>
                                         </td>
                                         <td>
-                                            <%= item.GRH_SituacionEstudio != null ? item.GRH_SituacionEstudio.descripcion : string.Empty%>
+                                            <%= item.GRH_SituacionEstudio != null ? item.GRH_SituacionEstudio.Descripcion : string.Empty%>
                                         </td>
                                         <td>
-                                            <%= item.fechaInicio != null ? item.fechaInicio.ToString().Substring(6, 4) + "-" + item.fechaInicio.ToString().Substring(3, 2) + "-" + item.fechaInicio.ToString().Substring(0, 2) : string.Empty%>
+                                            <%= item.FechaInicio != null ? item.FechaInicio.ToString().Substring(6, 4) + "-" + item.FechaInicio.ToString().Substring(3, 2) + "-" + item.FechaInicio.ToString().Substring(0, 2) : string.Empty%>
                                         </td>
                                         <td>
-                                            <%= item.fechaFin != null ? item.fechaFin.ToString().Substring(6, 4) + "-" + item.fechaFin.ToString().Substring(3, 2) + "-" + item.fechaFin.ToString().Substring(0, 2) : string.Empty%>
+                                            <%= item.FechaFin != null ? item.FechaFin.ToString().Substring(6, 4) + "-" + item.FechaFin.ToString().Substring(3, 2) + "-" + item.FechaFin.ToString().Substring(0, 2) : string.Empty%>
                                         </td>
                                         <td>
                                             <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
@@ -461,19 +473,19 @@
                                            { %>
                                     <tr>
                                         <td style="display: none;">
-                                            <%= item.idIdiomaPersona %>
+                                            <%= item.IdIdiomaPersona%>
                                         </td>
                                         <td style="display: none;">
-                                            <%= item.GRH_Idioma!=null? item.idIdioma:0 %>
+                                            <%= item.GRH_Idioma != null ? item.IdIdioma : 0%>
                                         </td>
                                         <td>
-                                            <%= item.GRH_Idioma!=null? item.GRH_Idioma.descripcion:string.Empty %>
+                                            <%= item.GRH_Idioma != null ? item.GRH_Idioma.Descripcion : string.Empty%>
                                         </td>
                                         <td style="display: none;">
-                                            <%= item.GRH_NivelIdioma!=null? item.idNivelIdioma:0 %>
+                                            <%= item.GRH_NivelIdioma != null ? item.IdNivelIdioma : 0%>
                                         </td>
                                         <td>
-                                            <%= item.nativo == true ? "Nativo" : (item.GRH_NivelIdioma!=null?item.GRH_NivelIdioma.descripcion:string.Empty)%>
+                                            <%= item.Nativo == true ? "Nativo" : (item.GRH_NivelIdioma != null ? item.GRH_NivelIdioma.Descripcion : string.Empty)%>
                                         </td>
                                         <td>
                                             <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
@@ -504,7 +516,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_Telefono.FirstOrDefault().nroTelefono, new { @id = "txtTelefono", @class = "required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_Telefono.FirstOrDefault().NumeroTelefono, new { @id = "txtTelefono", @class = "required" })%>
                 </td>
             </tr>
         </table>
@@ -521,7 +533,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_Correo.FirstOrDefault().cuentaCorreo, new { @id = "txtCorreo", @class = "required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_Correo.FirstOrDefault().CuentaCorreo, new { @id = "txtCorreo", @class = "required" })%>
                 </td>
             </tr>
         </table>
@@ -538,7 +550,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_Documento.FirstOrDefault().idTipoDocumento, (IEnumerable<SelectListItem>)ViewData["TipoDocumento"], new { @id = "ddlTipoDocumento", @class = "required" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_Documento.FirstOrDefault().IdTipoDocumento, (IEnumerable<SelectListItem>)ViewData["TipoDocumento"], new { @id = "ddlTipoDocumento", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -549,7 +561,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_Documento.FirstOrDefault().nroDocumento, new { @id = "txtDocumento", @class = "required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_Documento.FirstOrDefault().NumeroDocumento, new { @id = "txtDocumento", @class = "required" })%>
                 </td>
             </tr>
         </table>
@@ -566,7 +578,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().empresa, new { @id = "txtEmpresa", @class="required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().Empresa, new { @id = "txtEmpresa", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -577,7 +589,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().cargo, new { @id = "txtCargo", @class = "required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().Cargo, new { @id = "txtCargo", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -588,7 +600,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().fechaInicio, new { @id = "txtInicio", @type = "date", @class = "required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().FechaInicio, new { @id = "txtInicio", @type = "date", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -599,7 +611,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().FechaFin, new { @id = "txtFin",@type="date" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().FechaFin, new { @id = "txtFin", @type = "date" })%>
                 </td>
             </tr>
             <tr>
@@ -610,7 +622,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextAreaFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().conocimientos, new { @id = "txtConocimiento", @class = "required" })%>
+                    <%= Html.TextAreaFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().Conocimientos, new { @id = "txtConocimiento", @class = "required" })%>
                 </td>
             </tr>
         </table>
@@ -627,7 +639,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().centroEstudio, new { @id = "txtCentro", @class = "required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().CentroEstudio, new { @id = "txtCentro", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -638,7 +650,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().nombreEstudio, new { @id = "txtNombre", @class = "required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().NombreEstudio, new { @id = "txtNombre", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -649,7 +661,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().idNivelEducativo, (IEnumerable<SelectListItem>)ViewData["NivelEducativo"], new { @id = "ddlNivel", @class = "required" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().IdNivelEducativo, (IEnumerable<SelectListItem>)ViewData["NivelEducativo"], new { @id = "ddlNivel", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -660,7 +672,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().idEspecialidad, (IEnumerable<SelectListItem>)ViewData["Especialidad"], new { @id = "ddlEspecialidad", @class = "required" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().IdEspecialidad, (IEnumerable<SelectListItem>)ViewData["Especialidad"], new { @id = "ddlEspecialidad", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -671,7 +683,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().idSituacionEstudio, (IEnumerable<SelectListItem>)ViewData["SituacionEstudio"], new { @id = "ddlSituacion", @class = "required" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_EstudioRealizado.FirstOrDefault().IdSituacionEstudio, (IEnumerable<SelectListItem>)ViewData["SituacionEstudio"], new { @id = "ddlSituacion", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -682,7 +694,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().fechaInicio, new { @id = "txtInicioE", @type = "date", @class = "required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().FechaInicio, new { @id = "txtInicioE", @type = "date", @class = "required" })%>
                 </td>
             </tr>
             <tr id="trFinE">
@@ -695,7 +707,7 @@
                         :</label>
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().fechaFin, new { @id = "txtFinE",@type="date" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_EstudioRealizado.FirstOrDefault().FechaFin, new { @id = "txtFinE", @type = "date" })%>
                 </td>
             </tr>
         </table>
@@ -712,7 +724,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_IdiomaPersona.FirstOrDefault().idIdioma, (IEnumerable<SelectListItem>)ViewData["Idioma"], new { @id = "ddlIdioma", @class = "required" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_IdiomaPersona.FirstOrDefault().IdIdioma, (IEnumerable<SelectListItem>)ViewData["Idioma"], new { @id = "ddlIdioma", @class = "required" })%>
                 </td>
             </tr>
             <tr>
@@ -736,9 +748,18 @@
                         :</label>
                 </td>
                 <td>
-                    <%= Html.DropDownListFor(m => m.GRH_IdiomaPersona.FirstOrDefault().idNivelIdioma, (IEnumerable<SelectListItem>)ViewData["NivelIdioma"], new { @id = "ddlNivelIdioma" })%>
+                    <%= Html.DropDownListFor(m => m.GRH_IdiomaPersona.FirstOrDefault().IdNivelIdioma, (IEnumerable<SelectListItem>)ViewData["NivelIdioma"], new { @id = "ddlNivelIdioma" })%>
                 </td>
             </tr>
         </table>
     </div>
+    <%}
+       else
+       {%>
+    <div class="contenido-top">
+        <div>
+            El postulante no existe.
+        </div>
+    </div>
+    <%} %>
 </asp:Content>

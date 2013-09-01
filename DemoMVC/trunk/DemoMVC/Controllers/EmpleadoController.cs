@@ -18,10 +18,10 @@ namespace DemoMVC.Controllers
         {
             _entities = new GRH_Entities();
             var personas = new List<GRH_Persona>();
-            var postulantes = (from r in _entities.GRH_Postulante where r.aprobado == true  select r).ToList();
+            var postulantes = (from r in _entities.GRH_Postulante where r.Aprobado == true  select r).ToList();
             foreach (var postulante in postulantes)
             {
-                var items = (from r in _entities.GRH_Persona where r.idPersona == postulante.idPersona && r.GRH_Empleado.Count==0 select r).ToList();
+                var items = (from r in _entities.GRH_Persona where r.IdPersona == postulante.IdPersona && r.GRH_Empleado.Count==0 select r).ToList();
                 foreach (var item in items)
                 {
                     personas.Add(item);
@@ -36,12 +36,12 @@ namespace DemoMVC.Controllers
             _entities = new GRH_Entities();
             ViewData["TipoDocumento"] = TipoDocumento();
             ViewData["TipoDerechoHabiente"] = TipoDerechoHabiente();
-            var empleado = (from r in _entities.GRH_Empleado where r.idPersona == id select r).FirstOrDefault();
+            var empleado = (from r in _entities.GRH_Empleado where r.IdPersona == id select r).FirstOrDefault();
             if (empleado == null)
             {                
-                _entities.AddToGRH_Empleado( new GRH_Empleado {idPersona = id});
+                _entities.AddToGRH_Empleado( new GRH_Empleado {IdPersona = id});
                 _entities.SaveChanges();
-                empleado = (from r in _entities.GRH_Empleado where r.idPersona == id select r).FirstOrDefault();                
+                empleado = (from r in _entities.GRH_Empleado where r.IdPersona == id select r).FirstOrDefault();                
             }
 
             return View(empleado);
@@ -50,7 +50,7 @@ namespace DemoMVC.Controllers
         public virtual ActionResult DelDerechoHabiente(int idDerechoHabiente)
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_DerechoHabiente where r.idDerechoHabiente == idDerechoHabiente select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_DerechoHabiente where r.IdDerechoHabiente == idDerechoHabiente select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -75,26 +75,26 @@ namespace DemoMVC.Controllers
             {
                 var persona = new GRH_Persona()
                     {
-                        nombre = nombre,
-                        apellidoPaterno = apellidoPaterno,
-                        apellidoMaterno = apellidoPaterno,
-                        fechaNacimiento = DateTime.Parse(fechaNacimiento),
-                        sexo = sexo
+                        Nombre = nombre,
+                        ApellidoPaterno = apellidoPaterno,
+                        ApellidoMaterno = apellidoPaterno,
+                        FechaNacimiento = DateTime.Parse(fechaNacimiento),
+                        Sexo = sexo
                     };
                 _entities.AddToGRH_Persona(persona);
                 _entities.SaveChanges();
-                idPersona = persona.idPersona;
+                idPersona = persona.IdPersona;
             }
             else
             {
-                var persona = (from r in _entities.GRH_Persona where r.idPersona == idPersona select r).FirstOrDefault();
+                var persona = (from r in _entities.GRH_Persona where r.IdPersona == idPersona select r).FirstOrDefault();
                 if (persona != null)
                 {
-                    persona.nombre = nombre;
-                    persona.apellidoPaterno = apellidoPaterno;
-                    persona.apellidoMaterno = apellidoMaterno;
-                    persona.fechaNacimiento = DateTime.Parse(fechaNacimiento);
-                    persona.sexo = sexo;                    
+                    persona.Nombre = nombre;
+                    persona.ApellidoPaterno = apellidoPaterno;
+                    persona.ApellidoMaterno = apellidoMaterno;
+                    persona.FechaNacimiento = DateTime.Parse(fechaNacimiento);
+                    persona.Sexo = sexo;                    
                     _entities.SaveChanges();
                 }
             }
@@ -103,21 +103,21 @@ namespace DemoMVC.Controllers
             {
                 var documento = new GRH_Documento()
                 {
-                    idPersona = idPersona,
-                    idTipoDocumento = idTipoDocumento,
-                    nroDocumento = numDocumento
+                    IdPersona = idPersona,
+                    IdTipoDocumento = idTipoDocumento,
+                    NumeroDocumento = numDocumento
                 };
                 _entities.AddToGRH_Documento(documento);
                 _entities.SaveChanges();
-                idDocumento = documento.idDocumento;
+                idDocumento = documento.IdDocumento;
             }
             else
             {
-                var documento = (from r in _entities.GRH_Documento where r.idDocumento == idDocumento select r).FirstOrDefault();
+                var documento = (from r in _entities.GRH_Documento where r.IdDocumento == idDocumento select r).FirstOrDefault();
                 if (documento != null)
                 {
-                    documento.idTipoDocumento = idTipoDocumento;
-                    documento.nroDocumento = numDocumento;                                        
+                    documento.IdTipoDocumento = idTipoDocumento;
+                    documento.NumeroDocumento = numDocumento;                                        
                     _entities.SaveChanges();
                 }
             }
@@ -126,22 +126,22 @@ namespace DemoMVC.Controllers
             {
                 var derechoHabiente = new GRH_DerechoHabiente
                 {
-                    idPersona = idPersona,
-                    idEmpleado = idEmpleado,
-                    idTipoDerechoHabiente = idTipoDerechoHabiente
+                    IdPersona = idPersona,
+                    IdEmpleado = idEmpleado,
+                    IdTipoDerechoHabiente = idTipoDerechoHabiente
                 };                
                 _entities.AddToGRH_DerechoHabiente(derechoHabiente);
                 _entities.SaveChanges();
-                idDerechoHabiente = derechoHabiente.idDerechoHabiente;                
+                idDerechoHabiente = derechoHabiente.IdDerechoHabiente;                
 
                 resultado = true;
             }
             else
             {
-                var res = (from r in _entities.GRH_DerechoHabiente where r.idDerechoHabiente == idDerechoHabiente select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_DerechoHabiente where r.IdDerechoHabiente == idDerechoHabiente select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.idTipoDerechoHabiente = idTipoDerechoHabiente;
+                    res.IdTipoDerechoHabiente = idTipoDerechoHabiente;
                     _entities.SaveChanges();
                     resultado = true;
                 }
@@ -160,7 +160,7 @@ namespace DemoMVC.Controllers
         public virtual ActionResult DelContratoPersonal(int idContratoPersonal)
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_ContratoPersonal where r.idContratoPersonal == idContratoPersonal select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_ContratoPersonal where r.IdContratoPersonal == idContratoPersonal select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -182,25 +182,25 @@ namespace DemoMVC.Controllers
             {
                 var contratoPersonal = new GRH_ContratoPersonal
                 {
-                    idEmpleado = idEmpleado,
-                    nroContrato = nroContrato,
-                    fechaInicio = DateTime.Parse(fechaInicio),
-                    fechaFin =DateTime.Parse(fechaFin)
+                    IdEmpleado = idEmpleado,
+                    NumeroContrato = nroContrato,
+                    FechaInicio = DateTime.Parse(fechaInicio),
+                    FechaFin =DateTime.Parse(fechaFin)
                 };
                 _entities.AddToGRH_ContratoPersonal(contratoPersonal);
                 _entities.SaveChanges();
-                idContratoPersonal = contratoPersonal.idContratoPersonal;
+                idContratoPersonal = contratoPersonal.IdContratoPersonal;
                 resultado = true;
             }
             else
             {
-                var res = (from r in _entities.GRH_ContratoPersonal where r.idContratoPersonal == idContratoPersonal select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_ContratoPersonal where r.IdContratoPersonal == idContratoPersonal select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.idEmpleado = idEmpleado;
-                    res.nroContrato = nroContrato;
-                    res.fechaInicio = DateTime.Parse(fechaInicio);
-                    res.fechaFin = DateTime.Parse(fechaFin);
+                    res.IdEmpleado = idEmpleado;
+                    res.NumeroContrato = nroContrato;
+                    res.FechaInicio = DateTime.Parse(fechaInicio);
+                    res.FechaFin = DateTime.Parse(fechaFin);
                     _entities.SaveChanges();
                     resultado = true;
                 }
@@ -219,7 +219,7 @@ namespace DemoMVC.Controllers
         public virtual ActionResult DelLegajo(int idLegajo)
         {
             _entities = new GRH_Entities();
-            var res = (from r in _entities.GRH_Legajo where r.idLegajo == idLegajo select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_Legajo where r.IdLegajo == idLegajo select r).FirstOrDefault();
             if (res != null)
             {
                 _entities.DeleteObject(res);
@@ -236,26 +236,26 @@ namespace DemoMVC.Controllers
         public virtual ActionResult Cancelar(int idEmpleado)
         {
             _entities = new GRH_Entities();
-            var derechoHabientes = (from r in _entities.GRH_DerechoHabiente where r.idEmpleado == idEmpleado select r).ToList();
+            var derechoHabientes = (from r in _entities.GRH_DerechoHabiente where r.IdEmpleado == idEmpleado select r).ToList();
             foreach (var derechoHabiente in derechoHabientes)
             {
                 _entities.DeleteObject(derechoHabiente);
                 _entities.SaveChanges();
             }
-            var contratoPersonales = (from r in _entities.GRH_ContratoPersonal where r.idEmpleado == idEmpleado select r).ToList();
+            var contratoPersonales = (from r in _entities.GRH_ContratoPersonal where r.IdEmpleado == idEmpleado select r).ToList();
             foreach (var contratoPersonal in contratoPersonales)
             {
                 _entities.DeleteObject(contratoPersonal);
                 _entities.SaveChanges();
             }
-            var legajos = (from r in _entities.GRH_Legajo where r.idEmpleado == idEmpleado select r).ToList();
+            var legajos = (from r in _entities.GRH_Legajo where r.IdEmpleado == idEmpleado select r).ToList();
             foreach (var legajo in legajos)
             {
                 _entities.DeleteObject(legajo);
                 _entities.SaveChanges();
             }
 
-            var res = (from r in _entities.GRH_Empleado where r.idEmpleado == idEmpleado select r).FirstOrDefault();
+            var res = (from r in _entities.GRH_Empleado where r.IdEmpleado == idEmpleado select r).FirstOrDefault();
             if (res != null)
             {                                                            
                 _entities.DeleteObject(res);
@@ -277,23 +277,23 @@ namespace DemoMVC.Controllers
             {
                 var legajo = new GRH_Legajo
                 {
-                    idEmpleado = idEmpleado,                    
-                    nombreArchivo = nombreArchivo,
-                    ubicacion = ubicacion
+                    IdEmpleado = idEmpleado,                    
+                    NombreArchivo = nombreArchivo,
+                    Ubicacion = ubicacion
                 };
                 _entities.AddToGRH_Legajo(legajo);
                 _entities.SaveChanges();
-                idLegajo = legajo.idLegajo;
+                idLegajo = legajo.IdLegajo;
                 resultado = true;
             }
             else
             {
-                var res = (from r in _entities.GRH_Legajo where r.idLegajo == idLegajo select r).FirstOrDefault();
+                var res = (from r in _entities.GRH_Legajo where r.IdLegajo == idLegajo select r).FirstOrDefault();
                 if (res != null)
                 {
-                    res.idEmpleado = idEmpleado;
-                    res.nombreArchivo = nombreArchivo;
-                    res.ubicacion = ubicacion;
+                    res.IdEmpleado = idEmpleado;
+                    res.NombreArchivo = nombreArchivo;
+                    res.Ubicacion = ubicacion;
                     _entities.SaveChanges();
                     resultado = true;
                 }
@@ -331,7 +331,7 @@ namespace DemoMVC.Controllers
             var lista = (from r in _entities.GRH_TipoDocumento select r);
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idTipoDocumento + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdTipoDocumento + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 
@@ -346,7 +346,7 @@ namespace DemoMVC.Controllers
             var lista = (from r in _entities.GRH_TipoDerechoHabiente select r);
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.idTipoDerechoHabiente + string.Empty, Text = item.descripcion };
+                var selListItem = new SelectListItem { Value = item.IdTipoDerechoHabiente + string.Empty, Text = item.Descripcion };
                 resultado.Add(selListItem);
             }
 

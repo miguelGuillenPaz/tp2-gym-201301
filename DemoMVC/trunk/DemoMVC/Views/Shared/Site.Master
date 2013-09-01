@@ -108,5 +108,8 @@
         <p id="message">
         </p>
     </div>
+    <div id="dialogConfirm" title="GyM">
+        <p id="confirm"></p>
+    </div>
 </body>
 </html>

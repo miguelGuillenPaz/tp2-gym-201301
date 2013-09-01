@@ -162,7 +162,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\dbRRHH_inserts_2907.sql" />
+    <Content Include="App_Data\GRH_Inserts.sql" />
     <Content Include="Content\gpc.css" />
     <Content Include="Content\img\left.png" />
     <Content Include="Content\img\link.png" />
@@ -293,7 +293,7 @@
     <Content Include="Views\Logistica\Logistica.aspx" />
     <Content Include="Views\Postulante\Crear.aspx" />
     <Content Include="Views\Postulante\Editar.aspx" />
-    <Content Include="Views\Postulante\Mostrar.aspx" />
+    <Content Include="Views\Postulante\Detalle.aspx" />
     <Content Include="Views\Planificacion\CrearPlan.aspx" />
     <Content Include="Views\Planificacion\DetallePlanHistorico.aspx" />
     <Content Include="Views\Planificacion\EstimadoRapido.aspx" />
@@ -360,8 +360,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\dbRRHH_v1.erwin" />
-    <None Include="App_Data\dbRRHH_v2.erwin" />
+    <None Include="App_Data\GRH_Db_v1.erwin" />
+    <None Include="App_Data\GRH_Db_v2.erwin" />
+    <None Include="App_Data\GRH_Db_v3.erwin" />
     <None Include="Content\fonts\pt_sans-bold-webfont.eot" />
     <None Include="Content\fonts\pt_sans-bold-webfont.ttf" />
     <None Include="Content\fonts\pt_sans-bold-webfont.woff" />
