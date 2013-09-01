@@ -6,23 +6,35 @@
         var tr = $(this).parent().parent();
         var idExperienciaLaboral = $.trim($('td:eq(0)', tr).text());
         if (idExperienciaLaboral != 0) {
-            if (confirm('¿Desea eliminar la experiencia laboral?')) {
-                var data = { idExperienciaLaboral: idExperienciaLaboral };
-                var url = '/Postulante/DelExperienciaLaboral';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            tr.remove();
-                        }
+            $('#dialogConfirm #confirm').text('¿Desea eliminar la experiencia laboral?');
+            $('#dialogConfirm').dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    'Aceptar': function () {
+                        var data = { idExperienciaLaboral: idExperienciaLaboral };
+                        var url = '/Postulante/DelExperienciaLaboral';
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            success: function (result) {
+                                if (result.result) {
+                                    tr.remove();
+                                }
+                            },
+                            error: function () {
+                                __ShowMessage('No se pudo eliminar');
+                            }
+                        });
+                        $(this).dialog('close');
                     },
-                    error: function () {
-                        __ShowMessage('No se pudo eliminar');
+                    'Cancelar': function () {
+                        $(this).dialog('close');
                     }
-                });
-            }
+                }
+            });  
         } else {
             tr.remove();
         }
@@ -75,61 +87,81 @@
                 });
 
                 if (nroRequeridos == 0) {
-                    var idPersona = $.trim($('#idPersona').val());
+                    var idPersona = $.trim($('#IdPersona').val());
                     if (idPersona == '') {
                         idPersona = '0';
                     }
                     var idExperienciaLaboral = $.trim($('#hdnExperienciaLaboral').val());
-                    var txtCargo = $.trim($('#txtCargo').val());
+                    var txtCargo = $.trim($('#txtCargo').val().toUpperCase());
                     var txtInicio = $.trim($('#txtInicio').val());
                     var txtFin = $.trim($('#txtFin').val());
-                    var txtEmpresa = $.trim($('#txtEmpresa').val());
+                    var txtEmpresa = $.trim($('#txtEmpresa').val().toUpperCase());
                     var txtConocimiento = $.trim($('#txtConocimiento').val());
-                    var data = {
-                        idPersona: idPersona,
-                        idExperienciaLaboral: idExperienciaLaboral,
-                        fechaInicio: txtInicio,
-                        fechaFin: txtFin,
-                        conocimientos: txtConocimiento,
-                        cargo: txtCargo,
-                        empresa: txtEmpresa
-                    };
-                    var url = '/Postulante/SetExperienciaLaboral';
-                    $.ajax({
-                        type: 'POST',
-                        url: url,
-                        data: data,
-                        success: function (result) {
-                            if (result.result) {
-                                $('#hdnExperienciaLaboral').val(result.ExperienciaLaboral);
-                                $('#idPersona').val(result.Persona);
-                                if ($('#hdnAccionExperienciaLaboral').val() == 'I') {
-                                    var fila = "<tr>" +
+                    if (txtInicio < txtFin) {
+                        $('#txtInicio').removeClass('required-control');
+                        $('#txtFin').removeClass('required-control');
+                        var data = {
+                            idPersona: idPersona,
+                            idExperienciaLaboral: idExperienciaLaboral,
+                            fechaInicio: txtInicio,
+                            fechaFin: txtFin,
+                            conocimientos: txtConocimiento,
+                            cargo: txtCargo,
+                            empresa: txtEmpresa
+                        };
+                        var url = '/Postulante/SetExperienciaLaboral';
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            success: function (result) {
+                                if (result.result) {
+                                    $('#hdnExperienciaLaboral').val(result.ExperienciaLaboral);
+                                    $('#idPersona').val(result.Persona);
+                                    if ($('#hdnAccionExperienciaLaboral').val() == 'I') {
+                                        var fila = "<tr>" +
                                         "<td style=\"display: none;\">" + $('#hdnExperienciaLaboral').val() + "</td>" +
-                                        "<td>" + $('#txtEmpresa').val() + "</td>" +
-                                        "<td>" + $('#txtCargo').val() + "</td>" +
-                                        "<td>" + $('#txtInicio').val() + "</td>" +
-                                        "<td>" + $('#txtFin').val() + "</td>" +
-                                        "<td style=\"display: none;\">" + $('#txtConocimiento').val() + "</td>" +
+                                        "<td>" + txtEmpresa + "</td>" +
+                                        "<td>" + txtCargo + "</td>" +
+                                        "<td>" + txtInicio + "</td>" +
+                                        "<td>" + txtFin + "</td>" +
+                                        "<td style=\"display: none;\">" + txtConocimiento + "</td>" +
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
-                                    $('#tblExperienciaLaboral tbody').append(fila);
-                                } else {
-                                    var tr = selectedExperienciaLaboral;
-                                    $('td:eq(0)', tr).text($('#hdnExperienciaLaboral').val());
-                                    $('td:eq(1)', tr).text($('#txtEmpresa').val());
-                                    $('td:eq(2)', tr).text($('#txtCargo').val());
-                                    $('td:eq(3)', tr).text($('#txtInicio').val());
-                                    $('td:eq(4)', tr).text($('#txtFin').val());
-                                    $('td:eq(5)', tr).text($('#txtConocimiento').val());
+                                        $('#tblExperienciaLaboral tbody').append(fila);
+                                    } else {
+                                        var tr = selectedExperienciaLaboral;
+                                        $('td:eq(0)', tr).text($('#hdnExperienciaLaboral').val());
+                                        $('td:eq(1)', tr).text(txtEmpresa);
+                                        $('td:eq(2)', tr).text(txtCargo);
+                                        $('td:eq(3)', tr).text(txtInicio);
+                                        $('td:eq(4)', tr).text(txtFin);
+                                        $('td:eq(5)', tr).text(txtConocimiento);
+                                    }                                    
+                                    $('#dialogConfirm #confirm').text('Actualización satisfactoria.');
+                                    $('#dialogConfirm').dialog({
+                                        resizable: false,
+                                        height: 140,
+                                        modal: true,
+                                        buttons: {
+                                            'Aceptar': function () {
+                                                $(this).dialog('close');
+                                                $('#dialogExperienciaLaboral').dialog('close');
+                                            }
+                                        }
+                                    }); 
                                 }
-                                $('#dialogExperienciaLaboral').dialog('close');
+                            },
+                            error: function () {
+                                __ShowMessage('No se pudo actualizar');
                             }
-                        },
-                        error: function () {
-                            __ShowMessage('No se pudo actualizar');
-                        }
-                    });
+                        });
+                    }
+                    else {
+                        $('#txtInicio').addClass('required-control');
+                        $('#txtFin').addClass('required-control');
+                        __ShowMessage('La fecha de fin debe ser mayor a la fecha de inicio.');
+                    }
                 } else {
                     __ShowMessage('Existen campos obligatorios sin llenar.');
                 }

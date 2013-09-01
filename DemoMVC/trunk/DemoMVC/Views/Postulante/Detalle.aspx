@@ -516,7 +516,7 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(m => m.GRH_Telefono.FirstOrDefault().NumeroTelefono, new { @id = "txtTelefono", @class = "required" })%>
+                    <%= Html.TextBoxFor(m => m.GRH_Telefono.FirstOrDefault().NumeroTelefono, new { @id = "txtTelefono", @class = "required integer" })%>
                 </td>
             </tr>
         </table>

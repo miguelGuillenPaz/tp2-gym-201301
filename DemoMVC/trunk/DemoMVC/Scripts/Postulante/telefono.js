@@ -2,27 +2,56 @@
 
     var selectedTelefono;
 
+    $('#dialogTelefono').delegate('.integer', 'keydown', function (event) {
+        if (event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 ||
+        (event.keyCode == 65 && event.ctrlKey === true)) {
+            return;
+        }
+        else if (event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39) {
+            return;
+        }
+        else {
+            if ((event.keyCode < 48 || event.keyCode > 57) &&
+                (event.keyCode < 96 || event.keyCode > 105)) {
+                event.preventDefault();
+            }
+        }
+
+    });
+
     $('#tblTelefono').delegate('.eliminar', "click", function () {
         var tr = $(this).parent().parent();
         var idTelefono = $.trim($('td:eq(0)', tr).text());
         if (idTelefono != 0) {
-            if (confirm('¿Desea eliminar el teléfono?')) {
-                var data = { idTelefono: idTelefono };
-                var url = '/Postulante/DelTelefono';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            tr.remove();
-                        }
+            $('#dialogConfirm #confirm').text('¿Desea eliminar el teléfono?');
+            $('#dialogConfirm').dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    'Aceptar': function () {
+                        var data = { idTelefono: idTelefono };
+                        var url = '/Postulante/DelTelefono';
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            success: function (result) {
+                                if (result.result) {
+                                    tr.remove();
+                                }
+                            },
+                            error: function () {
+                                __ShowMessage('No se pudo eliminar');
+                            }
+                        });
+                        $(this).dialog('close');
                     },
-                    error: function () {
-                        __ShowMessage('No se pudo eliminar');
+                    'Cancelar': function () {
+                        $(this).dialog('close');
                     }
-                });
-            }
+                }
+            });            
         } else {
             tr.remove();
         }
@@ -66,7 +95,7 @@
                 });
 
                 if (nroRequeridos == 0) {
-                    var idPersona = $.trim($('#idPersona').val());
+                    var idPersona = $.trim($('#IdPersona').val());
                     if (idPersona == '') {
                         idPersona = '0';
                     }
@@ -97,8 +126,19 @@
                                     var tr = selectedTelefono;
                                     $('td:eq(0)', tr).text($('#hdnTelefono').val());
                                     $('td:eq(1)', tr).text($('#txtTelefono').val());
-                                }
-                                $('#dialogTelefono').dialog('close');
+                                }                                
+                                $('#dialogConfirm #confirm').text('Actualización satisfactoria.');
+                                $('#dialogConfirm').dialog({
+                                    resizable: false,
+                                    height: 140,
+                                    modal: true,
+                                    buttons: {
+                                        'Aceptar': function () {
+                                            $(this).dialog('close');
+                                            $('#dialogTelefono').dialog('close');
+                                        }
+                                    }
+                                });
                             }
                         },
                         error: function () {

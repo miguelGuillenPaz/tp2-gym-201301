@@ -69,7 +69,7 @@
 
                 if (nroRequeridos == 0) {
 
-                    var idPersona = $.trim($('#idPersona').val());
+                    var idPersona = $.trim($('#IdPersona').val());
                     if (idPersona == '') {
                         idPersona = '0';
                     }

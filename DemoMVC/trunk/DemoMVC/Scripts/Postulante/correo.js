@@ -6,23 +6,35 @@
         var tr = $(this).parent().parent();
         var idCorreo = $.trim($('td:eq(0)', tr).text());
         if (idCorreo != 0) {
-            if (confirm('¿Desea eliminar el correo?')) {
-                var data = { idCorreo: idCorreo };
-                var url = '/Postulante/DelCorreo';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            tr.remove();
-                        }
+            $('#dialogConfirm #confirm').text('¿Desea eliminar el correo?');
+            $('#dialogConfirm').dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    'Aceptar': function () {
+                        var data = { idCorreo: idCorreo };
+                        var url = '/Postulante/DelCorreo';
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            success: function (result) {
+                                if (result.result) {
+                                    tr.remove();
+                                }
+                            },
+                            error: function () {
+                                __ShowMessage('No se pudo eliminar');
+                            }
+                        });
+                        $(this).dialog('close');
                     },
-                    error: function () {
-                        __ShowMessage('No se pudo eliminar');
+                    'Cancelar': function () {
+                        $(this).dialog('close');
                     }
-                });
-            }
+                }
+            });            
         } else {
             tr.remove();
         }
@@ -67,45 +79,65 @@
                 });
 
                 if (nroRequeridos == 0) {
-                    var idPersona = $.trim($('#idPersona').val());
+                    var idPersona = $.trim($('#IdPersona').val());
                     if (idPersona == '') {
                         idPersona = '0';
                     }
                     var idCorreo = $.trim($('#hdnCorreo').val());
                     var cuentaCorreo = $.trim($('#txtCorreo').val());
-                    var data = {
-                        idPersona: idPersona,
-                        idCorreo: idCorreo,
-                        cuentaCorreo: cuentaCorreo
-                    };
-                    var url = '/Postulante/SetCorreo';
-                    $.ajax({
-                        type: 'POST',
-                        url: url,
-                        data: data,
-                        success: function (result) {
-                            if (result.result) {
-                                $('#hdnCorreo').val(result.Correo);
-                                $('#idPersona').val(result.Persona);
-                                if ($('#hdnAccionCorreo').val() == 'I') {
-                                    var fila = "<tr>" +
+
+                    var emailfilter = /(([a-zA-Z0-9\-?\.?]+)@(([a-zA-Z0-9\-_]+\.)+)([a-z]{2,3}))+$/;                    
+                    if (emailfilter.test(cuentaCorreo)) {
+                        $('#txtCorreo').removeClass('required-control');
+                        var data = {
+                            idPersona: idPersona,
+                            idCorreo: idCorreo,
+                            cuentaCorreo: cuentaCorreo
+                        };
+                        var url = '/Postulante/SetCorreo';
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            success: function (result) {
+                                if (result.result) {
+                                    $('#hdnCorreo').val(result.Correo);
+                                    $('#idPersona').val(result.Persona);
+                                    if ($('#hdnAccionCorreo').val() == 'I') {
+                                        var fila = "<tr>" +
                                         "<td style=\"display: none;\">" + $('#hdnCorreo').val() + "</td>" +
                                         "<td>" + $('#txtCorreo').val() + "</td>" +
                                         "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
-                                    $('#tblCorreo tbody').append(fila);
-                                } else {
-                                    var tr = selectedCorreo;
-                                    $('td:eq(0)', tr).text($('#hdnCorreo').val());
-                                    $('td:eq(1)', tr).text($('#txtCorreo').val());
+                                        $('#tblCorreo tbody').append(fila);
+                                    } else {
+                                        var tr = selectedCorreo;
+                                        $('td:eq(0)', tr).text($('#hdnCorreo').val());
+                                        $('td:eq(1)', tr).text($('#txtCorreo').val());
+                                    }                                    
+                                    $('#dialogConfirm #confirm').text('Actualización satisfactoria.');
+                                    $('#dialogConfirm').dialog({
+                                        resizable: false,
+                                        height: 140,
+                                        modal: true,
+                                        buttons: {
+                                            'Aceptar': function () {
+                                                $(this).dialog('close');
+                                                $('#dialogCorreo').dialog('close');
+                                            }
+                                        }
+                                    });
                                 }
-                                $('#dialogCorreo').dialog('close');
+                            },
+                            error: function () {
+                                __ShowMessage('No se pudo actualizar');
                             }
-                        },
-                        error: function () {
-                            __ShowMessage('No se pudo actualizar');
-                        }
-                    });
+                        });
+                    }
+                    else {
+                        $('#txtCorreo').addClass('required-control');
+                        __ShowMessage('El correo debe tener un formato válido. Ejemplo: user@otros.com');
+                    }
                 } else {
                     __ShowMessage('Existen campos obligatorios sin llenar.');
                 }

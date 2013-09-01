@@ -6,23 +6,35 @@
         var tr = $(this).parent().parent();
         var idIdiomaPersona = $.trim($('td:eq(0)', tr).text());
         if (idIdiomaPersona != 0) {
-            if (confirm('¿Desea eliminar el idioma?')) {
-                var data = { idIdiomaPersona: idIdiomaPersona };
-                var url = '/Postulante/DelIdiomaPersona';
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (result) {
-                        if (result.result) {
-                            tr.remove();
-                        }
+            $('#dialogConfirm #confirm').text('¿Desea eliminar el idioma?');
+            $('#dialogConfirm').dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    'Aceptar': function () {
+                        var data = { idIdiomaPersona: idIdiomaPersona };
+                        var url = '/Postulante/DelIdiomaPersona';
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            success: function (result) {
+                                if (result.result) {
+                                    tr.remove();
+                                }
+                            },
+                            error: function () {
+                                __ShowMessage('No se pudo eliminar');
+                            }
+                        });
+                        $(this).dialog('close');
                     },
-                    error: function () {
-                        __ShowMessage('No se pudo eliminar');
+                    'Cancelar': function () {
+                        $(this).dialog('close');
                     }
-                });
-            }
+                }
+            });            
         } else {
             tr.remove();
         }
@@ -104,7 +116,7 @@
                 });
 
                 if (nroRequeridos == 0) {
-                    var idPersona = $.trim($('#idPersona').val());
+                    var idPersona = $.trim($('#IdPersona').val());
                     if (idPersona == '') {
                         idPersona = '0';
                     }
@@ -155,8 +167,19 @@
                                     } else {
                                         $('td:eq(4)', tr).text($('#ddlNivelIdioma option:selected').text());
                                     }
-                                }
-                                $('#dialogIdiomaPersona').dialog('close');
+                                }                                
+                                $('#dialogConfirm #confirm').text('Actualización satisfactoria.');
+                                $('#dialogConfirm').dialog({
+                                    resizable: false,
+                                    height: 140,
+                                    modal: true,
+                                    buttons: {
+                                        'Aceptar': function () {
+                                            $(this).dialog('close');
+                                            $('#dialogIdiomaPersona').dialog('close');
+                                        }
+                                    }
+                                });
                             }
                         },
                         error: function () {
