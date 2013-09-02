@@ -115,6 +115,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GRH_DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\LegalRequerimiento.cs" />
     <Compile Include="Models\ListarForm.cs" />
     <Compile Include="Models\PartidasModel.cs" />
     <Compile Include="Models\PlanProyecto.cs" />
@@ -137,12 +138,17 @@
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\DetallePresupuestoDAO.cs" />
     <Compile Include="Persistencia\EntregableDAO.cs" />
+    <Compile Include="Persistencia\Estado.cs" />
+    <Compile Include="Persistencia\LegalDAO.cs" />
+    <Compile Include="Persistencia\LegalVecinoColindante.cs" />
     <Compile Include="Persistencia\PlanProyectoDAO.cs" />
     <Compile Include="Persistencia\PlanProyectoHistDAO.cs" />
     <Compile Include="Persistencia\PresupuestoDAO.cs" />
     <Compile Include="Persistencia\ProyectoDAO.cs" />
+    <Compile Include="Persistencia\Requerimiento.cs" />
     <Compile Include="Persistencia\TipoProyectoDAO.cs" />
     <Compile Include="Persistencia\ProyectoHistDAO.cs" />
+    <Compile Include="Persistencia\TipoRequerimiento.cs" />
     <Compile Include="Persistencia\UbigeoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GPCRepository\GPCCronogramaRepository.cs" />
