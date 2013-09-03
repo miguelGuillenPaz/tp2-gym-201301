@@ -94,11 +94,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="GYM.SIC.GPC.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GYM.SIC.GPC.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -178,11 +173,6 @@
     <Compile Include="Repositories\S10Repository\S10CronogramaRepository.cs" />
     <Compile Include="Repositories\S10Repository\S10PartidaRespository.cs" />
     <Compile Include="Repositories\S10Repository\S10PresupuestoRepository.cs" />
-    <Compile Include="S10.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>S10.edmx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\BD_GyM_v1.sql" />
@@ -420,14 +410,6 @@
     <EntityDeploy Include="Models\PMP_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PMP_Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="GYM.SIC.GPC.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GYM.SIC.GPC.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="S10.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>S10.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <EntityDeploy Include="Models\GPC_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
