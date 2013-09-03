@@ -115,6 +115,12 @@
     <Compile Include="Models\DetallePresupuesto.cs" />
     <Compile Include="Models\Entregable.cs" />
     <Compile Include="Models\EstimadoRapidoForm.cs" />
+    <Compile Include="Models\GPC_DB.Designer.cs" />
+    <Compile Include="Models\GPC_DB1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GPC_DB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\GRH_DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,6 +140,12 @@
     <Compile Include="Models\PresupuestoModel.cs" />
     <Compile Include="Models\Proyecto.cs" />
     <Compile Include="Models\ProyectoHist.cs" />
+    <Compile Include="Models\S10_DB.Designer.cs" />
+    <Compile Include="Models\S10_DB1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>S10_DB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\TipoProyecto.cs" />
     <Compile Include="Models\Ubigeo.cs" />
     <Compile Include="Models\VariablesPresupuesto.cs" />
@@ -416,6 +428,14 @@
     <EntityDeploy Include="S10.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>S10.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\GPC_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GPC_DB1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\S10_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>S10_DB1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Scripts\noty-2.1.0\.gitignore" />
     <None Include="Scripts\noty-2.1.0\README.markdown" />
