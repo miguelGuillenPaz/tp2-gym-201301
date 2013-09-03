@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DemoMVC;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.S10Repository
 {
     public class S10CronogramaRepository
     {
-        S10Entities contexto = new S10Entities();
+        S10_Entities contexto = new S10_Entities();
 
         public IQueryable<S10Cronograma> Cronogramas
         {

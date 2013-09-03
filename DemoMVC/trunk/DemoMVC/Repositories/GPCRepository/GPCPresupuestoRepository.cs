@@ -5,12 +5,13 @@ using System.Web;
 using GYM.SIC.GPC.Models;
 using GYM.SIC.GPC.Repositories.S10Repository;
 using DemoMVC;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
     public class GPCPresupuestoRepository
     {
-        GPCEntities contexto = new GPCEntities();
+        GPC_Entities contexto = new GPC_Entities();
 
         S10PresupuestoRepository S10PresupuestoRepository = new S10PresupuestoRepository();
 

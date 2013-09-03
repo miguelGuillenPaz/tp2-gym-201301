@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DemoMVC;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
     public class GPCExpedienteTecnicoRepository
     {
-        GPCEntities contexto = new GPCEntities();
+        GPC_Entities contexto = new GPC_Entities();
 
          public IQueryable<ExpedienteTecnico> ExpedienteTecnico
         {

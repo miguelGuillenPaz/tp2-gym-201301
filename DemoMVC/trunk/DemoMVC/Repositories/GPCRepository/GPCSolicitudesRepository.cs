@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DemoMVC;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
     public class GPCSolicitudesRepository
     {
-        GPCEntities contexto = new GPCEntities();
+        GPC_Entities contexto = new GPC_Entities();
 
         public IQueryable<Solicitudes> Solicitudes
         {
