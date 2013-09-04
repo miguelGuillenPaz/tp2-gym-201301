@@ -6,11 +6,21 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<script src="../../Scripts/Legal/legal.js" type="text/javascript"></script>
+<script src="../../Scripts/Legal/legal_cartanotarial.js" type="text/javascript"></script>
     <script type="text/javascript">
 
+        //Ajax setup config==================================================================================
+        $.ajaxSetup({
+            // Disable caching of AJAX responses */
+            cache: false
+        });
+        //Context Route======================================================================================
+        var config = {
+            contextPath: '<%=ResolveUrl("~")%>'
+        };
+
         $("document").ready(function () {
-            var bSuccess = '<%= TempData["bInsertSuccess"] %>';
+            var bSuccess = '<%= Session["bInsertSuccess"] %>';
             if (bSuccess) {
                 alert("La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.");
             }
@@ -28,7 +38,7 @@
             <div class="fila">
                 <div class="col1">Proyecto:</div>
                 <div class="col2 final">
-                   <%: Html.DropDownList("codPro", (SelectList)ViewData["Proyectos"])%></p>
+                   <%: Html.DropDownList("idProyecto", (SelectList)ViewData["Proyectos"])%></p>
                 </div>
             </div>
         
@@ -97,14 +107,14 @@
                 <label id="grillaVacia">No se han ingresado personas.</label>
             
                 <div id="personas">
-                    <!--Se llenará dinámicamente. ver archivo Scripts/legal.js-->
+                    <!--Se llenará dinámicamente. ver archivo Scripts/Legal/legal_cartanotarial.js-->
                 </div>
         
             </div>
         
             <div id="btnGrabarReqLegal">
-                <%--<a class="btnGrabarReqLegal btn" href="#">Grabar</a>--%>
-                <input type="submit" class="btnGrabarReqLegal btn" onclick="return validarForm();" value="Grabar" />
+                <a class="btnGrabarReqLegal btn" href="#">Grabar</a>
+                <%--<input type="submit" class="btnGrabarReqLegal btn" onclick="return validarForm();" value="Grabar" />--%>
             </div>
 
         <% } %>
