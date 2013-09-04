@@ -19,29 +19,29 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_CronogramaObra), "GPC_ActividadObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_ActividadObra), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_DetallePartida_APU", "GPC_APU", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_APU), "GPC_DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_DetallePartida), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_DetallePartida_Categoria", "GPC_Categoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Categoria), "GPC_DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_DetallePartida), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_ClienteObra_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.SEG_Usuario), "GPC_ClienteObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_ClienteObra), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_ClienteObra), "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_PresupuestoObra), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_CronogramaObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_CronogramaObra), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_DetallePartida_Partida", "GPC_Partida", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Partida), "GPC_DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_DetallePartida), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Estado), "GPC_HistoricoAprobacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_HistoricoAprobacion), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_PresupuestoObra_Estado", "GPC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Estado), "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_PresupuestoObra), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_Solicitud_Estado", "GPC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Estado), "GPC_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Solicitud), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_ExpedienteTecnico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_ExpedienteTecnico), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_HistoricoAprobacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_HistoricoAprobacion), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.SEG_Usuario), "GPC_HistoricoAprobacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_HistoricoAprobacion), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_Notificacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Notificacion), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_PresupuestoObra_Obra", "GPC_Obra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Obra), "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_PresupuestoObra), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_Partida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Partida), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Solicitud), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_TipoSolicitud), "GPC_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Solicitud), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_GPC_Solicitud_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.SEG_Usuario), "GPC_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Solicitud), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.SEG_Perfil), "SEG_UsuarioPerfil", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.SEG_UsuarioPerfil), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_UsuarioPerfil_Perfil", "SEG_Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.SEG_Perfil), "SEG_UsuarioPerfil", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.SEG_UsuarioPerfil), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.SEG_Usuario), "SEG_UsuarioPerfil", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.SEG_UsuarioPerfil), true)]
-[assembly: EdmRelationshipAttribute("GPC_Model", "FK_UsuarioPerfil_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.SEG_Usuario), "SEG_UsuarioPerfil", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.SEG_UsuarioPerfil), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_CronogramaObra), "GPC_ActividadObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_ActividadObra), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_DetallePartida_APU", "GPC_APU", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_APU), "GPC_DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_DetallePartida), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_DetallePartida_Categoria", "GPC_Categoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Categoria), "GPC_DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_DetallePartida), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_ClienteObra_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.SEG_Usuario), "GPC_ClienteObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_ClienteObra), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_ClienteObra), "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_PresupuestoObra), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_CronogramaObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_CronogramaObra), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_DetallePartida_Partida", "GPC_Partida", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Partida), "GPC_DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_DetallePartida), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Estado), "GPC_HistoricoAprobacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_HistoricoAprobacion), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_PresupuestoObra_Estado", "GPC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Estado), "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_PresupuestoObra), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_Solicitud_Estado", "GPC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Estado), "GPC_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Solicitud), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_ExpedienteTecnico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_ExpedienteTecnico), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_HistoricoAprobacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_HistoricoAprobacion), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.SEG_Usuario), "GPC_HistoricoAprobacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_HistoricoAprobacion), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_Notificacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Notificacion), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_PresupuestoObra_Obra", "GPC_Obra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_Obra), "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_PresupuestoObra), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_Partida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Partida), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_PresupuestoObra), "GPC_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Solicitud), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPC_TipoSolicitud), "GPC_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Solicitud), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_GPC_Solicitud_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.SEG_Usuario), "GPC_Solicitud", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPC_Solicitud), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.SEG_Perfil), "SEG_UsuarioPerfil", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.SEG_UsuarioPerfil), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_UsuarioPerfil_Perfil", "SEG_Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.SEG_Perfil), "SEG_UsuarioPerfil", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.SEG_UsuarioPerfil), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.SEG_Usuario), "SEG_UsuarioPerfil", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.SEG_UsuarioPerfil), true)]
+[assembly: EdmRelationshipAttribute("GYMModel", "FK_UsuarioPerfil_Usuario", "SEG_Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.SEG_Usuario), "SEG_UsuarioPerfil", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.SEG_UsuarioPerfil), true)]
 
 #endregion
 
@@ -540,7 +540,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_ActividadObra")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_ActividadObra")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_ActividadObra : EntityObject
@@ -720,16 +720,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra")]
         public GPC_CronogramaObra GPC_CronogramaObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_CronogramaObra>("GPC_Model.FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_CronogramaObra>("GYMModel.FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_CronogramaObra>("GPC_Model.FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_CronogramaObra>("GYMModel.FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra").Value = value;
             }
         }
         /// <summary>
@@ -741,13 +741,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_CronogramaObra>("GPC_Model.FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_CronogramaObra>("GYMModel.FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_CronogramaObra>("GPC_Model.FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_CronogramaObra>("GYMModel.FK_GPC_ActividadObra_CronogramaObra", "GPC_CronogramaObra", value);
                 }
             }
         }
@@ -759,7 +759,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_APU")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_APU")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_APU : EntityObject
@@ -891,18 +891,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_DetallePartida_APU", "GPC_DetallePartida")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_DetallePartida_APU", "GPC_DetallePartida")]
         public EntityCollection<GPC_DetallePartida> GPC_DetallePartida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_DetallePartida>("GPC_Model.FK_GPC_DetallePartida_APU", "GPC_DetallePartida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_DetallePartida>("GYMModel.FK_GPC_DetallePartida_APU", "GPC_DetallePartida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_DetallePartida>("GPC_Model.FK_GPC_DetallePartida_APU", "GPC_DetallePartida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_DetallePartida>("GYMModel.FK_GPC_DetallePartida_APU", "GPC_DetallePartida", value);
                 }
             }
         }
@@ -914,7 +914,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_Categoria")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_Categoria")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_Categoria : EntityObject
@@ -998,18 +998,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_DetallePartida_Categoria", "GPC_DetallePartida")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_DetallePartida_Categoria", "GPC_DetallePartida")]
         public EntityCollection<GPC_DetallePartida> GPC_DetallePartida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_DetallePartida>("GPC_Model.FK_GPC_DetallePartida_Categoria", "GPC_DetallePartida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_DetallePartida>("GYMModel.FK_GPC_DetallePartida_Categoria", "GPC_DetallePartida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_DetallePartida>("GPC_Model.FK_GPC_DetallePartida_Categoria", "GPC_DetallePartida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_DetallePartida>("GYMModel.FK_GPC_DetallePartida_Categoria", "GPC_DetallePartida", value);
                 }
             }
         }
@@ -1021,7 +1021,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_ClienteObra")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_ClienteObra")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_ClienteObra : EntityObject
@@ -1129,16 +1129,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_ClienteObra_Usuario", "SEG_Usuario")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_ClienteObra_Usuario", "SEG_Usuario")]
         public SEG_Usuario SEG_Usuario
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_ClienteObra_Usuario", "SEG_Usuario").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_ClienteObra_Usuario", "SEG_Usuario").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_ClienteObra_Usuario", "SEG_Usuario").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_ClienteObra_Usuario", "SEG_Usuario").Value = value;
             }
         }
         /// <summary>
@@ -1150,13 +1150,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_ClienteObra_Usuario", "SEG_Usuario");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_ClienteObra_Usuario", "SEG_Usuario");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_ClienteObra_Usuario", "SEG_Usuario", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_ClienteObra_Usuario", "SEG_Usuario", value);
                 }
             }
         }
@@ -1167,18 +1167,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_PresupuestoObra_ClienteObra", "GPC_PresupuestoObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_PresupuestoObra_ClienteObra", "GPC_PresupuestoObra")]
         public EntityCollection<GPC_PresupuestoObra> GPC_PresupuestoObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_PresupuestoObra>("GPC_Model.FK_GPC_PresupuestoObra_ClienteObra", "GPC_PresupuestoObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_PresupuestoObra>("GYMModel.FK_GPC_PresupuestoObra_ClienteObra", "GPC_PresupuestoObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_PresupuestoObra>("GPC_Model.FK_GPC_PresupuestoObra_ClienteObra", "GPC_PresupuestoObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_PresupuestoObra>("GYMModel.FK_GPC_PresupuestoObra_ClienteObra", "GPC_PresupuestoObra", value);
                 }
             }
         }
@@ -1190,7 +1190,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_CronogramaObra")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_CronogramaObra")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_CronogramaObra : EntityObject
@@ -1370,18 +1370,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_ActividadObra_CronogramaObra", "GPC_ActividadObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_ActividadObra_CronogramaObra", "GPC_ActividadObra")]
         public EntityCollection<GPC_ActividadObra> GPC_ActividadObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_ActividadObra>("GPC_Model.FK_GPC_ActividadObra_CronogramaObra", "GPC_ActividadObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_ActividadObra>("GYMModel.FK_GPC_ActividadObra_CronogramaObra", "GPC_ActividadObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_ActividadObra>("GPC_Model.FK_GPC_ActividadObra_CronogramaObra", "GPC_ActividadObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_ActividadObra>("GYMModel.FK_GPC_ActividadObra_CronogramaObra", "GPC_ActividadObra", value);
                 }
             }
         }
@@ -1392,16 +1392,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra")]
         public GPC_PresupuestoObra GPC_PresupuestoObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
             }
         }
         /// <summary>
@@ -1413,13 +1413,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_PresupuestoObra", value);
                 }
             }
         }
@@ -1431,7 +1431,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_DetallePartida")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_DetallePartida")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_DetallePartida : EntityObject
@@ -1611,16 +1611,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_DetallePartida_APU", "GPC_APU")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_DetallePartida_APU", "GPC_APU")]
         public GPC_APU GPC_APU
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_APU>("GPC_Model.FK_GPC_DetallePartida_APU", "GPC_APU").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_APU>("GYMModel.FK_GPC_DetallePartida_APU", "GPC_APU").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_APU>("GPC_Model.FK_GPC_DetallePartida_APU", "GPC_APU").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_APU>("GYMModel.FK_GPC_DetallePartida_APU", "GPC_APU").Value = value;
             }
         }
         /// <summary>
@@ -1632,13 +1632,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_APU>("GPC_Model.FK_GPC_DetallePartida_APU", "GPC_APU");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_APU>("GYMModel.FK_GPC_DetallePartida_APU", "GPC_APU");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_APU>("GPC_Model.FK_GPC_DetallePartida_APU", "GPC_APU", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_APU>("GYMModel.FK_GPC_DetallePartida_APU", "GPC_APU", value);
                 }
             }
         }
@@ -1649,16 +1649,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_DetallePartida_Categoria", "GPC_Categoria")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_DetallePartida_Categoria", "GPC_Categoria")]
         public GPC_Categoria GPC_Categoria
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Categoria>("GPC_Model.FK_GPC_DetallePartida_Categoria", "GPC_Categoria").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Categoria>("GYMModel.FK_GPC_DetallePartida_Categoria", "GPC_Categoria").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Categoria>("GPC_Model.FK_GPC_DetallePartida_Categoria", "GPC_Categoria").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Categoria>("GYMModel.FK_GPC_DetallePartida_Categoria", "GPC_Categoria").Value = value;
             }
         }
         /// <summary>
@@ -1670,13 +1670,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Categoria>("GPC_Model.FK_GPC_DetallePartida_Categoria", "GPC_Categoria");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Categoria>("GYMModel.FK_GPC_DetallePartida_Categoria", "GPC_Categoria");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Categoria>("GPC_Model.FK_GPC_DetallePartida_Categoria", "GPC_Categoria", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Categoria>("GYMModel.FK_GPC_DetallePartida_Categoria", "GPC_Categoria", value);
                 }
             }
         }
@@ -1687,16 +1687,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_DetallePartida_Partida", "GPC_Partida")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_DetallePartida_Partida", "GPC_Partida")]
         public GPC_Partida GPC_Partida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Partida>("GPC_Model.FK_GPC_DetallePartida_Partida", "GPC_Partida").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Partida>("GYMModel.FK_GPC_DetallePartida_Partida", "GPC_Partida").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Partida>("GPC_Model.FK_GPC_DetallePartida_Partida", "GPC_Partida").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Partida>("GYMModel.FK_GPC_DetallePartida_Partida", "GPC_Partida").Value = value;
             }
         }
         /// <summary>
@@ -1708,13 +1708,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Partida>("GPC_Model.FK_GPC_DetallePartida_Partida", "GPC_Partida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Partida>("GYMModel.FK_GPC_DetallePartida_Partida", "GPC_Partida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Partida>("GPC_Model.FK_GPC_DetallePartida_Partida", "GPC_Partida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Partida>("GYMModel.FK_GPC_DetallePartida_Partida", "GPC_Partida", value);
                 }
             }
         }
@@ -1726,7 +1726,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_Estado")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_Estado")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_Estado : EntityObject
@@ -1834,18 +1834,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_HistoricoAprobacion_Estado", "GPC_HistoricoAprobacion")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_HistoricoAprobacion_Estado", "GPC_HistoricoAprobacion")]
         public EntityCollection<GPC_HistoricoAprobacion> GPC_HistoricoAprobacion
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_HistoricoAprobacion>("GPC_Model.FK_GPC_HistoricoAprobacion_Estado", "GPC_HistoricoAprobacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_HistoricoAprobacion>("GYMModel.FK_GPC_HistoricoAprobacion_Estado", "GPC_HistoricoAprobacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_HistoricoAprobacion>("GPC_Model.FK_GPC_HistoricoAprobacion_Estado", "GPC_HistoricoAprobacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_HistoricoAprobacion>("GYMModel.FK_GPC_HistoricoAprobacion_Estado", "GPC_HistoricoAprobacion", value);
                 }
             }
         }
@@ -1856,18 +1856,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_PresupuestoObra_Estado", "GPC_PresupuestoObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_PresupuestoObra_Estado", "GPC_PresupuestoObra")]
         public EntityCollection<GPC_PresupuestoObra> GPC_PresupuestoObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_PresupuestoObra>("GPC_Model.FK_GPC_PresupuestoObra_Estado", "GPC_PresupuestoObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_PresupuestoObra>("GYMModel.FK_GPC_PresupuestoObra_Estado", "GPC_PresupuestoObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_PresupuestoObra>("GPC_Model.FK_GPC_PresupuestoObra_Estado", "GPC_PresupuestoObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_PresupuestoObra>("GYMModel.FK_GPC_PresupuestoObra_Estado", "GPC_PresupuestoObra", value);
                 }
             }
         }
@@ -1878,18 +1878,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Solicitud_Estado", "GPC_Solicitud")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Solicitud_Estado", "GPC_Solicitud")]
         public EntityCollection<GPC_Solicitud> GPC_Solicitud
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Solicitud>("GPC_Model.FK_GPC_Solicitud_Estado", "GPC_Solicitud");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Solicitud>("GYMModel.FK_GPC_Solicitud_Estado", "GPC_Solicitud");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Solicitud>("GPC_Model.FK_GPC_Solicitud_Estado", "GPC_Solicitud", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Solicitud>("GYMModel.FK_GPC_Solicitud_Estado", "GPC_Solicitud", value);
                 }
             }
         }
@@ -1901,7 +1901,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_ExpedienteTecnico")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_ExpedienteTecnico")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_ExpedienteTecnico : EntityObject
@@ -2105,16 +2105,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra")]
         public GPC_PresupuestoObra GPC_PresupuestoObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
             }
         }
         /// <summary>
@@ -2126,13 +2126,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_PresupuestoObra", value);
                 }
             }
         }
@@ -2144,7 +2144,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_HistoricoAprobacion")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_HistoricoAprobacion")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_HistoricoAprobacion : EntityObject
@@ -2324,16 +2324,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado")]
         public GPC_Estado GPC_Estado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GYMModel.FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GYMModel.FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado").Value = value;
             }
         }
         /// <summary>
@@ -2345,13 +2345,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GYMModel.FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Estado>("GYMModel.FK_GPC_HistoricoAprobacion_Estado", "GPC_Estado", value);
                 }
             }
         }
@@ -2362,16 +2362,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra")]
         public GPC_PresupuestoObra GPC_PresupuestoObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
             }
         }
         /// <summary>
@@ -2383,13 +2383,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_PresupuestoObra", value);
                 }
             }
         }
@@ -2400,16 +2400,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario")]
         public SEG_Usuario SEG_Usuario
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario").Value = value;
             }
         }
         /// <summary>
@@ -2421,13 +2421,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_HistoricoAprobacion_Usuario", "SEG_Usuario", value);
                 }
             }
         }
@@ -2439,7 +2439,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_Notificacion")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_Notificacion")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_Notificacion : EntityObject
@@ -2571,16 +2571,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra")]
         public GPC_PresupuestoObra GPC_PresupuestoObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
             }
         }
         /// <summary>
@@ -2592,13 +2592,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Notificacion_PresupuestoObra", "GPC_PresupuestoObra", value);
                 }
             }
         }
@@ -2610,7 +2610,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_Obra")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_Obra")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_Obra : EntityObject
@@ -2742,18 +2742,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_PresupuestoObra_Obra", "GPC_PresupuestoObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_PresupuestoObra_Obra", "GPC_PresupuestoObra")]
         public EntityCollection<GPC_PresupuestoObra> GPC_PresupuestoObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_PresupuestoObra>("GPC_Model.FK_GPC_PresupuestoObra_Obra", "GPC_PresupuestoObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_PresupuestoObra>("GYMModel.FK_GPC_PresupuestoObra_Obra", "GPC_PresupuestoObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_PresupuestoObra>("GPC_Model.FK_GPC_PresupuestoObra_Obra", "GPC_PresupuestoObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_PresupuestoObra>("GYMModel.FK_GPC_PresupuestoObra_Obra", "GPC_PresupuestoObra", value);
                 }
             }
         }
@@ -2765,7 +2765,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_Partida")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_Partida")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_Partida : EntityObject
@@ -2921,18 +2921,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_DetallePartida_Partida", "GPC_DetallePartida")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_DetallePartida_Partida", "GPC_DetallePartida")]
         public EntityCollection<GPC_DetallePartida> GPC_DetallePartida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_DetallePartida>("GPC_Model.FK_GPC_DetallePartida_Partida", "GPC_DetallePartida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_DetallePartida>("GYMModel.FK_GPC_DetallePartida_Partida", "GPC_DetallePartida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_DetallePartida>("GPC_Model.FK_GPC_DetallePartida_Partida", "GPC_DetallePartida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_DetallePartida>("GYMModel.FK_GPC_DetallePartida_Partida", "GPC_DetallePartida", value);
                 }
             }
         }
@@ -2943,16 +2943,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra")]
         public GPC_PresupuestoObra GPC_PresupuestoObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
             }
         }
         /// <summary>
@@ -2964,13 +2964,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Partida_PresupuestoObra", "GPC_PresupuestoObra", value);
                 }
             }
         }
@@ -2982,7 +2982,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_PresupuestoObra")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_PresupuestoObra")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_PresupuestoObra : EntityObject
@@ -3234,16 +3234,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra")]
         public GPC_ClienteObra GPC_ClienteObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_ClienteObra>("GPC_Model.FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_ClienteObra>("GYMModel.FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_ClienteObra>("GPC_Model.FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_ClienteObra>("GYMModel.FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra").Value = value;
             }
         }
         /// <summary>
@@ -3255,13 +3255,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_ClienteObra>("GPC_Model.FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_ClienteObra>("GYMModel.FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_ClienteObra>("GPC_Model.FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_ClienteObra>("GYMModel.FK_GPC_PresupuestoObra_ClienteObra", "GPC_ClienteObra", value);
                 }
             }
         }
@@ -3272,18 +3272,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_CronogramaObra_PresupuestoObra", "GPC_CronogramaObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_CronogramaObra_PresupuestoObra", "GPC_CronogramaObra")]
         public EntityCollection<GPC_CronogramaObra> GPC_CronogramaObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_CronogramaObra>("GPC_Model.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_CronogramaObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_CronogramaObra>("GYMModel.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_CronogramaObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_CronogramaObra>("GPC_Model.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_CronogramaObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_CronogramaObra>("GYMModel.FK_GPC_CronogramaObra_PresupuestoObra", "GPC_CronogramaObra", value);
                 }
             }
         }
@@ -3294,16 +3294,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_PresupuestoObra_Estado", "GPC_Estado")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_PresupuestoObra_Estado", "GPC_Estado")]
         public GPC_Estado GPC_Estado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_PresupuestoObra_Estado", "GPC_Estado").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GYMModel.FK_GPC_PresupuestoObra_Estado", "GPC_Estado").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_PresupuestoObra_Estado", "GPC_Estado").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GYMModel.FK_GPC_PresupuestoObra_Estado", "GPC_Estado").Value = value;
             }
         }
         /// <summary>
@@ -3315,13 +3315,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_PresupuestoObra_Estado", "GPC_Estado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GYMModel.FK_GPC_PresupuestoObra_Estado", "GPC_Estado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_PresupuestoObra_Estado", "GPC_Estado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Estado>("GYMModel.FK_GPC_PresupuestoObra_Estado", "GPC_Estado", value);
                 }
             }
         }
@@ -3332,18 +3332,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_ExpedienteTecnico")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_ExpedienteTecnico")]
         public EntityCollection<GPC_ExpedienteTecnico> GPC_ExpedienteTecnico
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_ExpedienteTecnico>("GPC_Model.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_ExpedienteTecnico");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_ExpedienteTecnico>("GYMModel.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_ExpedienteTecnico");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_ExpedienteTecnico>("GPC_Model.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_ExpedienteTecnico", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_ExpedienteTecnico>("GYMModel.FK_GPC_ExpedienteTecnico_PresupuestoObra", "GPC_ExpedienteTecnico", value);
                 }
             }
         }
@@ -3354,18 +3354,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_HistoricoAprobacion")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_HistoricoAprobacion")]
         public EntityCollection<GPC_HistoricoAprobacion> GPC_HistoricoAprobacion
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_HistoricoAprobacion>("GPC_Model.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_HistoricoAprobacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_HistoricoAprobacion>("GYMModel.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_HistoricoAprobacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_HistoricoAprobacion>("GPC_Model.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_HistoricoAprobacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_HistoricoAprobacion>("GYMModel.FK_GPC_HistoricoAprobacion_PresupuestoObra", "GPC_HistoricoAprobacion", value);
                 }
             }
         }
@@ -3376,18 +3376,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Notificacion_PresupuestoObra", "GPC_Notificacion")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Notificacion_PresupuestoObra", "GPC_Notificacion")]
         public EntityCollection<GPC_Notificacion> GPC_Notificacion
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Notificacion>("GPC_Model.FK_GPC_Notificacion_PresupuestoObra", "GPC_Notificacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Notificacion>("GYMModel.FK_GPC_Notificacion_PresupuestoObra", "GPC_Notificacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Notificacion>("GPC_Model.FK_GPC_Notificacion_PresupuestoObra", "GPC_Notificacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Notificacion>("GYMModel.FK_GPC_Notificacion_PresupuestoObra", "GPC_Notificacion", value);
                 }
             }
         }
@@ -3398,16 +3398,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_PresupuestoObra_Obra", "GPC_Obra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_PresupuestoObra_Obra", "GPC_Obra")]
         public GPC_Obra GPC_Obra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Obra>("GPC_Model.FK_GPC_PresupuestoObra_Obra", "GPC_Obra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Obra>("GYMModel.FK_GPC_PresupuestoObra_Obra", "GPC_Obra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Obra>("GPC_Model.FK_GPC_PresupuestoObra_Obra", "GPC_Obra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Obra>("GYMModel.FK_GPC_PresupuestoObra_Obra", "GPC_Obra").Value = value;
             }
         }
         /// <summary>
@@ -3419,13 +3419,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Obra>("GPC_Model.FK_GPC_PresupuestoObra_Obra", "GPC_Obra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Obra>("GYMModel.FK_GPC_PresupuestoObra_Obra", "GPC_Obra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Obra>("GPC_Model.FK_GPC_PresupuestoObra_Obra", "GPC_Obra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Obra>("GYMModel.FK_GPC_PresupuestoObra_Obra", "GPC_Obra", value);
                 }
             }
         }
@@ -3436,18 +3436,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Partida_PresupuestoObra", "GPC_Partida")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Partida_PresupuestoObra", "GPC_Partida")]
         public EntityCollection<GPC_Partida> GPC_Partida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Partida>("GPC_Model.FK_GPC_Partida_PresupuestoObra", "GPC_Partida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Partida>("GYMModel.FK_GPC_Partida_PresupuestoObra", "GPC_Partida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Partida>("GPC_Model.FK_GPC_Partida_PresupuestoObra", "GPC_Partida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Partida>("GYMModel.FK_GPC_Partida_PresupuestoObra", "GPC_Partida", value);
                 }
             }
         }
@@ -3458,18 +3458,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Solicitud_PresupuestoObra", "GPC_Solicitud")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Solicitud_PresupuestoObra", "GPC_Solicitud")]
         public EntityCollection<GPC_Solicitud> GPC_Solicitud
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Solicitud>("GPC_Model.FK_GPC_Solicitud_PresupuestoObra", "GPC_Solicitud");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Solicitud>("GYMModel.FK_GPC_Solicitud_PresupuestoObra", "GPC_Solicitud");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Solicitud>("GPC_Model.FK_GPC_Solicitud_PresupuestoObra", "GPC_Solicitud", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Solicitud>("GYMModel.FK_GPC_Solicitud_PresupuestoObra", "GPC_Solicitud", value);
                 }
             }
         }
@@ -3481,7 +3481,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_Solicitud")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_Solicitud")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_Solicitud : EntityObject
@@ -3685,16 +3685,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Solicitud_Estado", "GPC_Estado")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Solicitud_Estado", "GPC_Estado")]
         public GPC_Estado GPC_Estado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_Solicitud_Estado", "GPC_Estado").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GYMModel.FK_GPC_Solicitud_Estado", "GPC_Estado").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_Solicitud_Estado", "GPC_Estado").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GYMModel.FK_GPC_Solicitud_Estado", "GPC_Estado").Value = value;
             }
         }
         /// <summary>
@@ -3706,13 +3706,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_Solicitud_Estado", "GPC_Estado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_Estado>("GYMModel.FK_GPC_Solicitud_Estado", "GPC_Estado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Estado>("GPC_Model.FK_GPC_Solicitud_Estado", "GPC_Estado", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_Estado>("GYMModel.FK_GPC_Solicitud_Estado", "GPC_Estado", value);
                 }
             }
         }
@@ -3723,16 +3723,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra")]
         public GPC_PresupuestoObra GPC_PresupuestoObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra").Value = value;
             }
         }
         /// <summary>
@@ -3744,13 +3744,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GPC_Model.FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_PresupuestoObra>("GYMModel.FK_GPC_Solicitud_PresupuestoObra", "GPC_PresupuestoObra", value);
                 }
             }
         }
@@ -3761,16 +3761,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud")]
         public GPC_TipoSolicitud GPC_TipoSolicitud
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_TipoSolicitud>("GPC_Model.FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_TipoSolicitud>("GYMModel.FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_TipoSolicitud>("GPC_Model.FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_TipoSolicitud>("GYMModel.FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud").Value = value;
             }
         }
         /// <summary>
@@ -3782,13 +3782,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_TipoSolicitud>("GPC_Model.FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPC_TipoSolicitud>("GYMModel.FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_TipoSolicitud>("GPC_Model.FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPC_TipoSolicitud>("GYMModel.FK_GPC_Solicitud_TipoSolicitud", "GPC_TipoSolicitud", value);
                 }
             }
         }
@@ -3799,16 +3799,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Solicitud_Usuario", "SEG_Usuario")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Solicitud_Usuario", "SEG_Usuario")]
         public SEG_Usuario SEG_Usuario
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_Solicitud_Usuario", "SEG_Usuario").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_Solicitud_Usuario", "SEG_Usuario").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_Solicitud_Usuario", "SEG_Usuario").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_Solicitud_Usuario", "SEG_Usuario").Value = value;
             }
         }
         /// <summary>
@@ -3820,13 +3820,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_Solicitud_Usuario", "SEG_Usuario");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_Solicitud_Usuario", "SEG_Usuario");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GPC_Model.FK_GPC_Solicitud_Usuario", "SEG_Usuario", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GYMModel.FK_GPC_Solicitud_Usuario", "SEG_Usuario", value);
                 }
             }
         }
@@ -3838,7 +3838,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="GPC_TipoSolicitud")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="GPC_TipoSolicitud")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class GPC_TipoSolicitud : EntityObject
@@ -3922,18 +3922,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Solicitud_TipoSolicitud", "GPC_Solicitud")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Solicitud_TipoSolicitud", "GPC_Solicitud")]
         public EntityCollection<GPC_Solicitud> GPC_Solicitud
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Solicitud>("GPC_Model.FK_GPC_Solicitud_TipoSolicitud", "GPC_Solicitud");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Solicitud>("GYMModel.FK_GPC_Solicitud_TipoSolicitud", "GPC_Solicitud");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Solicitud>("GPC_Model.FK_GPC_Solicitud_TipoSolicitud", "GPC_Solicitud", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Solicitud>("GYMModel.FK_GPC_Solicitud_TipoSolicitud", "GPC_Solicitud", value);
                 }
             }
         }
@@ -3945,7 +3945,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="SEG_Perfil")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="SEG_Perfil")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class SEG_Perfil : EntityObject
@@ -4031,18 +4031,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_SEG_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_SEG_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil")]
         public EntityCollection<SEG_UsuarioPerfil> SEG_UsuarioPerfil
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SEG_UsuarioPerfil>("GPC_Model.FK_SEG_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SEG_UsuarioPerfil>("GYMModel.FK_SEG_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SEG_UsuarioPerfil>("GPC_Model.FK_SEG_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SEG_UsuarioPerfil>("GYMModel.FK_SEG_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil", value);
                 }
             }
         }
@@ -4053,18 +4053,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil")]
         public EntityCollection<SEG_UsuarioPerfil> SEG_UsuarioPerfil1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SEG_UsuarioPerfil>("GPC_Model.FK_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SEG_UsuarioPerfil>("GYMModel.FK_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SEG_UsuarioPerfil>("GPC_Model.FK_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SEG_UsuarioPerfil>("GYMModel.FK_UsuarioPerfil_Perfil", "SEG_UsuarioPerfil", value);
                 }
             }
         }
@@ -4076,7 +4076,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="SEG_Usuario")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="SEG_Usuario")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class SEG_Usuario : EntityObject
@@ -4260,18 +4260,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_ClienteObra_Usuario", "GPC_ClienteObra")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_ClienteObra_Usuario", "GPC_ClienteObra")]
         public EntityCollection<GPC_ClienteObra> GPC_ClienteObra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_ClienteObra>("GPC_Model.FK_GPC_ClienteObra_Usuario", "GPC_ClienteObra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_ClienteObra>("GYMModel.FK_GPC_ClienteObra_Usuario", "GPC_ClienteObra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_ClienteObra>("GPC_Model.FK_GPC_ClienteObra_Usuario", "GPC_ClienteObra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_ClienteObra>("GYMModel.FK_GPC_ClienteObra_Usuario", "GPC_ClienteObra", value);
                 }
             }
         }
@@ -4282,18 +4282,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_HistoricoAprobacion_Usuario", "GPC_HistoricoAprobacion")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_HistoricoAprobacion_Usuario", "GPC_HistoricoAprobacion")]
         public EntityCollection<GPC_HistoricoAprobacion> GPC_HistoricoAprobacion
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_HistoricoAprobacion>("GPC_Model.FK_GPC_HistoricoAprobacion_Usuario", "GPC_HistoricoAprobacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_HistoricoAprobacion>("GYMModel.FK_GPC_HistoricoAprobacion_Usuario", "GPC_HistoricoAprobacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_HistoricoAprobacion>("GPC_Model.FK_GPC_HistoricoAprobacion_Usuario", "GPC_HistoricoAprobacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_HistoricoAprobacion>("GYMModel.FK_GPC_HistoricoAprobacion_Usuario", "GPC_HistoricoAprobacion", value);
                 }
             }
         }
@@ -4304,18 +4304,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_GPC_Solicitud_Usuario", "GPC_Solicitud")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_GPC_Solicitud_Usuario", "GPC_Solicitud")]
         public EntityCollection<GPC_Solicitud> GPC_Solicitud
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Solicitud>("GPC_Model.FK_GPC_Solicitud_Usuario", "GPC_Solicitud");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPC_Solicitud>("GYMModel.FK_GPC_Solicitud_Usuario", "GPC_Solicitud");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Solicitud>("GPC_Model.FK_GPC_Solicitud_Usuario", "GPC_Solicitud", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPC_Solicitud>("GYMModel.FK_GPC_Solicitud_Usuario", "GPC_Solicitud", value);
                 }
             }
         }
@@ -4326,18 +4326,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_SEG_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_SEG_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil")]
         public EntityCollection<SEG_UsuarioPerfil> SEG_UsuarioPerfil
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SEG_UsuarioPerfil>("GPC_Model.FK_SEG_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SEG_UsuarioPerfil>("GYMModel.FK_SEG_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SEG_UsuarioPerfil>("GPC_Model.FK_SEG_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SEG_UsuarioPerfil>("GYMModel.FK_SEG_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil", value);
                 }
             }
         }
@@ -4348,18 +4348,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil")]
         public EntityCollection<SEG_UsuarioPerfil> SEG_UsuarioPerfil1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SEG_UsuarioPerfil>("GPC_Model.FK_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SEG_UsuarioPerfil>("GYMModel.FK_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SEG_UsuarioPerfil>("GPC_Model.FK_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SEG_UsuarioPerfil>("GYMModel.FK_UsuarioPerfil_Usuario", "SEG_UsuarioPerfil", value);
                 }
             }
         }
@@ -4371,7 +4371,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GPC_Model", Name="SEG_UsuarioPerfil")]
+    [EdmEntityTypeAttribute(NamespaceName="GYMModel", Name="SEG_UsuarioPerfil")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class SEG_UsuarioPerfil : EntityObject
@@ -4531,16 +4531,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil")]
         public SEG_Perfil SEG_Perfil
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GPC_Model.FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GYMModel.FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GPC_Model.FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GYMModel.FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil").Value = value;
             }
         }
         /// <summary>
@@ -4552,13 +4552,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GPC_Model.FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GYMModel.FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Perfil>("GPC_Model.FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Perfil>("GYMModel.FK_SEG_UsuarioPerfil_Perfil", "SEG_Perfil", value);
                 }
             }
         }
@@ -4569,16 +4569,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_UsuarioPerfil_Perfil", "SEG_Perfil")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_UsuarioPerfil_Perfil", "SEG_Perfil")]
         public SEG_Perfil SEG_Perfil1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GPC_Model.FK_UsuarioPerfil_Perfil", "SEG_Perfil").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GYMModel.FK_UsuarioPerfil_Perfil", "SEG_Perfil").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GPC_Model.FK_UsuarioPerfil_Perfil", "SEG_Perfil").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GYMModel.FK_UsuarioPerfil_Perfil", "SEG_Perfil").Value = value;
             }
         }
         /// <summary>
@@ -4590,13 +4590,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GPC_Model.FK_UsuarioPerfil_Perfil", "SEG_Perfil");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Perfil>("GYMModel.FK_UsuarioPerfil_Perfil", "SEG_Perfil");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Perfil>("GPC_Model.FK_UsuarioPerfil_Perfil", "SEG_Perfil", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Perfil>("GYMModel.FK_UsuarioPerfil_Perfil", "SEG_Perfil", value);
                 }
             }
         }
@@ -4607,16 +4607,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario")]
         public SEG_Usuario SEG_Usuario
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario").Value = value;
             }
         }
         /// <summary>
@@ -4628,13 +4628,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GPC_Model.FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GYMModel.FK_SEG_UsuarioPerfil_Usuario", "SEG_Usuario", value);
                 }
             }
         }
@@ -4645,16 +4645,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GPC_Model", "FK_UsuarioPerfil_Usuario", "SEG_Usuario")]
+        [EdmRelationshipNavigationPropertyAttribute("GYMModel", "FK_UsuarioPerfil_Usuario", "SEG_Usuario")]
         public SEG_Usuario SEG_Usuario1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_UsuarioPerfil_Usuario", "SEG_Usuario").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_UsuarioPerfil_Usuario", "SEG_Usuario").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_UsuarioPerfil_Usuario", "SEG_Usuario").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_UsuarioPerfil_Usuario", "SEG_Usuario").Value = value;
             }
         }
         /// <summary>
@@ -4666,13 +4666,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GPC_Model.FK_UsuarioPerfil_Usuario", "SEG_Usuario");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SEG_Usuario>("GYMModel.FK_UsuarioPerfil_Usuario", "SEG_Usuario");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GPC_Model.FK_UsuarioPerfil_Usuario", "SEG_Usuario", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SEG_Usuario>("GYMModel.FK_UsuarioPerfil_Usuario", "SEG_Usuario", value);
                 }
             }
         }

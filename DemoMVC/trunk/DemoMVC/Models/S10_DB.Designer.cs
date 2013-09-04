@@ -19,14 +19,14 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("S10_Model", "FK_Actividad_Cronograma", "S10Cronograma", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Cronograma), "S10Actividad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Actividad), true)]
-[assembly: EdmRelationshipAttribute("S10_Model", "FK_DetallePartida_APU", "S10APU", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10APU), "S10DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10DetallePartida), true)]
-[assembly: EdmRelationshipAttribute("S10_Model", "FK_DetallePartida_Categoria", "S10Categoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Categoria), "S10DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10DetallePartida), true)]
-[assembly: EdmRelationshipAttribute("S10_Model", "FK_Presupuesto_Cliente", "S10Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Cliente), "S10Presupuesto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Presupuesto), true)]
-[assembly: EdmRelationshipAttribute("S10_Model", "FK_Cronograma_Presupuesto", "S10Presupuesto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Presupuesto), "S10Cronograma", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Cronograma), true)]
-[assembly: EdmRelationshipAttribute("S10_Model", "FK_DetallePartida_Partida", "S10Partida", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Partida), "S10DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10DetallePartida), true)]
-[assembly: EdmRelationshipAttribute("S10_Model", "FK_Presupuesto_Obra", "S10Obra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Obra), "S10Presupuesto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Presupuesto), true)]
-[assembly: EdmRelationshipAttribute("S10_Model", "FK_Partida_Presupuesto", "S10Presupuesto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Presupuesto), "S10Partida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Partida), true)]
+[assembly: EdmRelationshipAttribute("S10Model", "FK_Actividad_Cronograma", "S10Cronograma", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Cronograma), "S10Actividad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Actividad), true)]
+[assembly: EdmRelationshipAttribute("S10Model", "FK_DetallePartida_APU", "S10APU", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10APU), "S10DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10DetallePartida), true)]
+[assembly: EdmRelationshipAttribute("S10Model", "FK_DetallePartida_Categoria", "S10Categoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Categoria), "S10DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10DetallePartida), true)]
+[assembly: EdmRelationshipAttribute("S10Model", "FK_Presupuesto_Cliente", "S10Cliente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Cliente), "S10Presupuesto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Presupuesto), true)]
+[assembly: EdmRelationshipAttribute("S10Model", "FK_Cronograma_Presupuesto", "S10Presupuesto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Presupuesto), "S10Cronograma", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Cronograma), true)]
+[assembly: EdmRelationshipAttribute("S10Model", "FK_DetallePartida_Partida", "S10Partida", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Partida), "S10DetallePartida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10DetallePartida), true)]
+[assembly: EdmRelationshipAttribute("S10Model", "FK_Presupuesto_Obra", "S10Obra", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Obra), "S10Presupuesto", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Presupuesto), true)]
+[assembly: EdmRelationshipAttribute("S10Model", "FK_Partida_Presupuesto", "S10Presupuesto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.S10Presupuesto), "S10Partida", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.S10Partida), true)]
 
 #endregion
 
@@ -309,7 +309,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="S10_Model", Name="S10Actividad")]
+    [EdmEntityTypeAttribute(NamespaceName="S10Model", Name="S10Actividad")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class S10Actividad : EntityObject
@@ -489,16 +489,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Actividad_Cronograma", "S10Cronograma")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Actividad_Cronograma", "S10Cronograma")]
         public S10Cronograma S10Cronograma
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cronograma>("S10_Model.FK_Actividad_Cronograma", "S10Cronograma").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cronograma>("S10Model.FK_Actividad_Cronograma", "S10Cronograma").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cronograma>("S10_Model.FK_Actividad_Cronograma", "S10Cronograma").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cronograma>("S10Model.FK_Actividad_Cronograma", "S10Cronograma").Value = value;
             }
         }
         /// <summary>
@@ -510,13 +510,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cronograma>("S10_Model.FK_Actividad_Cronograma", "S10Cronograma");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cronograma>("S10Model.FK_Actividad_Cronograma", "S10Cronograma");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Cronograma>("S10_Model.FK_Actividad_Cronograma", "S10Cronograma", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Cronograma>("S10Model.FK_Actividad_Cronograma", "S10Cronograma", value);
                 }
             }
         }
@@ -528,7 +528,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="S10_Model", Name="S10APU")]
+    [EdmEntityTypeAttribute(NamespaceName="S10Model", Name="S10APU")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class S10APU : EntityObject
@@ -660,18 +660,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_DetallePartida_APU", "S10DetallePartida")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_DetallePartida_APU", "S10DetallePartida")]
         public EntityCollection<S10DetallePartida> S10DetallePartida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10DetallePartida>("S10_Model.FK_DetallePartida_APU", "S10DetallePartida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10DetallePartida>("S10Model.FK_DetallePartida_APU", "S10DetallePartida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10DetallePartida>("S10_Model.FK_DetallePartida_APU", "S10DetallePartida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10DetallePartida>("S10Model.FK_DetallePartida_APU", "S10DetallePartida", value);
                 }
             }
         }
@@ -683,7 +683,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="S10_Model", Name="S10Categoria")]
+    [EdmEntityTypeAttribute(NamespaceName="S10Model", Name="S10Categoria")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class S10Categoria : EntityObject
@@ -767,18 +767,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_DetallePartida_Categoria", "S10DetallePartida")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_DetallePartida_Categoria", "S10DetallePartida")]
         public EntityCollection<S10DetallePartida> S10DetallePartida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10DetallePartida>("S10_Model.FK_DetallePartida_Categoria", "S10DetallePartida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10DetallePartida>("S10Model.FK_DetallePartida_Categoria", "S10DetallePartida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10DetallePartida>("S10_Model.FK_DetallePartida_Categoria", "S10DetallePartida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10DetallePartida>("S10Model.FK_DetallePartida_Categoria", "S10DetallePartida", value);
                 }
             }
         }
@@ -790,7 +790,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="S10_Model", Name="S10Cliente")]
+    [EdmEntityTypeAttribute(NamespaceName="S10Model", Name="S10Cliente")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class S10Cliente : EntityObject
@@ -874,18 +874,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Presupuesto_Cliente", "S10Presupuesto")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Presupuesto_Cliente", "S10Presupuesto")]
         public EntityCollection<S10Presupuesto> S10Presupuesto
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Presupuesto>("S10_Model.FK_Presupuesto_Cliente", "S10Presupuesto");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Presupuesto>("S10Model.FK_Presupuesto_Cliente", "S10Presupuesto");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Presupuesto>("S10_Model.FK_Presupuesto_Cliente", "S10Presupuesto", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Presupuesto>("S10Model.FK_Presupuesto_Cliente", "S10Presupuesto", value);
                 }
             }
         }
@@ -897,7 +897,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="S10_Model", Name="S10Cronograma")]
+    [EdmEntityTypeAttribute(NamespaceName="S10Model", Name="S10Cronograma")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class S10Cronograma : EntityObject
@@ -975,24 +975,48 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> Fecha
+        public Nullable<global::System.DateTime> FechaInicio
         {
             get
             {
-                return _Fecha;
+                return _FechaInicio;
             }
             set
             {
-                OnFechaChanging(value);
-                ReportPropertyChanging("Fecha");
-                _Fecha = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Fecha");
-                OnFechaChanged();
+                OnFechaInicioChanging(value);
+                ReportPropertyChanging("FechaInicio");
+                _FechaInicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaInicio");
+                OnFechaInicioChanged();
             }
         }
-        private Nullable<global::System.DateTime> _Fecha;
-        partial void OnFechaChanging(Nullable<global::System.DateTime> value);
-        partial void OnFechaChanged();
+        private Nullable<global::System.DateTime> _FechaInicio;
+        partial void OnFechaInicioChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaInicioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaFin
+        {
+            get
+            {
+                return _FechaFin;
+            }
+            set
+            {
+                OnFechaFinChanging(value);
+                ReportPropertyChanging("FechaFin");
+                _FechaFin = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaFin");
+                OnFechaFinChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaFin;
+        partial void OnFechaFinChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaFinChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1053,18 +1077,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Actividad_Cronograma", "S10Actividad")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Actividad_Cronograma", "S10Actividad")]
         public EntityCollection<S10Actividad> S10Actividad
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Actividad>("S10_Model.FK_Actividad_Cronograma", "S10Actividad");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Actividad>("S10Model.FK_Actividad_Cronograma", "S10Actividad");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Actividad>("S10_Model.FK_Actividad_Cronograma", "S10Actividad", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Actividad>("S10Model.FK_Actividad_Cronograma", "S10Actividad", value);
                 }
             }
         }
@@ -1075,16 +1099,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Cronograma_Presupuesto", "S10Presupuesto")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Cronograma_Presupuesto", "S10Presupuesto")]
         public S10Presupuesto S10Presupuesto
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10_Model.FK_Cronograma_Presupuesto", "S10Presupuesto").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10Model.FK_Cronograma_Presupuesto", "S10Presupuesto").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10_Model.FK_Cronograma_Presupuesto", "S10Presupuesto").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10Model.FK_Cronograma_Presupuesto", "S10Presupuesto").Value = value;
             }
         }
         /// <summary>
@@ -1096,13 +1120,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10_Model.FK_Cronograma_Presupuesto", "S10Presupuesto");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10Model.FK_Cronograma_Presupuesto", "S10Presupuesto");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Presupuesto>("S10_Model.FK_Cronograma_Presupuesto", "S10Presupuesto", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Presupuesto>("S10Model.FK_Cronograma_Presupuesto", "S10Presupuesto", value);
                 }
             }
         }
@@ -1114,7 +1138,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="S10_Model", Name="S10DetallePartida")]
+    [EdmEntityTypeAttribute(NamespaceName="S10Model", Name="S10DetallePartida")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class S10DetallePartida : EntityObject
@@ -1294,16 +1318,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_DetallePartida_APU", "S10APU")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_DetallePartida_APU", "S10APU")]
         public S10APU S10APU
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10APU>("S10_Model.FK_DetallePartida_APU", "S10APU").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10APU>("S10Model.FK_DetallePartida_APU", "S10APU").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10APU>("S10_Model.FK_DetallePartida_APU", "S10APU").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10APU>("S10Model.FK_DetallePartida_APU", "S10APU").Value = value;
             }
         }
         /// <summary>
@@ -1315,13 +1339,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10APU>("S10_Model.FK_DetallePartida_APU", "S10APU");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10APU>("S10Model.FK_DetallePartida_APU", "S10APU");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10APU>("S10_Model.FK_DetallePartida_APU", "S10APU", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10APU>("S10Model.FK_DetallePartida_APU", "S10APU", value);
                 }
             }
         }
@@ -1332,16 +1356,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_DetallePartida_Categoria", "S10Categoria")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_DetallePartida_Categoria", "S10Categoria")]
         public S10Categoria S10Categoria
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Categoria>("S10_Model.FK_DetallePartida_Categoria", "S10Categoria").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Categoria>("S10Model.FK_DetallePartida_Categoria", "S10Categoria").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Categoria>("S10_Model.FK_DetallePartida_Categoria", "S10Categoria").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Categoria>("S10Model.FK_DetallePartida_Categoria", "S10Categoria").Value = value;
             }
         }
         /// <summary>
@@ -1353,13 +1377,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Categoria>("S10_Model.FK_DetallePartida_Categoria", "S10Categoria");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Categoria>("S10Model.FK_DetallePartida_Categoria", "S10Categoria");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Categoria>("S10_Model.FK_DetallePartida_Categoria", "S10Categoria", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Categoria>("S10Model.FK_DetallePartida_Categoria", "S10Categoria", value);
                 }
             }
         }
@@ -1370,16 +1394,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_DetallePartida_Partida", "S10Partida")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_DetallePartida_Partida", "S10Partida")]
         public S10Partida S10Partida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Partida>("S10_Model.FK_DetallePartida_Partida", "S10Partida").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Partida>("S10Model.FK_DetallePartida_Partida", "S10Partida").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Partida>("S10_Model.FK_DetallePartida_Partida", "S10Partida").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Partida>("S10Model.FK_DetallePartida_Partida", "S10Partida").Value = value;
             }
         }
         /// <summary>
@@ -1391,13 +1415,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Partida>("S10_Model.FK_DetallePartida_Partida", "S10Partida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Partida>("S10Model.FK_DetallePartida_Partida", "S10Partida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Partida>("S10_Model.FK_DetallePartida_Partida", "S10Partida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Partida>("S10Model.FK_DetallePartida_Partida", "S10Partida", value);
                 }
             }
         }
@@ -1409,7 +1433,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="S10_Model", Name="S10Obra")]
+    [EdmEntityTypeAttribute(NamespaceName="S10Model", Name="S10Obra")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class S10Obra : EntityObject
@@ -1517,18 +1541,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Presupuesto_Obra", "S10Presupuesto")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Presupuesto_Obra", "S10Presupuesto")]
         public EntityCollection<S10Presupuesto> S10Presupuesto
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Presupuesto>("S10_Model.FK_Presupuesto_Obra", "S10Presupuesto");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Presupuesto>("S10Model.FK_Presupuesto_Obra", "S10Presupuesto");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Presupuesto>("S10_Model.FK_Presupuesto_Obra", "S10Presupuesto", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Presupuesto>("S10Model.FK_Presupuesto_Obra", "S10Presupuesto", value);
                 }
             }
         }
@@ -1540,7 +1564,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="S10_Model", Name="S10Partida")]
+    [EdmEntityTypeAttribute(NamespaceName="S10Model", Name="S10Partida")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class S10Partida : EntityObject
@@ -1696,18 +1720,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_DetallePartida_Partida", "S10DetallePartida")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_DetallePartida_Partida", "S10DetallePartida")]
         public EntityCollection<S10DetallePartida> S10DetallePartida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10DetallePartida>("S10_Model.FK_DetallePartida_Partida", "S10DetallePartida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10DetallePartida>("S10Model.FK_DetallePartida_Partida", "S10DetallePartida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10DetallePartida>("S10_Model.FK_DetallePartida_Partida", "S10DetallePartida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10DetallePartida>("S10Model.FK_DetallePartida_Partida", "S10DetallePartida", value);
                 }
             }
         }
@@ -1718,16 +1742,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Partida_Presupuesto", "S10Presupuesto")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Partida_Presupuesto", "S10Presupuesto")]
         public S10Presupuesto S10Presupuesto
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10_Model.FK_Partida_Presupuesto", "S10Presupuesto").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10Model.FK_Partida_Presupuesto", "S10Presupuesto").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10_Model.FK_Partida_Presupuesto", "S10Presupuesto").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10Model.FK_Partida_Presupuesto", "S10Presupuesto").Value = value;
             }
         }
         /// <summary>
@@ -1739,13 +1763,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10_Model.FK_Partida_Presupuesto", "S10Presupuesto");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Presupuesto>("S10Model.FK_Partida_Presupuesto", "S10Presupuesto");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Presupuesto>("S10_Model.FK_Partida_Presupuesto", "S10Presupuesto", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Presupuesto>("S10Model.FK_Partida_Presupuesto", "S10Presupuesto", value);
                 }
             }
         }
@@ -1757,7 +1781,7 @@ namespace DemoMVC.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="S10_Model", Name="S10Presupuesto")]
+    [EdmEntityTypeAttribute(NamespaceName="S10Model", Name="S10Presupuesto")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class S10Presupuesto : EntityObject
@@ -2057,16 +2081,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Presupuesto_Cliente", "S10Cliente")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Presupuesto_Cliente", "S10Cliente")]
         public S10Cliente S10Cliente
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cliente>("S10_Model.FK_Presupuesto_Cliente", "S10Cliente").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cliente>("S10Model.FK_Presupuesto_Cliente", "S10Cliente").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cliente>("S10_Model.FK_Presupuesto_Cliente", "S10Cliente").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cliente>("S10Model.FK_Presupuesto_Cliente", "S10Cliente").Value = value;
             }
         }
         /// <summary>
@@ -2078,13 +2102,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cliente>("S10_Model.FK_Presupuesto_Cliente", "S10Cliente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Cliente>("S10Model.FK_Presupuesto_Cliente", "S10Cliente");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Cliente>("S10_Model.FK_Presupuesto_Cliente", "S10Cliente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Cliente>("S10Model.FK_Presupuesto_Cliente", "S10Cliente", value);
                 }
             }
         }
@@ -2095,18 +2119,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Cronograma_Presupuesto", "S10Cronograma")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Cronograma_Presupuesto", "S10Cronograma")]
         public EntityCollection<S10Cronograma> S10Cronograma
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Cronograma>("S10_Model.FK_Cronograma_Presupuesto", "S10Cronograma");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Cronograma>("S10Model.FK_Cronograma_Presupuesto", "S10Cronograma");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Cronograma>("S10_Model.FK_Cronograma_Presupuesto", "S10Cronograma", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Cronograma>("S10Model.FK_Cronograma_Presupuesto", "S10Cronograma", value);
                 }
             }
         }
@@ -2117,16 +2141,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Presupuesto_Obra", "S10Obra")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Presupuesto_Obra", "S10Obra")]
         public S10Obra S10Obra
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Obra>("S10_Model.FK_Presupuesto_Obra", "S10Obra").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Obra>("S10Model.FK_Presupuesto_Obra", "S10Obra").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Obra>("S10_Model.FK_Presupuesto_Obra", "S10Obra").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Obra>("S10Model.FK_Presupuesto_Obra", "S10Obra").Value = value;
             }
         }
         /// <summary>
@@ -2138,13 +2162,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Obra>("S10_Model.FK_Presupuesto_Obra", "S10Obra");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<S10Obra>("S10Model.FK_Presupuesto_Obra", "S10Obra");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Obra>("S10_Model.FK_Presupuesto_Obra", "S10Obra", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<S10Obra>("S10Model.FK_Presupuesto_Obra", "S10Obra", value);
                 }
             }
         }
@@ -2155,18 +2179,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("S10_Model", "FK_Partida_Presupuesto", "S10Partida")]
+        [EdmRelationshipNavigationPropertyAttribute("S10Model", "FK_Partida_Presupuesto", "S10Partida")]
         public EntityCollection<S10Partida> S10Partida
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Partida>("S10_Model.FK_Partida_Presupuesto", "S10Partida");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<S10Partida>("S10Model.FK_Partida_Presupuesto", "S10Partida");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Partida>("S10_Model.FK_Partida_Presupuesto", "S10Partida", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<S10Partida>("S10Model.FK_Partida_Presupuesto", "S10Partida", value);
                 }
             }
         }
