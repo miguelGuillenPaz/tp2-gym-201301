@@ -16,8 +16,11 @@ namespace GYM.SIC.GPC.Controllers
 {
     public class ExpedienteTecnicoController : Controller
     {
+        // BD S10
         private S10CronogramaRepository EFS10Cronograma = new S10CronogramaRepository();
         private S10PartidaRespository EFS10Partida = new S10PartidaRespository();
+
+        // BD GYM
         private GPCPresupuestoRepository EFPresupuesto = new GPCPresupuestoRepository();
         private GPCExpedienteTecnicoRepository EFExpedienteTecnico = new GPCExpedienteTecnicoRepository();
 

@@ -5,244 +5,248 @@ using System.Web;
 using System.Web.Mvc;
 using GYM.SIC.GPC.Models;
 using GYM.SIC.GPC.Parameters;
-//using GYM.SIC.GPC.Repositories.GPCRepository;
-//using GYM.SIC.GPC.Repositories.S10Repository;
+using GYM.SIC.GPC.Repositories.GPCRepository;
+using GYM.SIC.GPC.Repositories.S10Repository;
 using DemoMVC;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Controllers
 {
     public class PresupuestoObraController : Controller
     {
-        //private S10CronogramaRepository EFS10Cronograma = new S10CronogramaRepository();
-        //private S10PartidaRespository EFS10Partida = new S10PartidaRespository();
-        //private GPCPresupuestoRepository EFPresupuesto = new GPCPresupuestoRepository();
-        //private GPCHistoricoAprobacionesRepository EFHistoricoAprobaciones = new GPCHistoricoAprobacionesRepository();
-        //private GPCNotificacionesRepository EFNotificaciones = new GPCNotificacionesRepository();
-        //private GPCSolicitudesRepository EFSolicitudes = new GPCSolicitudesRepository();
+        // BD S10
+        private S10CronogramaRepository EFS10Cronograma = new S10CronogramaRepository();
+        private S10PartidaRespository EFS10Partida = new S10PartidaRespository();
 
-        //public ActionResult AprobarPresupuesto()
-        //{
-        //    return View();
-        //}
+        // BD GYM
+        private GPCPresupuestoRepository EFPresupuesto = new GPCPresupuestoRepository();
+        private GPCHistoricoAprobacionesRepository EFHistoricoAprobaciones = new GPCHistoricoAprobacionesRepository();
+        private GPCNotificacionesRepository EFNotificaciones = new GPCNotificacionesRepository();
+        private GPCSolicitudesRepository EFSolicitudes = new GPCSolicitudesRepository();
 
-        //public ActionResult ListarPresupuestos()
-        //{
-        //    var presupuestos = EFPresupuesto.PresupuestosModel.Where(x => x.IDEstado == EstadosParameters.Pendiente_de_Aprobacion_por_el_Asesor_del_Cliente).ToList();
-        //    return View(presupuestos);
-        //}
+        public ActionResult AprobarPresupuesto()
+        {
+            return View();
+        }
 
-        //public ActionResult ListarDetalle(int PresupuestoID)
-        //{
-        //    var presupuesto = EFPresupuesto.PresupuestosModel.FirstOrDefault(x => x.ID == PresupuestoID);
-        //    return View(presupuesto);
-        //}
+        public ActionResult ListarPresupuestos()
+        {
+            var presupuestos = EFPresupuesto.PresupuestosModel.Where(x => x.IDEstado == EstadosParameters.Pendiente_de_Aprobacion_por_el_Asesor_del_Cliente).ToList();
+            return View(presupuestos);
+        }
 
-        //public ActionResult ListarPartidas(int PresupuestoID)
-        //{
-        //    var presupuesto = EFPresupuesto.PresupuestosModel.FirstOrDefault(x => x.ID == PresupuestoID);
+        public ActionResult ListarDetalle(int PresupuestoID)
+        {
+            var presupuesto = EFPresupuesto.PresupuestosModel.FirstOrDefault(x => x.ID == PresupuestoID);
+            return View(presupuesto);
+        }
 
-        //    var PartidasModel = new List<PartidasModel>();
+        public ActionResult ListarPartidas(int PresupuestoID)
+        {
+            var presupuesto = EFPresupuesto.PresupuestosModel.FirstOrDefault(x => x.ID == PresupuestoID);
 
-        //    var partidas = EFS10Partida.Partidas.Where(x => x.IDPresupuesto == PresupuestoID).ToList();
+            var PartidasModel = new List<PartidasModel>();
 
-        //    partidas.ForEach((partida) =>
-        //    {
-        //        var PartidaModel = new PartidasModel();
+            var partidas = EFS10Partida.Partidas.Where(x => x.IDPresupuesto == PresupuestoID).ToList();
 
-        //        PartidaModel.ID = partida.ID;
-        //        PartidaModel.Nombre = partida.Nombre;
+            partidas.ForEach((partida) =>
+            {
+                var PartidaModel = new PartidasModel();
 
-        //        var categorias = from c in partida.S10DetallePartida.Where(x => x.S10Categoria != null)
-        //                         select new
-        //                         {
-        //                             ID = c.S10Categoria.ID,
-        //                             Nombre = c.S10Categoria.Nombre
-        //                         };
+                PartidaModel.ID = partida.ID;
+                PartidaModel.Nombre = partida.Nombre;
 
-        //        var CategoriasModel = new List<CategoriaModel>();
+                var categorias = from c in partida.S10DetallePartida.Where(x => x.S10Categoria != null)
+                                 select new
+                                 {
+                                     ID = c.S10Categoria.ID,
+                                     Nombre = c.S10Categoria.Nombre
+                                 };
 
-        //        categorias.Distinct().ToList().ForEach((categoria) =>
-        //        {
-        //            var dtoCategoria = new CategoriaModel();
-        //            dtoCategoria.ID = categoria.ID;
-        //            dtoCategoria.Nombre = categoria.Nombre;
-        //            CategoriasModel.Add(dtoCategoria);
-        //        });
+                var CategoriasModel = new List<CategoriaModel>();
 
-        //        CategoriasModel.ForEach((dtoCategoria) =>
-        //        {
-        //            var dtoDetallePartidas = new List<DetallePartidaModel>();
+                categorias.Distinct().ToList().ForEach((categoria) =>
+                {
+                    var dtoCategoria = new CategoriaModel();
+                    dtoCategoria.ID = categoria.ID;
+                    dtoCategoria.Nombre = categoria.Nombre;
+                    CategoriasModel.Add(dtoCategoria);
+                });
 
-        //            partida.S10DetallePartida.ToList().ForEach((detallePartida) =>
-        //            {
-        //                if (dtoCategoria.ID == detallePartida.S10Categoria.ID)
-        //                {
-        //                    var dtoDetallePartida = new DetallePartidaModel();
+                CategoriasModel.ForEach((dtoCategoria) =>
+                {
+                    var dtoDetallePartidas = new List<DetallePartidaModel>();
 
-        //                    dtoDetallePartida.Cantidad = (Decimal)detallePartida.Cantidad;
-        //                    dtoDetallePartida.ID = detallePartida.ID;
-        //                    dtoDetallePartida.Nombre = detallePartida.S10APU.Nombre;
-        //                    dtoDetallePartida.Precio = (Decimal)detallePartida.PrecioUnitarioReal;
-        //                    dtoDetallePartida.UM = detallePartida.S10APU.UM;
-        //                    dtoDetallePartidas.Add(dtoDetallePartida);
-        //                }
-        //            });
+                    partida.S10DetallePartida.ToList().ForEach((detallePartida) =>
+                    {
+                        if (dtoCategoria.ID == detallePartida.S10Categoria.ID)
+                        {
+                            var dtoDetallePartida = new DetallePartidaModel();
 
-        //            dtoCategoria.DetallePartidasModel = dtoDetallePartidas;
-        //        });
+                            dtoDetallePartida.Cantidad = (Decimal)detallePartida.Cantidad;
+                            dtoDetallePartida.ID = detallePartida.ID;
+                            dtoDetallePartida.Nombre = detallePartida.S10APU.Nombre;
+                            dtoDetallePartida.Precio = (Decimal)detallePartida.PrecioUnitarioReal;
+                            dtoDetallePartida.UM = detallePartida.S10APU.UM;
+                            dtoDetallePartidas.Add(dtoDetallePartida);
+                        }
+                    });
 
-        //        PartidaModel.CategoriasModel = CategoriasModel;
-        //        PartidasModel.Add(PartidaModel);
+                    dtoCategoria.DetallePartidasModel = dtoDetallePartidas;
+                });
 
-        //    });
+                PartidaModel.CategoriasModel = CategoriasModel;
+                PartidasModel.Add(PartidaModel);
 
-        //    return View(PartidasModel);
-        //}
+            });
 
-        //public ActionResult ListarCategorias(int PartidaID)
-        //{
-        //    var partida = EFS10Partida.Partidas.Where(x => x.ID == PartidaID).ToList().FirstOrDefault();
+            return View(PartidasModel);
+        }
 
-        //    var categorias = from c in partida.S10DetallePartida.Where(x => x.S10Categoria != null)
-        //                     select new
-        //                     {
-        //                         ID = c.S10Categoria.ID,
-        //                         Nombre = c.S10Categoria.Nombre
-        //                     };
+        public ActionResult ListarCategorias(int PartidaID)
+        {
+            var partida = EFS10Partida.Partidas.Where(x => x.ID == PartidaID).ToList().FirstOrDefault();
 
-        //    var CategoriasModel = new List<CategoriaModel>();
+            var categorias = from c in partida.S10DetallePartida.Where(x => x.S10Categoria != null)
+                             select new
+                             {
+                                 ID = c.S10Categoria.ID,
+                                 Nombre = c.S10Categoria.Nombre
+                             };
 
-        //    categorias.Distinct().ToList().ForEach((categoria) =>
-        //    {
-        //        var dtoCategoria = new CategoriaModel();
-        //        dtoCategoria.ID = categoria.ID;
-        //        dtoCategoria.Nombre = categoria.Nombre;
-        //        CategoriasModel.Add(dtoCategoria);
-        //    });
+            var CategoriasModel = new List<CategoriaModel>();
 
-        //    return View(CategoriasModel);
-        //}
+            categorias.Distinct().ToList().ForEach((categoria) =>
+            {
+                var dtoCategoria = new CategoriaModel();
+                dtoCategoria.ID = categoria.ID;
+                dtoCategoria.Nombre = categoria.Nombre;
+                CategoriasModel.Add(dtoCategoria);
+            });
 
-        //public ActionResult ListarItems(int PartidaID, int CategoriaID)
-        //{
-        //    var partida = EFS10Partida.Partidas.Where(x => x.ID == PartidaID).ToList().FirstOrDefault();
+            return View(CategoriasModel);
+        }
 
-        //    var detallePartidas = EFS10Partida.DetallePartidas.Where(x => x.IDPartida == PartidaID && x.IDCategoria == CategoriaID).ToList();
+        public ActionResult ListarItems(int PartidaID, int CategoriaID)
+        {
+            var partida = EFS10Partida.Partidas.Where(x => x.ID == PartidaID).ToList().FirstOrDefault();
 
-        //    var dtoDetallePartidas = new List<DetallePartidaModel>();
+            var detallePartidas = EFS10Partida.DetallePartidas.Where(x => x.IDPartida == PartidaID && x.IDCategoria == CategoriaID).ToList();
 
-        //    detallePartidas.ForEach((detallePartida) =>
-        //    {
+            var dtoDetallePartidas = new List<DetallePartidaModel>();
 
-        //        var DetallePartidaModel = new DetallePartidaModel();
+            detallePartidas.ForEach((detallePartida) =>
+            {
 
-        //        DetallePartidaModel.Cantidad = (Decimal)detallePartida.Cantidad;
-        //        DetallePartidaModel.ID = detallePartida.ID;
-        //        DetallePartidaModel.Nombre = detallePartida.S10APU.Nombre;
-        //        DetallePartidaModel.Precio = (Decimal)detallePartida.PrecioUnitarioReal;
-        //        DetallePartidaModel.UM = detallePartida.S10APU.UM;
-        //        dtoDetallePartidas.Add(DetallePartidaModel);
+                var DetallePartidaModel = new DetallePartidaModel();
 
-        //    });
-            
-        //    return View(dtoDetallePartidas);
-        //}
+                DetallePartidaModel.Cantidad = (Decimal)detallePartida.Cantidad;
+                DetallePartidaModel.ID = detallePartida.ID;
+                DetallePartidaModel.Nombre = detallePartida.S10APU.Nombre;
+                DetallePartidaModel.Precio = (Decimal)detallePartida.PrecioUnitarioReal;
+                DetallePartidaModel.UM = detallePartida.S10APU.UM;
+                dtoDetallePartidas.Add(DetallePartidaModel);
 
-        //public ActionResult ListarCronograma(int PresupuestoID)
-        //{
-        //    var presupuesto = EFPresupuesto.PresupuestosModel.FirstOrDefault(x => x.ID == PresupuestoID);
+            });
 
-        //    var CrongramaModel = new CronogramaModel();
+            return View(dtoDetallePartidas);
+        }
 
-        //    var cronograma = EFS10Cronograma.Cronogramas.Where(x => x.IDPresupuesto == PresupuestoID).FirstOrDefault();
+        public ActionResult ListarCronograma(int PresupuestoID)
+        {
+            var presupuesto = EFPresupuesto.PresupuestosModel.FirstOrDefault(x => x.ID == PresupuestoID);
 
-        //    if (cronograma != null)
-        //    {
-        //        CrongramaModel.Fecha = cronograma.Fecha;
-        //        CrongramaModel.ID = cronograma.ID;
-        //        CrongramaModel.Nombre = cronograma.Nombre;
-        //        CrongramaModel.Responsable = cronograma.Responsable;
-        //    }
-        //    var ActividadesModel = new List<ActividadModel>();
+            var CrongramaModel = new CronogramaModel();
 
-        //    cronograma.S10Actividad.ToList().ForEach((Actividad) =>
-        //    {
-        //        var ActividadModel = new ActividadModel();
+            var cronograma = EFS10Cronograma.Cronogramas.Where(x => x.IDPresupuesto == PresupuestoID).FirstOrDefault();
 
-        //        ActividadModel.Fecha = Actividad.Fecha;
-        //        ActividadModel.Hito = Actividad.Hito;
-        //        ActividadModel.Nombre = Actividad.Nombre;
-        //        ActividadModel.Responsable = Actividad.Responsable;
-        //        ActividadesModel.Add(ActividadModel);
+            if (cronograma != null)
+            {
+                CrongramaModel.Fecha = cronograma.Fecha;
+                CrongramaModel.ID = cronograma.ID;
+                CrongramaModel.Nombre = cronograma.Nombre;
+                CrongramaModel.Responsable = cronograma.Responsable;
+            }
+            var ActividadesModel = new List<ActividadModel>();
 
-        //    });
+            cronograma.S10Actividad.ToList().ForEach((Actividad) =>
+            {
+                var ActividadModel = new ActividadModel();
 
-        //    CrongramaModel.ActividadesModel = ActividadesModel;
+                ActividadModel.Fecha = Actividad.Fecha;
+                ActividadModel.Hito = Actividad.Hito;
+                ActividadModel.Nombre = Actividad.Nombre;
+                ActividadModel.Responsable = Actividad.Responsable;
+                ActividadesModel.Add(ActividadModel);
 
-        //    return View(CrongramaModel);
-        //}
+            });
 
-        //[HttpPost]
-        //public JsonResult CambiarEstado(int PresupuestoID, int Estado, string Observacion)
-        //{
-        //    var presupuesto = EFPresupuesto.Presupuestos.ToList().FirstOrDefault(x => x.ID == PresupuestoID);
-        //    presupuesto.IDEstado = Estado;
-        //    presupuesto.FechaCambioEstado = DateTime.Now;
-        //    presupuesto.UsuarioCambioEstado = "Morgan";
-        //    EFPresupuesto.ActualizarPresupuesto(presupuesto);
+            CrongramaModel.ActividadesModel = ActividadesModel;
 
-        //    String mensaje = "";
+            return View(CrongramaModel);
+        }
 
-        //     aprobar y rechazar
-        //    if (Estado == 6 || Estado == 3)
-        //    {
-        //        var historicoAprobacion = new HistoricoAprobaciones
-        //        {
-        //            FechaRegistro = DateTime.Now,
-        //            Observaciones = Observacion,
-        //            IDPresupuesto = presupuesto.ID,
-        //            IDUsuario = 2,
-        //            IDEstado = Estado
-        //        };
-        //        EFHistoricoAprobaciones.ActualizarHistoricoAprobaciones(historicoAprobacion);
+        [HttpPost]
+        public JsonResult CambiarEstado(int PresupuestoID, int Estado, string Observacion)
+        {
+            var presupuesto = EFPresupuesto.Presupuestos.ToList().FirstOrDefault(x => x.IDPresupuestoObra == PresupuestoID);
+            presupuesto.IDEstado = Estado;
+            presupuesto.FechaCambioEstado = DateTime.Now;
+            presupuesto.UsuarioCambioEstado = "Morgan";
+            EFPresupuesto.ActualizarPresupuesto(presupuesto);
 
-        //        if (Estado == 6)
-        //        {
-        //            mensaje = "La Aprobación ha sido realizada.";
-        //        }
-        //        else if (Estado == 3)
-        //        {
-        //            mensaje = "Se ha rechazado el presupuesto correctamente.";
-        //        }
+            String mensaje = "";
 
-        //    }
+            // aprobar y rechazar
+            if (Estado == 6 || Estado == 3)
+            {
+                var historicoAprobacion = new GPC_HistoricoAprobacion
+                {
+                    FechaRegistro = DateTime.Now,
+                    Observacion = Observacion,
+                    IDPresupuestoObra = presupuesto.IDPresupuestoObra,
+                    IDUsuario = 2,
+                    IDEstado = Estado
+                };
+                EFHistoricoAprobaciones.ActualizarHistoricoAprobaciones(historicoAprobacion);
 
-        //     solicitar anular
-        //    if (Estado == 4)
-        //    {
-        //        var solicitudes = new Solicitudes
-        //        {
-        //            FechaRegistro = DateTime.Now,
-        //            Observaciones = Observacion,
-        //            IDPresupuesto = presupuesto.ID,
-        //            IDEstado = Estado,
-        //            IDUsuario = 2,
-        //            IDTipoSolicitud = 1
-        //        };
-        //        EFSolicitudes.ActualizarSolicitudes(solicitudes);
-        //        mensaje = "Se ha solicitado la anulación del presupuesto.";
-        //    }
+                if (Estado == 6)
+                {
+                    mensaje = "La Aprobación ha sido realizada.";
+                }
+                else if (Estado == 3)
+                {
+                    mensaje = "Se ha rechazado el presupuesto correctamente.";
+                }
 
-        //    var notificaciones = new Notificaciones
-        //    {
-        //        FechaRegistro = DateTime.Now,
-        //        Observaciones = Observacion,
-        //        IDPresupuesto = presupuesto.ID
-        //    };
-        //    EFNotificaciones.ActualizarNotificaciones(notificaciones);
+            }
 
-        //    return new JsonResult() { Data = mensaje, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            // solicitar anular
+            if (Estado == 4)
+            {
+                var solicitudes = new GPC_Solicitud
+                {
+                    FechaRegistro = DateTime.Now,
+                    Observacion = Observacion,
+                    IDPresupuestoObra = presupuesto.IDPresupuestoObra,
+                    IDEstado = Estado,
+                    IDUsuario = 2,
+                    IDTipoSolicitud = 1
+                };
+                EFSolicitudes.ActualizarSolicitudes(solicitudes);
+                mensaje = "Se ha solicitado la anulación del presupuesto.";
+            }
 
-        //}
+            var notificaciones = new GPC_Notificacion
+            {
+                FechaRegistro = DateTime.Now,
+                Observacion = Observacion,
+                IDPresupuestoObra = presupuesto.IDPresupuestoObra
+            };
+            EFNotificaciones.ActualizarNotificaciones(notificaciones);
+
+            return new JsonResult() { Data = mensaje, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+        }
     }
 }
