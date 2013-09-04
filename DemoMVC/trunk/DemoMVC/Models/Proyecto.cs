@@ -12,7 +12,10 @@ namespace DemoMVC.Models
         
         }
 
-	    public int codPro { get; set; }
+        public int idProyecto { get; set; }
+        public string nombreProyecto { get; set; }
+
+        public int codPro { get; set; }
 	    public int codTipPro { get; set; }
 	    public int codUbiDep { get; set; }
 	    public int codFluCaj { get; set; }
