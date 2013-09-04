@@ -30,7 +30,7 @@
             });
 
             $.ajax({
-                url: config.contextPath + 'Presupuesto/Listarpartidas?PresupuestoID=' + $("#IDPresupuesto").val(),
+                url: config.contextPath + 'PresupuestoObra/Listarpartidas?PresupuestoID=' + $("#IDPresupuesto").val(),
                 type: 'POST',
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -42,7 +42,7 @@
             });
 
             $.ajax({
-                url: config.contextPath + 'Presupuesto/ListarCronograma?PresupuestoID=' + $("#IDPresupuesto").val(),
+                url: config.contextPath + 'PresupuestoObra/ListarCronograma?PresupuestoID=' + $("#IDPresupuesto").val(),
                 type: 'POST',
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -115,7 +115,7 @@
 
         function listarCategorias(PartidaID, nomPartida) {
             $.ajax({
-                url: config.contextPath + 'Presupuesto/ListarCategorias?PartidaID=' + PartidaID,
+                url: config.contextPath + 'PresupuestoObra/ListarCategorias?PartidaID=' + PartidaID,
                 type: 'POST',
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
@@ -133,7 +133,7 @@
         function listarItems(CategoriaID, nomCategoria) {
             var PartidaID = $('#partida').text();
             $.ajax({
-                url: config.contextPath + 'Presupuesto/ListarItems?PartidaID=' + PartidaID + '&CategoriaID=' + CategoriaID,
+                url: config.contextPath + 'PresupuestoObra/ListarItems?PartidaID=' + PartidaID + '&CategoriaID=' + CategoriaID,
                 type: 'POST',
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
