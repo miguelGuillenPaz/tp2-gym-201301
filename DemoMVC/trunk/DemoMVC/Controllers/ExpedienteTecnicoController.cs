@@ -10,6 +10,7 @@ using GYM.SIC.GPC.Models;
 using System.IO;
 using System.Text.RegularExpressions;
 using DemoMVC;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Controllers
 {
@@ -144,9 +145,9 @@ namespace GYM.SIC.GPC.Controllers
                 {
                     var PhysicalPath = Path.Combine("C:\\Archivos\\ExpedienteTecnico", new FileInfo(Archivo.FileName).Name);
 
-                    var ExpedienteTecnico = new GPC_expediente
+                    var ExpedienteTecnico = new GPC_ExpedienteTecnico
                     {
-                        IDPresupuesto = IDPresupuesto,
+                        IDPresupuestoObra = IDPresupuesto,
                         RutaArchivoAnalisis = PhysicalPath,
                         NombreArchivo = new FileInfo(Archivo.FileName).Name,
                         FechaModificacion = DateTime.Now,
