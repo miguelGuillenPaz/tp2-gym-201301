@@ -113,7 +113,7 @@ namespace GYM.SIC.GPC.Controllers
 
             if (cronograma != null)
             {
-                CrongramaModel.Fecha = cronograma.Fecha;
+                CrongramaModel.FechaInicio = cronograma.FechaInicio;
                 CrongramaModel.ID = cronograma.ID;
                 CrongramaModel.Nombre = cronograma.Nombre;
                 CrongramaModel.Responsable = cronograma.Responsable;
