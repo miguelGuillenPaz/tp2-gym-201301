@@ -180,6 +180,7 @@
     <Content Include="Content\img\link.png" />
     <Content Include="Content\img\novedad.png" />
     <Content Include="Content\img\right.png" />
+    <Content Include="Content\legal.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\Site2.css" />
@@ -234,6 +235,7 @@
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.webticker.js" />
     <Content Include="Scripts\jscript.js" />
+    <Content Include="Scripts\Legal\legal.js" />
     <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\noty-2.1.0\demo\allLayouts.html" />
     <Content Include="Scripts\noty-2.1.0\demo\allTypes.html" />
@@ -311,6 +313,9 @@
     <Content Include="Views\Home\Index2.aspx" />
     <Content Include="Views\Home\Listar.aspx" />
     <Content Include="Views\Home\Prueba.aspx" />
+    <Content Include="Views\Legal\DetalleRequerimiento.aspx" />
+    <Content Include="Views\Legal\ListarRequerimientos.aspx" />
+    <Content Include="Views\Legal\Registrar.aspx" />
     <Content Include="Views\Legal\Requerimientos.aspx" />
     <Content Include="Views\Logistica\Logistica.aspx" />
     <Content Include="Views\Postulante\Crear.aspx" />
