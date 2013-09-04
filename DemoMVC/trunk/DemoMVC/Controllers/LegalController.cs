@@ -31,7 +31,7 @@ namespace DemoMVC.Controllers
         {
 
             ProyectoDAO proye = new ProyectoDAO();
-            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "Nombre");
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(3, 0, "PR").ToList(), "IdProyecto", "nombreProyecto");
             return View();
         }
 
@@ -128,7 +128,7 @@ namespace DemoMVC.Controllers
             ProyectoDAO proyecto = new ProyectoDAO();
 
             //ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE"), "codPro", "nomPro");
-            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR"), "IdProyecto", "Nombre");
+            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(3, 0, "PR"), "IdProyecto", "nombreProyecto");
 
             ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
 
@@ -154,7 +154,8 @@ namespace DemoMVC.Controllers
 
             try
             {
-                ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE").ToList(), "codPro", "nomPro");
+                //ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE").ToList(), "codPro", "nomPro");
+                ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(3, 0, "PR").ToList(), "idProyecto", "nombreProyecto");
                 ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
                 ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion");
 
