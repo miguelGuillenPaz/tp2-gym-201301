@@ -52,14 +52,22 @@ namespace DemoMVC.Persistencia
                 sql = sql + "inner join dbo.T_Ubigeo ubigeo on (ubigeo.codUbiDep = proy.codUbiDep ";
                 sql = sql + "and ubigeo.codUbiProv = proy.codUbiProv and ubigeo.codUbiDist = proy.codUbiDist) ";
                 sql = sql + "where proy.codPro=@codPro";
+                /*sql = "select proy.*, tipProy.Nombre, preProy.ImporteTotal, ubigeo.NombreDep, ubigeo.NombreProv, ubigeo.NombreDist ";
+                sql = sql + "from dbo.GPP_Proyecto proy ";
+                sql = sql + "inner join dbo.GPP_TipoProyecto tipProy on tipProy.IdTipoProyecto = proy.IdTipoProyecto ";
+                sql = sql + "inner join dbo.GPP_Presupuesto preProy on preProy.IdProyecto = proy.IdProyecto ";
+                sql = sql + "inner join dbo.GPP_Ubigeo ubigeo on (ubigeo.CodigoDep = proy.CodigoDep ";
+                sql = sql + "and ubigeo.CodigoProv = proy.CodigoProv and ubigeo.CodigoDist = proy.CodigoDist) ";
+                sql = sql + "where proy.IdProyecto=@IdProyecto";*/
             }
             if (tipoFiltro == 1) {
-                sql = "select proy.*, tipProy.nomTipPro, preProy.impPre, ubigeo.nomUbiDep, ubigeo.nomUbiProv, ubigeo.nomUbiDist from dbo.T_Proyecto proy ";
+                /*sql = "select proy.*, tipProy.nomTipPro, preProy.impPre, ubigeo.nomUbiDep, ubigeo.nomUbiProv, ubigeo.nomUbiDist from dbo.T_Proyecto proy ";
                 sql = sql + "inner join dbo.T_TipoProyecto tipProy on tipProy.codTipPro = proy.codTipPro ";
                 sql = sql + "inner join dbo.T_Presupuesto preProy on preProy.codPro = proy.codPro ";
                 sql = sql + "inner join dbo.T_Ubigeo ubigeo on (ubigeo.codUbiDep = proy.codUbiDep ";
                 sql = sql + "and ubigeo.codUbiProv = proy.codUbiProv and ubigeo.codUbiDist = proy.codUbiDist) ";
-                sql = sql + "where proy.estPro=@estPro";
+                sql = sql + "where proy.estPro=@estPro";*/
+                
             }
             if (tipoFiltro == 2) 
             {
@@ -69,13 +77,20 @@ namespace DemoMVC.Persistencia
                 sql = sql + "inner join dbo.T_Ubigeo ubigeo on (ubigeo.codUbiDep = proy.codUbiDep ";
                 sql = sql + "and ubigeo.codUbiProv = proy.codUbiProv and ubigeo.codUbiDist = proy.codUbiDist) ";
                 sql = sql + "where proy.codPro=@codPro and proy.estPro=@estPro";
-            } 
+            }
+            if (tipoFiltro == 3)
+            {
+                sql = "select proy.IdProyecto, proy.Nombre ";
+                sql = sql + "from dbo.GPP_Proyecto proy ";
+                sql = sql + "where proy.Estado=@Estado";
+            }
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena)) {
                 con.Open();
                 using (SqlCommand com = new SqlCommand(sql, con)) {
                     if (tipoFiltro == 0) {
                         com.Parameters.Add(new SqlParameter("@codPro", codProy));
+                        //com.Parameters.Add(new SqlParameter("@IdProyecto", codProy));
                     }
                     if (tipoFiltro == 1)
                     {
@@ -85,6 +100,10 @@ namespace DemoMVC.Persistencia
                     {
                         com.Parameters.Add(new SqlParameter("@codPro", codProy));
                         com.Parameters.Add(new SqlParameter("@estPro", statusProy));
+                    }
+                    if (tipoFiltro == 3)
+                    {
+                        com.Parameters.Add(new SqlParameter("@Estado", statusProy));
                     }
 
                     using (SqlDataReader resultado = com.ExecuteReader())
@@ -98,7 +117,10 @@ namespace DemoMVC.Persistencia
                                 //Recorremos objeto por objeto y anadimos
                                 proyecto = new Proyecto
                                 {
-                                    codPro = (int)resultado["codPro"],
+                                    idProyecto = (int)resultado["IdProyecto"],
+                                    nombreProyecto = (string)resultado["Nombre"],
+                                    
+                                    /*codPro = (int)resultado["codPro"],
                                     codTipPro = (int)resultado["codTipPro"],
                                     codUbiDep = (int)resultado["codUbiDep"],
                                     codFluCaj = (int)resultado["codFluCaj"],
@@ -122,7 +144,7 @@ namespace DemoMVC.Persistencia
                                     presupuesto = (double)resultado["impPre"],
                                     nomUbiDep = (string)resultado["nomUbiDep"],
                                     nomUbiProv = (string)resultado["nomUbiProv"],
-                                    nomUbiDist = (string)resultado["nomUbiDist"],
+                                    nomUbiDist = (string)resultado["nomUbiDist"],*/
                                 };
                                 listadoProyectos.Add(proyecto);
                                 
