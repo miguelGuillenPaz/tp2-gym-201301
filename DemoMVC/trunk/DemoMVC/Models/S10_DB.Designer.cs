@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -222,6 +223,7 @@ namespace DemoMVC.Models
         private ObjectSet<S10Presupuesto> _S10Presupuesto;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -297,11 +299,11 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -326,6 +328,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -476,6 +479,7 @@ namespace DemoMVC.Models
         partial void OnIDCronogramaChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -518,6 +522,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -542,6 +547,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -644,6 +650,7 @@ namespace DemoMVC.Models
         partial void OnTotalChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -670,6 +677,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -694,6 +702,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -748,6 +757,7 @@ namespace DemoMVC.Models
         partial void OnNombreChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -774,6 +784,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -798,6 +809,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -852,6 +864,7 @@ namespace DemoMVC.Models
         partial void OnRazonSocialChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -878,6 +891,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -902,6 +916,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1028,6 +1043,7 @@ namespace DemoMVC.Models
         partial void OnIDPresupuestoChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1092,6 +1108,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1116,6 +1133,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1266,6 +1284,7 @@ namespace DemoMVC.Models
         partial void OnIDAPUChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1384,6 +1403,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1408,6 +1428,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1486,6 +1507,7 @@ namespace DemoMVC.Models
         partial void OnDireccionChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1512,6 +1534,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1536,6 +1559,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1662,6 +1686,7 @@ namespace DemoMVC.Models
         partial void OnIDPresupuestoChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1726,6 +1751,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1750,6 +1776,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2020,6 +2047,7 @@ namespace DemoMVC.Models
         partial void OnIDObraChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2144,8 +2172,10 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

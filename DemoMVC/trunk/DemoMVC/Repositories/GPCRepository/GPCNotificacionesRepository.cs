@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
     public class GPCNotificacionesRepository
     {
-        Entities contexto = new Entities();
-
-        public IQueryable<Notificaciones> Notificaciones
+        GPC_Entities contexto = new GPC_Entities();
+        
+        public IQueryable<GPC_Notificacion> Notificaciones
         {
             get
             {
-                return contexto.Notificaciones;
+                return contexto.GPC_Notificacion;
             }
         }
-        
-        public void ActualizarNotificaciones(Notificaciones Notificaciones)
+
+        public void ActualizarNotificaciones(GPC_Notificacion Notificaciones)
         {
-            if (Notificaciones.ID == 0)
+            if (Notificaciones.IDNotificacion == 0)
             {
-                contexto.Notificaciones.AddObject(Notificaciones);
+                contexto.GPC_Notificacion.AddObject(Notificaciones);
             }
             contexto.SaveChanges();
         } 

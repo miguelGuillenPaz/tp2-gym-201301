@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
     public class GPCSolicitudesRepository
     {
-        Entities contexto = new Entities();
+        GPC_Entities contexto = new GPC_Entities();
 
-        public IQueryable<Solicitudes> Solicitudes
+        public IQueryable<GPC_Solicitud> Solicitudes
         {
             get
             {
-                return contexto.Solicitudes;
+                return contexto.GPC_Solicitud;
             }
         }
 
-        public void ActualizarSolicitudes(Solicitudes Solicitudes)
+        public void ActualizarSolicitudes(GPC_Solicitud Solicitudes)
         {
-            if (Solicitudes.ID == 0)
+            if (Solicitudes.IDSolicitud == 0)
             {
-                contexto.Solicitudes.AddObject(Solicitudes);
+                contexto.GPC_Solicitud.AddObject(Solicitudes);
             }
             contexto.SaveChanges();
         } 

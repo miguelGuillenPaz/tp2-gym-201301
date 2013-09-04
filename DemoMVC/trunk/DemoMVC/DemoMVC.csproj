@@ -110,6 +110,11 @@
     <Compile Include="Models\DetallePresupuesto.cs" />
     <Compile Include="Models\Entregable.cs" />
     <Compile Include="Models\EstimadoRapidoForm.cs" />
+    <Compile Include="Models\GPC_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GPC_DB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\GRH_DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,6 +134,11 @@
     <Compile Include="Models\PresupuestoModel.cs" />
     <Compile Include="Models\Proyecto.cs" />
     <Compile Include="Models\ProyectoHist.cs" />
+    <Compile Include="Models\S10_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>S10_DB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\TipoProyecto.cs" />
     <Compile Include="Models\Ubigeo.cs" />
     <Compile Include="Models\VariablesPresupuesto.cs" />
@@ -151,6 +161,16 @@
     <Compile Include="Persistencia\TipoRequerimiento.cs" />
     <Compile Include="Persistencia\UbigeoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCCronogramaRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCExpedienteTecnicoRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCHistoricoAprobacionesRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCNotificacionesRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCPartidaRespository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCPresupuestoRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCSolicitudesRepository.cs" />
+    <Compile Include="Repositories\S10Repository\S10CronogramaRepository.cs" />
+    <Compile Include="Repositories\S10Repository\S10PartidaRespository.cs" />
+    <Compile Include="Repositories\S10Repository\S10PresupuestoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\BD_GyM_v1.sql" />
@@ -358,7 +378,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Seguridad\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model1.edmx">
@@ -389,6 +408,14 @@
     <EntityDeploy Include="Models\PMP_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PMP_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\GPC_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GPC_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\S10_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>S10_DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Scripts\noty-2.1.0\.gitignore" />
     <None Include="Scripts\noty-2.1.0\README.markdown" />

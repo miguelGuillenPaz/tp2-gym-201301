@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
     public class GPCCronogramaRepository
     {
-        Entities contexto = new Entities();
+        GPC_Entities contexto = new GPC_Entities();
 
-        public IQueryable<Cronograma> Cronogramas
+        public IQueryable<GPC_CronogramaObra> Cronogramas
         {
             get
             {
-                return contexto.Cronograma;
+                return contexto.GPC_CronogramaObra;
             }
         }
 
-        public IQueryable<Actividad> Actividades
+        public IQueryable<GPC_ActividadObra> Actividades
         {
             get
             {
-                return contexto.Actividad;
+                return contexto.GPC_ActividadObra;
             }
         }
     }

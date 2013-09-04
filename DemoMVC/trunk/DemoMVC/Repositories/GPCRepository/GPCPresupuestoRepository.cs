@@ -4,28 +4,28 @@ using System.Linq;
 using System.Web;
 using GYM.SIC.GPC.Models;
 using GYM.SIC.GPC.Repositories.S10Repository;
+using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
     public class GPCPresupuestoRepository
     {
-        Entities contexto = new Entities();
-
+        GPC_Entities contexto = new GPC_Entities();
         S10PresupuestoRepository S10PresupuestoRepository = new S10PresupuestoRepository();
 
-        public IQueryable<Presupuesto> Presupuestos
+        public IQueryable<GPC_PresupuestoObra> Presupuestos
         {
             get
             {
-                return contexto.Presupuesto;
+                return contexto.GPC_PresupuestoObra;
             }
         }
 
-        public void ActualizarPresupuesto(Presupuesto Presupuesto)
+        public void ActualizarPresupuesto(GPC_PresupuestoObra Presupuesto)
         {
-            if (Presupuesto.ID == 0)
+            if (Presupuesto.IDPresupuestoObra == 0)
             {
-                contexto.Presupuesto.AddObject(Presupuesto);
+                contexto.GPC_PresupuestoObra.AddObject(Presupuesto);
             }
             contexto.SaveChanges();
         }
@@ -46,7 +46,7 @@ namespace GYM.SIC.GPC.Repositories.GPCRepository
 
                     if (presupuesto == null)
                     {
-                        presupuesto = new Presupuesto
+                        presupuesto = new GPC_PresupuestoObra
                         {
                             Numero = S10Presupuesto.Numero,
                         };
@@ -65,7 +65,7 @@ namespace GYM.SIC.GPC.Repositories.GPCRepository
                     presupuestoModel.UsuarioCambioEstado = presupuesto.UsuarioCambioEstado;
                     presupuestoModel.TotalPresupuestado = S10Presupuesto.TotalPresupuesto;
                     presupuestoModel.FechaRegistro = S10Presupuesto.FechaRegistro;
-                    presupuestoModel.ID = presupuesto.ID;
+                    presupuestoModel.ID = presupuesto.IDPresupuestoObra;
                     presupuestoModel.IDEstado = presupuesto.IDEstado;
                     presupuestosModel.Add(presupuestoModel);
 

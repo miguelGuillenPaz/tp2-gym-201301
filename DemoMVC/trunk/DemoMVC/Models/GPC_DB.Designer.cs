@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -381,6 +382,7 @@ namespace DemoMVC.Models
         private ObjectSet<SEG_UsuarioPerfil> _SEG_UsuarioPerfil;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -528,11 +530,11 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -557,6 +559,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -707,6 +710,7 @@ namespace DemoMVC.Models
         partial void OnIDCronogramaObraChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -749,6 +753,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -773,6 +778,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -875,6 +881,7 @@ namespace DemoMVC.Models
         partial void OnTotalChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -901,6 +908,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -925,6 +933,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -979,6 +988,7 @@ namespace DemoMVC.Models
         partial void OnNombreChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1005,6 +1015,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1029,6 +1040,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1107,6 +1119,7 @@ namespace DemoMVC.Models
         partial void OnIDUsuarioChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1171,6 +1184,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1195,6 +1209,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1345,6 +1360,7 @@ namespace DemoMVC.Models
         partial void OnIDPresupuestoObraChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1409,6 +1425,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1433,6 +1450,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1583,6 +1601,7 @@ namespace DemoMVC.Models
         partial void OnIDAPUChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1701,6 +1720,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1725,6 +1745,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1803,6 +1824,7 @@ namespace DemoMVC.Models
         partial void OnEntidadChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1873,6 +1895,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1897,6 +1920,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2071,6 +2095,7 @@ namespace DemoMVC.Models
         partial void OnIDPresupuestoObraChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2113,6 +2138,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2137,6 +2163,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2287,6 +2314,7 @@ namespace DemoMVC.Models
         partial void OnIDUsuarioChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2405,6 +2433,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2429,6 +2458,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2531,6 +2561,7 @@ namespace DemoMVC.Models
         partial void OnIDPresupuestoObraChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2573,6 +2604,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2597,6 +2629,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2699,6 +2732,7 @@ namespace DemoMVC.Models
         partial void OnIDUsuarioChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2725,6 +2759,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2749,6 +2784,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2875,6 +2911,7 @@ namespace DemoMVC.Models
         partial void OnIDPresupuestoObraChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2939,6 +2976,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2963,6 +3001,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3185,6 +3224,7 @@ namespace DemoMVC.Models
         partial void OnIDObraChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3435,6 +3475,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3459,6 +3500,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3633,6 +3675,7 @@ namespace DemoMVC.Models
         partial void OnIDTipoSolicitudChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3789,6 +3832,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3813,6 +3857,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3867,6 +3912,7 @@ namespace DemoMVC.Models
         partial void OnNombreChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3893,6 +3939,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3919,6 +3966,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3973,6 +4021,7 @@ namespace DemoMVC.Models
         partial void OnNombreChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4021,6 +4070,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4049,6 +4099,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4199,6 +4250,7 @@ namespace DemoMVC.Models
         partial void OnClaveChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4313,6 +4365,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4341,6 +4394,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4467,6 +4521,7 @@ namespace DemoMVC.Models
         partial void OnFechaFinVigenciaChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4623,8 +4678,10 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }
