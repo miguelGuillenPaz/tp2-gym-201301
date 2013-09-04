@@ -24,16 +24,16 @@ namespace DemoMVC.Persistencia
                 SqlTransaction sqlTransaction = null;
                 try
                 {
-                    SqlCommand cmdIns = new SqlCommand("T_RequerimientoLegal_CN_Insertar", con);
+                    SqlCommand cmdIns = new SqlCommand("pa_GJ_RequerimientoLegal_Insertar", con);
                     cmdIns.CommandType = System.Data.CommandType.StoredProcedure;
-                                        
+
                     con.Open();
                     sqlTransaction = con.BeginTransaction();
 
-                    cmdIns.Parameters.Add(new SqlParameter("@codPro", reqLegal.codPro));
-                    cmdIns.Parameters.Add(new SqlParameter("@idTipoReqLegal", reqLegal.idTipoReqLegal));
-                    cmdIns.Parameters.Add(new SqlParameter("@codUsuario", reqLegal.codUsuario));
+                    cmdIns.Parameters.Add(new SqlParameter("@idProyecto", reqLegal.idProyecto));
+                    cmdIns.Parameters.Add(new SqlParameter("@idReqLegalTipo", reqLegal.idReqLegalTipo));
                     cmdIns.Parameters.Add(new SqlParameter("@cDescripcion", reqLegal.cDescripcion));
+                    cmdIns.Parameters.Add(new SqlParameter("@cPrioridadAtencion", reqLegal.cPrioridadAtencion));
 
                     cmdIns.Transaction = sqlTransaction;
                     //totIns = cmdIns.ExecuteNonQuery();
@@ -59,7 +59,7 @@ namespace DemoMVC.Persistencia
         }
 
         //Solicitud Requerimiento Legal - Listado de Vecinos
-        public int insertarRequerimientoLegalVecinos(LegalVecinoColindante vecinoColLegal)
+        public int insertarRequerimientoLegalVecinos(LegalRequerimientoCN vecinoColLegal)
         {
             int totIns = 0;
 
@@ -68,22 +68,23 @@ namespace DemoMVC.Persistencia
                 SqlTransaction sqlTransaction = null;
                 try
                 {
-                    SqlCommand cmdIns = new SqlCommand("T_RequerimientoLegal_CN_InsertarVecinos", con);
+                    SqlCommand cmdIns = new SqlCommand("pa_GJ_RequerimientoLegalCN_InsertarVecino", con);
                     cmdIns.CommandType = System.Data.CommandType.StoredProcedure;
 
                     con.Open();
                     sqlTransaction = con.BeginTransaction();
 
                     cmdIns.Parameters.Add(new SqlParameter("@idReqLegal", vecinoColLegal.idReqLegal));
-                    cmdIns.Parameters.Add(new SqlParameter("@cNombres", vecinoColLegal.cNombres));
-                    cmdIns.Parameters.Add(new SqlParameter("@cApellidos", vecinoColLegal.cApellidos));
-                    cmdIns.Parameters.Add(new SqlParameter("@cDni", vecinoColLegal.cDni));
+                    cmdIns.Parameters.Add(new SqlParameter("@cNombreVecino", vecinoColLegal.cNombreVecino));
+                    cmdIns.Parameters.Add(new SqlParameter("@cApellidoVecino", vecinoColLegal.cApellidoVecino));
+                    cmdIns.Parameters.Add(new SqlParameter("@idDocIdentidadTipo", vecinoColLegal.idDocIdentidadTipo));
+                    cmdIns.Parameters.Add(new SqlParameter("@cNroDocIdentidad", vecinoColLegal.cNroDocIdentidad));
                     cmdIns.Parameters.Add(new SqlParameter("@cTipoEdificacion", vecinoColLegal.cTipoEdificacion));
                     cmdIns.Parameters.Add(new SqlParameter("@cNombreCondominio", vecinoColLegal.cNombreCondominio));
                     cmdIns.Parameters.Add(new SqlParameter("@cDireccion", vecinoColLegal.cDireccion));
-                    cmdIns.Parameters.Add(new SqlParameter("@codUbiDep", vecinoColLegal.codUbiDep));
-                    cmdIns.Parameters.Add(new SqlParameter("@codUbiProv", vecinoColLegal.codUbiProv));
-                    cmdIns.Parameters.Add(new SqlParameter("@codUbiDist", vecinoColLegal.codUbiDist));
+                    cmdIns.Parameters.Add(new SqlParameter("@idDepartamento", vecinoColLegal.idDepartamento));
+                    cmdIns.Parameters.Add(new SqlParameter("@idProvincia", vecinoColLegal.idProvincia));
+                    cmdIns.Parameters.Add(new SqlParameter("@idDistrito", vecinoColLegal.idDistrito));
 
                     cmdIns.Transaction = sqlTransaction;
                     totIns = cmdIns.ExecuteNonQuery();
