@@ -35,7 +35,7 @@
             { %>
             <div class="gpc-tr">
                 <div class="gpc-td-center" style="width: 80px;">
-                    <%= actividad.Fecha.ToString().Substring(1, 10)%>
+                    <%= actividad.Fecha%>
                 </div>
                 <div class="gpc-td" style="width: 200px;">
                     <%= actividad.Hito%>

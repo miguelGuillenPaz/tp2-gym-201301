@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GYMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="GYMModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="GYMModelStoreContainer">
           <EntitySet Name="GPC_ActividadObra" EntityType="GYMModel.Store.GPC_ActividadObra" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_APU" EntityType="GYMModel.Store.GPC_APU" store:Type="Tables" Schema="dbo" />
@@ -239,6 +239,11 @@
           </Key>
           <Property Name="IDPresupuestoObra" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Numero" Type="varchar" MaxLength="10" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFin" Type="date" />
+          <Property Name="FechaRegistro" Type="date" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="500" />
           <Property Name="MontoPresupuestado" Type="numeric" Scale="2" />
           <Property Name="MontoEjecutado" Type="numeric" Scale="2" />
           <Property Name="FechaCambioEstado" Type="datetime" />
@@ -570,8 +575,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GYMModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -846,6 +850,11 @@
           <NavigationProperty Name="GPC_Obra" Relationship="GYMModel.FK_GPC_PresupuestoObra_Obra" FromRole="GPC_PresupuestoObra" ToRole="GPC_Obra" />
           <NavigationProperty Name="GPC_Partida" Relationship="GYMModel.FK_GPC_Partida_PresupuestoObra" FromRole="GPC_PresupuestoObra" ToRole="GPC_Partida" />
           <NavigationProperty Name="GPC_Solicitud" Relationship="GYMModel.FK_GPC_Solicitud_PresupuestoObra" FromRole="GPC_PresupuestoObra" ToRole="GPC_Solicitud" />
+          <Property Type="String" Name="Nombre" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaInicio" />
+          <Property Type="DateTime" Name="FechaFin" />
+          <Property Type="DateTime" Name="FechaRegistro" />
+          <Property Type="String" Name="Observaciones" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="GPC_Solicitud">
           <Key>
@@ -1323,6 +1332,11 @@
           <EntitySetMapping Name="GPC_PresupuestoObra">
             <EntityTypeMapping TypeName="GYMModel.GPC_PresupuestoObra">
               <MappingFragment StoreEntitySet="GPC_PresupuestoObra">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IDPresupuestoObra" ColumnName="IDPresupuestoObra" />
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
                 <ScalarProperty Name="MontoPresupuestado" ColumnName="MontoPresupuestado" />

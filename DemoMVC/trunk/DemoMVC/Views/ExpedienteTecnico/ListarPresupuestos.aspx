@@ -27,7 +27,7 @@
             <%=presupuesto.Nombre %>
         </div>
         <div class="gpc-td" style="width: 150px;">
-            <%=presupuesto.Cliente %>
+            <%=presupuesto.RazonSocial %>
         </div>
         <div class="gpc-td" style="width: 200px;">
             <%=presupuesto.Direccion %>

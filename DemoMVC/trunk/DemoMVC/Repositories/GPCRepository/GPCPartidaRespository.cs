@@ -6,7 +6,7 @@ using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
-    public class GPCPartidaRespository
+    public class GPCPartidaRespository : IGPCPartidaRespository
     {
         GPC_Entities contexto = new GPC_Entities();
 
@@ -40,6 +40,11 @@ namespace GYM.SIC.GPC.Repositories.GPCRepository
             {
                 return contexto.GPC_APU;
             }
+        }
+
+        public GPC_Partida PartidaPorID(int ID)
+        {
+            return Partidas.Where(x => x.IDPartida == ID).ToList().FirstOrDefault();
         }
     }
 }

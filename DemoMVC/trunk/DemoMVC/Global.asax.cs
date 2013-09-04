@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using DemoMVC.ControllerFactory;
 
 namespace DemoMVC
 {
@@ -26,9 +27,9 @@ namespace DemoMVC
 
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-
+            AreaRegistration.RegisterAllAreas(); 
             RegisterRoutes(RouteTable.Routes);
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
         }
     }
 }

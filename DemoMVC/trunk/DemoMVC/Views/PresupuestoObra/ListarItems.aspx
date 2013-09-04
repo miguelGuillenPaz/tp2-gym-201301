@@ -25,7 +25,7 @@
         <div class="gpc-detallePartida-nombre"><%= detallePartida.Nombre%></div>  
         <div class="gpc-detallePartida-um"><%= detallePartida.UM%></div>  
         <div class="gpc-detallePartida-cantidad"><%= detallePartida.Cantidad%></div>  
-        <div class="gpc-detallePartida-precio"><%= detallePartida.Precio%></div>            
+        <div class="gpc-detallePartida-precio"><%= detallePartida.PrecioUnitarioReal%></div>            
     </div>
             
     <%} %>

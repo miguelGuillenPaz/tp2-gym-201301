@@ -42,7 +42,7 @@
                     <%=detallePartida.Cantidad%>
                 </div>
                 <div class="gpc-td" style="width: 200px;">
-                    <%=detallePartida.Precio%>
+                    <%=detallePartida.PrecioUnitarioReal%>
                 </div>
             </div>
             <%}%>

@@ -11,18 +11,30 @@ using System.IO;
 using System.Text.RegularExpressions;
 using DemoMVC;
 using DemoMVC.Models;
+using DemoMVC.Helpers;
 
 namespace GYM.SIC.GPC.Controllers
 {
     public class ExpedienteTecnicoController : Controller
-    {
-        // BD S10
-        private S10CronogramaRepository EFS10Cronograma = new S10CronogramaRepository();
-        private S10PartidaRespository EFS10Partida = new S10PartidaRespository();
-
+    { 
         // BD GYM
-        private GPCPresupuestoRepository EFPresupuesto = new GPCPresupuestoRepository();
-        private GPCExpedienteTecnicoRepository EFExpedienteTecnico = new GPCExpedienteTecnicoRepository();
+        private IGPCPresupuestoRepository EFPresupuesto;
+        private IGPCPartidaRespository EFPartida;
+        private IGPCCronogramaRepository EFCronograma;
+        private IGPCExpedienteTecnicoRepository EFExpedienteTecnico;
+
+        public ExpedienteTecnicoController(
+            IGPCPresupuestoRepository EFPresupuesto,
+            IGPCPartidaRespository EFPartida,
+            IGPCCronogramaRepository EFCronograma,
+            IGPCExpedienteTecnicoRepository EFExpedienteTecnico)
+        {
+            this.EFPresupuesto = EFPresupuesto;
+            this.EFPartida = EFPartida;
+            this.EFCronograma = EFCronograma;
+            this.EFExpedienteTecnico = EFExpedienteTecnico; 
+        }
+      
 
         public ActionResult RegistrarExpedienteTecnico()
         {
@@ -31,68 +43,81 @@ namespace GYM.SIC.GPC.Controllers
 
         public ActionResult ListarPresupuestos()
         {
-            var presupuestos = EFPresupuesto.PresupuestosModel.Where(x => x.IDEstado == EstadosParameters.Aprobado).ToList();
-            return View(presupuestos);
+            var presupuestos = EFPresupuesto.Presupuestos.Where(x => x.IDEstado == EstadosParameters.Pendiente_de_Aprobacion_por_el_Asesor_del_Cliente).ToList();
+
+            var presupuestosModel = new List<PresupuestoModel>();
+
+            presupuestos.ForEach((presupuesto) =>
+            {
+                var presupuestoModel = new PresupuestoModel();
+                presupuestoModel.RazonSocial = presupuesto.GPC_ClienteObra.RazonSocial;
+                presupuestoModel.Direccion = presupuesto.GPC_Obra.Direccion;
+                ModelCopier.CopyModel(presupuesto, presupuestoModel);
+                presupuestosModel.Add(presupuestoModel);
+            });
+
+            return View(presupuestosModel);
         }
 
         public ActionResult ListarDetalle(int PresupuestoID)
         {
-            var presupuesto = EFPresupuesto.PresupuestosModel.FirstOrDefault(x => x.ID == PresupuestoID);
-            return View(presupuesto);
+            var presupuesto = EFPresupuesto.PresupuestoObraPorID(PresupuestoID);
+            var presupuestoModel = new PresupuestoModel();
+            presupuestoModel.RazonSocial = presupuesto.GPC_ClienteObra.RazonSocial;
+            presupuestoModel.Direccion = presupuesto.GPC_Obra.Direccion;
+            ModelCopier.CopyModel(presupuesto, presupuestoModel);
+            return View(presupuestoModel);
         }
 
         public ActionResult ListarPartidas(int PresupuestoID)
         {
-            var presupuesto = EFPresupuesto.PresupuestosModel.FirstOrDefault(x => x.ID == PresupuestoID);
+            var presupuesto = EFPresupuesto.PresupuestoObraPorID(PresupuestoID);
 
             var PartidasModel = new List<PartidasModel>();
 
-            var partidas = EFS10Partida.Partidas.Where(x => x.IDPresupuesto == PresupuestoID).ToList();
+            var partidas = EFPartida.Partidas.Where(x => x.IDPresupuestoObra == PresupuestoID).ToList();
 
             partidas.ForEach((partida) =>
             {
                 var PartidaModel = new PartidasModel();
 
-                PartidaModel.ID = partida.ID;
-                PartidaModel.Nombre = partida.Nombre;
+                ModelCopier.CopyModel(partida, PartidaModel);
 
-                var categorias = from c in partida.S10DetallePartida.Where(x => x.S10Categoria != null)
+                var categorias = from c in partida.GPC_DetallePartida.Where(x => x.GPC_Categoria != null)
                                  select new
                                  {
-                                     ID = c.S10Categoria.ID,
-                                     Nombre = c.S10Categoria.Nombre
+                                     ID = c.GPC_Categoria.IDCategoria,
+                                     Nombre = c.GPC_Categoria.Nombre
                                  };
 
                 var CategoriasModel = new List<CategoriaModel>();
 
                 categorias.Distinct().ToList().ForEach((categoria) =>
                 {
-                    var dtoCategoria = new CategoriaModel();
-                    dtoCategoria.ID = categoria.ID;
-                    dtoCategoria.Nombre = categoria.Nombre;
-                    CategoriasModel.Add(dtoCategoria);
+                    var CategoriaModel = new CategoriaModel();
+                    ModelCopier.CopyModel(categoria, CategoriaModel);
+                    CategoriasModel.Add(CategoriaModel);
                 });
 
-                CategoriasModel.ForEach((dtoCategoria) =>
+                CategoriasModel.ForEach((CategoriaModel) =>
                 {
-                    var dtoDetallePartidas = new List<DetallePartidaModel>();
+                    var DetallePartidasModel = new List<DetallePartidaModel>();
 
-                    partida.S10DetallePartida.ToList().ForEach((detallePartida) =>
+                    partida.GPC_DetallePartida.ToList().ForEach((detallePartida) =>
                     {
-                        if (dtoCategoria.ID == detallePartida.S10Categoria.ID)
+                        if (CategoriaModel.IDCategoria == detallePartida.GPC_Categoria.IDCategoria)
                         {
-                            var dtoDetallePartida = new DetallePartidaModel();
+                            var DetallePartidaModel = new DetallePartidaModel();
 
-                            dtoDetallePartida.Cantidad = (Decimal)detallePartida.Cantidad;
-                            dtoDetallePartida.ID = detallePartida.ID;
-                            dtoDetallePartida.Nombre = detallePartida.S10APU.Nombre;
-                            dtoDetallePartida.Precio = (Decimal)detallePartida.PrecioUnitarioReal;
-                            dtoDetallePartida.UM = detallePartida.S10APU.UM;
-                            dtoDetallePartidas.Add(dtoDetallePartida);
+                            ModelCopier.CopyModel(detallePartida, DetallePartidaModel);
+
+                            DetallePartidaModel.Nombre = detallePartida.GPC_APU.Nombre;
+                            DetallePartidaModel.UM = detallePartida.GPC_APU.UM;
+                            DetallePartidasModel.Add(DetallePartidaModel);
                         }
                     });
 
-                    dtoCategoria.DetallePartidasModel = dtoDetallePartidas;
+                    CategoriaModel.DetallePartidasModel = DetallePartidasModel;
                 });
 
                 PartidaModel.CategoriasModel = CategoriasModel;
@@ -103,37 +128,52 @@ namespace GYM.SIC.GPC.Controllers
             return View(PartidasModel);
         }
 
+        public ActionResult ListarCategorias(int PartidaID)
+        {
+            var partida = EFPartida.PartidaPorID(PartidaID);
+
+            var categorias = from c in partida.GPC_DetallePartida.Where(x => x.GPC_Categoria != null)
+                             select new
+                             {
+                                 ID = c.GPC_Categoria.IDCategoria,
+                                 Nombre = c.GPC_Categoria.Nombre
+                             };
+
+            var CategoriasModel = new List<CategoriaModel>();
+
+            categorias.Distinct().ToList().ForEach((categoria) =>
+            {
+                var CategoriaModel = new CategoriaModel();
+
+                ModelCopier.CopyModel(categoria, CategoriaModel);
+                CategoriasModel.Add(CategoriaModel);
+            });
+
+            return View(CategoriasModel);
+        }
+
         public ActionResult ListarCronograma(int PresupuestoID)
         {
-            var presupuesto = EFPresupuesto.PresupuestosModel.FirstOrDefault(x => x.ID == PresupuestoID);
-
+            var presupuesto = EFPresupuesto.PresupuestoObraPorID(PresupuestoID);
             var CrongramaModel = new CronogramaModel();
-
-            var cronograma = EFS10Cronograma.Cronogramas.Where(x => x.IDPresupuesto == PresupuestoID).FirstOrDefault();
+            var cronograma = EFCronograma.Cronogramas.Where(x => x.IDPresupuestoObra == PresupuestoID).FirstOrDefault();
 
             if (cronograma != null)
             {
-                CrongramaModel.FechaInicio = cronograma.FechaInicio;
-                CrongramaModel.ID = cronograma.ID;
-                CrongramaModel.Nombre = cronograma.Nombre;
-                CrongramaModel.Responsable = cronograma.Responsable;
+                ModelCopier.CopyModel(cronograma, CrongramaModel);
             }
+
             var ActividadesModel = new List<ActividadModel>();
 
-            cronograma.S10Actividad.ToList().ForEach((Actividad) =>
+            cronograma.GPC_ActividadObra.ToList().ForEach((Actividad) =>
             {
                 var ActividadModel = new ActividadModel();
-
-                ActividadModel.Fecha = Actividad.Fecha;
-                ActividadModel.Hito = Actividad.Hito;
-                ActividadModel.Nombre = Actividad.Nombre;
-                ActividadModel.Responsable = Actividad.Responsable;
+                ModelCopier.CopyModel(Actividad, ActividadModel);
                 ActividadesModel.Add(ActividadModel);
 
             });
 
             CrongramaModel.ActividadesModel = ActividadesModel;
-
             return View(CrongramaModel);
         }
 

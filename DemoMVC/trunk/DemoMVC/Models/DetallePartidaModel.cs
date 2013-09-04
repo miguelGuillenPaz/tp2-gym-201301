@@ -7,11 +7,11 @@ namespace GYM.SIC.GPC.Models
 {
     public class DetallePartidaModel
     {
-        public int ID { get; set; }
+        public int IDDetallePartida { get; set; }
         public string Nombre { get; set; }
 
         public string UM { get; set; }
-        public decimal Cantidad { get; set; }
-        public decimal Precio { get; set; }
+        public decimal? Cantidad { get; set; }
+        public decimal? PrecioUnitarioReal { get; set; }
     }
 }

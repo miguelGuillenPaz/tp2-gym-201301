@@ -242,7 +242,7 @@
         </div>
         <div style="width: 100%; float: left; display: block;">
             <div>
-                <input type="hidden" id="IDPresupuesto" value="<%=Model.ID%>" />
+                <input type="hidden" id="IDPresupuesto" value="<%=Model.IDPresupuestoObra%>" />
                 Número de Presupuesto:
                 <%=Model.Numero %>
             </div>
@@ -252,7 +252,7 @@
             </div>
             <div>
                 Cliente:
-                <%=Model.Cliente %>
+                <%=Model.RazonSocial %>
             </div>
             <div>
                 Dirección de la Obra:

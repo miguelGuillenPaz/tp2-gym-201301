@@ -3222,6 +3222,126 @@ namespace DemoMVC.Models
         private Nullable<global::System.Int32> _IDObra;
         partial void OnIDObraChanging(Nullable<global::System.Int32> value);
         partial void OnIDObraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaInicio
+        {
+            get
+            {
+                return _FechaInicio;
+            }
+            set
+            {
+                OnFechaInicioChanging(value);
+                ReportPropertyChanging("FechaInicio");
+                _FechaInicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaInicio");
+                OnFechaInicioChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaInicio;
+        partial void OnFechaInicioChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaInicioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaFin
+        {
+            get
+            {
+                return _FechaFin;
+            }
+            set
+            {
+                OnFechaFinChanging(value);
+                ReportPropertyChanging("FechaFin");
+                _FechaFin = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaFin");
+                OnFechaFinChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaFin;
+        partial void OnFechaFinChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaFinChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaRegistro
+        {
+            get
+            {
+                return _FechaRegistro;
+            }
+            set
+            {
+                OnFechaRegistroChanging(value);
+                ReportPropertyChanging("FechaRegistro");
+                _FechaRegistro = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaRegistro");
+                OnFechaRegistroChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaRegistro;
+        partial void OnFechaRegistroChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaRegistroChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Observaciones
+        {
+            get
+            {
+                return _Observaciones;
+            }
+            set
+            {
+                OnObservacionesChanging(value);
+                ReportPropertyChanging("Observaciones");
+                _Observaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Observaciones");
+                OnObservacionesChanged();
+            }
+        }
+        private global::System.String _Observaciones;
+        partial void OnObservacionesChanging(global::System.String value);
+        partial void OnObservacionesChanged();
 
         #endregion
 

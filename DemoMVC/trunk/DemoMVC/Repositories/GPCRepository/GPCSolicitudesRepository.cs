@@ -6,7 +6,7 @@ using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
-    public class GPCSolicitudesRepository
+    public class GPCSolicitudesRepository : IGPCSolicitudesRepository
     {
         GPC_Entities contexto = new GPC_Entities();
 

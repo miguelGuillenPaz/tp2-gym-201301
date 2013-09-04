@@ -6,7 +6,7 @@ using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
-    public class GPCHistoricoAprobacionesRepository
+    public class GPCHistoricoAprobacionesRepository : IGPCHistoricoAprobacionesRepository
     {
         GPC_Entities contexto = new GPC_Entities();
 

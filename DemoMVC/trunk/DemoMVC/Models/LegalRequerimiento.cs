@@ -37,8 +37,8 @@ namespace DemoMVC.Models
 
         //public bool bActivo { get; set; }
         public string nomProyecto { get; set; }
-
-        public LegalRequerimientoCN objLegalCN { get; set; }
+        //me sale error, no encuentra la clase LegalRequerimientoCN
+        //public LegalRequerimientoCN objLegalCN { get; set; }
 
 
 

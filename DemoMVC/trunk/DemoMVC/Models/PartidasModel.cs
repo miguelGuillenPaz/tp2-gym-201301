@@ -7,7 +7,7 @@ namespace GYM.SIC.GPC.Models
 {
     public class PartidasModel
     {    
-        public int ID { get; set; }
+        public int IDPartida { get; set; }
         public string Nombre { get; set; }
 
         public List<CategoriaModel> CategoriasModel { get; set; }

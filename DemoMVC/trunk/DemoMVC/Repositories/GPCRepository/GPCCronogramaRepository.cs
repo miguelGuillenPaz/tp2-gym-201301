@@ -6,7 +6,7 @@ using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository
 {
-    public class GPCCronogramaRepository
+    public class GPCCronogramaRepository : IGPCCronogramaRepository
     {
         GPC_Entities contexto = new GPC_Entities();
 

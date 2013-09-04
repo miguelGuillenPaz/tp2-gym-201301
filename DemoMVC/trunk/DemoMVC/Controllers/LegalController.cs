@@ -59,24 +59,25 @@ namespace DemoMVC.Controllers
                 foreach (Dictionary<string, object> itemsJson in vecinos)
                 {
                     //LegalVecinoColindante legalVecino = new LegalVecinoColindante();
-                    legalReq.objLegalCN = new LegalRequerimientoCN();
-                    bool e;
-                    int codUbiDist;
-                    legalReq.objLegalCN.idReqLegal = nuevoIdReqLegal;
-                    legalReq.objLegalCN.cNombreVecino = (string)itemsJson["cNombre"];
-                    legalReq.objLegalCN.cApellidoVecino = (string)itemsJson["cApellido"];
-                    legalReq.objLegalCN.cDireccion = (string)itemsJson["cDireccion"];
-                    legalReq.objLegalCN.idDocIdentidadTipo = 1;
-                    legalReq.objLegalCN.cNroDocIdentidad = (string)itemsJson["cNroDocIdentidad"];
-                    e = int.TryParse((string)itemsJson["idDist"], out codUbiDist);
-                    if (e) legalReq.objLegalCN.idDistrito = codUbiDist;
-                    //legalReq.objLegalCN.idDistrito = (int)itemsJson["idDist"];
-                    legalReq.objLegalCN.idDepartamento = (int)itemsJson["idDep"];
-                    legalReq.objLegalCN.idProvincia = (int)itemsJson["idProv"];
-                    legalReq.objLegalCN.cTipoEdificacion = (string)itemsJson["cTipoEdificacion"];
-                    legalReq.objLegalCN.cNombreCondominio = (string)itemsJson["cNombreCondominio"];
+                    //me sale error, no encuentra la clase LegalRequerimientoCN
+                    //legalReq.objLegalCN = new LegalRequerimientoCN();
+                    //bool e;
+                    //int codUbiDist;
+                    //legalReq.objLegalCN.idReqLegal = nuevoIdReqLegal;
+                    //legalReq.objLegalCN.cNombreVecino = (string)itemsJson["cNombre"];
+                    //legalReq.objLegalCN.cApellidoVecino = (string)itemsJson["cApellido"];
+                    //legalReq.objLegalCN.cDireccion = (string)itemsJson["cDireccion"];
+                    //legalReq.objLegalCN.idDocIdentidadTipo = 1;
+                    //legalReq.objLegalCN.cNroDocIdentidad = (string)itemsJson["cNroDocIdentidad"];
+                    //e = int.TryParse((string)itemsJson["idDist"], out codUbiDist);
+                    //if (e) legalReq.objLegalCN.idDistrito = codUbiDist;
+                    ////legalReq.objLegalCN.idDistrito = (int)itemsJson["idDist"];
+                    //legalReq.objLegalCN.idDepartamento = (int)itemsJson["idDep"];
+                    //legalReq.objLegalCN.idProvincia = (int)itemsJson["idProv"];
+                    //legalReq.objLegalCN.cTipoEdificacion = (string)itemsJson["cTipoEdificacion"];
+                    //legalReq.objLegalCN.cNombreCondominio = (string)itemsJson["cNombreCondominio"];
 
-                    totVecIns += legalDAO.insertarRequerimientoLegalVecinos(legalReq.objLegalCN);
+                    //totVecIns += legalDAO.insertarRequerimientoLegalVecinos(legalReq.objLegalCN);
                 }
             }
 

@@ -27,7 +27,7 @@
             <%=presupuesto.Nombre %>
         </div>
         <div class="gpc-td" style="width: 150px;">
-            <%=presupuesto.Cliente %>
+            <%=presupuesto.RazonSocial %>
         </div>
         <div class="gpc-td" style="width: 200px;">
             <%=presupuesto.Direccion %>
@@ -39,7 +39,7 @@
             <%=presupuesto.UsuarioCambioEstado%>
         </div>
         <div class="gpc-td-center" style="width: 65px;">
-            <a href="ListarDetalle?PresupuestoID=<%=presupuesto.ID%>">Evaluar</a>
+            <a href="ListarDetalle?PresupuestoID=<%=presupuesto.IDPresupuestoObra%>">Evaluar</a>
         </div>
     </div>
     <% }%>

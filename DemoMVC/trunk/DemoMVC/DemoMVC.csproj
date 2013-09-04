@@ -36,6 +36,10 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -70,6 +74,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControllerFactory\NinjectControllerFactory.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
@@ -94,6 +99,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ModelCopier.cs" />
     <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -168,6 +174,13 @@
     <Compile Include="Repositories\GPCRepository\GPCPartidaRespository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCPresupuestoRepository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCSolicitudesRepository.cs" />
+    <Compile Include="Repositories\IGPCRepository\IGPCCronogramaRepository.cs" />
+    <Compile Include="Repositories\IGPCRepository\IGPCExpedienteTecnicoRepository.cs" />
+    <Compile Include="Repositories\IGPCRepository\IGPCHistoricoAprobacionesRepository.cs" />
+    <Compile Include="Repositories\IGPCRepository\IGPCNotificacionesRepository.cs" />
+    <Compile Include="Repositories\IGPCRepository\IGPCPartidaRespository.cs" />
+    <Compile Include="Repositories\IGPCRepository\IGPCPresupuestoRepository.cs" />
+    <Compile Include="Repositories\IGPCRepository\IGPCSolicitudesRepository.cs" />
     <Compile Include="Repositories\S10Repository\S10CronogramaRepository.cs" />
     <Compile Include="Repositories\S10Repository\S10PartidaRespository.cs" />
     <Compile Include="Repositories\S10Repository\S10PresupuestoRepository.cs" />
@@ -188,6 +201,7 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\style_ie.css" />
     <Content Include="Content\webticker.css" />
+    <Content Include="dll\Ninject.dll" />
     <Content Include="Global.asax" />
     <Content Include="Images\arrow2.png" />
     <Content Include="Images\background\static_80_anios.jpg" />

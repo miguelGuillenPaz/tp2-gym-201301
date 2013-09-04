@@ -59,54 +59,55 @@ namespace DemoMVC.Persistencia
         }
 
         //Solicitud Requerimiento Legal - Listado de Vecinos
-        public int insertarRequerimientoLegalVecinos(LegalRequerimientoCN vecinoColLegal)
-        {
-            int totIns = 0;
+        //me sale error, no encuentra la clase LegalRequerimientoCN
+        //public int insertarRequerimientoLegalVecinos(LegalRequerimientoCN vecinoColLegal)
+        //{
+        //    int totIns = 0;
 
-            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
-            {
-                SqlTransaction sqlTransaction = null;
-                try
-                {
-                    SqlCommand cmdIns = new SqlCommand("pa_GJ_RequerimientoLegalCN_InsertarVecino", con);
-                    cmdIns.CommandType = System.Data.CommandType.StoredProcedure;
+        //    using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+        //    {
+        //        SqlTransaction sqlTransaction = null;
+        //        try
+        //        {
+        //            SqlCommand cmdIns = new SqlCommand("pa_GJ_RequerimientoLegalCN_InsertarVecino", con);
+        //            cmdIns.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    con.Open();
-                    sqlTransaction = con.BeginTransaction();
+        //            con.Open();
+        //            sqlTransaction = con.BeginTransaction();
 
-                    cmdIns.Parameters.Add(new SqlParameter("@idReqLegal", vecinoColLegal.idReqLegal));
-                    cmdIns.Parameters.Add(new SqlParameter("@cNombreVecino", vecinoColLegal.cNombreVecino));
-                    cmdIns.Parameters.Add(new SqlParameter("@cApellidoVecino", vecinoColLegal.cApellidoVecino));
-                    cmdIns.Parameters.Add(new SqlParameter("@idDocIdentidadTipo", vecinoColLegal.idDocIdentidadTipo));
-                    cmdIns.Parameters.Add(new SqlParameter("@cNroDocIdentidad", vecinoColLegal.cNroDocIdentidad));
-                    cmdIns.Parameters.Add(new SqlParameter("@cTipoEdificacion", vecinoColLegal.cTipoEdificacion));
-                    cmdIns.Parameters.Add(new SqlParameter("@cNombreCondominio", vecinoColLegal.cNombreCondominio));
-                    cmdIns.Parameters.Add(new SqlParameter("@cDireccion", vecinoColLegal.cDireccion));
-                    cmdIns.Parameters.Add(new SqlParameter("@idDepartamento", vecinoColLegal.idDepartamento));
-                    cmdIns.Parameters.Add(new SqlParameter("@idProvincia", vecinoColLegal.idProvincia));
-                    cmdIns.Parameters.Add(new SqlParameter("@idDistrito", vecinoColLegal.idDistrito));
+        //            cmdIns.Parameters.Add(new SqlParameter("@idReqLegal", vecinoColLegal.idReqLegal));
+        //            cmdIns.Parameters.Add(new SqlParameter("@cNombreVecino", vecinoColLegal.cNombreVecino));
+        //            cmdIns.Parameters.Add(new SqlParameter("@cApellidoVecino", vecinoColLegal.cApellidoVecino));
+        //            cmdIns.Parameters.Add(new SqlParameter("@idDocIdentidadTipo", vecinoColLegal.idDocIdentidadTipo));
+        //            cmdIns.Parameters.Add(new SqlParameter("@cNroDocIdentidad", vecinoColLegal.cNroDocIdentidad));
+        //            cmdIns.Parameters.Add(new SqlParameter("@cTipoEdificacion", vecinoColLegal.cTipoEdificacion));
+        //            cmdIns.Parameters.Add(new SqlParameter("@cNombreCondominio", vecinoColLegal.cNombreCondominio));
+        //            cmdIns.Parameters.Add(new SqlParameter("@cDireccion", vecinoColLegal.cDireccion));
+        //            cmdIns.Parameters.Add(new SqlParameter("@idDepartamento", vecinoColLegal.idDepartamento));
+        //            cmdIns.Parameters.Add(new SqlParameter("@idProvincia", vecinoColLegal.idProvincia));
+        //            cmdIns.Parameters.Add(new SqlParameter("@idDistrito", vecinoColLegal.idDistrito));
 
-                    cmdIns.Transaction = sqlTransaction;
-                    totIns = cmdIns.ExecuteNonQuery();
-                    sqlTransaction.Commit();
+        //            cmdIns.Transaction = sqlTransaction;
+        //            totIns = cmdIns.ExecuteNonQuery();
+        //            sqlTransaction.Commit();
 
-                    con.Close();
+        //            con.Close();
 
-                }
-                catch (Exception ex)
-                {
-                    if (sqlTransaction != null) sqlTransaction.Rollback();
-                    throw new Exception(ex.ToString(), ex);
-                }
-                finally
-                {
-                    if (con.State == ConnectionState.Open) con.Close();
-                    sqlTransaction.Dispose();
-                }
-            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            if (sqlTransaction != null) sqlTransaction.Rollback();
+        //            throw new Exception(ex.ToString(), ex);
+        //        }
+        //        finally
+        //        {
+        //            if (con.State == ConnectionState.Open) con.Close();
+        //            sqlTransaction.Dispose();
+        //        }
+        //    }
 
-            return totIns;
-        }
+        //    return totIns;
+        //}
 
 
         public List<Requerimiento> listarRequerimiento(Int16 idRequerimiento, Int16 idProyecto, Int16 idTipo, Int16 idEstado, DateTime fecIni, DateTime fecFin)

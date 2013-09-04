@@ -169,7 +169,7 @@
             </div>
             <div>
                 Cliente:
-                <%=Model.Cliente %>
+                <%=Model.RazonSocial %>
             </div>
             <div>
                 Dirección de la Obra:
