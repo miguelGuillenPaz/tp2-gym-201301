@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using System.Net.Mail;
+using System.Globalization;
+using System.Web.Script.Serialization;
 using DemoMVC.Models;
 using DemoMVC.Persistencia;
 
@@ -28,55 +31,95 @@ namespace DemoMVC.Controllers
         {
 
             ProyectoDAO proye = new ProyectoDAO();
-            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PRE").ToList(), "codPro", "nomPro");
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "Nombre");
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Registrar(FormCollection formCollection)
+        public ActionResult Confirmacion(int idPro, string desc, string prioridad, string arrVecinos)
         {
+            Session["bInsertSuccess"] = false;
+
+            //Insertar Req Legal CN
             LegalRequerimiento legalReq = new LegalRequerimiento();
-            String txtCodPro = formCollection["codPro"];
-            legalReq.codPro = Int32.Parse(txtCodPro);
-            //legalReq.codPro = Convert.ToInt32(Request.Form["cboProyecto"]);
-            legalReq.cDescripcion = Request.Form["txtDescripcion"];
-            legalReq.codUsuario = 2; //cperez
-            legalReq.idTipoReqLegal = 1; //Carta Notarial
+            legalReq.idReqLegalTipo = 1;
+            legalReq.idProyecto = idPro;
+            legalReq.cDescripcion = desc;
+            legalReq.cPrioridadAtencion = prioridad;
 
             LegalDAO legalDAO = new LegalDAO();
             int nuevoIdReqLegal = legalDAO.insertarRequerimientoLegal(legalReq);
 
             //Insertar Vecinos
-            /*int totalVecinos = arrVecinos.Count;
-            int cantInserts = 0;
-            if (totalVecinos > 0)
+            var jsSer = new JavaScriptSerializer();
+            var vecinos = (object[])jsSer.DeserializeObject(arrVecinos);
+            var totVecIns = 0;
+
+            if (vecinos != null)
             {
-                foreach (string value in arrVecinos)
+                foreach (Dictionary<string, object> itemsJson in vecinos)
                 {
-                    LegalVecinoColindante legalVecino = new LegalVecinoColindante();
-                    legalVecino.cNombres = value;
-                    var n = legalDAO.insertarRequerimientoLegalVecinos(legalVecino);
-                    if (n > 0) cantInserts++;
-                }*/
+                    //LegalVecinoColindante legalVecino = new LegalVecinoColindante();
+                    legalReq.objLegalCN = new LegalRequerimientoCN();
+                    bool e;
+                    int codUbiDist;
+                    legalReq.objLegalCN.idReqLegal = nuevoIdReqLegal;
+                    legalReq.objLegalCN.cNombreVecino = (string)itemsJson["cNombre"];
+                    legalReq.objLegalCN.cApellidoVecino = (string)itemsJson["cApellido"];
+                    legalReq.objLegalCN.cDireccion = (string)itemsJson["cDireccion"];
+                    legalReq.objLegalCN.idDocIdentidadTipo = 1;
+                    legalReq.objLegalCN.cNroDocIdentidad = (string)itemsJson["cNroDocIdentidad"];
+                    e = int.TryParse((string)itemsJson["idDist"], out codUbiDist);
+                    if (e) legalReq.objLegalCN.idDistrito = codUbiDist;
+                    //legalReq.objLegalCN.idDistrito = (int)itemsJson["idDist"];
+                    legalReq.objLegalCN.idDepartamento = (int)itemsJson["idDep"];
+                    legalReq.objLegalCN.idProvincia = (int)itemsJson["idProv"];
+                    legalReq.objLegalCN.cTipoEdificacion = (string)itemsJson["cTipoEdificacion"];
+                    legalReq.objLegalCN.cNombreCondominio = (string)itemsJson["cNombreCondominio"];
 
-            /*for (int i = 0; i < totalVecinos; i++)
+                    totVecIns += legalDAO.insertarRequerimientoLegalVecinos(legalReq.objLegalCN);
+                }
+            }
+
+            if (nuevoIdReqLegal > 0 && totVecIns > 0)
             {
-                LegalVecinoColindante legalVecino = new LegalVecinoColindante();
-                legalVecino.cNombres = arrVecinos[i].cNombres;
-                var n = legalDAO.insertarRequerimientoLegalVecinos(legalVecino);
-                if (n > 0) cantInserts++;
-            }*/
-            //}
-
-            //int totInsVec = 0;
-            ProyectoDAO proyecto = new ProyectoDAO();
-            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE").ToList(), "codPro", "nomPro");
-
-            if (nuevoIdReqLegal > 0) TempData["bInsertSuccess"] = true; else TempData["bInsertSuccess"] = false;
-
-            //TempData["MsgConfirmacion"] = "El requerimiento legal con id: " + legalReq.codPro + " ha sido solicitado.";
+                Session["bInsertSuccess"] = true;
+                EnviarMail(nuevoIdReqLegal);
+            }
+            else
+            {
+                Session["bInsertSuccess"] = false;
+            }
 
             return View("Registrar");
+        }
+
+        public void EnviarMail(int idReq)
+        {
+            var fromAddress = new MailAddress("gemini.cal@gmail.com", "Carlos Pérez Betancour");
+            var toAddress = new MailAddress("u201021077@upc.edu.pe", "Usuario Solicitante");
+            string fromPassword = System.Configuration.ConfigurationManager.AppSettings["Correo_CredentialPassword"];
+            const string subject = "Área Legal - se registró su requerimiento legal";
+            string body = "<p>Su solicitud de requerimiento legal con ID:" + idReq + " ha sido registrado y queda en estado Pendiente de Atención.</p><p>Atentamente</p><p>Área Legal<br />GyM</p>";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new System.Net.NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+            {
+                smtp.Send(message);
+            }
+
         }
 
         public ActionResult listarRequerimientos()
@@ -84,7 +127,8 @@ namespace DemoMVC.Controllers
             LegalDAO proye = new LegalDAO();
             ProyectoDAO proyecto = new ProyectoDAO();
 
-            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE"), "codPro", "nomPro");
+            //ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE"), "codPro", "nomPro");
+            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR"), "IdProyecto", "Nombre");
 
             ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
 
