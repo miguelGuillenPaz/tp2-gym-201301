@@ -28,9 +28,9 @@
           <td colspan="4"><div class="editor-field"><%: Html.TextBoxFor(m => m.Nombre, new { style = "width:200px;height:20px" })%>&nbsp;&nbsp;<%:Html.ActionLink("Buscar","Buscar",new {@r="Create"}) %></div></td>
           </tr>
           <tr>
-          <td style="width:13%"><div class="editor-label"><%: Html.LabelFor(m=>m.IdTipoDocumento) %> <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
+          <td style="width:13%"><div class="editor-label"><label for="IdTipoDocumento">Tipo Documento</label> <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
           <td style="width:30%"><div class="editor-field"><%: Html.DropDownListFor(m => m.IdTipoDocumento, new SelectList((IEnumerable<GD_TipoDocumento>)ViewData["TipoDocumento"], "IdTipoDocumento", "Nombre"), "-- Seleccionar --")%></div></td>
-          <td style="width:8%"><div class="editor-label"><%: Html.LabelFor(m=>m.IdProyecto) %></div></td>
+          <td style="width:8%"><div class="editor-label"><label for="IdProyecto">Proyecto</label></div></td>
           <td style="width:32%"><div class="editor-field"><%: Html.DropDownListFor(m => m.IdProyecto, new SelectList((IEnumerable<GPP_Proyecto>)ViewData["Proyecto"], "IdProyecto", "Nombre"), "-- Seleccionar --")%></div></td>
           <td rowspan="5"  valign="top">
           <div class="editor-label">Seleccione Permisos <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div>
@@ -43,15 +43,15 @@
           </td>
           </tr>
           <tr>         
-          <td><div class="editor-label"><%: Html.LabelFor(m=>m.FechaDocumento) %> <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
+          <td><div class="editor-label"><label for="FechaDocumento">Fecha Documento</label><span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
           <td><div class="editor-field"><%: Html.EditorFor(m=>m.FechaDocumento,"{0:dd/MM/yyyy}")%></div></td>
-          <td><div class="editor-label"><%: Html.LabelFor(m=>m.IdEstado) %> <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
+          <td><div class="editor-label"><label for="IdEstado">Estado</label><span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
           <td><div class="editor-field"><%: Html.DropDownListFor(m => m.IdEstado, new SelectList((IEnumerable<GD_Estado>)ViewData["Estado"], "IdEstado", "Nombre"), "-- Seleccionar --")%></div></td>
           </tr>          
           <tr>         
           <td><div class="editor-label"><%: Html.LabelFor(m=>m.Ubicacion) %> <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
           <td><div class="editor-field"><%: Html.TextBoxFor(m => m.Ubicacion, new { style = "width:200px;height:20px" })%></div></td>
-          <td><div class="editor-label"><%: Html.LabelFor(m=>m.IdArea) %> <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
+          <td><div class="editor-label"><label for="IdArea">Area</label><span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
           <td><div class="editor-field"><%: Html.DropDownListFor(m => m.IdArea, new SelectList((IEnumerable<GRH_Area>)ViewData["Area"], "IdArea", "Descripcion"), "-- Seleccionar --")%></div></td>
           </tr>          
           <tr>         
