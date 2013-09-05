@@ -38,7 +38,7 @@
           </tr>
           <tr>
               <td><div class="editor-label"><label for="area">Area</label></div></td>
-              <td><div class="editor-field"><%: Html.DropDownList("area",new SelectList((IEnumerable<GRH_Area>)ViewData["Area"], "Codigo","Nombre"),"-- Seleccionar --")%></div></td>
+              <td><div class="editor-field"><%: Html.DropDownList("area",new SelectList((IEnumerable<GRH_Area>)ViewData["Area"], "IdArea","Descripcion"),"-- Seleccionar --")%></div></td>
               <td><div class="editor-label"><label for="tipoDocumento">Tipo Documento</label></div></td>
               <td><div class="editor-field"><%: Html.DropDownList("tipoDocumento", new SelectList((IEnumerable<GD_TipoDocumento>)ViewData["TipoDocumento"], "IdTipoDocumento", "Nombre"), "-- Seleccionar --")%></div></td>
               <td></td>
