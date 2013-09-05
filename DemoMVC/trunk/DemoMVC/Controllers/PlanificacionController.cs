@@ -120,7 +120,7 @@ namespace DemoMVC.Controllers
             List<Proyecto> listadoProyectos = null;
             ProyectoDAO Proyecto = new ProyectoDAO();
 
-            listadoProyectos = Proyecto.obtenerProyectoPorFiltro(1,0,"PRE");
+            listadoProyectos = Proyecto.obtenerProyectoPorFiltro(1,0,"PR");
 
             ViewData["totReg"] = listadoProyectos.Count;
             //Caso error: no hay registros (msgErr)
@@ -136,7 +136,7 @@ namespace DemoMVC.Controllers
             List<Proyecto> listadoProyectos = null;
             ProyectoDAO Proyecto = new ProyectoDAO();
 
-            listadoProyectos = Proyecto.obtenerProyectoPorFiltro(1, 0, "PRE");
+            listadoProyectos = Proyecto.obtenerProyectoPorFiltro(1, 0, "PR");
 
             return View(listadoProyectos);
         }
@@ -168,7 +168,7 @@ namespace DemoMVC.Controllers
                 {
                     codPro = Convert.ToInt32(txtCodigo);
 
-                    listadoProyectos = Proyecto.obtenerProyectoPorFiltro(2, codPro, "PRE");
+                    listadoProyectos = Proyecto.obtenerProyectoPorFiltro(2, codPro, "PR");
 
                     if (listadoProyectos != null)
                     {
@@ -198,7 +198,7 @@ namespace DemoMVC.Controllers
             ProyectoDAO proyDAO = new ProyectoDAO();
             List<Proyecto> listadoProy = new List<Proyecto>();
 
-            listadoProy = proyDAO.obtenerProyectoPorFiltro(2, Convert.ToInt32(codProy), "PRE");
+            listadoProy = proyDAO.obtenerProyectoPorFiltro(2, Convert.ToInt32(codProy), "PR");
 
             foreach (Proyecto proyecto in listadoProy)
             {
@@ -210,15 +210,19 @@ namespace DemoMVC.Controllers
             //Verificar total de planes de proyecto
             PlanProyectoDAO planProyDAO = new PlanProyectoDAO();
             int totReg = planProyDAO.totalRegistros(Convert.ToInt32(codPlanProy));
+            int totRegAct = 0;
 
             if (totReg > 0) {
                 //Si es que ya se agrego por planificación rápida, mostrar:
                 ActividadDAO actividadDAO = new ActividadDAO();
                 listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy));
+                if (listadoActividadesTemp != null) totRegAct = listadoActividadesTemp.Count;                
             }            
 
             ViewData["fechIniProy"] = fechIniProy;
             ViewData["fechIniFin"] = fechIniFin;
+            ViewData["duracionProy"] = "6";
+            ViewData["totReg"] = totRegAct;
             ViewData["accion"] = "0";
 
             return View(listadoActividadesTemp);
@@ -246,55 +250,72 @@ namespace DemoMVC.Controllers
 
             //Solo si hay elementos dentro de las actividades
             //Verificar total de planes de proyecto
-            int totReg = actividadDAO.totalRegistros(1, Convert.ToInt32(codPlanProy));
+            int totReg = Convert.ToInt32(formCollection["txtTotReg"].ToString());
+            //actividadDAO.totalRegistros(1, Convert.ToInt32(codPlanProy));
 
-            if (totReg > 0)
-            {
+            //if (totReg > 0)
+            //{
                 //Si es que ya se agrego por planificación rápida, mostrar:
-                listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy));
-            }            
+            //    listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy));
+            //}            
 
             //Segun el tipo de accion, hace algunas cosas:
             if (accionAct == 1)
             {
-                //Insertamos nuevo registro pero buscamos actividad ultima correlativa
-                int totRegCorr = 0;
-                if (totReg > 0) totRegCorr = listadoActividadesTemp.Count();
-                totReg = actividadDAO.totalRegistros(0,0);                
-                actividad.codAct = (totReg + 1);
-                actividad.corAct = (totRegCorr + 1);
-                actividad.codEnt = 1;
-                actividad.codPlaPro = Convert.ToInt32(codPlanProy);
-                actividad.desAct = "";
-                actividad.feciniAct = "11/06/2013";
-                actividad.fecfinAct = "11/06/2013";
-                actividad.preAct = "";
-                actividad.tipAct = "0";
-                listadoActividadesTemp.Add(actividad);
+                //????                
             }
             if (accionAct == 2)
             {
+                //Insertamos nuevo registro pero buscamos actividad ultima correlativa
+                int totRegCorr = 0;
+                totRegCorr = actividadDAO.totalRegistros(0, 0);
+
+                //Solo si totRegCorr es mayor a 0 se puede obtener el último valor:
+                if (totRegCorr > 0) {
+                    totRegCorr = actividadDAO.totalRegistros(2, 0);
+                }
+
+                //Luego, eliminamos todas las actividades de un plan para ingresarlas nuevamente
+                actividadDAO.eliminarActividad(1, 0, Convert.ToInt32(codPlanProy));
+
                 //Guardamos cambios dentro de la tabla. Si se quiere cambiar mas tarde, ahí están
                 for (int i = 1; i <= totReg; i++)
                 {
                     //Obtenemos el valor de cada objeto seleccionado:
+                    string codEnt = formCollection["sel_Ent" + i].ToString();
                     string descAct = formCollection["txt_nomAct_" + i].ToString();
                     string fecIniAct = formCollection["txt_fecIni" + i].ToString();
                     string fecFinAct = formCollection["txt_fecFin" + i].ToString();
                     string predecAct = formCollection["txt_Pred" + i].ToString();
                     //Adicionamos a un objeto actividad
-                    int upd = 0;
+                    actividad.codAct = (totRegCorr + 1);
                     actividad.corAct = i;
+                    actividad.codEnt = Convert.ToInt32(codEnt);
+                    if (actividad.codEnt == 1) ViewData["entSel1"] = "selected";
+                    if (actividad.codEnt == 2) ViewData["entSel2"] = "selected";
+                    if (actividad.codEnt == 3) ViewData["entSel3"] = "selected";    
                     actividad.codPlaPro = Convert.ToInt32(codPlanProy);
                     actividad.desAct = descAct;
                     actividad.feciniAct = fecIniAct;
                     actividad.fecfinAct = fecFinAct;
                     actividad.preAct = predecAct;
-                    upd = actividadDAO.actualizarActividad(actividad);
+                    actividad.tipAct = "0";
+                    int ins = 0;
+                    ins = actividadDAO.insertarActividad(actividad);
+                    totRegCorr = totRegCorr + 1;
+                    //Caso modificar
+                    //int upd = 0;
+                    //actividad.corAct = i;
+                    //actividad.codPlaPro = Convert.ToInt32(codPlanProy);
+                    //actividad.desAct = descAct;
+                    //actividad.feciniAct = fecIniAct;
+                    //actividad.fecfinAct = fecFinAct;
+                    //actividad.preAct = predecAct;
+                    //upd = actividadDAO.actualizarActividad(actividad);
                 };
                 listadoActividadesTemp = null;
                 listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy));
-                message = "Se modificaron las actividades seleccionadas";
+                message = "Se guardaron las actividades seleccionadas";
             }
             if (accionAct == 3)
             { 
@@ -303,17 +324,23 @@ namespace DemoMVC.Controllers
 
             }
             if (accionAct == 4)
-            { 
-                //Se da por finalizada la planificacion. Se graba el proyecto con status "PLA" (Planificado)
+            {
+                //Se da por finalizada la planificacion. Se graba el proyecto con status "SRE" (Planificado-actividades)
                 ProyectoDAO proyDAO = new ProyectoDAO();
                 int estatusProy = 0;
 
-                estatusProy = proyDAO.actualizarProyecto(Convert.ToInt32(codProy), "SRE");
+                estatusProy = proyDAO.actualizarProyecto(Convert.ToInt32(codProy), "SR");
+
+                listadoActividadesTemp = null;
+                listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy));
                 
                 message = "El Plan de Proyecto ha sido creado satisfactoriamente";
             }
 
             ViewData["Message"] = message;
+            ViewData["totReg"] = totReg;
+            ViewData["accion"] = "0";
+
             return View(listadoActividadesTemp);
         }
 
@@ -331,7 +358,7 @@ namespace DemoMVC.Controllers
             //Listado de Proyectos historicos a escoger
             List<ProyectoHist> listadoProyectoHist = null;
             ProyectoHistDAO proyHistDAO = new ProyectoHistDAO();
-            listadoProyectoHist = proyHistDAO.obtenerProyectoHistPorFiltro(1,1,"FIN");
+            listadoProyectoHist = proyHistDAO.obtenerProyectoHistPorFiltro(1,1,"FN",0,"",0,0,0);
 
             //Adjuntamos listado de ubigeos (Departamento)
             UbigeoDAO ubigeoDAO = new UbigeoDAO();
@@ -365,38 +392,89 @@ namespace DemoMVC.Controllers
         public ActionResult EstimadoRapido(FormCollection formCollection)
         {
             //Obtenemos valores de formulario anterior para mostrarlos nuevamente en la pantalla
-            String codProy = formCollection["txtCodProy"].ToString();
+            String codProy = formCollection["txtCodProyAct"].ToString();
             String accion = formCollection["txtAccion"].ToString();
+            String txtTipDur = formCollection["duracion"].ToString();
+            String txtCantDur = formCollection["cantDuracion"].ToString();
+            String txtTipProy = formCollection["tipo"].ToString();
+            String txtPriProy = formCollection["prioridad"].ToString();
+            String txtPreProy = formCollection["presupuesto"].ToString();
+            List<ProyectoHist> listadoProyectoHist = null;
             int codAccion = Convert.ToInt32(accion);
-            int tipoAccion = 0;
-            int codDpto = 0;
-            int codProv = 0;
-            int codDist = 0;
+            int duracion = 0;
+            int tipProy = 0;
+            int priProy = 0;
+            int presupuesto = 0;
 
-            if (codAccion == 0) 
-            { 
-                //Busqueda especial (todos los filtros)
-                tipoAccion = 4;
-            }
-            if (codAccion == 1)
+            //Si se ingresaron valores incorrectos
+            bool result = int.TryParse(txtCantDur, out duracion);
+
+            if (duracion == 0 && !txtCantDur.Equals(""))
             {
-                //Muestra provincias + listado generico
-                tipoAccion = 1;
+                ViewData["msgErr"] = "Valores incorrectos. Por favor, ingrese un código válido para la búsqueda";
             }
-            if (codAccion == 2)
+            else
             {
-                //Muestra distritos + listado generico
+                //A partir de aca todo es permitido
+                //Si no se ingresa duracion, valor = 0
+                if (!txtCantDur.Equals(""))
+                {
+                    duracion = Convert.ToInt32(txtCantDur);
+                }
+                //Si no se ingresa tipo de proyecto, valor 0
+                if (!txtTipProy.Equals(""))
+                {
+                    tipProy = Convert.ToInt32(txtTipProy);
+                }
+                //Si no se ingresa prioridad de proyecto valor 0
+                if (!txtPriProy.Equals(""))
+                {
+                    priProy = Convert.ToInt32(txtPriProy);
+                }
+                //Si no se ingresa presupuesto valor 0
+                if (!txtPreProy.Equals(""))
+                {
+                    presupuesto = Convert.ToInt32(txtPreProy);
+                }
+                int tipoAccion = 0;
+                int codDpto = 0;
+                int codProv = 0;
+                int codDist = 0;
+
+                if (codAccion == 0)
+                {
+                    //Busqueda especial (todos los filtros)
+                    tipoAccion = 4;
+                }
+                if (codAccion == 1)
+                {
+                    //Muestra provincias + listado generico
+                    tipoAccion = 1;
+                }
+                if (codAccion == 2)
+                {
+                    //Muestra distritos + listado generico
+                }
+
+                //Listado de Proyectos historicos a escoger
+                ProyectoHistDAO proyHistDAO = new ProyectoHistDAO();
+                listadoProyectoHist = proyHistDAO.obtenerProyectoHistPorFiltro(2, 1, "FN", duracion, txtTipDur, tipProy, priProy, presupuesto);
+
+                if (listadoProyectoHist != null)
+                {
+                    ViewData["msgErr"] = "";
+                    ViewData["totReg"] = listadoProyectoHist.Count;
+                }
+                else
+                {
+                    ViewData["msgErr"] = "No se encontraron registros para su búsqueda";
+                } 
             }
 
             //Listado Tipos Proyecto 
             List<TipoProyecto> listadoTipoProyectos = null;
             TipoProyectoDAO TipoProyecto = new TipoProyectoDAO();
             listadoTipoProyectos = TipoProyecto.obtenerTipoProyecto();
-
-            //Listado de Proyectos historicos a escoger
-            List<ProyectoHist> listadoProyectoHist = null;
-            ProyectoHistDAO proyHistDAO = new ProyectoHistDAO();
-            listadoProyectoHist = proyHistDAO.obtenerProyectoHistPorFiltro(1, 1, "FIN");
 
             //Adjuntamos listado de ubigeos (Departamento)
             List<Ubigeo> listadoUbigeoDep = null;
@@ -409,7 +487,8 @@ namespace DemoMVC.Controllers
             parametros.ListadoProyectoHist = listadoProyectoHist;
             parametros.ListadoUbigeoDep = listadoUbigeoDep;
 
-            ViewData["totReg"] = listadoProyectoHist.Count;
+            ViewData["codProy"] = codProy;
+            ViewData["accion"] = "0";
 
             return View(parametros);
         }
