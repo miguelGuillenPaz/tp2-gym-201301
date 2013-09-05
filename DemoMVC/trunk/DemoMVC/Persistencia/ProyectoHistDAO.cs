@@ -13,7 +13,7 @@ namespace DemoMVC.Persistencia
     {
 
         //Listado de ProyectoHists
-        public List<ProyectoHist> obtenerProyectoHistPorFiltro(int tipoFiltro, int codProy, string statusProy)
+        public List<ProyectoHist> obtenerProyectoHistPorFiltro(int tipoFiltro, int codProy, string statusProy, int durProy, string tipDurProy, int codTipProy, int priProy, int presupuesto)
         {
             List<ProyectoHist> listadoProyectoHists = null;
             ProyectoHist ProyectoHist = null;
@@ -21,30 +21,74 @@ namespace DemoMVC.Persistencia
 
             if (tipoFiltro == 0)
             {
-                sql = "select proy.*, tipProy.nomTipPro, preProy.impPre, ubigeo.nomUbiDep, ubigeo.nomUbiProv, ubigeo.nomUbiDist from dbo.T_ProyectoHist proy ";
-                sql = sql + "inner join dbo.T_TipoProyecto tipProy on tipProy.codTipPro = proy.codTipPro ";
-                sql = sql + "inner join dbo.T_Presupuesto preProy on preProy.codPro = proy.codPro ";
-                sql = sql + "inner join dbo.T_Ubigeo ubigeo on (ubigeo.codUbiDep = proy.codUbiDep ";
-                sql = sql + "and ubigeo.codUbiProv = proy.codUbiProv and ubigeo.codUbiDist = proy.codUbiDist) ";
-                sql = sql + "where proy.codPro=@codPro";
+                //Filtro por código único de proyecto histórico
+                sql = "select proy.*, tipProy.NombreTipoProy, preProy.ImporteTotal, ubigeo.NombreDep, ubigeo.NombreProv, ubigeo.NombreDist from dbo.GPP_ProyectoHist proy ";
+                sql = sql + "inner join dbo.GPP_TipoProyecto tipProy on tipProy.IdTipoProyecto = proy.IdTipoProyecto ";
+                sql = sql + "inner join dbo.GPP_Presupuesto preProy on preProy.IdProyecto = proy.IdProyectoHist ";
+                sql = sql + "inner join dbo.GPP_Ubigeo ubigeo on ubigeo.IdUbigeo = proy.IdUbigeo ";
+                sql = sql + "where proy.IdProyectoHist=@codPro";               
             }
             if (tipoFiltro == 1)
             {
-                sql = "select proy.*, tipProy.nomTipPro, preProy.impPre, ubigeo.nomUbiDep, ubigeo.nomUbiProv, ubigeo.nomUbiDist from dbo.T_ProyectoHist proy ";
-                sql = sql + "inner join dbo.T_TipoProyecto tipProy on tipProy.codTipPro = proy.codTipPro ";
-                sql = sql + "inner join dbo.T_Presupuesto preProy on preProy.codPro = proy.codPro ";
-                sql = sql + "inner join dbo.T_Ubigeo ubigeo on (ubigeo.codUbiDep = proy.codUbiDep ";
-                sql = sql + "and ubigeo.codUbiProv = proy.codUbiProv and ubigeo.codUbiDist = proy.codUbiDist) ";
-                sql = sql + "where proy.estPro=@estPro";
+                //Listado de proyectos históricos
+                sql = "select proy.*, tipProy.NombreTipoProy, preProy.ImporteTotal, ubigeo.NombreDep, ubigeo.NombreProv, ubigeo.NombreDist from dbo.GPP_ProyectoHist proy ";
+                sql = sql + "inner join dbo.GPP_TipoProyecto tipProy on tipProy.IdTipoProyecto = proy.IdTipoProyecto ";
+                sql = sql + "inner join dbo.GPP_Presupuesto preProy on preProy.IdProyecto = proy.IdProyectoHist ";
+                sql = sql + "inner join dbo.GPP_Ubigeo ubigeo on ubigeo.IdUbigeo = proy.IdUbigeo ";
+                sql = sql + "where proy.Estado=@estPro";
             }
             if (tipoFiltro == 2)
             {
-                sql = "select proy.*, tipProy.nomTipPro, preProy.impPre, ubigeo.nomUbiDep, ubigeo.nomUbiProv, ubigeo.nomUbiDist from dbo.T_ProyectoHist proy ";
-                sql = sql + "inner join dbo.T_TipoProyecto tipProy on tipProy.codTipPro = proy.codTipPro ";
-                sql = sql + "inner join dbo.T_Presupuesto preProy on preProy.codPro = proy.codPro ";
-                sql = sql + "inner join dbo.T_Ubigeo ubigeo on (ubigeo.codUbiDep = proy.codUbiDep ";
-                sql = sql + "and ubigeo.codUbiProv = proy.codUbiProv and ubigeo.codUbiDist = proy.codUbiDist) ";
-                sql = sql + "where proy.codPro=@codPro and proy.estPro=@estPro";
+                sql = "select proy.*, tipProy.NombreTipoProy, preProy.ImporteTotal, ubigeo.NombreDep, ubigeo.NombreProv, ubigeo.NombreDist from dbo.GPP_ProyectoHist proy ";
+                sql = sql + "inner join dbo.GPP_TipoProyecto tipProy on tipProy.IdTipoProyecto = proy.IdTipoProyecto ";
+                sql = sql + "inner join dbo.GPP_Presupuesto preProy on preProy.IdProyecto = proy.IdProyectoHist ";
+                sql = sql + "inner join dbo.GPP_Ubigeo ubigeo on ubigeo.IdUbigeo = proy.IdUbigeo "; 
+                sql = sql + "where proy.Estado=@estPro ";
+                //Listado por filtros
+                //Filtro por duracion del proyecto
+                if (durProy > 0)
+                {
+                    if (tipDurProy.Equals("d"))
+                    {
+                        sql = sql + "and DATEDIFF(DAY, CONVERT(DATETIME,proy.FechaInicioPlaneada), CONVERT(DATETIME,proy.FechaFinPlaneada)) = @durPro ";
+                    }
+                    if (tipDurProy.Equals("m"))
+                    {
+                        sql = sql + "and DATEDIFF(MONTH, CONVERT(DATETIME,proy.FechaInicioPlaneada), CONVERT(DATETIME,proy.FechaFinPlaneada)) = @durPro ";
+                    }
+                    if (tipDurProy.Equals("y"))
+                    {
+                        sql = sql + "and DATEDIFF(YEAR, CONVERT(DATETIME,proy.FechaInicioPlaneada), CONVERT(DATETIME,proy.FechaFinPlaneada)) = @durPro ";
+                    }
+                }
+                //Filtro por tipo de proyecto
+                if (codTipProy > 0) {
+                    sql = sql + "and proy.IdTipoProyecto=@tipPro ";
+                }
+                //Filtro por prioridad de proyecto
+                if (priProy > 0)
+                {
+                    sql = sql + "and proy.Prioridad=@priPro ";
+                }
+                //Filtro por presupuesto
+                if (presupuesto > 0) {
+                    if (presupuesto == 1) {
+                        //Menos de 50,000.00
+                        sql = sql + "and preProy.ImporteTotal between 0 and 50000 ";
+                    }
+                    if (presupuesto == 2) {
+                        //50,001.00 - 100,000.00
+                        sql = sql + "and preProy.ImporteTotal between 50001 and 100000 ";
+                    }
+                    if (presupuesto == 3)
+                    {   //100,001.00 - 800,000.00
+                        sql = sql + "and preProy.ImporteTotal between 100001 and 800000 ";    
+                    }
+                    if (presupuesto == 4)
+                    {   //800,001.00 a más
+                        sql = sql + "and preProy.ImporteTotal > 800001 ";
+                    }
+                }
             }
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
@@ -62,8 +106,17 @@ namespace DemoMVC.Persistencia
                     }
                     if (tipoFiltro == 2)
                     {
-                        com.Parameters.Add(new SqlParameter("@codPro", codProy));
                         com.Parameters.Add(new SqlParameter("@estPro", statusProy));
+                        if (durProy > 0) {
+                            com.Parameters.Add(new SqlParameter("@durPro", durProy));
+                        }                        
+                        if (codTipProy > 0) {
+                            com.Parameters.Add(new SqlParameter("@tipPro", codTipProy));
+                        }
+                        if (priProy > 0)
+                        {
+                            com.Parameters.Add(new SqlParameter("@priPro", priProy));
+                        }
                     }
 
                     using (SqlDataReader resultado = com.ExecuteReader())
@@ -77,31 +130,27 @@ namespace DemoMVC.Persistencia
                                 //Recorremos objeto por objeto y anadimos
                                 ProyectoHist = new ProyectoHist
                                 {
-                                    codPro = (int)resultado["codPro"],
-                                    codTipPro = (int)resultado["codTipPro"],
-                                    codUbiDep = (int)resultado["codUbiDep"],
-                                    codFluCaj = (int)resultado["codFluCaj"],
-                                    codUbiProv = (int)resultado["codUbiProv"],
-                                    codUbiDist = (int)resultado["codUbiDist"],
-                                    nomPro = (string)resultado["nomPro"],
-                                    feciniplaPro = (string)resultado["feciniplaPro"],
-                                    fecfinplaPro = (string)resultado["fecfinplaPro"],
-                                    fecinireaPro = (string)resultado["fecinireaPro"],
-                                    fecfinreaPro = (string)resultado["fecfinreaPro"],
-                                    priPro = (int)resultado["priPro"],
-                                    desPro = (string)resultado["desPro"],
-                                    razsocfacPro = (string)resultado["razsocfacPro"],
-                                    conpagPro = (string)resultado["conpagPro"],
-                                    monfacPro = (string)resultado["monfacPro"],
-                                    nrohojenvPro = (int)resultado["nrohojenvPro"],
-                                    fechojenvPro = (string)resultado["fechojenvPro"],
-                                    estPro = (string)resultado["estPro"],
-                                    rucfacPro = (string)resultado["rucfacPro"],
-                                    tipoProyecto = (string)resultado["nomTipPro"],
-                                    presupuesto = (double)resultado["impPre"],
-                                    nomUbiDep = (string)resultado["nomUbiDep"],
-                                    nomUbiProv = (string)resultado["nomUbiProv"],
-                                    nomUbiDist = (string)resultado["nomUbiDist"],
+                                    codPro = (int)resultado["IdProyectoHist"],
+                                    codTipPro = (int)resultado["IdTipoProyecto"],
+                                    nomPro = (string)resultado["Nombre"],
+                                    feciniplaPro = (string)resultado["FechaInicioPlaneada"],
+                                    fecfinplaPro = (string)resultado["FechaFinPlaneada"],
+                                    fecinireaPro = (string)resultado["FechaInicioReal"],
+                                    fecfinreaPro = (string)resultado["FechaFinReal"],
+                                    priPro = (int)resultado["Prioridad"],
+                                    desPro = (string)resultado["Descripcion"],
+                                    razsocfacPro = (string)resultado["RazonSocial"],
+                                    conpagPro = (string)resultado["CondicionPago"],
+                                    monfacPro = (string)resultado["MontoFacturado"],
+                                    nrohojenvPro = (int)resultado["NroHojaEnvio"],
+                                    fechojenvPro = (string)resultado["FechaHojaEnvio"],
+                                    estPro = (string)resultado["Estado"],
+                                    rucfacPro = (string)resultado["Ruc"],
+                                    tipoProyecto = (string)resultado["NombreTipoProy"],
+                                    presupuesto = (double)resultado["ImporteTotal"],
+                                    nomUbiDep = (string)resultado["NombreDep"],
+                                    nomUbiProv = (string)resultado["NombreProv"],
+                                    nomUbiDist = (string)resultado["NombreDist"],
                                 };
                                 listadoProyectoHists.Add(ProyectoHist);
 
@@ -112,6 +161,7 @@ namespace DemoMVC.Persistencia
                             Debug.WriteLine("No retornó registros");
                         }
                     }
+                    con.Close();
                 }
             }
             return listadoProyectoHists;

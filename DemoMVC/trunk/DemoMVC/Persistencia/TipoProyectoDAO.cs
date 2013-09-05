@@ -17,7 +17,7 @@ namespace DemoMVC.Persistencia
         {
             List<TipoProyecto> listadoTipoProyectos = null;
             TipoProyecto tipProy = null;
-            string sql = "select * from dbo.T_TipoProyecto";
+            string sql = "select * from dbo.GPP_TipoProyecto";
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena)) 
             {
@@ -34,9 +34,9 @@ namespace DemoMVC.Persistencia
                                 //Recorremos objeto por objeto y anadimos
                                 tipProy = new TipoProyecto
                                 {
-                                    nomTipPro = (string)resultado["nomTipPro"],
-                                    desTipPro = (string)resultado["desTipPro"],
-                                    codTipPro = (int)resultado["codTipPro"],
+                                    nomTipPro = (string)resultado["NombreTipoProy"],
+                                    desTipPro = (string)resultado["Descripcion"],
+                                    codTipPro = (int)resultado["IdTipoProyecto"],
                                 };
                                 //Adicionamos al arreglo del objeto
                                 listadoTipoProyectos.Add(tipProy);

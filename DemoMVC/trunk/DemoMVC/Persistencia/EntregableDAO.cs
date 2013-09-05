@@ -16,7 +16,7 @@ namespace DemoMVC.Persistencia
         public int totalRegistros(int codEnt, int codPro)
         {
 
-            string sql = "select count(*) from dbo.T_Entregable where codEnt=@codEnt and codPro=@codPro";
+            string sql = "select count(*) from dbo.GPP_Entregable where IdEntregable=@codEnt and IdProyecto=@codPro";
             int totReg = 0;
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
@@ -43,7 +43,7 @@ namespace DemoMVC.Persistencia
         public int insertarEntregable(Entregable entregable)
         {
 
-            string sql = "insert into dbo.T_Entregable values (@nomEnt,@desEnt,@codEnt,@codPro)";
+            string sql = "insert into dbo.GPP_Entregable values (@codEnt,@nomEnt,@desEnt,@codPro)";
             int totIns = 0;
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
@@ -73,7 +73,7 @@ namespace DemoMVC.Persistencia
         public int actualizarEntregable(Entregable entregable)
         {
 
-            string sql = "update dbo.T_Entregable set nomEnt=@nomEnt, desEnt=@desEnt, codEnt=@codEnt, codPro=@codPro)";
+            string sql = "update dbo.GPP_Entregable set Nombre=@nomEnt, Descripcion=@desEnt, IdEntregable=@codEnt, IdProyecto=@codPro)";
             int totUpd = 0;
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
@@ -102,7 +102,7 @@ namespace DemoMVC.Persistencia
         //Eliminar Entregable
         public void eliminarEntregable(int codEnt, int codPro)
         {
-            string sql = "delete from dbo.T_Entregable where codEnt=@codEnt";
+            string sql = "delete from dbo.GPP_Entregable where IdEntregable=@codEnt";
 
             try
             {

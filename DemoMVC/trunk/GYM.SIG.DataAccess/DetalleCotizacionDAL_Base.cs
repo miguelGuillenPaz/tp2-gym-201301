@@ -29,12 +29,12 @@ namespace GYM.SIG.DataAccess
                         coleccion.Add(new DetalleCotizacion
                         {
                             codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
-                            codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
-                            descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
-                            cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
-                            precio = lector.IsDBNull(lector.GetOrdinal("precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("precio")),
-                            importe = lector.IsDBNull(lector.GetOrdinal("importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("importe")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codCotDet = lector.GetInt32(lector.GetOrdinal("IdCotDet")),
+                            descripcion = lector.IsDBNull(lector.GetOrdinal("Descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("Descripcion")),
+                            cantidad = lector.IsDBNull(lector.GetOrdinal("Cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Cantidad")),
+                            precio = lector.IsDBNull(lector.GetOrdinal("Precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Precio")),
+                            importe = lector.IsDBNull(lector.GetOrdinal("Importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Importe")),
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         });
                     }
@@ -70,12 +70,12 @@ namespace GYM.SIG.DataAccess
                         coleccion.Add(new DetalleCotizacion
                         {
                             codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
-                            codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
-                            descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
-                            cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
-                            precio = lector.IsDBNull(lector.GetOrdinal("precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("precio")),
-                            importe = lector.IsDBNull(lector.GetOrdinal("importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("importe")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codCotDet = lector.GetInt32(lector.GetOrdinal("IdCotDet")),
+                            descripcion = lector.IsDBNull(lector.GetOrdinal("Descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("Descripcion")),
+                            cantidad = lector.IsDBNull(lector.GetOrdinal("Cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Cantidad")),
+                            precio = lector.IsDBNull(lector.GetOrdinal("Precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Precio")),
+                            importe = lector.IsDBNull(lector.GetOrdinal("Importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Importe")),
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         });
                     }
@@ -105,12 +105,12 @@ namespace GYM.SIG.DataAccess
                         coleccion.Add(new DetalleCotizacion
                         {
                             codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
-                            codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
-                            descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
-                            cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
-                            precio = lector.IsDBNull(lector.GetOrdinal("precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("precio")),
-                            importe = lector.IsDBNull(lector.GetOrdinal("importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("importe")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codCotDet = lector.GetInt32(lector.GetOrdinal("IdCotDet")),
+                            descripcion = lector.IsDBNull(lector.GetOrdinal("Descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("Descripcion")),
+                            cantidad = lector.IsDBNull(lector.GetOrdinal("Cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Cantidad")),
+                            precio = lector.IsDBNull(lector.GetOrdinal("Precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Precio")),
+                            importe = lector.IsDBNull(lector.GetOrdinal("Importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Importe")),
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         });
                     }
@@ -152,7 +152,7 @@ namespace GYM.SIG.DataAccess
             {
                 DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
                 _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 10);
-                _db.AddInParameter(SQL, "codUM", DbType.Int32);
+                _db.AddInParameter(SQL, "IdUnidadMedida", DbType.Int32);
                 var coleccion = new List<DetalleCotizacion>();
                 using (var lector = _db.ExecuteReader(SQL))
                 {
@@ -161,12 +161,12 @@ namespace GYM.SIG.DataAccess
                         coleccion.Add(new DetalleCotizacion
                         {
                             codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
-                            codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
-                            descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
-                            cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
-                            precio = lector.IsDBNull(lector.GetOrdinal("precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("precio")),
-                            importe = lector.IsDBNull(lector.GetOrdinal("importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("importe")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codCotDet = lector.GetInt32(lector.GetOrdinal("IdCotDet")),
+                            descripcion = lector.IsDBNull(lector.GetOrdinal("Descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("Descripcion")),
+                            cantidad = lector.IsDBNull(lector.GetOrdinal("Cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Cantidad")),
+                            precio = lector.IsDBNull(lector.GetOrdinal("Precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Precio")),
+                            importe = lector.IsDBNull(lector.GetOrdinal("Importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Importe")),
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         });
                     }
@@ -188,7 +188,7 @@ namespace GYM.SIG.DataAccess
             {
                 DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
                 _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 6);
-                _db.AddInParameter(SQL, "codUM", DbType.Int32);
+                _db.AddInParameter(SQL, "IdUnidadMedida", DbType.Int32);
                 int huboexito = _db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -208,8 +208,8 @@ namespace GYM.SIG.DataAccess
             {
                 DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
                 _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 7);
-                _db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
-                _db.AddInParameter(SQL, "codSolDet", DbType.Int32, codSolDet);
+                _db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, codSolCotizacion);
+                _db.AddInParameter(SQL, "IdSolicitudDetalle", DbType.Int32, codSolDet);
                 var DetalleCotizacion = default(DetalleCotizacion);
                 using (var lector = _db.ExecuteReader(SQL))
                 {
@@ -218,13 +218,13 @@ namespace GYM.SIG.DataAccess
                         DetalleCotizacion = new DetalleCotizacion
                         {
                             codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
-                            codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
-                            descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
-                            cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
-                            precio = lector.IsDBNull(lector.GetOrdinal("precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("precio")),
-                            importe = lector.IsDBNull(lector.GetOrdinal("importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("importe")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM")),
-                            desEstado = lector.IsDBNull(lector.GetOrdinal("desEstado")) ? "" : lector.GetString(lector.GetOrdinal("desEstado")),
+                            codCotDet = lector.GetInt32(lector.GetOrdinal("IdCotDet")),
+                            descripcion = lector.IsDBNull(lector.GetOrdinal("Descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("Descripcion")),
+                            cantidad = lector.IsDBNull(lector.GetOrdinal("Cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Cantidad")),
+                            precio = lector.IsDBNull(lector.GetOrdinal("Precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Precio")),
+                            importe = lector.IsDBNull(lector.GetOrdinal("Importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Importe")),
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida")),
+                            desEstado = lector.IsDBNull(lector.GetOrdinal("DescripEstado")) ? "" : lector.GetString(lector.GetOrdinal("DescripEstado")),
                         };
                     }
                 }
@@ -244,7 +244,7 @@ namespace GYM.SIG.DataAccess
                 DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
                 _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 3);
                 _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32, codCotizacion);
-                _db.AddInParameter(SQL, "codCotDet", DbType.Int32, codCotDet);
+                _db.AddInParameter(SQL, "IdCotDet", DbType.Int32, codCotDet);
                 var DetalleCotizacion = default(DetalleCotizacion);
                 using (var lector = _db.ExecuteReader(SQL))
                 {
@@ -253,12 +253,12 @@ namespace GYM.SIG.DataAccess
                         DetalleCotizacion = new DetalleCotizacion
                         {
                             codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
-                            codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
-                            descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
-                            cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
-                            precio = lector.IsDBNull(lector.GetOrdinal("precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("precio")),
-                            importe = lector.IsDBNull(lector.GetOrdinal("importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("importe")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codCotDet = lector.GetInt32(lector.GetOrdinal("IdCotDet")),
+                            descripcion = lector.IsDBNull(lector.GetOrdinal("Descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("Descripcion")),
+                            cantidad = lector.IsDBNull(lector.GetOrdinal("Cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Cantidad")),
+                            precio = lector.IsDBNull(lector.GetOrdinal("Precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Precio")),
+                            importe = lector.IsDBNull(lector.GetOrdinal("Importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Importe")),
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         };
                     }
@@ -293,15 +293,15 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddOutParameter(SQL, "codCotDet", DbType.Int32, 0);
+                _db.AddOutParameter(SQL, "IdCotDet", DbType.Int32, 0);
                 _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32, DetalleCotizacion.codCotizacion);
-                _db.AddInParameter(SQL, "descripcion", DbType.String, DetalleCotizacion.descripcion);
-                _db.AddInParameter(SQL, "cantidad", DbType.Decimal, DetalleCotizacion.cantidad);
-                _db.AddInParameter(SQL, "precio", DbType.Decimal, DetalleCotizacion.precio);
-                _db.AddInParameter(SQL, "importe", DbType.Decimal, DetalleCotizacion.importe);
-                _db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleCotizacion.codUM);
-                _db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, DetalleCotizacion.codSolCotizacion);
-                _db.AddInParameter(SQL, "codSolDet", DbType.Int32, DetalleCotizacion.codSolDet);
+                _db.AddInParameter(SQL, "Descripcion", DbType.String, DetalleCotizacion.descripcion);
+                _db.AddInParameter(SQL, "Cantidad", DbType.Decimal, DetalleCotizacion.cantidad);
+                _db.AddInParameter(SQL, "Precio", DbType.Decimal, DetalleCotizacion.precio);
+                _db.AddInParameter(SQL, "Importe", DbType.Decimal, DetalleCotizacion.importe);
+                _db.AddInParameter(SQL, "IdUnidadMedida", DbType.Int32, DetalleCotizacion.codUM);
+                _db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, DetalleCotizacion.codSolCotizacion);
+                _db.AddInParameter(SQL, "IdSolicitudDetalle", DbType.Int32, DetalleCotizacion.codSolDet);
                 _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 4);
                 int huboexito;
                 if (tran != null) huboexito = _db.ExecuteNonQuery(SQL, tran);
@@ -311,7 +311,7 @@ namespace GYM.SIG.DataAccess
                 {
                     throw new Exception("Error al agregar al");
                 }
-                var numerogenerado = (int)_db.GetParameterValue(SQL, "codCotDet");
+                var numerogenerado = (int)_db.GetParameterValue(SQL, "IdCotDet");
                 SQL.Dispose();
                 return numerogenerado;
             }
@@ -328,14 +328,14 @@ namespace GYM.SIG.DataAccess
             {
                 DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
                 _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32, DetalleCotizacion.codCotizacion);
-                _db.AddInParameter(SQL, "codCotDet", DbType.Int32, DetalleCotizacion.codCotDet);
-                _db.AddInParameter(SQL, "descripcion", DbType.String, DetalleCotizacion.descripcion);
-                _db.AddInParameter(SQL, "cantidad", DbType.Decimal, DetalleCotizacion.cantidad);
-                _db.AddInParameter(SQL, "precio", DbType.Decimal, DetalleCotizacion.precio);
-                _db.AddInParameter(SQL, "importe", DbType.Decimal, DetalleCotizacion.importe);
-                _db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleCotizacion.codUM);
-                _db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, DetalleCotizacion.codSolCotizacion);
-                _db.AddInParameter(SQL, "codSolDet", DbType.Int32, DetalleCotizacion.codSolDet);
+                _db.AddInParameter(SQL, "IdCotDet", DbType.Int32, DetalleCotizacion.codCotDet);
+                _db.AddInParameter(SQL, "Descripcion", DbType.String, DetalleCotizacion.descripcion);
+                _db.AddInParameter(SQL, "Cantidad", DbType.Decimal, DetalleCotizacion.cantidad);
+                _db.AddInParameter(SQL, "Precio", DbType.Decimal, DetalleCotizacion.precio);
+                _db.AddInParameter(SQL, "Importe", DbType.Decimal, DetalleCotizacion.importe);
+                _db.AddInParameter(SQL, "IdUnidadMedida", DbType.Int32, DetalleCotizacion.codUM);
+                _db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, DetalleCotizacion.codSolCotizacion);
+                _db.AddInParameter(SQL, "IdSolicitudDetalle", DbType.Int32, DetalleCotizacion.codSolDet);
                 _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 1);
                 int huboexito;
                 if (tran != null) huboexito = _db.ExecuteNonQuery(SQL, tran);
@@ -358,7 +358,7 @@ namespace GYM.SIG.DataAccess
             {
                 DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
                 _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32, codCotizacion);
-                _db.AddInParameter(SQL, "codCotDet", DbType.Int32, codCotDet);
+                _db.AddInParameter(SQL, "IdCotDet", DbType.Int32, codCotDet);
                 _db.AddInParameter(SQL, "TipoConsulta", DbType.String, 5);
                 int huboexito = _db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)

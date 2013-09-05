@@ -20,23 +20,23 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<Proveedor>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 8);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 8);
+                db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, codSolCotizacion);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Proveedor
                         {
-                            codProv = lector.GetInt32(lector.GetOrdinal("codProv")),
-                            rucPro = lector.GetString(lector.GetOrdinal("rucPro")),
-                            razsocPro = lector.GetString(lector.GetOrdinal("razsocPro")),
-                            dirPro = lector.IsDBNull(lector.GetOrdinal("dirPro")) ? "" : lector.GetString(lector.GetOrdinal("dirPro")),
-                            emailPro = lector.IsDBNull(lector.GetOrdinal("emailPro")) ? "" : lector.GetString(lector.GetOrdinal("emailPro")),
-                            estadoPro = lector.IsDBNull(lector.GetOrdinal("estadoPro")) ? "" : lector.GetString(lector.GetOrdinal("estadoPro")),
+                            codProv = lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            rucPro = lector.GetString(lector.GetOrdinal("RucProv")),
+                            razsocPro = lector.GetString(lector.GetOrdinal("RazonSocialProv")),
+                            dirPro = lector.IsDBNull(lector.GetOrdinal("DireccionProv")) ? "" : lector.GetString(lector.GetOrdinal("DireccionProv")),
+                            emailPro = lector.IsDBNull(lector.GetOrdinal("EmailProv")) ? "" : lector.GetString(lector.GetOrdinal("EmailProv")),
+                            estadoPro = lector.IsDBNull(lector.GetOrdinal("EstadoProv")) ? "" : lector.GetString(lector.GetOrdinal("EstadoProv")),
                             calificacion = lector.IsDBNull(lector.GetOrdinal("calificacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("calificacion")),
-                            contactoProTServ = lector.IsDBNull(lector.GetOrdinal("contactoProTServ")) ? "" : lector.GetString(lector.GetOrdinal("contactoProTServ")),
-                            emailProTServ = lector.IsDBNull(lector.GetOrdinal("emailProTServ")) ? "" : lector.GetString(lector.GetOrdinal("emailProTServ")),
+                            contactoProTServ = lector.IsDBNull(lector.GetOrdinal("ContactoProvTipoServ")) ? "" : lector.GetString(lector.GetOrdinal("ContactoProvTipoServ")),
+                            emailProTServ = lector.IsDBNull(lector.GetOrdinal("EmailProvTipoServ")) ? "" : lector.GetString(lector.GetOrdinal("EmailProvTipoServ")),
                         });
                     }
                 }
@@ -55,25 +55,25 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<Proveedor>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 7);
-                db.AddInParameter(SQL, "tipoBusqueda", DbType.String, tipoBusqueda);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 7);
+                db.AddInParameter(SQL, "TipoBusqueda", DbType.String, tipoBusqueda);
                 db.AddInParameter(SQL, "expresion", DbType.String, expresion);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32, codTServ);
+                db.AddInParameter(SQL, "IdTipoServicio", DbType.Int32, codTServ);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Proveedor
                         {
-                            codProv = lector.GetInt32(lector.GetOrdinal("codProv")),
-                            rucPro = lector.GetString(lector.GetOrdinal("rucPro")),
-                            razsocPro = lector.GetString(lector.GetOrdinal("razsocPro")),
-                            dirPro = lector.IsDBNull(lector.GetOrdinal("dirPro")) ? "" : lector.GetString(lector.GetOrdinal("dirPro")),
-                            emailPro = lector.IsDBNull(lector.GetOrdinal("emailPro")) ? "" : lector.GetString(lector.GetOrdinal("emailPro")),
-                            estadoPro = lector.IsDBNull(lector.GetOrdinal("estadoPro")) ? "" : lector.GetString(lector.GetOrdinal("estadoPro")),
+                            codProv = lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            rucPro = lector.GetString(lector.GetOrdinal("RucProv")),
+                            razsocPro = lector.GetString(lector.GetOrdinal("RazonSocialProv")),
+                            dirPro = lector.IsDBNull(lector.GetOrdinal("DireccionProv")) ? "" : lector.GetString(lector.GetOrdinal("DireccionProv")),
+                            emailPro = lector.IsDBNull(lector.GetOrdinal("EmailProv")) ? "" : lector.GetString(lector.GetOrdinal("EmailProv")),
+                            estadoPro = lector.IsDBNull(lector.GetOrdinal("EstadoProv")) ? "" : lector.GetString(lector.GetOrdinal("EstadoProv")),
                             calificacion = lector.IsDBNull(lector.GetOrdinal("calificacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("calificacion")),
-                            contactoProTServ = lector.IsDBNull(lector.GetOrdinal("contactoProTServ")) ? "" : lector.GetString(lector.GetOrdinal("contactoProTServ")),
-                            emailProTServ = lector.IsDBNull(lector.GetOrdinal("emailProTServ")) ? "" : lector.GetString(lector.GetOrdinal("emailProTServ")),
+                            contactoProTServ = lector.IsDBNull(lector.GetOrdinal("ContactoProvTipoServ")) ? "" : lector.GetString(lector.GetOrdinal("ContactoProvTipoServ")),
+                            emailProTServ = lector.IsDBNull(lector.GetOrdinal("EmailProvTipoServ")) ? "" : lector.GetString(lector.GetOrdinal("EmailProvTipoServ")),
                         });
                     }
                 }
@@ -92,19 +92,19 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<Proveedor>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 2);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 2);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Proveedor
                         {
-                            codProv = lector.GetInt32(lector.GetOrdinal("codProv")),
-                            rucPro = lector.GetString(lector.GetOrdinal("rucPro")),
-                            razsocPro = lector.GetString(lector.GetOrdinal("razsocPro")),
-                            dirPro = lector.IsDBNull(lector.GetOrdinal("dirPro")) ? "" : lector.GetString(lector.GetOrdinal("dirPro")),
-                            emailPro = lector.IsDBNull(lector.GetOrdinal("emailPro")) ? "" : lector.GetString(lector.GetOrdinal("emailPro")),
-                            estadoPro = lector.IsDBNull(lector.GetOrdinal("estadoPro")) ? "" : lector.GetString(lector.GetOrdinal("estadoPro")),
+                            codProv = lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            rucPro = lector.GetString(lector.GetOrdinal("RucProv")),
+                            razsocPro = lector.GetString(lector.GetOrdinal("RazonSocialProv")),
+                            dirPro = lector.IsDBNull(lector.GetOrdinal("DireccionProv")) ? "" : lector.GetString(lector.GetOrdinal("DireccionProv")),
+                            emailPro = lector.IsDBNull(lector.GetOrdinal("EmailProv")) ? "" : lector.GetString(lector.GetOrdinal("EmailProv")),
+                            estadoPro = lector.IsDBNull(lector.GetOrdinal("EstadoProv")) ? "" : lector.GetString(lector.GetOrdinal("EstadoProv")),
                             contactoProTServ = "",
                             emailProTServ = "",
                             calificacion = 0,
@@ -139,11 +139,11 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new Proveedor
                         {
-                            codProv = lector.GetInt32(lector.GetOrdinal("codProv")),
-                            rucPro = lector.GetString(lector.GetOrdinal("rucPro")),
-                            razsocPro = lector.GetString(lector.GetOrdinal("razsocPro")),
-                            dirPro = lector.IsDBNull(lector.GetOrdinal("dirPro")) ? "" : lector.GetString(lector.GetOrdinal("dirPro")),
-                            emailPro = lector.IsDBNull(lector.GetOrdinal("emailPro")) ? "" : lector.GetString(lector.GetOrdinal("emailPro"))
+                            codProv = lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            rucPro = lector.GetString(lector.GetOrdinal("RucProv")),
+                            razsocPro = lector.GetString(lector.GetOrdinal("RazonSocialProv")),
+                            dirPro = lector.IsDBNull(lector.GetOrdinal("DireccionProv")) ? "" : lector.GetString(lector.GetOrdinal("DireccionProv")),
+                            emailPro = lector.IsDBNull(lector.GetOrdinal("EmailProv")) ? "" : lector.GetString(lector.GetOrdinal("EmailProv"))
 
                         });
                     }
@@ -163,8 +163,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 3);
-                db.AddInParameter(SQL, "codProv", DbType.Int32, codProv);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 3);
+                db.AddInParameter(SQL, "IdProveedor", DbType.Int32, codProv);
                 var Proveedor = default(Proveedor);
                 using (var lector = db.ExecuteReader(SQL))
                 {
@@ -172,11 +172,11 @@ namespace GYM.SIG.DataAccess
                     {
                         Proveedor = new Proveedor
                         {
-                            codProv = lector.GetInt32(lector.GetOrdinal("codProv")),
-                            rucPro = lector.GetString(lector.GetOrdinal("rucPro")),
-                            razsocPro = lector.GetString(lector.GetOrdinal("razsocPro")),
-                            dirPro = lector.IsDBNull(lector.GetOrdinal("dirPro")) ? "" : lector.GetString(lector.GetOrdinal("dirPro")),
-                            emailPro = lector.IsDBNull(lector.GetOrdinal("emailPro")) ? "" : lector.GetString(lector.GetOrdinal("emailPro"))
+                            codProv = lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            rucPro = lector.GetString(lector.GetOrdinal("RucProv")),
+                            razsocPro = lector.GetString(lector.GetOrdinal("RazonSocialProv")),
+                            dirPro = lector.IsDBNull(lector.GetOrdinal("DireccionProv")) ? "" : lector.GetString(lector.GetOrdinal("DireccionProv")),
+                            emailPro = lector.IsDBNull(lector.GetOrdinal("EmailProv")) ? "" : lector.GetString(lector.GetOrdinal("EmailProv"))
 
                         };
                     }
@@ -211,12 +211,12 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codProv", DbType.Int32, Proveedor.codProv);
-                db.AddInParameter(SQL, "rucPro", DbType.String, Proveedor.rucPro);
-                db.AddInParameter(SQL, "razsocPro", DbType.String, Proveedor.razsocPro);
-                db.AddInParameter(SQL, "dirPro", DbType.String, Proveedor.dirPro);
-                db.AddInParameter(SQL, "emailPro", DbType.String, Proveedor.emailPro);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 4);
+                db.AddInParameter(SQL, "IdProveedor", DbType.Int32, Proveedor.codProv);
+                db.AddInParameter(SQL, "RucProv", DbType.String, Proveedor.rucPro);
+                db.AddInParameter(SQL, "RazonSocialProv", DbType.String, Proveedor.razsocPro);
+                db.AddInParameter(SQL, "DireccionProv", DbType.String, Proveedor.dirPro);
+                db.AddInParameter(SQL, "EmailProv", DbType.String, Proveedor.emailPro);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 4);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -238,12 +238,12 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codProv", DbType.Int32, Proveedor.codProv);
-                db.AddInParameter(SQL, "rucPro", DbType.String, Proveedor.rucPro);
-                db.AddInParameter(SQL, "razsocPro", DbType.String, Proveedor.razsocPro);
-                db.AddInParameter(SQL, "dirPro", DbType.String, Proveedor.dirPro);
-                db.AddInParameter(SQL, "emailPro", DbType.String, Proveedor.emailPro);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 1);
+                db.AddInParameter(SQL, "IdProveedor", DbType.Int32, Proveedor.codProv);
+                db.AddInParameter(SQL, "RucProv", DbType.String, Proveedor.rucPro);
+                db.AddInParameter(SQL, "RazonSocialProv", DbType.String, Proveedor.razsocPro);
+                db.AddInParameter(SQL, "DireccionProv", DbType.String, Proveedor.dirPro);
+                db.AddInParameter(SQL, "EmailProv", DbType.String, Proveedor.emailPro);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 1);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -262,8 +262,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codProv", DbType.Int32, codProv);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 5);
+                db.AddInParameter(SQL, "IdProveedor", DbType.Int32, codProv);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 5);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -283,7 +283,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 6);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 6);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {

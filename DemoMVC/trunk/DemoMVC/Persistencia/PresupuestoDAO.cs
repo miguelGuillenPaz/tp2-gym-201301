@@ -19,7 +19,7 @@ namespace DemoMVC.Persistencia
             Presupuesto Presupuesto = null;
             string sql = "";
 
-            if (tipoFiltro == 0) sql = "select * from dbo.T_Presupuesto where codPro=@codPro";
+            if (tipoFiltro == 0) sql = "select * from dbo.GPP_Presupuesto where IdProyecto=@codPro";
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
@@ -42,15 +42,15 @@ namespace DemoMVC.Persistencia
                                 //Recorremos objeto por objeto y anadimos
                                 Presupuesto = new Presupuesto
                                 {
-                                    codPre = (int)resultado["codPre"],
-                                    codPro = (int)resultado["codPro"],
-                                    codTipMon = (int)resultado["codTipMon"],
-                                    verPre = (int)resultado["verPre"],
-                                    fecPre = (string)resultado["fecPre"],
-                                    monPre = (double)resultado["monPre"],
-                                    impPre = (double)resultado["impPre"],
-                                    estPre = (string)resultado["estPre"],
-                                    impconPre = (double)resultado["impconPre"],
+                                    codPre = (int)resultado["IdPresupuesto"],
+                                    codPro = (int)resultado["IdProyecto"],
+                                    codTipMon = (int)resultado["IdMoneda"],
+                                    verPre = (int)resultado["NroVersion"],
+                                    fecPre = (string)resultado["Fecha"],
+                                    monPre = (double)resultado["Moneda"],
+                                    impPre = (double)resultado["ImporteTotal"],
+                                    estPre = (string)resultado["Estado"],
+                                    impconPre = (double)resultado["ImporteAsignado"],
                                 };
                                 //Adicionamos al arreglo el objeto
                                 listadoPresupuestos.Add(Presupuesto);
@@ -62,6 +62,7 @@ namespace DemoMVC.Persistencia
                         }
                     }
                 }
+                con.Close();
             }
             return listadoPresupuestos;
         }

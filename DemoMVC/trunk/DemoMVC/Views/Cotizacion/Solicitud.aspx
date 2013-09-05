@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-  <%--  <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />--%>
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="../../Scripts/kendo/kendo.flat.min.css" rel="stylesheet" type="text/css" />
     <link href="../../Scripts/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />

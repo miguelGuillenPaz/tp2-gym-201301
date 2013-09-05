@@ -20,20 +20,20 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<DetalleRequerimiento>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 11);
+                db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, codSolCotizacion);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 11);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new DetalleRequerimiento
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            codReq = lector.GetInt32(lector.GetOrdinal("codReq")),
-                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("codcorDetReq")),
-                            canDetReq = lector.IsDBNull(lector.GetOrdinal("canDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("canDetReq")),
-                            fecInicio = lector.IsDBNull(lector.GetOrdinal("fecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecInicio")),
-                            fecFin = lector.IsDBNull(lector.GetOrdinal("fecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecFin")),
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
+                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
+                            canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
+                            fecInicio = lector.IsDBNull(lector.GetOrdinal("FecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecInicio")),
+                            fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM")),
@@ -61,23 +61,23 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<DetalleRequerimiento>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, codPro);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, codPro);
                 db.AddInParameter(SQL, "codTServ", DbType.Int32, codTServ);
-                db.AddInParameter(SQL, "codReq", DbType.Int32, codReq);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 10);
+                db.AddInParameter(SQL, "IdRequerimiento", DbType.Int32, codReq);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 10);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new DetalleRequerimiento
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
                             nomPro = lector.IsDBNull(lector.GetOrdinal("nomPro")) ? "" : lector.GetString(lector.GetOrdinal("nomPro")),
-                            codReq = lector.GetInt32(lector.GetOrdinal("codReq")),
-                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("codcorDetReq")),
-                            canDetReq = lector.IsDBNull(lector.GetOrdinal("canDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("canDetReq")),
-                            fecInicio = lector.IsDBNull(lector.GetOrdinal("fecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecInicio")),
-                            fecFin = lector.IsDBNull(lector.GetOrdinal("fecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecFin")),
+                            codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
+                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
+                            canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
+                            fecInicio = lector.IsDBNull(lector.GetOrdinal("FecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecInicio")),
+                            fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desReq = lector.IsDBNull(lector.GetOrdinal("desReq")) ? "" : lector.GetString(lector.GetOrdinal("desReq")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
@@ -101,19 +101,19 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<DetalleRequerimiento>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 2);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 2);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new DetalleRequerimiento
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            codReq = lector.GetInt32(lector.GetOrdinal("codReq")),
-                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("codcorDetReq")),
-                            canDetReq = lector.IsDBNull(lector.GetOrdinal("canDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("canDetReq")),
-                            fecInicio = lector.IsDBNull(lector.GetOrdinal("fecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecInicio")),
-                            fecFin = lector.IsDBNull(lector.GetOrdinal("fecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecFin")),
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
+                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
+                            canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
+                            fecInicio = lector.IsDBNull(lector.GetOrdinal("FecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecInicio")),
+                            fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
@@ -151,12 +151,12 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new DetalleRequerimiento
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            codReq = lector.GetInt32(lector.GetOrdinal("codReq")),
-                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("codcorDetReq")),
-                            canDetReq = lector.IsDBNull(lector.GetOrdinal("canDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("canDetReq")),
-                            fecInicio = lector.IsDBNull(lector.GetOrdinal("fecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecInicio")),
-                            fecFin = lector.IsDBNull(lector.GetOrdinal("fecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecFin")),
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
+                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
+                            canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
+                            fecInicio = lector.IsDBNull(lector.GetOrdinal("FecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecInicio")),
+                            fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
@@ -179,8 +179,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 10);
-                db.AddInParameter(SQL, "codPro", DbType.Int32);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 10);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32);
                 var coleccion = new List<DetalleRequerimiento>();
                 using (var lector = db.ExecuteReader(SQL))
                 {
@@ -188,12 +188,12 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new DetalleRequerimiento
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            codReq = lector.GetInt32(lector.GetOrdinal("codReq")),
-                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("codcorDetReq")),
-                            canDetReq = lector.IsDBNull(lector.GetOrdinal("canDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("canDetReq")),
-                            fecInicio = lector.IsDBNull(lector.GetOrdinal("fecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecInicio")),
-                            fecFin = lector.IsDBNull(lector.GetOrdinal("fecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecFin")),
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
+                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
+                            canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
+                            fecInicio = lector.IsDBNull(lector.GetOrdinal("FecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecInicio")),
+                            fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
@@ -217,8 +217,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 6);
-                db.AddInParameter(SQL, "codPro", DbType.Int32);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 6);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -237,8 +237,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 10);
-                db.AddInParameter(SQL, "codReq", DbType.Int32);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 10);
+                db.AddInParameter(SQL, "IdRequerimiento", DbType.Int32);
                 var coleccion = new List<DetalleRequerimiento>();
                 using (var lector = db.ExecuteReader(SQL))
                 {
@@ -246,12 +246,12 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new DetalleRequerimiento
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            codReq = lector.GetInt32(lector.GetOrdinal("codReq")),
-                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("codcorDetReq")),
-                            canDetReq = lector.IsDBNull(lector.GetOrdinal("canDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("canDetReq")),
-                            fecInicio = lector.IsDBNull(lector.GetOrdinal("fecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecInicio")),
-                            fecFin = lector.IsDBNull(lector.GetOrdinal("fecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecFin")),
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
+                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
+                            canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
+                            fecInicio = lector.IsDBNull(lector.GetOrdinal("FecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecInicio")),
+                            fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
@@ -275,8 +275,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 6);
-                db.AddInParameter(SQL, "codReq", DbType.Int32);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 6);
+                db.AddInParameter(SQL, "IdRequerimiento", DbType.Int32);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -295,8 +295,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 10);
-                db.AddInParameter(SQL, "codcorDetReq", DbType.Int32);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 10);
+                db.AddInParameter(SQL, "IdCorDetReq", DbType.Int32);
                 var coleccion = new List<DetalleRequerimiento>();
                 using (var lector = db.ExecuteReader(SQL))
                 {
@@ -304,12 +304,12 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new DetalleRequerimiento
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            codReq = lector.GetInt32(lector.GetOrdinal("codReq")),
-                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("codcorDetReq")),
-                            canDetReq = lector.IsDBNull(lector.GetOrdinal("canDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("canDetReq")),
-                            fecInicio = lector.IsDBNull(lector.GetOrdinal("fecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecInicio")),
-                            fecFin = lector.IsDBNull(lector.GetOrdinal("fecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecFin")),
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
+                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
+                            canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
+                            fecInicio = lector.IsDBNull(lector.GetOrdinal("FecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecInicio")),
+                            fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
@@ -331,8 +331,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 6);
-                db.AddInParameter(SQL, "codcorDetReq", DbType.Int32);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 6);
+                db.AddInParameter(SQL, "IdCorDetReq", DbType.Int32);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -351,10 +351,10 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 3);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, codPro);
-                db.AddInParameter(SQL, "codReq", DbType.Int32, codReq);
-                db.AddInParameter(SQL, "codcorDetReq", DbType.Int32, codcorDetReq);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 3);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, codPro);
+                db.AddInParameter(SQL, "IdRequerimiento", DbType.Int32, codReq);
+                db.AddInParameter(SQL, "IdCorDetReq", DbType.Int32, codcorDetReq);
                 var DetalleRequerimiento = default(DetalleRequerimiento);
                 using (var lector = db.ExecuteReader(SQL))
                 {
@@ -362,12 +362,12 @@ namespace GYM.SIG.DataAccess
                     {
                         DetalleRequerimiento = new DetalleRequerimiento
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            codReq = lector.GetInt32(lector.GetOrdinal("codReq")),
-                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("codcorDetReq")),
-                            canDetReq = lector.IsDBNull(lector.GetOrdinal("canDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("canDetReq")),
-                            fecInicio = lector.IsDBNull(lector.GetOrdinal("fecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecInicio")),
-                            fecFin = lector.IsDBNull(lector.GetOrdinal("fecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecFin")),
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
+                            codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
+                            canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
+                            fecInicio = lector.IsDBNull(lector.GetOrdinal("FecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecInicio")),
+                            fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
@@ -405,16 +405,16 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, DetalleRequerimiento.codPro);
-                db.AddInParameter(SQL, "codReq", DbType.Int32, DetalleRequerimiento.codReq);
-                db.AddInParameter(SQL, "codcorDetReq", DbType.Int32, DetalleRequerimiento.codcorDetReq);
-                db.AddInParameter(SQL, "canDetReq", DbType.Int32, DetalleRequerimiento.canDetReq);
-                db.AddInParameter(SQL, "fecInicio", DbType.DateTime, DetalleRequerimiento.fecInicio);
-                db.AddInParameter(SQL, "fecFin", DbType.DateTime, DetalleRequerimiento.fecFin);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, DetalleRequerimiento.codPro);
+                db.AddInParameter(SQL, "IdRequerimiento", DbType.Int32, DetalleRequerimiento.codReq);
+                db.AddInParameter(SQL, "IdCorDetReq", DbType.Int32, DetalleRequerimiento.codcorDetReq);
+                db.AddInParameter(SQL, "CanDetReq", DbType.Int32, DetalleRequerimiento.canDetReq);
+                db.AddInParameter(SQL, "FecInicio", DbType.DateTime, DetalleRequerimiento.fecInicio);
+                db.AddInParameter(SQL, "FecFin", DbType.DateTime, DetalleRequerimiento.fecFin);
                 db.AddInParameter(SQL, "desServicio", DbType.String, DetalleRequerimiento.desServicio);
                 db.AddInParameter(SQL, "actServicio", DbType.String, DetalleRequerimiento.actServicio);
                 db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleRequerimiento.codUM);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 4);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 4);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -436,16 +436,16 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, DetalleRequerimiento.codPro);
-                db.AddInParameter(SQL, "codReq", DbType.Int32, DetalleRequerimiento.codReq);
-                db.AddInParameter(SQL, "codcorDetReq", DbType.Int32, DetalleRequerimiento.codcorDetReq);
-                db.AddInParameter(SQL, "canDetReq", DbType.Int32, DetalleRequerimiento.canDetReq);
-                db.AddInParameter(SQL, "fecInicio", DbType.DateTime, DetalleRequerimiento.fecInicio);
-                db.AddInParameter(SQL, "fecFin", DbType.DateTime, DetalleRequerimiento.fecFin);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, DetalleRequerimiento.codPro);
+                db.AddInParameter(SQL, "IdRequerimiento", DbType.Int32, DetalleRequerimiento.codReq);
+                db.AddInParameter(SQL, "IdCorDetReq", DbType.Int32, DetalleRequerimiento.codcorDetReq);
+                db.AddInParameter(SQL, "CanDetReq", DbType.Int32, DetalleRequerimiento.canDetReq);
+                db.AddInParameter(SQL, "FecInicio", DbType.DateTime, DetalleRequerimiento.fecInicio);
+                db.AddInParameter(SQL, "FecFin", DbType.DateTime, DetalleRequerimiento.fecFin);
                 db.AddInParameter(SQL, "desServicio", DbType.String, DetalleRequerimiento.desServicio);
                 db.AddInParameter(SQL, "actServicio", DbType.String, DetalleRequerimiento.actServicio);
                 db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleRequerimiento.codUM);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 1);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 1);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -464,10 +464,10 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, codPro);
-                db.AddInParameter(SQL, "codReq", DbType.Int32, codReq);
-                db.AddInParameter(SQL, "codcorDetReq", DbType.Int32, codcorDetReq);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 5);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, codPro);
+                db.AddInParameter(SQL, "IdRequerimiento", DbType.Int32, codReq);
+                db.AddInParameter(SQL, "IdCorDetReq", DbType.Int32, codcorDetReq);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 5);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -487,7 +487,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 6);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 6);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {

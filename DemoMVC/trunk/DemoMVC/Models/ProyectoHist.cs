@@ -20,7 +20,7 @@ namespace DemoMVC.Models
 	    public int codUbiProv { get; set; }
 	    public int codUbiDist { get; set; }
 	    public string nomPro { get; set; }
-	    public string feciniplaPro { get; set; }
+        public string feciniplaPro { get; set; }
 	    public string fecfinplaPro { get; set; }
 	    public string fecinireaPro { get; set; }
 	    public string fecfinreaPro { get; set; }

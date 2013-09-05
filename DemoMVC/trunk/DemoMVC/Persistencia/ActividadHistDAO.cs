@@ -22,11 +22,11 @@ namespace DemoMVC.Persistencia
             //Dependiendo el tipo, vemos el total de actividades en general para el ID único o el total correlativo
             if (tipo == 0)
             {
-                sql = "select count(*) from dbo.T_ActividadHist";
+                sql = "select count(*) from dbo.GPP_ActividadHist";
             }
             else
             {
-                sql = "select count(*) from dbo.T_ActividadHist where codPlaPro=@codPlaPro";
+                sql = "select count(*) from dbo.GPP_ActividadHist where IdPlanProyectoHist=@codPlaPro";
             }
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
@@ -56,7 +56,7 @@ namespace DemoMVC.Persistencia
             ActividadHist actividadHist = null;
             string sql = "";
 
-            if (tipAct == 0) sql = "select * from dbo.T_ActividadHist where codPlaPro=@codPlaPro";    
+            if (tipAct == 0) sql = "select * from dbo.GPP_ActividadHist where IdPlanProyectoHist=@codPlaPro";    
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena)) {
                 con.Open();
@@ -73,15 +73,15 @@ namespace DemoMVC.Persistencia
                                 //Recorremos objeto por objeto y anadimos
                                 actividadHist = new ActividadHist
                                 {
-                                    codAct = (int)resultado["codAct"],
-                                    corAct = (int)resultado["corAct"],
-                                    desAct = (string)resultado["desAct"],
-                                    feciniAct = (string)resultado["feciniAct"],
-                                    fecfinAct = (string)resultado["fecfinAct"],
-                                    preAct = (string)resultado["preAct"],
-                                    tipAct = (string)resultado["tipAct"],
-                                    codEnt = (int)resultado["codEnt"],
-                                    codPlaPro = (int)resultado["codPlaPro"],
+                                    codAct = (int)resultado["IdActividadHistorica"],
+                                    corAct = (int)resultado["Correlativo"],
+                                    desAct = (string)resultado["Descripcion"],
+                                    feciniAct = (string)resultado["FechaInicio"],
+                                    fecfinAct = (string)resultado["FechaFin"],
+                                    preAct = (string)resultado["Predecesor"],
+                                    tipAct = (string)resultado["Tipo"],
+                                    codEnt = (int)resultado["IdEntregable"],
+                                    codPlaPro = (int)resultado["IdPlanProyectoHist"],
                                 };
                                 //Añadimos al listado
                                 listadoActHist.Add(actividadHist);
@@ -93,6 +93,7 @@ namespace DemoMVC.Persistencia
                         }
                     }
                 }
+                con.Close();
             }
             return listadoActHist;
         }

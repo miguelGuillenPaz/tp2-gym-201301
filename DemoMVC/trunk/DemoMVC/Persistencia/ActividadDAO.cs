@@ -17,7 +17,7 @@ namespace DemoMVC.Persistencia
         {
             List<Actividad> listadoAct = null;
             Actividad actividad = null;
-            string sql = "select * from dbo.T_Actividad where codPlaPro=@codPlaPro";
+            string sql = "select * from dbo.GPP_Actividad where IdPlanProyecto=@codPlaPro";
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
@@ -36,15 +36,15 @@ namespace DemoMVC.Persistencia
                                 //Recorremos objeto por objeto y anadimos
                                 actividad = new Actividad
                                 {
-                                    codAct = (int)resultado["codAct"],
-                                    corAct = (int)resultado["corAct"],
-                                    desAct = (string)resultado["desAct"],
-                                    feciniAct = (string)resultado["feciniAct"],
-                                    fecfinAct = (string)resultado["fecfinAct"],
-                                    preAct = (string)resultado["preAct"],
-                                    tipAct = (string)resultado["tipAct"],
-                                    codEnt = (int)resultado["codEnt"],
-                                    codPlaPro = (int)resultado["codPlaPro"],
+                                    codAct = (int)resultado["IdActividad"],
+                                    corAct = (int)resultado["Correlativo"],
+                                    desAct = (string)resultado["Descripcion"],
+                                    feciniAct = (string)resultado["FechaInicio"],
+                                    fecfinAct = (string)resultado["FechaFin"],
+                                    preAct = (string)resultado["Predecesor"],
+                                    tipAct = (string)resultado["Tipo"],
+                                    codEnt = (int)resultado["IdEntregable"],
+                                    codPlaPro = (int)resultado["IdPlanProyecto"],
                                 };
                                 //Añadimos al listado
                                 listadoAct.Add(actividad);
@@ -56,6 +56,7 @@ namespace DemoMVC.Persistencia
                         }
                     }
                 }
+                con.Close();
             }
             return listadoAct;
         }
@@ -70,11 +71,17 @@ namespace DemoMVC.Persistencia
             //Dependiendo el tipo, vemos el total de actividades en general para el ID único o el total correlativo
             if (tipo == 0)
             {
-                sql = "select count(*) from dbo.T_Actividad";
+                sql = "select count(*) from dbo.GPP_Actividad";
             }
             else 
             {
-                sql = "select count(*) from dbo.T_Actividad where codPlaPro=@codPlaPro";
+                if (tipo == 1)
+                {
+                    sql = "select count(*) from dbo.GPP_Actividad where IdPlanProyecto=@codPlaPro";
+                }
+                else {
+                    sql = "select top 1 IdActividad from dbo.GPP_Actividad ORDER BY IdActividad desc";
+                }
             }
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
@@ -101,7 +108,7 @@ namespace DemoMVC.Persistencia
         public int insertarActividad(Actividad actividad)
         {
 
-            string sql = "insert into dbo.T_Actividad values (@codAct,@corAct,@desAct,@feciniAct,@fecfinAct,@preAct,@tipAct,@codEnt,@codPlaPro)";
+            string sql = "insert into dbo.GPP_Actividad values (@codAct,@corAct,@desAct,@feciniAct,@fecfinAct,@preAct,@tipAct,@codEnt,@codPlaPro)";
             int totIns = 0;
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
@@ -136,7 +143,7 @@ namespace DemoMVC.Persistencia
         public int actualizarActividad(Actividad actividad)
         {
 
-            string sql = "update dbo.T_Actividad set desAct=@desAct, feciniAct=@feciniAct, fecfinAct=@fecfinAct, preAct=@preAct where codPlaPro=@codPlaPro and corAct=@corAct";
+            string sql = "update dbo.GPP_Actividad set Descripcion=@desAct, FechaInicio=@feciniAct, FechaFin=@fecfinAct, Predecesor=@preAct where IdPlanProyecto=@codPlaPro and Correlativo=@corAct";
             int totUpd = 0;
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
@@ -165,16 +172,23 @@ namespace DemoMVC.Persistencia
         }
 
         //Eliminar actividad
-        public void eliminarActividad(int codAct) 
+        public void eliminarActividad(int tipo, int codAct, int codPlaPro) 
         {
-            string sql = "delete from dbo.T_Actividad where codAct=@codAct";
-
+            string sql = "";
+            if (tipo == 0) {
+                sql = "delete from dbo.GPP_Actividad where IdActividad=@codAct";
+            }
+            if (tipo == 1) {
+                sql = "delete from dbo.GPP_Actividad where IdPlanProyecto=@codPlaPro";
+            }
+            
             try
             {
                 using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
                 {
                     SqlCommand cmd = new SqlCommand(sql, con);
-                    cmd.Parameters.AddWithValue("@codAct", codAct);
+                    if (tipo == 0) cmd.Parameters.AddWithValue("@codAct", codAct);
+                    if (tipo == 1) cmd.Parameters.AddWithValue("@codPlaPro", codPlaPro);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();

@@ -19,7 +19,7 @@ namespace DemoMVC.Persistencia
             DetallePresupuesto DetallePresupuesto = null;
             string sql = "";
 
-            if (tipoFiltro == 0) sql = "select * from dbo.T_DetallePresupuesto where codPre=@codPre";
+            if (tipoFiltro == 0) sql = "select * from dbo.GPP_DetallePresupuesto where IdPresupuesto=@codPre";
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
@@ -42,12 +42,12 @@ namespace DemoMVC.Persistencia
                                 //Recorremos objeto por objeto y anadimos
                                 DetallePresupuesto = new DetallePresupuesto
                                 {
-                                    codDetPre = (int)resultado["codDetPre"],
-                                    codPre = (int)resultado["codPre"],
-                                    desDetPre = (string)resultado["desDetPre"],
-                                    porDetPre = (double)resultado["porDetPre"],
-                                    valDetPre = (double)resultado["valDetPre"],
-                                    codVarPre = (int)resultado["codVarPre"],
+                                    codDetPre = (int)resultado["IdDetPresupuesto"],
+                                    codPre = (int)resultado["IdPresupuesto"],
+                                    desDetPre = (string)resultado["Descripcion"],
+                                    porDetPre = (double)resultado["Porcentake"],
+                                    valDetPre = (double)resultado["Importe"],
+                                    codVarPre = (int)resultado["IdVariablePre"],
                                 };
                                 //Adicionamos al arreglo el objeto
                                 listadoDetallePresupuestos.Add(DetallePresupuesto);
@@ -59,6 +59,7 @@ namespace DemoMVC.Persistencia
                         }
                     }
                 }
+                con.Close();
             }
             return listadoDetallePresupuestos;
         }

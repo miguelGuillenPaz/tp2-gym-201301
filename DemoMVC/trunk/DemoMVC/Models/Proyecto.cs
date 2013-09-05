@@ -15,7 +15,7 @@ namespace DemoMVC.Models
         public int idProyecto { get; set; }
         public string nombreProyecto { get; set; }
 
-        public int codPro { get; set; }
+	    public int codPro { get; set; }
 	    public int codTipPro { get; set; }
 	    public int codUbiDep { get; set; }
 	    public int codFluCaj { get; set; }
@@ -31,7 +31,7 @@ namespace DemoMVC.Models
 	    public string razsocfacPro { get; set; }
 	    public string conpagPro { get; set; }
 	    public string monfacPro { get; set; }
-	    public int nrohojenvPro { get; set; }
+	    public string nrohojenvPro { get; set; }
 	    public string fechojenvPro { get; set; }
 	    public string estPro { get; set; }
 	    public string rucfacPro { get; set; }

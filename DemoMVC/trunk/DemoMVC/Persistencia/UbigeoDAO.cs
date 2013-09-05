@@ -18,12 +18,12 @@ namespace DemoMVC.Persistencia
             Ubigeo ubigeo = null;
             string sql = "";
 
-            if (codTipoUbi == 0) sql = "select distinct nomUbiDep, codUbiDep from dbo.T_Ubigeo";
-            if (codTipoUbi == 1) sql = "select distinct nomUbiProv, codUbiProv from dbo.T_Ubigeo where codUbiDep=@codUbiDep";
-            if (codTipoUbi == 2) sql = "select distinct nomUbiDist, codUbiDist from dbo.T_Ubigeo where codUbiDep=@codUbiDep and codUbiProv=@codUbiProv";
-            if (codTipoUbi == 3) sql = "select nomUbiDep from dbo.T_Ubigeo where codUbiDep=@codUbiDep";
-            if (codTipoUbi == 4) sql = "select nomUbiProv from dbo.T_Ubigeo where codUbiDep=@codUbiDep and codUbiProv=@codUbiProv";
-            if (codTipoUbi == 5) sql = "select nomUbiDist from dbo.T_Ubigeo where codUbiDep=@codUbiDep and codUbiProv=@codUbiProv and codUbiDist=@codUbiDist";
+            if (codTipoUbi == 0) sql = "select distinct NombreDep, CodigoDep from dbo.GPP_Ubigeo";
+            if (codTipoUbi == 1) sql = "select distinct NombreProv, CodigoProv from dbo.GPP_Ubigeo where CodigoDep=@codUbiDep";
+            if (codTipoUbi == 2) sql = "select distinct NombreDist, CodigoDist from dbo.GPP_Ubigeo where CodigoDep=@codUbiDep and CodigoProv=@codUbiProv";
+            if (codTipoUbi == 3) sql = "select NombreDep from dbo.GPP_Ubigeo where CodigoDep=@codUbiDep";
+            if (codTipoUbi == 4) sql = "select NombreProv from dbo.GPP_Ubigeo where CodigoDep=@codUbiDep and CodigoProv=@codUbiProv";
+            if (codTipoUbi == 5) sql = "select NombreDist from dbo.GPP_Ubigeo where CodigoDep=@codUbiDep and CodigoProv=@codUbiProv and CodigoDist=@codUbiDist";
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
@@ -65,8 +65,8 @@ namespace DemoMVC.Persistencia
                                         //Recorremos objeto por objeto y anadimos
                                         ubigeo = new Ubigeo
                                         {
-                                            codUbiDep = (int)resultado["codUbiDep"],
-                                            nomUbiDep = (string)resultado["nomUbiDep"],
+                                            codUbiDep = (int)resultado["CodigoDep"],
+                                            nomUbiDep = (string)resultado["NombreDep"],
                                         };
                                         if (ubigeo.codUbiDep == codUbiDep)
                                         {
@@ -78,8 +78,8 @@ namespace DemoMVC.Persistencia
                                         //Recorremos objeto por objeto y anadimos
                                         ubigeo = new Ubigeo
                                         {
-                                            codUbiProv = (int)resultado["codUbiProv"],
-                                            nomUbiProv = (string)resultado["nomUbiProv"],
+                                            codUbiProv = (int)resultado["CodigoProv"],
+                                            nomUbiProv = (string)resultado["NombreProv"],
                                         };
                                         if (ubigeo.codUbiProv == codUbiProv)
                                         {
@@ -91,8 +91,8 @@ namespace DemoMVC.Persistencia
                                         //Recorremos objeto por objeto y anadimos
                                         ubigeo = new Ubigeo
                                         {
-                                            codUbiDist = (int)resultado["codUbiDist"],
-                                            nomUbiDist = (string)resultado["nomUbiDist"],
+                                            codUbiDist = (int)resultado["CodigoDist"],
+                                            nomUbiDist = (string)resultado["NombreDist"],
                                         };
                                         if (ubigeo.codUbiDist == codUbiDist)
                                         {
@@ -106,14 +106,14 @@ namespace DemoMVC.Persistencia
                                     //Recorremos objeto por objeto y anadimos
                                     ubigeo = new Ubigeo
                                     {
-                                        codUbigeo = (int)resultado["codUbigeo"],
-                                        codUbiDep = (int)resultado["codUbiDep"],
-                                        codUbiProv = (int)resultado["codUbiProv"],
-                                        codUbiDist = (int)resultado["codUbiDist"],
-                                        nomUbiDep = (string)resultado["nomUbiDep"],
-                                        nomUbiProv = (string)resultado["nomUbiProv"],
-                                        nomUbiDist = (string)resultado["nomUbiDist"],
-                                        codposUbi = (string)resultado["codposUbi"],
+                                        codUbigeo = (int)resultado["IdUbigeo"],
+                                        codUbiDep = (int)resultado["CodigoDep"],
+                                        codUbiProv = (int)resultado["CodigoProv"],
+                                        codUbiDist = (int)resultado["CodigoDist"],
+                                        nomUbiDep = (string)resultado["NombreDep"],
+                                        nomUbiProv = (string)resultado["NombreProv"],
+                                        nomUbiDist = (string)resultado["NombreDist"],
+                                        codposUbi = (string)resultado["CodigoPostal"],
                                     };
                                     //Adicionamos al arreglo del objeto
                                     listadoUbigeos.Add(ubigeo);                                
