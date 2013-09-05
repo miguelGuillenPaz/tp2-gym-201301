@@ -20,18 +20,18 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<Proyecto>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 2);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 2);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Proyecto
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            nomPro = lector.IsDBNull(lector.GetOrdinal("nomPro")) ? default(String) : lector.GetString(lector.GetOrdinal("nomPro")),
-                            desPro = lector.IsDBNull(lector.GetOrdinal("desPro")) ? default(String) : lector.GetString(lector.GetOrdinal("desPro")),
-                            feciniplPro = lector.IsDBNull(lector.GetOrdinal("feciniplPro")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("feciniplPro")),
-                            fefinplanPro = lector.IsDBNull(lector.GetOrdinal("fefinplanPro")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fefinplanPro"))
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            nomPro = lector.IsDBNull(lector.GetOrdinal("Nombre")) ? default(String) : lector.GetString(lector.GetOrdinal("Nombre")),
+                            desPro = lector.IsDBNull(lector.GetOrdinal("Descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("Descripcion")),
+                            feciniplPro = lector.IsDBNull(lector.GetOrdinal("FechaInicioPlaneada")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicioPlaneada")),
+                            fefinplanPro = lector.IsDBNull(lector.GetOrdinal("FechaFinPlaneada")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFinPlaneada"))
 
                         });
                     }
@@ -64,11 +64,11 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new Proyecto
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            nomPro = lector.IsDBNull(lector.GetOrdinal("nomPro")) ? default(String) : lector.GetString(lector.GetOrdinal("nomPro")),
-                            desPro = lector.IsDBNull(lector.GetOrdinal("desPro")) ? default(String) : lector.GetString(lector.GetOrdinal("desPro")),
-                            feciniplPro = lector.IsDBNull(lector.GetOrdinal("feciniplPro")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("feciniplPro")),
-                            fefinplanPro = lector.IsDBNull(lector.GetOrdinal("fefinplanPro")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fefinplanPro"))
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            nomPro = lector.IsDBNull(lector.GetOrdinal("Nombre")) ? default(String) : lector.GetString(lector.GetOrdinal("Nombre")),
+                            desPro = lector.IsDBNull(lector.GetOrdinal("Descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("Descripcion")),
+                            feciniplPro = lector.IsDBNull(lector.GetOrdinal("FechaInicioPlaneada")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicioPlaneada")),
+                            fefinplanPro = lector.IsDBNull(lector.GetOrdinal("FechaFinPlaneada")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFinPlaneada"))
 
                         });
                     }
@@ -88,8 +88,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 3);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, codPro);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 3);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, codPro);
                 var Proyecto = default(Proyecto);
                 using (var lector = db.ExecuteReader(SQL))
                 {
@@ -97,11 +97,11 @@ namespace GYM.SIG.DataAccess
                     {
                         Proyecto = new Proyecto
                         {
-                            codPro = lector.GetInt32(lector.GetOrdinal("codPro")),
-                            nomPro = lector.IsDBNull(lector.GetOrdinal("nomPro")) ? default(String) : lector.GetString(lector.GetOrdinal("nomPro")),
-                            desPro = lector.IsDBNull(lector.GetOrdinal("desPro")) ? default(String) : lector.GetString(lector.GetOrdinal("desPro")),
-                            feciniplPro = lector.IsDBNull(lector.GetOrdinal("feciniplPro")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("feciniplPro")),
-                            fefinplanPro = lector.IsDBNull(lector.GetOrdinal("fefinplanPro")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fefinplanPro"))
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            nomPro = lector.IsDBNull(lector.GetOrdinal("Nombre")) ? default(String) : lector.GetString(lector.GetOrdinal("Nombre")),
+                            desPro = lector.IsDBNull(lector.GetOrdinal("Descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("Descripcion")),
+                            feciniplPro = lector.IsDBNull(lector.GetOrdinal("FechaInicioPlaneada")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicioPlaneada")),
+                            fefinplanPro = lector.IsDBNull(lector.GetOrdinal("FechaFinPlaneada")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFinPlaneada"))
 
                         };
                     }
@@ -136,12 +136,12 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, Proyecto.codPro);
-                db.AddInParameter(SQL, "nomPro", DbType.String, Proyecto.nomPro);
-                db.AddInParameter(SQL, "desPro", DbType.String, Proyecto.desPro);
-                db.AddInParameter(SQL, "feciniplPro", DbType.DateTime, Proyecto.feciniplPro);
-                db.AddInParameter(SQL, "fefinplanPro", DbType.DateTime, Proyecto.fefinplanPro);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 4);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, Proyecto.codPro);
+                db.AddInParameter(SQL, "Nombre", DbType.String, Proyecto.nomPro);
+                db.AddInParameter(SQL, "Descripcion", DbType.String, Proyecto.desPro);
+                db.AddInParameter(SQL, "FechaInicioPlaneada", DbType.DateTime, Proyecto.feciniplPro);
+                db.AddInParameter(SQL, "FechaFinPlaneada", DbType.DateTime, Proyecto.fefinplanPro);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 4);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -163,12 +163,12 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, Proyecto.codPro);
-                db.AddInParameter(SQL, "nomPro", DbType.String, Proyecto.nomPro);
-                db.AddInParameter(SQL, "desPro", DbType.String, Proyecto.desPro);
-                db.AddInParameter(SQL, "feciniplPro", DbType.DateTime, Proyecto.feciniplPro);
-                db.AddInParameter(SQL, "fefinplanPro", DbType.DateTime, Proyecto.fefinplanPro);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 1);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, Proyecto.codPro);
+                db.AddInParameter(SQL, "Nombre", DbType.String, Proyecto.nomPro);
+                db.AddInParameter(SQL, "Descripcion", DbType.String, Proyecto.desPro);
+                db.AddInParameter(SQL, "FechaInicioPlaneada", DbType.DateTime, Proyecto.feciniplPro);
+                db.AddInParameter(SQL, "FechaFinPlaneada", DbType.DateTime, Proyecto.fefinplanPro);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 1);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -187,8 +187,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, codPro);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 5);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, codPro);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 5);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -208,7 +208,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 6);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 6);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {

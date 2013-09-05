@@ -289,13 +289,13 @@
                         Moneda:
                     </td>
                     <td>
-                        <%: Html.DropDownList("codMoneda", new SelectList(Negocio.MonedaCN.Instancia.listartodos(), "codMoneda", "descMon"))%>
+                        <%: Html.DropDownList("IdMoneda", new SelectList(GYM.SIG.Business.MonedaCN.Instancia.listartodos(), "codMoneda", "descMon"))%>
                     </td>
                     <td>
                         Forma de Pago:
                     </td>
                     <td>
-                        <%: Html.DropDownList("codFormPag", new SelectList(Negocio.FormaPagoCN.Instancia.listartodos(), "codFormPag", "desFormPag"))%>
+                        <%: Html.DropDownList("IdFormaPago", new SelectList(GYM.SIG.Business.FormaPagoCN.Instancia.listartodos(), "codFormPag", "desFormPag"))%>
                     </td>
                     <td>
                         Fecha Validez:

@@ -21,16 +21,16 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<Moneda>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 2);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 2);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Moneda
                         {
-                            codMoneda = lector.GetInt32(lector.GetOrdinal("codMoneda")),
-                            descMon = lector.IsDBNull(lector.GetOrdinal("descMon")) ? default(String) : lector.GetString(lector.GetOrdinal("descMon")),
-                            abrvMon = lector.IsDBNull(lector.GetOrdinal("abrvMon")) ? default(String) : lector.GetString(lector.GetOrdinal("abrvMon"))
+                            codMoneda = lector.GetInt32(lector.GetOrdinal("IdMoneda")),
+                            descMon = lector.IsDBNull(lector.GetOrdinal("DescripMoned")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripMoned")),
+                            abrvMon = lector.IsDBNull(lector.GetOrdinal("AbreviaMoned")) ? default(String) : lector.GetString(lector.GetOrdinal("AbreviaMoned"))
 
                         });
                     }
@@ -65,9 +65,9 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new Moneda
                         {
-                            codMoneda = lector.GetInt32(lector.GetOrdinal("codMoneda")),
-                            descMon = lector.IsDBNull(lector.GetOrdinal("descMon")) ? default(String) : lector.GetString(lector.GetOrdinal("descMon")),
-                            abrvMon = lector.IsDBNull(lector.GetOrdinal("abrvMon")) ? default(String) : lector.GetString(lector.GetOrdinal("abrvMon"))
+                            codMoneda = lector.GetInt32(lector.GetOrdinal("IdMoneda")),
+                            descMon = lector.IsDBNull(lector.GetOrdinal("DescripMoned")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripMoned")),
+                            abrvMon = lector.IsDBNull(lector.GetOrdinal("AbreviaMoned")) ? default(String) : lector.GetString(lector.GetOrdinal("AbreviaMoned"))
 
                         });
                     }
@@ -87,8 +87,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 3);
-                db.AddInParameter(SQL, "codMoneda", DbType.Int32, codMoneda);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 3);
+                db.AddInParameter(SQL, "IdMoneda", DbType.Int32, codMoneda);
                 var Moneda = default(Moneda);
                 using (var lector = db.ExecuteReader(SQL))
                 {
@@ -96,9 +96,9 @@ namespace GYM.SIG.DataAccess
                     {
                         Moneda = new Moneda
                         {
-                            codMoneda = lector.GetInt32(lector.GetOrdinal("codMoneda")),
-                            descMon = lector.IsDBNull(lector.GetOrdinal("descMon")) ? default(String) : lector.GetString(lector.GetOrdinal("descMon")),
-                            abrvMon = lector.IsDBNull(lector.GetOrdinal("abrvMon")) ? default(String) : lector.GetString(lector.GetOrdinal("abrvMon"))
+                            codMoneda = lector.GetInt32(lector.GetOrdinal("IdMoneda")),
+                            descMon = lector.IsDBNull(lector.GetOrdinal("DescripMoned")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripMoned")),
+                            abrvMon = lector.IsDBNull(lector.GetOrdinal("AbreviaMoned")) ? default(String) : lector.GetString(lector.GetOrdinal("AbreviaMoned"))
 
                         };
                     }
@@ -133,10 +133,10 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codMoneda", DbType.Int32, Moneda.codMoneda);
-                db.AddInParameter(SQL, "descMon", DbType.String, Moneda.descMon);
-                db.AddInParameter(SQL, "abrvMon", DbType.String, Moneda.abrvMon);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 4);
+                db.AddInParameter(SQL, "IdMoneda", DbType.Int32, Moneda.codMoneda);
+                db.AddInParameter(SQL, "DescripMoned", DbType.String, Moneda.descMon);
+                db.AddInParameter(SQL, "AbreviaMoned", DbType.String, Moneda.abrvMon);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 4);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -158,10 +158,10 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codMoneda", DbType.Int32, Moneda.codMoneda);
-                db.AddInParameter(SQL, "descMon", DbType.String, Moneda.descMon);
-                db.AddInParameter(SQL, "abrvMon", DbType.String, Moneda.abrvMon);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 1);
+                db.AddInParameter(SQL, "IdMoneda", DbType.Int32, Moneda.codMoneda);
+                db.AddInParameter(SQL, "DescripMoned", DbType.String, Moneda.descMon);
+                db.AddInParameter(SQL, "AbreviaMoned", DbType.String, Moneda.abrvMon);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 1);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -180,8 +180,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codMoneda", DbType.Int32, codMoneda);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 5);
+                db.AddInParameter(SQL, "IdMoneda", DbType.Int32, codMoneda);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 5);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -201,7 +201,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 6);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 6);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {

@@ -106,7 +106,7 @@
                         </tr>
                         <tr>
                             <td>Tipo Servicio:</td>
-                            <td><%: Html.DropDownList("codTServ", new SelectList(Negocio.TipoServicioCN.Instancia.listartodos(true), "codTServ", "descTServ"))%></td>
+                            <td><%: Html.DropDownList("IdTipoServicio", new SelectList(GYM.SIG.Business.TipoServicioCN.Instancia.listartodos(true), "codTServ", "descTServ"))%></td>
                             <td>Nro Sol. Cot.:</td>
                             <td><input type="text" name="codSolCotizacion" value="" style="width:80px;" class="digits" maxlength="5" /></td>
                         </tr>

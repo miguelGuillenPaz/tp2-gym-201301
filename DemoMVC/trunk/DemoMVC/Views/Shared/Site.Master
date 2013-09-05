@@ -43,9 +43,14 @@
                     <%= Html.ActionLink("Gestión", "Gestion", "GestionProy")%></li>
                 <li>
                     <%= Html.ActionLink("Planificación", "ListadoProyPlan", "Planificacion")%></li>
+               <li><a href="#">SubContrataciones</a>
+                    <ul>
+                        <li><%: Html.ActionLink("Solicitud de Cotización", "Solicitud", "Cotizacion")%></li>
+                        <li><%: Html.ActionLink("Cotización", "Index", "Cotizacion")%></li>
+                    </ul>
+                </li>
                 <li>
-                    <%= Html.ActionLink("Logistica", "Logistica", "Logistica")%></li>
-                <li><a href="#">Área Legal</a>
+                    <%= Html.ActionLink("Area Legal", "Requerimientos", "Legal")%>          
                     <ul>
                         <li>
                             <%= Html.ActionLink("Consultar requerimientos", "listarRequerimientos", "Legal")%>

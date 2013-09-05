@@ -21,15 +21,15 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<FormaPago>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 2);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 2);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new FormaPago
                         {
-                            codFormPag = lector.GetInt32(lector.GetOrdinal("codFormPag")),
-                            desFormPag = lector.IsDBNull(lector.GetOrdinal("desFormPag")) ? default(String) : lector.GetString(lector.GetOrdinal("desFormPag"))
+                            codFormPag = lector.GetInt32(lector.GetOrdinal("IdFormaPago")),
+                            desFormPag = lector.IsDBNull(lector.GetOrdinal("DescripFormPag")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripFormPag"))
 
                         });
                     }
@@ -64,8 +64,8 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new FormaPago
                         {
-                            codFormPag = lector.GetInt32(lector.GetOrdinal("codFormPag")),
-                            desFormPag = lector.IsDBNull(lector.GetOrdinal("desFormPag")) ? default(String) : lector.GetString(lector.GetOrdinal("desFormPag"))
+                            codFormPag = lector.GetInt32(lector.GetOrdinal("IdFormaPago")),
+                            desFormPag = lector.IsDBNull(lector.GetOrdinal("DescripFormPag")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripFormPag"))
 
                         });
                     }
@@ -85,8 +85,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 3);
-                db.AddInParameter(SQL, "codFormPag", DbType.Int32, codFormPag);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 3);
+                db.AddInParameter(SQL, "IdFormaPago", DbType.Int32, codFormPag);
                 var FormaPago = default(FormaPago);
                 using (var lector = db.ExecuteReader(SQL))
                 {
@@ -94,8 +94,8 @@ namespace GYM.SIG.DataAccess
                     {
                         FormaPago = new FormaPago
                         {
-                            codFormPag = lector.GetInt32(lector.GetOrdinal("codFormPag")),
-                            desFormPag = lector.IsDBNull(lector.GetOrdinal("desFormPag")) ? default(String) : lector.GetString(lector.GetOrdinal("desFormPag"))
+                            codFormPag = lector.GetInt32(lector.GetOrdinal("IdFormaPago")),
+                            desFormPag = lector.IsDBNull(lector.GetOrdinal("DescripFormPag")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripFormPag"))
 
                         };
                     }
@@ -130,9 +130,9 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codFormPag", DbType.Int32, FormaPago.codFormPag);
-                db.AddInParameter(SQL, "desFormPag", DbType.String, FormaPago.desFormPag);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 4);
+                db.AddInParameter(SQL, "IdFormaPago", DbType.Int32, FormaPago.codFormPag);
+                db.AddInParameter(SQL, "DescripFormPag", DbType.String, FormaPago.desFormPag);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 4);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -154,9 +154,9 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codFormPag", DbType.Int32, FormaPago.codFormPag);
-                db.AddInParameter(SQL, "desFormPag", DbType.String, FormaPago.desFormPag);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 1);
+                db.AddInParameter(SQL, "IdFormaPago", DbType.Int32, FormaPago.codFormPag);
+                db.AddInParameter(SQL, "DescripFormPag", DbType.String, FormaPago.desFormPag);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 1);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -175,8 +175,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codFormPag", DbType.Int32, codFormPag);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 5);
+                db.AddInParameter(SQL, "IdFormaPago", DbType.Int32, codFormPag);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 5);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -196,7 +196,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 6);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 6);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {

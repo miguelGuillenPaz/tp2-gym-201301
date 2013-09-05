@@ -1,11 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Solicitud de Cotización de Servicios
-</asp:Content>
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+  <%--  <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />--%>
+    <link href="../../Scripts/kendo/kendo.flat.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/jquery-ui/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"
+        type="text/css" />
+    <script type="text/javascript" src="../../Scripts/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery-ui/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/js/jquery.maskedinput-1.3.1.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/js/jquery.numeric.js"></script>
+    <script type="text/javascript" src="../../Scripts/js/jquery.validationEngine-es.js"></script>
+    <script type="text/javascript" src="../../Scripts/js/jquery.validationEngine.js"></script>
+    <script type="text/javascript" src="../../Scripts/libs/main.js"></script>
+    <script type="text/javascript" src="../../Scripts/libs/dialog.js"></script>
+    <script type="text/javascript" src="../../Scripts/libs/ajax.js"></script>
+    <script type="text/javascript" src="../../Scripts/libs/form.js"></script>
+    <script type="text/javascript" src="../../Scripts/libs/simpledataTable.js"></script>
+    <script type="text/javascript" src="../../Scripts/kendo/kendo.web.min.js"></script>
+    <script type="text/javascript" src="../../Content/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -106,7 +120,7 @@
                     $('#agregarSolicitudCotizacion').find('textarea[name=descSolCotizacion]').val('');
                     $('#agregarSolicitudCotizacion').find('input[name=codSolCotizacion]').val(0);
                     $('#agregarSolicitudCotizacion').find('input[name=codigoSolicitud]').val('');
-                                        
+
                     $('#agregarSolicitudCotizacion').data("kendoWindow").open();
                 });
             });
@@ -127,7 +141,7 @@
                     $('#agregarSolicitudCotizacion').find('textarea[name=descSolCotizacion]').val(obj.descSolCotizacion);
                     $('#agregarSolicitudCotizacion').find('input[name=codSolCotizacion]').val(obj.codSolCotizacion);
                     $('#agregarSolicitudCotizacion').find('input[name=codigoSolicitud]').val(obj.codSolCotizacion);
-                                        
+
                     $('#agregarSolicitudCotizacion').data("kendoWindow").open();
                 });
 
@@ -209,130 +223,229 @@
 
         });
     </script>
-
-    <div class="busquedaSolicitudes">
-        <fieldset>
-            <legend>Filtros</legend>
-            <div style="display:inline-block; margin-right:20px;">
-                <table>
-                    <tr>
-                        <td>Proyecto:</td>
-                        <td colspan="3"><%: Html.DropDownList("codPro", new SelectList(GYM.SIG.Business.ProyectoCN.Instancia.listartodos(true), "codPro", "nomPro")) %></td>
-                        <td>Tipo de Fecha:</td>
-                        <td><select name="tipoFecha">
-                                <option value="todos">- Todos -</option>
-                                <option value="fechaCotizacion">Fecha de Cotización</option>
-                                <option value="fechaVencimiento">Fecha de Vencimiento</option>
-                            </select>
-                        </td>                    
-                    </tr>
-                    <tr>
-                        <td>Tipo de Servicio:</td>
-                        <td><%: Html.DropDownList("codTServ", new SelectList(GYM.SIG.Business.TipoServicioCN.Instancia.listartodos(true), "codTServ", "descTServ"))%></td>
-                        <td>Nro Sol. Coti.:</td>
-                        <td><input type="text" name="codSolCotizacion" class="digits" style="width:80px;" maxlength="5" /></td>
-                        <td>Fecha Inicio:</td>
-                        <td><input type="text" name="fechaInicio" value="" class="datepicker" /></td>
-                    </tr>
-                    <tr>
-                        <td>Situación:</td>
-                        <td><%: Html.DropDownList("codEstado", new SelectList(GYM.SIG.Business.EstadoCN.Instancia.listartodos("S", true), "codEstado", "desEstado"))%></td>
-                        <td>Nro Req:</td>
-                        <td><input type="text" name="codReq" class="digits" style="width:80px;" maxlength="5" /></td>
-                        <td>Fecha Fin:</td>
-                        <td><input type="text" name="fechaFin" value="" class="datepicker" maxlength="10" /></td>
-                    </tr>
-                </table>
+    <div class="contenido-top">
+        <div>
+            <div class="areas-negocios">
+                <div class="lista-central">
+                    <div class="busquedaSolicitudes">
+                        <fieldset>
+                            <legend>Filtros</legend>
+                            <div style="display: inline-block; margin-right: 20px;">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Proyecto:
+                                        </td>
+                                        <td colspan="3">
+                                            <%: Html.DropDownList("codPro", new SelectList(GYM.SIG.Business.ProyectoCN.Instancia.listartodos(true), "codPro", "nomPro")) %>
+                                        </td>
+                                        <td>
+                                            Tipo de Fecha:
+                                        </td>
+                                        <td>
+                                            <select name="tipoFecha">
+                                                <option value="todos">- Todos -</option>
+                                                <option value="fechaCotizacion">Fecha de Cotización</option>
+                                                <option value="fechaVencimiento">Fecha de Vencimiento</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Tipo de Servicio:
+                                        </td>
+                                        <td>
+                                            <%: Html.DropDownList("codTServ", new SelectList(GYM.SIG.Business.TipoServicioCN.Instancia.listartodos(true), "codTServ", "descTServ"))%>
+                                        </td>
+                                        <td>
+                                            Nro Sol. Coti.:
+                                        </td>
+                                        <td>
+                                            <input type="text" name="codSolCotizacion" class="digits" style="width: 80px;" maxlength="5" />
+                                        </td>
+                                        <td>
+                                            Fecha Inicio:
+                                        </td>
+                                        <td>
+                                            <input type="text" name="fechaInicio" value="" class="datepicker" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Situación:
+                                        </td>
+                                        <td>
+                                            <%: Html.DropDownList("codEstado", new SelectList(GYM.SIG.Business.EstadoCN.Instancia.listartodos("S", true), "codEstado", "desEstado"))%>
+                                        </td>
+                                        <td>
+                                            Nro Req:
+                                        </td>
+                                        <td>
+                                            <input type="text" name="codReq" class="digits" style="width: 80px;" maxlength="5" />
+                                        </td>
+                                        <td>
+                                            Fecha Fin:
+                                        </td>
+                                        <td>
+                                            <input type="text" name="fechaFin" value="" class="datepicker" maxlength="10" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div style="display: inline-block; vertical-align: top; text-align: center;">
+                                <input type="button" name="buscar" value="Buscar" style="margin-top: 5px;" /><br />
+                                <input type="button" name="inicializar" value="Inicializar" style="margin-top: 10px;" />
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="contenedorSolicitudes" style="margin-top: 15px; margin-bottom: 10px;">
+                        <div align="center" style="margin-top: 8px; display: none;" class="esperarProceso">
+                            <div style="display: inline-block; vertical-align: middle;">
+                                Enviando solicitud&nbsp;</div>
+                            <div style="display: inline-block; vertical-align: middle;">
+                                <img alt="" src="../../Img/loading.gif" /></div>
+                        </div>
+                        <div class="solicitudes">
+                            <div style="display: inline-block; width: 48%;">
+                                <label>
+                                    <b>Solicitudes</b></label></div>
+                            <div style="display: inline-block; width: 50%; margin-bottom: 5px;" align="right">
+                                <input type="button" id="nuevoSolicitudCotizacion" name="nuevo" value="Nuevo" />&nbsp;&nbsp;
+                                <input type="button" id="modificarSolicitudCotizacion" name="modificar" value="Modificar" />&nbsp;&nbsp;
+                                <input type="button" id="anularSolicitudCotizacion" name="anular" value="Anular" />&nbsp;&nbsp;
+                                <input type="button" id="imprimirSolicitudCotizacion" name="imprimir" value="Ver Reporte"
+                                    disabled="true" />&nbsp;&nbsp;
+                                <input type="button" id="enviarSolicitudCotizacion" name="enviar" value="Enviar Sol. Cot." />
+                            </div>
+                            <table class="dataTable table table-bordered" shownumberrows="true">
+                                <thead>
+                                    <tr>
+                                        <th class="model">
+                                            <a href="<%: Url.Action("BuscarSolicitudes", "Cotizacion") %>" class="onload" root="data"
+                                                data-params=""></a>
+                                        </th>
+                                        <th>
+                                            Sel
+                                        </th>
+                                        <th>
+                                            Detalle
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="codSolCotizacion">Nro Sol. Cot.</a>
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="fechaSolicitud">Fecha de Registro</a>
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="descTServ">Tipo Servicio</a>
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="descSolCotizacion">Comentario</a>
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="desEstado">Situación</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                </tfoot>
+                                <tbody>
+                                    <tr class="model">
+                                        <td style="text-align: center;">
+                                            <input type="radio" name="check" class="check" />
+                                        </td>
+                                        <td>
+                                            <a href="#" title="Ver detalle de la solicitud" class="detalle">Ver Detalle</a>
+                                        </td>
+                                        <td class="codSolCotizacion">
+                                        </td>
+                                        <td class="fechaSolicitud">
+                                        </td>
+                                        <td class="descTServ">
+                                        </td>
+                                        <td class="descSolCotizacion">
+                                        </td>
+                                        <td class="desEstado">
+                                        </td>
+                                    </tr>
+                                    <tr style="height: 32px;">
+                                        <td style="text-align: center;">
+                                        </td>
+                                        <td>
+                                        </td>
+                                        <td class="codSolCotizacion">
+                                        </td>
+                                        <td class="fechaSolicitud">
+                                        </td>
+                                        <td class="descTServ">
+                                        </td>
+                                        <td class="descSolCotizacion">
+                                        </td>
+                                        <td class="desEstado">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br />
+                        <div class="requerimientos" style="display: none;">
+                            <label>
+                                <b>Detalle de Solicitud</b></label>
+                            <table class="dataTable table table-bordered" shownumberrows="true">
+                                <thead>
+                                    <tr>
+                                        <th class="model">
+                                            <a href="<%: Url.Action("listarporSolicitud", "Requerimiento") %>" class="onload"
+                                                data-params="" root="data"></a>
+                                        </th>
+                                        <th>
+                                            N°
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="nomPro">Proyecto</a>
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="codReq">Nº Req.</a>
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="desReq">Descripción</a>
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="desServicio">Detalle</a>
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="descUM">Unidad Medida</a>
+                                        </th>
+                                        <th>
+                                            <a href="" class="order" data-orderby="canDetReq">Cantidad</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                </tfoot>
+                                <tbody>
+                                    <tr class="model">
+                                        <td class="numero">
+                                        </td>
+                                        <td class="nomPro">
+                                        </td>
+                                        <td class="codReq">
+                                        </td>
+                                        <td class="desReq">
+                                        </td>
+                                        <td class="desServicio">
+                                        </td>
+                                        <td class="descUM">
+                                        </td>
+                                        <td class="canDetReq">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div style="display:inline-block; vertical-align:top; text-align:center;">
-                <input type="button" name="buscar" value="Buscar" style="margin-top:5px;" /><br />
-                <input type="button" name="inicializar" value="Inicializar" style="margin-top:10px;" />
-            </div>
-        </fieldset>
-    </div>
-
-    <div class="contenedorSolicitudes" style="margin-top:15px; margin-bottom:10px;">
-        <div align="center" style="margin-top:8px; display:none;" class="esperarProceso">
-            <div style="display:inline-block; vertical-align:middle;">Enviando solicitud&nbsp;</div>
-            <div style="display:inline-block; vertical-align:middle;"><img alt="" src="../../Img/loading.gif" /></div>
-        </div>
-        
-        <div class="solicitudes">
-            
-            <div style="display:inline-block; width:48%;"><label><b>Solicitudes</b></label></div>
-            <div style="display:inline-block; width:50%; margin-bottom:5px;" align="right">
-                <input type="button" id="nuevoSolicitudCotizacion" name="nuevo" value="Nuevo" />&nbsp;&nbsp;
-                <input type="button" id="modificarSolicitudCotizacion" name="modificar" value="Modificar" />&nbsp;&nbsp;
-                <input type="button" id="anularSolicitudCotizacion" name="anular" value="Anular" />&nbsp;&nbsp;
-                <input type="button" id="imprimirSolicitudCotizacion" name="imprimir" value="Ver Reporte" disabled="true" />&nbsp;&nbsp;
-                <input type="button" id="enviarSolicitudCotizacion" name="enviar" value="Enviar Sol. Cot." />
-            </div>
-            
-            <table class="dataTable table table-bordered" showNumberRows="true">
-                <thead>
-                    <tr>
-                        <th class="model"><a href="<%: Url.Action("BuscarSolicitudes", "Cotizacion") %>" class="onload" root="data" data-params=""></a></th>
-                        <th>Sel</th>
-                        <th>Detalle</th>
-                        <th><a href="" class="order" data-orderby="codSolCotizacion">Nro Sol. Cot.</a></th>
-                        <th><a href="" class="order" data-orderby="fechaSolicitud">Fecha de Registro</a></th>
-                        <th><a href="" class="order" data-orderby="descTServ">Tipo Servicio</a></th>
-                        <th><a href="" class="order" data-orderby="descSolCotizacion">Comentario</a></th>
-                        <th><a href="" class="order" data-orderby="desEstado">Situación</a></th>
-                    </tr>
-                </thead>
-                <tfoot></tfoot>
-                <tbody>
-                    <tr class="model">
-                        <td style="text-align:center;"><input type="radio" name="check" class="check" /></td>                        
-                        <td><a href="#" title="Ver detalle de la solicitud" class="detalle">Ver Detalle</a></td>
-                        <td class="codSolCotizacion"></td>
-                        <td class="fechaSolicitud"></td>
-                        <td class="descTServ"></td>
-                        <td class="descSolCotizacion"></td>
-                        <td class="desEstado"></td>
-                    </tr>
-                    <tr style="height:32px;">
-                        <td style="text-align:center;"></td>
-                        <td></td>
-                        <td class="codSolCotizacion"></td>
-                        <td class="fechaSolicitud"></td>
-                        <td class="descTServ"></td>
-                        <td class="descSolCotizacion"></td>
-                        <td class="desEstado"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <br />
-        <div class="requerimientos" style="display:none;">
-            <label><b>Detalle de Solicitud</b></label>
-            <table class="dataTable table table-bordered" showNumberRows="true">
-                <thead>
-                    <tr>
-                        <th class="model"><a href="<%: Url.Action("listarporSolicitud", "Requerimiento") %>" class="onload" data-params="" root="data"></a></th>
-                        <th>N°</th>
-                        <th><a href="" class="order" data-orderby="nomPro">Proyecto</a></th>
-                        <th><a href="" class="order" data-orderby="codReq">Nº Req.</a></th>
-                        <th><a href="" class="order" data-orderby="desReq">Descripción</a></th>
-                        <th><a href="" class="order" data-orderby="desServicio">Detalle</a></th>
-                        <th><a href="" class="order" data-orderby="descUM">Unidad Medida</a></th>
-                        <th><a href="" class="order" data-orderby="canDetReq">Cantidad</a></th>
-                    </tr>
-                </thead>
-                <tfoot></tfoot>
-                <tbody>
-                    <tr class="model">
-                        <td class="numero"></td>
-                        <td class="nomPro"></td>
-                        <td class="codReq"></td>
-                        <td class="desReq"></td>
-                        <td class="desServicio"></td>
-                        <td class="descUM"></td>
-                        <td class="canDetReq"></td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
     <% Html.RenderPartial("AgregarSolicitudCotizacion"); %>

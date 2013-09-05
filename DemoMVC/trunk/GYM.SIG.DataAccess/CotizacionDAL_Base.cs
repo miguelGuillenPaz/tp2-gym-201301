@@ -10,64 +10,64 @@ namespace GYM.SIG.DataAccess
 {
     public class Cotizaciondalc : Singleton<Cotizaciondalc>
     {
-        private const String nombreprocedimiento = "pa_Cotizacion";
-        private const String NombreTabla = "Cotizacion";
-        private Database db = DatabaseFactory.CreateDatabase();
+        private const String NombreProcedimiento = "pa_GSC_Cotizacion";
+        //private const String NombreTabla = "Cotizacion";
+        private readonly Database _db = DatabaseFactory.CreateDatabase();
 
         public List<Cotizacion> ObtenerCotizaciones(String tipoFecha, DateTime fechaInicio, DateTime fechaFin, int codPro, int codTServ, int codEstado, int codSolCotizacion, int codProv, int codCotizacion)
         {
             try
             {
                 var coleccion = new List<Cotizacion>();
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 8);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 8);
 
-                db.AddInParameter(SQL, "tipoFecha", DbType.String, tipoFecha);
+                _db.AddInParameter(sql, "TipoFecha", DbType.String, tipoFecha);
                 if (tipoFecha.Equals("todos"))
                 {
-                    db.AddInParameter(SQL, "fechaInicio", DbType.DateTime, null);
-                    db.AddInParameter(SQL, "fechaFin", DbType.DateTime, null);
+                    _db.AddInParameter(sql, "FechaInicio", DbType.DateTime, null);
+                    _db.AddInParameter(sql, "FechaFin", DbType.DateTime, null);
                 }
                 else
                 {
-                    db.AddInParameter(SQL, "fechaInicio", DbType.DateTime, fechaInicio);
-                    db.AddInParameter(SQL, "fechaFin", DbType.DateTime, fechaFin);
+                    _db.AddInParameter(sql, "FechaInicio", DbType.DateTime, fechaInicio);
+                    _db.AddInParameter(sql, "FechaFin", DbType.DateTime, fechaFin);
                 }
 
-                db.AddInParameter(SQL, "codEstado", DbType.Int32, codEstado);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32, codTServ);
-                db.AddInParameter(SQL, "codPro", DbType.Int32, codPro);
-                db.AddInParameter(SQL, "codProv", DbType.Int32, codProv);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32, codCotizacion);
-                using (var lector = db.ExecuteReader(SQL))
+                _db.AddInParameter(sql, "IdEstado", DbType.Int32, codEstado);
+                _db.AddInParameter(sql, "IdTipoServicio", DbType.Int32, codTServ);
+                _db.AddInParameter(sql, "IdProyecto", DbType.Int32, codPro);
+                _db.AddInParameter(sql, "IdProveedor", DbType.Int32, codProv);
+                _db.AddInParameter(sql, "IdSolicitudCotizacion", DbType.Int32, codSolCotizacion);
+                _db.AddInParameter(sql, "IdCotizacion", DbType.Int32, codCotizacion);
+                using (var lector = _db.ExecuteReader(sql))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Cotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
-                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("fechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaInicio")),
-                            fechaFin = lector.IsDBNull(lector.GetOrdinal("fechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaFin")),
-                            descTServ = lector.IsDBNull(lector.GetOrdinal("descTServ")) ? "" : lector.GetString(lector.GetOrdinal("descTServ")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
+                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("FechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicio")),
+                            fechaFin = lector.IsDBNull(lector.GetOrdinal("FechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFin")),
+                            descTServ = lector.IsDBNull(lector.GetOrdinal("DescripTServicio")) ? "" : lector.GetString(lector.GetOrdinal("DescripTServicio")),
 
-                            codFormPag = lector.IsDBNull(lector.GetOrdinal("codFormPag")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codFormPag")),
-                            codMoneda = lector.IsDBNull(lector.GetOrdinal("codMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codMoneda")),
+                            codFormPag = lector.IsDBNull(lector.GetOrdinal("IdFormaPago")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdFormaPago")),
+                            codMoneda = lector.IsDBNull(lector.GetOrdinal("IdMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdMoneda")),
 
-                            codTServ = lector.IsDBNull(lector.GetOrdinal("codTServ")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codTServ")),
-                            monto = lector.IsDBNull(lector.GetOrdinal("monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("monto")),
-                            razsocPro = lector.IsDBNull(lector.GetOrdinal("razsocPro")) ? "" : lector.GetString(lector.GetOrdinal("razsocPro")),
-                            codProv = lector.IsDBNull(lector.GetOrdinal("codProv")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codProv")),
-                            descMon = lector.IsDBNull(lector.GetOrdinal("descMon")) ? "" : lector.GetString(lector.GetOrdinal("descMon")),
-                            abrvMon = lector.IsDBNull(lector.GetOrdinal("abrvMon")) ? "" : lector.GetString(lector.GetOrdinal("abrvMon")),
+                            codTServ = lector.IsDBNull(lector.GetOrdinal("IdTipoServicio")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdTipoServicio")),
+                            monto = lector.IsDBNull(lector.GetOrdinal("Monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Monto")),
+                            razsocPro = lector.IsDBNull(lector.GetOrdinal("RazonSocialProv")) ? "" : lector.GetString(lector.GetOrdinal("RazonSocialProv")),
+                            codProv = lector.IsDBNull(lector.GetOrdinal("IdProveedor")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            descMon = lector.IsDBNull(lector.GetOrdinal("DescripMoned")) ? "" : lector.GetString(lector.GetOrdinal("DescripMoned")),
+                            abrvMon = lector.IsDBNull(lector.GetOrdinal("AbreviaMoned")) ? "" : lector.GetString(lector.GetOrdinal("AbreviaMoned")),
                             estado = lector.IsDBNull(lector.GetOrdinal("estado")) ? "" : lector.GetString(lector.GetOrdinal("estado")),
                             Comentarios = lector.IsDBNull(lector.GetOrdinal("Comentarios")) ? "" : lector.GetString(lector.GetOrdinal("Comentarios")),
-                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("pdfCotizacion")) ? "" : lector.GetString(lector.GetOrdinal("pdfCotizacion")),
+                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("PdfCotizacion")) ? "" : lector.GetString(lector.GetOrdinal("PdfCotizacion")),
                         });
                     }
                 }
-                SQL.Dispose();
+                sql.Dispose();
                 return coleccion;
             }
             catch (Exception ex)
@@ -76,36 +76,36 @@ namespace GYM.SIG.DataAccess
             }
         }
 
-        public List<Cotizacion> listartodos()
+        public List<Cotizacion> ListarTodos()
         {
             try
             {
                 var coleccion = new List<Cotizacion>();
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 2);
-                using (var lector = db.ExecuteReader(SQL))
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 2);
+                using (var lector = _db.ExecuteReader(sql))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Cotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
-                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("fechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaInicio")),
-                            fechaFin = lector.IsDBNull(lector.GetOrdinal("fechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaFin")),
-                            monto = lector.IsDBNull(lector.GetOrdinal("monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("monto")),
-                            igv = lector.IsDBNull(lector.GetOrdinal("igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("igv")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
+                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("FechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicio")),
+                            fechaFin = lector.IsDBNull(lector.GetOrdinal("FechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFin")),
+                            monto = lector.IsDBNull(lector.GetOrdinal("Monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Monto")),
+                            igv = lector.IsDBNull(lector.GetOrdinal("Igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Igv")),
                             Total = lector.IsDBNull(lector.GetOrdinal("Total")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Total")),
                             Comentarios = lector.IsDBNull(lector.GetOrdinal("Comentarios")) ? default(String) : lector.GetString(lector.GetOrdinal("Comentarios")),
-                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("pdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("pdfCotizacion")),
-                            codMoneda = lector.IsDBNull(lector.GetOrdinal("codMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codMoneda")),
-                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("codSolCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            codProv = lector.IsDBNull(lector.GetOrdinal("codProv")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codProv")),
-                            codTServ = lector.IsDBNull(lector.GetOrdinal("codTServ")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codTServ"))
+                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("PdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("PdfCotizacion")),
+                            codMoneda = lector.IsDBNull(lector.GetOrdinal("IdMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdMoneda")),
+                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("IdSolicitudCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            codProv = lector.IsDBNull(lector.GetOrdinal("IdProveedor")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            codTServ = lector.IsDBNull(lector.GetOrdinal("IdTipoServicio")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdTipoServicio"))
 
                         });
                     }
                 }
-                SQL.Dispose();
+                sql.Dispose();
                 return coleccion;
             }
             catch (Exception ex)
@@ -116,7 +116,7 @@ namespace GYM.SIG.DataAccess
 
         public List<Cotizacion> Getcoleccion(string wheresql, string orderbysql)
         {
-            int totalRecordCount = -1;
+            const int totalRecordCount = -1;
             return Getcoleccion(wheresql, orderbysql, 0, int.MaxValue, totalRecordCount);
         }
 
@@ -126,30 +126,30 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var coleccion = new List<Cotizacion>();
-                DbCommand SQL = db.GetSqlStringCommand(CreateGetCommand(wheresql, orderbysql));
-                using (var lector = db.ExecuteReader(SQL))
+                var sql = _db.GetSqlStringCommand(CreateGetCommand(wheresql, orderbysql));
+                using (var lector = _db.ExecuteReader(sql))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Cotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
-                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("fechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaInicio")),
-                            fechaFin = lector.IsDBNull(lector.GetOrdinal("fechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaFin")),
-                            monto = lector.IsDBNull(lector.GetOrdinal("monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("monto")),
-                            igv = lector.IsDBNull(lector.GetOrdinal("igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("igv")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
+                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("FechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicio")),
+                            fechaFin = lector.IsDBNull(lector.GetOrdinal("FechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFin")),
+                            monto = lector.IsDBNull(lector.GetOrdinal("Monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Monto")),
+                            igv = lector.IsDBNull(lector.GetOrdinal("Igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Igv")),
                             Total = lector.IsDBNull(lector.GetOrdinal("Total")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Total")),
                             Comentarios = lector.IsDBNull(lector.GetOrdinal("Comentarios")) ? default(String) : lector.GetString(lector.GetOrdinal("Comentarios")),
-                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("pdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("pdfCotizacion")),
-                            codMoneda = lector.IsDBNull(lector.GetOrdinal("codMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codMoneda")),
-                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("codSolCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            codProv = lector.IsDBNull(lector.GetOrdinal("codProv")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codProv")),
-                            codTServ = lector.IsDBNull(lector.GetOrdinal("codTServ")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codTServ"))
+                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("PdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("PdfCotizacion")),
+                            codMoneda = lector.IsDBNull(lector.GetOrdinal("IdMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdMoneda")),
+                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("IdSolicitudCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            codProv = lector.IsDBNull(lector.GetOrdinal("IdProveedor")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            codTServ = lector.IsDBNull(lector.GetOrdinal("IdTipoServicio")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdTipoServicio"))
 
                         });
                     }
                 }
-                SQL.Dispose();
+                sql.Dispose();
                 return coleccion;
             }
             catch (Exception ex)
@@ -162,10 +162,10 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 6);
-                db.AddInParameter(SQL, "codMoneda", DbType.Int32);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(sql, "IdMoneda", DbType.Int32);
+                int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");
@@ -182,33 +182,33 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 10);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 10);
+                _db.AddInParameter(sql, "IdSolicitudCotizacion", DbType.Int32);
                 var coleccion = new List<Cotizacion>();
-                using (var lector = db.ExecuteReader(SQL))
+                using (var lector = _db.ExecuteReader(sql))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Cotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
-                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("fechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaInicio")),
-                            fechaFin = lector.IsDBNull(lector.GetOrdinal("fechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaFin")),
-                            monto = lector.IsDBNull(lector.GetOrdinal("monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("monto")),
-                            igv = lector.IsDBNull(lector.GetOrdinal("igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("igv")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
+                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("FechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicio")),
+                            fechaFin = lector.IsDBNull(lector.GetOrdinal("FechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFin")),
+                            monto = lector.IsDBNull(lector.GetOrdinal("Monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Monto")),
+                            igv = lector.IsDBNull(lector.GetOrdinal("Igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Igv")),
                             Total = lector.IsDBNull(lector.GetOrdinal("Total")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Total")),
                             Comentarios = lector.IsDBNull(lector.GetOrdinal("Comentarios")) ? default(String) : lector.GetString(lector.GetOrdinal("Comentarios")),
-                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("pdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("pdfCotizacion")),
-                            codMoneda = lector.IsDBNull(lector.GetOrdinal("codMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codMoneda")),
-                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("codSolCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            codProv = lector.IsDBNull(lector.GetOrdinal("codProv")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codProv")),
-                            codTServ = lector.IsDBNull(lector.GetOrdinal("codTServ")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codTServ"))
+                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("PdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("PdfCotizacion")),
+                            codMoneda = lector.IsDBNull(lector.GetOrdinal("IdMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdMoneda")),
+                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("IdSolicitudCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            codProv = lector.IsDBNull(lector.GetOrdinal("IdProveedor")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            codTServ = lector.IsDBNull(lector.GetOrdinal("IdTipoServicio")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdTipoServicio"))
 
                         });
                     }
                 }
-                SQL.Dispose();
+                sql.Dispose();
                 return coleccion;
             }
             catch (Exception ex)
@@ -221,10 +221,10 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 6);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(sql, "IdSolicitudCotizacion", DbType.Int32);
+                var huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");
@@ -241,33 +241,33 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 10);
-                db.AddInParameter(SQL, "codPro", DbType.Int32);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 10);
+                _db.AddInParameter(sql, "IdProyecto", DbType.Int32);
                 var coleccion = new List<Cotizacion>();
-                using (var lector = db.ExecuteReader(SQL))
+                using (var lector = _db.ExecuteReader(sql))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Cotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
-                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("fechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaInicio")),
-                            fechaFin = lector.IsDBNull(lector.GetOrdinal("fechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaFin")),
-                            monto = lector.IsDBNull(lector.GetOrdinal("monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("monto")),
-                            igv = lector.IsDBNull(lector.GetOrdinal("igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("igv")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
+                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("FechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicio")),
+                            fechaFin = lector.IsDBNull(lector.GetOrdinal("FechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFin")),
+                            monto = lector.IsDBNull(lector.GetOrdinal("Monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Monto")),
+                            igv = lector.IsDBNull(lector.GetOrdinal("Igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Igv")),
                             Total = lector.IsDBNull(lector.GetOrdinal("Total")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Total")),
                             Comentarios = lector.IsDBNull(lector.GetOrdinal("Comentarios")) ? default(String) : lector.GetString(lector.GetOrdinal("Comentarios")),
-                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("pdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("pdfCotizacion")),
-                            codMoneda = lector.IsDBNull(lector.GetOrdinal("codMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codMoneda")),
-                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("codSolCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            codProv = lector.IsDBNull(lector.GetOrdinal("codProv")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codProv")),
-                            codTServ = lector.IsDBNull(lector.GetOrdinal("codTServ")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codTServ"))
+                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("PdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("PdfCotizacion")),
+                            codMoneda = lector.IsDBNull(lector.GetOrdinal("IdMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdMoneda")),
+                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("IdSolicitudCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            codProv = lector.IsDBNull(lector.GetOrdinal("IdProveedor")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            codTServ = lector.IsDBNull(lector.GetOrdinal("IdTipoServicio")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdTipoServicio"))
 
                         });
                     }
                 }
-                SQL.Dispose();
+                sql.Dispose();
                 return coleccion;
             }
             catch (Exception ex)
@@ -280,10 +280,10 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 6);
-                db.AddInParameter(SQL, "codPro", DbType.Int32);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(sql, "IdProyecto", DbType.Int32);
+                int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");
@@ -300,33 +300,33 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 10);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 10);
+                _db.AddInParameter(sql, "IdTipoServicio", DbType.Int32);
                 var coleccion = new List<Cotizacion>();
-                using (var lector = db.ExecuteReader(SQL))
+                using (var lector = _db.ExecuteReader(sql))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new Cotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
-                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("fechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaInicio")),
-                            fechaFin = lector.IsDBNull(lector.GetOrdinal("fechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaFin")),
-                            monto = lector.IsDBNull(lector.GetOrdinal("monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("monto")),
-                            igv = lector.IsDBNull(lector.GetOrdinal("igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("igv")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
+                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("FechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicio")),
+                            fechaFin = lector.IsDBNull(lector.GetOrdinal("FechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFin")),
+                            monto = lector.IsDBNull(lector.GetOrdinal("Monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Monto")),
+                            igv = lector.IsDBNull(lector.GetOrdinal("Igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Igv")),
                             Total = lector.IsDBNull(lector.GetOrdinal("Total")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Total")),
                             Comentarios = lector.IsDBNull(lector.GetOrdinal("Comentarios")) ? default(String) : lector.GetString(lector.GetOrdinal("Comentarios")),
-                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("pdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("pdfCotizacion")),
-                            codMoneda = lector.IsDBNull(lector.GetOrdinal("codMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codMoneda")),
-                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("codSolCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            codProv = lector.IsDBNull(lector.GetOrdinal("codProv")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codProv")),
-                            codTServ = lector.IsDBNull(lector.GetOrdinal("codTServ")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codTServ"))
+                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("PdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("PdfCotizacion")),
+                            codMoneda = lector.IsDBNull(lector.GetOrdinal("IdMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdMoneda")),
+                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("IdSolicitudCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            codProv = lector.IsDBNull(lector.GetOrdinal("IdProveedor")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            codTServ = lector.IsDBNull(lector.GetOrdinal("IdTipoServicio")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdTipoServicio"))
 
                         });
                     }
                 }
-                SQL.Dispose();
+                sql.Dispose();
                 return coleccion;
             }
             catch (Exception ex)
@@ -339,10 +339,10 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 6);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(sql, "IdTipoServicio", DbType.Int32);
+                int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");
@@ -359,35 +359,35 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 3);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32, codCotizacion);
-                var Cotizacion = default(Cotizacion);
-                using (var lector = db.ExecuteReader(SQL))
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 3);
+                _db.AddInParameter(sql, "IdCotizacion", DbType.Int32, codCotizacion);
+                var cotizacion = default(Cotizacion);
+                using (var lector = _db.ExecuteReader(sql))
                 {
                     while (lector.Read())
                     {
-                        Cotizacion = new Cotizacion
+                        cotizacion = new Cotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
-                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("fechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaInicio")),
-                            fechaFin = lector.IsDBNull(lector.GetOrdinal("fechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaFin")),
-                            monto = lector.IsDBNull(lector.GetOrdinal("monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("monto")),
-                            igv = lector.IsDBNull(lector.GetOrdinal("igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("igv")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
+                            fechaInicio = lector.IsDBNull(lector.GetOrdinal("FechaInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaInicio")),
+                            fechaFin = lector.IsDBNull(lector.GetOrdinal("FechaFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaFin")),
+                            monto = lector.IsDBNull(lector.GetOrdinal("Monto")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Monto")),
+                            igv = lector.IsDBNull(lector.GetOrdinal("Igv")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Igv")),
                             Total = lector.IsDBNull(lector.GetOrdinal("Total")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Total")),
                             Comentarios = lector.IsDBNull(lector.GetOrdinal("Comentarios")) ? default(String) : lector.GetString(lector.GetOrdinal("Comentarios")),
-                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("pdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("pdfCotizacion")),
-                            codMoneda = lector.IsDBNull(lector.GetOrdinal("codMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codMoneda")),
-                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("codSolCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            codProv = lector.IsDBNull(lector.GetOrdinal("codProv")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codProv")),
-                            codTServ = lector.IsDBNull(lector.GetOrdinal("codTServ")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codTServ")),
-                            codFormPag = lector.IsDBNull(lector.GetOrdinal("codFormPag")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codFormPag")),
-                            codEstado = lector.IsDBNull(lector.GetOrdinal("codEstado")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codEstado")),
+                            pdfCotizacion = lector.IsDBNull(lector.GetOrdinal("PdfCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("PdfCotizacion")),
+                            codMoneda = lector.IsDBNull(lector.GetOrdinal("IdMoneda")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdMoneda")),
+                            codSolCotizacion = lector.IsDBNull(lector.GetOrdinal("IdSolicitudCotizacion")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            codProv = lector.IsDBNull(lector.GetOrdinal("IdProveedor")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdProveedor")),
+                            codTServ = lector.IsDBNull(lector.GetOrdinal("IdTipoServicio")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdTipoServicio")),
+                            codFormPag = lector.IsDBNull(lector.GetOrdinal("IdFormaPago")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdFormaPago")),
+                            codEstado = lector.IsDBNull(lector.GetOrdinal("IdEstado")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdEstado")),
                         };
                     }
                 }
-                SQL.Dispose();
-                return Cotizacion;
+                sql.Dispose();
+                return cotizacion;
             }
             catch (Exception ex)
             {
@@ -397,7 +397,7 @@ namespace GYM.SIG.DataAccess
 
         protected virtual string CreateGetCommand(string whereSql, string orderBySql)
         {
-            string sql = "SELECT * FROM [dbo].[Cotizacion]";
+            var sql = "SELECT * FROM [dbo].[Cotizacion]";
             if ((whereSql != null) && (whereSql.Trim().Length > 0))
             {
                 sql += " WHERE " + whereSql;
@@ -411,13 +411,13 @@ namespace GYM.SIG.DataAccess
 
         public virtual int Grabar(Cotizacion cotizacion, List<DetalleCotizacion> detalles)
         {
-            DbConnection cnn = db.CreateConnection();
+            var cnn = _db.CreateConnection();
             cnn.Open();
-            DbTransaction tran = cnn.BeginTransaction();
+            var tran = cnn.BeginTransaction();
             try
             {
-                if (cotizacion.codCotizacion == 0) cotizacion.codCotizacion = this.Insert(cotizacion, tran);
-                else this.Update(cotizacion, tran);
+                if (cotizacion.codCotizacion == 0) cotizacion.codCotizacion = Insert(cotizacion, tran);
+                else Update(cotizacion, tran);
 
                 foreach (var item in detalles)
                 {
@@ -439,35 +439,34 @@ namespace GYM.SIG.DataAccess
             }
         }
 
-        public virtual int Insert(Cotizacion Cotizacion, DbTransaction tran = null)
+        public virtual int Insert(Cotizacion cotizacion, DbTransaction tran = null)
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddOutParameter(SQL, "codCotizacion", DbType.Int32, 0);
-                db.AddInParameter(SQL, "fechaInicio", DbType.DateTime, Cotizacion.fechaInicio);
-                db.AddInParameter(SQL, "fechaFin", DbType.DateTime, Cotizacion.fechaFin);
-                db.AddInParameter(SQL, "monto", DbType.Decimal, Cotizacion.monto);
-                db.AddInParameter(SQL, "igv", DbType.Decimal, Cotizacion.igv);
-                db.AddInParameter(SQL, "Total", DbType.Decimal, Cotizacion.Total);
-                db.AddInParameter(SQL, "Comentarios", DbType.String, Cotizacion.Comentarios);
-                db.AddInParameter(SQL, "pdfCotizacion", DbType.String, Cotizacion.pdfCotizacion);
-                db.AddInParameter(SQL, "codMoneda", DbType.Int32, Cotizacion.codMoneda);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, Cotizacion.codSolCotizacion);
-                db.AddInParameter(SQL, "codProv", DbType.Int32, Cotizacion.codProv);
-                db.AddInParameter(SQL, "codFormPag", DbType.Int32, Cotizacion.codFormPag);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32, Cotizacion.codTServ);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 4);
-                int huboexito;
-                if (tran != null) huboexito = db.ExecuteNonQuery(SQL, tran);
-                else huboexito = db.ExecuteNonQuery(SQL);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddOutParameter(sql, "IdCotizacion", DbType.Int32, 0);
+                _db.AddInParameter(sql, "FechaInicio", DbType.DateTime, cotizacion.fechaInicio);
+                _db.AddInParameter(sql, "FechaFin", DbType.DateTime, cotizacion.fechaFin);
+                _db.AddInParameter(sql, "Monto", DbType.Decimal, cotizacion.monto);
+                _db.AddInParameter(sql, "Igv", DbType.Decimal, cotizacion.igv);
+                _db.AddInParameter(sql, "Total", DbType.Decimal, cotizacion.Total);
+                _db.AddInParameter(sql, "Comentarios", DbType.String, cotizacion.Comentarios);
+                _db.AddInParameter(sql, "PdfCotizacion", DbType.String, cotizacion.pdfCotizacion);
+                _db.AddInParameter(sql, "IdMoneda", DbType.Int32, cotizacion.codMoneda);
+                _db.AddInParameter(sql, "IdSolicitudCotizacion", DbType.Int32, cotizacion.codSolCotizacion);
+                _db.AddInParameter(sql, "IdProveedor", DbType.Int32, cotizacion.codProv);
+                _db.AddInParameter(sql, "IdFormaPago", DbType.Int32, cotizacion.codFormPag);
+                _db.AddInParameter(sql, "IdTipoServicio", DbType.Int32, cotizacion.codTServ);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 4);
+
+                var huboexito = tran != null ? _db.ExecuteNonQuery(sql, tran) : _db.ExecuteNonQuery(sql);
 
                 if (huboexito == 0)
                 {
                     throw new Exception("Error al agregar al");
                 }
-                var numerogenerado = (int)db.GetParameterValue(SQL, "codCotizacion");
-                SQL.Dispose();
+                var numerogenerado = (int)_db.GetParameterValue(sql, "IdCotizacion");
+                sql.Dispose();
                 return numerogenerado;
             }
             catch (Exception ex)
@@ -480,13 +479,11 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32, codCotizacion);
-                db.AddInParameter(SQL, "codEstado", DbType.Int32, codEstado);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 5);
-                int huboexito;
-                if (tran != null) huboexito = db.ExecuteNonQuery(SQL, tran);
-                else huboexito = db.ExecuteNonQuery(SQL);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql, "IdCotizacion", DbType.Int32, codCotizacion);
+                _db.AddInParameter(sql, "IdEstado", DbType.Int32, codEstado);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 5);
+                var huboexito = tran != null ? _db.ExecuteNonQuery(sql, tran) : _db.ExecuteNonQuery(sql);
 
                 if (huboexito == 0)
                 {
@@ -499,30 +496,28 @@ namespace GYM.SIG.DataAccess
             }
         }
 
-        public virtual void Update(Cotizacion Cotizacion, DbTransaction tran = null)
+        public virtual void Update(Cotizacion cotizacion, DbTransaction tran = null)
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32, Cotizacion.codCotizacion);
-                db.AddInParameter(SQL, "fechaInicio", DbType.DateTime, Cotizacion.fechaInicio);
-                db.AddInParameter(SQL, "fechaFin", DbType.DateTime, Cotizacion.fechaFin);
-                db.AddInParameter(SQL, "monto", DbType.Decimal, Cotizacion.monto);
-                db.AddInParameter(SQL, "igv", DbType.Decimal, Cotizacion.igv);
-                db.AddInParameter(SQL, "Total", DbType.Decimal, Cotizacion.Total);
-                db.AddInParameter(SQL, "Comentarios", DbType.String, Cotizacion.Comentarios);
-                db.AddInParameter(SQL, "pdfCotizacion", DbType.String, Cotizacion.pdfCotizacion);
-                db.AddInParameter(SQL, "codMoneda", DbType.Int32, Cotizacion.codMoneda);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, Cotizacion.codSolCotizacion);
-                db.AddInParameter(SQL, "codProv", DbType.Int32, Cotizacion.codProv);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32, Cotizacion.codTServ);
-                db.AddInParameter(SQL, "codFormPag", DbType.Int32, Cotizacion.codFormPag);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql, "IdCotizacion", DbType.Int32, cotizacion.codCotizacion);
+                _db.AddInParameter(sql, "FechaInicio", DbType.DateTime, cotizacion.fechaInicio);
+                _db.AddInParameter(sql, "FechaFin", DbType.DateTime, cotizacion.fechaFin);
+                _db.AddInParameter(sql, "Monto", DbType.Decimal, cotizacion.monto);
+                _db.AddInParameter(sql, "Igv", DbType.Decimal, cotizacion.igv);
+                _db.AddInParameter(sql, "Total", DbType.Decimal, cotizacion.Total);
+                _db.AddInParameter(sql, "Comentarios", DbType.String, cotizacion.Comentarios);
+                _db.AddInParameter(sql, "PdfCotizacion", DbType.String, cotizacion.pdfCotizacion);
+                _db.AddInParameter(sql, "IdMoneda", DbType.Int32, cotizacion.codMoneda);
+                _db.AddInParameter(sql, "IdSolicitudCotizacion", DbType.Int32, cotizacion.codSolCotizacion);
+                _db.AddInParameter(sql, "IdProveedor", DbType.Int32, cotizacion.codProv);
+                _db.AddInParameter(sql, "IdTipoServicio", DbType.Int32, cotizacion.codTServ);
+                _db.AddInParameter(sql, "IdFormaPago", DbType.Int32, cotizacion.codFormPag);
 
-                db.AddInParameter(SQL, "eliminarDetalle", DbType.Boolean, Cotizacion.eliminarDetalle);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 1);
-                int huboexito;
-                if (tran != null) huboexito = db.ExecuteNonQuery(SQL, tran);
-                else huboexito = db.ExecuteNonQuery(SQL);
+                _db.AddInParameter(sql, "eliminarDetalle", DbType.Boolean, cotizacion.eliminarDetalle);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 1);
+                var huboexito = tran != null ? _db.ExecuteNonQuery(sql, tran) : _db.ExecuteNonQuery(sql);
 
                 if (huboexito == 0)
                 {
@@ -539,10 +534,10 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32, codCotizacion);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 5);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql, "IdCotizacion", DbType.Int32, codCotizacion);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 5);
+                int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");
@@ -560,9 +555,9 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 6);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                var sql = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(sql,  "TipoConsulta", DbType.String, 6);
+                int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");

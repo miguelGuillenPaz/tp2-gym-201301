@@ -10,25 +10,25 @@ namespace GYM.SIG.DataAccess
 {
     public class DetalleCotizaciondalc : Singleton<DetalleCotizaciondalc>
     {
-        private const String nombreprocedimiento = "pa_GSC_DetalleCotizacion";
-        private const String NombreTabla = "DetalleCotizacion";
-        private Database db = DatabaseFactory.CreateDatabase();
+        private const String NombreProcedimiento = "pa_GSC_DetalleCotizacion";
+        //private const String NombreTabla = "DetalleCotizacion";
+        private readonly Database _db = DatabaseFactory.CreateDatabase();
 
 
-        public List<DetalleCotizacion> listartodos()
+        public List<DetalleCotizacion> ListarTodos()
         {
             try
             {
                 var coleccion = new List<DetalleCotizacion>();
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 2);
-                using (var lector = db.ExecuteReader(SQL))
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 2);
+                using (var lector = _db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new DetalleCotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
                             codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
                             descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
                             cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
@@ -62,14 +62,14 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var coleccion = new List<DetalleCotizacion>();
-                DbCommand SQL = db.GetSqlStringCommand(CreateGetCommand(wheresql, orderbysql));
-                using (var lector = db.ExecuteReader(SQL))
+                DbCommand SQL = _db.GetSqlStringCommand(CreateGetCommand(wheresql, orderbysql));
+                using (var lector = _db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new DetalleCotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
                             codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
                             descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
                             cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
@@ -94,17 +94,17 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 10);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 10);
+                _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32);
                 var coleccion = new List<DetalleCotizacion>();
-                using (var lector = db.ExecuteReader(SQL))
+                using (var lector = _db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new DetalleCotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
                             codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
                             descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
                             cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
@@ -130,10 +130,10 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 6);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32);
+                int huboexito = _db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");
@@ -150,17 +150,17 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 10);
-                db.AddInParameter(SQL, "codUM", DbType.Int32);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 10);
+                _db.AddInParameter(SQL, "codUM", DbType.Int32);
                 var coleccion = new List<DetalleCotizacion>();
-                using (var lector = db.ExecuteReader(SQL))
+                using (var lector = _db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new DetalleCotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
                             codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
                             descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
                             cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
@@ -186,10 +186,10 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 6);
-                db.AddInParameter(SQL, "codUM", DbType.Int32);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(SQL, "codUM", DbType.Int32);
+                int huboexito = _db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");
@@ -206,18 +206,18 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 7);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
-                db.AddInParameter(SQL, "codSolDet", DbType.Int32, codSolDet);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 7);
+                _db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
+                _db.AddInParameter(SQL, "codSolDet", DbType.Int32, codSolDet);
                 var DetalleCotizacion = default(DetalleCotizacion);
-                using (var lector = db.ExecuteReader(SQL))
+                using (var lector = _db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         DetalleCotizacion = new DetalleCotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
                             codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
                             descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
                             cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
@@ -241,18 +241,18 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 3);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32, codCotizacion);
-                db.AddInParameter(SQL, "codCotDet", DbType.Int32, codCotDet);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 3);
+                _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32, codCotizacion);
+                _db.AddInParameter(SQL, "codCotDet", DbType.Int32, codCotDet);
                 var DetalleCotizacion = default(DetalleCotizacion);
-                using (var lector = db.ExecuteReader(SQL))
+                using (var lector = _db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         DetalleCotizacion = new DetalleCotizacion
                         {
-                            codCotizacion = lector.GetInt32(lector.GetOrdinal("codCotizacion")),
+                            codCotizacion = lector.GetInt32(lector.GetOrdinal("IdCotizacion")),
                             codCotDet = lector.GetInt32(lector.GetOrdinal("codCotDet")),
                             descripcion = lector.IsDBNull(lector.GetOrdinal("descripcion")) ? default(String) : lector.GetString(lector.GetOrdinal("descripcion")),
                             cantidad = lector.IsDBNull(lector.GetOrdinal("cantidad")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("cantidad")),
@@ -292,26 +292,26 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddOutParameter(SQL, "codCotDet", DbType.Int32, 0);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32, DetalleCotizacion.codCotizacion);
-                db.AddInParameter(SQL, "descripcion", DbType.String, DetalleCotizacion.descripcion);
-                db.AddInParameter(SQL, "cantidad", DbType.Decimal, DetalleCotizacion.cantidad);
-                db.AddInParameter(SQL, "precio", DbType.Decimal, DetalleCotizacion.precio);
-                db.AddInParameter(SQL, "importe", DbType.Decimal, DetalleCotizacion.importe);
-                db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleCotizacion.codUM);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, DetalleCotizacion.codSolCotizacion);
-                db.AddInParameter(SQL, "codSolDet", DbType.Int32, DetalleCotizacion.codSolDet);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 4);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddOutParameter(SQL, "codCotDet", DbType.Int32, 0);
+                _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32, DetalleCotizacion.codCotizacion);
+                _db.AddInParameter(SQL, "descripcion", DbType.String, DetalleCotizacion.descripcion);
+                _db.AddInParameter(SQL, "cantidad", DbType.Decimal, DetalleCotizacion.cantidad);
+                _db.AddInParameter(SQL, "precio", DbType.Decimal, DetalleCotizacion.precio);
+                _db.AddInParameter(SQL, "importe", DbType.Decimal, DetalleCotizacion.importe);
+                _db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleCotizacion.codUM);
+                _db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, DetalleCotizacion.codSolCotizacion);
+                _db.AddInParameter(SQL, "codSolDet", DbType.Int32, DetalleCotizacion.codSolDet);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 4);
                 int huboexito;
-                if (tran != null) huboexito = db.ExecuteNonQuery(SQL, tran);
-                else huboexito = db.ExecuteNonQuery(SQL);
+                if (tran != null) huboexito = _db.ExecuteNonQuery(SQL, tran);
+                else huboexito = _db.ExecuteNonQuery(SQL);
 
                 if (huboexito == 0)
                 {
                     throw new Exception("Error al agregar al");
                 }
-                var numerogenerado = (int)db.GetParameterValue(SQL, "codCotDet");
+                var numerogenerado = (int)_db.GetParameterValue(SQL, "codCotDet");
                 SQL.Dispose();
                 return numerogenerado;
             }
@@ -326,20 +326,20 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32, DetalleCotizacion.codCotizacion);
-                db.AddInParameter(SQL, "codCotDet", DbType.Int32, DetalleCotizacion.codCotDet);
-                db.AddInParameter(SQL, "descripcion", DbType.String, DetalleCotizacion.descripcion);
-                db.AddInParameter(SQL, "cantidad", DbType.Decimal, DetalleCotizacion.cantidad);
-                db.AddInParameter(SQL, "precio", DbType.Decimal, DetalleCotizacion.precio);
-                db.AddInParameter(SQL, "importe", DbType.Decimal, DetalleCotizacion.importe);
-                db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleCotizacion.codUM);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, DetalleCotizacion.codSolCotizacion);
-                db.AddInParameter(SQL, "codSolDet", DbType.Int32, DetalleCotizacion.codSolDet);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 1);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32, DetalleCotizacion.codCotizacion);
+                _db.AddInParameter(SQL, "codCotDet", DbType.Int32, DetalleCotizacion.codCotDet);
+                _db.AddInParameter(SQL, "descripcion", DbType.String, DetalleCotizacion.descripcion);
+                _db.AddInParameter(SQL, "cantidad", DbType.Decimal, DetalleCotizacion.cantidad);
+                _db.AddInParameter(SQL, "precio", DbType.Decimal, DetalleCotizacion.precio);
+                _db.AddInParameter(SQL, "importe", DbType.Decimal, DetalleCotizacion.importe);
+                _db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleCotizacion.codUM);
+                _db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, DetalleCotizacion.codSolCotizacion);
+                _db.AddInParameter(SQL, "codSolDet", DbType.Int32, DetalleCotizacion.codSolDet);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 1);
                 int huboexito;
-                if (tran != null) huboexito = db.ExecuteNonQuery(SQL, tran);
-                else huboexito = db.ExecuteNonQuery(SQL);
+                if (tran != null) huboexito = _db.ExecuteNonQuery(SQL, tran);
+                else huboexito = _db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");
@@ -356,11 +356,11 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codCotizacion", DbType.Int32, codCotizacion);
-                db.AddInParameter(SQL, "codCotDet", DbType.Int32, codCotDet);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 5);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "IdCotizacion", DbType.Int32, codCotizacion);
+                _db.AddInParameter(SQL, "codCotDet", DbType.Int32, codCotDet);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.String, 5);
+                int huboexito = _db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");
@@ -378,9 +378,9 @@ namespace GYM.SIG.DataAccess
         {
             try
             {
-                DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 6);
-                int huboexito = db.ExecuteNonQuery(SQL);
+                DbCommand SQL = _db.GetStoredProcCommand(NombreProcedimiento);
+                _db.AddInParameter(SQL, "TipoConsulta", DbType.String, 6);
+                int huboexito = _db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
                     throw new Exception("Error");

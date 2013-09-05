@@ -242,8 +242,16 @@ table th
 {
   padding: 6px 5px;
   text-align: left;
-  background-color: #e8eef4; 
-  border: solid 1px #e8eef4;   
+}
+
+table.dataTable tr.selected 
+{
+    background:#FBF475 !important;
+}
+
+table.dataTable a:hover
+{
+    color:#0088CC !important;
 }
 
 /* MISC  
@@ -349,4 +357,149 @@ div#title
 .tri-state
 {
     width: 6em;
+}
+
+/* Styles additional for table
+*/
+
+.model, div.dialog 
+{
+    display:none;
+}
+
+select {
+    width: auto !important;
+}
+
+select, 
+textarea, 
+input[type="text"], 
+input[type="password"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="date"], 
+input[type="month"], 
+input[type="time"], 
+input[type="week"], 
+input[type="number"], 
+input[type="email"], 
+input[type="url"], 
+input[type="search"], 
+input[type="tel"], 
+input[type="color"], 
+.uneditable-input {
+    margin-bottom: 0px !important;
+    font-size: 12.5px !important;
+}
+
+.ui-button 
+{
+    padding:0px !important;
+}
+
+table.dataTable thead tr th 
+{
+    background-color:#e5e5e5 !important; /* #0088cc */
+    color:black !important;
+}
+
+table.dataTable thead a 
+{    
+    color:black !important;
+}
+
+table.dataTable tbody tr:hover td, table.dataGrid tbody tr:hover td {
+    background-color:#DEFAE1 !important;
+    cursor: pointer;
+}
+
+table tr.header {
+    background-color: #49afcd;
+    background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+    color: white;
+}
+
+table.dataTable tfoot tr:hover {
+    background: none;
+}
+
+table.dataTable input.button{
+    font-size: 12px;
+    background-color: #084B8A;
+    border: medium none;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+table.dataTable input.button:hover{    
+    background-color: #0073EA;
+}
+
+.pagination a, .pagination a:hover {
+    text-decoration: none;
+}
+
+.pagination {
+    font-family:arial,sans-serif;
+    color: black; padding:10px; 
+    margin-top:10px;
+}
+
+.pagination a {    
+    line-height: 26px;
+}
+
+.pagination a, .pagination span.pag {
+    margin:3px; padding:4px;
+    border-color: #CCC;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.25),inset 0 0 3px #fff;
+    -ms-box-shadow: 0 1px 2px rgba(0,0,0,0.25),inset 0 0 3px #fff;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.25),inset 0 0 3px #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25),inse;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;    
+}
+
+.pagination .pag {    
+    border:1px solid;
+}
+
+.pagination .off {
+    border:1px solid #0073EA; color:#0073EA;
+}
+
+.pagination .off:hover { 
+    border:1px solid black; 
+    color:black;
+}
+
+.pagination .on {
+    border:1px solid #CCC; color:black;
+}
+
+/* Styles additionals */
+
+.k-upload-button {
+    margin: .8em;
+}
+
+.demo-section {
+    margin: 0 auto 15px auto;
+    padding: 10px;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.07) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.01)), color-stop(100%,rgba(0,0,0,0.07)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.01) 0%,rgba(0,0,0,0.07) 100%);
 }

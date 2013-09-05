@@ -13,7 +13,7 @@ namespace GYM.SIG.Business
         {
             try
             {
-                var lista = Estadodalc.Instancia.listartodos(flag);
+                var lista = Estadodalc.Instancia.ListarTodos(flag);
                 if (todos)
                 {
                     lista.Insert(0, new Estado { codEstado = 0, desEstado = "- Seleccione -" });

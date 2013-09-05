@@ -13,7 +13,7 @@ namespace GYM.SIG.Business
         {
             try
             {
-                return DetalleCotizaciondalc.Instancia.listartodos();
+                return DetalleCotizaciondalc.Instancia.ListarTodos();
             }
             catch (Exception ex)
             {

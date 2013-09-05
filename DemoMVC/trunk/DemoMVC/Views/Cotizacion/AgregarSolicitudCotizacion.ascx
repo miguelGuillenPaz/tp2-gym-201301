@@ -223,7 +223,7 @@
                 </tr>
                 <tr>
                     <td>Tipo de Servicio:</td>
-                    <td><%: Html.DropDownList("codTServ", new SelectList(Negocio.TipoServicioCN.Instancia.listartodos(true), "codTServ", "descTServ"))%></td>
+                    <td><%: Html.DropDownList("codTServ", new SelectList(GYM.SIG.Business.TipoServicioCN.Instancia.listartodos(true), "codTServ", "descTServ"))%></td>
                     <td>Fecha Vencimiento:</td>
                     <td><input type="text" name="fechaVencimiento" class="datepicker" style="width:110px;" /></td>
                 </tr>

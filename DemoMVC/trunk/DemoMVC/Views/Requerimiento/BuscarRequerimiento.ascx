@@ -83,11 +83,11 @@
                     <table>
                         <tr>
                             <td>Tipo Servicio:</td>
-                            <td colspan="3"><%: Html.DropDownList("codTServ", new SelectList(Negocio.TipoServicioCN.Instancia.listartodos(true), "codTServ", "descTServ"))%></td>
+                            <td colspan="3"><%: Html.DropDownList("codTServ", new SelectList(GYM.SIG.Business.TipoServicioCN.Instancia.listartodos(true), "codTServ", "descTServ"))%></td>
                         </tr>
                         <tr>
                             <td>Proyecto:</td>
-                            <td><%: Html.DropDownList("codPro", new SelectList(Negocio.ProyectoCN.Instancia.listartodos(true), "codPro", "nomPro")) %></td>
+                            <td><%: Html.DropDownList("codPro", new SelectList(GYM.SIG.Business.ProyectoCN.Instancia.listartodos(true), "codPro", "nomPro")) %></td>
                             <td>Nro Req.:</td>
                             <td><input type="text" name="codReq" value="" style="width:80px;" class="digits" maxlength="5" /></td>
                         </tr>
