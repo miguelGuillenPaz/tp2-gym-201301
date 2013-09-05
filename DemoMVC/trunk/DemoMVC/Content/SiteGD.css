@@ -1,0 +1,48 @@
+﻿/* TABLE
+----------------------------------------------------------*/
+.tabla-gestion, .tabla-gestion td
+{
+  border: 0px !important;
+  border-collapse: collapse;
+}
+table 
+{
+  border: solid 1px #FEB600;
+  border-collapse: collapse;
+}
+
+table td 
+{
+  padding: 2px;   
+  border: solid 1px #FEB600;
+}
+
+table th
+{
+  padding: 6px 5px;
+  text-align: center;
+  background-color: #FEB600; 
+  border: solid 1px #FEB600;
+  color: #ffffff;   
+}
+
+.contenido-top
+{
+    /*width: auto;*/
+     height: 550px;		    
+     margin: 0px auto;
+     background-color: #fff;
+     padding-left: 10px;
+     padding-bottom: 35px;
+     border-top-right-radius: 5px;
+     border-top-left-radius: 5px;
+     padding-top: 15px;
+     box-shadow: 0 3px 5px rgba(50, 50, 50, 0.4);
+     position: relative;
+     /*z-index: 999;*/
+}
+
+
+.campoTexto input {
+    width: 50px;
+}

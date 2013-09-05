@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -74,7 +75,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerFactory\NinjectControllerFactory.cs" />
+    <Compile Include="ControllerFactory\NinjectControllerFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
@@ -99,6 +102,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelperClass\Utils.cs" />
     <Compile Include="Helpers\ModelCopier.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Actividad.cs" />
@@ -111,6 +115,11 @@
     <Compile Include="Models\DetallePresupuesto.cs" />
     <Compile Include="Models\Entregable.cs" />
     <Compile Include="Models\EstimadoRapidoForm.cs" />
+    <Compile Include="Models\GD_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD_Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\GPC_DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,7 +143,9 @@
     </Compile>
     <Compile Include="Models\Presupuesto.cs" />
     <Compile Include="Models\PresupuestoModel.cs" />
-    <Compile Include="Models\Proyecto.cs" />
+    <Compile Include="Models\Proyecto.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\ProyectoHist.cs" />
     <Compile Include="Models\S10_DB.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -150,7 +161,9 @@
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\DetallePresupuestoDAO.cs" />
     <Compile Include="Persistencia\EntregableDAO.cs" />
-    <Compile Include="Persistencia\Estado.cs" />
+    <Compile Include="Persistencia\Estado.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Persistencia\LegalDAO.cs" />
     <Compile Include="Persistencia\LegalVecinoColindante.cs" />
     <Compile Include="Persistencia\PlanProyectoDAO.cs" />
@@ -195,6 +208,7 @@
     <Content Include="Content\menu.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\Site2.css" />
+    <Content Include="Content\SiteGD.css" />
     <Content Include="Content\sliderman.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style_ie.css" />
@@ -357,7 +371,11 @@
     <Content Include="Views\Compras\mainItemsSolAdq.aspx" />
     <Content Include="Views\Compras\mainPlanAba.aspx" />
     <Content Include="Views\Compras\mainSolAdq.aspx" />
+    <Content Include="Views\Contenidos\Buscar.aspx" />
     <Content Include="Views\Contenidos\Contenidos.aspx" />
+    <Content Include="Views\Contenidos\Create.aspx" />
+    <Content Include="Views\Contenidos\Delete.aspx" />
+    <Content Include="Views\Contenidos\PrestarDocumento.aspx" />
     <Content Include="Views\Convocatoria\Crear.aspx" />
     <Content Include="Views\Convocatoria\Editar.aspx" />
     <Content Include="Views\Convocatoria\Index.aspx" />
@@ -485,6 +503,10 @@
     <EntityDeploy Include="Models\S10_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>S10_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\GD_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GD_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Scripts\noty-2.1.0\.gitignore" />
     <None Include="Scripts\noty-2.1.0\README.markdown" />
