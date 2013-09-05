@@ -29,7 +29,7 @@ namespace DemoMVC
         {
             AreaRegistration.RegisterAllAreas(); 
             RegisterRoutes(RouteTable.Routes);
-            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+            //ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
         }
     }
 }
