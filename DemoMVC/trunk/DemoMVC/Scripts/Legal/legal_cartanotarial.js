@@ -12,10 +12,10 @@ $("document").ready(function () {
 
     //-----------------------------------------------------------------------------------------------
     //Validaciones campos
-    $("#txtDNIVecino").keypress(function (e) {
-        if (!/[0-9]/.test(String.fromCharCode(e.which)))
-            return false;
-    });
+    /*$("#txtDNIVecino").keypress(function (e) {
+    if (!/[0-9]/.test(String.fromCharCode(e.which)))
+    return false;
+    });*/
 
     //-----------------------------------------------------------------------------------------------
     //Eventos de links (botones)
@@ -32,7 +32,7 @@ $("document").ready(function () {
     //Agregar persona a la grilla
     $('.btnAgregarVecino').click(function (e) {
         e.preventDefault();
-        //alert("clic en boton");
+
         var tipoEdif = ($("input[name='optTipoEdif']:checked").val() != undefined) ? $("input[name='optTipoEdif']:checked").val() : '';
         var nomCond = $('#txtNombreCondominio').val();
         var nom = $('#txtNombreVecino').val();
@@ -43,20 +43,22 @@ $("document").ready(function () {
         var idDocId = $('#cboTipoDocIdentidad').val();
         var nroDoc = $('#txtDNIVecino').val();
 
+
         if (tipoEdif != '' && nom != '' && ape != '' && dir != '' && dis > 0 && idDocId > 0 && nroDoc != '') {
             if (tipoEdif == 'CON' && nomCond == '') {
                 alert('Debe ingresar el nombre del condominio.');
                 $('#txtNombreCondominio').focus();
             }
-            else if (idDocId == 1 && dni.length < 8) {
+            else if (idDocId == 1 && nroDoc.length < 8) {
                 alert('El número de DNI ingresado es inválido.');
                 $('#txtDNIVecino').focus();
             }
             else {
-                addPersona(tipoEdif.toString(), nom, ape, nomCond, dir, dis, nomDis, nroDoc);
+                addPersona(tipoEdif.toString(), nom, ape, nomCond, dir, dis, nomDis, idDocId, nroDoc);
                 $("input[name='optTipoEdif']").removeAttr('checked');
                 $('#datosPersonas input[type=text]').val('');
                 $("#cboDistrito").val($("#cboDistrito option:first").val());
+                $("#cboTipoDocIdentidad").val($("#cboTipoDocIdentidad option:first").val());
                 estadoNomCond(0);
             }
         }
@@ -109,7 +111,7 @@ $("document").ready(function () {
     //----------------------------------------------------------------------------
     //Funciones
 
-    function addPersona(tipoEdif, nom, ape, nomCond, dir, dis, nomDis, nroDoc) {
+    function addPersona(tipoEdif, nom, ape, nomCond, dir, dis, nomDis, idDocId, nroDoc) {
         var nomTipoEdif = "";
         switch (tipoEdif) {
             case 'CAS':
@@ -133,6 +135,7 @@ $("document").ready(function () {
                                 'cTipoEdificacion': tipoEdif,
                                 'nomTipoEdif': nomTipoEdif,
                                 'cNombreCondominio': nomCond,
+                                'IdDocIdentidad': idDocId,
                                 'cNroDocIdentidad': nroDoc
                             }
         });
@@ -230,6 +233,7 @@ function grabarReqLegal() {
                 'idProv': 1,
                 'cTipoEdificacion': arrPersonas[i].p.cTipoEdificacion,
                 'cNombreCondominio': arrPersonas[i].p.cNombreCondominio,
+                'IdDocIdentidad': arrPersonas[i].p.idDocId,
                 'cNroDocIdentidad': arrPersonas[i].p.cNroDocIdentidad
             });
 
@@ -250,7 +254,7 @@ function grabarReqLegal() {
     }
 }
 
-function ListaVecinos(nom, ape, dir, dis, dep, prov, tipoEdif, nomCond, nroDoc) {
+function ListaVecinos(nom, ape, dir, dis, dep, prov, tipoEdif, nomCond, idDocId, nroDoc) {
     this.cNombre = nom;
     this.cApellido = ape;
     this.cDireccion = dir;
@@ -259,5 +263,6 @@ function ListaVecinos(nom, ape, dir, dis, dep, prov, tipoEdif, nomCond, nroDoc) 
     this.idProv = prov;
     this.cTipoEdificacion = tipoEdif;
     this.cNombreCondominio = nomCond;
+    this.IdDocIdentidad = idDocId;
     this.cNroDocIdentidad = nroDoc;
 }

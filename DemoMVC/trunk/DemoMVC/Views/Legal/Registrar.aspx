@@ -94,7 +94,7 @@
                         </select>
                     </div>
                     <div class="col1 paddingTop">Nro. Documento:</div>
-                    <div class="col2 final"><input id="txtDNIVecino" name="txtDNIVecino" maxlength="8" type="text" class="text0" /></div>
+                    <div class="col2 final"><input id="txtDNIVecino" name="txtDNIVecino" maxlength="15" type="text" class="text0" /></div>
                 </div>
             
                 <div class="fila"><a class="btnAgregarVecino btn" href="#">Agregar persona</a></div>
