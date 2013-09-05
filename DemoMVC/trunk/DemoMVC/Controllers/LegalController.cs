@@ -31,11 +31,25 @@ namespace DemoMVC.Controllers
         {
 
             ProyectoDAO proye = new ProyectoDAO();
+
+            /*SelectListItem item = new SelectListItem();
+            item.Text = "--seleccione--";
+            item.Value = "0";
+
+            Proyecto oProy = new Proyecto();
+            oProy.idProyecto = 0;
+            oProy.nombreProyecto = "--seleccione--";
+
+            IList<Proyecto> listaProyectos = new List<Proyecto>();
+            listaProyectos.Add(oProy);
+
+            SelectList selectListaProyectos = new SelectList(proye.obtenerProyectoPorFiltro(3, 0, "PR").ToList(), "IdProyecto", "nombreProyecto");*/
+
             ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(3, 0, "PR").ToList(), "IdProyecto", "nombreProyecto");
             return View();
         }
 
-        public ActionResult Confirmacion(int idPro, string desc, string prioridad, string arrVecinos)
+        public ActionResult Confirmacion(int idPro, string desc, string arrVecinos)
         {
             Session["bInsertSuccess"] = false;
 
@@ -44,7 +58,6 @@ namespace DemoMVC.Controllers
             legalReq.idReqLegalTipo = 1;
             legalReq.idProyecto = idPro;
             legalReq.cDescripcion = desc;
-            legalReq.cPrioridadAtencion = prioridad;
 
             LegalDAO legalDAO = new LegalDAO();
             int nuevoIdReqLegal = legalDAO.insertarRequerimientoLegal(legalReq);
@@ -84,7 +97,7 @@ namespace DemoMVC.Controllers
             if (nuevoIdReqLegal > 0 && totVecIns > 0)
             {
                 Session["bInsertSuccess"] = true;
-                EnviarMail(nuevoIdReqLegal);
+                //EnviarMail(nuevoIdReqLegal);
             }
             else
             {
@@ -96,16 +109,20 @@ namespace DemoMVC.Controllers
 
         public void EnviarMail(int idReq)
         {
-            var fromAddress = new MailAddress("gemini.cal@gmail.com", "Carlos Pérez Betancour");
+            //var fromAddress = new MailAddress("gemini.cal@gmail.com", "Carlos Pérez Betancour");
+            var fromAddress = new MailAddress(System.Configuration.ConfigurationManager.AppSettings["userFrom"], "Carlos Pérez Betancour");
             var toAddress = new MailAddress("u201021077@upc.edu.pe", "Usuario Solicitante");
-            string fromPassword = System.Configuration.ConfigurationManager.AppSettings["Correo_CredentialPassword"];
+            //string fromPassword = System.Configuration.ConfigurationManager.AppSettings["Correo_CredentialPassword"];
+            string fromPassword = System.Configuration.ConfigurationManager.AppSettings["userPassword"];
             const string subject = "Área Legal - se registró su requerimiento legal";
             string body = "<p>Su solicitud de requerimiento legal con ID:" + idReq + " ha sido registrado y queda en estado Pendiente de Atención.</p><p>Atentamente</p><p>Área Legal<br />GyM</p>";
 
             var smtp = new SmtpClient
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
+                //Host = "smtp.gmail.com",
+                Host = System.Configuration.ConfigurationManager.AppSettings["smtpServer"],
+                //Port = 587,
+                Port = Convert.ToInt32( System.Configuration.ConfigurationManager.AppSettings["smtpPort"]),
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,

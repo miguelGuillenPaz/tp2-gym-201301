@@ -33,7 +33,6 @@ namespace DemoMVC.Persistencia
                     cmdIns.Parameters.Add(new SqlParameter("@idProyecto", reqLegal.idProyecto));
                     cmdIns.Parameters.Add(new SqlParameter("@idReqLegalTipo", reqLegal.idReqLegalTipo));
                     cmdIns.Parameters.Add(new SqlParameter("@cDescripcion", reqLegal.cDescripcion));
-                    cmdIns.Parameters.Add(new SqlParameter("@cPrioridadAtencion", reqLegal.cPrioridadAtencion));
 
                     cmdIns.Transaction = sqlTransaction;
                     //totIns = cmdIns.ExecuteNonQuery();

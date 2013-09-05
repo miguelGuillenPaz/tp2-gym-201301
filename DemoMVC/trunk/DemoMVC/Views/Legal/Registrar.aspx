@@ -38,7 +38,8 @@
             <div class="fila">
                 <div class="col1">Proyecto:</div>
                 <div class="col2 final">
-                   <%: Html.DropDownList("idProyecto", (SelectList)ViewData["Proyectos"])%></p>
+                   <%: Html.DropDownList("idProyecto", (SelectList)ViewData["Proyectos"],"Seleccionar")%>
+                   <%--<%: Html.DropDownList("Proyectos",ViewData["Proyectos"] as SelectList) %>--%>
                 </div>
             </div>
         
@@ -83,7 +84,16 @@
                 </div>
             
                 <div class="fila">
-                    <div class="col2 paddingTop">DNI:</div>
+                    <div class="col2 paddingTop">Tipo de Doc. Identidad:</div>
+                    <div class="col6 paddingTop">
+                        <select id="cboTipoDocIdentidad">
+                            <option value="0">Seleccionar</option>
+                            <option value="1">DNI</option>
+                            <option value="2">Carné Extranjería</option>
+                            <option value="3">Pasaporte</option>
+                        </select>
+                    </div>
+                    <div class="col1 paddingTop">Nro. Documento:</div>
                     <div class="col2 final"><input id="txtDNIVecino" name="txtDNIVecino" maxlength="8" type="text" class="text0" /></div>
                 </div>
             

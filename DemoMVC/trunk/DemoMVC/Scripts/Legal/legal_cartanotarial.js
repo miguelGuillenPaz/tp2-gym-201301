@@ -40,17 +40,18 @@ $("document").ready(function () {
         var dir = $('#txtDireccionVecino').val();
         var dis = $('#cboDistrito').val();
         var nomDis = $('#cboDistrito option:selected').html();
+        var idDocId = $('#cboTipoDocIdentidad').val();
         var nroDoc = $('#txtDNIVecino').val();
 
-        if (tipoEdif != '' && nom != '' && ape != '' && dir != '' && dis > 0 && nroDoc != '') {
+        if (tipoEdif != '' && nom != '' && ape != '' && dir != '' && dis > 0 && idDocId > 0 && nroDoc != '') {
             if (tipoEdif == 'CON' && nomCond == '') {
                 alert('Debe ingresar el nombre del condominio.');
                 $('#txtNombreCondominio').focus();
             }
-            /*else if (dni.length < 8) {
-            alert('El número de DNI ingresado es inválido.');
-            $('#txtDNIVecino').focus();
-            }*/
+            else if (idDocId == 1 && dni.length < 8) {
+                alert('El número de DNI ingresado es inválido.');
+                $('#txtDNIVecino').focus();
+            }
             else {
                 addPersona(tipoEdif.toString(), nom, ape, nomCond, dir, dis, nomDis, nroDoc);
                 $("input[name='optTipoEdif']").removeAttr('checked');
@@ -190,7 +191,8 @@ function estadoNomCond(estado) {
 
 //Lo llama el botón Grabar
 function validarForm() {
-    var idPro = $('#cboProyecto');
+    //var idPro = $('#cboProyecto');
+    var idPro = $('#idProyecto');
     var desc = $('#txtDescripcion');
 
     if (idPro.val() <= 0) {
@@ -213,9 +215,8 @@ function validarForm() {
 function grabarReqLegal() {
     if (validarForm()) {
 
-        var idPro = $('#cboProyecto').val();
+        var idPro = $('#idProyecto').val();
         var desc = $('#txtDescripcion').val();
-        alert(idPro);
 
         var arrVecinos = [];
 
