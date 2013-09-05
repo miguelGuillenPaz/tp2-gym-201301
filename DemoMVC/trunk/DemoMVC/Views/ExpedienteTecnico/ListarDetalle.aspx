@@ -158,42 +158,65 @@
         </div>
         <div class="gpc-separador">
         </div>
-        <div style="width: 100%; float: left; display: block;">
-            <div>
-                Número de Presupuesto:
-                <%=Model.Numero %>
+               <div style="width: 100%; float: left; display: block;">
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left; padding: .5em;">
+                    <input type="hidden" id="Hidden1" value="<%=Model.IDPresupuestoObra%>" />
+                    Número de Presupuesto:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.Numero %>
+                </div>
+                <div style="float: left; padding: .5em;">
+                    Nombre:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.Nombre %>
+                </div>
+                <div style="float: left; padding: .5em;">
+                    Cliente:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.RazonSocial %></div>
             </div>
-            <div>
-                Nombre:
-                <%=Model.Nombre %>
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left; padding: .5em;">
+                    Dirección de la Obra:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.Direccion %></div>
             </div>
-            <div>
-                Cliente:
-                <%=Model.RazonSocial %>
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left; padding: .5em;">
+                    Fecha Inicio:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.FechaInicio %>
+                </div>
+                <div style="float: left; padding: .5em;">
+                    Fecha Fin:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.FechaFin %></div>
             </div>
-            <div>
-                Dirección de la Obra:
-                <%=Model.Direccion %>
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left; padding: .5em;">
+                    Fecha Cambio de Estado:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.FechaCambioEstado %></div>
+                <div style="float: left; padding: .5em;">
+                    Usuario Cambio de Estado:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.UsuarioCambioEstado %></div>
             </div>
-            <div>
-                Fecha Inicio:
-                <%=Model.FechaInicio %>
-            </div>
-            <div>
-                Fecha Fin:
-                <%=Model.FechaFin %>
-            </div>
-            <div>
-                Fecha Cambio de Estado:
-                <%=Model.FechaCambioEstado %>
-            </div>
-            <div>
-                Usuario Cambio de Estado:
-                <%=Model.UsuarioCambioEstado %>
-            </div>
-            <div>
-                Total Presupuestado:
-                <%=Model.TotalPresupuestado %>
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left; padding: .5em;">
+                    Total Presupuestado:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.TotalPresupuestado %></div>
             </div>
         </div>
         <div class="gpc-separador">

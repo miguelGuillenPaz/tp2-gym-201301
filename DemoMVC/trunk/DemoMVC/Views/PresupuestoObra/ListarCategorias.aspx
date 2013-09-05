@@ -22,7 +22,7 @@
         
     <div class="gpc-Categoria">
         <div class="gpc-Categoria-nombre"><%= categoria.Nombre %></div>  
-        <div class="gpc-Categoria-detalle"><a class="gpc-link" onclick="listarItems(<%=categoria.ID%>,'<%= categoria.Nombre %>');">Ver Items</a></div>        
+        <div class="gpc-Categoria-detalle"><a class="gpc-link" onclick="listarItems(<%=categoria.IDCategoria%>,'<%= categoria.Nombre %>');">Ver Items</a></div>        
     </div>
             
     <%} %>

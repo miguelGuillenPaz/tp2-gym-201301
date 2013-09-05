@@ -388,9 +388,7 @@
     <Content Include="Views\Cotizacion\Solicitud.aspx" />
     <Content Include="Views\Empleado\Agregar.aspx" />
     <Content Include="Views\Empleado\DatosAdicionales.aspx" />
-    <Content Include="Views\ExpedienteTecnico\ListarCronograma.aspx" />
     <Content Include="Views\ExpedienteTecnico\ListarDetalle.aspx" />
-    <Content Include="Views\ExpedienteTecnico\ListarPartidas.aspx" />
     <Content Include="Views\ExpedienteTecnico\ListarPresupuestos.aspx" />
     <Content Include="Views\ExpedienteTecnico\RegistrarExpedienteTecnico.aspx" />
     <Content Include="Views\Finanzas\Index.aspx" />

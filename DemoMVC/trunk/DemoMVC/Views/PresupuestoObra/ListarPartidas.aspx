@@ -19,7 +19,7 @@
 
         <div class="gpc-Partida">
             <div class="gpc-Partida-nombre"><%= partida.Nombre%></div>  
-            <div class="gpc-Partida-detalle"><a class="gpc-link" onclick="listarCategorias(<%=partida.ID%>,'<%=partida.Nombre %>');">Ver Detalle</a></div>       
+            <div class="gpc-Partida-detalle"><a class="gpc-link" onclick="listarCategorias(<%=partida.IDPartida%>,'<%=partida.Nombre %>');">Ver Detalle</a></div>       
         </div>
 
         <%}%>
