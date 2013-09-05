@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DemoMVC.Models
 {
-    public class Estado
+    public partial class Estado
     {
         public Estado(){
     }

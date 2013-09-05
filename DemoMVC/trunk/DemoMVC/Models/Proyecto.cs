@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DemoMVC.Models
 {
-    public class Proyecto
+    public partial class Proyecto
     {
         public Proyecto() 
         { 
