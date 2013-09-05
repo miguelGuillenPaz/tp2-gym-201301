@@ -28,6 +28,7 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new DetalleRequerimiento
                         {
+                            //CambiarAtributos
                             codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
                             codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
                             codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
@@ -36,11 +37,11 @@ namespace GYM.SIG.DataAccess
                             fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM")),
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida")),
                             descUM = lector.IsDBNull(lector.GetOrdinal("descUM")) ? "" : lector.GetString(lector.GetOrdinal("descUM")),
 
-                            nomPro = lector.IsDBNull(lector.GetOrdinal("nomPro")) ? "" : lector.GetString(lector.GetOrdinal("nomPro")),
-                            desReq = lector.IsDBNull(lector.GetOrdinal("desReq")) ? "" : lector.GetString(lector.GetOrdinal("desReq")),
+                            nomPro = lector.IsDBNull(lector.GetOrdinal("Nombre")) ? "" : lector.GetString(lector.GetOrdinal("Nombre")),
+                            desReq = lector.IsDBNull(lector.GetOrdinal("DescripReq")) ? "" : lector.GetString(lector.GetOrdinal("DescripReq")),
                             codSolDet = lector.IsDBNull(lector.GetOrdinal("codSolDet")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codSolDet")),
                             codSolCotizacion = codSolCotizacion,
                         });
@@ -62,7 +63,7 @@ namespace GYM.SIG.DataAccess
                 var coleccion = new List<DetalleRequerimiento>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
                 db.AddInParameter(SQL, "IdProyecto", DbType.Int32, codPro);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32, codTServ);
+                db.AddInParameter(SQL, "IdTipoServicio", DbType.Int32, codTServ);
                 db.AddInParameter(SQL, "IdRequerimiento", DbType.Int32, codReq);
                 db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 10);
                 using (var lector = db.ExecuteReader(SQL))
@@ -72,16 +73,16 @@ namespace GYM.SIG.DataAccess
                         coleccion.Add(new DetalleRequerimiento
                         {
                             codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
-                            nomPro = lector.IsDBNull(lector.GetOrdinal("nomPro")) ? "" : lector.GetString(lector.GetOrdinal("nomPro")),
+                            nomPro = lector.IsDBNull(lector.GetOrdinal("Nombre")) ? "" : lector.GetString(lector.GetOrdinal("Nombre")),
                             codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
                             codcorDetReq = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
                             canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
                             fecInicio = lector.IsDBNull(lector.GetOrdinal("FecInicio")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecInicio")),
                             fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
-                            desReq = lector.IsDBNull(lector.GetOrdinal("desReq")) ? "" : lector.GetString(lector.GetOrdinal("desReq")),
+                            desReq = lector.IsDBNull(lector.GetOrdinal("DescripReq")) ? "" : lector.GetString(lector.GetOrdinal("DescripReq")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM")),
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida")),
                             descUM = lector.IsDBNull(lector.GetOrdinal("descUM")) ? "" : lector.GetString(lector.GetOrdinal("descUM")),
                         });
                     }
@@ -116,7 +117,7 @@ namespace GYM.SIG.DataAccess
                             fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         });
                     }
@@ -159,7 +160,7 @@ namespace GYM.SIG.DataAccess
                             fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         });
                     }
@@ -196,7 +197,7 @@ namespace GYM.SIG.DataAccess
                             fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         });
                     }
@@ -254,7 +255,7 @@ namespace GYM.SIG.DataAccess
                             fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         });
                     }
@@ -312,7 +313,7 @@ namespace GYM.SIG.DataAccess
                             fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         });
                     }
@@ -370,7 +371,7 @@ namespace GYM.SIG.DataAccess
                             fecFin = lector.IsDBNull(lector.GetOrdinal("FecFin")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecFin")),
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM"))
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
 
                         };
                     }
@@ -413,7 +414,7 @@ namespace GYM.SIG.DataAccess
                 db.AddInParameter(SQL, "FecFin", DbType.DateTime, DetalleRequerimiento.fecFin);
                 db.AddInParameter(SQL, "desServicio", DbType.String, DetalleRequerimiento.desServicio);
                 db.AddInParameter(SQL, "actServicio", DbType.String, DetalleRequerimiento.actServicio);
-                db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleRequerimiento.codUM);
+                db.AddInParameter(SQL, "IdUnidadMedida", DbType.Int32, DetalleRequerimiento.codUM);
                 db.AddInParameter(SQL, "TipoConsulta", DbType.String, 4);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
@@ -444,7 +445,7 @@ namespace GYM.SIG.DataAccess
                 db.AddInParameter(SQL, "FecFin", DbType.DateTime, DetalleRequerimiento.fecFin);
                 db.AddInParameter(SQL, "desServicio", DbType.String, DetalleRequerimiento.desServicio);
                 db.AddInParameter(SQL, "actServicio", DbType.String, DetalleRequerimiento.actServicio);
-                db.AddInParameter(SQL, "codUM", DbType.Int32, DetalleRequerimiento.codUM);
+                db.AddInParameter(SQL, "IdUnidadMedida", DbType.Int32, DetalleRequerimiento.codUM);
                 db.AddInParameter(SQL, "TipoConsulta", DbType.String, 1);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)

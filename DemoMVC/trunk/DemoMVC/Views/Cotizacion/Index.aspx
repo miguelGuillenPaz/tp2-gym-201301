@@ -8,8 +8,6 @@
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Scripts/jquery-ui/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"
         type="text/css" />
-    <script type="text/javascript" src="../../Scripts/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="../../Scripts/jquery-ui/jquery-ui-1.10.3.custom.min.js"></script>
     <script type="text/javascript" src="../../Scripts/js/jquery.maskedinput-1.3.1.min.js"></script>
     <script type="text/javascript" src="../../Scripts/js/jquery.numeric.js"></script>
     <script type="text/javascript" src="../../Scripts/js/jquery.validationEngine-es.js"></script>
