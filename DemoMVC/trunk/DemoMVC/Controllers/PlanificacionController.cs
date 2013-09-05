@@ -454,7 +454,7 @@ namespace DemoMVC.Controllers
                 if (codAccion == 2)
                 {
                     //Muestra distritos + listado generico
-                }
+                } 
 
                 //Listado de Proyectos historicos a escoger
                 ProyectoHistDAO proyHistDAO = new ProyectoHistDAO();
