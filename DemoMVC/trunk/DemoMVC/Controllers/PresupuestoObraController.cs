@@ -90,7 +90,7 @@ namespace GYM.SIC.GPC.Controllers
                 var categorias = from c in partida.GPC_DetallePartida.Where(x => x.GPC_Categoria != null)
                                  select new
                                  {
-                                     ID = c.GPC_Categoria.IDCategoria,
+                                     IDCategoria = c.GPC_Categoria.IDCategoria,
                                      Nombre = c.GPC_Categoria.Nombre
                                  };
 
@@ -139,7 +139,7 @@ namespace GYM.SIC.GPC.Controllers
             var categorias = from c in partida.GPC_DetallePartida.Where(x => x.GPC_Categoria != null)
                              select new
                              {
-                                 ID = c.GPC_Categoria.IDCategoria,
+                                 IDCategoria = c.GPC_Categoria.IDCategoria,
                                  Nombre = c.GPC_Categoria.Nombre
                              };
 

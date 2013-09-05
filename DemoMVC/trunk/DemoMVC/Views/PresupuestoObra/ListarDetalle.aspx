@@ -53,7 +53,7 @@
             });
         };
 
-        $(function () {
+        $(function () { 
             $.ajax({
                 url: config.contextPath + 'PresupuestoObra/Listarpartidas?PresupuestoID=' + $("#IDPresupuesto").val(),
                 type: 'POST',

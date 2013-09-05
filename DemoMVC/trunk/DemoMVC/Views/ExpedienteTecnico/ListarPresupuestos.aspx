@@ -39,7 +39,7 @@
             <%=presupuesto.UsuarioCambioEstado%>
         </div>
         <div class="gpc-td-center" style="width: 65px;">
-            <a href="ListarDetalle?PresupuestoID=<%=presupuesto.ID%>">Registrar</a>
+            <a href="ListarDetalle?PresupuestoID=<%=presupuesto.IDPresupuestoObra%>">Registrar</a>
         </div>
     </div>
     <% }%>

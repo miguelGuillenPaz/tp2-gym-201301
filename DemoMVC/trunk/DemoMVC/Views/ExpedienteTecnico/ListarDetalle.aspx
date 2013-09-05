@@ -200,7 +200,7 @@
         </div>
         <form id="ActualizarExpediente" action='<%=ResolveUrl("~/ExpedienteTecnico/ActualizarExpedienteTecnico")%>'
         enctype="multipart/form-data" method="post">
-        <input type="hidden" id="IDPresupuesto" name="IDPresupuesto" value="<%=Model.ID%>" />
+        <input type="hidden" id="IDPresupuesto" name="IDPresupuesto" value="<%=Model.IDPresupuestoObra%>" />
         <div style="width: 100%; float: left; vertical-align: top;">
             Observación:
             <textarea id="Observacion" name="Observacion" rows="10" cols="50"></textarea>
