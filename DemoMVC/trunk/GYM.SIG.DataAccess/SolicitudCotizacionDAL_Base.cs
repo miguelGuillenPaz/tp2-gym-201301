@@ -20,42 +20,42 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<SolicitudCotizacion>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 8);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 8);
 
-                db.AddInParameter(SQL, "tipoFecha", DbType.String, tipoFecha);
+                db.AddInParameter(SQL, "TipoFecha", DbType.String, tipoFecha);
                 if (tipoFecha.Equals("todos"))
                 {
-                    db.AddInParameter(SQL, "fechaInicio", DbType.DateTime, null);
-                    db.AddInParameter(SQL, "fechaFin", DbType.DateTime, null);
+                    db.AddInParameter(SQL, "FechaInicio", DbType.DateTime, null);
+                    db.AddInParameter(SQL, "FechaFin", DbType.DateTime, null);
                 }
                 else
                 {
-                    db.AddInParameter(SQL, "fechaInicio", DbType.DateTime, fechaInicio);
-                    db.AddInParameter(SQL, "fechaFin", DbType.DateTime, fechaFin);
+                    db.AddInParameter(SQL, "FechaInicio", DbType.DateTime, fechaInicio);
+                    db.AddInParameter(SQL, "FechaFin", DbType.DateTime, fechaFin);
                 }
 
-                db.AddInParameter(SQL, "codPro", DbType.Int32, codPro);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32, codTServ);
-                db.AddInParameter(SQL, "codEstado", DbType.Int32, codEstado);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
-                db.AddInParameter(SQL, "codReq", DbType.Int32, codReq);
+                db.AddInParameter(SQL, "IdProyecto", DbType.Int32, codPro);
+                db.AddInParameter(SQL, "IdTipoServicio", DbType.Int32, codTServ);
+                db.AddInParameter(SQL, "IdEstado", DbType.Int32, codEstado);
+                db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, codSolCotizacion);
+                db.AddInParameter(SQL, "IdRequerimiento", DbType.Int32, codReq);
 
-                db.AddInParameter(SQL, "filtrarEstado", DbType.Int32, filtrarEstado);
+                db.AddInParameter(SQL, "FiltrarEstado", DbType.Int32, filtrarEstado);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new SolicitudCotizacion
                         {
-                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            descSolCotizacion = lector.IsDBNull(lector.GetOrdinal("descSolCotizacion")) ? "" : lector.GetString(lector.GetOrdinal("descSolCotizacion")),
-                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("fecSolCotizacino")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecSolCotizacino")),
-                            fechaVencimiento = lector.IsDBNull(lector.GetOrdinal("fechaVencimiento")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fechaVencimiento")),
+                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            descSolCotizacion = lector.IsDBNull(lector.GetOrdinal("DescripSolCotizacion")) ? "" : lector.GetString(lector.GetOrdinal("DescripSolCotizacion")),
+                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("FecSolCotizacion")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecSolCotizacion")),
+                            fechaVencimiento = lector.IsDBNull(lector.GetOrdinal("FechaVencimiento")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaVencimiento")),
 
                             Observaciones = lector.IsDBNull(lector.GetOrdinal("Observaciones")) ? "" : lector.GetString(lector.GetOrdinal("Observaciones")),
-                            desEstado = lector.IsDBNull(lector.GetOrdinal("desEstado")) ? "" : lector.GetString(lector.GetOrdinal("desEstado")),
-                            descTServ = lector.IsDBNull(lector.GetOrdinal("descTServ")) ? "" : lector.GetString(lector.GetOrdinal("descTServ")),
-                            codTServ = lector.IsDBNull(lector.GetOrdinal("codTServ")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codTServ")),
+                            desEstado = lector.IsDBNull(lector.GetOrdinal("DescripEstado")) ? "" : lector.GetString(lector.GetOrdinal("DescripEstado")),
+                            descTServ = lector.IsDBNull(lector.GetOrdinal("DescripTServicio")) ? "" : lector.GetString(lector.GetOrdinal("DescripTServicio")),
+                            codTServ = lector.IsDBNull(lector.GetOrdinal("IdTipoServicio")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdTipoServicio")),
                             nomPro = "",
                         });
                     }
@@ -75,18 +75,18 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<SolicitudCotizacion>();
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 2);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 2);
                 using (var lector = db.ExecuteReader(SQL))
                 {
                     while (lector.Read())
                     {
                         coleccion.Add(new SolicitudCotizacion
                         {
-                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            descSolCotizacion = lector.IsDBNull(lector.GetOrdinal("descSolCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("descSolCotizacion")),
-                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("fecSolCotizacino")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecSolCotizacino")),
+                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            descSolCotizacion = lector.IsDBNull(lector.GetOrdinal("DescripSolCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripSolCotizacion")),
+                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("FecSolCotizacion")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecSolCotizacion")),
                             Observaciones = lector.IsDBNull(lector.GetOrdinal("Observaciones")) ? default(String) : lector.GetString(lector.GetOrdinal("Observaciones")),
-                            desEstado = lector.IsDBNull(lector.GetOrdinal("desEstado")) ? default(String) : lector.GetString(lector.GetOrdinal("desEstado"))
+                            desEstado = lector.IsDBNull(lector.GetOrdinal("DescripEstado")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripEstado"))
 
                         });
                     }
@@ -119,11 +119,11 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new SolicitudCotizacion
                         {
-                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            descSolCotizacion = lector.IsDBNull(lector.GetOrdinal("descSolCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("descSolCotizacion")),
-                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("fecSolCotizacino")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecSolCotizacino")),
+                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            descSolCotizacion = lector.IsDBNull(lector.GetOrdinal("DescripSolCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripSolCotizacion")),
+                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("FecSolCotizacion")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecSolCotizacion")),
                             Observaciones = lector.IsDBNull(lector.GetOrdinal("Observaciones")) ? default(String) : lector.GetString(lector.GetOrdinal("Observaciones")),
-                            desEstado = lector.IsDBNull(lector.GetOrdinal("desEstado")) ? default(String) : lector.GetString(lector.GetOrdinal("desEstado")),
+                            desEstado = lector.IsDBNull(lector.GetOrdinal("DescripEstado")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripEstado")),
 
                         });
                     }
@@ -143,8 +143,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 3);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 3);
+                db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, codSolCotizacion);
                 var SolicitudCotizacion = default(SolicitudCotizacion);
                 using (var lector = db.ExecuteReader(SQL))
                 {
@@ -152,16 +152,16 @@ namespace GYM.SIG.DataAccess
                     {
                         SolicitudCotizacion = new SolicitudCotizacion
                         {
-                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("codSolCotizacion")),
-                            descSolCotizacion = lector.IsDBNull(lector.GetOrdinal("descSolCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("descSolCotizacion")),
-                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("fecSolCotizacino")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecSolCotizacino")),
+                            codSolCotizacion = lector.GetInt32(lector.GetOrdinal("IdSolicitudCotizacion")),
+                            descSolCotizacion = lector.IsDBNull(lector.GetOrdinal("DescripSolCotizacion")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripSolCotizacion")),
+                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("FecSolCotizacion")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecSolCotizacion")),
                             Observaciones = lector.IsDBNull(lector.GetOrdinal("Observaciones")) ? default(String) : lector.GetString(lector.GetOrdinal("Observaciones")),
-                            desEstado = lector.IsDBNull(lector.GetOrdinal("desEstado")) ? default(String) : lector.GetString(lector.GetOrdinal("desEstado")),
+                            desEstado = lector.IsDBNull(lector.GetOrdinal("DescripEstado")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripEstado")),
 
                             nomPro = "",
                             codPro = 0,
-                            descTServ = lector.IsDBNull(lector.GetOrdinal("descTServ")) ? "" : lector.GetString(lector.GetOrdinal("descTServ")),
-                            codTServ = lector.IsDBNull(lector.GetOrdinal("codTServ")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codTServ")),
+                            descTServ = lector.IsDBNull(lector.GetOrdinal("DescripTServicio")) ? "" : lector.GetString(lector.GetOrdinal("DescripTServicio")),
+                            codTServ = lector.IsDBNull(lector.GetOrdinal("IdTipoServicio")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdTipoServicio")),
                         };
                     }
                 }
@@ -229,14 +229,14 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddOutParameter(SQL, "codSolCotizacion", DbType.Int32, 0);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32, SolicitudCotizacion.codTServ);
-                db.AddInParameter(SQL, "descSolCotizacion", DbType.String, SolicitudCotizacion.descSolCotizacion);
-                db.AddInParameter(SQL, "fecSolCotizacino", DbType.DateTime, SolicitudCotizacion.fecSolCotizacino);
-                db.AddInParameter(SQL, "fechaVencimiento", DbType.DateTime, SolicitudCotizacion.fechaVencimiento);
+                db.AddOutParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, 0);
+                db.AddInParameter(SQL, "IdTipoServicio", DbType.Int32, SolicitudCotizacion.codTServ);
+                db.AddInParameter(SQL, "DescripSolCotizacion", DbType.String, SolicitudCotizacion.descSolCotizacion);
+                db.AddInParameter(SQL, "FecSolCotizacion", DbType.DateTime, SolicitudCotizacion.fecSolCotizacino);
+                db.AddInParameter(SQL, "FechaVencimiento", DbType.DateTime, SolicitudCotizacion.fechaVencimiento);
                 db.AddInParameter(SQL, "Observaciones", DbType.String, SolicitudCotizacion.Observaciones);
-                db.AddInParameter(SQL, "codEstado", DbType.String, SolicitudCotizacion.codEstado);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 4);
+                db.AddInParameter(SQL, "IdEstado", DbType.String, SolicitudCotizacion.codEstado);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 4);
                 int huboexito;
                 if (tran != null) huboexito = db.ExecuteNonQuery(SQL, tran);
                 else huboexito = db.ExecuteNonQuery(SQL);
@@ -244,7 +244,7 @@ namespace GYM.SIG.DataAccess
                 {
                     throw new Exception("Error al agregar la solicitud de cotización");
                 }
-                var numerogenerado = (int)db.GetParameterValue(SQL, "codSolCotizacion");
+                var numerogenerado = (int)db.GetParameterValue(SQL, "IdSolicitudCotizacion");
                 SQL.Dispose();
                 return numerogenerado;
             }
@@ -257,9 +257,9 @@ namespace GYM.SIG.DataAccess
         public virtual bool CambiarEstado(int codSolCotizacion, int codEstado)
         {
             DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-            db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
-            db.AddInParameter(SQL, "codEstado", DbType.Int32, codEstado);
-            db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 7);
+            db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, codSolCotizacion);
+            db.AddInParameter(SQL, "IdEstado", DbType.Int32, codEstado);
+            db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 7);
             int huboexito = db.ExecuteNonQuery(SQL);
             if (huboexito == 0)
             {
@@ -273,13 +273,13 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, SolicitudCotizacion.codSolCotizacion);
-                db.AddInParameter(SQL, "codTServ", DbType.Int32, SolicitudCotizacion.codTServ);
-                db.AddInParameter(SQL, "descSolCotizacion", DbType.String, SolicitudCotizacion.descSolCotizacion);
-                db.AddInParameter(SQL, "fecSolCotizacino", DbType.DateTime, SolicitudCotizacion.fecSolCotizacino);
-                db.AddInParameter(SQL, "fechaVencimiento", DbType.DateTime, SolicitudCotizacion.fechaVencimiento);
+                db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, SolicitudCotizacion.codSolCotizacion);
+                db.AddInParameter(SQL, "IdTipoServicio", DbType.Int32, SolicitudCotizacion.codTServ);
+                db.AddInParameter(SQL, "DescripSolCotizacion", DbType.String, SolicitudCotizacion.descSolCotizacion);
+                db.AddInParameter(SQL, "FecSolCotizacion", DbType.DateTime, SolicitudCotizacion.fecSolCotizacino);
+                db.AddInParameter(SQL, "FechaVencimiento", DbType.DateTime, SolicitudCotizacion.fechaVencimiento);
                 db.AddInParameter(SQL, "Observaciones", DbType.String, SolicitudCotizacion.Observaciones);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.Byte, 1);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.Byte, 1);
                 int huboexito;
                 if (tran != null) huboexito = db.ExecuteNonQuery(SQL, tran);
                 else huboexito = db.ExecuteNonQuery(SQL);
@@ -301,8 +301,8 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "codSolCotizacion", DbType.Int32, codSolCotizacion);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 5);
+                db.AddInParameter(SQL, "IdSolicitudCotizacion", DbType.Int32, codSolCotizacion);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 5);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {
@@ -322,7 +322,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 DbCommand SQL = db.GetStoredProcCommand(nombreprocedimiento);
-                db.AddInParameter(SQL, "Tipoconsulta", DbType.String, 6);
+                db.AddInParameter(SQL, "TipoConsulta", DbType.String, 6);
                 int huboexito = db.ExecuteNonQuery(SQL);
                 if (huboexito == 0)
                 {

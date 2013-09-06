@@ -81,8 +81,8 @@
         <rd:DataSetName>Negocio</rd:DataSetName>
         <rd:TableName>SolicitudCotizacionCN</rd:TableName>
         <rd:ObjectDataSourceSelectMethod>ObtenerSolicitudes</rd:ObjectDataSourceSelectMethod>
-        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.Generic.List`1[Entidad.SolicitudCotizacion] ObtenerSolicitudes(System.String, System.DateTime, System.DateTime, Int32, Int32, Int32, Int32, Int32, Int32)</rd:ObjectDataSourceSelectMethodSignature>
-        <rd:ObjectDataSourceType>Negocio.SolicitudCotizacionCN, Negocio, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.Generic.List`1[GYM.SIG.Entity.SolicitudCotizacion] ObtenerSolicitudes(System.String, System.DateTime, System.DateTime, Int32, Int32, Int32, Int32, Int32, Int32)</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceType>GYM.SIG.Business.SolicitudCotizacionCN, Negocio, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

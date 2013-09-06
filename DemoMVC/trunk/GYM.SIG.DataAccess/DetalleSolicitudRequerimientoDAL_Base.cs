@@ -113,14 +113,14 @@ namespace GYM.SIG.DataAccess
                             nomPro = lector.IsDBNull(lector.GetOrdinal("Nombre")) ? "" : lector.GetString(lector.GetOrdinal("Nombre")),
                             codReq = lector.IsDBNull(lector.GetOrdinal("IdRequerimiento")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
                             codcorDetReq = lector.IsDBNull(lector.GetOrdinal("IdCorDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
-                            desReq = lector.IsDBNull(lector.GetOrdinal("desReq")) ? "" : lector.GetString(lector.GetOrdinal("desReq")),
-                            desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
+                            desReq = lector.IsDBNull(lector.GetOrdinal("DescripReq")) ? "" : lector.GetString(lector.GetOrdinal("DescripReq")),
+                            desServicio = lector.IsDBNull(lector.GetOrdinal("DesServicio")) ? "" : lector.GetString(lector.GetOrdinal("DesServicio")),
 
-                            codUM = lector.IsDBNull(lector.GetOrdinal("codUM")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codUM")),
-                            descUM = lector.IsDBNull(lector.GetOrdinal("descUM")) ? "" : lector.GetString(lector.GetOrdinal("descUM")),
+                            codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida")),
+                            descUM = lector.IsDBNull(lector.GetOrdinal("DescripUMedi")) ? "" : lector.GetString(lector.GetOrdinal("DescripUMedi")),
 
-                            canDetReq = lector.IsDBNull(lector.GetOrdinal("canDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("canDetReq")),
-                            precio = lector.IsDBNull(lector.GetOrdinal("precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("precio")),
+                            canDetReq = lector.IsDBNull(lector.GetOrdinal("CanDetReq")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("CanDetReq")),
+                            precio = lector.IsDBNull(lector.GetOrdinal("Precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Precio")),
                             importe = lector.IsDBNull(lector.GetOrdinal("importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("importe")),
                         });
                     }

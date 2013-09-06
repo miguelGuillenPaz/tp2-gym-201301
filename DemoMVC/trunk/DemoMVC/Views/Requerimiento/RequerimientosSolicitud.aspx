@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<IEnumerable<Entidad.DetalleRequerimiento>>" %>
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<IEnumerable<GYM.SIG.Entity.DetalleRequerimiento>>" %>
 
     <% foreach (var item in Model) { %>
     <tr>

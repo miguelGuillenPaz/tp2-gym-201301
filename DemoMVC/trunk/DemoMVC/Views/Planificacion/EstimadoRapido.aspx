@@ -11,23 +11,22 @@
        Por favor, seleccione un tipo de consulta (Planes de Proyecto Histórico) para la estimación: PROY<b><%: ViewData["codProy"]%></b>
     </p>
      <% using (Html.BeginForm()) { %>
-       <input type="hidden" id="txtCodProy" name="txtCodProyAct" value='<%: ViewData["codProy"]%>' />
+       <input type="hidden" id="txtCodProyAct" name="txtCodProyAct" value='<%: ViewData["codProy"]%>' />
        <input type="hidden" id="txtAccion"  name="txtAccion" value='<%: ViewData["accion"]%>' />
             <fieldset>
                 <div class="editor-label">
 		    <table border="0">
 			<tr>
 			   <td border="0" width="200px" >Por Duración de Proyecto:</td>
-               <td><input name="cantDuracion" size="10"></td>
-               <td border="0"><input type="radio" name="duracionD" id="duracionD"> Días</td>
-               <td border="0"><input type="radio" name="duracionM" id="duracionM"> Meses</td>
-               <td border="0"><input type="radio" name="duracionA" id="duracionA"> Años</td>
+               <td><input id="cantDuracion" name="cantDuracion" size="10" onkeypress="return isNumberKey(event)"></td>
+               <td border="0"><input type="radio" name="duracion" id="duracion" checked value="d"> Días</td>
+               <td border="0"><input type="radio" name="duracion" id="duracion" value="m"> Meses</td>
+               <td border="0"><input type="radio" name="duracion" id="duracion" value="y"> Años</td>
 			</tr>
-
             <tr>
 			   <td border="0" width="200px" >Por Tipo de Proyecto:</td>
-               <td border="0" colspan="4"><select name='tipo'>
-
+               <td border="0" colspan="4"><select id='tipo' name='tipo'>
+               <option value=''>-- Escoja un tipo de proyecto --</option>
                <% if (Model.ListadoTipoProyecto != null) {
                       foreach (DemoMVC.Models.TipoProyecto item in Model.ListadoTipoProyecto)  { %>
                         <option value='<%= item.codTipPro %>'><%= item.nomTipPro %></option>
@@ -37,20 +36,23 @@
 			</tr>
             <tr>
 			   <td border="0" width="200px" >Por Prioridad:</td>
-               <td border="0" colspan="4"><select name='prioridad'>
+               <td border="0" colspan="4">
+                    <select id='prioridad' name='prioridad'>
+                        <option value=''>-- Escoja prioridad de proyecto --</option>
                         <option value="1">Alta</option>
-                        <option value="2" >Media</option>
+                        <option value="2">Media</option>
                         <option value="3">Baja</option>
                     </select></td>
 			</tr>
             <tr>
 			   <td width="200px" >Por Rango de Presupuesto:</td>
                <td colspan="4">
-               <select name='presupuesto'>
-               <option>0 - 50 000</option> 
-               <option>50 001 - 10 000</option> 
-               <option>10 001 - 80 000</option>
-               <option>80 001 - más</option>
+               <select id='presupuesto' name='presupuesto'>
+                    <option value=''>-- Escoja presupuesto de proyecto --</option>
+                    <option value='1'>Menos de S/. 50,000.00</option> 
+                    <option value='2'>S/. 50,001.00 - S/. 100,000.00</option> 
+                    <option value='3'>S/. 100,001.00 - S/. 800,000.00</option>
+                    <option value='4'>S/. 800,001.00 a más</option>
                </select></td>
 			</tr>			
             <tr>
@@ -83,7 +85,7 @@
 		     </table>
              <br/>
              <center><input type="submit" value="Buscar" /></center>
-             <br/>
+             <br/>        
              Resultados de la búsqueda: <%: ViewData["totReg"] %>
                 <div class="editor-field">
 			<table id='Tabla1' >
@@ -112,10 +114,20 @@
                   <% } %>
               <% } %>
               </table>
-
                 </div>
+                <center><h2><%: ViewData["msgErr"] %></h2></center>
            </fieldset>
       <% } %>	    
 
+    <SCRIPT language=Javascript>
+        //Funcion que permite validar que solo se ingresen numeros
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        };
+
+    </SCRIPT>
 
 </asp:Content>

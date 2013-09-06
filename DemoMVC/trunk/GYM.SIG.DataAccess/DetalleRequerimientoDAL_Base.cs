@@ -38,7 +38,7 @@ namespace GYM.SIG.DataAccess
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida")),
-                            descUM = lector.IsDBNull(lector.GetOrdinal("descUM")) ? "" : lector.GetString(lector.GetOrdinal("descUM")),
+                            descUM = lector.IsDBNull(lector.GetOrdinal("DescripUMedi")) ? "" : lector.GetString(lector.GetOrdinal("DescripUMedi")),
 
                             nomPro = lector.IsDBNull(lector.GetOrdinal("Nombre")) ? "" : lector.GetString(lector.GetOrdinal("Nombre")),
                             desReq = lector.IsDBNull(lector.GetOrdinal("DescripReq")) ? "" : lector.GetString(lector.GetOrdinal("DescripReq")),
@@ -83,7 +83,7 @@ namespace GYM.SIG.DataAccess
                             desServicio = lector.IsDBNull(lector.GetOrdinal("desServicio")) ? "" : lector.GetString(lector.GetOrdinal("desServicio")),
                             actServicio = lector.IsDBNull(lector.GetOrdinal("actServicio")) ? "" : lector.GetString(lector.GetOrdinal("actServicio")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida")),
-                            descUM = lector.IsDBNull(lector.GetOrdinal("descUM")) ? "" : lector.GetString(lector.GetOrdinal("descUM")),
+                            descUM = lector.IsDBNull(lector.GetOrdinal("DescripUMedi")) ? "" : lector.GetString(lector.GetOrdinal("DescripUMedi")),
                         });
                     }
                 }

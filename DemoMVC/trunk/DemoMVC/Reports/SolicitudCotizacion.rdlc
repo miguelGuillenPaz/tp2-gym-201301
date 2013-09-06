@@ -85,8 +85,8 @@
         <rd:DataSetName>Negocio</rd:DataSetName>
         <rd:TableName>DetalleSolicitudRequerimientoCN</rd:TableName>
         <rd:ObjectDataSourceSelectMethod>ObtenerPorcodSolCotizacion</rd:ObjectDataSourceSelectMethod>
-        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.Generic.List`1[Entidad.DetalleSolicitudRequerimiento] ObtenerPorcodSolCotizacion(Int32, Int32)</rd:ObjectDataSourceSelectMethodSignature>
-        <rd:ObjectDataSourceType>Negocio.DetalleSolicitudRequerimientoCN, Negocio, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.Generic.List`1[GYM.SIG.Entity.DetalleSolicitudRequerimiento] ObtenerPorcodSolCotizacion(Int32, Int32)</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceType>GYM.SIG.Business.DetalleSolicitudRequerimientoCN, Negocio, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
