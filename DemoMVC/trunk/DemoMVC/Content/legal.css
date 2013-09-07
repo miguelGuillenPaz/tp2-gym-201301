@@ -74,3 +74,8 @@ table th
 }
 
 
+/*REGISTRAR PLANTILLA CONTRATO*/
+#registrarPlantillaContrato {margin:0 auto 20px auto; padding:20px; width:960px; text-align:left; background:#fff; font-size:13px;}
+#registrarPlantillaContrato #cboTipoContrato {width:320px;}
+#registrarPlantillaContrato #tipo_2,
+#registrarPlantillaContrato #tipo_3 {display:none;}

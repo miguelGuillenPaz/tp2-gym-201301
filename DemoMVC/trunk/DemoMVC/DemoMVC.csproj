@@ -311,13 +311,13 @@
     <Content Include="Scripts\kendo\kendo.web.min.js" />
     <Content Include="Scripts\kendo\textures\glass.png" />
     <Content Include="Scripts\kendo\textures\highlight.png" />
+    <Content Include="Scripts\Legal\legal_plantillaContrato.js" />
     <Content Include="Scripts\libs\ajax.js" />
     <Content Include="Scripts\libs\dialog.js" />
     <Content Include="Scripts\libs\form.js" />
     <Content Include="Scripts\libs\main.js" />
     <Content Include="Scripts\libs\reporte.js" />
     <Content Include="Scripts\libs\simpledataTable.js" />
-    <Content Include="Scripts\Legal\legal.js" />
     <Content Include="Scripts\Legal\legal_cartanotarial.js" />
     <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\noty-2.1.0\demo\allLayouts.html" />
@@ -401,6 +401,7 @@
     <Content Include="Views\Legal\DetalleRequerimiento.aspx" />
     <Content Include="Views\Legal\ListarRequerimientos.aspx" />
     <Content Include="Views\Legal\Registrar.aspx" />
+    <Content Include="Views\Legal\RegistrarContratos.aspx" />
     <Content Include="Views\Legal\Requerimientos.aspx" />
     <Content Include="Views\Logistica\Logistica.aspx" />
     <Content Include="Views\Postulante\Crear.aspx" />

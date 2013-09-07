@@ -53,10 +53,13 @@
                     <%= Html.ActionLink("Area Legal", "Requerimientos", "Legal")%>          
                     <ul>
                         <li>
-                            <%= Html.ActionLink("Consultar requerimientos", "listarRequerimientos", "Legal")%>
+                            <%= Html.ActionLink("Consultar Requerimientos", "listarRequerimientos", "Legal")%>
                         </li>
                         <li>
                             <%= Html.ActionLink("Registrar Carta Notarial", "Registrar", "Legal")%>
+                        </li>
+                        <li>
+                            <%= Html.ActionLink("Registrar Plantilla Contrato", "RegistrarContratos", "Legal")%>
                         </li>
                     </ul>
                 </li>

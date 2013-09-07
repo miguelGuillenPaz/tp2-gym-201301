@@ -239,5 +239,11 @@ namespace DemoMVC.Controllers
             return View();
         }
 
+        //Plantilla Contratos
+        public ActionResult RegistrarContratos()
+        {
+            return View();
+        }
+
     }
 }
