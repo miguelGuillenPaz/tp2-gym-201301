@@ -83,12 +83,12 @@ namespace DemoMVC.Persistencia
                         com.Parameters.Add(new SqlParameter("@codPro", codProy));
                         com.Parameters.Add(new SqlParameter("@estPro", statusProy));
                     }
-                    if (tipoFiltro == 3)
+                    /*if (tipoFiltro == 3)
                     {
                         sql = "select proy.IdProyecto, proy.Nombre ";
                         sql = sql + "from dbo.GPP_Proyecto proy ";
                         sql = sql + "where proy.Estado=@Estado";
-                    }
+                    }*/
 
                     using (SqlDataReader resultado = com.ExecuteReader())
                     {
@@ -103,7 +103,8 @@ namespace DemoMVC.Persistencia
                                 {
                                     codPro = (int)resultado["IdProyecto"],
                                     codTipPro = (int)resultado["IdTipoProyecto"],
-                                    nomPro = (string)resultado["Nombre"],
+                                    //LINEAS ABAJO ESTA LO MISMO, PERO VALIDANDO QUE SI SON NULLS DEVUELVAN VACÍOS O CERO
+                                    /*nomPro = (string)resultado["Nombre"],
                                     feciniplaPro = (string)resultado["FechaInicioPlaneada"],
                                     fecfinplaPro = (string)resultado["FechaFinPlaneada"],
                                     fecinireaPro = (string)resultado["FechaInicioReal"],
@@ -122,6 +123,26 @@ namespace DemoMVC.Persistencia
                                     nomUbiDep = (string)resultado["NombreDep"],
                                     nomUbiProv = (string)resultado["NombreProv"],
                                     nomUbiDist = (string)resultado["NombreDist"],
+                                     */
+                                    nomPro = (System.DBNull.Value.Equals(resultado["Nombre"]) ? "" : resultado["Nombre"].ToString()),
+                                    feciniplaPro = (System.DBNull.Value.Equals(resultado["FechaInicioPlaneada"]) ? "" : resultado["FechaInicioPlaneada"].ToString()),
+                                    fecfinplaPro = (System.DBNull.Value.Equals(resultado["FechaFinPlaneada"]) ? "" : resultado["FechaFinPlaneada"].ToString()),
+                                    fecinireaPro = (System.DBNull.Value.Equals(resultado["FechaInicioReal"]) ? "" : resultado["FechaInicioReal"].ToString()),
+                                    fecfinreaPro = (System.DBNull.Value.Equals(resultado["FechaFinReal"]) ? "" : resultado["FechaFinReal"].ToString()),
+                                    priPro = (System.DBNull.Value.Equals(resultado["Prioridad"]) ? 0 : Convert.ToInt32(resultado["Prioridad"])),
+                                    desPro = (System.DBNull.Value.Equals(resultado["Descripcion"]) ? "" : resultado["Descripcion"].ToString()),
+                                    razsocfacPro = (System.DBNull.Value.Equals(resultado["RazonSocial"]) ? "" : resultado["RazonSocial"].ToString()),
+                                    conpagPro = (System.DBNull.Value.Equals(resultado["CondicionPago"]) ? "" : resultado["CondicionPago"].ToString()),
+                                    monfacPro = (System.DBNull.Value.Equals(resultado["MontoFacturado"]) ? "" : resultado["MontoFacturado"].ToString()),
+                                    nrohojenvPro = (System.DBNull.Value.Equals(resultado["NroHojaEnvio"]) ? "" : resultado["NroHojaEnvio"].ToString()),
+                                    fechojenvPro = (System.DBNull.Value.Equals(resultado["FechaHojaEnvio"]) ? "" : resultado["FechaHojaEnvio"].ToString()),
+                                    estPro = (System.DBNull.Value.Equals(resultado["Estado"]) ? "" : resultado["Estado"].ToString()),
+                                    rucfacPro = (System.DBNull.Value.Equals(resultado["Ruc"]) ? "" : resultado["Ruc"].ToString()),
+                                    tipoProyecto = (System.DBNull.Value.Equals(resultado["NombreTipoProy"]) ? "" : resultado["NombreTipoProy"].ToString()),
+                                    presupuesto = (System.DBNull.Value.Equals(resultado["ImporteTotal"]) ? 0.0 : Convert.ToDouble(resultado["ImporteTotal"])),
+                                    nomUbiDep = (System.DBNull.Value.Equals(resultado["NombreDep"]) ? "" : resultado["NombreDep"].ToString()),
+                                    nomUbiProv = (System.DBNull.Value.Equals(resultado["NombreProv"]) ? "" : resultado["NombreProv"].ToString()),
+                                    nomUbiDist = (System.DBNull.Value.Equals(resultado["NombreDist"]) ? "" : resultado["NombreDist"].ToString()),
                                 };
                                 listadoProyectos.Add(proyecto);
                             }

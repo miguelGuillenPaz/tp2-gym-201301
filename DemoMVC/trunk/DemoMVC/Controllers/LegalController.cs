@@ -45,7 +45,7 @@ namespace DemoMVC.Controllers
 
             SelectList selectListaProyectos = new SelectList(proye.obtenerProyectoPorFiltro(3, 0, "PR").ToList(), "IdProyecto", "nombreProyecto");*/
 
-            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(3, 0, "PR").ToList(), "IdProyecto", "nombreProyecto");
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
             return View();
         }
 
@@ -105,7 +105,7 @@ namespace DemoMVC.Controllers
             }
 
             ProyectoDAO proye = new ProyectoDAO();
-            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(3, 0, "PR").ToList(), "IdProyecto", "nombreProyecto");
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
             return View("Registrar");
         }
 
@@ -148,7 +148,7 @@ namespace DemoMVC.Controllers
             ProyectoDAO proyecto = new ProyectoDAO();
 
             //ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE"), "codPro", "nomPro");
-            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(3, 0, "PR"), "IdProyecto", "nombreProyecto");
+            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR"), "IdProyecto", "nomPro");
 
             ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
 
@@ -175,7 +175,7 @@ namespace DemoMVC.Controllers
             try
             {
                 //ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE").ToList(), "codPro", "nomPro");
-                ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(3, 0, "PR").ToList(), "idProyecto", "nombreProyecto");
+                ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "idProyecto", "nomPro");
                 ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
                 ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion");
 
