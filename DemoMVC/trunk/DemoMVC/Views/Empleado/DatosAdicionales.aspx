@@ -456,7 +456,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="content-button">
                  <a id="btnEnviar" href="/Empleado/Agregar" class="button" >Enviar</a> | <a id="btnCancelar" href="javascript:;" class="button" >Cancelar</a>
+                 </div>
             </div>
         </div>
     </div>

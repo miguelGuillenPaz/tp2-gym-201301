@@ -29,7 +29,7 @@
                             <span class="titulo-noticia">Empleados Aprobados: <%= Model.Count() %></span>
                         </div>
                         <div class="texto-noticia">
-                            <table class="table100 table100b">
+                            <table>
                                 <thead>
                                     <tr>
                                         <th>
@@ -62,7 +62,7 @@
                                             <%= grhPersona.ApellidoMaterno %>
                                         </td>
                                         <td style="text-align: center;">
-                                            <%= Html.ActionLink("Agregar", "DatosAdicionales", new { id = grhPersona.IdPersona })%>
+                                            <%= Html.ActionLink("Agregar", "DatosAdicionales", new { id = grhPersona.IdPersona },new{@class="button"})%>
                                         </td>
                                     </tr>
                                     <%

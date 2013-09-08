@@ -4,13 +4,12 @@ section#seccionReqLegal {margin:0 auto 20px auto; padding:20px; width:960px; tex
 /*---------------------------------------------------------------
 Comunes*/
 h1 {margin-bottom:20px; font-size:18px; font-weight:bold;}
-input[type="text"] {height:24px; border:1px solid #a1a1a1;}
+
 .text0 {width:100px;}
 .text1 {width:200px;}
 .text2 {width:260px;}
-select {padding:3px 5px; width:206px; height:28px; border:1px solid #a1a1a1; color:#333;}
+
 .select1 {width:300px;}
-textarea {width:859px; height:100px; border:1px solid #a1a1a1;}
 
 fieldset {padding:15px 15px 0 15px; border:1px solid #a1a1a1;}
 fieldset legend {font-weight:bold;}
@@ -50,28 +49,6 @@ Registrar Requerimiento*/
 
 #btnGrabarReqLegal {margin-top:20px;}
 .msgConfirmacion {margin:15px 0; padding:10px 0; border:1px solid #ccc; width:100%; background:#f6f6f6; font-size:14px; color:Red; text-align:center;}
-
-/*table
-*/
-table 
-{
-  border: solid 1px #e8eef4;
-  border-collapse: collapse;
-}
-
-table td 
-{
-  padding: 5px;   
-  border: solid 1px #e8eef4;
-}
-
-table th
-{
-  padding: 6px 5px;
-  text-align: left;
-  background-color: #e8eef4; 
-  border: solid 1px #e8eef4;   
-}
 
 
 /*REGISTRAR PLANTILLA CONTRATO*/

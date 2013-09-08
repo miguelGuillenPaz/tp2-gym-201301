@@ -164,8 +164,9 @@
                             </table>                            
                         </div>
                     </div>               
-                    
+<div class="content-button">
                     <a id="btnEnviar" class="button" href="javascript:;">Enviar</a>
+                    </div>                    
                 </div>
             </div>
         </div>

@@ -74,8 +74,8 @@
                                             <%= grhConvocatoria.CantidadVacantes %>
                                         </td>
                                         <td style="text-align: center;">
-                                            <%= Html.ActionLink("Editar","Editar", new { id = grhConvocatoria.IdConvocatoria })%> |
-                                            <a class="eliminar" href="javascript:;">Eliminar</a>
+                                            <%= Html.ActionLink("Editar","Editar", new { id = grhConvocatoria.IdConvocatoria }, new{@class="button"})%> |
+                                            <a class="eliminar button" href="javascript:;">Eliminar</a>
                                         </td>
                                     </tr>
                                     <%

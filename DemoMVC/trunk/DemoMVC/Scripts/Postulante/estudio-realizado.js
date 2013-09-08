@@ -102,8 +102,8 @@
 
     $('#dialogEstudioRealizado').dialog({
         autoOpen: false,
-        height: 300,
-        width: 300,
+        height: 410,
+        width: 360,
         resizable: false,
         modal: true,
         buttons: {

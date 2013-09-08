@@ -1968,24 +1968,6 @@ ul.politicas_pdf li.ambiental
 
  .detalle { }
  
- .table100 {
-     width: 100%;
- }
- .table100b thead {
-    background:  #EB1C24;
-     color: white;
-     border: 1px solid #EB1C24;
- }
- .table100b tfoot {
-    background:  #EB1C24;
-     color: white;
-     border: 1px solid #EB1C24;
- }
- .table100b td {
-    border: 1px solid #EB1C24;
-    padding: 2px;
- }
- 
 input{  
 text-transform: uppercase;  
 } 
@@ -1994,10 +1976,11 @@ text-transform: uppercase;
 {
  background:#EB1C24   ;
  color:White;
- padding: 5px;
+ padding: 5px 20px 5px 20px;
  margin:3px;
  border:0; 
  font-family: 'VAGRoundedLight';
+    font-size: 12px;
  text-transform:none;
  cursor:pointer;
 }
@@ -2006,3 +1989,32 @@ text-transform: uppercase;
     color:#EB1C24   ;
     background:#FCA802;
     }
+    
+.content-button {
+    padding: 20px 20px 20px 0;
+}    
+
+
+
+/*table
+*/
+table 
+{
+  border: solid 1px #e8eef4;
+  border-collapse: collapse;
+}
+
+table td 
+{
+  padding: 7px;   
+  border: solid 1px #e8eef4;
+}
+
+table th
+{
+  padding: 6px 5px;
+  text-align: left;
+  background-color: #e8eef4; 
+  border: solid 1px #e8eef4;   
+}
+

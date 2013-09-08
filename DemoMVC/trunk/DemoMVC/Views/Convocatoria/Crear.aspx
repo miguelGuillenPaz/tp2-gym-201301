@@ -113,9 +113,9 @@
                         </div>
                         
                     </div>               
-                    <br/>
+                    <div class="content-button">
                     <input class="button" type="submit" value="Enviar" /> | <a id="btnCancelar" class="button" href="/Convocatoria">Cancelar</a> 
-                    <br/><br/>
+                    </div>
                 </div>
                 <%} %>
             </div>

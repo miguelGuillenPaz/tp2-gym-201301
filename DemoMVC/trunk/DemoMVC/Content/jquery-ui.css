@@ -272,7 +272,7 @@ button.ui-button::-moz-focus-inner {
 	text-align: center;
 }
 .ui-datepicker .ui-datepicker-title select {
-	font-size: 1em;
+	font-size: 13px;
 	margin: 1px 0;
 }
 .ui-datepicker select.ui-datepicker-month-year {
@@ -791,14 +791,14 @@ body .ui-tooltip {
 	font-size: 12px;
 }
 .ui-widget .ui-widget {
-	font-size: 1em;
+	font-size: 13px;
 }
 .ui-widget input,
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
 	font-family: 'VAGRoundedLight';
-	font-size: 1em;
+	font-size: 13px;
 }
 .ui-widget-content {
 	border: 1px solid #aaaaaa;
