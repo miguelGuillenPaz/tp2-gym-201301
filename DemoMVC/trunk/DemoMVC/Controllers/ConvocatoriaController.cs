@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DemoMVC.Models;
 using System.Collections;
@@ -23,11 +22,26 @@ namespace DemoMVC.Controllers
         }
 
         //
+        // GET: /Convocatoria/Participar
+
+        public ActionResult Participar()
+        {
+            _entities = new GRH_Entities();
+            var dtNow = DateTime.Now;
+            var convocatoria =
+                (from r in _entities.GRH_Convocatoria select r).Where(
+                    f => f.FechaInicio > dtNow && f.FechaFin <= dtNow).ToList();
+            return View(convocatoria);
+        }
+
+        //
         // GET: /Convocatoria/Detalle/5
 
         public ActionResult Detalle(int id)
         {
-            return View();
+            _entities = new GRH_Entities();            
+            var convocatoria = (from r in _entities.GRH_Convocatoria where r.IdConvocatoria == id select r).FirstOrDefault();
+            return View(convocatoria);
         }
 
         //
@@ -49,8 +63,8 @@ namespace DemoMVC.Controllers
             _entities = new GRH_Entities();
             try
             {
-                var titulo = collection["Titulo"].ToString().ToUpper();
-                var detalle = collection["Detalle"].ToString();
+                var titulo = collection["Titulo"].ToUpper();
+                var detalle = collection["Detalle"];
                 var fechaInicio = new DateTime(
                     Convert.ToInt32(collection["FechaInicio"].Substring(0, 4)),
                     Convert.ToInt32(collection["FechaInicio"].Substring(5, 2)),
@@ -106,8 +120,8 @@ namespace DemoMVC.Controllers
 
             try
             {
-                var titulo = collection["Titulo"].ToString().ToUpper();
-                var detalle = collection["Detalle"].ToString();
+                var titulo = collection["Titulo"].ToUpper();
+                var detalle = collection["Detalle"];
                 var fechaInicio = new DateTime(
                     Convert.ToInt32(collection["FechaInicio"].Substring(0, 4)),
                     Convert.ToInt32(collection["FechaInicio"].Substring(5, 2)),

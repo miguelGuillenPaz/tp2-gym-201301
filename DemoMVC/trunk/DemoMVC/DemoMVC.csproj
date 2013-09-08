@@ -408,8 +408,10 @@
     <Content Include="Views\Contenidos\Delete.aspx" />
     <Content Include="Views\Contenidos\PrestarDocumento.aspx" />
     <Content Include="Views\Convocatoria\Crear.aspx" />
+    <Content Include="Views\Convocatoria\Detalle.aspx" />
     <Content Include="Views\Convocatoria\Editar.aspx" />
     <Content Include="Views\Convocatoria\Index.aspx" />
+    <Content Include="Views\Convocatoria\Participar.aspx" />
     <Content Include="Views\Cotizacion\AdjuntarArchivo.ascx" />
     <Content Include="Views\Cotizacion\AgregarCotizacion.ascx" />
     <Content Include="Views\Cotizacion\AgregarSolicitudCotizacion.ascx" />
@@ -435,6 +437,7 @@
     <Content Include="Views\Legal\RegistrarContratos.aspx" />
     <Content Include="Views\Legal\Requerimientos.aspx" />
     <Content Include="Views\Logistica\Logistica.aspx" />
+    <Content Include="Views\Participar.aspx" />
     <Content Include="Views\Postulante\Crear.aspx" />
     <Content Include="Views\Postulante\Editar.aspx" />
     <Content Include="Views\Postulante\Detalle.aspx" />
