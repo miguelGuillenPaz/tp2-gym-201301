@@ -283,7 +283,7 @@
                                          <th style="display: none;">
                                             <b>IdPersona</b>
                                         </th>
-                                        <th>
+                                        <th style="width: 180px;text-align: center;">
                                             <b>Opciones</b>
                                         </th>
                                     </tr>
@@ -335,7 +335,7 @@
                                             <%= item.GRH_Persona.IdPersona %>
                                         </td>
                                         <td>
-                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                            <a class="editar button" href="javascript:;">Editar</a> | <a class="eliminar button" href="javascript:;">
                                                 Eliminar</a>
                                         </td>
                                     </tr>
@@ -344,7 +344,9 @@
                                        } %>
                                 </tbody>
                             </table>
-                            <a id="addDerechoHabiente" href="javascript:;">Agregar</a>
+                            <div class="content-button">
+                            <a id="addDerechoHabiente" class="button" href="javascript:;">Agregar</a>
+                            </div>
                         </div>
                     </div>
                     <div class="noticia">
@@ -367,7 +369,7 @@
                                         <th>
                                             <b>Fecha Fin</b>
                                         </th>
-                                        <th>
+                                        <th style="width: 180px;text-align: center;">
                                             <b>Opciones</b>
                                         </th>
                                     </tr>
@@ -392,7 +394,7 @@
                                             <%=item.FechaFin != null ? (item.FechaFin.ToString().Substring(6, 4) + "-" + item.FechaFin.ToString().Substring(3, 2) + "-" + item.FechaFin.ToString().Substring(0, 2)) : string.Empty%>
                                         </td>
                                         <td>
-                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                            <a class="editar button" href="javascript:;">Editar</a> | <a class="eliminar button" href="javascript:;">
                                                 Eliminar</a>
                                         </td>
                                     </tr>
@@ -401,7 +403,9 @@
                                        } %>
                                 </tbody>
                             </table>
-                            <a id="addContratoPersonal" href="javascript:;">Agregar</a>
+                            <div class="content-button">
+                            <a id="addContratoPersonal" class="button" href="javascript:;">Agregar</a>
+                            </div>
                         </div>
                     </div>
                     <div class="noticia">
@@ -421,7 +425,7 @@
                                         <th>
                                             <b>Ubicación Física</b>
                                         </th>
-                                        <th>
+                                        <th style="width: 180px;text-align: center;">
                                             <b>Opciones</b>
                                         </th>
                                     </tr>
@@ -443,7 +447,7 @@
                                             <%= item.Ubicacion %>
                                         </td>
                                         <td>
-                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                            <a class="editar button" href="javascript:;">Editar</a> | <a class="eliminar button" href="javascript:;">
                                                 Eliminar</a>
                                         </td>
                                     </tr>
@@ -452,7 +456,9 @@
                                        } %>
                                 </tbody>
                             </table>
-                            <a id="addLegajo" href="javascript:;">Agregar</a>
+                            <div class="content-button">
+                            <a id="addLegajo" class="button" href="javascript:;">Agregar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -469,7 +475,7 @@
         <input type="hidden" id="hdnDocumento" />
         <input type="hidden" id="hdnAccionDerechoHabiente" />
         <table>
-            <thead><tr>
+            <thead style="display: none;"><tr>
                 <th style="width: 250px"></th>
                 <th></th>
                 <th></th>
@@ -575,8 +581,8 @@
         <input type="hidden" id="hdnContratoPersonal" />
         <input type="hidden" id="hdnAccionContratoPersonal" />        
         <table>
-            <thead><tr>
-                <th style="width: 250px"></th>
+            <thead style="display: none;"><tr>
+                <th style="width: 350px"></th>
                 <th></th>
                 <th></th>
                 </tr>
@@ -622,7 +628,7 @@
         <input type="hidden" id="hdnLegajo" />
         <input type="hidden" id="hdnAccionLegajo" />        
         <table>
-            <thead><tr>
+            <thead style="display: none;"><tr>
                 <th style="width: 250px"></th>
                 <th></th>
                 <th></th>

@@ -87,8 +87,8 @@
 
     $('#dialogDerechoHabiente').dialog({
         autoOpen: false,
-        height: 340,
-        width: 380,
+        height: 445,
+        width: 340,
         resizable: false,
         modal: true,
         buttons: {
@@ -155,7 +155,7 @@
                                         "<td style=\"display: none;\">" + idTipoDerechoHabiente + "</td>" +
                                         "<td>" + $('#ddlTipoDerechoHabiente option:selected').text() + "</td>" +
                                         "<td style=\"display: none;\">" + result.persona + "</td>" +
-                                        "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
+                                        "<td><a class=\"editar button\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar button\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
                                     $('#tblDerechoHabiente tbody').append(fila);
                                 } else {

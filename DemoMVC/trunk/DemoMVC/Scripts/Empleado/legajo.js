@@ -63,8 +63,8 @@
 
     $('#dialogLegajo').dialog({
         autoOpen: false,
-        height: 170,
-        width: 300,
+        height: 190,
+        width: 260,
         resizable: false,
         modal: true,
         buttons: {
@@ -108,7 +108,7 @@
                                         "<td style=\"display: none;\">" + $('#hdnLegajo').val() + "</td>" +
                                         "<td>" + nombreArchivo + "</td>" +
                                         "<td>" + ubicacion + "</td>" +
-                                        "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
+                                        "<td><a class=\"editar button\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar button\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
                                     $('#tblLegajo tbody').append(fila);
                                 } else {
