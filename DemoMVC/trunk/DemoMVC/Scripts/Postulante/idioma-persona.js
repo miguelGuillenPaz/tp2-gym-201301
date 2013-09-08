@@ -99,8 +99,8 @@
 
     $('#dialogIdiomaPersona').dialog({
         autoOpen: false,
-        height: 180,
-        width: 300,
+        height: 220,
+        width: 230,
         resizable: false,
         modal: true,
         buttons: {
@@ -153,7 +153,7 @@
                                         "<td>" + $('#ddlIdioma option:selected').text() + "</td>" +
                                         "<td style=\"display: none;\">" + $('#ddlNivelIdioma').val() + "</td>" +
                                         rowNativo +
-                                        "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
+                                        "<td><a class=\"editar button\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar button\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
                                     $('#tblIdiomaPersona tbody').append(fila);
                                 } else {

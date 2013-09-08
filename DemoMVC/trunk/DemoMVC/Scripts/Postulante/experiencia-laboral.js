@@ -69,8 +69,8 @@
 
     $('#dialogExperienciaLaboral').dialog({
         autoOpen: false,
-        height: 270,
-        width: 300,
+        height: 360,
+        width: 295,
         resizable: false,
         modal: true,
         buttons: {
@@ -126,7 +126,7 @@
                                         "<td>" + txtInicio + "</td>" +
                                         "<td>" + txtFin + "</td>" +
                                         "<td style=\"display: none;\">" + txtConocimiento + "</td>" +
-                                        "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
+                                        "<td><a class=\"editar button\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar button\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
                                         $('#tblExperienciaLaboral tbody').append(fila);
                                     } else {

@@ -102,8 +102,8 @@
 
     $('#dialogEstudioRealizado').dialog({
         autoOpen: false,
-        height: 410,
-        width: 360,
+        height: 390,
+        width: 310,
         resizable: false,
         modal: true,
         buttons: {
@@ -175,7 +175,7 @@
                                         "<td>" + $('#ddlSituacion option:selected').text() + "</td>" +
                                         "<td>" + $('#txtInicioE').val() + "</td>" +
                                         "<td>" + $('#txtFinE').val() + "</td>" +
-                                        "<td><a class=\"editar\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar\" href=\"javascript:;\">Eliminar</a></td>" +
+                                        "<td><a class=\"editar button\" href=\"javascript:;\">Editar</a> | <a class=\"eliminar button\" href=\"javascript:;\">Eliminar</a></td>" +
                                         "</tr>";
                                         $('#tblEstudioRealizado tbody').append(fila);
                                     } else {

@@ -35,7 +35,7 @@
                 <div class="lista-central">
                     <div class="noticia">
                         <div class="head-noticia">
-                            <span class="titulo-noticia">Información Personal</span> <a style="float: right;"
+                            <span class="titulo-noticia">Información Personal</span> <a style="float: right;" class="button"
                                 href="/Postulante/Editar/<%= Model.IdPersona %>">Editar</a>
                         </div>
                         <div class="texto-noticia">
@@ -89,7 +89,9 @@
                                                    } %>
                                             </tbody>
                                         </table>
+                                        
                                         <a id="addDocumento" href="javascript:;">Agregar</a>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -298,7 +300,7 @@
                                         <th style="display: none;">
                                             <b>Conocimientos</b>
                                         </th>
-                                        <th>
+                                        <th style="width: 180px; text-align:center;">
                                             <b>Opciones</b>
                                         </th>
                                     </tr>
@@ -327,8 +329,8 @@
                                         <td style="display: none;">
                                             <%= item.Conocimientos%>
                                         </td>
-                                        <td>
-                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                        <td style="text-align:center;">
+                                            <a class="editar button" href="javascript:;">Editar</a> | <a class="eliminar button" href="javascript:;">
                                                 Eliminar</a>
                                         </td>
                                     </tr>
@@ -337,7 +339,9 @@
                                        } %>
                                 </tbody>
                             </table>
-                            <a id="addExperienciaLaboral" href="javascript:;">Agregar</a>
+                            <div class="content-button">
+                                <a id="addExperienciaLaboral" class="button" href="javascript:;">Agregar</a>
+                            </div>
                         </div>
                     </div>
                     <div class="noticia">
@@ -381,7 +385,7 @@
                                         <th>
                                             <b>F. Fin</b>
                                         </th>
-                                        <th>
+                                        <th style="width: 180px; text-align:center;">
                                             <b>Opciones</b>
                                         </th>
                                     </tr>
@@ -425,8 +429,8 @@
                                         <td>
                                             <%= item.FechaFin != null ? item.FechaFin.ToString().Substring(6, 4) + "-" + item.FechaFin.ToString().Substring(3, 2) + "-" + item.FechaFin.ToString().Substring(0, 2) : string.Empty%>
                                         </td>
-                                        <td>
-                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                        <td style="text-align:center;">
+                                            <a class="editar button" href="javascript:;">Editar</a> | <a class="eliminar button" href="javascript:;">
                                                 Eliminar</a>
                                         </td>
                                     </tr>
@@ -435,7 +439,9 @@
                                        } %>
                                 </tbody>
                             </table>
-                            <a id="addEstudioRealizado" href="javascript:;">Agregar</a>
+                            <div class="content-button">
+                            <a id="addEstudioRealizado" class="button" href="javascript:;">Agregar</a>
+                            </div>
                         </div>
                     </div>
                     <div class="noticia">
@@ -461,7 +467,7 @@
                                         <th>
                                             <b>Nivel</b>
                                         </th>
-                                        <th>
+                                        <th style="width: 180px; text-align:center;">
                                             <b>Opciones</b>
                                         </th>
                                     </tr>
@@ -487,8 +493,8 @@
                                         <td>
                                             <%= item.Nativo == true ? "Nativo" : (item.GRH_NivelIdioma != null ? item.GRH_NivelIdioma.Descripcion : string.Empty)%>
                                         </td>
-                                        <td>
-                                            <a class="editar" href="javascript:;">Editar</a> | <a class="eliminar" href="javascript:;">
+                                        <td style="text-align:center;">
+                                            <a class="editar button" href="javascript:;">Editar</a> | <a class="eliminar button" href="javascript:;">
                                                 Eliminar</a>
                                         </td>
                                     </tr>
@@ -497,7 +503,9 @@
                                        } %>
                                 </tbody>
                             </table>
-                            <a id="addIdiomaPersona" href="javascript:;">Agregar</a>
+                            <div class="content-button">
+                            <a id="addIdiomaPersona" class="button" href="javascript:;">Agregar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -622,9 +630,15 @@
                     :
                 </td>
                 <td>
-                    <%= Html.TextAreaFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().Conocimientos, new { @id = "txtConocimiento", @class = "required" })%>
+                    
                 </td>
             </tr>
+            <tr>
+                <td colspan="3">
+                    <%= Html.TextAreaFor(m => m.GRH_ExperienciaLaboral.FirstOrDefault().Conocimientos, new { @id = "txtConocimiento", @class = "required", @style = "width:95%" })%>
+                </td>
+            </tr>
+            
         </table>
     </div>
     <div id="dialogEstudioRealizado" title="" style="display: none; z-index: 1000;">

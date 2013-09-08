@@ -51,8 +51,8 @@
 
     $('#dialogDocumento').dialog({
         autoOpen: false,
-        height: 160,
-        width: 300,
+        height: 190,
+        width: 260,
         resizable: false,
         modal: true,
         buttons: {
