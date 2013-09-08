@@ -111,9 +111,11 @@
                                 </tr>                                                      
                             </table>                            
                         </div>
+                        
                     </div>               
-                    
+                    <br/>
                     <input class="button" type="submit" value="Enviar" /> | <a id="btnCancelar" class="button" href="/Convocatoria">Cancelar</a> 
+                    <br/><br/>
                 </div>
                 <%} %>
             </div>

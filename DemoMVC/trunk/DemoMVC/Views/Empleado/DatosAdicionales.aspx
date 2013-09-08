@@ -456,7 +456,7 @@
                         </div>
                     </div>
                 </div>
-                 <%= Html.ActionLink("Enviar", "Agregar")%> | <a id="btnCancelar" href="javascript:;">Cancelar</a>
+                 <a id="btnEnviar" href="/Empleado/Agregar" class="button" >Enviar</a> | <a id="btnCancelar" href="javascript:;" class="button" >Cancelar</a>
             </div>
         </div>
     </div>

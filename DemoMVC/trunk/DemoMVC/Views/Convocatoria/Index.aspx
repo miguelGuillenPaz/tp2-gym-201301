@@ -31,7 +31,7 @@
                                 <%= Model.Count() %></span>
                         </div>
                         <div class="texto-noticia">
-                              <table class="table100 table100b" id="tblConvocatoria">
+                              <table id="tblConvocatoria">
                                 <thead>
                                     <tr>
                                     <th style="display:none;">Id</th>
@@ -84,10 +84,18 @@
                                 </tbody>
                             </table>
                         </div>
+                        
                     </div>                    
-                    <a class="button" id="btnAgregar" href="/Convocatoria/Crear">Agregar</a>
+                    <br/>
+                    <a class="button" id="btnAgregar" href="/Convocatoria/Crear">Agregar</a> 
+                    <br/>
+                    <br/>
                 </div>
+                 
             </div>
+            
         </div>
+        
     </div>
+    
 </asp:Content>
