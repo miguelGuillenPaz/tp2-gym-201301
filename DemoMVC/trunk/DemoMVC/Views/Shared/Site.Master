@@ -82,9 +82,15 @@
                 <li><a href="#">Presupuesto</a>
                     <ul>
                         <li>
-                            <%= Html.ActionLink("Aprobación de Presupuestos", "AprobarPresupuesto", "PresupuestoObra")%></li>
+                            <%= Html.ActionLink("Aprobación de Presupuestos", "AprobarPresupuesto", "PresupuestoObra")%>
+                        </li>
                         <li>
-                            <%= Html.ActionLink("Registro de Expediente Técnico", "RegistrarExpedienteTecnico", "ExpedienteTecnico")%></li>
+                            <%= Html.ActionLink("Registro de Expediente Técnico", "RegistrarExpedienteTecnico", "ExpedienteTecnico")%>
+                        </li>
+
+                        <li>
+                            <%= Html.ActionLink("Cierre de Presupuesto", "CerrarPresupuesto", "CierrePresupuestoObra")%>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="#">Contenidos</a>
