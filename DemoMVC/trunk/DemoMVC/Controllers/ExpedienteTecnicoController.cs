@@ -43,7 +43,7 @@ namespace GYM.SIC.GPC.Controllers
 
         public ActionResult ListarPresupuestos()
         {
-            var presupuestos = EFPresupuesto.Presupuestos.Where(x => x.IDEstado == EstadosParameters.Pendiente_de_Aprobacion_por_el_Asesor_del_Cliente).ToList();
+            var presupuestos = EFPresupuesto.Presupuestos.Where(x => x.IDEstado == EstadosParameters.Aprobado).ToList();
 
             var presupuestosModel = new List<PresupuestoModel>();
 
