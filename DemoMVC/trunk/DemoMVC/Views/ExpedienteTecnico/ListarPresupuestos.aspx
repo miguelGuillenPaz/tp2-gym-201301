@@ -33,10 +33,10 @@
             <%=presupuesto.Direccion %>
         </div>
         <div class="gpc-td-center" style="width: 80px;">
-            <%=presupuesto.FechaCambioEstado != null? presupuesto.FechaCambioEstado.ToString().Substring(1, 10) : null%>
+            <%=presupuesto.FechaCambioEstado != null ? presupuesto.FechaCambioEstado.ToString().Substring(1, 10) : "&nbsp;" %>
         </div>
         <div class="gpc-td-center" style="width: 130px;">
-            <%=presupuesto.UsuarioCambioEstado%>
+            <%=presupuesto.UsuarioCambioEstado !=null? presupuesto.UsuarioCambioEstado : "&nbsp;" %>
         </div>
         <div class="gpc-td-center" style="width: 65px;">
             <a href="ListarDetalle?PresupuestoID=<%=presupuesto.IDPresupuestoObra%>">Registrar</a>

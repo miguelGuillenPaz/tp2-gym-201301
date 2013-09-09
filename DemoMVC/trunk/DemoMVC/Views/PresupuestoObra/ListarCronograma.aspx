@@ -26,15 +26,15 @@
     <div>
         <div class="gpc-tabla" style="width: 929px">
             <div class="gpc-tr">
-                <div class="gpc-th" style="width: 80px;">Fecha</div>
+                <div class="gpc-th" style="width:150px;">Fecha</div>
                 <div class="gpc-th" style="width:200px;">Hito</div>
                 <div class="gpc-th" style="width:345px;">Nombre</div>
-                <div class="gpc-th" style="width:300px;">Responsable</div>
+                <div class="gpc-th" style="width:230px;">Responsable</div>
             </div>
             <% foreach (var actividad in Model.ActividadesModel)
             { %>
             <div class="gpc-tr">
-                <div class="gpc-td-center" style="width: 80px;">
+                <div class="gpc-td-center" style="width: 150px;">
                     <%= actividad.Fecha%>
                 </div>
                 <div class="gpc-td" style="width: 200px;">
@@ -43,7 +43,7 @@
                 <div class="gpc-td" style="width: 345px;">
                     <%= actividad.Nombre%>
                 </div>
-                <div class="gpc-td" style="width: 300px;">
+                <div class="gpc-td" style="width: 230px;">
                     <%= actividad.Responsable%>
                 </div>
             </div>  
