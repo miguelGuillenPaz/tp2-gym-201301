@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 using DemoMVC.Models;
@@ -9,6 +10,7 @@ namespace DemoMVC.Controllers
 {
     public class ConvocatoriaController : Controller
     {
+        public IFormsAuthenticationService FormsService { get; set; }
         private GRH_Entities _entities;
         private readonly string[] _seleccione = new[] { string.Empty, "--Seleccione--" };
         //
@@ -27,12 +29,22 @@ namespace DemoMVC.Controllers
         public ActionResult Participar()
         {
             _entities = new GRH_Entities();
-            var dtNow = DateTime.Now;
-            var convocatoria =
+            var idPostulante = Convert.ToInt32(ConfigurationManager.AppSettings["IdPostulante"]);
+            Session["IdPostulante"] = idPostulante;
+
+            var postulante = (from r in _entities.GRH_Postulante where r.IdPostulante == idPostulante select r).FirstOrDefault();
+
+            if (FormsService == null) { FormsService = new FormsAuthenticationService(); }
+            if (postulante != null) FormsService.SignIn(postulante.GRH_Persona.Nombre,true);
+
+
+            var dtNow = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            var convocatorias =
                 (from r in _entities.GRH_Convocatoria select r).Where(
-                    f => f.FechaInicio > dtNow && f.FechaFin <= dtNow).ToList();
-            return View(convocatoria);
-        }
+                    f => f.FechaInicio <= dtNow && f.FechaFin >= dtNow).ToList();
+            
+            return View(convocatorias);
+        }        
 
         //
         // GET: /Convocatoria/Detalle/5
@@ -42,6 +54,24 @@ namespace DemoMVC.Controllers
             _entities = new GRH_Entities();            
             var convocatoria = (from r in _entities.GRH_Convocatoria where r.IdConvocatoria == id select r).FirstOrDefault();
             return View(convocatoria);
+        }
+
+        [HttpPost]
+        public ActionResult Detalle(int id, FormCollection collection)
+        {
+
+            _entities = new GRH_Entities();
+            var convocatoriaPostulante = new GRH_ConvocatoriaPostulante
+                {
+                    IdConvocatoria = id,
+                    IdPostulante = Convert.ToInt32(Session["IdPostulante"]),
+                    FechaPostulacion = DateTime.Now
+                };
+            _entities.AddToGRH_ConvocatoriaPostulante(convocatoriaPostulante);
+            _entities.SaveChanges();
+
+            return Redirect("/Convocatoria/Participar");
+            //return View(convocatoria);
         }
 
         //

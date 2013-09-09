@@ -47,7 +47,7 @@
                                         <th>
                                             <b>Vacantes</b>
                                         </th>
-                                        <th><b>Opciones</b>
+                                        <th style="width:180px;text-align: center;"><b>Opciones</b>
                                         </th>
                                     </tr>
                                 </thead>

@@ -1081,7 +1081,7 @@ span.derecha a
     background: -webkit-linear-gradient(top,  #9b9b9b 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
     background: -o-linear-gradient(top,  #9b9b9b 0%,#ffffff 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #9b9b9b 0%,#ffffff 100%); /* IE10+ */
-    background: linear-gradient(top,  #9b9b9b 0%,#ffffff 100%); /* W3C */
+    
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=  '#9b9b9b' , endColorstr= '#ffffff' ,GradientType=0 ); /* IE6-9 */
 }
 
@@ -1704,7 +1704,7 @@ ul.valores li
     -moz-transition: all 400ms ease-in-out;
     -ms-transition: all 400ms ease-in-out;
     -o-transition: all 400ms ease-in-out;
-    transition: all 400ms ease-in-out;s
+    transition: all 400ms ease-in-out;
 }
 
 #nav_tipos .tipos_shortcuts .shortcut:hover img
@@ -1846,7 +1846,8 @@ ul.politicas_pdf li.ambiental
 }
 
 .lista-central table input, .lista-central table select {
-    font-family: PTSansRegular;
+    /*font-family: PTSansRegular;*/
+        font-family: 'VAGRoundedLight';
     font-size: 12px;    
 }
 
@@ -2000,12 +2001,12 @@ text-transform: uppercase;
 */
 table 
 {
-  border: solid 1px #e8eef4;
+    border: solid 1px #e8eef4;
   border-collapse: collapse;
 }
 
 table td 
-{
+{        
   padding: 7px;   
   border: solid 1px #e8eef4;    
 }
@@ -2018,3 +2019,8 @@ table th
   border: solid 1px #e8eef4;   
 }
 
+textarea {
+    font-family: 'VAGRoundedLight';
+    font-size: 12px;
+    resize: none;
+}
