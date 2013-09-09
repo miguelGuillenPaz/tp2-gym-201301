@@ -3,16 +3,26 @@ section#seccionReqLegal {margin:0 auto 20px auto; padding:20px; width:960px; tex
 
 /*---------------------------------------------------------------
 Comunes*/
-h1 {margin-bottom:20px; font-size:18px; font-weight:bold;}
+#seccionReqLegal h1,
+#registrarPlantillaContrato h1 {margin-bottom:20px; font-size:18px; font-weight:bold;}
+#seccionReqLegal input[type="text"],
+#registrarPlantillaContrato input[type="text"] {height:24px; border:1px solid #a1a1a1;}
+#seccionReqLegal textarea,
+#registrarPlantillaContrato textarea {width:859px; height:100px; border:1px solid #a1a1a1;}
 
 .text0 {width:100px;}
 .text1 {width:200px;}
 .text2 {width:260px;}
+.text10 {width:750px;}
 
+#seccionReqLegal select,
+#registrarPlantillaContrato select {padding:3px 5px; width:206px; height:28px; border:1px solid #a1a1a1; color:#333;}
 .select1 {width:300px;}
 
-fieldset {padding:15px 15px 0 15px; border:1px solid #a1a1a1;}
-fieldset legend {font-weight:bold;}
+#seccionReqLegal fieldset,
+#registrarPlantillaContrato fieldset {padding:15px 15px 0 15px; border:1px solid #a1a1a1;}
+#seccionReqLegal fieldset legend,
+#registrarPlantillaContrato fieldset legend {font-weight:bold;}
 
 .btn {background: #555; display: inline-block; padding: 8px 10px 6px; color: #fff; text-decoration: none; font-weight: bold; line-height: 1; border-bottom: 1px solid #222; position: relative; cursor:pointer;}
 .btn:hover {background:#333;}
@@ -56,3 +66,7 @@ Registrar Requerimiento*/
 #registrarPlantillaContrato #cboTipoContrato {width:320px;}
 #registrarPlantillaContrato #tipo_2,
 #registrarPlantillaContrato #tipo_3 {display:none;}
+#registrarPlantillaContrato #clausulas {display:none; margin-top:20px;}
+#registrarPlantillaContrato #divLnkAgregar {float:right; margin:10px 0 20px 0;}
+#registrarPlantillaContrato #divLnkAgregar a.lnkAgregar {text-decoration:underline;}
+#registrarPlantillaContrato #divLnkAgregar a.lnkAgregar:hover {text-decoration:none;}

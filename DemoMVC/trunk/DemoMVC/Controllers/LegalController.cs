@@ -242,6 +242,8 @@ namespace DemoMVC.Controllers
         //Plantilla Contratos
         public ActionResult RegistrarContratos()
         {
+            ProyectoDAO proye = new ProyectoDAO();
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
             return View();
         }
 

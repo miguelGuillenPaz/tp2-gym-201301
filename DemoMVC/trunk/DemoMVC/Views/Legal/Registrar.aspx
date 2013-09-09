@@ -29,7 +29,7 @@
     </script>
     <section id="seccionReqLegal">
     
-        <h1>Registrar Requerimiento Legal</h1>
+        <h1>Registrar Requerimiento Legal Carta Notarial</h1>
 
         <%--<div class="msgConfirmacion"><%= TempData["MsgConfirmacion"]%></div>--%>
 
