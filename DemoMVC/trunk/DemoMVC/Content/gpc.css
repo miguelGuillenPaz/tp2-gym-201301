@@ -92,8 +92,8 @@
     padding: 0;
     }    
     
-.gpc-aprobar, .gpc-rechazar, .gpc-anular, .gpc-cancelar, 
-.gpc-aprobarOK, .gpc-rechazarOK, .gpc-anularOK, .gpc-registrar{
+.gpc-aprobar, .gpc-rechazar, .gpc-anular, .gpc-cancelar, .gpc-cerrar, .gpc-actualizar, .gpc-justificar, 
+.gpc-aprobarOK, .gpc-rechazarOK, .gpc-anularOK, .gpc-registrar, .gpc-cerrarOK, .gpc-justificarOK{
     text-decoration: none; 
     background-color: #4b8efa; 
     color: #ffffff; 
