@@ -1,0 +1,2285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GSC_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="GSC_ModelStoreContainer">
+          <EntitySet Name="GPP_DetalleRequerimiento" EntityType="GSC_Model.Store.GPP_DetalleRequerimiento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GPP_Requerimiento" EntityType="GSC_Model.Store.GPP_Requerimiento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_CalificacionServicioProveedorTipoServicio" EntityType="GSC_Model.Store.GSC_CalificacionServicioProveedorTipoServicio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_Cotizacion" EntityType="GSC_Model.Store.GSC_Cotizacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_DetalleCotizacion" EntityType="GSC_Model.Store.GSC_DetalleCotizacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_DetalleSolicitudRequerimiento" EntityType="GSC_Model.Store.GSC_DetalleSolicitudRequerimiento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_Estado" EntityType="GSC_Model.Store.GSC_Estado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_EvaluacionCotizacion" EntityType="GSC_Model.Store.GSC_EvaluacionCotizacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_FormaPago" EntityType="GSC_Model.Store.GSC_FormaPago" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_Incidencia" EntityType="GSC_Model.Store.GSC_Incidencia" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_InformeFinal" EntityType="GSC_Model.Store.GSC_InformeFinal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_InformeServicio" EntityType="GSC_Model.Store.GSC_InformeServicio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_Moneda" EntityType="GSC_Model.Store.GSC_Moneda" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_OrdenPago" EntityType="GSC_Model.Store.GSC_OrdenPago" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_ParametroCalificacion" EntityType="GSC_Model.Store.GSC_ParametroCalificacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_ParametroCalificacionTipoServicio" EntityType="GSC_Model.Store.GSC_ParametroCalificacionTipoServicio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_ParteDiario" EntityType="GSC_Model.Store.GSC_ParteDiario" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_Penalidad" EntityType="GSC_Model.Store.GSC_Penalidad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_Proveedor" EntityType="GSC_Model.Store.GSC_Proveedor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_ProveedorTipoServicio" EntityType="GSC_Model.Store.GSC_ProveedorTipoServicio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_SolicitudCotizacion" EntityType="GSC_Model.Store.GSC_SolicitudCotizacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_SolicitudProveedorTipoServicio" EntityType="GSC_Model.Store.GSC_SolicitudProveedorTipoServicio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_TipoServicio" EntityType="GSC_Model.Store.GSC_TipoServicio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GSC_UnidadMedida" EntityType="GSC_Model.Store.GSC_UnidadMedida" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__GSC_Cotiz__IdEst__3C69FB99" Association="GSC_Model.Store.FK__GSC_Cotiz__IdEst__3C69FB99">
+            <End Role="GSC_Estado" EntitySet="GSC_Estado" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GSC_Cotiz__IdSol__3D5E1FD2" Association="GSC_Model.Store.FK__GSC_Cotiz__IdSol__3D5E1FD2">
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GSC_DetalleSolic__44FF419A" Association="GSC_Model.Store.FK__GSC_DetalleSolic__44FF419A">
+            <End Role="GPP_DetalleRequerimiento" EntitySet="GPP_DetalleRequerimiento" />
+            <End Role="GSC_DetalleSolicitudRequerimiento" EntitySet="GSC_DetalleSolicitudRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GSC_Solic__IdEst__5070F446" Association="GSC_Model.Store.FK__GSC_Solic__IdEst__5070F446">
+            <End Role="GSC_Estado" EntitySet="GSC_Estado" />
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GSC_Solic__IdEst__5165187F" Association="GSC_Model.Store.FK__GSC_Solic__IdEst__5165187F">
+            <End Role="GSC_Estado" EntitySet="GSC_Estado" />
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio" Association="GSC_Model.Store.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio">
+            <End Role="GSC_ParametroCalificacionTipoServicio" EntitySet="GSC_ParametroCalificacionTipoServicio" />
+            <End Role="GSC_CalificacionServicioProveedorTipoServicio" EntitySet="GSC_CalificacionServicioProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio" Association="GSC_Model.Store.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio">
+            <End Role="GSC_ProveedorTipoServicio" EntitySet="GSC_ProveedorTipoServicio" />
+            <End Role="GSC_CalificacionServicioProveedorTipoServicio" EntitySet="GSC_CalificacionServicioProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cotizacion_FormaPago" Association="GSC_Model.Store.FK_Cotizacion_FormaPago">
+            <End Role="GSC_FormaPago" EntitySet="GSC_FormaPago" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cotizacion_Moneda" Association="GSC_Model.Store.FK_Cotizacion_Moneda">
+            <End Role="GSC_Moneda" EntitySet="GSC_Moneda" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cotizacion_SolicitudProveedorTipoServicio" Association="GSC_Model.Store.FK_Cotizacion_SolicitudProveedorTipoServicio">
+            <End Role="GSC_SolicitudProveedorTipoServicio" EntitySet="GSC_SolicitudProveedorTipoServicio" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleCotizacion_Cotizacion" Association="GSC_Model.Store.FK_DetalleCotizacion_Cotizacion">
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+            <End Role="GSC_DetalleCotizacion" EntitySet="GSC_DetalleCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleCotizacion_DetalleSolicitud" Association="GSC_Model.Store.FK_DetalleCotizacion_DetalleSolicitud">
+            <End Role="GSC_DetalleSolicitudRequerimiento" EntitySet="GSC_DetalleSolicitudRequerimiento" />
+            <End Role="GSC_DetalleCotizacion" EntitySet="GSC_DetalleCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleCotizacion_UnidadMedida" Association="GSC_Model.Store.FK_DetalleCotizacion_UnidadMedida">
+            <End Role="GSC_UnidadMedida" EntitySet="GSC_UnidadMedida" />
+            <End Role="GSC_DetalleCotizacion" EntitySet="GSC_DetalleCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleRequerimiento_Requerimiento" Association="GSC_Model.Store.FK_DetalleRequerimiento_Requerimiento">
+            <End Role="GPP_Requerimiento" EntitySet="GPP_Requerimiento" />
+            <End Role="GPP_DetalleRequerimiento" EntitySet="GPP_DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleSolicitudRequerimiento_SolicitudCotizacion" Association="GSC_Model.Store.FK_DetalleSolicitudRequerimiento_SolicitudCotizacion">
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+            <End Role="GSC_DetalleSolicitudRequerimiento" EntitySet="GSC_DetalleSolicitudRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GSC_Cotizacion_GSC_TipoServicio" Association="GSC_Model.Store.FK_GSC_Cotizacion_GSC_TipoServicio">
+            <End Role="GSC_TipoServicio" EntitySet="GSC_TipoServicio" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion" Association="GSC_Model.Store.FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion">
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+            <End Role="GSC_EvaluacionCotizacion" EntitySet="GSC_EvaluacionCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion" Association="GSC_Model.Store.FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion">
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+            <End Role="GSC_EvaluacionCotizacion" EntitySet="GSC_EvaluacionCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GSC_SolicitudCotizacion_GSC_TipoServicio" Association="GSC_Model.Store.FK_GSC_SolicitudCotizacion_GSC_TipoServicio">
+            <End Role="GSC_TipoServicio" EntitySet="GSC_TipoServicio" />
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_ParteDiario" Association="GSC_Model.Store.FK_Incidencia_ParteDiario">
+            <End Role="GSC_ParteDiario" EntitySet="GSC_ParteDiario" />
+            <End Role="GSC_Incidencia" EntitySet="GSC_Incidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenPago_InformeServicio" Association="GSC_Model.Store.FK_OrdenPago_InformeServicio">
+            <End Role="GSC_InformeServicio" EntitySet="GSC_InformeServicio" />
+            <End Role="GSC_OrdenPago" EntitySet="GSC_OrdenPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion" Association="GSC_Model.Store.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion">
+            <End Role="GSC_ParametroCalificacion" EntitySet="GSC_ParametroCalificacion" />
+            <End Role="GSC_ParametroCalificacionTipoServicio" EntitySet="GSC_ParametroCalificacionTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParametrosCalificacionTipoServicio_TipoServicio" Association="GSC_Model.Store.FK_ParametrosCalificacionTipoServicio_TipoServicio">
+            <End Role="GSC_TipoServicio" EntitySet="GSC_TipoServicio" />
+            <End Role="GSC_ParametroCalificacionTipoServicio" EntitySet="GSC_ParametroCalificacionTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Penalidad_InformeServicio" Association="GSC_Model.Store.FK_Penalidad_InformeServicio">
+            <End Role="GSC_InformeServicio" EntitySet="GSC_InformeServicio" />
+            <End Role="GSC_Penalidad" EntitySet="GSC_Penalidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Penalidad_OrdenPago" Association="GSC_Model.Store.FK_Penalidad_OrdenPago">
+            <End Role="GSC_OrdenPago" EntitySet="GSC_OrdenPago" />
+            <End Role="GSC_Penalidad" EntitySet="GSC_Penalidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProveedorTipoServicio_Proveedor" Association="GSC_Model.Store.FK_ProveedorTipoServicio_Proveedor">
+            <End Role="GSC_Proveedor" EntitySet="GSC_Proveedor" />
+            <End Role="GSC_ProveedorTipoServicio" EntitySet="GSC_ProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProveedorTipoServicio_TipoServicio" Association="GSC_Model.Store.FK_ProveedorTipoServicio_TipoServicio">
+            <End Role="GSC_TipoServicio" EntitySet="GSC_TipoServicio" />
+            <End Role="GSC_ProveedorTipoServicio" EntitySet="GSC_ProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio" Association="GSC_Model.Store.FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio">
+            <End Role="GSC_ProveedorTipoServicio" EntitySet="GSC_ProveedorTipoServicio" />
+            <End Role="GSC_SolicitudProveedorTipoServicio" EntitySet="GSC_SolicitudProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudProveedorTipoServicio_SolicitudCotizacion" Association="GSC_Model.Store.FK_SolicitudProveedorTipoServicio_SolicitudCotizacion">
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+            <End Role="GSC_SolicitudProveedorTipoServicio" EntitySet="GSC_SolicitudProveedorTipoServicio" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GPP_DetalleRequerimiento">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+          </Key>
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="IdCorDetReq" Type="int" Nullable="false" />
+          <Property Name="CanDetReq" Type="int" />
+          <Property Name="FecInicio" Type="datetime" />
+          <Property Name="FecFin" Type="datetime" />
+          <Property Name="DesServicio" Type="varchar" MaxLength="200" />
+          <Property Name="ActServicio" Type="char" MaxLength="1" />
+          <Property Name="IdUnidadMedida" Type="int" />
+          <Property Name="IdTipoServicio" Type="int" />
+          <Property Name="IdEmpleado" Type="int" />
+          <Property Name="IdRecurso" Type="int" />
+        </EntityType>
+        <EntityType Name="GPP_Requerimiento">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+          </Key>
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="DescripReq" Type="varchar" MaxLength="50" />
+          <Property Name="FechaReq" Type="datetime" />
+          <Property Name="PriReq" Type="varchar" MaxLength="3" />
+          <Property Name="IdTipoRecurso" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_CalificacionServicioProveedorTipoServicio">
+          <Key>
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdTipoServicio" />
+            <PropertyRef Name="IdParametroCalificacion" />
+            <PropertyRef Name="IdProveedor" />
+            <PropertyRef Name="IdProyecto" />
+          </Key>
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="IdTipoServicio" Type="int" Nullable="false" />
+          <Property Name="IdParametroCalificacion" Type="int" Nullable="false" />
+          <Property Name="Calificacion" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="IdCorDetReq" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_Cotizacion">
+          <Key>
+            <PropertyRef Name="IdCotizacion" />
+          </Key>
+          <Property Name="IdCotizacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FechaInicio" Type="datetime" />
+          <Property Name="FechaFin" Type="datetime" />
+          <Property Name="Monto" Type="decimal" Scale="2" />
+          <Property Name="Igv" Type="decimal" Scale="2" />
+          <Property Name="Total" Type="decimal" Scale="2" />
+          <Property Name="Comentarios" Type="varchar" MaxLength="300" />
+          <Property Name="PdfCotizacion" Type="varchar" MaxLength="200" />
+          <Property Name="IdMoneda" Type="int" />
+          <Property Name="IdSolicitudCotizacion" Type="int" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="IdTipoServicio" Type="int" />
+          <Property Name="IdFormaPago" Type="int" />
+          <Property Name="IdEstado" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_DetalleCotizacion">
+          <Key>
+            <PropertyRef Name="IdCotizacion" />
+            <PropertyRef Name="IdCotDet" />
+          </Key>
+          <Property Name="IdCotizacion" Type="int" Nullable="false" />
+          <Property Name="IdCotDet" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Cantidad" Type="decimal" Scale="2" />
+          <Property Name="Precio" Type="decimal" Scale="2" />
+          <Property Name="Importe" Type="decimal" Scale="2" />
+          <Property Name="IdUnidadMedida" Type="int" />
+          <Property Name="IdSolicitudCotizacion" Type="int" />
+          <Property Name="IdSolicitudDetalle" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_DetalleSolicitudRequerimiento">
+          <Key>
+            <PropertyRef Name="IdSolicitudCotizacion" />
+            <PropertyRef Name="IdSolicitudDetalle" />
+          </Key>
+          <Property Name="IdSolicitudCotizacion" Type="int" Nullable="false" />
+          <Property Name="IdSolicitudDetalle" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DescripSolDetalle" Type="varchar" MaxLength="200" />
+          <Property Name="FecSolDetalle" Type="datetime" />
+          <Property Name="IdProyecto" Type="int" />
+          <Property Name="IdRequerimiento" Type="int" />
+          <Property Name="IdCorDetReq" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_Estado">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+          <Property Name="DescripEstado" Type="varchar" MaxLength="50" />
+          <Property Name="FlagSolCotizacion" Type="char" MaxLength="1" />
+          <Property Name="FlagCotizacion" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="GSC_EvaluacionCotizacion">
+          <Key>
+            <PropertyRef Name="IdEvaluacion" />
+          </Key>
+          <Property Name="IdEvaluacion" Type="int" Nullable="false" />
+          <Property Name="IdSolicitudCotizacion" Type="int" />
+          <Property Name="IdCotizacion" Type="int" />
+          <Property Name="FecEvaluacion" Type="date" />
+        </EntityType>
+        <EntityType Name="GSC_FormaPago">
+          <Key>
+            <PropertyRef Name="IdFormaPago" />
+          </Key>
+          <Property Name="IdFormaPago" Type="int" Nullable="false" />
+          <Property Name="DescripFormPag" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="GSC_Incidencia">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+            <PropertyRef Name="IdParteDiario" />
+            <PropertyRef Name="IdIncidencia" />
+          </Key>
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="IdCorDetReq" Type="int" Nullable="false" />
+          <Property Name="IdParteDiario" Type="int" Nullable="false" />
+          <Property Name="IdIncidencia" Type="int" Nullable="false" />
+          <Property Name="DescIncidencia" Type="varchar" MaxLength="50" />
+          <Property Name="ObservacionesTecnicas" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GSC_InformeFinal">
+          <Key>
+            <PropertyRef Name="IdInformeFinal" />
+          </Key>
+          <Property Name="IdInformeFinal" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="FechaActualizacion" Type="datetime" />
+          <Property Name="TextInforme" Type="text" />
+          <Property Name="IdRequerimiento" Type="int" />
+          <Property Name="IdProyecto" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_InformeServicio">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+            <PropertyRef Name="IdInfServ" />
+          </Key>
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="IdCorDetReq" Type="int" Nullable="false" />
+          <Property Name="IdInfServ" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="FlagFinal" Type="char" MaxLength="1" />
+          <Property Name="TextoInforme" Type="text" />
+        </EntityType>
+        <EntityType Name="GSC_Moneda">
+          <Key>
+            <PropertyRef Name="IdMoneda" />
+          </Key>
+          <Property Name="IdMoneda" Type="int" Nullable="false" />
+          <Property Name="DescripMoned" Type="varchar" MaxLength="50" />
+          <Property Name="AbreviaMoned" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="GSC_OrdenPago">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+            <PropertyRef Name="IdOrdenPago" />
+          </Key>
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="IdCorDetReq" Type="int" Nullable="false" />
+          <Property Name="IdOrdenPago" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="IdInfServ" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_ParametroCalificacion">
+          <Key>
+            <PropertyRef Name="IdParametroCalificacion" />
+          </Key>
+          <Property Name="IdParametroCalificacion" Type="int" Nullable="false" />
+          <Property Name="DescripParamCalif" Type="varchar" MaxLength="50" />
+          <Property Name="PuntuacionMax" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_ParametroCalificacionTipoServicio">
+          <Key>
+            <PropertyRef Name="IdTipoServicio" />
+            <PropertyRef Name="IdParametroCalificacion" />
+          </Key>
+          <Property Name="IdTipoServicio" Type="int" Nullable="false" />
+          <Property Name="IdParametroCalificacion" Type="int" Nullable="false" />
+          <Property Name="FechaAsig" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GSC_ParteDiario">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdParteDiario" />
+            <PropertyRef Name="IdCorDetReq" />
+          </Key>
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="IdParteDiario" Type="int" Nullable="false" />
+          <Property Name="IdCorDetReq" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="HoraInicio" Type="datetime" />
+          <Property Name="HoraFin" Type="datetime" />
+          <Property Name="Observacion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GSC_Penalidad">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+            <PropertyRef Name="IdInfServ" />
+          </Key>
+          <Property Name="IdProyecto" Type="int" Nullable="false" />
+          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
+          <Property Name="IdCorDetReq" Type="int" Nullable="false" />
+          <Property Name="IdInfServ" Type="int" Nullable="false" />
+          <Property Name="IdPenalidad" Type="int" />
+          <Property Name="Motivo" Type="varchar" MaxLength="50" />
+          <Property Name="Monto" Type="decimal" Scale="2" />
+          <Property Name="IdOrdenPago" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GSC_Proveedor">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RucProv" Type="varchar" Nullable="false" MaxLength="11" />
+          <Property Name="RazonSocialProv" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DireccionProv" Type="varchar" MaxLength="50" />
+          <Property Name="EmailProv" Type="varchar" MaxLength="50" />
+          <Property Name="EstadoProv" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="GSC_ProveedorTipoServicio">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+            <PropertyRef Name="IdTipoServicio" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+          <Property Name="IdTipoServicio" Type="int" Nullable="false" />
+          <Property Name="DescProvTipoServ" Type="varchar" MaxLength="50" />
+          <Property Name="FechaProvTipoServ" Type="datetime" />
+          <Property Name="ContactoProvTipoServ" Type="varchar" MaxLength="50" />
+          <Property Name="EmailProvTipoServ" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="calificacionTipoServ" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_SolicitudCotizacion">
+          <Key>
+            <PropertyRef Name="IdSolicitudCotizacion" />
+          </Key>
+          <Property Name="IdSolicitudCotizacion" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DescripSolCotizacion" Type="varchar" MaxLength="200" />
+          <Property Name="FecSolCotizacion" Type="datetime" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="500" />
+          <Property Name="FechaVencimiento" Type="date" />
+          <Property Name="IdTipoServicio" Type="int" />
+          <Property Name="FechaEnvio" Type="datetime" />
+          <Property Name="IdEstado" Type="int" />
+        </EntityType>
+        <EntityType Name="GSC_SolicitudProveedorTipoServicio">
+          <Key>
+            <PropertyRef Name="IdSolicitudCotizacion" />
+            <PropertyRef Name="IdProveedor" />
+            <PropertyRef Name="IdTipoServicio" />
+          </Key>
+          <Property Name="IdSolicitudCotizacion" Type="int" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+          <Property Name="IdTipoServicio" Type="int" Nullable="false" />
+          <Property Name="FechaSolProTServ" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GSC_TipoServicio">
+          <Key>
+            <PropertyRef Name="IdTipoServicio" />
+          </Key>
+          <Property Name="IdTipoServicio" Type="int" Nullable="false" />
+          <Property Name="DescripTServicio" Type="varchar" MaxLength="50" />
+          <Property Name="FecActualizacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GSC_UnidadMedida">
+          <Key>
+            <PropertyRef Name="IdUnidadMedida" />
+          </Key>
+          <Property Name="IdUnidadMedida" Type="int" Nullable="false" />
+          <Property Name="DescripUMedi" Type="varchar" MaxLength="50" />
+          <Property Name="AbrviaUMedi" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__GSC_Cotiz__IdEst__3C69FB99">
+          <End Role="GSC_Estado" Type="GSC_Model.Store.GSC_Estado" Multiplicity="0..1" />
+          <End Role="GSC_Cotizacion" Type="GSC_Model.Store.GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GSC_Cotiz__IdSol__3D5E1FD2">
+          <End Role="GSC_SolicitudCotizacion" Type="GSC_Model.Store.GSC_SolicitudCotizacion" Multiplicity="0..1" />
+          <End Role="GSC_Cotizacion" Type="GSC_Model.Store.GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GSC_DetalleSolic__44FF419A">
+          <End Role="GPP_DetalleRequerimiento" Type="GSC_Model.Store.GPP_DetalleRequerimiento" Multiplicity="0..1" />
+          <End Role="GSC_DetalleSolicitudRequerimiento" Type="GSC_Model.Store.GSC_DetalleSolicitudRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPP_DetalleRequerimiento">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+            </Principal>
+            <Dependent Role="GSC_DetalleSolicitudRequerimiento">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GSC_Solic__IdEst__5070F446">
+          <End Role="GSC_Estado" Type="GSC_Model.Store.GSC_Estado" Multiplicity="0..1" />
+          <End Role="GSC_SolicitudCotizacion" Type="GSC_Model.Store.GSC_SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GSC_Solic__IdEst__5165187F">
+          <End Role="GSC_Estado" Type="GSC_Model.Store.GSC_Estado" Multiplicity="0..1" />
+          <End Role="GSC_SolicitudCotizacion" Type="GSC_Model.Store.GSC_SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio">
+          <End Role="GSC_ParametroCalificacionTipoServicio" Type="GSC_Model.Store.GSC_ParametroCalificacionTipoServicio" Multiplicity="1" />
+          <End Role="GSC_CalificacionServicioProveedorTipoServicio" Type="GSC_Model.Store.GSC_CalificacionServicioProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ParametroCalificacionTipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+              <PropertyRef Name="IdParametroCalificacion" />
+            </Principal>
+            <Dependent Role="GSC_CalificacionServicioProveedorTipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+              <PropertyRef Name="IdParametroCalificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio">
+          <End Role="GSC_ProveedorTipoServicio" Type="GSC_Model.Store.GSC_ProveedorTipoServicio" Multiplicity="1" />
+          <End Role="GSC_CalificacionServicioProveedorTipoServicio" Type="GSC_Model.Store.GSC_CalificacionServicioProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_CalificacionServicioProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cotizacion_FormaPago">
+          <End Role="GSC_FormaPago" Type="GSC_Model.Store.GSC_FormaPago" Multiplicity="0..1" />
+          <End Role="GSC_Cotizacion" Type="GSC_Model.Store.GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_FormaPago">
+              <PropertyRef Name="IdFormaPago" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cotizacion_Moneda">
+          <End Role="GSC_Moneda" Type="GSC_Model.Store.GSC_Moneda" Multiplicity="0..1" />
+          <End Role="GSC_Cotizacion" Type="GSC_Model.Store.GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Moneda">
+              <PropertyRef Name="IdMoneda" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cotizacion_SolicitudProveedorTipoServicio">
+          <End Role="GSC_SolicitudProveedorTipoServicio" Type="GSC_Model.Store.GSC_SolicitudProveedorTipoServicio" Multiplicity="0..1" />
+          <End Role="GSC_Cotizacion" Type="GSC_Model.Store.GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudProveedorTipoServicio">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleCotizacion_Cotizacion">
+          <End Role="GSC_Cotizacion" Type="GSC_Model.Store.GSC_Cotizacion" Multiplicity="1" />
+          <End Role="GSC_DetalleCotizacion" Type="GSC_Model.Store.GSC_DetalleCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Cotizacion">
+              <PropertyRef Name="IdCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_DetalleCotizacion">
+              <PropertyRef Name="IdCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleCotizacion_DetalleSolicitud">
+          <End Role="GSC_DetalleSolicitudRequerimiento" Type="GSC_Model.Store.GSC_DetalleSolicitudRequerimiento" Multiplicity="0..1" />
+          <End Role="GSC_DetalleCotizacion" Type="GSC_Model.Store.GSC_DetalleCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_DetalleSolicitudRequerimiento">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+              <PropertyRef Name="IdSolicitudDetalle" />
+            </Principal>
+            <Dependent Role="GSC_DetalleCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+              <PropertyRef Name="IdSolicitudDetalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleCotizacion_UnidadMedida">
+          <End Role="GSC_UnidadMedida" Type="GSC_Model.Store.GSC_UnidadMedida" Multiplicity="0..1" />
+          <End Role="GSC_DetalleCotizacion" Type="GSC_Model.Store.GSC_DetalleCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_UnidadMedida">
+              <PropertyRef Name="IdUnidadMedida" />
+            </Principal>
+            <Dependent Role="GSC_DetalleCotizacion">
+              <PropertyRef Name="IdUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleRequerimiento_Requerimiento">
+          <End Role="GPP_Requerimiento" Type="GSC_Model.Store.GPP_Requerimiento" Multiplicity="1" />
+          <End Role="GPP_DetalleRequerimiento" Type="GSC_Model.Store.GPP_DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPP_Requerimiento">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+            </Principal>
+            <Dependent Role="GPP_DetalleRequerimiento">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleSolicitudRequerimiento_SolicitudCotizacion">
+          <End Role="GSC_SolicitudCotizacion" Type="GSC_Model.Store.GSC_SolicitudCotizacion" Multiplicity="1" />
+          <End Role="GSC_DetalleSolicitudRequerimiento" Type="GSC_Model.Store.GSC_DetalleSolicitudRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_DetalleSolicitudRequerimiento">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GSC_Cotizacion_GSC_TipoServicio">
+          <End Role="GSC_TipoServicio" Type="GSC_Model.Store.GSC_TipoServicio" Multiplicity="0..1" />
+          <End Role="GSC_Cotizacion" Type="GSC_Model.Store.GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_TipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion">
+          <End Role="GSC_Cotizacion" Type="GSC_Model.Store.GSC_Cotizacion" Multiplicity="0..1" />
+          <End Role="GSC_EvaluacionCotizacion" Type="GSC_Model.Store.GSC_EvaluacionCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Cotizacion">
+              <PropertyRef Name="IdCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_EvaluacionCotizacion">
+              <PropertyRef Name="IdCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion">
+          <End Role="GSC_SolicitudCotizacion" Type="GSC_Model.Store.GSC_SolicitudCotizacion" Multiplicity="0..1" />
+          <End Role="GSC_EvaluacionCotizacion" Type="GSC_Model.Store.GSC_EvaluacionCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_EvaluacionCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GSC_SolicitudCotizacion_GSC_TipoServicio">
+          <End Role="GSC_TipoServicio" Type="GSC_Model.Store.GSC_TipoServicio" Multiplicity="0..1" />
+          <End Role="GSC_SolicitudCotizacion" Type="GSC_Model.Store.GSC_SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_TipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencia_ParteDiario">
+          <End Role="GSC_ParteDiario" Type="GSC_Model.Store.GSC_ParteDiario" Multiplicity="1" />
+          <End Role="GSC_Incidencia" Type="GSC_Model.Store.GSC_Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ParteDiario">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdParteDiario" />
+              <PropertyRef Name="IdCorDetReq" />
+            </Principal>
+            <Dependent Role="GSC_Incidencia">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdParteDiario" />
+              <PropertyRef Name="IdCorDetReq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenPago_InformeServicio">
+          <End Role="GSC_InformeServicio" Type="GSC_Model.Store.GSC_InformeServicio" Multiplicity="0..1" />
+          <End Role="GSC_OrdenPago" Type="GSC_Model.Store.GSC_OrdenPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_InformeServicio">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdInfServ" />
+            </Principal>
+            <Dependent Role="GSC_OrdenPago">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdInfServ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion">
+          <End Role="GSC_ParametroCalificacion" Type="GSC_Model.Store.GSC_ParametroCalificacion" Multiplicity="1" />
+          <End Role="GSC_ParametroCalificacionTipoServicio" Type="GSC_Model.Store.GSC_ParametroCalificacionTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ParametroCalificacion">
+              <PropertyRef Name="IdParametroCalificacion" />
+            </Principal>
+            <Dependent Role="GSC_ParametroCalificacionTipoServicio">
+              <PropertyRef Name="IdParametroCalificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParametrosCalificacionTipoServicio_TipoServicio">
+          <End Role="GSC_TipoServicio" Type="GSC_Model.Store.GSC_TipoServicio" Multiplicity="1" />
+          <End Role="GSC_ParametroCalificacionTipoServicio" Type="GSC_Model.Store.GSC_ParametroCalificacionTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_TipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_ParametroCalificacionTipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Penalidad_InformeServicio">
+          <End Role="GSC_InformeServicio" Type="GSC_Model.Store.GSC_InformeServicio" Multiplicity="1" />
+          <End Role="GSC_Penalidad" Type="GSC_Model.Store.GSC_Penalidad" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_InformeServicio">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdInfServ" />
+            </Principal>
+            <Dependent Role="GSC_Penalidad">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdInfServ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Penalidad_OrdenPago">
+          <End Role="GSC_OrdenPago" Type="GSC_Model.Store.GSC_OrdenPago" Multiplicity="1" />
+          <End Role="GSC_Penalidad" Type="GSC_Model.Store.GSC_Penalidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_OrdenPago">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdOrdenPago" />
+            </Principal>
+            <Dependent Role="GSC_Penalidad">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdOrdenPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProveedorTipoServicio_Proveedor">
+          <End Role="GSC_Proveedor" Type="GSC_Model.Store.GSC_Proveedor" Multiplicity="1" />
+          <End Role="GSC_ProveedorTipoServicio" Type="GSC_Model.Store.GSC_ProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Proveedor">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="GSC_ProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProveedorTipoServicio_TipoServicio">
+          <End Role="GSC_TipoServicio" Type="GSC_Model.Store.GSC_TipoServicio" Multiplicity="1" />
+          <End Role="GSC_ProveedorTipoServicio" Type="GSC_Model.Store.GSC_ProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_TipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_ProveedorTipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio">
+          <End Role="GSC_ProveedorTipoServicio" Type="GSC_Model.Store.GSC_ProveedorTipoServicio" Multiplicity="1" />
+          <End Role="GSC_SolicitudProveedorTipoServicio" Type="GSC_Model.Store.GSC_SolicitudProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudProveedorTipoServicio_SolicitudCotizacion">
+          <End Role="GSC_SolicitudCotizacion" Type="GSC_Model.Store.GSC_SolicitudCotizacion" Multiplicity="1" />
+          <End Role="GSC_SolicitudProveedorTipoServicio" Type="GSC_Model.Store.GSC_SolicitudProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudProveedorTipoServicio">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GSC_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="GSC_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GPP_DetalleRequerimiento" EntityType="GSC_Model.GPP_DetalleRequerimiento" />
+          <EntitySet Name="GPP_Requerimiento" EntityType="GSC_Model.GPP_Requerimiento" />
+          <EntitySet Name="GSC_CalificacionServicioProveedorTipoServicio" EntityType="GSC_Model.GSC_CalificacionServicioProveedorTipoServicio" />
+          <EntitySet Name="GSC_Cotizacion" EntityType="GSC_Model.GSC_Cotizacion" />
+          <EntitySet Name="GSC_DetalleCotizacion" EntityType="GSC_Model.GSC_DetalleCotizacion" />
+          <EntitySet Name="GSC_DetalleSolicitudRequerimiento" EntityType="GSC_Model.GSC_DetalleSolicitudRequerimiento" />
+          <EntitySet Name="GSC_Estado" EntityType="GSC_Model.GSC_Estado" />
+          <EntitySet Name="GSC_EvaluacionCotizacion" EntityType="GSC_Model.GSC_EvaluacionCotizacion" />
+          <EntitySet Name="GSC_FormaPago" EntityType="GSC_Model.GSC_FormaPago" />
+          <EntitySet Name="GSC_Incidencia" EntityType="GSC_Model.GSC_Incidencia" />
+          <EntitySet Name="GSC_InformeFinal" EntityType="GSC_Model.GSC_InformeFinal" />
+          <EntitySet Name="GSC_InformeServicio" EntityType="GSC_Model.GSC_InformeServicio" />
+          <EntitySet Name="GSC_Moneda" EntityType="GSC_Model.GSC_Moneda" />
+          <EntitySet Name="GSC_OrdenPago" EntityType="GSC_Model.GSC_OrdenPago" />
+          <EntitySet Name="GSC_ParametroCalificacion" EntityType="GSC_Model.GSC_ParametroCalificacion" />
+          <EntitySet Name="GSC_ParametroCalificacionTipoServicio" EntityType="GSC_Model.GSC_ParametroCalificacionTipoServicio" />
+          <EntitySet Name="GSC_ParteDiario" EntityType="GSC_Model.GSC_ParteDiario" />
+          <EntitySet Name="GSC_Penalidad" EntityType="GSC_Model.GSC_Penalidad" />
+          <EntitySet Name="GSC_Proveedor" EntityType="GSC_Model.GSC_Proveedor" />
+          <EntitySet Name="GSC_ProveedorTipoServicio" EntityType="GSC_Model.GSC_ProveedorTipoServicio" />
+          <EntitySet Name="GSC_SolicitudCotizacion" EntityType="GSC_Model.GSC_SolicitudCotizacion" />
+          <EntitySet Name="GSC_SolicitudProveedorTipoServicio" EntityType="GSC_Model.GSC_SolicitudProveedorTipoServicio" />
+          <EntitySet Name="GSC_TipoServicio" EntityType="GSC_Model.GSC_TipoServicio" />
+          <EntitySet Name="GSC_UnidadMedida" EntityType="GSC_Model.GSC_UnidadMedida" />
+          <AssociationSet Name="FK__GSC_DetalleSolic__44FF419A" Association="GSC_Model.FK__GSC_DetalleSolic__44FF419A">
+            <End Role="GPP_DetalleRequerimiento" EntitySet="GPP_DetalleRequerimiento" />
+            <End Role="GSC_DetalleSolicitudRequerimiento" EntitySet="GSC_DetalleSolicitudRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleRequerimiento_Requerimiento" Association="GSC_Model.FK_DetalleRequerimiento_Requerimiento">
+            <End Role="GPP_Requerimiento" EntitySet="GPP_Requerimiento" />
+            <End Role="GPP_DetalleRequerimiento" EntitySet="GPP_DetalleRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio" Association="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio">
+            <End Role="GSC_ParametroCalificacionTipoServicio" EntitySet="GSC_ParametroCalificacionTipoServicio" />
+            <End Role="GSC_CalificacionServicioProveedorTipoServicio" EntitySet="GSC_CalificacionServicioProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio" Association="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio">
+            <End Role="GSC_ProveedorTipoServicio" EntitySet="GSC_ProveedorTipoServicio" />
+            <End Role="GSC_CalificacionServicioProveedorTipoServicio" EntitySet="GSC_CalificacionServicioProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GSC_Cotiz__IdEst__3C69FB99" Association="GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99">
+            <End Role="GSC_Estado" EntitySet="GSC_Estado" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GSC_Cotiz__IdSol__3D5E1FD2" Association="GSC_Model.FK__GSC_Cotiz__IdSol__3D5E1FD2">
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cotizacion_FormaPago" Association="GSC_Model.FK_Cotizacion_FormaPago">
+            <End Role="GSC_FormaPago" EntitySet="GSC_FormaPago" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cotizacion_Moneda" Association="GSC_Model.FK_Cotizacion_Moneda">
+            <End Role="GSC_Moneda" EntitySet="GSC_Moneda" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cotizacion_SolicitudProveedorTipoServicio" Association="GSC_Model.FK_Cotizacion_SolicitudProveedorTipoServicio">
+            <End Role="GSC_SolicitudProveedorTipoServicio" EntitySet="GSC_SolicitudProveedorTipoServicio" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleCotizacion_Cotizacion" Association="GSC_Model.FK_DetalleCotizacion_Cotizacion">
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+            <End Role="GSC_DetalleCotizacion" EntitySet="GSC_DetalleCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GSC_Cotizacion_GSC_TipoServicio" Association="GSC_Model.FK_GSC_Cotizacion_GSC_TipoServicio">
+            <End Role="GSC_TipoServicio" EntitySet="GSC_TipoServicio" />
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion" Association="GSC_Model.FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion">
+            <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
+            <End Role="GSC_EvaluacionCotizacion" EntitySet="GSC_EvaluacionCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleCotizacion_DetalleSolicitud" Association="GSC_Model.FK_DetalleCotizacion_DetalleSolicitud">
+            <End Role="GSC_DetalleSolicitudRequerimiento" EntitySet="GSC_DetalleSolicitudRequerimiento" />
+            <End Role="GSC_DetalleCotizacion" EntitySet="GSC_DetalleCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleCotizacion_UnidadMedida" Association="GSC_Model.FK_DetalleCotizacion_UnidadMedida">
+            <End Role="GSC_UnidadMedida" EntitySet="GSC_UnidadMedida" />
+            <End Role="GSC_DetalleCotizacion" EntitySet="GSC_DetalleCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleSolicitudRequerimiento_SolicitudCotizacion" Association="GSC_Model.FK_DetalleSolicitudRequerimiento_SolicitudCotizacion">
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+            <End Role="GSC_DetalleSolicitudRequerimiento" EntitySet="GSC_DetalleSolicitudRequerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GSC_Solic__IdEst__5070F446" Association="GSC_Model.FK__GSC_Solic__IdEst__5070F446">
+            <End Role="GSC_Estado" EntitySet="GSC_Estado" />
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GSC_Solic__IdEst__5165187F" Association="GSC_Model.FK__GSC_Solic__IdEst__5165187F">
+            <End Role="GSC_Estado" EntitySet="GSC_Estado" />
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion" Association="GSC_Model.FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion">
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+            <End Role="GSC_EvaluacionCotizacion" EntitySet="GSC_EvaluacionCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_ParteDiario" Association="GSC_Model.FK_Incidencia_ParteDiario">
+            <End Role="GSC_ParteDiario" EntitySet="GSC_ParteDiario" />
+            <End Role="GSC_Incidencia" EntitySet="GSC_Incidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdenPago_InformeServicio" Association="GSC_Model.FK_OrdenPago_InformeServicio">
+            <End Role="GSC_InformeServicio" EntitySet="GSC_InformeServicio" />
+            <End Role="GSC_OrdenPago" EntitySet="GSC_OrdenPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Penalidad_InformeServicio" Association="GSC_Model.FK_Penalidad_InformeServicio">
+            <End Role="GSC_InformeServicio" EntitySet="GSC_InformeServicio" />
+            <End Role="GSC_Penalidad" EntitySet="GSC_Penalidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Penalidad_OrdenPago" Association="GSC_Model.FK_Penalidad_OrdenPago">
+            <End Role="GSC_OrdenPago" EntitySet="GSC_OrdenPago" />
+            <End Role="GSC_Penalidad" EntitySet="GSC_Penalidad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion" Association="GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion">
+            <End Role="GSC_ParametroCalificacion" EntitySet="GSC_ParametroCalificacion" />
+            <End Role="GSC_ParametroCalificacionTipoServicio" EntitySet="GSC_ParametroCalificacionTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParametrosCalificacionTipoServicio_TipoServicio" Association="GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio">
+            <End Role="GSC_TipoServicio" EntitySet="GSC_TipoServicio" />
+            <End Role="GSC_ParametroCalificacionTipoServicio" EntitySet="GSC_ParametroCalificacionTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProveedorTipoServicio_Proveedor" Association="GSC_Model.FK_ProveedorTipoServicio_Proveedor">
+            <End Role="GSC_Proveedor" EntitySet="GSC_Proveedor" />
+            <End Role="GSC_ProveedorTipoServicio" EntitySet="GSC_ProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProveedorTipoServicio_TipoServicio" Association="GSC_Model.FK_ProveedorTipoServicio_TipoServicio">
+            <End Role="GSC_TipoServicio" EntitySet="GSC_TipoServicio" />
+            <End Role="GSC_ProveedorTipoServicio" EntitySet="GSC_ProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio" Association="GSC_Model.FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio">
+            <End Role="GSC_ProveedorTipoServicio" EntitySet="GSC_ProveedorTipoServicio" />
+            <End Role="GSC_SolicitudProveedorTipoServicio" EntitySet="GSC_SolicitudProveedorTipoServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GSC_SolicitudCotizacion_GSC_TipoServicio" Association="GSC_Model.FK_GSC_SolicitudCotizacion_GSC_TipoServicio">
+            <End Role="GSC_TipoServicio" EntitySet="GSC_TipoServicio" />
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SolicitudProveedorTipoServicio_SolicitudCotizacion" Association="GSC_Model.FK_SolicitudProveedorTipoServicio_SolicitudCotizacion">
+            <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
+            <End Role="GSC_SolicitudProveedorTipoServicio" EntitySet="GSC_SolicitudProveedorTipoServicio" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GPP_DetalleRequerimiento">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+          </Key>
+          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
+          <Property Type="Int32" Name="IdCorDetReq" Nullable="false" />
+          <Property Type="Int32" Name="CanDetReq" />
+          <Property Type="DateTime" Name="FecInicio" />
+          <Property Type="DateTime" Name="FecFin" />
+          <Property Type="String" Name="DesServicio" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ActServicio" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="IdUnidadMedida" />
+          <Property Type="Int32" Name="IdTipoServicio" />
+          <Property Type="Int32" Name="IdEmpleado" />
+          <Property Type="Int32" Name="IdRecurso" />
+          <NavigationProperty Name="GSC_DetalleSolicitudRequerimiento" Relationship="GSC_Model.FK__GSC_DetalleSolic__44FF419A" FromRole="GPP_DetalleRequerimiento" ToRole="GSC_DetalleSolicitudRequerimiento" />
+          <NavigationProperty Name="GPP_Requerimiento" Relationship="GSC_Model.FK_DetalleRequerimiento_Requerimiento" FromRole="GPP_DetalleRequerimiento" ToRole="GPP_Requerimiento" />
+        </EntityType>
+        <EntityType Name="GPP_Requerimiento">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+          </Key>
+          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
+          <Property Type="String" Name="DescripReq" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaReq" />
+          <Property Type="String" Name="PriReq" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdTipoRecurso" />
+          <NavigationProperty Name="GPP_DetalleRequerimiento" Relationship="GSC_Model.FK_DetalleRequerimiento_Requerimiento" FromRole="GPP_Requerimiento" ToRole="GPP_DetalleRequerimiento" />
+        </EntityType>
+        <EntityType Name="GSC_CalificacionServicioProveedorTipoServicio">
+          <Key>
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdTipoServicio" />
+            <PropertyRef Name="IdParametroCalificacion" />
+            <PropertyRef Name="IdProveedor" />
+            <PropertyRef Name="IdProyecto" />
+          </Key>
+          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
+          <Property Type="Int32" Name="IdTipoServicio" Nullable="false" />
+          <Property Type="Int32" Name="IdParametroCalificacion" Nullable="false" />
+          <Property Type="Int32" Name="Calificacion" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Int32" Name="IdProveedor" Nullable="false" />
+          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IdCorDetReq" />
+          <NavigationProperty Name="GSC_ParametroCalificacionTipoServicio" Relationship="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio" FromRole="GSC_CalificacionServicioProveedorTipoServicio" ToRole="GSC_ParametroCalificacionTipoServicio" />
+          <NavigationProperty Name="GSC_ProveedorTipoServicio" Relationship="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio" FromRole="GSC_CalificacionServicioProveedorTipoServicio" ToRole="GSC_ProveedorTipoServicio" />
+        </EntityType>
+        <EntityType Name="GSC_Cotizacion">
+          <Key>
+            <PropertyRef Name="IdCotizacion" />
+          </Key>
+          <Property Type="Int32" Name="IdCotizacion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="FechaInicio" />
+          <Property Type="DateTime" Name="FechaFin" />
+          <Property Type="Decimal" Name="Monto" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Igv" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Total" Precision="18" Scale="2" />
+          <Property Type="String" Name="Comentarios" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PdfCotizacion" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdMoneda" />
+          <Property Type="Int32" Name="IdSolicitudCotizacion" />
+          <Property Type="Int32" Name="IdProveedor" />
+          <Property Type="Int32" Name="IdTipoServicio" />
+          <Property Type="Int32" Name="IdFormaPago" />
+          <Property Type="Int32" Name="IdEstado" />
+          <NavigationProperty Name="GSC_Estado" Relationship="GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99" FromRole="GSC_Cotizacion" ToRole="GSC_Estado" />
+          <NavigationProperty Name="GSC_SolicitudCotizacion" Relationship="GSC_Model.FK__GSC_Cotiz__IdSol__3D5E1FD2" FromRole="GSC_Cotizacion" ToRole="GSC_SolicitudCotizacion" />
+          <NavigationProperty Name="GSC_FormaPago" Relationship="GSC_Model.FK_Cotizacion_FormaPago" FromRole="GSC_Cotizacion" ToRole="GSC_FormaPago" />
+          <NavigationProperty Name="GSC_Moneda" Relationship="GSC_Model.FK_Cotizacion_Moneda" FromRole="GSC_Cotizacion" ToRole="GSC_Moneda" />
+          <NavigationProperty Name="GSC_SolicitudProveedorTipoServicio" Relationship="GSC_Model.FK_Cotizacion_SolicitudProveedorTipoServicio" FromRole="GSC_Cotizacion" ToRole="GSC_SolicitudProveedorTipoServicio" />
+          <NavigationProperty Name="GSC_DetalleCotizacion" Relationship="GSC_Model.FK_DetalleCotizacion_Cotizacion" FromRole="GSC_Cotizacion" ToRole="GSC_DetalleCotizacion" />
+          <NavigationProperty Name="GSC_TipoServicio" Relationship="GSC_Model.FK_GSC_Cotizacion_GSC_TipoServicio" FromRole="GSC_Cotizacion" ToRole="GSC_TipoServicio" />
+          <NavigationProperty Name="GSC_EvaluacionCotizacion" Relationship="GSC_Model.FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion" FromRole="GSC_Cotizacion" ToRole="GSC_EvaluacionCotizacion" />
+        </EntityType>
+        <EntityType Name="GSC_DetalleCotizacion">
+          <Key>
+            <PropertyRef Name="IdCotizacion" />
+            <PropertyRef Name="IdCotDet" />
+          </Key>
+          <Property Type="Int32" Name="IdCotizacion" Nullable="false" />
+          <Property Type="Int32" Name="IdCotDet" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descripcion" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Cantidad" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Precio" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Importe" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="IdUnidadMedida" />
+          <Property Type="Int32" Name="IdSolicitudCotizacion" />
+          <Property Type="Int32" Name="IdSolicitudDetalle" />
+          <NavigationProperty Name="GSC_Cotizacion" Relationship="GSC_Model.FK_DetalleCotizacion_Cotizacion" FromRole="GSC_DetalleCotizacion" ToRole="GSC_Cotizacion" />
+          <NavigationProperty Name="GSC_DetalleSolicitudRequerimiento" Relationship="GSC_Model.FK_DetalleCotizacion_DetalleSolicitud" FromRole="GSC_DetalleCotizacion" ToRole="GSC_DetalleSolicitudRequerimiento" />
+          <NavigationProperty Name="GSC_UnidadMedida" Relationship="GSC_Model.FK_DetalleCotizacion_UnidadMedida" FromRole="GSC_DetalleCotizacion" ToRole="GSC_UnidadMedida" />
+        </EntityType>
+        <EntityType Name="GSC_DetalleSolicitudRequerimiento">
+          <Key>
+            <PropertyRef Name="IdSolicitudCotizacion" />
+            <PropertyRef Name="IdSolicitudDetalle" />
+          </Key>
+          <Property Type="Int32" Name="IdSolicitudCotizacion" Nullable="false" />
+          <Property Type="Int32" Name="IdSolicitudDetalle" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DescripSolDetalle" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FecSolDetalle" />
+          <Property Type="Int32" Name="IdProyecto" />
+          <Property Type="Int32" Name="IdRequerimiento" />
+          <Property Type="Int32" Name="IdCorDetReq" />
+          <NavigationProperty Name="GPP_DetalleRequerimiento" Relationship="GSC_Model.FK__GSC_DetalleSolic__44FF419A" FromRole="GSC_DetalleSolicitudRequerimiento" ToRole="GPP_DetalleRequerimiento" />
+          <NavigationProperty Name="GSC_DetalleCotizacion" Relationship="GSC_Model.FK_DetalleCotizacion_DetalleSolicitud" FromRole="GSC_DetalleSolicitudRequerimiento" ToRole="GSC_DetalleCotizacion" />
+          <NavigationProperty Name="GSC_SolicitudCotizacion" Relationship="GSC_Model.FK_DetalleSolicitudRequerimiento_SolicitudCotizacion" FromRole="GSC_DetalleSolicitudRequerimiento" ToRole="GSC_SolicitudCotizacion" />
+        </EntityType>
+        <EntityType Name="GSC_Estado">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="DescripEstado" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FlagSolCotizacion" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="FlagCotizacion" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="GSC_Cotizacion" Relationship="GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99" FromRole="GSC_Estado" ToRole="GSC_Cotizacion" />
+          <NavigationProperty Name="GSC_SolicitudCotizacion" Relationship="GSC_Model.FK__GSC_Solic__IdEst__5070F446" FromRole="GSC_Estado" ToRole="GSC_SolicitudCotizacion" />
+          <NavigationProperty Name="GSC_SolicitudCotizacion1" Relationship="GSC_Model.FK__GSC_Solic__IdEst__5165187F" FromRole="GSC_Estado" ToRole="GSC_SolicitudCotizacion" />
+        </EntityType>
+        <EntityType Name="GSC_EvaluacionCotizacion">
+          <Key>
+            <PropertyRef Name="IdEvaluacion" />
+          </Key>
+          <Property Type="Int32" Name="IdEvaluacion" Nullable="false" />
+          <Property Type="Int32" Name="IdSolicitudCotizacion" />
+          <Property Type="Int32" Name="IdCotizacion" />
+          <Property Type="DateTime" Name="FecEvaluacion" />
+          <NavigationProperty Name="GSC_Cotizacion" Relationship="GSC_Model.FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion" FromRole="GSC_EvaluacionCotizacion" ToRole="GSC_Cotizacion" />
+          <NavigationProperty Name="GSC_SolicitudCotizacion" Relationship="GSC_Model.FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion" FromRole="GSC_EvaluacionCotizacion" ToRole="GSC_SolicitudCotizacion" />
+        </EntityType>
+        <EntityType Name="GSC_FormaPago">
+          <Key>
+            <PropertyRef Name="IdFormaPago" />
+          </Key>
+          <Property Type="Int32" Name="IdFormaPago" Nullable="false" />
+          <Property Type="String" Name="DescripFormPag" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GSC_Cotizacion" Relationship="GSC_Model.FK_Cotizacion_FormaPago" FromRole="GSC_FormaPago" ToRole="GSC_Cotizacion" />
+        </EntityType>
+        <EntityType Name="GSC_Incidencia">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+            <PropertyRef Name="IdParteDiario" />
+            <PropertyRef Name="IdIncidencia" />
+          </Key>
+          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
+          <Property Type="Int32" Name="IdCorDetReq" Nullable="false" />
+          <Property Type="Int32" Name="IdParteDiario" Nullable="false" />
+          <Property Type="Int32" Name="IdIncidencia" Nullable="false" />
+          <Property Type="String" Name="DescIncidencia" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ObservacionesTecnicas" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GSC_ParteDiario" Relationship="GSC_Model.FK_Incidencia_ParteDiario" FromRole="GSC_Incidencia" ToRole="GSC_ParteDiario" />
+        </EntityType>
+        <EntityType Name="GSC_InformeFinal">
+          <Key>
+            <PropertyRef Name="IdInformeFinal" />
+          </Key>
+          <Property Type="Int32" Name="IdInformeFinal" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" />
+          <Property Type="DateTime" Name="FechaActualizacion" />
+          <Property Type="String" Name="TextInforme" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdRequerimiento" />
+          <Property Type="Int32" Name="IdProyecto" />
+        </EntityType>
+        <EntityType Name="GSC_InformeServicio">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+            <PropertyRef Name="IdInfServ" />
+          </Key>
+          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
+          <Property Type="Int32" Name="IdCorDetReq" Nullable="false" />
+          <Property Type="Int32" Name="IdInfServ" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" />
+          <Property Type="String" Name="FlagFinal" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TextoInforme" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GSC_OrdenPago" Relationship="GSC_Model.FK_OrdenPago_InformeServicio" FromRole="GSC_InformeServicio" ToRole="GSC_OrdenPago" />
+          <NavigationProperty Name="GSC_Penalidad" Relationship="GSC_Model.FK_Penalidad_InformeServicio" FromRole="GSC_InformeServicio" ToRole="GSC_Penalidad" />
+        </EntityType>
+        <EntityType Name="GSC_Moneda">
+          <Key>
+            <PropertyRef Name="IdMoneda" />
+          </Key>
+          <Property Type="Int32" Name="IdMoneda" Nullable="false" />
+          <Property Type="String" Name="DescripMoned" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AbreviaMoned" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GSC_Cotizacion" Relationship="GSC_Model.FK_Cotizacion_Moneda" FromRole="GSC_Moneda" ToRole="GSC_Cotizacion" />
+        </EntityType>
+        <EntityType Name="GSC_OrdenPago">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+            <PropertyRef Name="IdOrdenPago" />
+          </Key>
+          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
+          <Property Type="Int32" Name="IdCorDetReq" Nullable="false" />
+          <Property Type="Int32" Name="IdOrdenPago" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="IdInfServ" />
+          <NavigationProperty Name="GSC_InformeServicio" Relationship="GSC_Model.FK_OrdenPago_InformeServicio" FromRole="GSC_OrdenPago" ToRole="GSC_InformeServicio" />
+          <NavigationProperty Name="GSC_Penalidad" Relationship="GSC_Model.FK_Penalidad_OrdenPago" FromRole="GSC_OrdenPago" ToRole="GSC_Penalidad" />
+        </EntityType>
+        <EntityType Name="GSC_ParametroCalificacion">
+          <Key>
+            <PropertyRef Name="IdParametroCalificacion" />
+          </Key>
+          <Property Type="Int32" Name="IdParametroCalificacion" Nullable="false" />
+          <Property Type="String" Name="DescripParamCalif" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PuntuacionMax" />
+          <NavigationProperty Name="GSC_ParametroCalificacionTipoServicio" Relationship="GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion" FromRole="GSC_ParametroCalificacion" ToRole="GSC_ParametroCalificacionTipoServicio" />
+        </EntityType>
+        <EntityType Name="GSC_ParametroCalificacionTipoServicio">
+          <Key>
+            <PropertyRef Name="IdTipoServicio" />
+            <PropertyRef Name="IdParametroCalificacion" />
+          </Key>
+          <Property Type="Int32" Name="IdTipoServicio" Nullable="false" />
+          <Property Type="Int32" Name="IdParametroCalificacion" Nullable="false" />
+          <Property Type="DateTime" Name="FechaAsig" />
+          <NavigationProperty Name="GSC_CalificacionServicioProveedorTipoServicio" Relationship="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio" FromRole="GSC_ParametroCalificacionTipoServicio" ToRole="GSC_CalificacionServicioProveedorTipoServicio" />
+          <NavigationProperty Name="GSC_ParametroCalificacion" Relationship="GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion" FromRole="GSC_ParametroCalificacionTipoServicio" ToRole="GSC_ParametroCalificacion" />
+          <NavigationProperty Name="GSC_TipoServicio" Relationship="GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio" FromRole="GSC_ParametroCalificacionTipoServicio" ToRole="GSC_TipoServicio" />
+        </EntityType>
+        <EntityType Name="GSC_ParteDiario">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdParteDiario" />
+            <PropertyRef Name="IdCorDetReq" />
+          </Key>
+          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
+          <Property Type="Int32" Name="IdParteDiario" Nullable="false" />
+          <Property Type="Int32" Name="IdCorDetReq" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" />
+          <Property Type="DateTime" Name="HoraInicio" />
+          <Property Type="DateTime" Name="HoraFin" />
+          <Property Type="String" Name="Observacion" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GSC_Incidencia" Relationship="GSC_Model.FK_Incidencia_ParteDiario" FromRole="GSC_ParteDiario" ToRole="GSC_Incidencia" />
+        </EntityType>
+        <EntityType Name="GSC_Penalidad">
+          <Key>
+            <PropertyRef Name="IdProyecto" />
+            <PropertyRef Name="IdRequerimiento" />
+            <PropertyRef Name="IdCorDetReq" />
+            <PropertyRef Name="IdInfServ" />
+          </Key>
+          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
+          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
+          <Property Type="Int32" Name="IdCorDetReq" Nullable="false" />
+          <Property Type="Int32" Name="IdInfServ" Nullable="false" />
+          <Property Type="Int32" Name="IdPenalidad" />
+          <Property Type="String" Name="Motivo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Monto" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="IdOrdenPago" Nullable="false" />
+          <NavigationProperty Name="GSC_InformeServicio" Relationship="GSC_Model.FK_Penalidad_InformeServicio" FromRole="GSC_Penalidad" ToRole="GSC_InformeServicio" />
+          <NavigationProperty Name="GSC_OrdenPago" Relationship="GSC_Model.FK_Penalidad_OrdenPago" FromRole="GSC_Penalidad" ToRole="GSC_OrdenPago" />
+        </EntityType>
+        <EntityType Name="GSC_Proveedor">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Type="Int32" Name="IdProveedor" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RucProv" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RazonSocialProv" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DireccionProv" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmailProv" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EstadoProv" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="GSC_ProveedorTipoServicio" Relationship="GSC_Model.FK_ProveedorTipoServicio_Proveedor" FromRole="GSC_Proveedor" ToRole="GSC_ProveedorTipoServicio" />
+        </EntityType>
+        <EntityType Name="GSC_ProveedorTipoServicio">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+            <PropertyRef Name="IdTipoServicio" />
+          </Key>
+          <Property Type="Int32" Name="IdProveedor" Nullable="false" />
+          <Property Type="Int32" Name="IdTipoServicio" Nullable="false" />
+          <Property Type="String" Name="DescProvTipoServ" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaProvTipoServ" />
+          <Property Type="String" Name="ContactoProvTipoServ" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmailProvTipoServ" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="calificacionTipoServ" />
+          <NavigationProperty Name="GSC_CalificacionServicioProveedorTipoServicio" Relationship="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio" FromRole="GSC_ProveedorTipoServicio" ToRole="GSC_CalificacionServicioProveedorTipoServicio" />
+          <NavigationProperty Name="GSC_Proveedor" Relationship="GSC_Model.FK_ProveedorTipoServicio_Proveedor" FromRole="GSC_ProveedorTipoServicio" ToRole="GSC_Proveedor" />
+          <NavigationProperty Name="GSC_TipoServicio" Relationship="GSC_Model.FK_ProveedorTipoServicio_TipoServicio" FromRole="GSC_ProveedorTipoServicio" ToRole="GSC_TipoServicio" />
+          <NavigationProperty Name="GSC_SolicitudProveedorTipoServicio" Relationship="GSC_Model.FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio" FromRole="GSC_ProveedorTipoServicio" ToRole="GSC_SolicitudProveedorTipoServicio" />
+        </EntityType>
+        <EntityType Name="GSC_SolicitudCotizacion">
+          <Key>
+            <PropertyRef Name="IdSolicitudCotizacion" />
+          </Key>
+          <Property Type="Int32" Name="IdSolicitudCotizacion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DescripSolCotizacion" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FecSolCotizacion" />
+          <Property Type="String" Name="Observaciones" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaVencimiento" />
+          <Property Type="Int32" Name="IdTipoServicio" />
+          <Property Type="DateTime" Name="FechaEnvio" />
+          <Property Type="Int32" Name="IdEstado" />
+          <NavigationProperty Name="GSC_Cotizacion" Relationship="GSC_Model.FK__GSC_Cotiz__IdSol__3D5E1FD2" FromRole="GSC_SolicitudCotizacion" ToRole="GSC_Cotizacion" />
+          <NavigationProperty Name="GSC_DetalleSolicitudRequerimiento" Relationship="GSC_Model.FK_DetalleSolicitudRequerimiento_SolicitudCotizacion" FromRole="GSC_SolicitudCotizacion" ToRole="GSC_DetalleSolicitudRequerimiento" />
+          <NavigationProperty Name="GSC_Estado" Relationship="GSC_Model.FK__GSC_Solic__IdEst__5070F446" FromRole="GSC_SolicitudCotizacion" ToRole="GSC_Estado" />
+          <NavigationProperty Name="GSC_Estado1" Relationship="GSC_Model.FK__GSC_Solic__IdEst__5165187F" FromRole="GSC_SolicitudCotizacion" ToRole="GSC_Estado" />
+          <NavigationProperty Name="GSC_EvaluacionCotizacion" Relationship="GSC_Model.FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion" FromRole="GSC_SolicitudCotizacion" ToRole="GSC_EvaluacionCotizacion" />
+          <NavigationProperty Name="GSC_TipoServicio" Relationship="GSC_Model.FK_GSC_SolicitudCotizacion_GSC_TipoServicio" FromRole="GSC_SolicitudCotizacion" ToRole="GSC_TipoServicio" />
+          <NavigationProperty Name="GSC_SolicitudProveedorTipoServicio" Relationship="GSC_Model.FK_SolicitudProveedorTipoServicio_SolicitudCotizacion" FromRole="GSC_SolicitudCotizacion" ToRole="GSC_SolicitudProveedorTipoServicio" />
+        </EntityType>
+        <EntityType Name="GSC_SolicitudProveedorTipoServicio">
+          <Key>
+            <PropertyRef Name="IdSolicitudCotizacion" />
+            <PropertyRef Name="IdProveedor" />
+            <PropertyRef Name="IdTipoServicio" />
+          </Key>
+          <Property Type="Int32" Name="IdSolicitudCotizacion" Nullable="false" />
+          <Property Type="Int32" Name="IdProveedor" Nullable="false" />
+          <Property Type="Int32" Name="IdTipoServicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaSolProTServ" />
+          <NavigationProperty Name="GSC_Cotizacion" Relationship="GSC_Model.FK_Cotizacion_SolicitudProveedorTipoServicio" FromRole="GSC_SolicitudProveedorTipoServicio" ToRole="GSC_Cotizacion" />
+          <NavigationProperty Name="GSC_ProveedorTipoServicio" Relationship="GSC_Model.FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio" FromRole="GSC_SolicitudProveedorTipoServicio" ToRole="GSC_ProveedorTipoServicio" />
+          <NavigationProperty Name="GSC_SolicitudCotizacion" Relationship="GSC_Model.FK_SolicitudProveedorTipoServicio_SolicitudCotizacion" FromRole="GSC_SolicitudProveedorTipoServicio" ToRole="GSC_SolicitudCotizacion" />
+        </EntityType>
+        <EntityType Name="GSC_TipoServicio">
+          <Key>
+            <PropertyRef Name="IdTipoServicio" />
+          </Key>
+          <Property Type="Int32" Name="IdTipoServicio" Nullable="false" />
+          <Property Type="String" Name="DescripTServicio" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FecActualizacion" />
+          <NavigationProperty Name="GSC_Cotizacion" Relationship="GSC_Model.FK_GSC_Cotizacion_GSC_TipoServicio" FromRole="GSC_TipoServicio" ToRole="GSC_Cotizacion" />
+          <NavigationProperty Name="GSC_ParametroCalificacionTipoServicio" Relationship="GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio" FromRole="GSC_TipoServicio" ToRole="GSC_ParametroCalificacionTipoServicio" />
+          <NavigationProperty Name="GSC_ProveedorTipoServicio" Relationship="GSC_Model.FK_ProveedorTipoServicio_TipoServicio" FromRole="GSC_TipoServicio" ToRole="GSC_ProveedorTipoServicio" />
+          <NavigationProperty Name="GSC_SolicitudCotizacion" Relationship="GSC_Model.FK_GSC_SolicitudCotizacion_GSC_TipoServicio" FromRole="GSC_TipoServicio" ToRole="GSC_SolicitudCotizacion" />
+        </EntityType>
+        <EntityType Name="GSC_UnidadMedida">
+          <Key>
+            <PropertyRef Name="IdUnidadMedida" />
+          </Key>
+          <Property Type="Int32" Name="IdUnidadMedida" Nullable="false" />
+          <Property Type="String" Name="DescripUMedi" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AbrviaUMedi" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="GSC_DetalleCotizacion" Relationship="GSC_Model.FK_DetalleCotizacion_UnidadMedida" FromRole="GSC_UnidadMedida" ToRole="GSC_DetalleCotizacion" />
+        </EntityType>
+        <Association Name="FK__GSC_DetalleSolic__44FF419A">
+          <End Type="GSC_Model.GPP_DetalleRequerimiento" Role="GPP_DetalleRequerimiento" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_DetalleSolicitudRequerimiento" Role="GSC_DetalleSolicitudRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPP_DetalleRequerimiento">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+            </Principal>
+            <Dependent Role="GSC_DetalleSolicitudRequerimiento">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleRequerimiento_Requerimiento">
+          <End Type="GSC_Model.GPP_Requerimiento" Role="GPP_Requerimiento" Multiplicity="1" />
+          <End Type="GSC_Model.GPP_DetalleRequerimiento" Role="GPP_DetalleRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPP_Requerimiento">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+            </Principal>
+            <Dependent Role="GPP_DetalleRequerimiento">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio">
+          <End Type="GSC_Model.GSC_ParametroCalificacionTipoServicio" Role="GSC_ParametroCalificacionTipoServicio" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_CalificacionServicioProveedorTipoServicio" Role="GSC_CalificacionServicioProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ParametroCalificacionTipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+              <PropertyRef Name="IdParametroCalificacion" />
+            </Principal>
+            <Dependent Role="GSC_CalificacionServicioProveedorTipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+              <PropertyRef Name="IdParametroCalificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio">
+          <End Type="GSC_Model.GSC_ProveedorTipoServicio" Role="GSC_ProveedorTipoServicio" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_CalificacionServicioProveedorTipoServicio" Role="GSC_CalificacionServicioProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_CalificacionServicioProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GSC_Cotiz__IdEst__3C69FB99">
+          <End Type="GSC_Model.GSC_Estado" Role="GSC_Estado" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_Cotizacion" Role="GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GSC_Cotiz__IdSol__3D5E1FD2">
+          <End Type="GSC_Model.GSC_SolicitudCotizacion" Role="GSC_SolicitudCotizacion" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_Cotizacion" Role="GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cotizacion_FormaPago">
+          <End Type="GSC_Model.GSC_FormaPago" Role="GSC_FormaPago" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_Cotizacion" Role="GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_FormaPago">
+              <PropertyRef Name="IdFormaPago" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdFormaPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cotizacion_Moneda">
+          <End Type="GSC_Model.GSC_Moneda" Role="GSC_Moneda" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_Cotizacion" Role="GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Moneda">
+              <PropertyRef Name="IdMoneda" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cotizacion_SolicitudProveedorTipoServicio">
+          <End Type="GSC_Model.GSC_SolicitudProveedorTipoServicio" Role="GSC_SolicitudProveedorTipoServicio" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_Cotizacion" Role="GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudProveedorTipoServicio">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleCotizacion_Cotizacion">
+          <End Type="GSC_Model.GSC_Cotizacion" Role="GSC_Cotizacion" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_DetalleCotizacion" Role="GSC_DetalleCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Cotizacion">
+              <PropertyRef Name="IdCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_DetalleCotizacion">
+              <PropertyRef Name="IdCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GSC_Cotizacion_GSC_TipoServicio">
+          <End Type="GSC_Model.GSC_TipoServicio" Role="GSC_TipoServicio" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_Cotizacion" Role="GSC_Cotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_TipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_Cotizacion">
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion">
+          <End Type="GSC_Model.GSC_Cotizacion" Role="GSC_Cotizacion" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_EvaluacionCotizacion" Role="GSC_EvaluacionCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Cotizacion">
+              <PropertyRef Name="IdCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_EvaluacionCotizacion">
+              <PropertyRef Name="IdCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleCotizacion_DetalleSolicitud">
+          <End Type="GSC_Model.GSC_DetalleSolicitudRequerimiento" Role="GSC_DetalleSolicitudRequerimiento" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_DetalleCotizacion" Role="GSC_DetalleCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_DetalleSolicitudRequerimiento">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+              <PropertyRef Name="IdSolicitudDetalle" />
+            </Principal>
+            <Dependent Role="GSC_DetalleCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+              <PropertyRef Name="IdSolicitudDetalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleCotizacion_UnidadMedida">
+          <End Type="GSC_Model.GSC_UnidadMedida" Role="GSC_UnidadMedida" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_DetalleCotizacion" Role="GSC_DetalleCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_UnidadMedida">
+              <PropertyRef Name="IdUnidadMedida" />
+            </Principal>
+            <Dependent Role="GSC_DetalleCotizacion">
+              <PropertyRef Name="IdUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleSolicitudRequerimiento_SolicitudCotizacion">
+          <End Type="GSC_Model.GSC_SolicitudCotizacion" Role="GSC_SolicitudCotizacion" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_DetalleSolicitudRequerimiento" Role="GSC_DetalleSolicitudRequerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_DetalleSolicitudRequerimiento">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GSC_Solic__IdEst__5070F446">
+          <End Type="GSC_Model.GSC_Estado" Role="GSC_Estado" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_SolicitudCotizacion" Role="GSC_SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GSC_Solic__IdEst__5165187F">
+          <End Type="GSC_Model.GSC_Estado" Role="GSC_Estado" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_SolicitudCotizacion" Role="GSC_SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Estado">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion">
+          <End Type="GSC_Model.GSC_SolicitudCotizacion" Role="GSC_SolicitudCotizacion" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_EvaluacionCotizacion" Role="GSC_EvaluacionCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_EvaluacionCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencia_ParteDiario">
+          <End Type="GSC_Model.GSC_ParteDiario" Role="GSC_ParteDiario" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_Incidencia" Role="GSC_Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ParteDiario">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdParteDiario" />
+              <PropertyRef Name="IdCorDetReq" />
+            </Principal>
+            <Dependent Role="GSC_Incidencia">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdParteDiario" />
+              <PropertyRef Name="IdCorDetReq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdenPago_InformeServicio">
+          <End Type="GSC_Model.GSC_InformeServicio" Role="GSC_InformeServicio" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_OrdenPago" Role="GSC_OrdenPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_InformeServicio">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdInfServ" />
+            </Principal>
+            <Dependent Role="GSC_OrdenPago">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdInfServ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Penalidad_InformeServicio">
+          <End Type="GSC_Model.GSC_InformeServicio" Role="GSC_InformeServicio" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_Penalidad" Role="GSC_Penalidad" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_InformeServicio">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdInfServ" />
+            </Principal>
+            <Dependent Role="GSC_Penalidad">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdInfServ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Penalidad_OrdenPago">
+          <End Type="GSC_Model.GSC_OrdenPago" Role="GSC_OrdenPago" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_Penalidad" Role="GSC_Penalidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_OrdenPago">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdOrdenPago" />
+            </Principal>
+            <Dependent Role="GSC_Penalidad">
+              <PropertyRef Name="IdProyecto" />
+              <PropertyRef Name="IdRequerimiento" />
+              <PropertyRef Name="IdCorDetReq" />
+              <PropertyRef Name="IdOrdenPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion">
+          <End Type="GSC_Model.GSC_ParametroCalificacion" Role="GSC_ParametroCalificacion" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_ParametroCalificacionTipoServicio" Role="GSC_ParametroCalificacionTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ParametroCalificacion">
+              <PropertyRef Name="IdParametroCalificacion" />
+            </Principal>
+            <Dependent Role="GSC_ParametroCalificacionTipoServicio">
+              <PropertyRef Name="IdParametroCalificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParametrosCalificacionTipoServicio_TipoServicio">
+          <End Type="GSC_Model.GSC_TipoServicio" Role="GSC_TipoServicio" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_ParametroCalificacionTipoServicio" Role="GSC_ParametroCalificacionTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_TipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_ParametroCalificacionTipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProveedorTipoServicio_Proveedor">
+          <End Type="GSC_Model.GSC_Proveedor" Role="GSC_Proveedor" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_ProveedorTipoServicio" Role="GSC_ProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_Proveedor">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="GSC_ProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProveedorTipoServicio_TipoServicio">
+          <End Type="GSC_Model.GSC_TipoServicio" Role="GSC_TipoServicio" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_ProveedorTipoServicio" Role="GSC_ProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_TipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_ProveedorTipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio">
+          <End Type="GSC_Model.GSC_ProveedorTipoServicio" Role="GSC_ProveedorTipoServicio" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_SolicitudProveedorTipoServicio" Role="GSC_SolicitudProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_ProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudProveedorTipoServicio">
+              <PropertyRef Name="IdProveedor" />
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GSC_SolicitudCotizacion_GSC_TipoServicio">
+          <End Type="GSC_Model.GSC_TipoServicio" Role="GSC_TipoServicio" Multiplicity="0..1" />
+          <End Type="GSC_Model.GSC_SolicitudCotizacion" Role="GSC_SolicitudCotizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_TipoServicio">
+              <PropertyRef Name="IdTipoServicio" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdTipoServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SolicitudProveedorTipoServicio_SolicitudCotizacion">
+          <End Type="GSC_Model.GSC_SolicitudCotizacion" Role="GSC_SolicitudCotizacion" Multiplicity="1" />
+          <End Type="GSC_Model.GSC_SolicitudProveedorTipoServicio" Role="GSC_SolicitudProveedorTipoServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GSC_SolicitudCotizacion">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Principal>
+            <Dependent Role="GSC_SolicitudProveedorTipoServicio">
+              <PropertyRef Name="IdSolicitudCotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GSC_ModelStoreContainer" CdmEntityContainer="GSC_Entities">
+          <EntitySetMapping Name="GPP_DetalleRequerimiento">
+            <EntityTypeMapping TypeName="GSC_Model.GPP_DetalleRequerimiento">
+              <MappingFragment StoreEntitySet="GPP_DetalleRequerimiento">
+                <ScalarProperty Name="IdRecurso" ColumnName="IdRecurso" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdTipoServicio" ColumnName="IdTipoServicio" />
+                <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
+                <ScalarProperty Name="ActServicio" ColumnName="ActServicio" />
+                <ScalarProperty Name="DesServicio" ColumnName="DesServicio" />
+                <ScalarProperty Name="FecFin" ColumnName="FecFin" />
+                <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
+                <ScalarProperty Name="CanDetReq" ColumnName="CanDetReq" />
+                <ScalarProperty Name="IdCorDetReq" ColumnName="IdCorDetReq" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPP_Requerimiento">
+            <EntityTypeMapping TypeName="GSC_Model.GPP_Requerimiento">
+              <MappingFragment StoreEntitySet="GPP_Requerimiento">
+                <ScalarProperty Name="IdTipoRecurso" ColumnName="IdTipoRecurso" />
+                <ScalarProperty Name="PriReq" ColumnName="PriReq" />
+                <ScalarProperty Name="FechaReq" ColumnName="FechaReq" />
+                <ScalarProperty Name="DescripReq" ColumnName="DescripReq" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_CalificacionServicioProveedorTipoServicio">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_CalificacionServicioProveedorTipoServicio">
+              <MappingFragment StoreEntitySet="GSC_CalificacionServicioProveedorTipoServicio">
+                <ScalarProperty Name="IdCorDetReq" ColumnName="IdCorDetReq" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+                <ScalarProperty Name="IdParametroCalificacion" ColumnName="IdParametroCalificacion" />
+                <ScalarProperty Name="IdTipoServicio" ColumnName="IdTipoServicio" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_Cotizacion">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_Cotizacion">
+              <MappingFragment StoreEntitySet="GSC_Cotizacion">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
+                <ScalarProperty Name="IdTipoServicio" ColumnName="IdTipoServicio" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdSolicitudCotizacion" ColumnName="IdSolicitudCotizacion" />
+                <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+                <ScalarProperty Name="PdfCotizacion" ColumnName="PdfCotizacion" />
+                <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Igv" ColumnName="Igv" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="IdCotizacion" ColumnName="IdCotizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_DetalleCotizacion">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_DetalleCotizacion">
+              <MappingFragment StoreEntitySet="GSC_DetalleCotizacion">
+                <ScalarProperty Name="IdSolicitudDetalle" ColumnName="IdSolicitudDetalle" />
+                <ScalarProperty Name="IdSolicitudCotizacion" ColumnName="IdSolicitudCotizacion" />
+                <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdCotDet" ColumnName="IdCotDet" />
+                <ScalarProperty Name="IdCotizacion" ColumnName="IdCotizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_DetalleSolicitudRequerimiento">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_DetalleSolicitudRequerimiento">
+              <MappingFragment StoreEntitySet="GSC_DetalleSolicitudRequerimiento">
+                <ScalarProperty Name="IdCorDetReq" ColumnName="IdCorDetReq" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="FecSolDetalle" ColumnName="FecSolDetalle" />
+                <ScalarProperty Name="DescripSolDetalle" ColumnName="DescripSolDetalle" />
+                <ScalarProperty Name="IdSolicitudDetalle" ColumnName="IdSolicitudDetalle" />
+                <ScalarProperty Name="IdSolicitudCotizacion" ColumnName="IdSolicitudCotizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_Estado">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_Estado">
+              <MappingFragment StoreEntitySet="GSC_Estado">
+                <ScalarProperty Name="FlagCotizacion" ColumnName="FlagCotizacion" />
+                <ScalarProperty Name="FlagSolCotizacion" ColumnName="FlagSolCotizacion" />
+                <ScalarProperty Name="DescripEstado" ColumnName="DescripEstado" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_EvaluacionCotizacion">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_EvaluacionCotizacion">
+              <MappingFragment StoreEntitySet="GSC_EvaluacionCotizacion">
+                <ScalarProperty Name="FecEvaluacion" ColumnName="FecEvaluacion" />
+                <ScalarProperty Name="IdCotizacion" ColumnName="IdCotizacion" />
+                <ScalarProperty Name="IdSolicitudCotizacion" ColumnName="IdSolicitudCotizacion" />
+                <ScalarProperty Name="IdEvaluacion" ColumnName="IdEvaluacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_FormaPago">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_FormaPago">
+              <MappingFragment StoreEntitySet="GSC_FormaPago">
+                <ScalarProperty Name="DescripFormPag" ColumnName="DescripFormPag" />
+                <ScalarProperty Name="IdFormaPago" ColumnName="IdFormaPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_Incidencia">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_Incidencia">
+              <MappingFragment StoreEntitySet="GSC_Incidencia">
+                <ScalarProperty Name="ObservacionesTecnicas" ColumnName="ObservacionesTecnicas" />
+                <ScalarProperty Name="DescIncidencia" ColumnName="DescIncidencia" />
+                <ScalarProperty Name="IdIncidencia" ColumnName="IdIncidencia" />
+                <ScalarProperty Name="IdParteDiario" ColumnName="IdParteDiario" />
+                <ScalarProperty Name="IdCorDetReq" ColumnName="IdCorDetReq" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_InformeFinal">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_InformeFinal">
+              <MappingFragment StoreEntitySet="GSC_InformeFinal">
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="TextInforme" ColumnName="TextInforme" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdInformeFinal" ColumnName="IdInformeFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_InformeServicio">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_InformeServicio">
+              <MappingFragment StoreEntitySet="GSC_InformeServicio">
+                <ScalarProperty Name="TextoInforme" ColumnName="TextoInforme" />
+                <ScalarProperty Name="FlagFinal" ColumnName="FlagFinal" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdInfServ" ColumnName="IdInfServ" />
+                <ScalarProperty Name="IdCorDetReq" ColumnName="IdCorDetReq" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_Moneda">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_Moneda">
+              <MappingFragment StoreEntitySet="GSC_Moneda">
+                <ScalarProperty Name="AbreviaMoned" ColumnName="AbreviaMoned" />
+                <ScalarProperty Name="DescripMoned" ColumnName="DescripMoned" />
+                <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_OrdenPago">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_OrdenPago">
+              <MappingFragment StoreEntitySet="GSC_OrdenPago">
+                <ScalarProperty Name="IdInfServ" ColumnName="IdInfServ" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdOrdenPago" ColumnName="IdOrdenPago" />
+                <ScalarProperty Name="IdCorDetReq" ColumnName="IdCorDetReq" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_ParametroCalificacion">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_ParametroCalificacion">
+              <MappingFragment StoreEntitySet="GSC_ParametroCalificacion">
+                <ScalarProperty Name="PuntuacionMax" ColumnName="PuntuacionMax" />
+                <ScalarProperty Name="DescripParamCalif" ColumnName="DescripParamCalif" />
+                <ScalarProperty Name="IdParametroCalificacion" ColumnName="IdParametroCalificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_ParametroCalificacionTipoServicio">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_ParametroCalificacionTipoServicio">
+              <MappingFragment StoreEntitySet="GSC_ParametroCalificacionTipoServicio">
+                <ScalarProperty Name="FechaAsig" ColumnName="FechaAsig" />
+                <ScalarProperty Name="IdParametroCalificacion" ColumnName="IdParametroCalificacion" />
+                <ScalarProperty Name="IdTipoServicio" ColumnName="IdTipoServicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_ParteDiario">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_ParteDiario">
+              <MappingFragment StoreEntitySet="GSC_ParteDiario">
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdCorDetReq" ColumnName="IdCorDetReq" />
+                <ScalarProperty Name="IdParteDiario" ColumnName="IdParteDiario" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_Penalidad">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_Penalidad">
+              <MappingFragment StoreEntitySet="GSC_Penalidad">
+                <ScalarProperty Name="IdOrdenPago" ColumnName="IdOrdenPago" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="IdPenalidad" ColumnName="IdPenalidad" />
+                <ScalarProperty Name="IdInfServ" ColumnName="IdInfServ" />
+                <ScalarProperty Name="IdCorDetReq" ColumnName="IdCorDetReq" />
+                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
+                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_Proveedor">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_Proveedor">
+              <MappingFragment StoreEntitySet="GSC_Proveedor">
+                <ScalarProperty Name="EstadoProv" ColumnName="EstadoProv" />
+                <ScalarProperty Name="EmailProv" ColumnName="EmailProv" />
+                <ScalarProperty Name="DireccionProv" ColumnName="DireccionProv" />
+                <ScalarProperty Name="RazonSocialProv" ColumnName="RazonSocialProv" />
+                <ScalarProperty Name="RucProv" ColumnName="RucProv" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_ProveedorTipoServicio">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_ProveedorTipoServicio">
+              <MappingFragment StoreEntitySet="GSC_ProveedorTipoServicio">
+                <ScalarProperty Name="calificacionTipoServ" ColumnName="calificacionTipoServ" />
+                <ScalarProperty Name="EmailProvTipoServ" ColumnName="EmailProvTipoServ" />
+                <ScalarProperty Name="ContactoProvTipoServ" ColumnName="ContactoProvTipoServ" />
+                <ScalarProperty Name="FechaProvTipoServ" ColumnName="FechaProvTipoServ" />
+                <ScalarProperty Name="DescProvTipoServ" ColumnName="DescProvTipoServ" />
+                <ScalarProperty Name="IdTipoServicio" ColumnName="IdTipoServicio" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_SolicitudCotizacion">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_SolicitudCotizacion">
+              <MappingFragment StoreEntitySet="GSC_SolicitudCotizacion">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="IdTipoServicio" ColumnName="IdTipoServicio" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FecSolCotizacion" ColumnName="FecSolCotizacion" />
+                <ScalarProperty Name="DescripSolCotizacion" ColumnName="DescripSolCotizacion" />
+                <ScalarProperty Name="IdSolicitudCotizacion" ColumnName="IdSolicitudCotizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_SolicitudProveedorTipoServicio">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_SolicitudProveedorTipoServicio">
+              <MappingFragment StoreEntitySet="GSC_SolicitudProveedorTipoServicio">
+                <ScalarProperty Name="FechaSolProTServ" ColumnName="FechaSolProTServ" />
+                <ScalarProperty Name="IdTipoServicio" ColumnName="IdTipoServicio" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdSolicitudCotizacion" ColumnName="IdSolicitudCotizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_TipoServicio">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_TipoServicio">
+              <MappingFragment StoreEntitySet="GSC_TipoServicio">
+                <ScalarProperty Name="FecActualizacion" ColumnName="FecActualizacion" />
+                <ScalarProperty Name="DescripTServicio" ColumnName="DescripTServicio" />
+                <ScalarProperty Name="IdTipoServicio" ColumnName="IdTipoServicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GSC_UnidadMedida">
+            <EntityTypeMapping TypeName="GSC_Model.GSC_UnidadMedida">
+              <MappingFragment StoreEntitySet="GSC_UnidadMedida">
+                <ScalarProperty Name="AbrviaUMedi" ColumnName="AbrviaUMedi" />
+                <ScalarProperty Name="DescripUMedi" ColumnName="DescripUMedi" />
+                <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="GSC_DB" ZoomLevel="86">
+        <EntityTypeShape EntityType="GSC_Model.GPP_DetalleRequerimiento" Width="1.5" PointX="6" PointY="18.125" Height="3.7109993489583317" />
+        <EntityTypeShape EntityType="GSC_Model.GPP_Requerimiento" Width="1.5" PointX="3.75" PointY="18.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_CalificacionServicioProveedorTipoServicio" Width="1.5" PointX="11.25" PointY="7.25" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_Cotizacion" Width="1.5" PointX="3" PointY="8.375" Height="5.2494108072916674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_DetalleCotizacion" Width="1.5" PointX="8.25" PointY="5.375" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_DetalleSolicitudRequerimiento" Width="1.5" PointX="8.25" PointY="16.5" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_Estado" Width="1.5" PointX="3.75" PointY="14.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_EvaluacionCotizacion" Width="1.5" PointX="8.25" PointY="13.625" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_FormaPago" Width="1.5" PointX="0.75" PointY="6.875" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_Incidencia" Width="1.5" PointX="13" PointY="12" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_InformeFinal" Width="1.5" PointX="0.75" PointY="0.75" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_InformeServicio" Width="1.5" PointX="8.75" PointY="1.125" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_Moneda" Width="1.5" PointX="0.75" PointY="13.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_OrdenPago" Width="1.5" PointX="11" PointY="1.125" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_ParametroCalificacion" Width="1.5" PointX="3.75" PointY="2.125" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_ParametroCalificacionTipoServicio" Width="1.5" PointX="6" PointY="9.875" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_ParteDiario" Width="1.5" PointX="10.75" PointY="12" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_Penalidad" Width="1.5" PointX="13.25" PointY="1" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_Proveedor" Width="1.5" PointX="3.75" PointY="4.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_ProveedorTipoServicio" Width="1.5" PointX="6" PointY="5.375" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_SolicitudCotizacion" Width="1.5" PointX="6" PointY="13" Height="3.903300781249996" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_SolicitudProveedorTipoServicio" Width="1.5" PointX="8.25" PointY="10" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_TipoServicio" Width="1.5" PointX="0.75" PointY="9.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="GSC_Model.GSC_UnidadMedida" Width="1.5" PointX="6" PointY="2.75" Height="1.7879850260416674" />
+        <AssociationConnector Association="GSC_Model.FK__GSC_DetalleSolic__44FF419A" >
+          <ConnectorPoint PointX="7.5" PointY="18.783396809895834" />
+          <ConnectorPoint PointX="8.25" PointY="18.783396809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_DetalleRequerimiento_Requerimiento" >
+          <ConnectorPoint PointX="5.25" PointY="20.028595377604166" />
+          <ConnectorPoint PointX="6" PointY="20.028595377604166" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio" >
+          <ConnectorPoint PointX="7.5" PointY="9.90625" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="9.90625" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="9.90625" />
+          <ConnectorPoint PointX="7.979166666666667" PointY="9.90625" />
+          <ConnectorPoint PointX="8.1458333333333339" PointY="9.90625" />
+          <ConnectorPoint PointX="11.25" PointY="9.90625" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio" >
+          <ConnectorPoint PointX="6.75" PointY="8.5090950520833246" />
+          <ConnectorPoint PointX="6.75" PointY="8.9513964843750031" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="8.9513964843750031" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="8.9513964843750031" />
+          <ConnectorPoint PointX="10.875" PointY="8.9513964843750031" />
+          <ConnectorPoint PointX="10.875" PointY="8.546873" />
+          <ConnectorPoint PointX="11.25" PointY="8.546873" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99" >
+          <ConnectorPoint PointX="4.125" PointY="14.75" />
+          <ConnectorPoint PointX="4.125" PointY="13.624410807291667" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK__GSC_Cotiz__IdSol__3D5E1FD2" >
+          <ConnectorPoint PointX="6" PointY="13.312205403645834" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="13.312205403645834" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="13.312205403645834" />
+          <ConnectorPoint PointX="4.5" PointY="13.312205403645834" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_Cotizacion_FormaPago" >
+          <ConnectorPoint PointX="2.25" PointY="7.7761941614583341" />
+          <ConnectorPoint PointX="3.34375" PointY="7.7761941614583341" />
+          <ConnectorPoint PointX="3.34375" PointY="8.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_Cotizacion_Moneda" >
+          <ConnectorPoint PointX="2.25" PointY="13.437205403645834" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="13.437205403645834" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="13.437205403645834" />
+          <ConnectorPoint PointX="3" PointY="13.437205403645834" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_Cotizacion_SolicitudProveedorTipoServicio" >
+          <ConnectorPoint PointX="8.25" PointY="12.237488606770835" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="12.237488606770835" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="12.237488606770835" />
+          <ConnectorPoint PointX="5.833333333333333" PointY="12.237488606770835" />
+          <ConnectorPoint PointX="5.666666666666667" PointY="12.237488606770835" />
+          <ConnectorPoint PointX="4.5" PointY="12.237488606770835" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_DetalleCotizacion_Cotizacion" >
+          <ConnectorPoint PointX="4.5" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="5.291666666666667" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="5.458333333333333" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="8.6364957682291621" />
+          <ConnectorPoint PointX="5.833333333333333" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="6.2604146666666667" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="6.4270813333333328" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="7.6063760751201981" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="7.7730427417868642" PointY="8.6364957682291639" />
+          <ConnectorPoint PointX="8.25" PointY="8.6364957682291639" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_GSC_Cotizacion_GSC_TipoServicio" >
+          <ConnectorPoint PointX="2.25" PointY="10.932444661458334" />
+          <ConnectorPoint PointX="3" PointY="10.932444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion" >
+          <ConnectorPoint PointX="4.5" PointY="10.4369921875" />
+          <ConnectorPoint PointX="5.291666666666667" PointY="10.4369921875" />
+          <ConnectorPoint PointX="5.458333333333333" PointY="10.4369921875" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="10.4369921875" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="10.4369921875" />
+          <ConnectorPoint PointX="5.75" PointY="10.4369921875" />
+          <ConnectorPoint PointX="5.75" PointY="12.614889322916667" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="12.614889322916667" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="12.614889322916667" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="12.614889322916667" />
+          <ConnectorPoint PointX="8.0319045488782077" PointY="12.614889322916667" />
+          <ConnectorPoint PointX="9" PointY="12.614889322916667" />
+          <ConnectorPoint PointX="9" PointY="13.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_DetalleCotizacion_DetalleSolicitud" >
+          <ConnectorPoint PointX="8.25" PointY="16.5" />
+          <ConnectorPoint PointX="7.875" PointY="16.125" />
+          <ConnectorPoint PointX="7.875" PointY="9.0763964843750031" />
+          <ConnectorPoint PointX="8.25" PointY="8.7013964843750031" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_DetalleCotizacion_UnidadMedida" >
+          <ConnectorPoint PointX="7.5" PointY="4.2374886067708317" />
+          <ConnectorPoint PointX="8.46875" PointY="4.2374886067708317" />
+          <ConnectorPoint PointX="8.46875" PointY="5.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_DetalleSolicitudRequerimiento_SolicitudCotizacion" >
+          <ConnectorPoint PointX="7.5" PointY="16.732902890625" />
+          <ConnectorPoint PointX="8.25" PointY="16.732902890625" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK__GSC_Solic__IdEst__5070F446" >
+          <ConnectorPoint PointX="5.25" PointY="15.826650390624998" />
+          <ConnectorPoint PointX="6" PointY="15.826650390624998" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK__GSC_Solic__IdEst__5165187F" >
+          <ConnectorPoint PointX="5.25" PointY="15.225825195312499" />
+          <ConnectorPoint PointX="6" PointY="15.225825195312499" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion" >
+          <ConnectorPoint PointX="7.5" PointY="14.711293945312498" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="14.711293945312498" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="14.711293945312498" />
+          <ConnectorPoint PointX="8.25" PointY="14.711293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_Incidencia_ParteDiario" >
+          <ConnectorPoint PointX="12.25" PointY="13.278595377604169" />
+          <ConnectorPoint PointX="13" PointY="13.278595377604169" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_OrdenPago_InformeServicio" >
+          <ConnectorPoint PointX="10.25" PointY="2.499746093749998" />
+          <ConnectorPoint PointX="11" PointY="2.499746093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_Penalidad_InformeServicio" >
+          <ConnectorPoint PointX="10.25" PointY="3.87333734134615" />
+          <ConnectorPoint PointX="10.625" PointY="4.24833734134615" />
+          <ConnectorPoint PointX="10.625" PointY="4.3167936197916674" />
+          <ConnectorPoint PointX="12.875" PointY="4.3167936197916674" />
+          <ConnectorPoint PointX="13.25" PointY="3.9417936197916674" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_Penalidad_OrdenPago" >
+          <ConnectorPoint PointX="12.5" PointY="2.499746093749998" />
+          <ConnectorPoint PointX="13.25" PointY="2.499746093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion" >
+          <ConnectorPoint PointX="5.25" PointY="3.9129850260416674" />
+          <ConnectorPoint PointX="5.625" PointY="4.2879850260416674" />
+          <ConnectorPoint PointX="5.625" PointY="11.2422895390625" />
+          <ConnectorPoint PointX="5.666666666666667" PointY="11.2422895390625" />
+          <ConnectorPoint PointX="5.833333333333333" PointY="11.2422895390625" />
+          <ConnectorPoint PointX="6" PointY="11.2422895390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio" >
+          <ConnectorPoint PointX="1.5" PointY="9.75" />
+          <ConnectorPoint PointX="1.5" PointY="9.5" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="9.5" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="9.5" />
+          <ConnectorPoint PointX="2.75" PointY="9.5" />
+          <ConnectorPoint PointX="2.75" PointY="8.125" />
+          <ConnectorPoint PointX="3.2604166666666665" PointY="8.125" />
+          <ConnectorPoint PointX="3.4270833333333335" PointY="8.125" />
+          <ConnectorPoint PointX="5.375" PointY="8.125" />
+          <ConnectorPoint PointX="5.375" PointY="10.808388363281257" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="10.808388363281255" />
+          <ConnectorPoint PointX="5.833333333333333" PointY="10.808388363281257" />
+          <ConnectorPoint PointX="6" PointY="10.808388363281257" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_ProveedorTipoServicio_Proveedor" >
+          <ConnectorPoint PointX="5.25" PointY="6.2449446614583337" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="6.2449446614583328" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="6.2449446614583337" />
+          <ConnectorPoint PointX="6" PointY="6.2449446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_ProveedorTipoServicio_TipoServicio" >
+          <ConnectorPoint PointX="2.25" PointY="10.309970330729172" />
+          <ConnectorPoint PointX="2.5" PointY="10.309970330729172" />
+          <ConnectorPoint PointX="2.5" PointY="8.25" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="8.25" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="8.25" />
+          <ConnectorPoint PointX="3.2604166666666665" PointY="8.25" />
+          <ConnectorPoint PointX="3.4270833333333335" PointY="8.25" />
+          <ConnectorPoint PointX="5.291666666666667" PointY="8.25" />
+          <ConnectorPoint PointX="5.458333333333333" PointY="8.25" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="8.25" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="8.25" />
+          <ConnectorPoint PointX="5.75" PointY="8.25" />
+          <ConnectorPoint PointX="5.75" PointY="9.625" />
+          <ConnectorPoint PointX="6.343748" PointY="9.625" />
+          <ConnectorPoint PointX="6.343748" PointY="8.5090950520833246" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio" >
+          <ConnectorPoint PointX="7.5" PointY="8.4467863597756327" />
+          <ConnectorPoint PointX="8.0625" PointY="9.0092863597756327" />
+          <ConnectorPoint PointX="8.0625" PointY="11.087492303385425" />
+          <ConnectorPoint PointX="8.25" PointY="11.087492303385425" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_GSC_SolicitudCotizacion_GSC_TipoServicio" >
+          <ConnectorPoint PointX="2.25" PointY="11.554918992187496" />
+          <ConnectorPoint PointX="2.75" PointY="11.554918992187496" />
+          <ConnectorPoint PointX="2.75" PointY="13.874410807291667" />
+          <ConnectorPoint PointX="4.041666666666667" PointY="13.874410807291667" />
+          <ConnectorPoint PointX="4.208333333333333" PointY="13.874410807291667" />
+          <ConnectorPoint PointX="5.5" PointY="13.874410807291667" />
+          <ConnectorPoint PointX="5.5" PointY="12.422587890625003" />
+          <ConnectorPoint PointX="5.666666666666667" PointY="12.422587890625003" />
+          <ConnectorPoint PointX="5.833333333333333" PointY="12.422587890625003" />
+          <ConnectorPoint PointX="6.75" PointY="12.422587890625003" />
+          <ConnectorPoint PointX="6.75" PointY="13" />
+        </AssociationConnector>
+        <AssociationConnector Association="GSC_Model.FK_SolicitudProveedorTipoServicio_SolicitudCotizacion" >
+          <ConnectorPoint PointX="7.5" PointY="13.063460538461539" />
+          <ConnectorPoint PointX="7.8160744349011209" PointY="12.74738610356042" />
+          <ConnectorPoint PointX="7.9339255650988791" PointY="12.629534973362663" />
+          <ConnectorPoint PointX="8.1875" PointY="12.375960538461541" />
+          <ConnectorPoint PointX="8.1875" PointY="12.427389322916667" />
+          <ConnectorPoint PointX="8.25" PointY="12.364889322916667" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

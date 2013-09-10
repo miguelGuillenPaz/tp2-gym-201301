@@ -47,6 +47,7 @@
                     <ul>
                         <li><%: Html.ActionLink("Solicitud de Cotización", "Solicitud", "Cotizacion")%></li>
                         <li><%: Html.ActionLink("Cotización", "Index", "Cotizacion")%></li>
+                        <li><%: Html.ActionLink("Evaluar Cotización", "Evaluar", "Cotizacion")%></li>
                     </ul>
                 </li>
                 <li>

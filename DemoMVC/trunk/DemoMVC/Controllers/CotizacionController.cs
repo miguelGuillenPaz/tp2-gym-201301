@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -11,11 +12,15 @@ using System.Web.Mvc;
 using GYM.SIG.Business;
 using GYM.SIG.Entity;
 using Microsoft.Reporting.WebForms;
+using DemoMVC.Models;
 
 namespace DemoMVC.Controllers
 {
     public class CotizacionController : Controller
     {
+
+        private GSC_Entities _entities;
+        private readonly string[] _seleccione = new[] { string.Empty, "--Seleccione--" };
         //
         // GET: /Cotizacion/
 
@@ -41,6 +46,16 @@ namespace DemoMVC.Controllers
             ViewData["fechaInicioMes"] = fechaInicioMes;
             ViewData["fechaFinMes"] = fechaFinMes;
             return View();
+        }
+
+        public ActionResult Evaluar()
+        {
+            _entities = new GSC_Entities();
+            ViewData["Proyecto"] = Proyecto();
+            ViewData["Estado"] = Estado();
+            ViewData["TipoServicio"] = TipoServicio();
+            var solicitud = (from r in _entities.GSC_SolicitudCotizacion select r).ToList();
+            return View(solicitud);
         }
 
         public JsonResult BuscarCotizaciones(int o, int l, String tipoFecha, int codPro, int codProv, int codTServ, int codEstado, FormCollection collection)
@@ -536,5 +551,156 @@ namespace DemoMVC.Controllers
             }
         }
 
+
+        public virtual ActionResult DetalleSolicitudCotizacion(int idSolicitudCotizacion)
+        {
+
+            _entities = new GSC_Entities();
+
+            var lista = _entities.GSC_DetalleSolicitudRequerimiento.Where(f => f.IdSolicitudCotizacion == idSolicitudCotizacion)
+                     .ToList();
+            var table = string.Empty;
+            foreach (var requerimiento in lista)
+            {
+                table += "<tr>";
+                table += "<td>" + requerimiento.DescripSolDetalle + "</td>";
+                table += "<td>" + Convert.ToDateTime(requerimiento.FecSolDetalle).ToString("yyyy-MM-dd") + "</td>";
+                table += "</tr>";
+            }
+
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { table },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+        public virtual ActionResult DetalleCotizacion(int idSolicitudCotizacion)
+        {
+
+            _entities = new GSC_Entities();
+
+            var lista = _entities.GSC_Cotizacion.Where(f => f.IdSolicitudCotizacion == idSolicitudCotizacion)
+                     .ToList();
+            var content = string.Empty;
+            var i = 0;
+            foreach (var cotizacion in lista)
+            {
+                i++;
+                content += "<ul>";
+                content += "<li><h2><input type=\"radio\" name=\"cotizacion\"/ value=\"" + cotizacion.IdCotizacion + "\"> Opción " + i + "</h2></li>";
+                content += "<li>Proveedor: " + cotizacion.IdProveedor + "</li>";
+                content += "<li>Total: " + cotizacion.Total + "</li>";
+                content += "<li>Forma de Pago: " + cotizacion.GSC_FormaPago.DescripFormPag + "</li>";
+                content += "</ul>";
+            }
+
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { content },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+        public virtual ActionResult ElegirCotizacion(int idSolicitudCotizacion, int idCotizacion)
+        {
+            var resultado = false;
+            _entities = new GSC_Entities();
+
+            var lista = _entities.GSC_Cotizacion.Where(f => f.IdSolicitudCotizacion == idSolicitudCotizacion)
+                     .ToList();
+
+            foreach (var cotizacion in lista)
+            {
+                cotizacion.IdEstado = 1;
+                _entities.SaveChanges();
+            }
+
+            var item = _entities.GSC_Cotizacion.FirstOrDefault(f => f.IdCotizacion == idCotizacion);
+
+            if (item != null)
+            {
+                item.IdEstado = 5;
+                _entities.SaveChanges();
+                resultado = true;
+            }
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { resultado },
+                        behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
+        }
+
+
+        private List<SelectListItem> CargaInicial()
+        {
+            return new List<SelectListItem>
+                {
+                    new SelectListItem
+                        {
+                            Value = _seleccione[0],
+                            Text = _seleccione[1]
+                        }
+                };
+        }
+
+        public IEnumerable Proyecto()
+        {
+            var entities = new GD_Entities();
+
+            var resultado = CargaInicial();
+
+            var lista = (from r in entities.GPP_Proyecto select r);
+
+            foreach (var item in lista)
+            {
+                var selListItem = new SelectListItem { Value = item.IdProyecto + string.Empty, Text = item.Nombre };
+                resultado.Add(selListItem);
+            }
+
+            return resultado;
+        }
+
+        public IEnumerable Estado()
+        {
+
+            var resultado = CargaInicial();
+
+            var lista = (from r in _entities.GSC_Estado select r);
+
+            foreach (var item in lista)
+            {
+                var selListItem = new SelectListItem { Value = item.IdEstado + string.Empty, Text = item.DescripEstado };
+                resultado.Add(selListItem);
+            }
+
+            return resultado;
+        }
+
+        public IEnumerable TipoServicio()
+        {
+
+            var resultado = CargaInicial();
+
+            var lista = (from r in _entities.GSC_TipoServicio select r);
+
+            foreach (var item in lista)
+            {
+                var selListItem = new SelectListItem { Value = item.IdTipoServicio + string.Empty, Text = item.DescripTServicio };
+                resultado.Add(selListItem);
+            }
+
+            return resultado;
+        }
+
+        public static string GetProyecto(int id)
+        {
+            var entities = new GD_Entities();
+
+            var item = (from r in entities.GPP_Proyecto select r).FirstOrDefault(f => f.IdProyecto == id);
+
+
+            return item != null ? item.Nombre : string.Empty;
+        }
     }
 }

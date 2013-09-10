@@ -131,6 +131,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GRH_DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\GSC_DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GSC_DB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\LegalRequerimiento.cs" />
     <Compile Include="Models\LegalRequerimientoCN.cs" />
     <Compile Include="Models\ListarForm.cs" />
@@ -421,6 +426,7 @@
     <Content Include="Views\Cotizacion\AgregarSolicitudCotizacion.ascx" />
     <Content Include="Views\Cotizacion\BuscarSolicitud.ascx" />
     <Content Include="Views\Cotizacion\DetallesCotizacion.aspx" />
+    <Content Include="Views\Cotizacion\Evaluar.aspx" />
     <Content Include="Views\Cotizacion\Index.aspx" />
     <Content Include="Views\Cotizacion\Solicitud.aspx" />
     <Content Include="Views\Empleado\Agregar.aspx" />
@@ -531,6 +537,10 @@
     <EntityDeploy Include="Models\PMP_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PMP_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\GSC_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GSC_DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Scripts\jquery-ui\images\Thumbs.db" />
     <EntityDeploy Include="Models\GPC_DB.edmx">
