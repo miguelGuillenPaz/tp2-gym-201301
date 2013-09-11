@@ -31,7 +31,7 @@
                         Declaratoria de fábrica
                     </div>
                     <div class="col5 final">
-                        <input id="File2" type="file"/>
+                        <input id="file1" name="file1" type="file"/>
                     </div>
                 </div>
                 <div class="fila">
@@ -39,7 +39,7 @@
                         Planos
                     </div>
                     <div class="col5 final">
-                        <input id="File1" type="file"/>
+                        <input id="file2" name="file2" type="file"/>
                     </div>
                 </div>
                 <div class="fila">
@@ -47,12 +47,12 @@
                         Informe de verificaci&oacute;n t&eacute;cnica
                     </div>
                     <div class="col5 final">
-                        <input id="archivo3" type="file"/>
+                        <input id="file3" name="file3" type="file"/>
                     </div>
                 </div>
             </fieldset>
             <div id="btnGrabarReqLegal">
-                <a class="btnGrabarReqLegal btn" href="#">Grabar</a>
+                <input type="submit" value="Grabar"/>
             </div>
         </div>
         <% } %>

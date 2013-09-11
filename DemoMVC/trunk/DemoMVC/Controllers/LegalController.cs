@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Web.Script.Serialization;
 using DemoMVC.Models;
 using DemoMVC.Persistencia;
+using DemoMVC.HelperClass;
 
 namespace DemoMVC.Controllers
 {
@@ -252,6 +253,26 @@ namespace DemoMVC.Controllers
         {
             ProyectoDAO proye = new ProyectoDAO();
             ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+
+            
+            return View();
+        }
+
+        [HttpPost]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult RegistrarDeclaracionFabrica(HttpPostedFileBase file1,FormCollection formCollection )
+        {
+            if (ModelState.IsValid)
+            {
+                ProyectoDAO proye = new ProyectoDAO();
+                ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+
+                if (file1 == null)
+                {
+                    Utils.ShowMessage(ViewData, "Error", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                }
+            }
+
             return View();
         }
     }
