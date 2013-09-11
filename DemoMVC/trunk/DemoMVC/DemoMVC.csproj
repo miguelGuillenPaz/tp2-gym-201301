@@ -91,6 +91,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LegalController.cs" />
     <Compile Include="Controllers\LogisticaController.cs" />
+    <Compile Include="Controllers\PartidasController.cs" />
     <Compile Include="Controllers\PlanificacionController.cs" />
     <Compile Include="Controllers\PostulanteController.cs" />
     <Compile Include="Controllers\PresupuestoController.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Persistencia\UbigeoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GPCRepository\GPCCronogramaRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCDetallePartidaRepository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCExpedienteTecnicoRepository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCHistoricoAprobacionesRepository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCNotificacionesRepository.cs" />
@@ -190,6 +192,7 @@
     <Compile Include="Repositories\GPCRepository\GPCPresupuestoRepository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCSolicitudesRepository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCCronogramaRepository.cs" />
+    <Compile Include="Repositories\IGPCRepository\IGPCDetallePartidaRepository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCExpedienteTecnicoRepository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCHistoricoAprobacionesRepository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCNotificacionesRepository.cs" />
@@ -205,6 +208,11 @@
     <Content Include="App_Data\GRH_Inserts.sql" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.min.js" />
+    <Content Include="Content\fancy\blank.gif" />
+    <Content Include="Content\fancy\fancybox_loading.gif" />
+    <Content Include="Content\fancy\fancybox_overlay.png" />
+    <Content Include="Content\fancy\fancybox_sprite.png" />
+    <Content Include="Content\fancy\jquery.fancybox.css" />
     <Content Include="Content\gpc.css" />
     <Content Include="Content\images\animated-overlay.gif" />
     <Content Include="Content\images\ui-bg_diagonals-medium_20_d34d17_40x40.png" />
@@ -315,6 +323,7 @@
     <Content Include="Scripts\jquery-ui\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Scripts\jquery-ui\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Scripts\jquery-ui\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.webticker.js" />
     <Content Include="Scripts\jscript.js" />
@@ -449,6 +458,10 @@
     <Content Include="Views\Legal\Requerimientos.aspx" />
     <Content Include="Views\Logistica\Logistica.aspx" />
     <Content Include="Views\Participar.aspx" />
+    <Content Include="Views\Partidas\ActualizarAvancePartida.aspx" />
+    <Content Include="Views\Partidas\ActualizarInconsistenciaPartida.aspx" />
+    <Content Include="Views\Partidas\AvancePartida.ascx" />
+    <Content Include="Views\Partidas\InconsistenciaPartida.ascx" />
     <Content Include="Views\Postulante\Crear.aspx" />
     <Content Include="Views\Postulante\Editar.aspx" />
     <Content Include="Views\Postulante\Detalle.aspx" />
