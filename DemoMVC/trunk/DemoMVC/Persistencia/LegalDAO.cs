@@ -115,17 +115,17 @@ namespace DemoMVC.Persistencia
             Requerimiento req = null;
 
            string sql = "";
-            sql = "select idReqLegal, r.codPro,p.desPro,p.nomPro,r.idTipoReqLegal,rt.cDescripcion,r.cDescripcion as 'desc',dFechaRegistro,r.idEstadoReqLegal, re.cDescripcion as 'estado' ";
-            sql = sql + "from T_RequerimientoLegal_CN r ";
-            sql = sql + "inner join T_Proyecto p on p.codPro = r.codPro ";
-            sql = sql + "inner join T_RequerimientoLegal_Tipo rt on rt.idTipoReqLegal = r.idTipoReqLegal ";
-            sql = sql + "inner join t_requerimientoLegal_estado re on re.idEstadoReqLegal= r.idEstadoReqLegal ";
-            sql = sql + "where (@idEstado is null or r.idEstadoReqLegal=@idEstado) ";
-            sql = sql + "and (@idTipo is null or r.idTipoReqLegal =@idTipo) ";
-            sql = sql + "and (@idProyecto is null or r.codPro = @idProyecto) ";
-            sql = sql + "and (@idReqLegal is null or r.idReqLegal =@idReqLegal) ";
-            sql = sql + "and r.dFechaRegistro >= @fecIni ";
-            sql = sql + "and r.dFechaRegistro <= @fecFin";
+           sql = "select IdRequerimientoLegal, r.IdProyecto,p.Descripcion,p.Nombre,r.IdRequerimientoLegalTipo,rt.Descripcion,r.Descripcion as 'desc',r.FechaRegistro,r.IdRequerimientoLegalEstado, re.Descripcion as 'estado'  ";
+           sql = sql + "from GJ_RequerimientoLegal r  ";
+           sql = sql + "inner join GPP_Proyecto p on p.IdProyecto = r.IdProyecto ";
+           sql = sql + "inner join dbo.GJ_RequerimientoLegalTipo rt on rt.IdRequerimientoLegalTipo = r.IdRequerimientoLegalTipo ";
+           sql = sql + "inner join dbo.GJ_RequerimientoLegalEstado re on re.IdRequerimientoLegalEstado= r.IdRequerimientoLegalEstado ";
+           sql = sql + "where (@idEstado is null or r.IdRequerimientoLegalEstado=@idEstado)  ";
+           sql = sql + "and (@idTipo is null or r.IdRequerimientoLegalTipo =@idTipo)  ";
+           sql = sql + "and (@idProyecto is null or r.IdProyecto = @idProyecto) ";
+           sql = sql + "and (@idReqLegal is null or r.IdRequerimientoLegal =@idReqLegal)  ";
+           sql = sql + "and r.FechaRegistro>= @fecIni  ";
+           sql = sql + "and r.FechaRegistro <= @fecFin";
             
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
@@ -215,7 +215,7 @@ namespace DemoMVC.Persistencia
             TipoRequerimiento tipo = null;
 
             string sql = "";
-            sql = "select idTipoReqLegal, cDescripcion from T_RequerimientoLegal_Tipo where bActivo=1";
+            sql = "select IdRequerimientoLegalTipo, Descripcion from GJ_RequerimientoLegalTipo where Activo=1";
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
@@ -238,8 +238,8 @@ namespace DemoMVC.Persistencia
                             {
                                 tipo = new TipoRequerimiento()
                                 {
-                                    idTipoReq = (Int16)resultado["idTipoReqLegal"],
-                                    descripcion = (String)resultado["cDescripcion"],
+                                    idTipoReq = (Int16)resultado["IdRequerimientoLegalTipo"],
+                                    descripcion = (String)resultado["Descripcion"],
                                 };
                                 listaTipoRequerimiento.Add(tipo);
                             }
@@ -263,7 +263,7 @@ namespace DemoMVC.Persistencia
             Estado estado = null;
 
             string sql = "";
-            sql = "select idEstadoReqLegal, cDescripcion from T_RequerimientoLegal_Estado";
+            sql = "select IdRequerimientoLegalEstado, Descripcion from GJ_RequerimientoLegalEstado";
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
@@ -285,8 +285,8 @@ namespace DemoMVC.Persistencia
                             {
                                 estado = new Estado()
                             {
-                                idEstadoReq = (Int16)resultado["idEstadoReqLegal"],
-                                descripcion = (String)resultado["cDescripcion"],
+                                idEstadoReq = (Int16)resultado["IdRequerimientoLegalEstado"],
+                                descripcion = (String)resultado["Descripcion"],
                             };
                                 listaEstadoRequerimiento.Add(estado);
                             }

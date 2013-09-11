@@ -92,8 +92,16 @@
            <% } %>
     <% } %>
     </table>
-    </div>
+     </div>
     <% } %>
+     <script language="javascript" type="text/javascript">
+         $(function () {
+             $("#txtFecIni").datepicker({ dateFormat: "dd/mm/yy" });
+             $("#txtFecFin").datepicker({ dateFormat: "dd/mm/yy" });
+         });
+                 
+    </script>
+
     </section>
     </form>
 </asp:Content>
