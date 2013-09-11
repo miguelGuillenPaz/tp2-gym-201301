@@ -77,5 +77,47 @@ namespace GYM.SIC.GPC.Controllers
             return View(presupuestoModel);
         }
 
+        [HttpPost]
+        public JsonResult CambiarEstado(int PresupuestoID, int Estado, string Observacion)
+        {
+            var presupuesto = EFPresupuesto.Presupuestos.ToList().FirstOrDefault(x => x.IDPresupuestoObra == PresupuestoID);
+            presupuesto.IDEstado = Estado;
+            presupuesto.FechaCambioEstado = DateTime.Now;
+            presupuesto.UsuarioCambioEstado = "Arturo";
+            presupuesto.Observaciones = Observacion;
+            EFPresupuesto.ActualizarPresupuesto(presupuesto);
+
+            String mensaje = "";
+
+            // cerrado
+            if (Estado == EstadosParameters.Cerrado_por_el_Supervisor_de_Presupuesto)
+            {
+                mensaje = "El Cierre del Presupuesto ha sido realizado.";
+            }
+
+            //con inconsistencias
+            //if (Estado == EstadosParameters.Presupuesto_con_Inconsistencias)
+            //{
+            //    mensaje = "Presupuesto con Inconsistencias.";
+            //}
+ 
+
+            // solicitar actializacion
+            //if (Estado == EstadosParameters.En_solicitud_de_Actualizacion)
+            //{
+            //    var notificaciones = new GPC_Notificacion
+            //    {
+            //        FechaRegistro = DateTime.Now,
+            //        Observacion = Observacion,
+            //        IDPresupuestoObra = presupuesto.IDPresupuestoObra,
+            //    };
+            //    EFNotificaciones.ActualizarNotificaciones(notificaciones);
+            //    mensaje = "Se ha solicitado la actualización del presupuesto.";
+            //}
+
+            return new JsonResult() { Data = mensaje, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+        }
+
     }
 }
