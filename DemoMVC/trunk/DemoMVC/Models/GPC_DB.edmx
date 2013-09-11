@@ -8,13 +8,18 @@
         <EntityContainer Name="GYMModelStoreContainer">
           <EntitySet Name="GPC_ActividadObra" EntityType="GYMModel.Store.GPC_ActividadObra" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_APU" EntityType="GYMModel.Store.GPC_APU" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GPC_AvancePartida" EntityType="GYMModel.Store.GPC_AvancePartida" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_Categoria" EntityType="GYMModel.Store.GPC_Categoria" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_ClienteObra" EntityType="GYMModel.Store.GPC_ClienteObra" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_CronogramaObra" EntityType="GYMModel.Store.GPC_CronogramaObra" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_DetallePartida" EntityType="GYMModel.Store.GPC_DetallePartida" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_Estado" EntityType="GYMModel.Store.GPC_Estado" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GPC_EstadoPartida" EntityType="GYMModel.Store.GPC_EstadoPartida" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GPC_Evidencia" EntityType="GYMModel.Store.GPC_Evidencia" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_ExpedienteTecnico" EntityType="GYMModel.Store.GPC_ExpedienteTecnico" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_HistoricoAprobacion" EntityType="GYMModel.Store.GPC_HistoricoAprobacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GPC_InconsistenciaAvancePartida" EntityType="GYMModel.Store.GPC_InconsistenciaAvancePartida" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GPC_InconsistenciaDetallePartida" EntityType="GYMModel.Store.GPC_InconsistenciaDetallePartida" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_Notificacion" EntityType="GYMModel.Store.GPC_Notificacion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_Obra" EntityType="GYMModel.Store.GPC_Obra" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GPC_Partida" EntityType="GYMModel.Store.GPC_Partida" store:Type="Tables" Schema="dbo" />
@@ -27,6 +32,22 @@
           <AssociationSet Name="FK_GPC_ActividadObra_CronogramaObra" Association="GYMModel.Store.FK_GPC_ActividadObra_CronogramaObra">
             <End Role="GPC_CronogramaObra" EntitySet="GPC_CronogramaObra" />
             <End Role="GPC_ActividadObra" EntitySet="GPC_ActividadObra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_AvancePartida_DetallePartida" Association="GYMModel.Store.FK_GPC_AvancePartida_DetallePartida">
+            <End Role="GPC_DetallePartida" EntitySet="GPC_DetallePartida" />
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_AvancePartida_Estado" Association="GYMModel.Store.FK_GPC_AvancePartida_Estado">
+            <End Role="GPC_Estado" EntitySet="GPC_Estado" />
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_AvancePartida_Usuario1" Association="GYMModel.Store.FK_GPC_AvancePartida_Usuario1">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_AvancePartida_Usuario2" Association="GYMModel.Store.FK_GPC_AvancePartida_Usuario2">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
           </AssociationSet>
           <AssociationSet Name="FK_GPC_ClienteObra_Usuario" Association="GYMModel.Store.FK_GPC_ClienteObra_Usuario">
             <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
@@ -48,6 +69,30 @@
             <End Role="GPC_Partida" EntitySet="GPC_Partida" />
             <End Role="GPC_DetallePartida" EntitySet="GPC_DetallePartida" />
           </AssociationSet>
+          <AssociationSet Name="FK_GPC_EstadoPartida_AvancePartida" Association="GYMModel.Store.FK_GPC_EstadoPartida_AvancePartida">
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+            <End Role="GPC_EstadoPartida" EntitySet="GPC_EstadoPartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_EstadoPartida_Estado" Association="GYMModel.Store.FK_GPC_EstadoPartida_Estado">
+            <End Role="GPC_Estado" EntitySet="GPC_Estado" />
+            <End Role="GPC_EstadoPartida" EntitySet="GPC_EstadoPartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_EstadoPartida_Usuario" Association="GYMModel.Store.FK_GPC_EstadoPartida_Usuario">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_EstadoPartida" EntitySet="GPC_EstadoPartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_Evidencia_AvancePartida" Association="GYMModel.Store.FK_GPC_Evidencia_AvancePartida">
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+            <End Role="GPC_Evidencia" EntitySet="GPC_Evidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_Evidencia_Usuario1" Association="GYMModel.Store.FK_GPC_Evidencia_Usuario1">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_Evidencia" EntitySet="GPC_Evidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_Evidencia_Usuario2" Association="GYMModel.Store.FK_GPC_Evidencia_Usuario2">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_Evidencia" EntitySet="GPC_Evidencia" />
+          </AssociationSet>
           <AssociationSet Name="FK_GPC_ExpedienteTecnico_PresupuestoObra" Association="GYMModel.Store.FK_GPC_ExpedienteTecnico_PresupuestoObra">
             <End Role="GPC_PresupuestoObra" EntitySet="GPC_PresupuestoObra" />
             <End Role="GPC_ExpedienteTecnico" EntitySet="GPC_ExpedienteTecnico" />
@@ -63,6 +108,22 @@
           <AssociationSet Name="FK_GPC_HistoricoAprobacion_Usuario" Association="GYMModel.Store.FK_GPC_HistoricoAprobacion_Usuario">
             <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
             <End Role="GPC_HistoricoAprobacion" EntitySet="GPC_HistoricoAprobacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_InconsistenciaAvancePartida_AvancePartida" Association="GYMModel.Store.FK_GPC_InconsistenciaAvancePartida_AvancePartida">
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+            <End Role="GPC_InconsistenciaAvancePartida" EntitySet="GPC_InconsistenciaAvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_InconsistenciaAvancePartida_Usuario" Association="GYMModel.Store.FK_GPC_InconsistenciaAvancePartida_Usuario">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_InconsistenciaAvancePartida" EntitySet="GPC_InconsistenciaAvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_InconsistenciaDetallePartida_DetallePartida" Association="GYMModel.Store.FK_GPC_InconsistenciaDetallePartida_DetallePartida">
+            <End Role="GPC_DetallePartida" EntitySet="GPC_DetallePartida" />
+            <End Role="GPC_InconsistenciaDetallePartida" EntitySet="GPC_InconsistenciaDetallePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_InconsistenciaDetallePartida_Usuario" Association="GYMModel.Store.FK_GPC_InconsistenciaDetallePartida_Usuario">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_InconsistenciaDetallePartida" EntitySet="GPC_InconsistenciaDetallePartida" />
           </AssociationSet>
           <AssociationSet Name="FK_GPC_Notificacion_PresupuestoObra" Association="GYMModel.Store.FK_GPC_Notificacion_PresupuestoObra">
             <End Role="GPC_PresupuestoObra" EntitySet="GPC_PresupuestoObra" />
@@ -100,6 +161,14 @@
             <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
             <End Role="GPC_Solicitud" EntitySet="GPC_Solicitud" />
           </AssociationSet>
+          <AssociationSet Name="FK_GS_UsuarioRol_Rol" Association="GYMModel.Store.FK_GS_UsuarioRol_Rol">
+            <End Role="SEG_Perfil" EntitySet="SEG_Perfil" />
+            <End Role="SEG_UsuarioPerfil" EntitySet="SEG_UsuarioPerfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GS_UsuarioRol_Usuario" Association="GYMModel.Store.FK_GS_UsuarioRol_Usuario">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="SEG_UsuarioPerfil" EntitySet="SEG_UsuarioPerfil" />
+          </AssociationSet>
           <AssociationSet Name="FK_SEG_UsuarioPerfil_Perfil" Association="GYMModel.Store.FK_SEG_UsuarioPerfil_Perfil">
             <End Role="SEG_Perfil" EntitySet="SEG_Perfil" />
             <End Role="SEG_UsuarioPerfil" EntitySet="SEG_UsuarioPerfil" />
@@ -136,6 +205,20 @@
           <Property Name="Nombre" Type="varchar" MaxLength="200" />
           <Property Name="UM" Type="varchar" MaxLength="200" />
           <Property Name="Total" Type="numeric" Scale="2" />
+        </EntityType>
+        <EntityType Name="GPC_AvancePartida">
+          <Key>
+            <PropertyRef Name="IDAvancePartida" />
+          </Key>
+          <Property Name="IDAvancePartida" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDDetallePartida" Type="int" />
+          <Property Name="IDEstado" Type="int" />
+          <Property Name="IDUsuarioEmisor" Type="int" />
+          <Property Name="IDUsuarioDestinatario" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="CantidadEjecutada" Type="numeric" Scale="2" />
+          <Property Name="Observacion" Type="varchar" MaxLength="500" />
+          <Property Name="FechaEjecucion" Type="datetime" />
         </EntityType>
         <EntityType Name="GPC_Categoria">
           <Key>
@@ -182,6 +265,29 @@
           <Property Name="Nombre" Type="varchar" MaxLength="200" />
           <Property Name="Entidad" Type="varchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="GPC_EstadoPartida">
+          <Key>
+            <PropertyRef Name="IDEstadoPartida" />
+          </Key>
+          <Property Name="IDEstadoPartida" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDAvancePartida" Type="int" />
+          <Property Name="IDEstado" Type="int" />
+          <Property Name="IDUsuarioResponsable" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="CantidadAvance" Type="numeric" Scale="2" />
+          <Property Name="Observacion" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="GPC_Evidencia">
+          <Key>
+            <PropertyRef Name="IDEvidencia" />
+          </Key>
+          <Property Name="IDEvidencia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDAvancePartida" Type="int" />
+          <Property Name="IDUsuarioResponsable" Type="int" />
+          <Property Name="IDUsuarioDestinatario" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="Observacion" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="GPC_ExpedienteTecnico">
           <Key>
             <PropertyRef Name="IDExpedienteTecnico" />
@@ -204,6 +310,27 @@
           <Property Name="IDPresupuestoObra" Type="int" />
           <Property Name="IDEstado" Type="int" />
           <Property Name="IDUsuario" Type="int" />
+        </EntityType>
+        <EntityType Name="GPC_InconsistenciaAvancePartida">
+          <Key>
+            <PropertyRef Name="IDInconsistenciaAvancePartida" />
+          </Key>
+          <Property Name="IDInconsistenciaAvancePartida" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDAvancePartida" Type="int" />
+          <Property Name="IDUsuarioJustifica" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="Justificacion" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="GPC_InconsistenciaDetallePartida">
+          <Key>
+            <PropertyRef Name="IDInconsistenciaDetallePartida" />
+          </Key>
+          <Property Name="IDInconsistenciaDetallePartida" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDDetallePartida" Type="int" />
+          <Property Name="IDUsuarioGenera" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="Observacion" Type="varchar" MaxLength="500" />
+          <Property Name="FechaInconsistencia" Type="datetime" />
         </EntityType>
         <EntityType Name="GPC_Notificacion">
           <Key>
@@ -311,6 +438,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GPC_AvancePartida_DetallePartida">
+          <End Role="GPC_DetallePartida" Type="GYMModel.Store.GPC_DetallePartida" Multiplicity="0..1" />
+          <End Role="GPC_AvancePartida" Type="GYMModel.Store.GPC_AvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_DetallePartida">
+              <PropertyRef Name="IDDetallePartida" />
+            </Principal>
+            <Dependent Role="GPC_AvancePartida">
+              <PropertyRef Name="IDDetallePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_AvancePartida_Estado">
+          <End Role="GPC_Estado" Type="GYMModel.Store.GPC_Estado" Multiplicity="0..1" />
+          <End Role="GPC_AvancePartida" Type="GYMModel.Store.GPC_AvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_Estado">
+              <PropertyRef Name="IDEstado" />
+            </Principal>
+            <Dependent Role="GPC_AvancePartida">
+              <PropertyRef Name="IDEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_AvancePartida_Usuario1">
+          <End Role="SEG_Usuario" Type="GYMModel.Store.SEG_Usuario" Multiplicity="0..1" />
+          <End Role="GPC_AvancePartida" Type="GYMModel.Store.GPC_AvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_AvancePartida">
+              <PropertyRef Name="IDUsuarioEmisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_AvancePartida_Usuario2">
+          <End Role="SEG_Usuario" Type="GYMModel.Store.SEG_Usuario" Multiplicity="0..1" />
+          <End Role="GPC_AvancePartida" Type="GYMModel.Store.GPC_AvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_AvancePartida">
+              <PropertyRef Name="IDUsuarioDestinatario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GPC_ClienteObra_Usuario">
           <End Role="SEG_Usuario" Type="GYMModel.Store.SEG_Usuario" Multiplicity="0..1" />
           <End Role="GPC_ClienteObra" Type="GYMModel.Store.GPC_ClienteObra" Multiplicity="*" />
@@ -371,6 +546,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GPC_EstadoPartida_AvancePartida">
+          <End Role="GPC_AvancePartida" Type="GYMModel.Store.GPC_AvancePartida" Multiplicity="0..1" />
+          <End Role="GPC_EstadoPartida" Type="GYMModel.Store.GPC_EstadoPartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_AvancePartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Principal>
+            <Dependent Role="GPC_EstadoPartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_EstadoPartida_Estado">
+          <End Role="GPC_Estado" Type="GYMModel.Store.GPC_Estado" Multiplicity="0..1" />
+          <End Role="GPC_EstadoPartida" Type="GYMModel.Store.GPC_EstadoPartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_Estado">
+              <PropertyRef Name="IDEstado" />
+            </Principal>
+            <Dependent Role="GPC_EstadoPartida">
+              <PropertyRef Name="IDEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_EstadoPartida_Usuario">
+          <End Role="SEG_Usuario" Type="GYMModel.Store.SEG_Usuario" Multiplicity="0..1" />
+          <End Role="GPC_EstadoPartida" Type="GYMModel.Store.GPC_EstadoPartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_EstadoPartida">
+              <PropertyRef Name="IDUsuarioResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_Evidencia_AvancePartida">
+          <End Role="GPC_AvancePartida" Type="GYMModel.Store.GPC_AvancePartida" Multiplicity="0..1" />
+          <End Role="GPC_Evidencia" Type="GYMModel.Store.GPC_Evidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_AvancePartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Principal>
+            <Dependent Role="GPC_Evidencia">
+              <PropertyRef Name="IDAvancePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_Evidencia_Usuario1">
+          <End Role="SEG_Usuario" Type="GYMModel.Store.SEG_Usuario" Multiplicity="0..1" />
+          <End Role="GPC_Evidencia" Type="GYMModel.Store.GPC_Evidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_Evidencia">
+              <PropertyRef Name="IDUsuarioResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_Evidencia_Usuario2">
+          <End Role="SEG_Usuario" Type="GYMModel.Store.SEG_Usuario" Multiplicity="0..1" />
+          <End Role="GPC_Evidencia" Type="GYMModel.Store.GPC_Evidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_Evidencia">
+              <PropertyRef Name="IDUsuarioDestinatario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GPC_ExpedienteTecnico_PresupuestoObra">
           <End Role="GPC_PresupuestoObra" Type="GYMModel.Store.GPC_PresupuestoObra" Multiplicity="0..1" />
           <End Role="GPC_ExpedienteTecnico" Type="GYMModel.Store.GPC_ExpedienteTecnico" Multiplicity="*" />
@@ -416,6 +663,54 @@
             </Principal>
             <Dependent Role="GPC_HistoricoAprobacion">
               <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_InconsistenciaAvancePartida_AvancePartida">
+          <End Role="GPC_AvancePartida" Type="GYMModel.Store.GPC_AvancePartida" Multiplicity="0..1" />
+          <End Role="GPC_InconsistenciaAvancePartida" Type="GYMModel.Store.GPC_InconsistenciaAvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_AvancePartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Principal>
+            <Dependent Role="GPC_InconsistenciaAvancePartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_InconsistenciaAvancePartida_Usuario">
+          <End Role="SEG_Usuario" Type="GYMModel.Store.SEG_Usuario" Multiplicity="0..1" />
+          <End Role="GPC_InconsistenciaAvancePartida" Type="GYMModel.Store.GPC_InconsistenciaAvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_InconsistenciaAvancePartida">
+              <PropertyRef Name="IDUsuarioJustifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_InconsistenciaDetallePartida_DetallePartida">
+          <End Role="GPC_DetallePartida" Type="GYMModel.Store.GPC_DetallePartida" Multiplicity="0..1" />
+          <End Role="GPC_InconsistenciaDetallePartida" Type="GYMModel.Store.GPC_InconsistenciaDetallePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_DetallePartida">
+              <PropertyRef Name="IDDetallePartida" />
+            </Principal>
+            <Dependent Role="GPC_InconsistenciaDetallePartida">
+              <PropertyRef Name="IDDetallePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_InconsistenciaDetallePartida_Usuario">
+          <End Role="SEG_Usuario" Type="GYMModel.Store.SEG_Usuario" Multiplicity="0..1" />
+          <End Role="GPC_InconsistenciaDetallePartida" Type="GYMModel.Store.GPC_InconsistenciaDetallePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_InconsistenciaDetallePartida">
+              <PropertyRef Name="IDUsuarioGenera" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -527,6 +822,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GS_UsuarioRol_Rol">
+          <End Role="SEG_Perfil" Type="GYMModel.Store.SEG_Perfil" Multiplicity="1" />
+          <End Role="SEG_UsuarioPerfil" Type="GYMModel.Store.SEG_UsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Perfil">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="SEG_UsuarioPerfil">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GS_UsuarioRol_Usuario">
+          <End Role="SEG_Usuario" Type="GYMModel.Store.SEG_Usuario" Multiplicity="1" />
+          <End Role="SEG_UsuarioPerfil" Type="GYMModel.Store.SEG_UsuarioPerfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="SEG_UsuarioPerfil">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SEG_UsuarioPerfil_Perfil">
           <End Role="SEG_Perfil" Type="GYMModel.Store.SEG_Perfil" Multiplicity="1" />
           <End Role="SEG_UsuarioPerfil" Type="GYMModel.Store.SEG_UsuarioPerfil" Multiplicity="*" />
@@ -575,6 +894,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="pa_GPC_AvancePartidaRechazado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPartida" Type="int" Mode="In" />
+          <Parameter Name="fechaAvance" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_GPC_Detalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fechaAvance" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_GPC_UsuarioAprobador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -690,6 +1017,75 @@
             <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
             <End Role="SEG_UsuarioPerfil" EntitySet="SEG_UsuarioPerfil" />
           </AssociationSet>
+          <EntitySet Name="GPC_EstadoPartida" EntityType="GYMModel.GPC_EstadoPartida" />
+          <EntitySet Name="GPC_Evidencia" EntityType="GYMModel.GPC_Evidencia" />
+          <EntitySet Name="GPC_InconsistenciaAvancePartida" EntityType="GYMModel.GPC_InconsistenciaAvancePartida" />
+          <EntitySet Name="GPC_InconsistenciaDetallePartida" EntityType="GYMModel.GPC_InconsistenciaDetallePartida" />
+          <AssociationSet Name="FK_GPC_InconsistenciaDetallePartida_DetallePartida" Association="GYMModel.FK_GPC_InconsistenciaDetallePartida_DetallePartida">
+            <End Role="GPC_DetallePartida" EntitySet="GPC_DetallePartida" />
+            <End Role="GPC_InconsistenciaDetallePartida" EntitySet="GPC_InconsistenciaDetallePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_EstadoPartida_Estado" Association="GYMModel.FK_GPC_EstadoPartida_Estado">
+            <End Role="GPC_Estado" EntitySet="GPC_Estado" />
+            <End Role="GPC_EstadoPartida" EntitySet="GPC_EstadoPartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_EstadoPartida_Usuario" Association="GYMModel.FK_GPC_EstadoPartida_Usuario">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_EstadoPartida" EntitySet="GPC_EstadoPartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_Evidencia_Usuario1" Association="GYMModel.FK_GPC_Evidencia_Usuario1">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_Evidencia" EntitySet="GPC_Evidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_Evidencia_Usuario2" Association="GYMModel.FK_GPC_Evidencia_Usuario2">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_Evidencia" EntitySet="GPC_Evidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_InconsistenciaAvancePartida_Usuario" Association="GYMModel.FK_GPC_InconsistenciaAvancePartida_Usuario">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_InconsistenciaAvancePartida" EntitySet="GPC_InconsistenciaAvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_InconsistenciaDetallePartida_Usuario" Association="GYMModel.FK_GPC_InconsistenciaDetallePartida_Usuario">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_InconsistenciaDetallePartida" EntitySet="GPC_InconsistenciaDetallePartida" />
+          </AssociationSet>
+          <EntitySet Name="GPC_AvancePartida" EntityType="GYMModel.GPC_AvancePartida" />
+          <AssociationSet Name="FK_GPC_AvancePartida_DetallePartida" Association="GYMModel.FK_GPC_AvancePartida_DetallePartida">
+            <End Role="GPC_DetallePartida" EntitySet="GPC_DetallePartida" />
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_AvancePartida_Estado" Association="GYMModel.FK_GPC_AvancePartida_Estado">
+            <End Role="GPC_Estado" EntitySet="GPC_Estado" />
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_AvancePartida_Usuario1" Association="GYMModel.FK_GPC_AvancePartida_Usuario1">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_AvancePartida_Usuario2" Association="GYMModel.FK_GPC_AvancePartida_Usuario2">
+            <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_EstadoPartida_AvancePartida" Association="GYMModel.FK_GPC_EstadoPartida_AvancePartida">
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+            <End Role="GPC_EstadoPartida" EntitySet="GPC_EstadoPartida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_Evidencia_AvancePartida" Association="GYMModel.FK_GPC_Evidencia_AvancePartida">
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+            <End Role="GPC_Evidencia" EntitySet="GPC_Evidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GPC_InconsistenciaAvancePartida_AvancePartida" Association="GYMModel.FK_GPC_InconsistenciaAvancePartida_AvancePartida">
+            <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
+            <End Role="GPC_InconsistenciaAvancePartida" EntitySet="GPC_InconsistenciaAvancePartida" />
+          </AssociationSet>
+          <FunctionImport Name="GetDetallesPartida_Result" ReturnType="Collection(GYMModel.GetDetallesPartida_Result)">
+          <Parameter Name="fechaAvance" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUsuarios_Result" ReturnType="Collection(GYMModel.GetUsuarios_Result)" />
+          <FunctionImport Name="GetInconsistenciaPartida_Result" ReturnType="Collection(GYMModel.GetInconsistenciaPartida_Result)">
+            <Parameter Name="idPartida" Mode="In" Type="Int32" />
+            <Parameter Name="fechaAvance" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="GPC_ActividadObra">
           <Key>
@@ -757,6 +1153,8 @@
           <NavigationProperty Name="GPC_APU" Relationship="GYMModel.FK_GPC_DetallePartida_APU" FromRole="GPC_DetallePartida" ToRole="GPC_APU" />
           <NavigationProperty Name="GPC_Categoria" Relationship="GYMModel.FK_GPC_DetallePartida_Categoria" FromRole="GPC_DetallePartida" ToRole="GPC_Categoria" />
           <NavigationProperty Name="GPC_Partida" Relationship="GYMModel.FK_GPC_DetallePartida_Partida" FromRole="GPC_DetallePartida" ToRole="GPC_Partida" />
+          <NavigationProperty Name="GPC_InconsistenciaDetallePartida" Relationship="GYMModel.FK_GPC_InconsistenciaDetallePartida_DetallePartida" FromRole="GPC_DetallePartida" ToRole="GPC_InconsistenciaDetallePartida" />
+          <NavigationProperty Name="GPC_AvancePartida" Relationship="GYMModel.FK_GPC_AvancePartida_DetallePartida" FromRole="GPC_DetallePartida" ToRole="GPC_AvancePartida" />
         </EntityType>
         <EntityType Name="GPC_Estado">
           <Key>
@@ -768,6 +1166,8 @@
           <NavigationProperty Name="GPC_HistoricoAprobacion" Relationship="GYMModel.FK_GPC_HistoricoAprobacion_Estado" FromRole="GPC_Estado" ToRole="GPC_HistoricoAprobacion" />
           <NavigationProperty Name="GPC_PresupuestoObra" Relationship="GYMModel.FK_GPC_PresupuestoObra_Estado" FromRole="GPC_Estado" ToRole="GPC_PresupuestoObra" />
           <NavigationProperty Name="GPC_Solicitud" Relationship="GYMModel.FK_GPC_Solicitud_Estado" FromRole="GPC_Estado" ToRole="GPC_Solicitud" />
+          <NavigationProperty Name="GPC_EstadoPartida" Relationship="GYMModel.FK_GPC_EstadoPartida_Estado" FromRole="GPC_Estado" ToRole="GPC_EstadoPartida" />
+          <NavigationProperty Name="GPC_AvancePartida" Relationship="GYMModel.FK_GPC_AvancePartida_Estado" FromRole="GPC_Estado" ToRole="GPC_AvancePartida" />
         </EntityType>
         <EntityType Name="GPC_ExpedienteTecnico">
           <Key>
@@ -904,6 +1304,13 @@
           <NavigationProperty Name="GPC_Solicitud" Relationship="GYMModel.FK_GPC_Solicitud_Usuario" FromRole="SEG_Usuario" ToRole="GPC_Solicitud" />
           <NavigationProperty Name="SEG_UsuarioPerfil" Relationship="GYMModel.FK_SEG_UsuarioPerfil_Usuario" FromRole="SEG_Usuario" ToRole="SEG_UsuarioPerfil" />
           <NavigationProperty Name="SEG_UsuarioPerfil1" Relationship="GYMModel.FK_UsuarioPerfil_Usuario" FromRole="SEG_Usuario" ToRole="SEG_UsuarioPerfil" />
+          <NavigationProperty Name="GPC_EstadoPartida" Relationship="GYMModel.FK_GPC_EstadoPartida_Usuario" FromRole="SEG_Usuario" ToRole="GPC_EstadoPartida" />
+          <NavigationProperty Name="GPC_Evidencia" Relationship="GYMModel.FK_GPC_Evidencia_Usuario1" FromRole="SEG_Usuario" ToRole="GPC_Evidencia" />
+          <NavigationProperty Name="GPC_Evidencia1" Relationship="GYMModel.FK_GPC_Evidencia_Usuario2" FromRole="SEG_Usuario" ToRole="GPC_Evidencia" />
+          <NavigationProperty Name="GPC_InconsistenciaAvancePartida" Relationship="GYMModel.FK_GPC_InconsistenciaAvancePartida_Usuario" FromRole="SEG_Usuario" ToRole="GPC_InconsistenciaAvancePartida" />
+          <NavigationProperty Name="GPC_InconsistenciaDetallePartida" Relationship="GYMModel.FK_GPC_InconsistenciaDetallePartida_Usuario" FromRole="SEG_Usuario" ToRole="GPC_InconsistenciaDetallePartida" />
+          <NavigationProperty Name="GPC_AvancePartida" Relationship="GYMModel.FK_GPC_AvancePartida_Usuario1" FromRole="SEG_Usuario" ToRole="GPC_AvancePartida" />
+          <NavigationProperty Name="GPC_AvancePartida1" Relationship="GYMModel.FK_GPC_AvancePartida_Usuario2" FromRole="SEG_Usuario" ToRole="GPC_AvancePartida" />
         </EntityType>
         <EntityType Name="SEG_UsuarioPerfil">
           <Key>
@@ -1195,6 +1602,277 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="GPC_EstadoPartida">
+          <Key>
+            <PropertyRef Name="IDEstadoPartida" />
+          </Key>
+          <Property Type="Int32" Name="IDEstadoPartida" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IDAvancePartida" />
+          <Property Type="Int32" Name="IDEstado" />
+          <Property Type="Int32" Name="IDUsuarioResponsable" />
+          <Property Type="DateTime" Name="FechaRegistro" />
+          <Property Type="Decimal" Name="CantidadAvance" Precision="18" Scale="2" />
+          <Property Type="String" Name="Observacion" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GPC_Estado" Relationship="GYMModel.FK_GPC_EstadoPartida_Estado" FromRole="GPC_EstadoPartida" ToRole="GPC_Estado" />
+          <NavigationProperty Name="SEG_Usuario" Relationship="GYMModel.FK_GPC_EstadoPartida_Usuario" FromRole="GPC_EstadoPartida" ToRole="SEG_Usuario" />
+          <NavigationProperty Name="GPC_AvancePartida" Relationship="GYMModel.FK_GPC_EstadoPartida_AvancePartida" FromRole="GPC_EstadoPartida" ToRole="GPC_AvancePartida" />
+        </EntityType>
+        <EntityType Name="GPC_Evidencia">
+          <Key>
+            <PropertyRef Name="IDEvidencia" />
+          </Key>
+          <Property Type="Int32" Name="IDEvidencia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IDAvancePartida" />
+          <Property Type="Int32" Name="IDUsuarioResponsable" />
+          <Property Type="Int32" Name="IDUsuarioDestinatario" />
+          <Property Type="DateTime" Name="FechaRegistro" />
+          <Property Type="String" Name="Observacion" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SEG_Usuario" Relationship="GYMModel.FK_GPC_Evidencia_Usuario1" FromRole="GPC_Evidencia" ToRole="SEG_Usuario" />
+          <NavigationProperty Name="SEG_Usuario1" Relationship="GYMModel.FK_GPC_Evidencia_Usuario2" FromRole="GPC_Evidencia" ToRole="SEG_Usuario" />
+          <NavigationProperty Name="GPC_AvancePartida" Relationship="GYMModel.FK_GPC_Evidencia_AvancePartida" FromRole="GPC_Evidencia" ToRole="GPC_AvancePartida" />
+        </EntityType>
+        <EntityType Name="GPC_InconsistenciaAvancePartida">
+          <Key>
+            <PropertyRef Name="IDInconsistenciaAvancePartida" />
+          </Key>
+          <Property Type="Int32" Name="IDInconsistenciaAvancePartida" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IDAvancePartida" />
+          <Property Type="Int32" Name="IDUsuarioJustifica" />
+          <Property Type="DateTime" Name="FechaRegistro" />
+          <Property Type="String" Name="Justificacion" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SEG_Usuario" Relationship="GYMModel.FK_GPC_InconsistenciaAvancePartida_Usuario" FromRole="GPC_InconsistenciaAvancePartida" ToRole="SEG_Usuario" />
+          <NavigationProperty Name="GPC_AvancePartida" Relationship="GYMModel.FK_GPC_InconsistenciaAvancePartida_AvancePartida" FromRole="GPC_InconsistenciaAvancePartida" ToRole="GPC_AvancePartida" />
+        </EntityType>
+        <EntityType Name="GPC_InconsistenciaDetallePartida">
+          <Key>
+            <PropertyRef Name="IDInconsistenciaDetallePartida" />
+          </Key>
+          <Property Type="Int32" Name="IDInconsistenciaDetallePartida" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IDDetallePartida" />
+          <Property Type="Int32" Name="IDUsuarioGenera" />
+          <Property Type="DateTime" Name="FechaRegistro" />
+          <Property Type="String" Name="Observacion" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaInconsistencia" />
+          <NavigationProperty Name="GPC_DetallePartida" Relationship="GYMModel.FK_GPC_InconsistenciaDetallePartida_DetallePartida" FromRole="GPC_InconsistenciaDetallePartida" ToRole="GPC_DetallePartida" />
+          <NavigationProperty Name="SEG_Usuario" Relationship="GYMModel.FK_GPC_InconsistenciaDetallePartida_Usuario" FromRole="GPC_InconsistenciaDetallePartida" ToRole="SEG_Usuario" />
+        </EntityType>
+        <Association Name="FK_GPC_InconsistenciaDetallePartida_DetallePartida">
+          <End Type="GYMModel.GPC_DetallePartida" Role="GPC_DetallePartida" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_InconsistenciaDetallePartida" Role="GPC_InconsistenciaDetallePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_DetallePartida">
+              <PropertyRef Name="IDDetallePartida" />
+            </Principal>
+            <Dependent Role="GPC_InconsistenciaDetallePartida">
+              <PropertyRef Name="IDDetallePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_EstadoPartida_Estado">
+          <End Type="GYMModel.GPC_Estado" Role="GPC_Estado" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_EstadoPartida" Role="GPC_EstadoPartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_Estado">
+              <PropertyRef Name="IDEstado" />
+            </Principal>
+            <Dependent Role="GPC_EstadoPartida">
+              <PropertyRef Name="IDEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_EstadoPartida_Usuario">
+          <End Type="GYMModel.SEG_Usuario" Role="SEG_Usuario" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_EstadoPartida" Role="GPC_EstadoPartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_EstadoPartida">
+              <PropertyRef Name="IDUsuarioResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_Evidencia_Usuario1">
+          <End Type="GYMModel.SEG_Usuario" Role="SEG_Usuario" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_Evidencia" Role="GPC_Evidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_Evidencia">
+              <PropertyRef Name="IDUsuarioResponsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_Evidencia_Usuario2">
+          <End Type="GYMModel.SEG_Usuario" Role="SEG_Usuario" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_Evidencia" Role="GPC_Evidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_Evidencia">
+              <PropertyRef Name="IDUsuarioDestinatario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_InconsistenciaAvancePartida_Usuario">
+          <End Type="GYMModel.SEG_Usuario" Role="SEG_Usuario" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_InconsistenciaAvancePartida" Role="GPC_InconsistenciaAvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_InconsistenciaAvancePartida">
+              <PropertyRef Name="IDUsuarioJustifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_InconsistenciaDetallePartida_Usuario">
+          <End Type="GYMModel.SEG_Usuario" Role="SEG_Usuario" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_InconsistenciaDetallePartida" Role="GPC_InconsistenciaDetallePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_InconsistenciaDetallePartida">
+              <PropertyRef Name="IDUsuarioGenera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GPC_AvancePartida">
+          <Key>
+            <PropertyRef Name="IDAvancePartida" />
+          </Key>
+          <Property Type="Int32" Name="IDAvancePartida" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IDDetallePartida" />
+          <Property Type="Int32" Name="IDEstado" />
+          <Property Type="Int32" Name="IDUsuarioEmisor" />
+          <Property Type="Int32" Name="IDUsuarioDestinatario" />
+          <Property Type="DateTime" Name="FechaRegistro" />
+          <Property Type="Decimal" Name="CantidadEjecutada" Precision="18" Scale="2" />
+          <Property Type="String" Name="Observacion" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaEjecucion" />
+          <NavigationProperty Name="GPC_DetallePartida" Relationship="GYMModel.FK_GPC_AvancePartida_DetallePartida" FromRole="GPC_AvancePartida" ToRole="GPC_DetallePartida" />
+          <NavigationProperty Name="GPC_Estado" Relationship="GYMModel.FK_GPC_AvancePartida_Estado" FromRole="GPC_AvancePartida" ToRole="GPC_Estado" />
+          <NavigationProperty Name="SEG_Usuario" Relationship="GYMModel.FK_GPC_AvancePartida_Usuario1" FromRole="GPC_AvancePartida" ToRole="SEG_Usuario" />
+          <NavigationProperty Name="SEG_Usuario1" Relationship="GYMModel.FK_GPC_AvancePartida_Usuario2" FromRole="GPC_AvancePartida" ToRole="SEG_Usuario" />
+          <NavigationProperty Name="GPC_EstadoPartida" Relationship="GYMModel.FK_GPC_EstadoPartida_AvancePartida" FromRole="GPC_AvancePartida" ToRole="GPC_EstadoPartida" />
+          <NavigationProperty Name="GPC_Evidencia" Relationship="GYMModel.FK_GPC_Evidencia_AvancePartida" FromRole="GPC_AvancePartida" ToRole="GPC_Evidencia" />
+          <NavigationProperty Name="GPC_InconsistenciaAvancePartida" Relationship="GYMModel.FK_GPC_InconsistenciaAvancePartida_AvancePartida" FromRole="GPC_AvancePartida" ToRole="GPC_InconsistenciaAvancePartida" />
+        </EntityType>
+        <Association Name="FK_GPC_AvancePartida_DetallePartida">
+          <End Type="GYMModel.GPC_DetallePartida" Role="GPC_DetallePartida" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_AvancePartida" Role="GPC_AvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_DetallePartida">
+              <PropertyRef Name="IDDetallePartida" />
+            </Principal>
+            <Dependent Role="GPC_AvancePartida">
+              <PropertyRef Name="IDDetallePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_AvancePartida_Estado">
+          <End Type="GYMModel.GPC_Estado" Role="GPC_Estado" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_AvancePartida" Role="GPC_AvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_Estado">
+              <PropertyRef Name="IDEstado" />
+            </Principal>
+            <Dependent Role="GPC_AvancePartida">
+              <PropertyRef Name="IDEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_AvancePartida_Usuario1">
+          <End Type="GYMModel.SEG_Usuario" Role="SEG_Usuario" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_AvancePartida" Role="GPC_AvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_AvancePartida">
+              <PropertyRef Name="IDUsuarioEmisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_AvancePartida_Usuario2">
+          <End Type="GYMModel.SEG_Usuario" Role="SEG_Usuario" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_AvancePartida" Role="GPC_AvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEG_Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="GPC_AvancePartida">
+              <PropertyRef Name="IDUsuarioDestinatario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_EstadoPartida_AvancePartida">
+          <End Type="GYMModel.GPC_AvancePartida" Role="GPC_AvancePartida" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_EstadoPartida" Role="GPC_EstadoPartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_AvancePartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Principal>
+            <Dependent Role="GPC_EstadoPartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_Evidencia_AvancePartida">
+          <End Type="GYMModel.GPC_AvancePartida" Role="GPC_AvancePartida" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_Evidencia" Role="GPC_Evidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_AvancePartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Principal>
+            <Dependent Role="GPC_Evidencia">
+              <PropertyRef Name="IDAvancePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GPC_InconsistenciaAvancePartida_AvancePartida">
+          <End Type="GYMModel.GPC_AvancePartida" Role="GPC_AvancePartida" Multiplicity="0..1" />
+          <End Type="GYMModel.GPC_InconsistenciaAvancePartida" Role="GPC_InconsistenciaAvancePartida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GPC_AvancePartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Principal>
+            <Dependent Role="GPC_InconsistenciaAvancePartida">
+              <PropertyRef Name="IDAvancePartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetInconsistenciaPartida_Result">
+          <Property Type="Int32" Name="IdAvancePartida" Nullable="false" />
+          <Property Type="Int32" Name="IdDetallePartida" Nullable="false" />
+          <Property Type="String" Name="Categoria" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="IDPartida" Nullable="true" />
+          <Property Type="Int32" Name="CantidadPresupuesto" Nullable="false" />
+          <Property Type="Decimal" Name="CantidadEjecutada" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="FechaEjecucion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetDetallesPartida_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Categoria" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="IDPartida" Nullable="true" />
+          <Property Type="Int32" Name="CantidadPresupuesto" Nullable="false" />
+          <Property Type="String" Name="AvanceReal" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetUsuarios_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="NombreUsuario" Nullable="true" MaxLength="152" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1401,6 +2079,109 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="GPC_EstadoPartida">
+            <EntityTypeMapping TypeName="GYMModel.GPC_EstadoPartida">
+              <MappingFragment StoreEntitySet="GPC_EstadoPartida">
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="CantidadAvance" ColumnName="CantidadAvance" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="IDUsuarioResponsable" ColumnName="IDUsuarioResponsable" />
+                <ScalarProperty Name="IDEstado" ColumnName="IDEstado" />
+                <ScalarProperty Name="IDAvancePartida" ColumnName="IDAvancePartida" />
+                <ScalarProperty Name="IDEstadoPartida" ColumnName="IDEstadoPartida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPC_Evidencia">
+            <EntityTypeMapping TypeName="GYMModel.GPC_Evidencia">
+              <MappingFragment StoreEntitySet="GPC_Evidencia">
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="IDUsuarioDestinatario" ColumnName="IDUsuarioDestinatario" />
+                <ScalarProperty Name="IDUsuarioResponsable" ColumnName="IDUsuarioResponsable" />
+                <ScalarProperty Name="IDAvancePartida" ColumnName="IDAvancePartida" />
+                <ScalarProperty Name="IDEvidencia" ColumnName="IDEvidencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPC_InconsistenciaAvancePartida">
+            <EntityTypeMapping TypeName="GYMModel.GPC_InconsistenciaAvancePartida">
+              <MappingFragment StoreEntitySet="GPC_InconsistenciaAvancePartida">
+                <ScalarProperty Name="Justificacion" ColumnName="Justificacion" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="IDUsuarioJustifica" ColumnName="IDUsuarioJustifica" />
+                <ScalarProperty Name="IDAvancePartida" ColumnName="IDAvancePartida" />
+                <ScalarProperty Name="IDInconsistenciaAvancePartida" ColumnName="IDInconsistenciaAvancePartida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPC_InconsistenciaDetallePartida">
+            <EntityTypeMapping TypeName="GYMModel.GPC_InconsistenciaDetallePartida">
+              <MappingFragment StoreEntitySet="GPC_InconsistenciaDetallePartida">
+                <ScalarProperty Name="FechaInconsistencia" ColumnName="FechaInconsistencia" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="IDUsuarioGenera" ColumnName="IDUsuarioGenera" />
+                <ScalarProperty Name="IDDetallePartida" ColumnName="IDDetallePartida" />
+                <ScalarProperty Name="IDInconsistenciaDetallePartida" ColumnName="IDInconsistenciaDetallePartida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GPC_AvancePartida">
+            <EntityTypeMapping TypeName="GYMModel.GPC_AvancePartida">
+              <MappingFragment StoreEntitySet="GPC_AvancePartida">
+                <ScalarProperty Name="FechaEjecucion" ColumnName="FechaEjecucion" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="CantidadEjecutada" ColumnName="CantidadEjecutada" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="IDUsuarioDestinatario" ColumnName="IDUsuarioDestinatario" />
+                <ScalarProperty Name="IDUsuarioEmisor" ColumnName="IDUsuarioEmisor" />
+                <ScalarProperty Name="IDEstado" ColumnName="IDEstado" />
+                <ScalarProperty Name="IDDetallePartida" ColumnName="IDDetallePartida" />
+                <ScalarProperty Name="IDAvancePartida" ColumnName="IDAvancePartida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetDetallesPartida_Result" FunctionName="GYMModel.Store.pa_GPC_Detalle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GYMModel.GetDetallesPartida_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="IDPartida" ColumnName="IDPartida" />
+                <ScalarProperty Name="CantidadPresupuesto" ColumnName="CantidadPresupuesto" />
+                <ScalarProperty Name="AvanceReal" ColumnName="AvanceReal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUsuarios_Result" FunctionName="GYMModel.Store.pa_GPC_UsuarioAprobador">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GYMModel.GetUsuarios_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetInconsistenciaPartida_Result" FunctionName="GYMModel.Store.pa_GPC_AvancePartidaRechazado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GYMModel.GetInconsistenciaPartida_Result">
+                <ScalarProperty Name="IdAvancePartida" ColumnName="IdAvancePartida" />
+                <ScalarProperty Name="IdDetallePartida" ColumnName="IdDetallePartida" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="IDPartida" ColumnName="IDPartida" />
+                <ScalarProperty Name="CantidadPresupuesto" ColumnName="CantidadPresupuesto" />
+                <ScalarProperty Name="CantidadEjecutada" ColumnName="CantidadEjecutada" />
+                <ScalarProperty Name="FechaEjecucion" ColumnName="FechaEjecucion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1427,7 +2208,7 @@
         <EntityTypeShape EntityType="GYMModel.GPC_Categoria" Width="1.5" PointX="7.5" PointY="27.25" Height="1.595683593749996" IsExpanded="true" />
         <EntityTypeShape EntityType="GYMModel.GPC_ClienteObra" Width="1.5" PointX="3" PointY="12.5" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="GYMModel.GPC_CronogramaObra" Width="1.5" PointX="7.5" PointY="7.625" Height="2.5571907552083326" IsExpanded="true" />
-        <EntityTypeShape EntityType="GYMModel.GPC_DetallePartida" Width="1.5" PointX="9.75" PointY="20.25" Height="2.749492187499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GYMModel.GPC_DetallePartida" Width="2.375" PointX="9.75" PointY="20.25" Height="2.4140429687500031" IsExpanded="true" />
         <EntityTypeShape EntityType="GYMModel.GPC_Estado" Width="1.5" PointX="3" PointY="16" Height="2.172587890624996" IsExpanded="true" />
         <EntityTypeShape EntityType="GYMModel.GPC_ExpedienteTecnico" Width="1.5" PointX="7.5" PointY="10.875" Height="2.5571907552083317" IsExpanded="true" />
         <EntityTypeShape EntityType="GYMModel.GPC_HistoricoAprobacion" Width="1.5" PointX="10.5" PointY="12.125" Height="2.7494921874999996" IsExpanded="true" />
@@ -1445,79 +2226,89 @@
           <ConnectorPoint PointX="9.75" PointY="8.9324446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_DetallePartida_APU" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="25.490143229166666" />
-          <ConnectorPoint PointX="10.010414166666665" PointY="25.490143229166666" />
-          <ConnectorPoint PointX="10.177080833333333" PointY="25.490143229166666" />
-          <ConnectorPoint PointX="10.5" PointY="25.490143229166666" />
-          <ConnectorPoint PointX="10.5" PointY="22.999492187499996" />
+          <ConnectorPoint PointX="9" PointY="25.379158528645839" />
+          <ConnectorPoint PointX="10.313142155024211" PointY="25.379158528645839" />
+          <ConnectorPoint PointX="10.479808821690879" PointY="25.379158528645839" />
+          <ConnectorPoint PointX="11.105455976715088" PointY="25.379158528645839" />
+          <ConnectorPoint PointX="11.105455976715088" PointY="23.157084960937503" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_DetallePartida_Categoria" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="28.047841796874998" />
-          <ConnectorPoint PointX="10.0937475" PointY="28.047841796874998" />
-          <ConnectorPoint PointX="10.0937475" PointY="22.999492187499996" />
+          <ConnectorPoint PointX="9" PointY="27.9639794921875" />
+          <ConnectorPoint PointX="10.396475488357545" PointY="27.9639794921875" />
+          <ConnectorPoint PointX="10.396475488357545" PointY="23.157084960937503" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_ClienteObra_Usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="13.490143229166666" />
-          <ConnectorPoint PointX="3" PointY="13.490143229166666" />
+          <ConnectorPoint PointX="2.25" PointY="13.264785298192873" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="13.264785298192873" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="13.264785298192873" />
+          <ConnectorPoint PointX="3" PointY="13.264785298192873" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_PresupuestoObra_ClienteObra" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="13.490143229166666" />
-          <ConnectorPoint PointX="5.25" PointY="13.490143229166666" />
+          <ConnectorPoint PointX="4.5" PointY="13.378326822916666" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="13.378326822916666" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="13.378326822916666" />
+          <ConnectorPoint PointX="5.25" PointY="13.378326822916666" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_CronogramaObra_PresupuestoObra" ManuallyRouted="false">
           <ConnectorPoint PointX="6" PointY="11.25" />
-          <ConnectorPoint PointX="6" PointY="8.9035953776041659" />
-          <ConnectorPoint PointX="7.5" PointY="8.9035953776041659" />
+          <ConnectorPoint PointX="6" PointY="8.7498478190104159" />
+          <ConnectorPoint PointX="7.5" PointY="8.7498478190104159" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_DetallePartida_Partida" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="21.682444661458334" />
-          <ConnectorPoint PointX="9.75" PointY="21.682444661458334" />
+          <ConnectorPoint PointX="9" PointY="21.542674153645834" />
+          <ConnectorPoint PointX="9.75" PointY="21.542674153645834" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_HistoricoAprobacion_Estado" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="16.985341796875" />
-          <ConnectorPoint PointX="5.5104141666666671" PointY="16.985341796875" />
-          <ConnectorPoint PointX="5.6770808333333331" PointY="16.985341796875" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="16.985341796875" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="16.985341796875" />
-          <ConnectorPoint PointX="6.1197929166666674" PointY="16.985341796875" />
-          <ConnectorPoint PointX="6.2864595833333334" PointY="16.985341796875" />
-          <ConnectorPoint PointX="6.3229191666666669" PointY="16.985341796875" />
-          <ConnectorPoint PointX="6.4895858333333329" PointY="16.985341796875" />
-          <ConnectorPoint PointX="6.5260454166666664" PointY="16.985341796875" />
-          <ConnectorPoint PointX="6.6927120833333325" PointY="16.985341796875" />
-          <ConnectorPoint PointX="7.166666666666667" PointY="16.985341796875" />
-          <ConnectorPoint PointX="7.333333333333333" PointY="16.985341796875" />
-          <ConnectorPoint PointX="10.25" PointY="16.985341796875" />
-          <ConnectorPoint PointX="10.25" PointY="15.625" />
-          <ConnectorPoint PointX="11.25" PointY="15.625" />
-          <ConnectorPoint PointX="11.25" PointY="14.8744921875" />
+          <ConnectorPoint PointX="4.5" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="7.291666666666667" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="7.458333333333333" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="10.0625" PointY="17.057355369486281" />
+          <ConnectorPoint PointX="10.0625" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="10.072916666666666" PointY="15.625" />
+          <ConnectorPoint PointX="10.520833333333334" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="11.437499500000001" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="11.437499500000001" PointY="14.53904296875" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_PresupuestoObra_Estado" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="17.61021734375" />
-          <ConnectorPoint PointX="5.5104141666666671" PointY="17.61021734375" />
-          <ConnectorPoint PointX="5.6770808333333331" PointY="17.61021734375" />
-          <ConnectorPoint PointX="6" PointY="17.61021734375" />
-          <ConnectorPoint PointX="6" PointY="15.730205078125003" />
+          <ConnectorPoint PointX="4.5" PointY="17.927692457813976" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="17.927692457813976" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="17.927692457813976" />
+          <ConnectorPoint PointX="6.0664078125" PointY="17.927692457813976" />
+          <ConnectorPoint PointX="6.0664078125" PointY="15.964905598958334" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_Solicitud_Estado" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="5.5104141666666671" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="5.6770808333333331" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="6.1197929166666674" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="6.2864595833333334" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="6.3229191666666669" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="6.4895858333333329" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="6.5260454166666664" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="6.6927120833333325" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="10.166666666666666" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="10.333333333333334" PointY="16.5717626953125" />
-          <ConnectorPoint PointX="10.5" PointY="16.5717626953125" />
+          <ConnectorPoint PointX="4.5" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="9.9166666666666661" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="16.614479285304327" />
+          <ConnectorPoint PointX="10.5" PointY="16.614479285304327" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_ExpedienteTecnico_PresupuestoObra" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="12.341095377604166" />
-          <ConnectorPoint PointX="7.5" PointY="12.341095377604166" />
+          <ConnectorPoint PointX="6.75" PointY="12.187347819010416" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="12.187347819010416" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="12.187347819010416" />
+          <ConnectorPoint PointX="7.5" PointY="12.187347819010416" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_HistoricoAprobacion_PresupuestoObra" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="14.028595377604166" />
@@ -1526,96 +2317,460 @@
           <ConnectorPoint PointX="10.5" PointY="14.028595377604166" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_HistoricoAprobacion_Usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.5" PointY="15.009095052083339" />
-          <ConnectorPoint PointX="1.5" PointY="15.259095052083339" />
-          <ConnectorPoint PointX="1.8229186666666666" PointY="15.259095052083339" />
-          <ConnectorPoint PointX="1.9895853333333331" PointY="15.259095052083339" />
-          <ConnectorPoint PointX="5" PointY="15.259095052083339" />
-          <ConnectorPoint PointX="5" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="5.5104141666666671" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="5.6770808333333331" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="6.1197929166666674" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="6.2864595833333334" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="6.3229191666666669" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="6.4895858333333329" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="6.5260454166666664" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="6.6927120833333325" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="8" PointY="15.980205078125003" />
-          <ConnectorPoint PointX="8" PointY="14.375" />
-          <ConnectorPoint PointX="10.125" PointY="14.375" />
-          <ConnectorPoint PointX="10.125" PointY="13.045545688802083" />
-          <ConnectorPoint PointX="10.5" PointY="13.045545688802083" />
+          <ConnectorPoint PointX="1.2240905480769229" PointY="11.875" />
+          <ConnectorPoint PointX="1.2240905480769229" PointY="11" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="11" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="11" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="11" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="11" />
+          <ConnectorPoint PointX="7.25" PointY="11" />
+          <ConnectorPoint PointX="7.25" PointY="13.493904970703124" />
+          <ConnectorPoint PointX="10.5" PointY="13.493904970703124" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_Notificacion_PresupuestoObra" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.4062525" PointY="15.730205078125003" />
-          <ConnectorPoint PointX="6.4062525" PointY="18.740143229166666" />
-          <ConnectorPoint PointX="6.5260454166666664" PointY="18.740143229166666" />
-          <ConnectorPoint PointX="6.6927120833333325" PointY="18.740143229166666" />
-          <ConnectorPoint PointX="7.5" PointY="18.740143229166666" />
+          <ConnectorPoint PointX="6.335941875" PointY="15.964905598958334" />
+          <ConnectorPoint PointX="6.335941875" PointY="18.628326822916669" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="18.628326822916669" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="18.628326822916669" />
+          <ConnectorPoint PointX="7.5" PointY="18.628326822916669" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_PresupuestoObra_Obra" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="19.865143229166669" />
-          <ConnectorPoint PointX="5.5937475" PointY="19.865143229166669" />
-          <ConnectorPoint PointX="5.5937475" PointY="15.730205078125003" />
+          <ConnectorPoint PointX="4.5" PointY="19.753326822916669" />
+          <ConnectorPoint PointX="5.5937475" PointY="19.753326822916669" />
+          <ConnectorPoint PointX="5.5937475" PointY="15.964905598958334" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_Partida_PresupuestoObra" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.6093787499999994" PointY="15.730205078125003" />
-          <ConnectorPoint PointX="6.6093787499999994" PointY="21.682444661458334" />
-          <ConnectorPoint PointX="7.5" PointY="21.682444661458334" />
+          <ConnectorPoint PointX="6.5742234375" PointY="15.964905598958334" />
+          <ConnectorPoint PointX="6.5742234375" PointY="21.542674153645834" />
+          <ConnectorPoint PointX="7.5" PointY="21.542674153645834" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_Solicitud_PresupuestoObra" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.20312625" PointY="15.730205078125003" />
-          <ConnectorPoint PointX="6.20312625" PointY="17.2977795703125" />
-          <ConnectorPoint PointX="6.3229191666666669" PointY="17.2977795703125" />
-          <ConnectorPoint PointX="6.4895858333333329" PointY="17.2977795703125" />
-          <ConnectorPoint PointX="6.5260454166666664" PointY="17.2977795703125" />
-          <ConnectorPoint PointX="6.6927120833333325" PointY="17.2977795703125" />
-          <ConnectorPoint PointX="7.166666666666667" PointY="17.2977795703125" />
-          <ConnectorPoint PointX="7.333333333333333" PointY="17.2977795703125" />
-          <ConnectorPoint PointX="10.5" PointY="17.2977795703125" />
+          <ConnectorPoint PointX="5.79687375" PointY="15.964905598958334" />
+          <ConnectorPoint PointX="5.79687375" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="7.291666666666667" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="7.458333333333333" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="9.9166666666666661" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="17.313711152738911" />
+          <ConnectorPoint PointX="10.5" PointY="17.313711152738911" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_Solicitud_TipoSolicitud" ManuallyRouted="false">
-          <ConnectorPoint PointX="9.75" PointY="16.047841796875" />
-          <ConnectorPoint PointX="10.166666666666666" PointY="16.047841796875" />
-          <ConnectorPoint PointX="10.333333333333334" PointY="16.047841796875" />
-          <ConnectorPoint PointX="10.5" PointY="16.047841796875" />
+          <ConnectorPoint PointX="9.75" PointY="15.125" />
+          <ConnectorPoint PointX="10.104166666666666" PointY="15.124999999999998" />
+          <ConnectorPoint PointX="10.520833333333334" PointY="15.125" />
+          <ConnectorPoint PointX="10.875" PointY="15.125" />
+          <ConnectorPoint PointX="10.875" PointY="15.875" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_GPC_Solicitud_Usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="1.9062519999999998" PointY="15.009095052083339" />
-          <ConnectorPoint PointX="1.9062519999999998" PointY="18.422587890624996" />
-          <ConnectorPoint PointX="5.5104141666666671" PointY="18.422587890624996" />
-          <ConnectorPoint PointX="5.6770808333333331" PointY="18.422587890624996" />
-          <ConnectorPoint PointX="6.3229191666666669" PointY="18.422587890624996" />
-          <ConnectorPoint PointX="6.4895858333333329" PointY="18.422587890624996" />
-          <ConnectorPoint PointX="6.5260454166666664" PointY="18.422587890624996" />
-          <ConnectorPoint PointX="6.6927120833333325" PointY="18.422587890624996" />
-          <ConnectorPoint PointX="7.25" PointY="18.422587890624996" />
-          <ConnectorPoint PointX="7.25" PointY="16.809804746093747" />
-          <ConnectorPoint PointX="10.166666666666666" PointY="16.809804746093747" />
-          <ConnectorPoint PointX="10.333333333333334" PointY="16.809804746093747" />
-          <ConnectorPoint PointX="10.5" PointY="16.809804746093747" />
+          <ConnectorPoint PointX="1.3281264999999998" PointY="15.7681689453125" />
+          <ConnectorPoint PointX="1.3281264999999998" PointY="18.374695638020839" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="18.374695638020839" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="18.374695638020839" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="18.374695638020839" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="18.374695638020839" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="18.374695638020839" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="18.374695638020839" />
+          <ConnectorPoint PointX="7.375" PointY="18.374695638020839" />
+          <ConnectorPoint PointX="7.375" PointY="16.867169827395298" />
+          <ConnectorPoint PointX="9.9166666666666661" PointY="16.867169827395298" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="16.867169827395298" />
+          <ConnectorPoint PointX="10.5" PointY="16.867169827395298" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_SEG_UsuarioPerfil_Perfil" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="9.5189925130208337" />
-          <ConnectorPoint PointX="3" PointY="9.5189925130208337" />
+          <ConnectorPoint PointX="2.25" PointY="9.6055681802108062" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="9.6055681802108062" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="9.6055681802108062" />
+          <ConnectorPoint PointX="3" PointY="9.6055681802108062" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_UsuarioPerfil_Perfil" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="9.0094962565104169" />
-          <ConnectorPoint PointX="3" PointY="9.0094962565104169" />
+          <ConnectorPoint PointX="2.25" PointY="9.0527840901054031" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="9.0527840901054031" />
+          <ConnectorPoint PointX="2.7708333333333335" PointY="9.0527840901054031" />
+          <ConnectorPoint PointX="3" PointY="9.0527840901054031" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_SEG_UsuarioPerfil_Usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="11.932691307692309" />
-          <ConnectorPoint PointX="2.78125" PointY="11.401441307692309" />
-          <ConnectorPoint PointX="2.78125" PointY="10.227994350260413" />
-          <ConnectorPoint PointX="3" PointY="10.227994350260413" />
+          <ConnectorPoint PointX="2.25" PointY="11.901537461538462" />
+          <ConnectorPoint PointX="2.6875" PointY="11.464037461538462" />
+          <ConnectorPoint PointX="2.6875" PointY="8.5576400450527075" />
+          <ConnectorPoint PointX="3" PointY="8.5576400450527075" />
         </AssociationConnector>
         <AssociationConnector Association="GYMModel.FK_UsuarioPerfil_Usuario" ManuallyRouted="false">
           <ConnectorPoint PointX="2.2257692307692305" PointY="11.875" />
           <ConnectorPoint PointX="2.625" PointY="11.475769230769231" />
-          <ConnectorPoint PointX="2.625" PointY="10.227994350260413" />
-          <ConnectorPoint PointX="3" PointY="10.227994350260413" />
+          <ConnectorPoint PointX="2.625" PointY="10.103557574480398" />
+          <ConnectorPoint PointX="3" PointY="10.103557574480398" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GYMModel.GPC_EstadoPartida" Width="2.125" PointX="15.625" PointY="17.375" Height="2.5783902994791674" />
+        <EntityTypeShape EntityType="GYMModel.GPC_Evidencia" Width="1.5" PointX="18.625" PointY="17.375" Height="2.4140429687500102" />
+        <EntityTypeShape EntityType="GYMModel.GPC_InconsistenciaAvancePartida" Width="2.625" PointX="18.625" PointY="14.5" Height="2.0853483072916674" />
+        <EntityTypeShape EntityType="GYMModel.GPC_InconsistenciaDetallePartida" Width="2.375" PointX="12.875" PointY="16.5" Height="2.2496956380208388" />
+        <AssociationConnector Association="GYMModel.FK_GPC_InconsistenciaDetallePartida_DetallePartida" >
+          <ConnectorPoint PointX="9.90625" PointY="20.25" />
+          <ConnectorPoint PointX="9.90625" PointY="18.714966634114589" />
+          <ConnectorPoint PointX="10.072916666666666" PointY="18.714966634114589" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="18.714966634114589" />
+          <ConnectorPoint PointX="12.875" PointY="18.714966634114589" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_EstadoPartida_Estado" >
+          <ConnectorPoint PointX="4.5" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="7.291666666666667" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="7.458333333333333" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="10" PointY="17.500605576369455" />
+          <ConnectorPoint PointX="10" PointY="15.632812500000002" />
+          <ConnectorPoint PointX="10.072916666666666" PointY="15.6328125" />
+          <ConnectorPoint PointX="10.520833333333334" PointY="15.632812500000002" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="15.632812500000002" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="15.632812500000002" />
+          <ConnectorPoint PointX="13.979166666666666" PointY="15.632812500000002" />
+          <ConnectorPoint PointX="14.145833333333334" PointY="15.632812500000002" />
+          <ConnectorPoint PointX="15.291666666666666" PointY="15.632812500000002" />
+          <ConnectorPoint PointX="15.520833333333334" PointY="15.632812500000002" />
+          <ConnectorPoint PointX="15.625" PointY="15.632812500000002" />
+          <ConnectorPoint PointX="15.625" PointY="16.564474283854167" />
+          <ConnectorPoint PointX="16.312497999999998" PointY="16.564474283854167" />
+          <ConnectorPoint PointX="16.312497999999998" PointY="17.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_EstadoPartida_Usuario" >
+          <ConnectorPoint PointX="2.25" PointY="12.583161379865668" />
+          <ConnectorPoint PointX="2.75" PointY="12.583161379865668" />
+          <ConnectorPoint PointX="2.75" PointY="14.506653645833332" />
+          <ConnectorPoint PointX="2.7916666666666665" PointY="14.50665364583333" />
+          <ConnectorPoint PointX="3.0833333333333335" PointY="14.506653645833332" />
+          <ConnectorPoint PointX="4.625" PointY="14.506653645833332" />
+          <ConnectorPoint PointX="4.625" PointY="16.302958984375" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="16.302958984375" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="16.302958984375" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="16.302958984375" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="16.302958984375" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="16.302958984375" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="16.302958984375" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="16.302958984375" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="16.302958984375" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="16.302958984375" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="16.302958984375" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="16.302958984375" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="16.302958984375" />
+          <ConnectorPoint PointX="9.8541666666666661" PointY="16.302958984375" />
+          <ConnectorPoint PointX="10.333333333333334" PointY="16.302958984375" />
+          <ConnectorPoint PointX="10.375" PointY="16.302958984375" />
+          <ConnectorPoint PointX="10.375" PointY="14.78904296875" />
+          <ConnectorPoint PointX="11.354166166666667" PointY="14.78904296875" />
+          <ConnectorPoint PointX="11.520832833333335" PointY="14.78904296875" />
+          <ConnectorPoint PointX="15.166666666666666" PointY="14.78904296875" />
+          <ConnectorPoint PointX="15.333333333333334" PointY="14.78904296875" />
+          <ConnectorPoint PointX="15.5625" PointY="14.78904296875" />
+          <ConnectorPoint PointX="15.5625" PointY="16.595724283854167" />
+          <ConnectorPoint PointX="16.979166666666668" PointY="16.595724283854167" />
+          <ConnectorPoint PointX="17.145833333333332" PointY="16.595724283854167" />
+          <ConnectorPoint PointX="17.437502000000002" PointY="16.595724283854167" />
+          <ConnectorPoint PointX="17.437502000000002" PointY="17.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_Evidencia_Usuario1" >
+          <ConnectorPoint PointX="2.25" PointY="15.337702543619791" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="15.337702543619791" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="15.337702543619791" />
+          <ConnectorPoint PointX="3" PointY="15.337702543619791" />
+          <ConnectorPoint PointX="3" PointY="14.381653645833332" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="14.381653645833332" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="14.381653645833332" />
+          <ConnectorPoint PointX="5" PointY="14.381653645833332" />
+          <ConnectorPoint PointX="5" PointY="16.427958984375" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="16.427958984375" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="16.427958984375" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="16.427958984375" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="16.427958984375" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="16.427958984375" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="16.427958984375" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="16.427958984375" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="16.427958984375" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="16.427958984375" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="16.427958984375" />
+          <ConnectorPoint PointX="9.9166666666666661" PointY="16.427958984375" />
+          <ConnectorPoint PointX="10.145833333333334" PointY="16.427958984375" />
+          <ConnectorPoint PointX="10.21875" PointY="16.427958984375" />
+          <ConnectorPoint PointX="10.21875" PointY="14.82029296875" />
+          <ConnectorPoint PointX="11.354166166666667" PointY="14.82029296875" />
+          <ConnectorPoint PointX="11.520832833333335" PointY="14.82029296875" />
+          <ConnectorPoint PointX="15.166666666666666" PointY="14.82029296875" />
+          <ConnectorPoint PointX="15.333333333333334" PointY="14.82029296875" />
+          <ConnectorPoint PointX="15.4375" PointY="14.82029296875" />
+          <ConnectorPoint PointX="15.4375" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="16.229164666666666" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="16.39583133333333" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="16.979166666666668" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="17.145833333333332" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="17.35416866666667" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="17.520835333333334" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="18.002014973958335" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="18.168681640625" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="19.406252000000002" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="19.406252000000002" PointY="17.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_Evidencia_Usuario2" >
+          <ConnectorPoint PointX="2.25" PointY="12.923973339029278" />
+          <ConnectorPoint PointX="2.6875" PointY="12.923973339029278" />
+          <ConnectorPoint PointX="2.6875" PointY="14.756653645833332" />
+          <ConnectorPoint PointX="2.9166666666666665" PointY="14.756653645833332" />
+          <ConnectorPoint PointX="3.0833333333333335" PointY="14.756653645833332" />
+          <ConnectorPoint PointX="4.541666666666667" PointY="14.756653645833332" />
+          <ConnectorPoint PointX="4.708333333333333" PointY="14.756653645833332" />
+          <ConnectorPoint PointX="4.9375" PointY="14.756653645833332" />
+          <ConnectorPoint PointX="4.9375" PointY="16.365458984375" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="16.365458984375" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="16.365458984375" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="16.365458984375" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="16.365458984375" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="16.365458984375" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="16.365458984375" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="16.365458984375" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="16.365458984375" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="16.365458984375" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="16.365458984375" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="16.365458984375" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="16.365458984375" />
+          <ConnectorPoint PointX="9.8541666666666661" PointY="16.365458984375" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="16.365458984375" />
+          <ConnectorPoint PointX="10.3125" PointY="16.365458984375" />
+          <ConnectorPoint PointX="10.3125" PointY="14.94529296875" />
+          <ConnectorPoint PointX="11.354166166666667" PointY="14.94529296875" />
+          <ConnectorPoint PointX="11.520832833333335" PointY="14.94529296875" />
+          <ConnectorPoint PointX="13.979166666666666" PointY="14.94529296875" />
+          <ConnectorPoint PointX="14.145833333333334" PointY="14.94529296875" />
+          <ConnectorPoint PointX="15.375" PointY="14.94529296875" />
+          <ConnectorPoint PointX="15.375" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="16.229164666666666" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="16.39583133333333" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="16.979166666666668" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="17.145833333333332" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="17.35416866666667" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="17.520835333333334" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="18.002014973958335" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="18.168681640625" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="19.015626" PointY="16.835348307291667" />
+          <ConnectorPoint PointX="19.015626" PointY="17.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_InconsistenciaAvancePartida_Usuario" >
+          <ConnectorPoint PointX="1.8203152499999997" PointY="15.7681689453125" />
+          <ConnectorPoint PointX="1.8203152499999997" PointY="16.0494189453125" />
+          <ConnectorPoint PointX="2.5" PointY="16.0494189453125" />
+          <ConnectorPoint PointX="2.5" PointY="15.542674153645834" />
+          <ConnectorPoint PointX="3.6666666666666665" PointY="15.542674153645834" />
+          <ConnectorPoint PointX="3.8333333333333335" PointY="15.542674153645834" />
+          <ConnectorPoint PointX="4.541666666666667" PointY="15.542674153645832" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="15.542674153645834" />
+          <ConnectorPoint PointX="5.125" PointY="15.542674153645834" />
+          <ConnectorPoint PointX="5.125" PointY="16.490458984375" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="16.490458984375" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="16.490458984375" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="16.490458984375" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="16.490458984375" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="16.490458984375" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="16.490458984375" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="16.490458984375" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="16.490458984375" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="16.490458984375" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="16.490458984375" />
+          <ConnectorPoint PointX="9.9375" PointY="16.490458984375" />
+          <ConnectorPoint PointX="9.9375" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="10.072916666666666" PointY="15.625" />
+          <ConnectorPoint PointX="10.520833333333334" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="13.979166666666666" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="14.145833333333334" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="15.291666666666666" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="15.458333333333334" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="15.5" PointY="15.625000000000002" />
+          <ConnectorPoint PointX="15.5" PointY="16.626974283854167" />
+          <ConnectorPoint PointX="16.979166666666668" PointY="16.626974283854167" />
+          <ConnectorPoint PointX="17.145833333333332" PointY="16.626974283854167" />
+          <ConnectorPoint PointX="17.604166666666668" PointY="16.626974283854167" />
+          <ConnectorPoint PointX="17.770833333333332" PointY="16.626974283854167" />
+          <ConnectorPoint PointX="18.25" PointY="16.626974283854167" />
+          <ConnectorPoint PointX="18.25" PointY="15.860699201660157" />
+          <ConnectorPoint PointX="18.625" PointY="15.860699201660157" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_InconsistenciaDetallePartida_Usuario" >
+          <ConnectorPoint PointX="2.25" PointY="13.916971972013096" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="13.916971972013096" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="13.916971972013096" />
+          <ConnectorPoint PointX="2.875" PointY="13.916971972013096" />
+          <ConnectorPoint PointX="2.875" PointY="14.631653645833332" />
+          <ConnectorPoint PointX="2.9166666666666665" PointY="14.631653645833332" />
+          <ConnectorPoint PointX="3.0833333333333335" PointY="14.631653645833332" />
+          <ConnectorPoint PointX="4.541666666666667" PointY="14.631653645833332" />
+          <ConnectorPoint PointX="4.708333333333333" PointY="14.631653645833332" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="14.631653645833332" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="14.631653645833332" />
+          <ConnectorPoint PointX="5.0625" PointY="14.631653645833332" />
+          <ConnectorPoint PointX="5.0625" PointY="16.552958984375" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="16.552958984375" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="16.552958984375" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="16.552958984375" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="16.552958984375" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="16.552958984375" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="16.552958984375" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="16.552958984375" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="16.552958984375" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="16.552958984375" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="16.552958984375" />
+          <ConnectorPoint PointX="9.9166666666666661" PointY="16.552958984375" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="16.552958984375" />
+          <ConnectorPoint PointX="10.25" PointY="16.552958984375" />
+          <ConnectorPoint PointX="10.25" PointY="14.85154296875" />
+          <ConnectorPoint PointX="11.354166166666667" PointY="14.85154296875" />
+          <ConnectorPoint PointX="11.520832833333335" PointY="14.85154296875" />
+          <ConnectorPoint PointX="14.0625" PointY="14.85154296875" />
+          <ConnectorPoint PointX="14.0625" PointY="16.5" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GYMModel.GPC_AvancePartida" Width="1.5" PointX="15.875" PointY="12.75" Height="3.5644742838541674" />
+        <AssociationConnector Association="GYMModel.FK_GPC_AvancePartida_DetallePartida" >
+          <ConnectorPoint PointX="10.15625" PointY="20.25" />
+          <ConnectorPoint PointX="10.15625" PointY="15.4062525" />
+          <ConnectorPoint PointX="10.166666666666666" PointY="15.406252499999999" />
+          <ConnectorPoint PointX="10.520833333333334" PointY="15.4062525" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="15.4062525" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="15.4062525" />
+          <ConnectorPoint PointX="11.354166166666667" PointY="15.4062525" />
+          <ConnectorPoint PointX="11.520832833333335" PointY="15.4062525" />
+          <ConnectorPoint PointX="13.979166666666666" PointY="15.4062525" />
+          <ConnectorPoint PointX="14.145833333333334" PointY="15.4062525" />
+          <ConnectorPoint PointX="15.291666666666666" PointY="15.406252499999999" />
+          <ConnectorPoint PointX="15.645833333333334" PointY="15.4062525" />
+          <ConnectorPoint PointX="15.875" PointY="15.4062525" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_AvancePartida_Estado" >
+          <ConnectorPoint PointX="3.75" PointY="16" />
+          <ConnectorPoint PointX="3.75" PointY="14.844737141927084" />
+          <ConnectorPoint PointX="4.541666666666667" PointY="14.844737141927084" />
+          <ConnectorPoint PointX="4.708333333333333" PointY="14.844737141927084" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="14.844737141927082" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="14.844737141927084" />
+          <ConnectorPoint PointX="5.1875" PointY="14.844737141927084" />
+          <ConnectorPoint PointX="5.1875" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="9.8541666666666661" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="10.145833333333334" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="10.1875" PointY="16.246155598958332" />
+          <ConnectorPoint PointX="10.1875" PointY="14.97654296875" />
+          <ConnectorPoint PointX="10.291666666666666" PointY="14.97654296875" />
+          <ConnectorPoint PointX="10.520833333333334" PointY="14.97654296875" />
+          <ConnectorPoint PointX="11.354166166666667" PointY="14.97654296875" />
+          <ConnectorPoint PointX="11.520832833333335" PointY="14.97654296875" />
+          <ConnectorPoint PointX="13.979166666666666" PointY="14.97654296875" />
+          <ConnectorPoint PointX="14.145833333333334" PointY="14.97654296875" />
+          <ConnectorPoint PointX="15.25" PointY="14.97654296875" />
+          <ConnectorPoint PointX="15.25" PointY="13.228508992187507" />
+          <ConnectorPoint PointX="15.875" PointY="13.228508992187507" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_AvancePartida_Usuario1" >
+          <ConnectorPoint PointX="1.0078112499999998" PointY="15.7681689453125" />
+          <ConnectorPoint PointX="1.0078112499999998" PointY="16.0181689453125" />
+          <ConnectorPoint PointX="1.2447931666666665" PointY="16.0181689453125" />
+          <ConnectorPoint PointX="1.411459833333333" PointY="16.0181689453125" />
+          <ConnectorPoint PointX="2.5" PointY="16.0181689453125" />
+          <ConnectorPoint PointX="2.5" PointY="14.907237141927084" />
+          <ConnectorPoint PointX="2.9166666666666665" PointY="14.907237141927084" />
+          <ConnectorPoint PointX="3.0833333333333335" PointY="14.907237141927084" />
+          <ConnectorPoint PointX="4.541666666666667" PointY="14.907237141927084" />
+          <ConnectorPoint PointX="4.708333333333333" PointY="14.907237141927084" />
+          <ConnectorPoint PointX="4.75" PointY="14.907237141927084" />
+          <ConnectorPoint PointX="4.75" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="9.8541666666666661" PointY="16.214905598958328" />
+          <ConnectorPoint PointX="10.395833333333334" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="10.4375" PointY="16.214905598958332" />
+          <ConnectorPoint PointX="10.4375" PointY="14.88279296875" />
+          <ConnectorPoint PointX="11.354166166666667" PointY="14.88279296875" />
+          <ConnectorPoint PointX="11.520832833333335" PointY="14.88279296875" />
+          <ConnectorPoint PointX="15.166666666666666" PointY="14.88279296875" />
+          <ConnectorPoint PointX="15.333333333333334" PointY="14.88279296875" />
+          <ConnectorPoint PointX="15.5" PointY="14.88279296875" />
+          <ConnectorPoint PointX="15.5" PointY="13.769521984375" />
+          <ConnectorPoint PointX="15.875" PointY="13.769521984375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_AvancePartida_Usuario2" >
+          <ConnectorPoint PointX="0.95579327403846137" PointY="11.875" />
+          <ConnectorPoint PointX="0.95579327403846137" PointY="11.59375" />
+          <ConnectorPoint PointX="1.1407572147435896" PointY="11.59375" />
+          <ConnectorPoint PointX="1.3074238814102561" PointY="11.59375" />
+          <ConnectorPoint PointX="2.4236858974358966" PointY="11.59375" />
+          <ConnectorPoint PointX="2.6411207948717954" PointY="11.59375" />
+          <ConnectorPoint PointX="4.875" PointY="11.59375" />
+          <ConnectorPoint PointX="4.875" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="4.916666666666667" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="5.208333333333333" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="5.9830744791666666" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="6.1497411458333326" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="6.2526085416666666" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="6.4192752083333326" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="6.4908901041666667" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="6.6575567708333327" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="9.8541666666666661" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="10.239583333333334" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="10.28125" PointY="16.199280598958332" />
+          <ConnectorPoint PointX="10.28125" PointY="14.91404296875" />
+          <ConnectorPoint PointX="10.291666666666666" PointY="14.91404296875" />
+          <ConnectorPoint PointX="10.458333333333334" PointY="14.91404296875" />
+          <ConnectorPoint PointX="11.354166166666667" PointY="14.91404296875" />
+          <ConnectorPoint PointX="11.520832833333335" PointY="14.91404296875" />
+          <ConnectorPoint PointX="15.354166666666666" PointY="14.914042968749998" />
+          <ConnectorPoint PointX="15.645833333333334" PointY="14.91404296875" />
+          <ConnectorPoint PointX="15.75" PointY="14.91404296875" />
+          <ConnectorPoint PointX="15.75" PointY="14.310534976562494" />
+          <ConnectorPoint PointX="15.875" PointY="14.310534976562494" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_EstadoPartida_AvancePartida" >
+          <ConnectorPoint PointX="17.0625" PointY="16.314474283854167" />
+          <ConnectorPoint PointX="17.0625" PointY="17.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_Evidencia_AvancePartida" >
+          <ConnectorPoint PointX="17.375" PointY="16.314474283854167" />
+          <ConnectorPoint PointX="17.75" PointY="16.689474283854167" />
+          <ConnectorPoint PointX="17.75" PointY="16.75" />
+          <ConnectorPoint PointX="18" PointY="16.75" />
+          <ConnectorPoint PointX="18.625" PointY="17.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GYMModel.FK_GPC_InconsistenciaAvancePartida_AvancePartida" >
+          <ConnectorPoint PointX="17.375" PointY="15.073546096028647" />
+          <ConnectorPoint PointX="18.625" PointY="15.073546096028647" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
