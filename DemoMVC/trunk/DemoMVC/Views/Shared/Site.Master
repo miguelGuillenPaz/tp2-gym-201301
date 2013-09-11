@@ -95,6 +95,10 @@
                         <li>
                             <%= Html.ActionLink("Cierre de Presupuesto", "CerrarPresupuesto", "CierrePresupuestoObra")%>
                         </li>
+                        <li>
+                            <%= Html.ActionLink("Actualizar Avance de Partida", "ActualizarAvancePartida", "Partidas")%></li>
+                        <li>
+                            <%= Html.ActionLink("Inconsistencias por Partida", "ActualizarInconsistenciaPartida", "Partidas")%></li>
                     </ul>
                 </li>
                 <li><a href="#">Contenidos</a>
