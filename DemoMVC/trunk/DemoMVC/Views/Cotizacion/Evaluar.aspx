@@ -37,77 +37,79 @@
                             data: data,
                             success: function (response2) {
                                 $('#divOpcion').html('');
-                                $('#divOpcion').append(response2.content);
-                            }
-                        });
+                                $('#divOpcion').html(response2.content);
 
-                        $('#dialogSeleccionar').dialog({
-                            resizable: false,
-                            title: 'Seleccionar Cotización',
-                            height: 400,
-                            width: 500,
-                            modal: true,
-                            buttons: {
-                                "Aceptar": function () {                                    
-                                    if ($('input[name=cotizacion]:checked').val() == undefined) {
-                                        $("#dialogConfirm #confirm").text('Debe seleccionar un proveedor.');
-                                        $("#dialogConfirm").dialog({
-                                            resizable: false,
-                                            height: 140,
-                                            modal: true,
-                                            buttons: {
-                                                "Aceptar": function() {
-                                                    $(this).dialog("close");
-                                                }
-                                            }
-                                        });
-                                    } else {
-                                        $("#dialogConfirm #confirm").text('¿Está seguro de seleccionar al proveedor?');
-                                        $("#dialogConfirm").dialog({
-                                            resizable: false,
-                                            height: 140,
-                                            modal: true,
-                                            buttons: {
-                                                "Aceptar": function() {
-
-                                                    var idCotizacion = $('input[name=cotizacion]:checked').val();
-
-                                                    var data2 = { idSolicitudCotizacion: idSolicitudCotizacion, idCotizacion: idCotizacion };
-                                                    $.ajax({
-                                                        type: 'POST',
-                                                        url: '/Cotizacion/ElegirCotizacion',
-                                                        data: data2,
-                                                        success: function(resultado) {
-                                                            if (resultado.resultado) {
-                                                                $("#dialogConfirm #confirm").text('El proveedor fue seleccionado.');
-                                                                $("#dialogConfirm").dialog({
-                                                                    resizable: false,
-                                                                    height: 140,
-                                                                    modal: true,
-                                                                    buttons: {
-                                                                        "Aceptar": function() {
-                                                                            $(this).dialog("close");
-                                                                            $('#dialogSeleccionar').dialog("close");
-                                                                        }
-                                                                    }
-                                                                });
-                                                            }
+                                $('#dialogSeleccionar').dialog({
+                                    resizable: false,
+                                    title: 'Seleccionar Cotización',
+                                    height: 400,
+                                    width: 500,
+                                    modal: true,
+                                    buttons: {
+                                        "Aceptar": function () {
+                                            if ($('input[name=cotizacion]:checked').val() == undefined) {
+                                                $("#dialogConfirm #confirm").text('Debe seleccionar un proveedor.');
+                                                $("#dialogConfirm").dialog({
+                                                    resizable: false,
+                                                    height: 140,
+                                                    modal: true,
+                                                    buttons: {
+                                                        "Aceptar": function () {
+                                                            $(this).dialog("close");
                                                         }
-                                                    });
-                                                    $(this).dialog("close");
-                                                },
-                                                "Cancelar": function() {
-                                                    $(this).dialog("close");
-                                                }
+                                                    }
+                                                });
+                                            } else {
+                                                $("#dialogConfirm #confirm").text('¿Está seguro de seleccionar al proveedor?');
+                                                $("#dialogConfirm").dialog({
+                                                    resizable: false,
+                                                    height: 140,
+                                                    modal: true,
+                                                    buttons: {
+                                                        "Aceptar": function () {
+
+                                                            var idCotizacion = $('input[name=cotizacion]:checked').val();
+
+                                                            var data2 = { idSolicitudCotizacion: idSolicitudCotizacion, idCotizacion: idCotizacion };
+                                                            $.ajax({
+                                                                type: 'POST',
+                                                                url: '/Cotizacion/ElegirCotizacion',
+                                                                data: data2,
+                                                                success: function (resultado) {
+                                                                    if (resultado.resultado) {
+                                                                        $("#dialogConfirm #confirm").text('El proveedor fue seleccionado.');
+                                                                        $("#dialogConfirm").dialog({
+                                                                            resizable: false,
+                                                                            height: 140,
+                                                                            modal: true,
+                                                                            buttons: {
+                                                                                "Aceptar": function () {
+                                                                                    $(this).dialog("close");
+                                                                                    $('#dialogSeleccionar').dialog("close");
+                                                                                }
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                }
+                                                            });
+                                                            $(this).dialog("close");
+                                                        },
+                                                        "Cancelar": function () {
+                                                            $(this).dialog("close");
+                                                        }
+                                                    }
+                                                });
                                             }
-                                        });
+                                        },
+                                        "Cancelar": function () {
+                                            $(this).dialog("close");
+                                        }
                                     }
-                                },
-                                "Cancelar": function () {
-                                    $(this).dialog("close");
-                                }
+                                });
                             }
                         });
+
+                       
                     },
                     error: function () {
                         __ShowMessage('No se pudo eliminar');

@@ -122,7 +122,7 @@ namespace DemoMVC.Controllers
 
             listadoProyectos = Proyecto.obtenerProyectoPorFiltro(1,0,"PR");
 
-            ViewData["totReg"] = listadoProyectos.Count;
+            ViewData["totReg"] = listadoProyectos != null ? listadoProyectos.Count() : 0;
             //Caso error: no hay registros (msgErr)
             ViewData["msgErr"] = "";
 

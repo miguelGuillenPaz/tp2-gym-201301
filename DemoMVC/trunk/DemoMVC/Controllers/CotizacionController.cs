@@ -589,9 +589,34 @@ namespace DemoMVC.Controllers
                 i++;
                 content += "<ul>";
                 content += "<li><h2><input type=\"radio\" name=\"cotizacion\"/ value=\"" + cotizacion.IdCotizacion + "\"> Opción " + i + "</h2></li>";
-                content += "<li>Proveedor: " + cotizacion.IdProveedor + "</li>";
-                content += "<li>Total: " + cotizacion.Total + "</li>";
-                content += "<li>Forma de Pago: " + cotizacion.GSC_FormaPago.DescripFormPag + "</li>";
+                content += "<li>";
+                content += "<table>";
+                content += "<tr>";
+                content += "<td>";
+                content += "Proveedor: ";
+                content += "</td>";
+                content += "<td>";
+                content += cotizacion.IdProveedor;
+                content += "</td>";
+                content += "</tr>";
+                content += "<tr>";
+                content += "<td>";
+                content += "Total: ";
+                content += "</td>";
+                content += "<td>";
+                content += cotizacion.Total;
+                content += "</td>";
+                content += "</tr>";
+                content += "<tr>";
+                content += "<td>";
+                content += "Forma de Pago: ";
+                content += "</td>";
+                content += "<td>";
+                content += cotizacion.GSC_FormaPago.DescripFormPag;
+                content += "</td>";
+                content += "</tr>";
+                content += "</table>";
+                content += "</li>";
                 content += "</ul>";
             }
 
