@@ -10,12 +10,14 @@
             Cliente</div>
         <div class="gpc-th" style="width: 200px;">
             Dirección de la Obra</div>
-        <div class="gpc-th" style="width: 80px;">
+        <div class="gpc-th" style="width: 85px;">
             Fecha Estado</div>
-        <div class="gpc-th" style="width: 130px;">
-            Usuario Estado</div>
-        <div class="gpc-th" style="width: 65px;">
-            Evaluar</div>
+        <div class="gpc-th" style="width: 70px;">
+            Fecha Inicio</div>
+        <div class="gpc-th" style="width: 70px;">
+            Fecha Fin</div>
+        <div class="gpc-th" style="width: 45px;">
+            Cerrar</div>
     </div>
     <% foreach (var presupuesto in Model)
        { %>
@@ -32,13 +34,16 @@
         <div class="gpc-td" style="width: 200px;">
             <%=presupuesto.Direccion %>
         </div>
-        <div class="gpc-td-center" style="width: 80px;">
+        <div class="gpc-td-center" style="width: 85px;">
             <%=presupuesto.FechaCambioEstado != null? presupuesto.FechaCambioEstado.ToString().Substring(1, 10) : "&nbsp;" %>
         </div>
-        <div class="gpc-td-center" style="width: 130px;">
-            <%=presupuesto.UsuarioCambioEstado != null? presupuesto.UsuarioCambioEstado : "&nbsp;"%>
+        <div class="gpc-td-center" style="width: 70px;">
+            <%=presupuesto.FechaInicio != null ? presupuesto.FechaInicio.ToString().Substring(1, 10) : "&nbsp;"%>
         </div>
-        <div class="gpc-td-center" style="width: 65px;">
+        <div class="gpc-td-center" style="width: 70px;">
+            <%=presupuesto.FechaFin != null ? presupuesto.FechaFin.ToString().Substring(1, 10) : "&nbsp;"%>
+        </div>
+        <div class="gpc-td-center" style="width: 45px;">
             <a href="ListarDetalle?PresupuestoID=<%=presupuesto.IDPresupuestoObra%>">Cerrar</a>
         </div>
     </div>
