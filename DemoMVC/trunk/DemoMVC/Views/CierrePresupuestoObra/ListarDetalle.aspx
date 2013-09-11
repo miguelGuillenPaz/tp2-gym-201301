@@ -27,13 +27,13 @@
                 success: function (result) {
 
                     var mText = "";
-                    if (IdEstado == 6) { // aprobar
+                    if (IdEstado == 11) { // Cerrado por el Supervisor de Presupuesto
                         //mText = "La Aprobación ha sido realizada.";
                         $("#modalCerrar").dialog("close");
-                    } else if (IdEstado == 3) { // rechazar
+                    } else if (IdEstado == 12) { // Presupuesto con Inconsistencias
                         //mText = "Se ha rechazado el presupuesto correctamente.";
                         $("#modalActualizar").dialog("close");
-                    } else if (IdEstado == 4) { // anular
+                    } else if (IdEstado == 17) { // En solicitud de Actualización
                         //mText = "Se ha solicitado la anulación del presupuesto.";
                         $("#modalJustificar").dialog("close");
                     }
@@ -86,7 +86,7 @@
             });
             $(".gpc-actualizar").click(function () {
                 if (confirm("Usted está a punto de rechazar el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(3, "");
+                    CambiarEstado(13, "");
                 }
                 return false;
             });            
@@ -97,13 +97,13 @@
             });
             $(".gpc-cerrarOK").click(function () {
                 if (confirm("Usted está a punto de aprobar el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(6, $("#tbCerrar").val());
+                    CambiarEstado(11, $("#tbCerrar").val());
                 }
                 return false;
             });
             $(".gpc-justificarOK").click(function () {
                 if (confirm("Usted está a punto de anular el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(4, $("#tbJustificar").val());
+                    CambiarEstado(12, $("#tbJustificar").val());
                 }
                 return false;
             });
@@ -285,6 +285,20 @@
                 </div>
                 <div style="float: left; padding: .5em;">
                     <%=Model.TotalPresupuestado %></div>
+            </div>
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left; padding: .5em;">
+                    Total Ejecutado:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.TotalEjecutado %></div>
+            </div>
+            <div style="width: 100%; overflow: hidden;">
+                <div style="float: left; padding: .5em;">
+                    Observaciones:
+                </div>
+                <div style="float: left; padding: .5em;">
+                    <%=Model.Observacion %></div>
             </div>
         </div>
         <div class="gpc-separador">
