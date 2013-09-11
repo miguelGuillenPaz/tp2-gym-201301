@@ -247,5 +247,12 @@ namespace DemoMVC.Controllers
             return View();
         }
 
+        //Plantilla de declaración de fábrica
+        public ActionResult RegistrarDeclaracionFabrica()
+        {
+            ProyectoDAO proye = new ProyectoDAO();
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+            return View();
+        }
     }
 }

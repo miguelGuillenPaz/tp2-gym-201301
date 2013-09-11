@@ -62,6 +62,9 @@
                         <li>
                             <%= Html.ActionLink("Registrar Plantilla Contrato", "RegistrarContratos", "Legal")%>
                         </li>
+                        <li>
+                            <%= Html.ActionLink("Registrar Plantilla Declaración de fábrica", "RegistrarDeclaracionFabrica", "Legal")%>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="#">Recursos Humanos</a>
