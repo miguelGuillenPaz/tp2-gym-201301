@@ -19,5 +19,7 @@ namespace GYM.SIC.GPC.Models
         public DateTime? FechaRegistro { get; set; }
         public DateTime? FechaCambioEstado { get; set; }
         public decimal? TotalPresupuestado { get; set; }
+        public decimal? TotalEjecutado { get; set; }
+        public string Observacion { get; set; }
     }
 }
