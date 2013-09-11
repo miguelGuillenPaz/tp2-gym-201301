@@ -80,19 +80,17 @@ namespace GYM.SIC.GPC.Controllers
         [HttpPost]
         public JsonResult CambiarEstado(int PresupuestoID, int Estado, string Observacion)
         {
+            String mensaje = "";
             var presupuesto = EFPresupuesto.Presupuestos.ToList().FirstOrDefault(x => x.IDPresupuestoObra == PresupuestoID);
             presupuesto.IDEstado = Estado;
             presupuesto.FechaCambioEstado = DateTime.Now;
             presupuesto.UsuarioCambioEstado = "Arturo";
-            presupuesto.Observaciones = Observacion;
-            EFPresupuesto.ActualizarPresupuesto(presupuesto);
-
-            String mensaje = "";
 
             // cerrado
             if (Estado == EstadosParameters.Cerrado_por_el_Supervisor_de_Presupuesto)
             {
                 mensaje = "El Cierre del Presupuesto ha sido realizado.";
+                presupuesto.Observaciones = Observacion;
             }
 
             //con inconsistencias
@@ -114,6 +112,8 @@ namespace GYM.SIC.GPC.Controllers
             //    EFNotificaciones.ActualizarNotificaciones(notificaciones);
             //    mensaje = "Se ha solicitado la actualización del presupuesto.";
             //}
+
+            EFPresupuesto.ActualizarPresupuesto(presupuesto);
 
             return new JsonResult() { Data = mensaje, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
 
