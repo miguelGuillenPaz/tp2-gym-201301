@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using GYM.SIC.GPC.Repositories.S10Repository;
+using System.Web.Mvc; 
 using GYM.SIC.GPC.Repositories.GPCRepository;
 using GYM.SIC.GPC.Parameters;
 using GYM.SIC.GPC.Models;

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using GYM.SIC.GPC.Models;
-using GYM.SIC.GPC.Repositories.S10Repository;
+using GYM.SIC.GPC.Models; 
 using DemoMVC.Models;
 
 namespace GYM.SIC.GPC.Repositories.GPCRepository

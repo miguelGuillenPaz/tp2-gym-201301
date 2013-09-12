@@ -204,9 +204,6 @@
     <Compile Include="Repositories\IGPCRepository\IGPCPartidaRespository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCPresupuestoRepository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCSolicitudesRepository.cs" />
-    <Compile Include="Repositories\S10Repository\S10CronogramaRepository.cs" />
-    <Compile Include="Repositories\S10Repository\S10PartidaRespository.cs" />
-    <Compile Include="Repositories\S10Repository\S10PresupuestoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\BD_GyM_v1.sql" />
@@ -607,7 +604,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>25936</DevelopmentServerPort>
+          <DevelopmentServerPort>4151</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
