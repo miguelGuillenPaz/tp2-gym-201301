@@ -47,7 +47,7 @@
 
                     $('#agregarCotizacion').find('input[name=codSolCotizacion]').val(obj.codSolCotizacion);
                     $('#agregarCotizacion').find('input[name=descTServ]').val(obj.descTServ);
-                    $('#agregarCotizacion').find('input[name=codTServ]').val(obj.codTServ);
+                    $('#agregarCotizacion').find('input[name=IdTipoServicio]').val(obj.codTServ);
                     $('#agregarCotizacion').find('input[name=razsocPro]').val(obj.razsocPro);
                     $('#agregarCotizacion').find('input[name=codProv]').val(obj.codProv);
                     $('#buscarSolicitudes').data("kendoWindow").close();
@@ -58,7 +58,7 @@
         });
 
         $('#buscarSolicitudes').find('input[name=buscar]').click(function () {
-            var codTServ = parseFloat($('#buscarSolicitudes').find('select[name=codTServ] option:selected').val());
+            var codTServ = parseFloat($('#buscarSolicitudes').find('select[name=IdTipoServicio] option:selected').val());
             var codProv = $('#buscarSolicitudes').find('input[name=codProv]').val();
 
             var codSolCotizacion = $('#buscarSolicitudes').find('input[name=codSolCotizacion]').val();
@@ -68,14 +68,14 @@
 
         $('#buscarSolicitudes').find('input[name=inicializar]').click(function () {
             $('#buscarSolicitudes').find('select[name=codPro]').val(0);
-            $('#buscarSolicitudes').find('select[name=codTServ]').val(0);
+            $('#buscarSolicitudes').find('select[name=IdTipoServicio]').val(0);
             $('#buscarSolicitudes').find('input[name=codSolCotizacion]').val('');
         });
 
         $('#buscarSolicitudes').find('a.buscarProveedor').click(function (e) {
             e.preventDefault();
             $('#buscarProveedores').find('a.onload').attr('href', '<%: Url.Action("listar", "Proveedor") %>');
-            $('#buscarProveedores').find('input[name=codTServ]').val(0);
+            $('#buscarProveedores').find('input[name=IdTipoServicio]').val(0);
             $('#buscarProveedores').find('input[name=codReq]').val(0);
             $('#buscarProveedores').find('input[name=formulario]').val('BusquedaSolicitud');
             $('#buscarProveedores').find('input[name=multiSelect]').val('false');

@@ -39,9 +39,9 @@
 
                 $('div.busquedaCotizaciones').find('select[name=tipoFecha]').val($('div.busquedaCotizaciones').find('select[name=tipoFecha] option:first').val());
                 $('div.busquedaCotizaciones').find('select[name=estado]').val($('div.busquedaCotizaciones').find('select[name=estado] option:first').val());
-                $('div.busquedaCotizaciones').find('select[name=codPro]').val(0);
-                $('div.busquedaCotizaciones').find('select[name=codTServ]').val(0);
-                $('div.busquedaCotizaciones').find('select[name=codEstado]').val(0);
+                $('div.busquedaCotizaciones').find('select[name=IdProyecto]').val(0);
+                $('div.busquedaCotizaciones').find('select[name=IdTipoServicio]').val(0);
+                $('div.busquedaCotizaciones').find('select[name=IdEstado]').val(0);
 
                 $('div.busquedaCotizaciones').find('input[name=fechaInicio]').data("kendoDatePicker").enable(false);
                 $('div.busquedaCotizaciones').find('input[name=fechaFin]').data("kendoDatePicker").enable(false);
@@ -63,9 +63,9 @@
                     return false;
                 }
 
-                var codPro = parseFloat($('div.busquedaCotizaciones').find('select[name=codPro]').val());
-                var codTServ = parseFloat($('div.busquedaCotizaciones').find('select[name=codTServ]').val());
-                var codEstado = $('div.busquedaCotizaciones').find('select[name=codEstado]').val();
+                var codPro = parseFloat($('div.busquedaCotizaciones').find('select[name=IdProyecto]').val());
+                var codTServ = parseFloat($('div.busquedaCotizaciones').find('select[name=IdTipoServicio]').val());
+                var codEstado = $('div.busquedaCotizaciones').find('select[name=IdEstado]').val();
 
                 var codSolCotizacion = $('div.busquedaCotizaciones').find('input[name=codSolCotizacion]').val();
                 var codCotizacion = $('div.busquedaCotizaciones').find('input[name=codCotizacion]').val();
@@ -88,7 +88,7 @@
                     $('#agregarCotizacion').find('input[name=codProv]').val(obj.codProv);
 
                     $('#agregarCotizacion').find('input[name=descTServ]').val(obj.descTServ);
-                    $('#agregarCotizacion').find('input[name=codTServ]').val(obj.codTServ);
+                    $('#agregarCotizacion').find('input[name=IdTipoServicio]').val(obj.codTServ);
 
                     $('#agregarCotizacion').find('input[name=fechaInicio]').val(obj.fCotizacion);
                     $('#agregarCotizacion').find('input[name=fechaFin]').val(obj.fValidez);
@@ -185,7 +185,7 @@
                     $('#agregarCotizacion').find('input[name=codProv]').val(obj.codProv);
 
                     $('#agregarCotizacion').find('input[name=descTServ]').val(obj.descTServ);
-                    $('#agregarCotizacion').find('input[name=codTServ]').val(obj.codTServ);
+                    $('#agregarCotizacion').find('input[name=IdTipoServicio]').val(obj.codTServ);
 
                     $('#agregarCotizacion').find('input[name=fechaInicio]').val(obj.fCotizacion);
                     $('#agregarCotizacion').find('input[name=fechaFin]').val(obj.fValidez);
@@ -250,14 +250,14 @@
                     return false;
                 }
 
-                var codPro = parseFloat($('div.busquedaCotizaciones').find('select[name=codPro]').val());
-                var nomPro = $('div.busquedaCotizaciones').find('select[name=codPro] option:selected').text();
+                var codPro = parseFloat($('div.busquedaCotizaciones').find('select[name=IdProyecto]').val());
+                var nomPro = $('div.busquedaCotizaciones').find('select[name=IdProyecto] option:selected').text();
 
-                var codTServ = parseFloat($('div.busquedaCotizaciones').find('select[name=codTServ]').val());
-                var descTServ = $('div.busquedaCotizaciones').find('select[name=codTServ] option:selected').text()
+                var codTServ = parseFloat($('div.busquedaCotizaciones').find('select[name=IdTipoServicio]').val());
+                var descTServ = $('div.busquedaCotizaciones').find('select[name=IdTipoServicio] option:selected').text()
 
-                var codEstado = $('div.busquedaCotizaciones').find('select[name=codEstado]').val();
-                var desEstado = $('div.busquedaCotizaciones').find('select[name=codEstado] option:selected').text();
+                var codEstado = $('div.busquedaCotizaciones').find('select[name=IdEstado]').val();
+                var desEstado = $('div.busquedaCotizaciones').find('select[name=IdEstado] option:selected').text();
 
                 var codSolCotizacion = $('div.busquedaCotizaciones').find('input[name=codSolCotizacion]').val();
                 var codCotizacion = $('div.busquedaCotizaciones').find('input[name=codCotizacion]').val();
@@ -281,7 +281,7 @@
             $('div.busquedaCotizaciones').find('a.buscarProveedor').click(function (e) {
                 e.preventDefault();
                 $('#buscarProveedores').find('a.onload').attr('href', '<%: Url.Action("listar", "Proveedor") %>');
-                $('#buscarProveedores').find('input[name=codTServ]').val(0);
+                $('#buscarProveedores').find('input[name=IdTipoServicio]').val(0);
                 $('#buscarProveedores').find('input[name=codReq]').val(0);
                 $('#buscarProveedores').find('input[name=formulario]').val('BusquedaCotizacion');
                 $('#buscarProveedores').find('input[name=multiSelect]').val('false');

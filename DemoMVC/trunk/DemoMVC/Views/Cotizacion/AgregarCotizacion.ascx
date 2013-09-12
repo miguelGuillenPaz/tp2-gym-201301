@@ -60,8 +60,8 @@
             var Comentarios = $.trim($('#agregarCotizacion').find('textarea[name=Comentarios]').val());
             var codProv = $('#agregarCotizacion').find('input[name=codProv]').val();
             var codTServ = $('#agregarCotizacion').find('input[name=codTServ]').val();
-            var codFormPag = $('#agregarCotizacion').find('select[name=codFormPag]').val();
-            var codMoneda = $('#agregarCotizacion').find('select[name=codMoneda]').val();
+            var codFormPag = $('#agregarCotizacion').find('select[name=IdFormaPago]').val();
+            var codMoneda = $('#agregarCotizacion').find('select[name=IdMoneda]').val();
 
             var codCotizacion = $('#agregarCotizacion').find('input[name=codCotizacion]').val();
             $('#agregarCotizacion').find('input[name=grabarCotizacion]').attr('disabled', true);

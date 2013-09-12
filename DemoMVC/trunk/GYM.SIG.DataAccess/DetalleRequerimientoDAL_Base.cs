@@ -42,7 +42,7 @@ namespace GYM.SIG.DataAccess
 
                             nomPro = lector.IsDBNull(lector.GetOrdinal("Nombre")) ? "" : lector.GetString(lector.GetOrdinal("Nombre")),
                             desReq = lector.IsDBNull(lector.GetOrdinal("DescripReq")) ? "" : lector.GetString(lector.GetOrdinal("DescripReq")),
-                            codSolDet = lector.IsDBNull(lector.GetOrdinal("codSolDet")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("codSolDet")),
+                            codSolDet = lector.IsDBNull(lector.GetOrdinal("IdSolicitudDetalle")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdSolicitudDetalle")),
                             codSolCotizacion = codSolCotizacion,
                         });
                     }

@@ -109,7 +109,7 @@
                             }
                         });
 
-                       
+
                     },
                     error: function () {
                         __ShowMessage('No se pudo eliminar');
@@ -117,6 +117,12 @@
                 });
 
 
+            });
+
+            $('#btnReset').click(function () {
+                $('#IdProyecto').val('');
+                $('#IdEstado').val('');
+                $('#IdTipoServicio').val('');
             });
 
             $('#btnBuscar').click(function () {
@@ -216,6 +222,7 @@
                                 </tbody>
                             </table><div class="content-button">
                             <a href="javascript:;" id="btnBuscar" class="button">Buscar</a>
+                            <a href="javascript:;" id="btnReset" class="button">Inicializar</a>
                         </div>
                         </div>
                         

@@ -35,7 +35,6 @@ namespace GYM.SIG.DataAccess
                             precio = lector.IsDBNull(lector.GetOrdinal("Precio")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Precio")),
                             importe = lector.IsDBNull(lector.GetOrdinal("Importe")) ? default(Decimal) : lector.GetDecimal(lector.GetOrdinal("Importe")),
                             codUM = lector.IsDBNull(lector.GetOrdinal("IdUnidadMedida")) ? default(Int32) : lector.GetInt32(lector.GetOrdinal("IdUnidadMedida"))
-
                         });
                     }
                 }
@@ -276,7 +275,7 @@ namespace GYM.SIG.DataAccess
 
         protected virtual string CreateGetCommand(string whereSql, string orderBySql)
         {
-            string sql = "SELECT * FROM [dbo].[DetalleCotizacion]";
+            string sql = "SELECT * FROM [dbo].[GSC_DetalleCotizacion]";
             if ((whereSql != null) && (whereSql.Trim().Length > 0))
             {
                 sql += " WHERE " + whereSql;

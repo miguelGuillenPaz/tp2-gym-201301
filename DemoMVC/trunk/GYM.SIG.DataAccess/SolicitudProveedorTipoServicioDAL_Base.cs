@@ -35,9 +35,9 @@ namespace GYM.SIG.DataAccess
                             codTServ = lector.GetInt32(lector.GetOrdinal("IdTipoServicio")),
                             fechaSolProTServ = lector.IsDBNull(lector.GetOrdinal("FechaSolProTServ")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FechaSolProTServ")),
 
-                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("fecSolCotizacino")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("fecSolCotizacino")),
-                            razsocPro = lector.IsDBNull(lector.GetOrdinal("razsocPro")) ? "" : lector.GetString(lector.GetOrdinal("razsocPro")),
-                            descTServ = lector.IsDBNull(lector.GetOrdinal("descTServ")) ? "" : lector.GetString(lector.GetOrdinal("descTServ")),
+                            fecSolCotizacino = lector.IsDBNull(lector.GetOrdinal("FecSolCotizacion")) ? default(DateTime) : lector.GetDateTime(lector.GetOrdinal("FecSolCotizacion")),
+                            razsocPro = lector.IsDBNull(lector.GetOrdinal("RazonSocialProv")) ? "" : lector.GetString(lector.GetOrdinal("RazonSocialProv")),
+                            descTServ = lector.IsDBNull(lector.GetOrdinal("DescripTServicio")) ? "" : lector.GetString(lector.GetOrdinal("DescripTServicio")),
                         });
                     }
                 }

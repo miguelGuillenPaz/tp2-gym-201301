@@ -20,7 +20,7 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<Cotizacion>();
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 8);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 8);
 
                 _db.AddInParameter(sql, "TipoFecha", DbType.String, tipoFecha);
                 if (tipoFecha.Equals("todos"))
@@ -82,7 +82,7 @@ namespace GYM.SIG.DataAccess
             {
                 var coleccion = new List<Cotizacion>();
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 2);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 2);
                 using (var lector = _db.ExecuteReader(sql))
                 {
                     while (lector.Read())
@@ -163,7 +163,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 6);
                 _db.AddInParameter(sql, "IdMoneda", DbType.Int32);
                 int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
@@ -183,7 +183,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 10);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 10);
                 _db.AddInParameter(sql, "IdSolicitudCotizacion", DbType.Int32);
                 var coleccion = new List<Cotizacion>();
                 using (var lector = _db.ExecuteReader(sql))
@@ -222,7 +222,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 6);
                 _db.AddInParameter(sql, "IdSolicitudCotizacion", DbType.Int32);
                 var huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
@@ -242,7 +242,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 10);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 10);
                 _db.AddInParameter(sql, "IdProyecto", DbType.Int32);
                 var coleccion = new List<Cotizacion>();
                 using (var lector = _db.ExecuteReader(sql))
@@ -281,7 +281,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 6);
                 _db.AddInParameter(sql, "IdProyecto", DbType.Int32);
                 int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
@@ -301,7 +301,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 10);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 10);
                 _db.AddInParameter(sql, "IdTipoServicio", DbType.Int32);
                 var coleccion = new List<Cotizacion>();
                 using (var lector = _db.ExecuteReader(sql))
@@ -340,7 +340,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 6);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 6);
                 _db.AddInParameter(sql, "IdTipoServicio", DbType.Int32);
                 int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
@@ -360,7 +360,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 3);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 3);
                 _db.AddInParameter(sql, "IdCotizacion", DbType.Int32, codCotizacion);
                 var cotizacion = default(Cotizacion);
                 using (var lector = _db.ExecuteReader(sql))
@@ -397,7 +397,7 @@ namespace GYM.SIG.DataAccess
 
         protected virtual string CreateGetCommand(string whereSql, string orderBySql)
         {
-            var sql = "SELECT * FROM [dbo].[Cotizacion]";
+            var sql = "SELECT * FROM [dbo].[GSC_Cotizacion]";
             if ((whereSql != null) && (whereSql.Trim().Length > 0))
             {
                 sql += " WHERE " + whereSql;
@@ -457,7 +457,7 @@ namespace GYM.SIG.DataAccess
                 _db.AddInParameter(sql, "IdProveedor", DbType.Int32, cotizacion.codProv);
                 _db.AddInParameter(sql, "IdFormaPago", DbType.Int32, cotizacion.codFormPag);
                 _db.AddInParameter(sql, "IdTipoServicio", DbType.Int32, cotizacion.codTServ);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 4);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 4);
 
                 var huboexito = tran != null ? _db.ExecuteNonQuery(sql, tran) : _db.ExecuteNonQuery(sql);
 
@@ -482,7 +482,7 @@ namespace GYM.SIG.DataAccess
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
                 _db.AddInParameter(sql, "IdCotizacion", DbType.Int32, codCotizacion);
                 _db.AddInParameter(sql, "IdEstado", DbType.Int32, codEstado);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 5);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 5);
                 var huboexito = tran != null ? _db.ExecuteNonQuery(sql, tran) : _db.ExecuteNonQuery(sql);
 
                 if (huboexito == 0)
@@ -516,7 +516,7 @@ namespace GYM.SIG.DataAccess
                 _db.AddInParameter(sql, "IdFormaPago", DbType.Int32, cotizacion.codFormPag);
 
                 _db.AddInParameter(sql, "eliminarDetalle", DbType.Boolean, cotizacion.eliminarDetalle);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 1);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 1);
                 var huboexito = tran != null ? _db.ExecuteNonQuery(sql, tran) : _db.ExecuteNonQuery(sql);
 
                 if (huboexito == 0)
@@ -536,7 +536,7 @@ namespace GYM.SIG.DataAccess
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
                 _db.AddInParameter(sql, "IdCotizacion", DbType.Int32, codCotizacion);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.Byte, 5);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.Byte, 5);
                 int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
                 {
@@ -556,7 +556,7 @@ namespace GYM.SIG.DataAccess
             try
             {
                 var sql = _db.GetStoredProcCommand(NombreProcedimiento);
-                _db.AddInParameter(sql,  "TipoConsulta", DbType.String, 6);
+                _db.AddInParameter(sql, "TipoConsulta", DbType.String, 6);
                 int huboexito = _db.ExecuteNonQuery(sql);
                 if (huboexito == 0)
                 {
