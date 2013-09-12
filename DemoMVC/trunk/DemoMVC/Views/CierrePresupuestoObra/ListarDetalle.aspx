@@ -86,7 +86,7 @@
             });
             $(".gpc-actualizar").click(function () {
                 if (confirm("Usted está a punto de notificar la actualizacion del presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(16, "");
+                    CambiarEstado(16, "Se debe actualizar el presupuesto.");
                 }
                 return false;
             });            
