@@ -4,11 +4,6 @@
 	DetalleRequerimiento
 </asp:Content>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="HeaderContent" runat="server">
-    <link href="../../Content/legal.css" rel="stylesheet" type="text/css" />
-</asp:Content>
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <section id="seccionReqLegal">
     <h1>Detalle del Requerimiento</h1>

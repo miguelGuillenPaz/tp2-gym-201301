@@ -167,7 +167,7 @@ namespace DemoMVC.Persistencia
             Requerimiento req = null;
 
            string sql = "";
-           sql = "select IdRequerimientoLegal, r.IdProyecto,p.Descripcion,p.Nombre,r.IdRequerimientoLegalTipo,rt.Descripcion,r.Descripcion as 'desc',r.FechaRegistro,r.IdRequerimientoLegalEstado, re.Descripcion as 'estado'  ";
+           sql = "select IdRequerimientoLegal, r.IdProyecto,p.Nombre as 'descProy',p.Nombre,r.IdRequerimientoLegalTipo,rt.Descripcion,r.Descripcion as 'descReq',r.FechaRegistro,r.IdRequerimientoLegalEstado, re.Descripcion as 'estado'  ";
            sql = sql + "from GJ_RequerimientoLegal r  ";
            sql = sql + "inner join GPP_Proyecto p on p.IdProyecto = r.IdProyecto ";
            sql = sql + "inner join dbo.GJ_RequerimientoLegalTipo rt on rt.IdRequerimientoLegalTipo = r.IdRequerimientoLegalTipo ";
@@ -230,20 +230,20 @@ namespace DemoMVC.Persistencia
                                 
                                 req = new Requerimiento()
                                 {
-                                    idReq = (int)resultado["idReqLegal"],
-                                    descripcion = (String)resultado["desc"],
-                                    descTipoReq=(String)resultado["cDescripcion"],
+                                    idReq = (int)resultado["IdRequerimientoLegal"],
+                                    descripcion = (String)resultado["descReq"],
+                                    descTipoReq=(String)resultado["Descripcion"],
                                     desEstado =(String)resultado["estado"],
-                                    idTipoRequerimiento = (Int16)resultado["idTipoReqLegal"],
-                                    desProyecto =(String)resultado["desPro"],
-                                    idProyecto = (int)resultado["codPro"],
-                                    idEstado = (Int16)resultado["idEstadoReqLegal"],
-                                    fecha = (DateTime)resultado["dFechaRegistro"],
+                                    idTipoRequerimiento = (Int16)resultado["IdRequerimientoLegalTipo"],
+                                    desProyecto =(String)resultado["descProy"],
+                                    idProyecto = (int)resultado["IdProyecto"],
+                                    idEstado = (Int16)resultado["IdRequerimientoLegalEstado"],
+                                    fecha = (DateTime)resultado["FechaRegistro"],
                                     
                                  };
                                 Proyecto pro = new Proyecto();
-                                pro.codPro = (int)resultado["codPro"];
-                                pro.desPro = (String)resultado["desPro"];
+                                pro.codPro = (int)resultado["IdProyecto"];
+                                pro.desPro = (String)resultado["descProy"];
 
                                 req.Proyecto = pro;
                                 listaRequerimiento.Add(req);

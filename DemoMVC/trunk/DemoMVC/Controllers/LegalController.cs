@@ -46,7 +46,7 @@ namespace DemoMVC.Controllers
 
             SelectList selectListaProyectos = new SelectList(proye.obtenerProyectoPorFiltro(3, 0, "PR").ToList(), "IdProyecto", "nombreProyecto");*/
 
-            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
             return View();
         }
 
@@ -106,7 +106,7 @@ namespace DemoMVC.Controllers
             }
 
             ProyectoDAO proye = new ProyectoDAO();
-            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
             return View("Registrar");
         }
 
@@ -209,7 +209,7 @@ namespace DemoMVC.Controllers
             }
 
             ProyectoDAO proye = new ProyectoDAO();
-            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
             return View("Registrar");
         }
 
@@ -219,7 +219,7 @@ namespace DemoMVC.Controllers
             ProyectoDAO proyecto = new ProyectoDAO();
 
             //ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE"), "codPro", "nomPro");
-            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR"), "IdProyecto", "nomPro");
+            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR"), "codPro", "nomPro");
 
             ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
 
@@ -228,7 +228,7 @@ namespace DemoMVC.Controllers
 
             List<Requerimiento> listadoRequerimiento = null;
 
-            listadoRequerimiento = proye.listarRequerimiento(0, 0, 0, 0, Convert.ToDateTime("2013-01-01"), Convert.ToDateTime("2013-08-31"));
+            listadoRequerimiento = proye.listarRequerimiento(0, 0, 0, 0, Convert.ToDateTime("2013-01-01"), Convert.ToDateTime("2013-12-31"));
 
             return View(listadoRequerimiento);
         }
@@ -246,7 +246,7 @@ namespace DemoMVC.Controllers
             try
             {
                 //ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE").ToList(), "codPro", "nomPro");
-                ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "idProyecto", "nomPro");
+                ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
                 ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
                 ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion");
 
@@ -284,7 +284,7 @@ namespace DemoMVC.Controllers
 
             List<Requerimiento> listadoRequerimiento = null;
 
-            listadoRequerimiento = legal.listarRequerimiento(idRequerimiento, 0, 0, 0, Convert.ToDateTime("2013-01-01"), Convert.ToDateTime("2013-09-01"));
+            listadoRequerimiento = legal.listarRequerimiento(idRequerimiento, 0, 0, 0, Convert.ToDateTime("2013-01-01"), Convert.ToDateTime("2013-12-31"));
 
             int idReq = 0;
             String nomProy = "";
@@ -314,7 +314,7 @@ namespace DemoMVC.Controllers
         public ActionResult RegistrarContratos()
         {
             ProyectoDAO proye = new ProyectoDAO();
-            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
             return View();
         }
 
@@ -322,7 +322,7 @@ namespace DemoMVC.Controllers
         public ActionResult RegistrarDeclaracionFabrica()
         {
             ProyectoDAO proye = new ProyectoDAO();
-            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
 
             
             return View();
@@ -335,7 +335,7 @@ namespace DemoMVC.Controllers
             if (ModelState.IsValid)
             {
                 ProyectoDAO proye = new ProyectoDAO();
-                ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+                ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
 
                 if (file1 == null)
                 {
