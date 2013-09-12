@@ -86,32 +86,32 @@ namespace GYM.SIC.GPC.Controllers
             presupuesto.FechaCambioEstado = DateTime.Now;
             presupuesto.UsuarioCambioEstado = "Arturo";
 
-            // cerrado
+            // cerrado  9
             if (Estado == EstadosParameters.Cerrado_por_el_Supervisor_de_Presupuesto)
             {
                 mensaje = "El Cierre del Presupuesto ha sido realizado.";
                 presupuesto.Observaciones = Observacion;
             }
 
-            //con inconsistencias
-            //if (Estado == EstadosParameters.Presupuesto_con_Inconsistencias)
-            //{
-            //    mensaje = "Presupuesto con Inconsistencias.";
-            //}
+            //con inconsistencias   15
+            if (Estado == EstadosParameters.Presupuesto_con_Inconsistencias)
+            {
+                mensaje = "Se ha notificado la justificacion de las inconsistencias.";
+            }
  
 
-            // solicitar actializacion
-            //if (Estado == EstadosParameters.En_solicitud_de_Actualizacion)
-            //{
-            //    var notificaciones = new GPC_Notificacion
-            //    {
-            //        FechaRegistro = DateTime.Now,
-            //        Observacion = Observacion,
-            //        IDPresupuestoObra = presupuesto.IDPresupuestoObra,
-            //    };
-            //    EFNotificaciones.ActualizarNotificaciones(notificaciones);
-            //    mensaje = "Se ha solicitado la actualización del presupuesto.";
-            //}
+            // solicitar actualizacion  16
+            if (Estado == EstadosParameters.En_solicitud_de_Actualización)
+            {
+                var notificaciones = new GPC_Notificacion
+                {
+                    FechaRegistro = DateTime.Now,
+                    Observacion = Observacion,
+                    IDPresupuestoObra = presupuesto.IDPresupuestoObra,
+                };
+                EFNotificaciones.ActualizarNotificaciones(notificaciones);
+                mensaje = "Se ha notificado la actualización del presupuesto.";
+            }
 
             EFPresupuesto.ActualizarPresupuesto(presupuesto);
 
