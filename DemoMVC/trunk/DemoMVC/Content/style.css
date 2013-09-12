@@ -85,14 +85,14 @@ a img
     background-position: center top;
 	margin: 0px auto; /*-webkit-background-size: cover; 	-moz-background-size: cover; 	-o-background-size: cover; 	background-size: cover;*/ /*height: 689px;*/
     height: 862px;
-    width: 100%;
+    width: 80%;
     background-color: #EB1C24;
 }
 #menu-top
 {
     position: relative;
     height: 75px;
-    width: 960px;
+    width: 80%;
     background-color: #fff;
     margin: 0px auto;
 }
@@ -110,7 +110,7 @@ a img
     float: left;
     /*width: 765px;*/
     position:absolute;
-    top: 47px;
+    top: 35px;
     left: 129px;
 }
 #menu-top ul.navigation_menu li
@@ -179,7 +179,7 @@ a img
 }
 #contenido-ticker
 {
-    width: 880px;
+    width: 74%;
     padding-left: 80px;
     background-image: url( 'img/novedad.png' );
     background-position: 1px center;
@@ -202,7 +202,7 @@ a img
 
 .contenido-top
 {
-    width: 950px;
+    width: 70%;
     margin: 0px auto;
     background-color: #fff;
     padding-left: 10px;
@@ -1594,7 +1594,7 @@ ul.valores li
     display: block;
     position: absolute;
     right: 0px;
-    top: 15px;
+    top: 45px;
 }
 
 .input_search
@@ -1839,7 +1839,8 @@ ul.politicas_pdf li.ambiental
 
 .lista-central
 {
-    width: 940px;    
+    width: 90%;
+    margin: auto;    
 }
 .lista-central table {
     width: 100%;
