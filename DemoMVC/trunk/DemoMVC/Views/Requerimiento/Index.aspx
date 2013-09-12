@@ -26,8 +26,7 @@
                 <div class="lista-central">
                     <div class="noticia">
                         <div class="head-noticia">
-                            <span class="titulo-noticia">Registros:
-                                <%= Model.Count() %></span>
+                            <span class="titulo-noticia">Requerimientos</span>
                         </div>
                         <div class="texto-noticia">
                             <table id="tblConvocatoria">
@@ -88,7 +87,7 @@
                         </div>
                     </div>
                     <br />                    
-                    <%= Html.ActionLink("Agregar","Agregar", new { }, new{@class="button"})%>
+                    <%= Html.ActionLink("Agregar","Crear", new { }, new{@class="button"})%>
                     <br />
                     <br />
                 </div>

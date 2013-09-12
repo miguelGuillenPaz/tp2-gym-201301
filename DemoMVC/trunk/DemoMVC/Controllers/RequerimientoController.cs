@@ -23,6 +23,11 @@ namespace DemoMVC.Controllers
             return View(requerimiento);
         }
 
+        public ActionResult Crear()
+        {
+            return View();
+        }
+
         public ActionResult Editar(int id)
         {
             ViewData["Proyecto"] = Proyecto();
@@ -336,5 +341,6 @@ namespace DemoMVC.Controllers
             return resultado;
         }
 
+       
     }
 }

@@ -492,6 +492,7 @@
     <Content Include="Views\Proveedor\BuscarProveedor.ascx" />
     <Content Include="Views\Proveedor\ProveedoresSolicitud.aspx" />
     <Content Include="Views\Requerimiento\BuscarRequerimiento.ascx" />
+    <Content Include="Views\Requerimiento\Crear.aspx" />
     <Content Include="Views\Requerimiento\Editar.aspx" />
     <Content Include="Views\Requerimiento\Index.aspx" />
     <Content Include="Views\Requerimiento\RequerimientosSolicitud.aspx" />
