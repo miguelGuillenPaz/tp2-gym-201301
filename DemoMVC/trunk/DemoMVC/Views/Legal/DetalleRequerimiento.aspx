@@ -63,6 +63,9 @@
                 value="" readonly="readonly" class="text2" disabled="disabled"/>
             </div>
        </div>
+       <div class="fila">
+         <%: Html.ActionLink("Volver", "listarRequerimientos", "Legal")%></td>
+       </div>
     <% } %>
 
 </section>
