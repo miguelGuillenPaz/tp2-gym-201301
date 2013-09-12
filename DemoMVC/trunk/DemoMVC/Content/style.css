@@ -202,7 +202,8 @@ a img
 
 .contenido-top
 {
-    width: 70%;
+    /*width: 70%;*/ /* altera demasiado el tamaño de las pantallas usadas para el modulo de presupuesto y costos, lo regreso al valor que tenia en la version anterior */
+    width: 950px;
     margin: 0px auto;
     background-color: #fff;
     padding-left: 10px;
