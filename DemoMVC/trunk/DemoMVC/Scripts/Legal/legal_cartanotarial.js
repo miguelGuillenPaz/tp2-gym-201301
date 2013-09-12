@@ -197,7 +197,7 @@ function validarForm() {
     //var idPro = $('#cboProyecto');
     var idPro = $('#idProyecto');
     var desc = $('#txtDescripcion');
-    alert(idPro.val());
+    //alert(idPro.val());
 
     if (idPro.val() <= 0) {
         alert('Debe seleccionar el proyecto asociado al requerimiento legal a solicitar.');
@@ -247,7 +247,7 @@ function grabarReqLegal() {
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 alert('La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.');
-                document.location.href = config.contextPath + 'Legal/Registrar';
+                //document.location.href = config.contextPath + 'Legal/Registrar';
             },
             error: function (request, status, err) {
             }

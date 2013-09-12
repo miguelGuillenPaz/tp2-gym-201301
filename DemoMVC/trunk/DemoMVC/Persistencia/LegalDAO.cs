@@ -135,6 +135,29 @@ namespace DemoMVC.Persistencia
                     cmdIns.Parameters.Add(new SqlParameter("@HoraInicioRefrigerio", plantillaContrato.HoraInicioRefrigerio));
                     cmdIns.Parameters.Add(new SqlParameter("@HoraFinRefrigerio", plantillaContrato.HoraFinRefrigerio));
                     cmdIns.Parameters.Add(new SqlParameter("@PeriodoPrueba", plantillaContrato.PeriodoPrueba));
+                    //Prestación Servicios
+                    cmdIns.Parameters.Add(new SqlParameter("@EmpresaOutsorcing", plantillaContrato.EmpresaOutsourcing));
+                    cmdIns.Parameters.Add(new SqlParameter("@Ruc", plantillaContrato.Ruc));
+                    cmdIns.Parameters.Add(new SqlParameter("@Domicilio", plantillaContrato.Domicilio));
+                    cmdIns.Parameters.Add(new SqlParameter("@RepresentanteLegal", plantillaContrato.RepresentanteLegal));
+                    cmdIns.Parameters.Add(new SqlParameter("@DniRepresentanteLegal", plantillaContrato.DniRepresentanteLegal));
+                    cmdIns.Parameters.Add(new SqlParameter("@FichaPoderJudicial", plantillaContrato.FichaPoderJudicial));
+                    cmdIns.Parameters.Add(new SqlParameter("@ObjetoSocialOutsorcing", plantillaContrato.ObjetoSocialOutsourcing));
+                    cmdIns.Parameters.Add(new SqlParameter("@ServiciosBrindar", plantillaContrato.ServicioBrindar));
+                    cmdIns.Parameters.Add(new SqlParameter("@DuracionContrato", plantillaContrato.DuracionContrato));
+                    cmdIns.Parameters.Add(new SqlParameter("@JuezControversia", plantillaContrato.JuezControversia));
+                    ///Sujeto a Modalidad
+                    cmdIns.Parameters.Add(new SqlParameter("@NombreTrabajadorSM", plantillaContrato.NombreTrabajadorSM));
+                    cmdIns.Parameters.Add(new SqlParameter("@DniTrabajadorSM", plantillaContrato.DniTrabajadorSM));
+                    cmdIns.Parameters.Add(new SqlParameter("@ModalidadContrato", plantillaContrato.ModalidadContrato));
+                    cmdIns.Parameters.Add(new SqlParameter("@Duracion", plantillaContrato.Duracion));
+                    cmdIns.Parameters.Add(new SqlParameter("@HoraInicioLaborSM", plantillaContrato.HoraInicioLaborSM));
+                    cmdIns.Parameters.Add(new SqlParameter("@HoraFinLaborSM", plantillaContrato.HoraFinLaborSM));
+                    cmdIns.Parameters.Add(new SqlParameter("@HoraInicioRefrigerioSM", plantillaContrato.HoraInicioRefrigerioSM));
+                    cmdIns.Parameters.Add(new SqlParameter("@HoraFinRefrigerioSM", plantillaContrato.HoraFinRefrigerioSM));
+                    cmdIns.Parameters.Add(new SqlParameter("@JuezControversiaSM", plantillaContrato.JuezControversiaSM));
+                    //
+                    cmdIns.Parameters.Add(new SqlParameter("@xmlClausulasVarchar", plantillaContrato.DescripcionClausula));
 
                     cmdIns.Transaction = sqlTransaction;
                     cmdIns.ExecuteNonQuery();

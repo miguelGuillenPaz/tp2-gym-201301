@@ -143,18 +143,43 @@ namespace DemoMVC.Controllers
 
         }
 
-        public ActionResult ConfirmacionPlantillaContrato(int idPro,
-                                                            string desc,
-                                                            string nombreTrab,
-                                                            string dniTrab,
-                                                            string cargoTrab,
-                                                            string laborDesempenar,
-                                                            string horaIniLabor,
-                                                            string horaFinLabor,
-                                                            string horaIniRefri,
-                                                            string horaFinRefri,
-                                                            string periodoPrueba,
-                                                            string arrClausulas)
+        public ActionResult ConfirmacionPlantillaContrato(
+            int idPro,
+            int tipoContrato,
+            string desc,
+            //Plazo Indeterminado
+            string nombreTrab,
+            string dniTrab,
+            string cargoTrab,
+            string laborDesempenar,
+            string horaIniLabor,
+            string horaFinLabor,
+            string horaIniRefri,
+            string horaFinRefri,
+            string periodoPrueba,
+            //Prestación Servicios
+            string outsourcing,
+            string ruc,
+            string domicilio,
+            string representante,
+            string dniRepresentante,
+            string fichaPJ,
+            string objetoSocial,
+            string servicios,
+            string duracion,
+            string juez,
+            //Sujeto a Modalidad
+            string nomSM,
+            string dniSM,
+            string modalidad,
+            string duracionSM,
+            string iniLabSM,
+            string finLabSM,
+            string iniRefriSM,
+            string finRefriSM,
+            string juezMod,
+            //
+            string arrClausulas)
         {
             Session["bInsertSuccess"] = false;
 
@@ -164,6 +189,8 @@ namespace DemoMVC.Controllers
             legalReq.cDescripcion = desc;
 
             legalReq.objLegalPC = new LegalRequerimientoPlantillaContrato();
+            legalReq.objLegalPC.idContratoLegalTipo = tipoContrato;
+            //Plazo Indeterminado
             legalReq.objLegalPC.NombreTrabajador = nombreTrab;
             legalReq.objLegalPC.DniTrabajador = dniTrab;
             legalReq.objLegalPC.Cargo = cargoTrab;
@@ -173,9 +200,32 @@ namespace DemoMVC.Controllers
             legalReq.objLegalPC.HoraInicioRefrigerio = horaIniRefri;
             legalReq.objLegalPC.HoraFinRefrigerio = horaFinRefri;
             legalReq.objLegalPC.PeriodoPrueba = periodoPrueba;
+            //Prestación Servicios
+            legalReq.objLegalPC.EmpresaOutsourcing = outsourcing;
+            legalReq.objLegalPC.Ruc = ruc;
+            legalReq.objLegalPC.Domicilio = domicilio;
+            legalReq.objLegalPC.RepresentanteLegal = representante;
+            legalReq.objLegalPC.DniRepresentanteLegal = dniRepresentante;
+            legalReq.objLegalPC.FichaPoderJudicial = fichaPJ;
+            legalReq.objLegalPC.ObjetoSocialOutsourcing = objetoSocial;
+            legalReq.objLegalPC.ServicioBrindar = servicios;
+            legalReq.objLegalPC.DuracionContrato = duracion;
+            legalReq.objLegalPC.JuezControversia = juez;
+            //Sujeto a Modalidad
+            legalReq.objLegalPC.NombreTrabajadorSM = nomSM;
+            legalReq.objLegalPC.DniTrabajadorSM = dniSM;
+            legalReq.objLegalPC.ModalidadContrato = modalidad;
+            legalReq.objLegalPC.Duracion = duracionSM;
+            legalReq.objLegalPC.HoraInicioLaborSM = iniLabSM;
+            legalReq.objLegalPC.HoraFinLaborSM = finLabSM;
+            legalReq.objLegalPC.HoraInicioRefrigerioSM = iniRefriSM;
+            legalReq.objLegalPC.HoraFinRefrigerioSM = finRefriSM;
+            legalReq.objLegalPC.JuezControversiaSM = juezMod;
 
             LegalDAO legalDAO = new LegalDAO();
             int nuevoIdReqLegal = legalDAO.insertarRequerimientoLegal(legalReq);
+
+            legalReq.objLegalPC.idReqLegal = nuevoIdReqLegal;
 
             //Insertar Plantilla y contrato, con sus cláusulas adicionales (si hubieran)
             var jsSer = new JavaScriptSerializer();
@@ -185,22 +235,58 @@ namespace DemoMVC.Controllers
             if (clausulas != null)
             {
 
+                var strClausulas = "";
+
                 foreach (Dictionary<string, object> itemsJson in clausulas)
                 {
-                    legalReq.objLegalPC.DescripcionClausula = (string)itemsJson["DescripcionClausula"];
-                    exitoClausulasIns = legalDAO.insertarRequerimientoLegalPlantillaContrato(legalReq.objLegalPC);
+
+                    if (strClausulas == "")
+                    {
+                        strClausulas += (string)itemsJson["DescripcionClausula"];
+                    }
+                    else
+                    {
+                        strClausulas += "|" + (string)itemsJson["DescripcionClausula"];
+                    }
+                                        
                 }
+
+                if (strClausulas != "") legalReq.objLegalPC.TieneClausulaAdicional = true; else legalReq.objLegalPC.TieneClausulaAdicional = false;
+
+                string aux = strClausulas;
+                string[] arr = null;
+                int i = 0;
+                string var_XML = null;
+
+                arr = aux.Split('|');
+
+                var_XML = "";
+
+                if (arr.Length > 0)
+                {
+                    var_XML += "<Clausulas>";
+                    for (i = 0; i <= arr.Length - 1; i++)
+                    {
+                        var_XML += "<Clausula>" + arr[i] + "</Clausula>";
+                    }
+                    var_XML += "</Clausulas>";
+                }
+
+                legalReq.objLegalPC.DescripcionClausula = var_XML;
+
             }
+
+            exitoClausulasIns = legalDAO.insertarRequerimientoLegalPlantillaContrato(legalReq.objLegalPC);
 
             if (nuevoIdReqLegal > 0)
             {
-                if (legalReq.objLegalPC.TieneClausulaAdicional)
+                if (exitoClausulasIns)
                 {
-                    if (exitoClausulasIns) Session["bInsertSuccess"] = true; else { Session["bInsertSuccess"] = false; }
+                    Session["bInsertSuccess"] = true;
                 }
                 else
                 {
-                    Session["bInsertSuccess"] = true;
+                    Session["bInsertSuccess"] = false;
                 }
             }
             else
@@ -210,7 +296,7 @@ namespace DemoMVC.Controllers
 
             ProyectoDAO proye = new ProyectoDAO();
             ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
-            return View("Registrar");
+            return View("RegistrarContratos");
         }
 
         public ActionResult listarRequerimientos()

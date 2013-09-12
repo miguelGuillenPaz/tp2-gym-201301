@@ -1,12 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	RegistrarContratos
+	Registrar Plantilla de Contrato
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <script src="../../Scripts/Legal/legal_plantillaContrato.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        //Ajax setup config==================================================================================
+        $.ajaxSetup({
+            // Disable caching of AJAX responses */
+            cache: false
+        });
+        //Context Route======================================================================================
+        var config = {
+            contextPath: '<%=ResolveUrl("~")%>'
+        };
+
+        $("document").ready(function () {
+            var bSuccess = '<%= Session["bInsertSuccess"] %>';
+            if (bSuccess) {
+                alert("La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.");
+            }
+        });
+
+    </script>
 
     <div id="registrarPlantillaContrato">
 
@@ -23,6 +43,7 @@
             <div class="col2 paddingTop">Tipo de Contrato:</div>
             <div class="col3 final">
                 <select id="cboTipoContrato">
+                    <option value="0">Seleccionar</option>
                     <option value="1">Contrato de Trabajo a Plazo Indeterminado</option>
                     <option value="2">Contrato de Prestación de Servicios</option>
                     <option value="3">Contrato de Trabajo Sujeto a Modalidad</option>
@@ -73,8 +94,8 @@
                     <div class="col5 final"><input id="txtFicha" name="txtFicha" type="text" class="text1" /></div>
                 </div>
                 <div class="fila">
-                    <div class="col3 paddingTop">txtRuc:</div>
-                    <div class="col6"><input id="txtRuc" name="txtRuc" type="text" class="text1" /></div>
+                    <div class="col3 paddingTop">RUC:</div>
+                    <div class="col6"><input id="txtRuc" name="txtRuc" type="text" maxlength="11" class="text1" /></div>
                     <div class="col3 paddingTop">Objeto Social Outsourcing:</div>
                     <div class="col5 final"><input id="txtObjetoOutsourcing" name="txtObjetoOutsourcing" type="text" class="text1" /></div>
                 </div>
@@ -91,8 +112,8 @@
                     <div class="col6 final"><input id="txtDuracion" name="txtDuracion" type="text" class="text1" /></div>
                 </div>
                 <div class="fila">
-                    <div class="col3 paddingTop">DNI RL:</div>
-                    <div class="col6"><input id="txtDniRL" name="txtDniRL" type="text" class="text1" /></div>
+                    <div class="col3 paddingTop">DNI Representante L.:</div>
+                    <div class="col6"><input id="txtDniRL" name="txtDniRL" type="text" maxlength="8" class="text1" /></div>
                     <div class="col3 paddingTop">Juez para controversia:</div>
                     <div class="col6 final"><input id="txtJuez" name="txtJuez" type="text" class="text1" /></div>
                 </div>
@@ -110,7 +131,7 @@
                 </div>
                 <div class="fila">
                     <div class="col3 paddingTop">DNI del trabajador:</div>
-                    <div class="col6"><input id="txtDniMod" name="txtDniMod" type="text" class="text1" /></div>
+                    <div class="col6"><input id="txtDniMod" name="txtDniMod" type="text" maxlength="8" class="text1" /></div>
                     <div class="col3 paddingTop">Horario de refrigerio:</div>
                     <div class="col5 final">de <input id="txtIniRefriMod" name="txtIniRefriMod" type="text" class="text0" /> a <input id="txtFinRefriMod" name="txtFinRefriMod" type="text" class="text0" /></div>
                 </div>
