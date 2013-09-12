@@ -190,6 +190,7 @@
     <Compile Include="Repositories\GPCRepository\GPCDetallePartidaRepository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCExpedienteTecnicoRepository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCHistoricoAprobacionesRepository.cs" />
+    <Compile Include="Repositories\GPCRepository\GPCInconsistenciaPresupuestoObraRepository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCNotificacionesRepository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCPartidaRespository.cs" />
     <Compile Include="Repositories\GPCRepository\GPCPresupuestoRepository.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Repositories\IGPCRepository\IGPCDetallePartidaRepository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCExpedienteTecnicoRepository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCHistoricoAprobacionesRepository.cs" />
+    <Compile Include="Repositories\IGPCRepository\IGPCInconsistenciaPresupuestoObraRepository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCNotificacionesRepository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCPartidaRespository.cs" />
     <Compile Include="Repositories\IGPCRepository\IGPCPresupuestoRepository.cs" />
