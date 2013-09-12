@@ -16,6 +16,8 @@ namespace GYM.SIC.GPC.Parameters
         public const int Con_Expediente_Tecnico = 7;
         public const int Pendiente_de_Cierre_por_el_Supervisor_de_Presupuesto = 8;
         public const int Cerrado_por_el_Supervisor_de_Presupuesto = 9;
+        public const int En_solicitud_de_Actualización = 16;
+        public const int Presupuesto_con_Inconsistencias = 15;
         
     }
 }
