@@ -30,10 +30,10 @@
                     if (IdEstado == 9) { // Cerrado por el Supervisor de Presupuesto
                         //mText = "La Aprobación ha sido realizada.";
                         $("#modalCerrar").dialog("close");
-                    } else if (IdEstado == 15) { // Presupuesto con Inconsistencias
+                    } else if (IdEstado == 11) { // En solicitud de Actualización
                         //mText = "Se ha rechazado el presupuesto correctamente.";
                         $("#modalActualizar").dialog("close");
-                    } else if (IdEstado == 16) { // En solicitud de Actualización
+                    } else if (IdEstado == 10) { // Presupuesto con Inconsistencias
                         //mText = "Se ha solicitado la anulación del presupuesto.";
                         $("#modalJustificar").dialog("close");
                     }
@@ -86,7 +86,7 @@
             });
             $(".gpc-actualizar").click(function () {
                 if (confirm("Usted está a punto de notificar la actualizacion del presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(16, "Se debe actualizar el presupuesto.");
+                    CambiarEstado(11, "Se debe actualizar el presupuesto.");
                 }
                 return false;
             });            
@@ -103,7 +103,7 @@
             });
             $(".gpc-justificarOK").click(function () {
                 if (confirm("Usted está a punto de notificar una justificacion. ¿Confirmar Cambios?")) {
-                    CambiarEstado(15, $("#tbJustificar").val());
+                    CambiarEstado(10, $("#tbJustificar").val());
                 }
                 return false;
             });
