@@ -33,6 +33,7 @@ namespace DemoMVC.ControllerFactory
             ninjectKernel.Bind<IGPCPartidaRespository>().To<GPCPartidaRespository>();
             ninjectKernel.Bind<IGPCPresupuestoRepository>().To<GPCPresupuestoRepository>();
             ninjectKernel.Bind<IGPCSolicitudesRepository>().To<GPCSolicitudesRepository>();
+            ninjectKernel.Bind<IGPCInconsistenciaPresupuestoObraRepository>().To<GPCInconsistenciaPresupuestoObraRepository>();
         }
     }
 }
