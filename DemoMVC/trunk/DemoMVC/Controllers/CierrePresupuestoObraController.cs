@@ -22,6 +22,7 @@ namespace GYM.SIC.GPC.Controllers
         private IGPCNotificacionesRepository EFNotificaciones;
         private IGPCSolicitudesRepository EFSolicitudes;
         private IGPCCronogramaRepository EFCronograma;
+        private IGPCInconsistenciaPresupuestoObraRepository EFInconsistencia;
 
         public CierrePresupuestoObraController(
             IGPCPresupuestoRepository EFPresupuesto,
@@ -29,7 +30,8 @@ namespace GYM.SIC.GPC.Controllers
             IGPCHistoricoAprobacionesRepository EFHistoricoAprobaciones,
             IGPCNotificacionesRepository EFNotificaciones,
             IGPCSolicitudesRepository EFSolicitudes,
-            IGPCCronogramaRepository EFCronograma)
+            IGPCCronogramaRepository EFCronograma,
+            IGPCInconsistenciaPresupuestoObraRepository EFInconsistencia)
         {
             this.EFPresupuesto = EFPresupuesto;
             this.EFPartida = EFPartida;
@@ -37,6 +39,7 @@ namespace GYM.SIC.GPC.Controllers
             this.EFNotificaciones = EFNotificaciones;
             this.EFSolicitudes = EFSolicitudes;
             this.EFCronograma = EFCronograma;
+            this.EFInconsistencia = EFInconsistencia;
         }
 
 
@@ -93,24 +96,37 @@ namespace GYM.SIC.GPC.Controllers
                 presupuesto.Observaciones = Observacion;
             }
 
-            //con inconsistencias   15
-            if (Estado == EstadosParameters.Presupuesto_con_Inconsistencias)
-            {
-                mensaje = "Se ha notificado la justificacion de las inconsistencias.";
-            }
- 
-
-            // solicitar actualizacion  16
-            if (Estado == EstadosParameters.En_solicitud_de_Actualización)
+            if (Estado == EstadosParameters.Con_Inconsistencias || Estado == EstadosParameters.En_solicitud_de_Actualizacion)
             {
                 var notificaciones = new GPC_Notificacion
                 {
                     FechaRegistro = DateTime.Now,
                     Observacion = Observacion,
-                    IDPresupuestoObra = presupuesto.IDPresupuestoObra,
+                    IDPresupuestoObra = presupuesto.IDPresupuestoObra
                 };
                 EFNotificaciones.ActualizarNotificaciones(notificaciones);
-                mensaje = "Se ha notificado la actualización del presupuesto.";
+
+                //con inconsistencias   10
+                if (Estado == EstadosParameters.Con_Inconsistencias)
+                {
+                    var inconsistencias = new GPC_InconsistenciaPresupuestoObra
+                    {
+                        IDPresupuestoObra = presupuesto.IDPresupuestoObra,
+                        IDUsuarioGenera = 1,
+                        FechaRegistro = DateTime.Now,
+                        Observacion = Observacion
+                    };
+                    EFInconsistencia.ActualizarInconsistencias(inconsistencias);
+                    mensaje = "Se ha notificado la justificacion de las inconsistencias.";
+                }
+
+
+                // solicitar actualizacion  11
+                if (Estado == EstadosParameters.En_solicitud_de_Actualizacion)
+                {
+                    presupuesto.Observaciones = Observacion;
+                    mensaje = "Se ha notificado la actualización del presupuesto.";
+                }
             }
 
             EFPresupuesto.ActualizarPresupuesto(presupuesto);
