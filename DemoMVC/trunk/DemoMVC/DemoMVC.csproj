@@ -137,8 +137,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GSC_DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\LegalDeclaracionFabricaDocumento.cs" />
     <Compile Include="Models\LegalRequerimiento.cs" />
     <Compile Include="Models\LegalRequerimientoCN.cs" />
+    <Compile Include="Models\LegalRequerimientoDeclaracionFabrica.cs" />
     <Compile Include="Models\LegalRequerimientoPlantillaContrato.cs" />
     <Compile Include="Models\ListarForm.cs" />
     <Compile Include="Models\PartidasModel.cs" />

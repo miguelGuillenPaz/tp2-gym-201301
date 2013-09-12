@@ -125,7 +125,7 @@ namespace DemoMVC.Controllers
                 //Host = "smtp.gmail.com",
                 Host = System.Configuration.ConfigurationManager.AppSettings["smtpServer"],
                 //Port = 587,
-                Port = Convert.ToInt32( System.Configuration.ConfigurationManager.AppSettings["smtpPort"]),
+                Port = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["smtpPort"]),
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
@@ -184,7 +184,7 @@ namespace DemoMVC.Controllers
 
             if (clausulas != null)
             {
-                
+
                 foreach (Dictionary<string, object> itemsJson in clausulas)
                 {
                     legalReq.objLegalPC.DescripcionClausula = (string)itemsJson["DescripcionClausula"];
@@ -265,12 +265,12 @@ namespace DemoMVC.Controllers
 
                 if (listadoRequerimiento == null)
                 {
-                    Response.Write("<script>window.alert('No existen valores')</script>");
+                    Utils.ShowMessage(ViewData, "No existen datos", Url.Action("listarRequerimientos", "Legal", new { id = 0 }));
                 }
             }
             catch (Exception e)
             {
-                Response.Write("<script>window.alert('Datos incorrectos')</script>");
+                Utils.ShowMessage(ViewData, "Datos Incorrectos", Url.Action("listarRequerimientos", "Legal", new { id = 0 }));
             }
 
 
@@ -324,22 +324,95 @@ namespace DemoMVC.Controllers
             ProyectoDAO proye = new ProyectoDAO();
             ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
 
-            
+
             return View();
         }
 
         [HttpPost]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult RegistrarDeclaracionFabrica(HttpPostedFileBase file1,FormCollection formCollection )
+        public ActionResult RegistrarDeclaracionFabrica(HttpPostedFileBase file1, FormCollection formCollection)
         {
             if (ModelState.IsValid)
             {
+                Boolean valida = new Boolean();
+                valida = false;
                 ProyectoDAO proye = new ProyectoDAO();
                 ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
 
-                if (file1 == null)
+                if (formCollection["file1"] == null)
                 {
-                    Utils.ShowMessage(ViewData, "Error", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    Utils.ShowMessage(ViewData, "Cargar el archivo de declaración de fábrica", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    valida = true;
+                }
+                               
+                if (formCollection["file2"] == null)
+                {
+                    Utils.ShowMessage(ViewData, "Cargar el archivo de Planos", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    valida = true;
+                }
+                if (formCollection["file3"] == null)
+                {
+                    Utils.ShowMessage(ViewData, "Cargar el archivo de verificación técnica", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    valida = true;
+                }
+                if (formCollection["txtDescripcion"].ToString().Trim() == "")
+                {
+                    Utils.ShowMessage(ViewData, "Registrar descripción del requerimiento", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    valida = true;
+                }
+                if (formCollection["idProyecto"] == "")
+                {
+                    Utils.ShowMessage(ViewData, "Seleccionar un proyecto", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    valida = true;                
+                }
+                
+                if (valida == true){
+
+                }
+                else
+                {
+
+                    String idProyecto = formCollection["idProyecto"];
+
+                    LegalRequerimiento legalReq = new LegalRequerimiento();
+                    legalReq.idReqLegalTipo = 3;
+                    legalReq.idProyecto = Convert.ToInt16(idProyecto);
+                    legalReq.cDescripcion = formCollection["txtDescripcion"];
+
+                    LegalDAO legalDAO = new LegalDAO();
+                    int nuevoIdReqLegal = legalDAO.insertarRequerimientoLegal(legalReq);
+
+                    LegalRequerimientoDeclaracionFabrica legalReqDec = new LegalRequerimientoDeclaracionFabrica();
+                    legalReqDec.idReqDecFab = nuevoIdReqLegal;
+                    legalReqDec.DeclaracionFabrica = 1234;
+
+                    legalDAO.insertarRequerimientoDeclaracionFabrica(legalReqDec);
+
+                    LegalDeclaracionFabricaDocumento legalDoc = new LegalDeclaracionFabricaDocumento();
+                    legalDoc.idDeclaracionFabricaDocumento = nuevoIdReqLegal;
+                    legalDoc.idDeclaracionFabricaTipo = 1;
+                    legalDoc.descripcionDocumento = "Declaración de fábrica";
+                    legalDoc.ruta = formCollection["file1"].ToString();
+
+                    legalDAO.insertarRequerimientoDeclaracionFabricaDocumento(legalDoc);
+
+                    LegalDeclaracionFabricaDocumento legaldoc2 = new LegalDeclaracionFabricaDocumento();
+                    legaldoc2.idDeclaracionFabricaDocumento = nuevoIdReqLegal;
+                    legaldoc2.idDeclaracionFabricaTipo = 2;
+                    legaldoc2.descripcionDocumento = "Planos";
+                    legaldoc2.ruta = formCollection["file2"].ToString();
+
+                    legalDAO.insertarRequerimientoDeclaracionFabricaDocumento(legaldoc2);
+
+                    LegalDeclaracionFabricaDocumento legaldoc3 = new LegalDeclaracionFabricaDocumento();
+                    legaldoc3.idDeclaracionFabricaDocumento = nuevoIdReqLegal;
+                    legaldoc3.idDeclaracionFabricaTipo = 2;
+                    legaldoc3.descripcionDocumento = "Informe de verificación técnica";
+                    legaldoc3.ruta = formCollection["file3"].ToString();
+
+                    legalDAO.insertarRequerimientoDeclaracionFabricaDocumento(legaldoc2);
+
+                    Utils.ShowMessage(ViewData, "Registro exitoso", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
                 }
             }
 

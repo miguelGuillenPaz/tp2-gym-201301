@@ -352,6 +352,91 @@ namespace DemoMVC.Persistencia
             }
             return listaEstadoRequerimiento;
         }
-        
+
+        public int insertarRequerimientoDeclaracionFabrica(LegalRequerimientoDeclaracionFabrica legalReqDec)
+        {
+            int nuevoIdReqLegal = 0;
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                SqlTransaction sqlTransaction = null;
+                try
+                {
+                    SqlCommand cmdIns = new SqlCommand("pa_GJ_RequerimientolegalDeclaracion_Insertar", con);
+                    cmdIns.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    con.Open();
+                    sqlTransaction = con.BeginTransaction();
+
+                    cmdIns.Parameters.Add(new SqlParameter("@idRequerimientoLegal", legalReqDec.idReqDecFab));
+                    cmdIns.Parameters.Add(new SqlParameter("@declaracion", legalReqDec.DeclaracionFabrica));
+                    
+                    cmdIns.Transaction = sqlTransaction;
+                    //totIns = cmdIns.ExecuteNonQuery();
+                    nuevoIdReqLegal = Convert.ToInt32(cmdIns.ExecuteScalar());
+                    sqlTransaction.Commit();
+
+                    con.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    if (sqlTransaction != null) sqlTransaction.Rollback();
+                    throw new Exception(ex.ToString(), ex);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open) con.Close();
+                    sqlTransaction.Dispose();
+                }
+            }
+
+            return nuevoIdReqLegal;
+        }
+
+        public int insertarRequerimientoDeclaracionFabricaDocumento(LegalDeclaracionFabricaDocumento legalReqDecFabDocumento)
+        {
+            int nuevoIdReqLegal = 0;
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                SqlTransaction sqlTransaction = null;
+                try
+                {
+                    SqlCommand cmdIns = new SqlCommand("pa_GJ_RequerimientolegalDeclaracionDocumento_Insertar", con);
+                    cmdIns.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    con.Open();
+                    sqlTransaction = con.BeginTransaction();
+
+                    cmdIns.Parameters.Add(new SqlParameter("@idRequerimientoLegalDeclaracion", legalReqDecFabDocumento.idDeclaracionFabricaDocumento));
+                    cmdIns.Parameters.Add(new SqlParameter("@idDeclaracionFabricaDocumentoTipo", legalReqDecFabDocumento.idDeclaracionFabricaTipo));
+                    cmdIns.Parameters.Add(new SqlParameter("@descripcion", legalReqDecFabDocumento.descripcionDocumento));
+                    cmdIns.Parameters.Add(new SqlParameter("@Ruta", legalReqDecFabDocumento.ruta));
+
+                    cmdIns.Transaction = sqlTransaction;
+                    //totIns = cmdIns.ExecuteNonQuery();
+                    nuevoIdReqLegal = Convert.ToInt32(cmdIns.ExecuteScalar());
+                    
+                    sqlTransaction.Commit();
+
+                    con.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    if (sqlTransaction != null) sqlTransaction.Rollback();
+                    throw new Exception(ex.ToString(), ex);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open) con.Close();
+                    sqlTransaction.Dispose();
+                }
+            }
+
+            return nuevoIdReqLegal;
+        }
+
     }
 }
