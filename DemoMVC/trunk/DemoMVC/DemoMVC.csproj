@@ -139,6 +139,7 @@
     </Compile>
     <Compile Include="Models\LegalRequerimiento.cs" />
     <Compile Include="Models\LegalRequerimientoCN.cs" />
+    <Compile Include="Models\LegalRequerimientoPlantillaContrato.cs" />
     <Compile Include="Models\ListarForm.cs" />
     <Compile Include="Models\PartidasModel.cs" />
     <Compile Include="Models\PlanProyecto.cs" />

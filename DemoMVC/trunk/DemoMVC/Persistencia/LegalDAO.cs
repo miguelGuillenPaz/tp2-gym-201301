@@ -58,7 +58,6 @@ namespace DemoMVC.Persistencia
         }
 
         //Solicitud Requerimiento Legal - Listado de Vecinos
-        //me sale error, no encuentra la clase LegalRequerimientoCN
         public int insertarRequerimientoLegalVecinos(LegalRequerimientoCN vecinoColLegal)
         {
             int totIns = 0;
@@ -108,6 +107,59 @@ namespace DemoMVC.Persistencia
             return totIns;
         }
 
+        public bool insertarRequerimientoLegalPlantillaContrato(LegalRequerimientoPlantillaContrato plantillaContrato)
+        {
+            bool exito = false;
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                SqlTransaction sqlTransaction = null;
+                try
+                {
+                    SqlCommand cmdIns = new SqlCommand("pa_GJ_RequerimientoLegalPC_Insertar", con);
+                    cmdIns.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    con.Open();
+                    sqlTransaction = con.BeginTransaction();
+
+                    cmdIns.Parameters.Add(new SqlParameter("@idReqLegal", plantillaContrato.idReqLegal));
+                    cmdIns.Parameters.Add(new SqlParameter("@idContratoLegalTipo", plantillaContrato.idContratoLegalTipo));
+                    cmdIns.Parameters.Add(new SqlParameter("@TieneClausulaAdicional", plantillaContrato.TieneClausulaAdicional));
+                    //Plazo Indeterminado
+                    cmdIns.Parameters.Add(new SqlParameter("@NombreTrabajador", plantillaContrato.NombreTrabajador));
+                    cmdIns.Parameters.Add(new SqlParameter("@DniTrabajador", plantillaContrato.DniTrabajador));
+                    cmdIns.Parameters.Add(new SqlParameter("@Cargo", plantillaContrato.Cargo));
+                    cmdIns.Parameters.Add(new SqlParameter("@LaborDesempenar", plantillaContrato.LaborDesempenar));
+                    cmdIns.Parameters.Add(new SqlParameter("@HoraInicioLabor", plantillaContrato.HoraInicioLabor));
+                    cmdIns.Parameters.Add(new SqlParameter("@HoraFinLabor", plantillaContrato.HoraFinLabor));
+                    cmdIns.Parameters.Add(new SqlParameter("@HoraInicioRefrigerio", plantillaContrato.HoraInicioRefrigerio));
+                    cmdIns.Parameters.Add(new SqlParameter("@HoraFinRefrigerio", plantillaContrato.HoraFinRefrigerio));
+                    cmdIns.Parameters.Add(new SqlParameter("@PeriodoPrueba", plantillaContrato.PeriodoPrueba));
+
+                    cmdIns.Transaction = sqlTransaction;
+                    cmdIns.ExecuteNonQuery();
+                    sqlTransaction.Commit();
+
+                    con.Close();
+
+                    exito = true;
+
+                }
+                catch (Exception ex)
+                {
+                    if (sqlTransaction != null) sqlTransaction.Rollback();
+                    exito = false;
+                    throw new Exception(ex.ToString(), ex);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open) con.Close();
+                    sqlTransaction.Dispose();
+                }
+            }
+
+            return exito;
+        }
 
         public List<Requerimiento> listarRequerimiento(Int16 idRequerimiento, Int16 idProyecto, Int16 idTipo, Int16 idEstado, DateTime fecIni, DateTime fecFin)
         {

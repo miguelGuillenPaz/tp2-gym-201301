@@ -143,6 +143,76 @@ namespace DemoMVC.Controllers
 
         }
 
+        public ActionResult ConfirmacionPlantillaContrato(int idPro,
+                                                            string desc,
+                                                            string nombreTrab,
+                                                            string dniTrab,
+                                                            string cargoTrab,
+                                                            string laborDesempenar,
+                                                            string horaIniLabor,
+                                                            string horaFinLabor,
+                                                            string horaIniRefri,
+                                                            string horaFinRefri,
+                                                            string periodoPrueba,
+                                                            string arrClausulas)
+        {
+            Session["bInsertSuccess"] = false;
+
+            LegalRequerimiento legalReq = new LegalRequerimiento();
+            legalReq.idReqLegalTipo = 2;
+            legalReq.idProyecto = idPro;
+            legalReq.cDescripcion = desc;
+
+            legalReq.objLegalPC = new LegalRequerimientoPlantillaContrato();
+            legalReq.objLegalPC.NombreTrabajador = nombreTrab;
+            legalReq.objLegalPC.DniTrabajador = dniTrab;
+            legalReq.objLegalPC.Cargo = cargoTrab;
+            legalReq.objLegalPC.LaborDesempenar = laborDesempenar;
+            legalReq.objLegalPC.HoraInicioLabor = horaIniLabor;
+            legalReq.objLegalPC.HoraFinLabor = horaFinLabor;
+            legalReq.objLegalPC.HoraInicioRefrigerio = horaIniRefri;
+            legalReq.objLegalPC.HoraFinRefrigerio = horaFinRefri;
+            legalReq.objLegalPC.PeriodoPrueba = periodoPrueba;
+
+            LegalDAO legalDAO = new LegalDAO();
+            int nuevoIdReqLegal = legalDAO.insertarRequerimientoLegal(legalReq);
+
+            //Insertar Plantilla y contrato, con sus cláusulas adicionales (si hubieran)
+            var jsSer = new JavaScriptSerializer();
+            var clausulas = (object[])jsSer.DeserializeObject(arrClausulas);
+            bool exitoClausulasIns = false;
+
+            if (clausulas != null)
+            {
+                
+                foreach (Dictionary<string, object> itemsJson in clausulas)
+                {
+                    legalReq.objLegalPC.DescripcionClausula = (string)itemsJson["DescripcionClausula"];
+                    exitoClausulasIns = legalDAO.insertarRequerimientoLegalPlantillaContrato(legalReq.objLegalPC);
+                }
+            }
+
+            if (nuevoIdReqLegal > 0)
+            {
+                if (legalReq.objLegalPC.TieneClausulaAdicional)
+                {
+                    if (exitoClausulasIns) Session["bInsertSuccess"] = true; else { Session["bInsertSuccess"] = false; }
+                }
+                else
+                {
+                    Session["bInsertSuccess"] = true;
+                }
+            }
+            else
+            {
+                Session["bInsertSuccess"] = false;
+            }
+
+            ProyectoDAO proye = new ProyectoDAO();
+            ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "IdProyecto", "nomPro");
+            return View("Registrar");
+        }
+
         public ActionResult listarRequerimientos()
         {
             LegalDAO proye = new LegalDAO();

@@ -197,6 +197,7 @@ function validarForm() {
     //var idPro = $('#cboProyecto');
     var idPro = $('#idProyecto');
     var desc = $('#txtDescripcion');
+    alert(idPro.val());
 
     if (idPro.val() <= 0) {
         alert('Debe seleccionar el proyecto asociado al requerimiento legal a solicitar.');
