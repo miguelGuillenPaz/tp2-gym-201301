@@ -27,13 +27,13 @@
                 success: function (result) {
 
                     var mText = "";
-                    if (IdEstado == 11) { // Cerrado por el Supervisor de Presupuesto
+                    if (IdEstado == 9) { // Cerrado por el Supervisor de Presupuesto
                         //mText = "La Aprobación ha sido realizada.";
                         $("#modalCerrar").dialog("close");
-                    } else if (IdEstado == 12) { // Presupuesto con Inconsistencias
+                    } else if (IdEstado == 15) { // Presupuesto con Inconsistencias
                         //mText = "Se ha rechazado el presupuesto correctamente.";
                         $("#modalActualizar").dialog("close");
-                    } else if (IdEstado == 17) { // En solicitud de Actualización
+                    } else if (IdEstado == 16) { // En solicitud de Actualización
                         //mText = "Se ha solicitado la anulación del presupuesto.";
                         $("#modalJustificar").dialog("close");
                     }
@@ -85,8 +85,8 @@
                 return false;
             });
             $(".gpc-actualizar").click(function () {
-                if (confirm("Usted está a punto de rechazar el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(13, "");
+                if (confirm("Usted está a punto de notificar la actualizacion del presupuesto asignado. ¿Confirmar Cambios?")) {
+                    CambiarEstado(16, "");
                 }
                 return false;
             });            
@@ -96,14 +96,14 @@
                 return false;
             });
             $(".gpc-cerrarOK").click(function () {
-                if (confirm("Usted está a punto de aprobar el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(11, $("#tbCerrar").val());
+                if (confirm("Usted está a punto de cerrar el presupuesto asignado. ¿Confirmar Cambios?")) {
+                    CambiarEstado(9, $("#tbCerrar").val());
                 }
                 return false;
             });
             $(".gpc-justificarOK").click(function () {
-                if (confirm("Usted está a punto de anular el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(12, $("#tbJustificar").val());
+                if (confirm("Usted está a punto de notificar una justificacion. ¿Confirmar Cambios?")) {
+                    CambiarEstado(15, $("#tbJustificar").val());
                 }
                 return false;
             });
