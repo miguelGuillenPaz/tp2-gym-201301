@@ -6,8 +6,6 @@
     <edmx:StorageModels>
     <Schema Namespace="GSC_Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="GSC_ModelStoreContainer">
-          <EntitySet Name="GPP_DetalleRequerimiento" EntityType="GSC_Model.Store.GPP_DetalleRequerimiento" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GPP_Requerimiento" EntityType="GSC_Model.Store.GPP_Requerimiento" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GSC_CalificacionServicioProveedorTipoServicio" EntityType="GSC_Model.Store.GSC_CalificacionServicioProveedorTipoServicio" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GSC_Cotizacion" EntityType="GSC_Model.Store.GSC_Cotizacion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GSC_DetalleCotizacion" EntityType="GSC_Model.Store.GSC_DetalleCotizacion" store:Type="Tables" Schema="dbo" />
@@ -37,10 +35,6 @@
           <AssociationSet Name="FK__GSC_Cotiz__IdSol__3D5E1FD2" Association="GSC_Model.Store.FK__GSC_Cotiz__IdSol__3D5E1FD2">
             <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
             <End Role="GSC_Cotizacion" EntitySet="GSC_Cotizacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__GSC_DetalleSolic__44FF419A" Association="GSC_Model.Store.FK__GSC_DetalleSolic__44FF419A">
-            <End Role="GPP_DetalleRequerimiento" EntitySet="GPP_DetalleRequerimiento" />
-            <End Role="GSC_DetalleSolicitudRequerimiento" EntitySet="GSC_DetalleSolicitudRequerimiento" />
           </AssociationSet>
           <AssociationSet Name="FK__GSC_Solic__IdEst__5070F446" Association="GSC_Model.Store.FK__GSC_Solic__IdEst__5070F446">
             <End Role="GSC_Estado" EntitySet="GSC_Estado" />
@@ -81,10 +75,6 @@
           <AssociationSet Name="FK_DetalleCotizacion_UnidadMedida" Association="GSC_Model.Store.FK_DetalleCotizacion_UnidadMedida">
             <End Role="GSC_UnidadMedida" EntitySet="GSC_UnidadMedida" />
             <End Role="GSC_DetalleCotizacion" EntitySet="GSC_DetalleCotizacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DetalleRequerimiento_Requerimiento" Association="GSC_Model.Store.FK_DetalleRequerimiento_Requerimiento">
-            <End Role="GPP_Requerimiento" EntitySet="GPP_Requerimiento" />
-            <End Role="GPP_DetalleRequerimiento" EntitySet="GPP_DetalleRequerimiento" />
           </AssociationSet>
           <AssociationSet Name="FK_DetalleSolicitudRequerimiento_SolicitudCotizacion" Association="GSC_Model.Store.FK_DetalleSolicitudRequerimiento_SolicitudCotizacion">
             <End Role="GSC_SolicitudCotizacion" EntitySet="GSC_SolicitudCotizacion" />
@@ -147,37 +137,6 @@
             <End Role="GSC_SolicitudProveedorTipoServicio" EntitySet="GSC_SolicitudProveedorTipoServicio" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="GPP_DetalleRequerimiento">
-          <Key>
-            <PropertyRef Name="IdProyecto" />
-            <PropertyRef Name="IdRequerimiento" />
-            <PropertyRef Name="IdCorDetReq" />
-          </Key>
-          <Property Name="IdProyecto" Type="int" Nullable="false" />
-          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
-          <Property Name="IdCorDetReq" Type="int" Nullable="false" />
-          <Property Name="CanDetReq" Type="int" />
-          <Property Name="FecInicio" Type="datetime" />
-          <Property Name="FecFin" Type="datetime" />
-          <Property Name="DesServicio" Type="varchar" MaxLength="200" />
-          <Property Name="ActServicio" Type="char" MaxLength="1" />
-          <Property Name="IdUnidadMedida" Type="int" />
-          <Property Name="IdTipoServicio" Type="int" />
-          <Property Name="IdEmpleado" Type="int" />
-          <Property Name="IdRecurso" Type="int" />
-        </EntityType>
-        <EntityType Name="GPP_Requerimiento">
-          <Key>
-            <PropertyRef Name="IdProyecto" />
-            <PropertyRef Name="IdRequerimiento" />
-          </Key>
-          <Property Name="IdProyecto" Type="int" Nullable="false" />
-          <Property Name="IdRequerimiento" Type="int" Nullable="false" />
-          <Property Name="DescripReq" Type="varchar" MaxLength="50" />
-          <Property Name="FechaReq" Type="datetime" />
-          <Property Name="PriReq" Type="varchar" MaxLength="3" />
-          <Property Name="IdTipoRecurso" Type="int" />
-        </EntityType>
         <EntityType Name="GSC_CalificacionServicioProveedorTipoServicio">
           <Key>
             <PropertyRef Name="IdRequerimiento" />
@@ -469,22 +428,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GSC_DetalleSolic__44FF419A">
-          <End Role="GPP_DetalleRequerimiento" Type="GSC_Model.Store.GPP_DetalleRequerimiento" Multiplicity="0..1" />
-          <End Role="GSC_DetalleSolicitudRequerimiento" Type="GSC_Model.Store.GSC_DetalleSolicitudRequerimiento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GPP_DetalleRequerimiento">
-              <PropertyRef Name="IdProyecto" />
-              <PropertyRef Name="IdRequerimiento" />
-              <PropertyRef Name="IdCorDetReq" />
-            </Principal>
-            <Dependent Role="GSC_DetalleSolicitudRequerimiento">
-              <PropertyRef Name="IdProyecto" />
-              <PropertyRef Name="IdRequerimiento" />
-              <PropertyRef Name="IdCorDetReq" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__GSC_Solic__IdEst__5070F446">
           <End Role="GSC_Estado" Type="GSC_Model.Store.GSC_Estado" Multiplicity="0..1" />
           <End Role="GSC_SolicitudCotizacion" Type="GSC_Model.Store.GSC_SolicitudCotizacion" Multiplicity="*" />
@@ -612,20 +555,6 @@
             </Principal>
             <Dependent Role="GSC_DetalleCotizacion">
               <PropertyRef Name="IdUnidadMedida" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DetalleRequerimiento_Requerimiento">
-          <End Role="GPP_Requerimiento" Type="GSC_Model.Store.GPP_Requerimiento" Multiplicity="1" />
-          <End Role="GPP_DetalleRequerimiento" Type="GSC_Model.Store.GPP_DetalleRequerimiento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GPP_Requerimiento">
-              <PropertyRef Name="IdProyecto" />
-              <PropertyRef Name="IdRequerimiento" />
-            </Principal>
-            <Dependent Role="GPP_DetalleRequerimiento">
-              <PropertyRef Name="IdProyecto" />
-              <PropertyRef Name="IdRequerimiento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -840,8 +769,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="GSC_Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="GSC_Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="GPP_DetalleRequerimiento" EntityType="GSC_Model.GPP_DetalleRequerimiento" />
-          <EntitySet Name="GPP_Requerimiento" EntityType="GSC_Model.GPP_Requerimiento" />
           <EntitySet Name="GSC_CalificacionServicioProveedorTipoServicio" EntityType="GSC_Model.GSC_CalificacionServicioProveedorTipoServicio" />
           <EntitySet Name="GSC_Cotizacion" EntityType="GSC_Model.GSC_Cotizacion" />
           <EntitySet Name="GSC_DetalleCotizacion" EntityType="GSC_Model.GSC_DetalleCotizacion" />
@@ -864,14 +791,6 @@
           <EntitySet Name="GSC_SolicitudProveedorTipoServicio" EntityType="GSC_Model.GSC_SolicitudProveedorTipoServicio" />
           <EntitySet Name="GSC_TipoServicio" EntityType="GSC_Model.GSC_TipoServicio" />
           <EntitySet Name="GSC_UnidadMedida" EntityType="GSC_Model.GSC_UnidadMedida" />
-          <AssociationSet Name="FK__GSC_DetalleSolic__44FF419A" Association="GSC_Model.FK__GSC_DetalleSolic__44FF419A">
-            <End Role="GPP_DetalleRequerimiento" EntitySet="GPP_DetalleRequerimiento" />
-            <End Role="GSC_DetalleSolicitudRequerimiento" EntitySet="GSC_DetalleSolicitudRequerimiento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DetalleRequerimiento_Requerimiento" Association="GSC_Model.FK_DetalleRequerimiento_Requerimiento">
-            <End Role="GPP_Requerimiento" EntitySet="GPP_Requerimiento" />
-            <End Role="GPP_DetalleRequerimiento" EntitySet="GPP_DetalleRequerimiento" />
-          </AssociationSet>
           <AssociationSet Name="FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio" Association="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio">
             <End Role="GSC_ParametroCalificacionTipoServicio" EntitySet="GSC_ParametroCalificacionTipoServicio" />
             <End Role="GSC_CalificacionServicioProveedorTipoServicio" EntitySet="GSC_CalificacionServicioProveedorTipoServicio" />
@@ -981,40 +900,6 @@
             <End Role="GSC_SolicitudProveedorTipoServicio" EntitySet="GSC_SolicitudProveedorTipoServicio" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="GPP_DetalleRequerimiento">
-          <Key>
-            <PropertyRef Name="IdProyecto" />
-            <PropertyRef Name="IdRequerimiento" />
-            <PropertyRef Name="IdCorDetReq" />
-          </Key>
-          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
-          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
-          <Property Type="Int32" Name="IdCorDetReq" Nullable="false" />
-          <Property Type="Int32" Name="CanDetReq" />
-          <Property Type="DateTime" Name="FecInicio" />
-          <Property Type="DateTime" Name="FecFin" />
-          <Property Type="String" Name="DesServicio" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="ActServicio" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Type="Int32" Name="IdUnidadMedida" />
-          <Property Type="Int32" Name="IdTipoServicio" />
-          <Property Type="Int32" Name="IdEmpleado" />
-          <Property Type="Int32" Name="IdRecurso" />
-          <NavigationProperty Name="GSC_DetalleSolicitudRequerimiento" Relationship="GSC_Model.FK__GSC_DetalleSolic__44FF419A" FromRole="GPP_DetalleRequerimiento" ToRole="GSC_DetalleSolicitudRequerimiento" />
-          <NavigationProperty Name="GPP_Requerimiento" Relationship="GSC_Model.FK_DetalleRequerimiento_Requerimiento" FromRole="GPP_DetalleRequerimiento" ToRole="GPP_Requerimiento" />
-        </EntityType>
-        <EntityType Name="GPP_Requerimiento">
-          <Key>
-            <PropertyRef Name="IdProyecto" />
-            <PropertyRef Name="IdRequerimiento" />
-          </Key>
-          <Property Type="Int32" Name="IdProyecto" Nullable="false" />
-          <Property Type="Int32" Name="IdRequerimiento" Nullable="false" />
-          <Property Type="String" Name="DescripReq" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="FechaReq" />
-          <Property Type="String" Name="PriReq" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="IdTipoRecurso" />
-          <NavigationProperty Name="GPP_DetalleRequerimiento" Relationship="GSC_Model.FK_DetalleRequerimiento_Requerimiento" FromRole="GPP_Requerimiento" ToRole="GPP_DetalleRequerimiento" />
-        </EntityType>
         <EntityType Name="GSC_CalificacionServicioProveedorTipoServicio">
           <Key>
             <PropertyRef Name="IdRequerimiento" />
@@ -1091,7 +976,6 @@
           <Property Type="Int32" Name="IdProyecto" />
           <Property Type="Int32" Name="IdRequerimiento" />
           <Property Type="Int32" Name="IdCorDetReq" />
-          <NavigationProperty Name="GPP_DetalleRequerimiento" Relationship="GSC_Model.FK__GSC_DetalleSolic__44FF419A" FromRole="GSC_DetalleSolicitudRequerimiento" ToRole="GPP_DetalleRequerimiento" />
           <NavigationProperty Name="GSC_DetalleCotizacion" Relationship="GSC_Model.FK_DetalleCotizacion_DetalleSolicitud" FromRole="GSC_DetalleSolicitudRequerimiento" ToRole="GSC_DetalleCotizacion" />
           <NavigationProperty Name="GSC_SolicitudCotizacion" Relationship="GSC_Model.FK_DetalleSolicitudRequerimiento_SolicitudCotizacion" FromRole="GSC_DetalleSolicitudRequerimiento" ToRole="GSC_SolicitudCotizacion" />
         </EntityType>
@@ -1337,36 +1221,6 @@
           <Property Type="String" Name="AbrviaUMedi" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="GSC_DetalleCotizacion" Relationship="GSC_Model.FK_DetalleCotizacion_UnidadMedida" FromRole="GSC_UnidadMedida" ToRole="GSC_DetalleCotizacion" />
         </EntityType>
-        <Association Name="FK__GSC_DetalleSolic__44FF419A">
-          <End Type="GSC_Model.GPP_DetalleRequerimiento" Role="GPP_DetalleRequerimiento" Multiplicity="0..1" />
-          <End Type="GSC_Model.GSC_DetalleSolicitudRequerimiento" Role="GSC_DetalleSolicitudRequerimiento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GPP_DetalleRequerimiento">
-              <PropertyRef Name="IdProyecto" />
-              <PropertyRef Name="IdRequerimiento" />
-              <PropertyRef Name="IdCorDetReq" />
-            </Principal>
-            <Dependent Role="GSC_DetalleSolicitudRequerimiento">
-              <PropertyRef Name="IdProyecto" />
-              <PropertyRef Name="IdRequerimiento" />
-              <PropertyRef Name="IdCorDetReq" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DetalleRequerimiento_Requerimiento">
-          <End Type="GSC_Model.GPP_Requerimiento" Role="GPP_Requerimiento" Multiplicity="1" />
-          <End Type="GSC_Model.GPP_DetalleRequerimiento" Role="GPP_DetalleRequerimiento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GPP_Requerimiento">
-              <PropertyRef Name="IdProyecto" />
-              <PropertyRef Name="IdRequerimiento" />
-            </Principal>
-            <Dependent Role="GPP_DetalleRequerimiento">
-              <PropertyRef Name="IdProyecto" />
-              <PropertyRef Name="IdRequerimiento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio">
           <End Type="GSC_Model.GSC_ParametroCalificacionTipoServicio" Role="GSC_ParametroCalificacionTipoServicio" Multiplicity="1" />
           <End Type="GSC_Model.GSC_CalificacionServicioProveedorTipoServicio" Role="GSC_CalificacionServicioProveedorTipoServicio" Multiplicity="*" />
@@ -1733,36 +1587,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GSC_ModelStoreContainer" CdmEntityContainer="GSC_Entities">
-          <EntitySetMapping Name="GPP_DetalleRequerimiento">
-            <EntityTypeMapping TypeName="GSC_Model.GPP_DetalleRequerimiento">
-              <MappingFragment StoreEntitySet="GPP_DetalleRequerimiento">
-                <ScalarProperty Name="IdRecurso" ColumnName="IdRecurso" />
-                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-                <ScalarProperty Name="IdTipoServicio" ColumnName="IdTipoServicio" />
-                <ScalarProperty Name="IdUnidadMedida" ColumnName="IdUnidadMedida" />
-                <ScalarProperty Name="ActServicio" ColumnName="ActServicio" />
-                <ScalarProperty Name="DesServicio" ColumnName="DesServicio" />
-                <ScalarProperty Name="FecFin" ColumnName="FecFin" />
-                <ScalarProperty Name="FecInicio" ColumnName="FecInicio" />
-                <ScalarProperty Name="CanDetReq" ColumnName="CanDetReq" />
-                <ScalarProperty Name="IdCorDetReq" ColumnName="IdCorDetReq" />
-                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
-                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GPP_Requerimiento">
-            <EntityTypeMapping TypeName="GSC_Model.GPP_Requerimiento">
-              <MappingFragment StoreEntitySet="GPP_Requerimiento">
-                <ScalarProperty Name="IdTipoRecurso" ColumnName="IdTipoRecurso" />
-                <ScalarProperty Name="PriReq" ColumnName="PriReq" />
-                <ScalarProperty Name="FechaReq" ColumnName="FechaReq" />
-                <ScalarProperty Name="DescripReq" ColumnName="DescripReq" />
-                <ScalarProperty Name="IdRequerimiento" ColumnName="IdRequerimiento" />
-                <ScalarProperty Name="IdProyecto" ColumnName="IdProyecto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GSC_CalificacionServicioProveedorTipoServicio">
             <EntityTypeMapping TypeName="GSC_Model.GSC_CalificacionServicioProveedorTipoServicio">
               <MappingFragment StoreEntitySet="GSC_CalificacionServicioProveedorTipoServicio">
@@ -2047,8 +1871,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="GSC_DB" ZoomLevel="86">
-        <EntityTypeShape EntityType="GSC_Model.GPP_DetalleRequerimiento" Width="1.5" PointX="6" PointY="18.125" Height="3.7109993489583317" />
-        <EntityTypeShape EntityType="GSC_Model.GPP_Requerimiento" Width="1.5" PointX="3.75" PointY="18.75" Height="2.5571907552083317" />
         <EntityTypeShape EntityType="GSC_Model.GSC_CalificacionServicioProveedorTipoServicio" Width="1.5" PointX="11.25" PointY="7.25" Height="2.9417936197916674" />
         <EntityTypeShape EntityType="GSC_Model.GSC_Cotizacion" Width="1.5" PointX="3" PointY="8.375" Height="5.2494108072916674" />
         <EntityTypeShape EntityType="GSC_Model.GSC_DetalleCotizacion" Width="1.5" PointX="8.25" PointY="5.375" Height="3.3263964843750031" />
@@ -2071,14 +1893,6 @@
         <EntityTypeShape EntityType="GSC_Model.GSC_SolicitudProveedorTipoServicio" Width="1.5" PointX="8.25" PointY="10" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="GSC_Model.GSC_TipoServicio" Width="1.5" PointX="0.75" PointY="9.75" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="GSC_Model.GSC_UnidadMedida" Width="1.5" PointX="6" PointY="2.75" Height="1.7879850260416674" />
-        <AssociationConnector Association="GSC_Model.FK__GSC_DetalleSolic__44FF419A" >
-          <ConnectorPoint PointX="7.5" PointY="18.783396809895834" />
-          <ConnectorPoint PointX="8.25" PointY="18.783396809895834" />
-        </AssociationConnector>
-        <AssociationConnector Association="GSC_Model.FK_DetalleRequerimiento_Requerimiento" >
-          <ConnectorPoint PointX="5.25" PointY="20.028595377604166" />
-          <ConnectorPoint PointX="6" PointY="20.028595377604166" />
-        </AssociationConnector>
         <AssociationConnector Association="GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio" >
           <ConnectorPoint PointX="7.5" PointY="9.90625" />
           <ConnectorPoint PointX="7.791666666666667" PointY="9.90625" />

@@ -1,29 +1,48 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using DemoMVC.Models;
+using DemoMVC.Persistencia;
 using GYM.SIG.Business;
-using GYM.SIG.Entity;
 
 namespace DemoMVC.Controllers
 {
     public class RequerimientoController : Controller
     {
+        private readonly string[] _seleccione = new[] { string.Empty, "--Seleccione--" };
         //
         // GET: /Requerimiento/
 
         public ActionResult Index()
         {
-            return View();
+            List<Requerimiento> requerimiento = null;
+            var requerimientoDAO = new RequerimientoDAO();
+            requerimiento = requerimientoDAO.ListarRequerimiento();
+            return View(requerimiento);
+        }
+
+        public ActionResult Editar(int id)
+        {
+            ViewData["Proyecto"] = Proyecto();
+            ViewData["TipoRecurso"] = TipoRecurso();
+            ViewData["Prioridad"] = Prioridad();
+            ViewData["UnidadMedida"] = UnidadMedida();
+            ViewData["TipoServicio"] = TipoServicio();
+            Requerimiento requerimiento = null;
+            var requerimientoDAO = new RequerimientoDAO();
+            requerimiento = requerimientoDAO.ObtenerRequerimiento(id);
+            return View(requerimiento);
         }
 
         public ViewResult ObtenerDeSolicitud(FormCollection collection, int codSolCotizacion = 0)
         {
             try
             {
-                List<DetalleRequerimiento> lista;
+                List<GYM.SIG.Entity.DetalleRequerimiento> lista;
                 if (Session["requerimientosSolicitud"] == null) lista = DetalleRequerimientoCN.Instancia.listaporSolicitud(codSolCotizacion);
-                else lista = (List<DetalleRequerimiento>)Session["requerimientosSolicitud"];
+                else lista = (List<GYM.SIG.Entity.DetalleRequerimiento>)Session["requerimientosSolicitud"];
 
                 var orderby = collection["orderby"];
                 var order = collection["order"];
@@ -79,13 +98,13 @@ namespace DemoMVC.Controllers
         {
             try
             {
-                List<DetalleRequerimiento> requerimientos;
-                if (Session["requerimientosSolicitud"] == null) requerimientos = new List<DetalleRequerimiento>();
-                else requerimientos = (List<DetalleRequerimiento>)Session["requerimientosSolicitud"];
+                List<GYM.SIG.Entity.DetalleRequerimiento> requerimientos;
+                if (Session["requerimientosSolicitud"] == null) requerimientos = new List<GYM.SIG.Entity.DetalleRequerimiento>();
+                else requerimientos = (List<GYM.SIG.Entity.DetalleRequerimiento>)Session["requerimientosSolicitud"];
 
                 for (int i = 0; i < length; i++)
                 {
-                    DetalleRequerimiento item = new DetalleRequerimiento();
+                    var item = new GYM.SIG.Entity.DetalleRequerimiento();
                     item.codReq = int.Parse(collection["lista[" + i + "][codReq]"]);
                     item.codcorDetReq = int.Parse(collection["lista[" + i + "][codcorDetReq]"]);
                     item.codPro = int.Parse(collection["lista[" + i + "][codPro]"]);
@@ -170,9 +189,9 @@ namespace DemoMVC.Controllers
         {
             try
             {
-                List<DetalleRequerimiento> requerimientos;
-                if (Session["requerimientosSolicitud"] == null) requerimientos = new List<DetalleRequerimiento>();
-                else requerimientos = (List<DetalleRequerimiento>)Session["requerimientosSolicitud"];
+                List<GYM.SIG.Entity.DetalleRequerimiento> requerimientos;
+                if (Session["requerimientosSolicitud"] == null) requerimientos = new List<GYM.SIG.Entity.DetalleRequerimiento>();
+                else requerimientos = (List<GYM.SIG.Entity.DetalleRequerimiento>)Session["requerimientosSolicitud"];
 
                 int codReq = collection["codReq"] == "" ? 0 : int.Parse(collection["codReq"]);
                 var lista = DetalleRequerimientoCN.Instancia.listarPendientes(codPro, codTServ, codReq);
@@ -224,6 +243,97 @@ namespace DemoMVC.Controllers
             {
                 return Json(new { response = new { count = 0, data = "", mensaje = ex.ToString() } }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        private List<SelectListItem> CargaInicial()
+        {
+            return new List<SelectListItem>
+                {
+                    new SelectListItem
+                        {
+                            Value = _seleccione[0],
+                            Text = _seleccione[1]
+                        }
+                };
+        }
+
+        public IEnumerable Proyecto()
+        {
+            var entities = new GD_Entities();
+
+            var resultado = CargaInicial();
+
+            var lista = (from r in entities.GPP_Proyecto select r);
+
+            foreach (var item in lista)
+            {
+                var selListItem = new SelectListItem { Value = item.IdProyecto + string.Empty, Text = item.Nombre };
+                resultado.Add(selListItem);
+            }
+
+            return resultado;
+        }
+
+        public IEnumerable Prioridad()
+        {
+
+            var resultado = CargaInicial();
+
+            resultado.Add(new SelectListItem { Value = "1", Text = "Alta" });
+            resultado.Add(new SelectListItem { Value = "2", Text = "Media" });
+            resultado.Add(new SelectListItem { Value = "3", Text = "Baja" });
+
+            return resultado;
+        }
+
+        public IEnumerable TipoRecurso()
+        {            
+            var resultado = CargaInicial();            
+            
+            var requerimientoDAO = new RequerimientoDAO();
+            var listarTipoRecurso = requerimientoDAO.ListarTipoRecurso();
+
+            foreach (var item in listarTipoRecurso)
+            {
+                var selListItem = new SelectListItem { Value = item.idTipoReq + string.Empty, Text = item.descripcion };
+                resultado.Add(selListItem);
+            }
+
+            return resultado;
+        }
+
+        public IEnumerable UnidadMedida()
+        {
+            var entities = new GSC_Entities();
+
+            var resultado = CargaInicial();
+
+            var lista = (from r in entities.GSC_UnidadMedida select r);
+
+            foreach (var item in lista)
+            {
+                var selListItem = new SelectListItem { Value = item.IdUnidadMedida + string.Empty, Text = item.AbrviaUMedi };
+                resultado.Add(selListItem);
+            }
+
+            return resultado;
+        }
+
+        public IEnumerable TipoServicio()
+        {
+            var entities = new GSC_Entities();
+
+            var resultado = CargaInicial();
+
+            var lista = (from r in entities.GSC_TipoServicio select r);
+
+            foreach (var item in lista)
+            {
+                var selListItem = new SelectListItem { Value = item.IdTipoServicio + string.Empty, Text = item.DescripTServicio };
+                resultado.Add(selListItem);
+            }
+
+            return resultado;
         }
 
     }

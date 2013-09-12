@@ -586,6 +586,12 @@ namespace DemoMVC.Controllers
             var i = 0;
             foreach (var cotizacion in lista)
             {
+                var razonSocial = string.Empty;
+                var firstOrDefault = _entities.GSC_Proveedor.FirstOrDefault(f => f.IdProveedor == cotizacion.IdProveedor);
+                if (firstOrDefault != null)
+                {
+                    razonSocial = firstOrDefault.RazonSocialProv;
+                }
                 i++;
                 content += "<ul>";
                 content += "<li><h2><input type=\"radio\" name=\"cotizacion\"/ value=\"" + cotizacion.IdCotizacion + "\"> Opción " + i + "</h2></li>";
@@ -596,7 +602,7 @@ namespace DemoMVC.Controllers
                 content += "Proveedor: ";
                 content += "</td>";
                 content += "<td>";
-                content += cotizacion.IdProveedor;
+                content += razonSocial;
                 content += "</td>";
                 content += "</tr>";
                 content += "<tr>";

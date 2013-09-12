@@ -11,7 +11,7 @@ namespace DemoMVC.Models
         {
 
         }
-        public Int16 idTipoReq { get; set; }
+        public int idTipoReq { get; set; }
         public string descripcion { get; set; }
     }
 }
