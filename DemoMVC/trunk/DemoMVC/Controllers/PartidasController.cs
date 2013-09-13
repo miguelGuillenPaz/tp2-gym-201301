@@ -139,8 +139,8 @@ namespace DemoMVC.Controllers
                 {
                     IDAvancePartida = IdAvancePartidaKey,
                     IDDetallePartida = IdDetallePartida,
-                    IDEstado = 1, //Pendiente de Aprobación por el Jefe de Obra
-                    IDUsuarioEmisor = Convert.ToInt32(Destinatario), // Usuario Destinatario
+                    IDEstado = EstadosParameters.Pendiente_de_Aprobación_por_el_Aprobador_de_Avance_de_Partida,
+                    IDUsuarioEmisor = Convert.ToInt32(6), // Usuario Destinatario
                     IDUsuarioDestinatario = Convert.ToInt32(Destinatario), // Usuario Destinatario
                     FechaRegistro = DateTime.Now,
                     CantidadEjecutada = CantidadEjecutada,
