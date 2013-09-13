@@ -310,7 +310,7 @@ namespace GYM.SIG.DataAccess
                 {
                     throw new Exception("Error al agregar al");
                 }
-                var numerogenerado = (int)_db.GetParameterValue(SQL, "IdCotDet");
+                var numerogenerado = (int)_db.GetParameterValue(SQL, "IdSolicitudDetalle");
                 SQL.Dispose();
                 return numerogenerado;
             }

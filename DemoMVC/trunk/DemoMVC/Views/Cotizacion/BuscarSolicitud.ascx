@@ -47,7 +47,7 @@
 
                     $('#agregarCotizacion').find('input[name=codSolCotizacion]').val(obj.codSolCotizacion);
                     $('#agregarCotizacion').find('input[name=descTServ]').val(obj.descTServ);
-                    $('#agregarCotizacion').find('input[name=IdTipoServicio]').val(obj.codTServ);
+                    $('#agregarCotizacion').find('input[name=codTServ]').val(obj.codTServ);
                     $('#agregarCotizacion').find('input[name=razsocPro]').val(obj.razsocPro);
                     $('#agregarCotizacion').find('input[name=codProv]').val(obj.codProv);
                     $('#buscarSolicitudes').data("kendoWindow").close();
