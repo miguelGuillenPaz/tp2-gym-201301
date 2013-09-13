@@ -219,7 +219,7 @@
     <div class="contenido-top">
         <div style="width: 100%; float: left; display: block;">
             <h1>
-                Aprobación de Presupuestos</h1>
+                Cierre de Presupuesto</h1>
             <br />
             <h3 class="gpc-subtitulo">
                 Datos del Presupuesto</h3>
