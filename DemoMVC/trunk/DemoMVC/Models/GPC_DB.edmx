@@ -912,6 +912,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="pa_GPC_AvancePartidaRechazado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPartida" Type="int" Mode="In" />
+          <Parameter Name="fechaAvance" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_GPC_Detalle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fechaAvance" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pa_GPC_UsuarioAprobador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -1079,14 +1087,6 @@
             <End Role="GPC_AvancePartida" EntitySet="GPC_AvancePartida" />
             <End Role="GPC_InconsistenciaAvancePartida" EntitySet="GPC_InconsistenciaAvancePartida" />
           </AssociationSet>
-          <FunctionImport Name="GetDetallesPartida_Result" ReturnType="Collection(GYMModel.GetDetallesPartida_Result)">
-          <Parameter Name="fechaAvance" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetUsuarios_Result" ReturnType="Collection(GYMModel.GetUsuarios_Result)" />
-          <FunctionImport Name="GetInconsistenciaPartida_Result" ReturnType="Collection(GYMModel.GetInconsistenciaPartida_Result)">
-            <Parameter Name="idPartida" Mode="In" Type="Int32" />
-            <Parameter Name="fechaAvance" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="GPC_InconsistenciaPresupuestoObra" EntityType="GYMModel.GPC_InconsistenciaPresupuestoObra" />
           <AssociationSet Name="FK_GPC_InconsistenciaPresupuestoObra_PresupuestoObra" Association="GYMModel.FK_GPC_InconsistenciaPresupuestoObra_PresupuestoObra">
             <End Role="GPC_PresupuestoObra" EntitySet="GPC_PresupuestoObra" />
@@ -1100,6 +1100,14 @@
             <End Role="SEG_Usuario" EntitySet="SEG_Usuario" />
             <End Role="GPC_InconsistenciaPresupuestoObra" EntitySet="GPC_InconsistenciaPresupuestoObra" />
           </AssociationSet>
+          <FunctionImport Name="GetInconsistenciaPartida_Result" ReturnType="Collection(GYMModel.GetInconsistenciaPartida_Result)">
+            <Parameter Name="idPartida" Mode="In" Type="Int32" />
+            <Parameter Name="fechaAvance" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetDetallesPartida_Result" ReturnType="Collection(GYMModel.GetDetallesPartida_Result)">
+            <Parameter Name="fechaAvance" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUsuarios_Result" ReturnType="Collection(GYMModel.GetUsuarios_Result)" />
         </EntityContainer>
         <EntityType Name="GPC_ActividadObra">
           <Key>
@@ -1823,34 +1831,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetInconsistenciaPartida_Result">
-          <Property Type="Int32" Name="IdAvancePartida" Nullable="false" />
-          <Property Type="Int32" Name="IdDetallePartida" Nullable="false" />
-          <Property Type="String" Name="Categoria" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="200" />
-          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Int32" Name="IDPartida" Nullable="true" />
-          <Property Type="Int32" Name="CantidadPresupuesto" Nullable="false" />
-          <Property Type="Decimal" Name="CantidadEjecutada" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="DateTime" Name="FechaEjecucion" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="GetDetallesPartida_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="Categoria" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="200" />
-          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Int32" Name="IDPartida" Nullable="true" />
-          <Property Type="Int32" Name="CantidadPresupuesto" Nullable="false" />
-          <Property Type="String" Name="AvanceReal" Nullable="true" MaxLength="10" />
-        </ComplexType>
-        <ComplexType Name="GetUsuarios_Result">
-          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
-          <Property Type="String" Name="NombreUsuario" Nullable="true" MaxLength="152" />
-        </ComplexType>
         <EntityType Name="GPC_InconsistenciaPresupuestoObra">
           <Key>
             <PropertyRef Name="IDInconsistenciaPresupuesto" />
@@ -1903,6 +1883,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetInconsistenciaPartida_Result">
+          <Property Type="Int32" Name="IdAvancePartida" Nullable="false" />
+          <Property Type="Int32" Name="IdDetallePartida" Nullable="false" />
+          <Property Type="String" Name="Categoria" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="IDPartida" Nullable="true" />
+          <Property Type="Int32" Name="CantidadPresupuesto" Nullable="false" />
+          <Property Type="Decimal" Name="CantidadEjecutada" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="FechaEjecucion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetDetallesPartida_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Categoria" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Unidad" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="IDPartida" Nullable="true" />
+          <Property Type="Int32" Name="CantidadPresupuesto" Nullable="false" />
+          <Property Type="String" Name="AvanceReal" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetUsuarios_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="NombreUsuario" Nullable="true" MaxLength="152" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2174,6 +2182,46 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetInconsistenciaPartida_Result" FunctionName="GYMModel.Store.pa_GPC_AvancePartidaRechazado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GYMModel.GetInconsistenciaPartida_Result">
+                <ScalarProperty Name="IdAvancePartida" ColumnName="IdAvancePartida" />
+                <ScalarProperty Name="IdDetallePartida" ColumnName="IdDetallePartida" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="IDPartida" ColumnName="IDPartida" />
+                <ScalarProperty Name="CantidadPresupuesto" ColumnName="CantidadPresupuesto" />
+                <ScalarProperty Name="CantidadEjecutada" ColumnName="CantidadEjecutada" />
+                <ScalarProperty Name="FechaEjecucion" ColumnName="FechaEjecucion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDetallesPartida_Result" FunctionName="GYMModel.Store.pa_GPC_Detalle">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GYMModel.GetDetallesPartida_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="IDPartida" ColumnName="IDPartida" />
+                <ScalarProperty Name="CantidadPresupuesto" ColumnName="CantidadPresupuesto" />
+                <ScalarProperty Name="AvanceReal" ColumnName="AvanceReal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUsuarios_Result" FunctionName="GYMModel.Store.pa_GPC_UsuarioAprobador">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GYMModel.GetUsuarios_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
