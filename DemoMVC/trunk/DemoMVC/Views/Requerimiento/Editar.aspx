@@ -77,6 +77,10 @@
                 });
             });
 
+            $('#btnEnviar').click(function () {
+                __ShowMessage('El requerimiento ha sido actualizado.');
+            });
+
             $('#btnAgregar').click(function () {
                 $('#txtDescripcion').val('');
                 $('#idUnidadMedida').val('');
