@@ -112,15 +112,18 @@
                     attributes: { style: "text-align: center;" }
                     }, {
                         field: "Cantidad",
-                    width: 40,
-                    title: "<center>Cantidad</center>",
-                    attributes: { style: "text-align: right;" }
-                }, {
-                    field: "CantidadPresupuesto",
                     width: 60,
                     title: "<center>Avance<br />Presupuestado</center>",
                     attributes: { style: "text-align: right;" }
-                    }, {
+                }, 
+//                    {
+//                    field: "CantidadPresupuesto",
+//                    width: 60,
+//                    title: "<center>Avance<br />Presupuestado</center>",
+//                    attributes: { style: "text-align: right;" }
+//                }, 
+                    
+                    {
                         field: "AvanceReal",
                     width: 50,
                     title: "<center>Avance Real<br />Ejecutado</center>",
