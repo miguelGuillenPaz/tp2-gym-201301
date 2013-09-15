@@ -92,6 +92,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LegalController.cs" />
     <Compile Include="Controllers\LogisticaController.cs" />
+    <Compile Include="Controllers\ParteController.cs" />
     <Compile Include="Controllers\PartidasController.cs" />
     <Compile Include="Controllers\PlanificacionController.cs" />
     <Compile Include="Controllers\PostulanteController.cs" />
@@ -463,7 +464,7 @@
     <Content Include="Views\Legal\RegistrarDeclaracionFabrica.aspx" />
     <Content Include="Views\Legal\Requerimientos.aspx" />
     <Content Include="Views\Logistica\Logistica.aspx" />
-    <Content Include="Views\Participar.aspx" />
+    <Content Include="Views\Parte\Index.aspx" />
     <Content Include="Views\Partidas\ActualizarAvancePartida.aspx" />
     <Content Include="Views\Partidas\ActualizarInconsistenciaPartida.aspx" />
     <Content Include="Views\Partidas\AvancePartida.ascx" />

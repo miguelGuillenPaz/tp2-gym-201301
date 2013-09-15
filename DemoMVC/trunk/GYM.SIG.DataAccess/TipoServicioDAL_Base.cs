@@ -14,6 +14,33 @@ namespace GYM.SIG.DataAccess
         private const String NombreTabla = "TipoServicio";
         private Database db = DatabaseFactory.CreateDatabase();
 
+        public List<TipoServicio> ListarTipoServicioPorProyectoYRequerimiento(int idProyecto, int idRequerimiento)
+        {
+            try
+            {
+                var coleccion = new List<TipoServicio>();
+                var sql = db.GetStoredProcCommand("pa_GSC_TipoServicio_Proyecto_Requerimiento");
+                db.AddInParameter(sql, "IdProyecto", DbType.Int32, idProyecto);
+                db.AddInParameter(sql, "IdRequerimiento", DbType.Int32, idRequerimiento);  
+                using (var lector = db.ExecuteReader(sql))
+                {
+                    while (lector.Read())
+                    {
+                        coleccion.Add(new TipoServicio
+                        {
+                            codTServ = lector.GetInt32(lector.GetOrdinal("IdTipoServicio")),
+                            descTServ = lector.IsDBNull(lector.GetOrdinal("DescripTServicio")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripTServicio"))
+                        });
+                    }
+                }
+                sql.Dispose();
+                return coleccion;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public List<TipoServicio> listartodos()
         {

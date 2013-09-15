@@ -14,6 +14,36 @@ namespace GYM.SIG.DataAccess
         private const String NombreTabla = "DetalleRequerimiento";
         private Database db = DatabaseFactory.CreateDatabase();
 
+        public List<DetalleRequerimiento> RequerimientoPorProyecto(int idProyecto)
+        {
+            try
+            {
+                var coleccion = new List<DetalleRequerimiento>();
+                var sql = db.GetStoredProcCommand("pa_GPP_RequerimientoPorProyecto");
+                db.AddInParameter(sql, "IdProyecto", DbType.Int32, idProyecto);                
+                using (var lector = db.ExecuteReader(sql))
+                {
+                    while (lector.Read())
+                    {
+                        coleccion.Add(new DetalleRequerimiento
+                        {
+                            //CambiarAtributos                            
+                            codReq = lector.GetInt32(lector.GetOrdinal("IdRequerimiento")),
+                            nomReq = lector.IsDBNull(lector.GetOrdinal("DescripSolDetalle")) ? "" : lector.GetString(lector.GetOrdinal("DescripSolDetalle"))                            
+                        });
+                    }
+                }
+                sql.Dispose();
+                return coleccion;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
         public List<DetalleRequerimiento> listaporSolicitud(int codSolCotizacion)
         {
             try

@@ -12,6 +12,7 @@ namespace GYM.SIG.Entity
 
         public Int32 codPro { get; set; }
         public Int32 codReq { get; set; }
+        public string nomReq { get; set; }
         public Int32 codcorDetReq { get; set; }
         public Int32 canDetReq { get; set; }
         public DateTime fecInicio { get; set; }

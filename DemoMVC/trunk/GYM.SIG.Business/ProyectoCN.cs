@@ -9,6 +9,18 @@ namespace GYM.SIG.Business
     public class ProyectoCN : Singleton<ProyectoCN>
     {
 
+        public List<Proyecto> ListarRequeridos()
+        {
+            try
+            {                
+                return Proyectodalc.Instancia.ListarRequeridos(); ;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<Proyecto> listartodos(bool seleccione = false)
         {
             try

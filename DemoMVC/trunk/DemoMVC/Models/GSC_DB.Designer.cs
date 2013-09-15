@@ -19,9 +19,6 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
 
-[assembly: EdmRelationshipAttribute("GSC_Model", "FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio", "GSC_ParametroCalificacionTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_ParametroCalificacionTipoServicio), "GSC_CalificacionServicioProveedorTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_CalificacionServicioProveedorTipoServicio), true)]
-[assembly: EdmRelationshipAttribute("GSC_Model", "FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio", "GSC_ProveedorTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_ProveedorTipoServicio), "GSC_CalificacionServicioProveedorTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_CalificacionServicioProveedorTipoServicio), true)]
-[assembly: EdmRelationshipAttribute("GSC_Model", "FK__GSC_Cotiz__IdEst__3C69FB99", "GSC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_Estado), "GSC_Cotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_Cotizacion), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK__GSC_Cotiz__IdSol__3D5E1FD2", "GSC_SolicitudCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_SolicitudCotizacion), "GSC_Cotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_Cotizacion), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_Cotizacion_FormaPago", "GSC_FormaPago", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_FormaPago), "GSC_Cotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_Cotizacion), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_Cotizacion_Moneda", "GSC_Moneda", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_Moneda), "GSC_Cotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_Cotizacion), true)]
@@ -32,20 +29,26 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_DetalleCotizacion_DetalleSolicitud", "GSC_DetalleSolicitudRequerimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_DetalleSolicitudRequerimiento), "GSC_DetalleCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_DetalleCotizacion), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_DetalleCotizacion_UnidadMedida", "GSC_UnidadMedida", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_UnidadMedida), "GSC_DetalleCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_DetalleCotizacion), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_DetalleSolicitudRequerimiento_SolicitudCotizacion", "GSC_SolicitudCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_SolicitudCotizacion), "GSC_DetalleSolicitudRequerimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_DetalleSolicitudRequerimiento), true)]
-[assembly: EdmRelationshipAttribute("GSC_Model", "FK__GSC_Solic__IdEst__5070F446", "GSC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_Estado), "GSC_SolicitudCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_SolicitudCotizacion), true)]
-[assembly: EdmRelationshipAttribute("GSC_Model", "FK__GSC_Solic__IdEst__5165187F", "GSC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_Estado), "GSC_SolicitudCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_SolicitudCotizacion), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion", "GSC_SolicitudCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_SolicitudCotizacion), "GSC_EvaluacionCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_EvaluacionCotizacion), true)]
-[assembly: EdmRelationshipAttribute("GSC_Model", "FK_Incidencia_ParteDiario", "GSC_ParteDiario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_ParteDiario), "GSC_Incidencia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_Incidencia), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_OrdenPago_InformeServicio", "GSC_InformeServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_InformeServicio), "GSC_OrdenPago", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_OrdenPago), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_Penalidad_InformeServicio", "GSC_InformeServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_InformeServicio), "GSC_Penalidad", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_Penalidad), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_Penalidad_OrdenPago", "GSC_OrdenPago", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_OrdenPago), "GSC_Penalidad", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_Penalidad), true)]
-[assembly: EdmRelationshipAttribute("GSC_Model", "FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion", "GSC_ParametroCalificacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_ParametroCalificacion), "GSC_ParametroCalificacionTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_ParametroCalificacionTipoServicio), true)]
-[assembly: EdmRelationshipAttribute("GSC_Model", "FK_ParametrosCalificacionTipoServicio_TipoServicio", "GSC_TipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_TipoServicio), "GSC_ParametroCalificacionTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_ParametroCalificacionTipoServicio), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_ProveedorTipoServicio_Proveedor", "GSC_Proveedor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_Proveedor), "GSC_ProveedorTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_ProveedorTipoServicio), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_ProveedorTipoServicio_TipoServicio", "GSC_TipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_TipoServicio), "GSC_ProveedorTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_ProveedorTipoServicio), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_SolicitudProveedorTipoServicio_ProveedorTipoServicio", "GSC_ProveedorTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_ProveedorTipoServicio), "GSC_SolicitudProveedorTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_SolicitudProveedorTipoServicio), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_GSC_SolicitudCotizacion_GSC_TipoServicio", "GSC_TipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_TipoServicio), "GSC_SolicitudCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_SolicitudCotizacion), true)]
 [assembly: EdmRelationshipAttribute("GSC_Model", "FK_SolicitudProveedorTipoServicio_SolicitudCotizacion", "GSC_SolicitudCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GSC_SolicitudCotizacion), "GSC_SolicitudProveedorTipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_SolicitudProveedorTipoServicio), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK__GSC_Cotiz__IdEst__46E78A0C", "GSC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_Estado), "GSC_Cotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_Cotizacion), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK__GSC_Solic__IdEst__3E52440B", "GSC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_Estado), "GSC_SolicitudCotizacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_SolicitudCotizacion), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "GSC_ParametroCalificacionTipoServicio1", "GSC_ParametroCalificacion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_ParametroCalificacion), "GSC_TipoServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_TipoServicio))]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GSC_ParametroCalificacion", "GSC_ParametroCalificacion", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_ParametroCalificacion), "GSC_CalificacionServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_CalificacionServicio), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GSC_ParametroCalificacion1", "GSC_ParametroCalificacion", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_ParametroCalificacion), "GSC_CalificacionServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_CalificacionServicio), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GSC_ParametroCalificacion2", "GSC_ParametroCalificacion", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_ParametroCalificacion), "GSC_CalificacionServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_CalificacionServicio), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK_GSC_ParteDiario_GSC_Estado", "GSC_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GSC_Estado), "GSC_ParteDiario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_ParteDiario), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK__GSC_DetalleSolic__571DF1D5", "GPP_DetalleRequerimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPP_DetalleRequerimiento), "GSC_DetalleSolicitudRequerimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_DetalleSolicitudRequerimiento), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK_DetalleRequerimiento_Requerimiento", "GPP_Requerimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GPP_Requerimiento), "GPP_DetalleRequerimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GPP_DetalleRequerimiento), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GPP_DetalleRequerimiento), "GSC_CalificacionServicio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_CalificacionServicio), true)]
+[assembly: EdmRelationshipAttribute("GSC_Model", "FK_GSC_ParteDiario_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GPP_DetalleRequerimiento), "GSC_ParteDiario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GSC_ParteDiario), true)]
 
 #endregion
 
@@ -100,22 +103,6 @@ namespace DemoMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<GSC_CalificacionServicioProveedorTipoServicio> GSC_CalificacionServicioProveedorTipoServicio
-        {
-            get
-            {
-                if ((_GSC_CalificacionServicioProveedorTipoServicio == null))
-                {
-                    _GSC_CalificacionServicioProveedorTipoServicio = base.CreateObjectSet<GSC_CalificacionServicioProveedorTipoServicio>("GSC_CalificacionServicioProveedorTipoServicio");
-                }
-                return _GSC_CalificacionServicioProveedorTipoServicio;
-            }
-        }
-        private ObjectSet<GSC_CalificacionServicioProveedorTipoServicio> _GSC_CalificacionServicioProveedorTipoServicio;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<GSC_Cotizacion> GSC_Cotizacion
         {
             get
@@ -160,22 +147,6 @@ namespace DemoMVC.Models
             }
         }
         private ObjectSet<GSC_DetalleSolicitudRequerimiento> _GSC_DetalleSolicitudRequerimiento;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GSC_Estado> GSC_Estado
-        {
-            get
-            {
-                if ((_GSC_Estado == null))
-                {
-                    _GSC_Estado = base.CreateObjectSet<GSC_Estado>("GSC_Estado");
-                }
-                return _GSC_Estado;
-            }
-        }
-        private ObjectSet<GSC_Estado> _GSC_Estado;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -292,54 +263,6 @@ namespace DemoMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<GSC_ParametroCalificacion> GSC_ParametroCalificacion
-        {
-            get
-            {
-                if ((_GSC_ParametroCalificacion == null))
-                {
-                    _GSC_ParametroCalificacion = base.CreateObjectSet<GSC_ParametroCalificacion>("GSC_ParametroCalificacion");
-                }
-                return _GSC_ParametroCalificacion;
-            }
-        }
-        private ObjectSet<GSC_ParametroCalificacion> _GSC_ParametroCalificacion;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GSC_ParametroCalificacionTipoServicio> GSC_ParametroCalificacionTipoServicio
-        {
-            get
-            {
-                if ((_GSC_ParametroCalificacionTipoServicio == null))
-                {
-                    _GSC_ParametroCalificacionTipoServicio = base.CreateObjectSet<GSC_ParametroCalificacionTipoServicio>("GSC_ParametroCalificacionTipoServicio");
-                }
-                return _GSC_ParametroCalificacionTipoServicio;
-            }
-        }
-        private ObjectSet<GSC_ParametroCalificacionTipoServicio> _GSC_ParametroCalificacionTipoServicio;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GSC_ParteDiario> GSC_ParteDiario
-        {
-            get
-            {
-                if ((_GSC_ParteDiario == null))
-                {
-                    _GSC_ParteDiario = base.CreateObjectSet<GSC_ParteDiario>("GSC_ParteDiario");
-                }
-                return _GSC_ParteDiario;
-            }
-        }
-        private ObjectSet<GSC_ParteDiario> _GSC_ParteDiario;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<GSC_Penalidad> GSC_Penalidad
         {
             get
@@ -448,18 +371,106 @@ namespace DemoMVC.Models
             }
         }
         private ObjectSet<GSC_UnidadMedida> _GSC_UnidadMedida;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GSC_Estado> GSC_Estado
+        {
+            get
+            {
+                if ((_GSC_Estado == null))
+                {
+                    _GSC_Estado = base.CreateObjectSet<GSC_Estado>("GSC_Estado");
+                }
+                return _GSC_Estado;
+            }
+        }
+        private ObjectSet<GSC_Estado> _GSC_Estado;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GSC_ParametroCalificacion> GSC_ParametroCalificacion
+        {
+            get
+            {
+                if ((_GSC_ParametroCalificacion == null))
+                {
+                    _GSC_ParametroCalificacion = base.CreateObjectSet<GSC_ParametroCalificacion>("GSC_ParametroCalificacion");
+                }
+                return _GSC_ParametroCalificacion;
+            }
+        }
+        private ObjectSet<GSC_ParametroCalificacion> _GSC_ParametroCalificacion;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GSC_CalificacionServicio> GSC_CalificacionServicio
+        {
+            get
+            {
+                if ((_GSC_CalificacionServicio == null))
+                {
+                    _GSC_CalificacionServicio = base.CreateObjectSet<GSC_CalificacionServicio>("GSC_CalificacionServicio");
+                }
+                return _GSC_CalificacionServicio;
+            }
+        }
+        private ObjectSet<GSC_CalificacionServicio> _GSC_CalificacionServicio;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GSC_ParteDiario> GSC_ParteDiario
+        {
+            get
+            {
+                if ((_GSC_ParteDiario == null))
+                {
+                    _GSC_ParteDiario = base.CreateObjectSet<GSC_ParteDiario>("GSC_ParteDiario");
+                }
+                return _GSC_ParteDiario;
+            }
+        }
+        private ObjectSet<GSC_ParteDiario> _GSC_ParteDiario;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GPP_DetalleRequerimiento> GPP_DetalleRequerimiento
+        {
+            get
+            {
+                if ((_GPP_DetalleRequerimiento == null))
+                {
+                    _GPP_DetalleRequerimiento = base.CreateObjectSet<GPP_DetalleRequerimiento>("GPP_DetalleRequerimiento");
+                }
+                return _GPP_DetalleRequerimiento;
+            }
+        }
+        private ObjectSet<GPP_DetalleRequerimiento> _GPP_DetalleRequerimiento;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GPP_Requerimiento> GPP_Requerimiento
+        {
+            get
+            {
+                if ((_GPP_Requerimiento == null))
+                {
+                    _GPP_Requerimiento = base.CreateObjectSet<GPP_Requerimiento>("GPP_Requerimiento");
+                }
+                return _GPP_Requerimiento;
+            }
+        }
+        private ObjectSet<GPP_Requerimiento> _GPP_Requerimiento;
 
         #endregion
 
         #region Métodos AddTo
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GSC_CalificacionServicioProveedorTipoServicio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGSC_CalificacionServicioProveedorTipoServicio(GSC_CalificacionServicioProveedorTipoServicio gSC_CalificacionServicioProveedorTipoServicio)
-        {
-            base.AddObject("GSC_CalificacionServicioProveedorTipoServicio", gSC_CalificacionServicioProveedorTipoServicio);
-        }
     
         /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet GSC_Cotizacion. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
@@ -483,14 +494,6 @@ namespace DemoMVC.Models
         public void AddToGSC_DetalleSolicitudRequerimiento(GSC_DetalleSolicitudRequerimiento gSC_DetalleSolicitudRequerimiento)
         {
             base.AddObject("GSC_DetalleSolicitudRequerimiento", gSC_DetalleSolicitudRequerimiento);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GSC_Estado. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGSC_Estado(GSC_Estado gSC_Estado)
-        {
-            base.AddObject("GSC_Estado", gSC_Estado);
         }
     
         /// <summary>
@@ -550,30 +553,6 @@ namespace DemoMVC.Models
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GSC_ParametroCalificacion. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGSC_ParametroCalificacion(GSC_ParametroCalificacion gSC_ParametroCalificacion)
-        {
-            base.AddObject("GSC_ParametroCalificacion", gSC_ParametroCalificacion);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GSC_ParametroCalificacionTipoServicio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGSC_ParametroCalificacionTipoServicio(GSC_ParametroCalificacionTipoServicio gSC_ParametroCalificacionTipoServicio)
-        {
-            base.AddObject("GSC_ParametroCalificacionTipoServicio", gSC_ParametroCalificacionTipoServicio);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GSC_ParteDiario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGSC_ParteDiario(GSC_ParteDiario gSC_ParteDiario)
-        {
-            base.AddObject("GSC_ParteDiario", gSC_ParteDiario);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet GSC_Penalidad. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToGSC_Penalidad(GSC_Penalidad gSC_Penalidad)
@@ -628,6 +607,54 @@ namespace DemoMVC.Models
         {
             base.AddObject("GSC_UnidadMedida", gSC_UnidadMedida);
         }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GSC_Estado. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGSC_Estado(GSC_Estado gSC_Estado)
+        {
+            base.AddObject("GSC_Estado", gSC_Estado);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GSC_ParametroCalificacion. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGSC_ParametroCalificacion(GSC_ParametroCalificacion gSC_ParametroCalificacion)
+        {
+            base.AddObject("GSC_ParametroCalificacion", gSC_ParametroCalificacion);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GSC_CalificacionServicio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGSC_CalificacionServicio(GSC_CalificacionServicio gSC_CalificacionServicio)
+        {
+            base.AddObject("GSC_CalificacionServicio", gSC_CalificacionServicio);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GSC_ParteDiario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGSC_ParteDiario(GSC_ParteDiario gSC_ParteDiario)
+        {
+            base.AddObject("GSC_ParteDiario", gSC_ParteDiario);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GPP_DetalleRequerimiento. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGPP_DetalleRequerimiento(GPP_DetalleRequerimiento gPP_DetalleRequerimiento)
+        {
+            base.AddObject("GPP_DetalleRequerimiento", gPP_DetalleRequerimiento);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GPP_Requerimiento. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGPP_Requerimiento(GPP_Requerimiento gPP_Requerimiento)
+        {
+            base.AddObject("GPP_Requerimiento", gPP_Requerimiento);
+        }
 
         #endregion
 
@@ -640,39 +667,58 @@ namespace DemoMVC.Models
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GSC_Model", Name="GSC_CalificacionServicioProveedorTipoServicio")]
+    [EdmEntityTypeAttribute(NamespaceName="GSC_Model", Name="GPP_DetalleRequerimiento")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class GSC_CalificacionServicioProveedorTipoServicio : EntityObject
+    public partial class GPP_DetalleRequerimiento : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto GSC_CalificacionServicioProveedorTipoServicio.
+        /// Crear un nuevo objeto GPP_DetalleRequerimiento.
         /// </summary>
-        /// <param name="idRequerimiento">Valor inicial de la propiedad IdRequerimiento.</param>
-        /// <param name="idTipoServicio">Valor inicial de la propiedad IdTipoServicio.</param>
-        /// <param name="idParametroCalificacion">Valor inicial de la propiedad IdParametroCalificacion.</param>
-        /// <param name="calificacion">Valor inicial de la propiedad Calificacion.</param>
-        /// <param name="fecha">Valor inicial de la propiedad Fecha.</param>
-        /// <param name="idProveedor">Valor inicial de la propiedad IdProveedor.</param>
         /// <param name="idProyecto">Valor inicial de la propiedad IdProyecto.</param>
-        public static GSC_CalificacionServicioProveedorTipoServicio CreateGSC_CalificacionServicioProveedorTipoServicio(global::System.Int32 idRequerimiento, global::System.Int32 idTipoServicio, global::System.Int32 idParametroCalificacion, global::System.Int32 calificacion, global::System.DateTime fecha, global::System.Int32 idProveedor, global::System.Int32 idProyecto)
+        /// <param name="idRequerimiento">Valor inicial de la propiedad IdRequerimiento.</param>
+        /// <param name="idCorDetReq">Valor inicial de la propiedad IdCorDetReq.</param>
+        public static GPP_DetalleRequerimiento CreateGPP_DetalleRequerimiento(global::System.Int32 idProyecto, global::System.Int32 idRequerimiento, global::System.Int32 idCorDetReq)
         {
-            GSC_CalificacionServicioProveedorTipoServicio gSC_CalificacionServicioProveedorTipoServicio = new GSC_CalificacionServicioProveedorTipoServicio();
-            gSC_CalificacionServicioProveedorTipoServicio.IdRequerimiento = idRequerimiento;
-            gSC_CalificacionServicioProveedorTipoServicio.IdTipoServicio = idTipoServicio;
-            gSC_CalificacionServicioProveedorTipoServicio.IdParametroCalificacion = idParametroCalificacion;
-            gSC_CalificacionServicioProveedorTipoServicio.Calificacion = calificacion;
-            gSC_CalificacionServicioProveedorTipoServicio.Fecha = fecha;
-            gSC_CalificacionServicioProveedorTipoServicio.IdProveedor = idProveedor;
-            gSC_CalificacionServicioProveedorTipoServicio.IdProyecto = idProyecto;
-            return gSC_CalificacionServicioProveedorTipoServicio;
+            GPP_DetalleRequerimiento gPP_DetalleRequerimiento = new GPP_DetalleRequerimiento();
+            gPP_DetalleRequerimiento.IdProyecto = idProyecto;
+            gPP_DetalleRequerimiento.IdRequerimiento = idRequerimiento;
+            gPP_DetalleRequerimiento.IdCorDetReq = idCorDetReq;
+            return gPP_DetalleRequerimiento;
         }
 
         #endregion
 
         #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdProyecto
+        {
+            get
+            {
+                return _IdProyecto;
+            }
+            set
+            {
+                if (_IdProyecto != value)
+                {
+                    OnIdProyectoChanging(value);
+                    ReportPropertyChanging("IdProyecto");
+                    _IdProyecto = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IdProyecto");
+                    OnIdProyectoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdProyecto;
+        partial void OnIdProyectoChanging(global::System.Int32 value);
+        partial void OnIdProyectoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -706,7 +752,178 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 IdTipoServicio
+        public global::System.Int32 IdCorDetReq
+        {
+            get
+            {
+                return _IdCorDetReq;
+            }
+            set
+            {
+                if (_IdCorDetReq != value)
+                {
+                    OnIdCorDetReqChanging(value);
+                    ReportPropertyChanging("IdCorDetReq");
+                    _IdCorDetReq = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IdCorDetReq");
+                    OnIdCorDetReqChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdCorDetReq;
+        partial void OnIdCorDetReqChanging(global::System.Int32 value);
+        partial void OnIdCorDetReqChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CanDetReq
+        {
+            get
+            {
+                return _CanDetReq;
+            }
+            set
+            {
+                OnCanDetReqChanging(value);
+                ReportPropertyChanging("CanDetReq");
+                _CanDetReq = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CanDetReq");
+                OnCanDetReqChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CanDetReq;
+        partial void OnCanDetReqChanging(Nullable<global::System.Int32> value);
+        partial void OnCanDetReqChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FecInicio
+        {
+            get
+            {
+                return _FecInicio;
+            }
+            set
+            {
+                OnFecInicioChanging(value);
+                ReportPropertyChanging("FecInicio");
+                _FecInicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FecInicio");
+                OnFecInicioChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FecInicio;
+        partial void OnFecInicioChanging(Nullable<global::System.DateTime> value);
+        partial void OnFecInicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FecFin
+        {
+            get
+            {
+                return _FecFin;
+            }
+            set
+            {
+                OnFecFinChanging(value);
+                ReportPropertyChanging("FecFin");
+                _FecFin = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FecFin");
+                OnFecFinChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FecFin;
+        partial void OnFecFinChanging(Nullable<global::System.DateTime> value);
+        partial void OnFecFinChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DesServicio
+        {
+            get
+            {
+                return _DesServicio;
+            }
+            set
+            {
+                OnDesServicioChanging(value);
+                ReportPropertyChanging("DesServicio");
+                _DesServicio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DesServicio");
+                OnDesServicioChanged();
+            }
+        }
+        private global::System.String _DesServicio;
+        partial void OnDesServicioChanging(global::System.String value);
+        partial void OnDesServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ActServicio
+        {
+            get
+            {
+                return _ActServicio;
+            }
+            set
+            {
+                OnActServicioChanging(value);
+                ReportPropertyChanging("ActServicio");
+                _ActServicio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ActServicio");
+                OnActServicioChanged();
+            }
+        }
+        private global::System.String _ActServicio;
+        partial void OnActServicioChanging(global::System.String value);
+        partial void OnActServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdUnidadMedida
+        {
+            get
+            {
+                return _IdUnidadMedida;
+            }
+            set
+            {
+                OnIdUnidadMedidaChanging(value);
+                ReportPropertyChanging("IdUnidadMedida");
+                _IdUnidadMedida = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdUnidadMedida");
+                OnIdUnidadMedidaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdUnidadMedida;
+        partial void OnIdUnidadMedidaChanging(Nullable<global::System.Int32> value);
+        partial void OnIdUnidadMedidaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdTipoServicio
         {
             get
             {
@@ -714,121 +931,204 @@ namespace DemoMVC.Models
             }
             set
             {
-                if (_IdTipoServicio != value)
-                {
-                    OnIdTipoServicioChanging(value);
-                    ReportPropertyChanging("IdTipoServicio");
-                    _IdTipoServicio = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdTipoServicio");
-                    OnIdTipoServicioChanged();
-                }
+                OnIdTipoServicioChanging(value);
+                ReportPropertyChanging("IdTipoServicio");
+                _IdTipoServicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdTipoServicio");
+                OnIdTipoServicioChanged();
             }
         }
-        private global::System.Int32 _IdTipoServicio;
-        partial void OnIdTipoServicioChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _IdTipoServicio;
+        partial void OnIdTipoServicioChanging(Nullable<global::System.Int32> value);
         partial void OnIdTipoServicioChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 IdParametroCalificacion
+        public Nullable<global::System.Int32> IdEmpleado
         {
             get
             {
-                return _IdParametroCalificacion;
+                return _IdEmpleado;
             }
             set
             {
-                if (_IdParametroCalificacion != value)
+                OnIdEmpleadoChanging(value);
+                ReportPropertyChanging("IdEmpleado");
+                _IdEmpleado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdEmpleado");
+                OnIdEmpleadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdEmpleado;
+        partial void OnIdEmpleadoChanging(Nullable<global::System.Int32> value);
+        partial void OnIdEmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdRecurso
+        {
+            get
+            {
+                return _IdRecurso;
+            }
+            set
+            {
+                OnIdRecursoChanging(value);
+                ReportPropertyChanging("IdRecurso");
+                _IdRecurso = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdRecurso");
+                OnIdRecursoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdRecurso;
+        partial void OnIdRecursoChanging(Nullable<global::System.Int32> value);
+        partial void OnIdRecursoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_DetalleSolic__571DF1D5", "GSC_DetalleSolicitudRequerimiento")]
+        public EntityCollection<GSC_DetalleSolicitudRequerimiento> GSC_DetalleSolicitudRequerimiento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_DetalleSolicitudRequerimiento>("GSC_Model.FK__GSC_DetalleSolic__571DF1D5", "GSC_DetalleSolicitudRequerimiento");
+            }
+            set
+            {
+                if ((value != null))
                 {
-                    OnIdParametroCalificacionChanging(value);
-                    ReportPropertyChanging("IdParametroCalificacion");
-                    _IdParametroCalificacion = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdParametroCalificacion");
-                    OnIdParametroCalificacionChanged();
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_DetalleSolicitudRequerimiento>("GSC_Model.FK__GSC_DetalleSolic__571DF1D5", "GSC_DetalleSolicitudRequerimiento", value);
                 }
             }
         }
-        private global::System.Int32 _IdParametroCalificacion;
-        partial void OnIdParametroCalificacionChanging(global::System.Int32 value);
-        partial void OnIdParametroCalificacionChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        public global::System.Int32 Calificacion
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_DetalleRequerimiento_Requerimiento", "GPP_Requerimiento")]
+        public GPP_Requerimiento GPP_Requerimiento
         {
             get
             {
-                return _Calificacion;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Requerimiento>("GSC_Model.FK_DetalleRequerimiento_Requerimiento", "GPP_Requerimiento").Value;
             }
             set
             {
-                OnCalificacionChanging(value);
-                ReportPropertyChanging("Calificacion");
-                _Calificacion = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Calificacion");
-                OnCalificacionChanged();
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Requerimiento>("GSC_Model.FK_DetalleRequerimiento_Requerimiento", "GPP_Requerimiento").Value = value;
             }
         }
-        private global::System.Int32 _Calificacion;
-        partial void OnCalificacionChanging(global::System.Int32 value);
-        partial void OnCalificacionChanged();
-    
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public global::System.DateTime Fecha
+        public EntityReference<GPP_Requerimiento> GPP_RequerimientoReference
         {
             get
             {
-                return _Fecha;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Requerimiento>("GSC_Model.FK_DetalleRequerimiento_Requerimiento", "GPP_Requerimiento");
             }
             set
             {
-                OnFechaChanging(value);
-                ReportPropertyChanging("Fecha");
-                _Fecha = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Fecha");
-                OnFechaChanged();
-            }
-        }
-        private global::System.DateTime _Fecha;
-        partial void OnFechaChanging(global::System.DateTime value);
-        partial void OnFechaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IdProveedor
-        {
-            get
-            {
-                return _IdProveedor;
-            }
-            set
-            {
-                if (_IdProveedor != value)
+                if ((value != null))
                 {
-                    OnIdProveedorChanging(value);
-                    ReportPropertyChanging("IdProveedor");
-                    _IdProveedor = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdProveedor");
-                    OnIdProveedorChanged();
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPP_Requerimiento>("GSC_Model.FK_DetalleRequerimiento_Requerimiento", "GPP_Requerimiento", value);
                 }
             }
         }
-        private global::System.Int32 _IdProveedor;
-        partial void OnIdProveedorChanging(global::System.Int32 value);
-        partial void OnIdProveedorChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GPP_DetalleRequerimiento", "GSC_CalificacionServicio")]
+        public EntityCollection<GSC_CalificacionServicio> GSC_CalificacionServicio
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_CalificacionServicio>("GSC_Model.FK_GSC_CalificacionServicio_GPP_DetalleRequerimiento", "GSC_CalificacionServicio");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_CalificacionServicio>("GSC_Model.FK_GSC_CalificacionServicio_GPP_DetalleRequerimiento", "GSC_CalificacionServicio", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_ParteDiario_GPP_DetalleRequerimiento", "GSC_ParteDiario")]
+        public EntityCollection<GSC_ParteDiario> GSC_ParteDiario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_ParteDiario>("GSC_Model.FK_GSC_ParteDiario_GPP_DetalleRequerimiento", "GSC_ParteDiario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_ParteDiario>("GSC_Model.FK_GSC_ParteDiario_GPP_DetalleRequerimiento", "GSC_ParteDiario", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="GSC_Model", Name="GPP_Requerimiento")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class GPP_Requerimiento : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto GPP_Requerimiento.
+        /// </summary>
+        /// <param name="idProyecto">Valor inicial de la propiedad IdProyecto.</param>
+        /// <param name="idRequerimiento">Valor inicial de la propiedad IdRequerimiento.</param>
+        public static GPP_Requerimiento CreateGPP_Requerimiento(global::System.Int32 idProyecto, global::System.Int32 idRequerimiento)
+        {
+            GPP_Requerimiento gPP_Requerimiento = new GPP_Requerimiento();
+            gPP_Requerimiento.IdProyecto = idProyecto;
+            gPP_Requerimiento.IdRequerimiento = idRequerimiento;
+            return gPP_Requerimiento;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -860,9 +1160,269 @@ namespace DemoMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdRequerimiento
+        {
+            get
+            {
+                return _IdRequerimiento;
+            }
+            set
+            {
+                if (_IdRequerimiento != value)
+                {
+                    OnIdRequerimientoChanging(value);
+                    ReportPropertyChanging("IdRequerimiento");
+                    _IdRequerimiento = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IdRequerimiento");
+                    OnIdRequerimientoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdRequerimiento;
+        partial void OnIdRequerimientoChanging(global::System.Int32 value);
+        partial void OnIdRequerimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> IdCorDetReq
+        public global::System.String DescripReq
+        {
+            get
+            {
+                return _DescripReq;
+            }
+            set
+            {
+                OnDescripReqChanging(value);
+                ReportPropertyChanging("DescripReq");
+                _DescripReq = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DescripReq");
+                OnDescripReqChanged();
+            }
+        }
+        private global::System.String _DescripReq;
+        partial void OnDescripReqChanging(global::System.String value);
+        partial void OnDescripReqChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaReq
+        {
+            get
+            {
+                return _FechaReq;
+            }
+            set
+            {
+                OnFechaReqChanging(value);
+                ReportPropertyChanging("FechaReq");
+                _FechaReq = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaReq");
+                OnFechaReqChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaReq;
+        partial void OnFechaReqChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaReqChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PriReq
+        {
+            get
+            {
+                return _PriReq;
+            }
+            set
+            {
+                OnPriReqChanging(value);
+                ReportPropertyChanging("PriReq");
+                _PriReq = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PriReq");
+                OnPriReqChanged();
+            }
+        }
+        private global::System.String _PriReq;
+        partial void OnPriReqChanging(global::System.String value);
+        partial void OnPriReqChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdTipoRecurso
+        {
+            get
+            {
+                return _IdTipoRecurso;
+            }
+            set
+            {
+                OnIdTipoRecursoChanging(value);
+                ReportPropertyChanging("IdTipoRecurso");
+                _IdTipoRecurso = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdTipoRecurso");
+                OnIdTipoRecursoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdTipoRecurso;
+        partial void OnIdTipoRecursoChanging(Nullable<global::System.Int32> value);
+        partial void OnIdTipoRecursoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_DetalleRequerimiento_Requerimiento", "GPP_DetalleRequerimiento")]
+        public EntityCollection<GPP_DetalleRequerimiento> GPP_DetalleRequerimiento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GPP_DetalleRequerimiento>("GSC_Model.FK_DetalleRequerimiento_Requerimiento", "GPP_DetalleRequerimiento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GPP_DetalleRequerimiento>("GSC_Model.FK_DetalleRequerimiento_Requerimiento", "GPP_DetalleRequerimiento", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="GSC_Model", Name="GSC_CalificacionServicio")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class GSC_CalificacionServicio : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto GSC_CalificacionServicio.
+        /// </summary>
+        /// <param name="idCalificacion">Valor inicial de la propiedad IdCalificacion.</param>
+        /// <param name="idProyecto">Valor inicial de la propiedad IdProyecto.</param>
+        /// <param name="idRequerimiento">Valor inicial de la propiedad IdRequerimiento.</param>
+        /// <param name="idCorDetReq">Valor inicial de la propiedad IdCorDetReq.</param>
+        public static GSC_CalificacionServicio CreateGSC_CalificacionServicio(global::System.Int32 idCalificacion, global::System.Int32 idProyecto, global::System.Int32 idRequerimiento, global::System.Int32 idCorDetReq)
+        {
+            GSC_CalificacionServicio gSC_CalificacionServicio = new GSC_CalificacionServicio();
+            gSC_CalificacionServicio.IdCalificacion = idCalificacion;
+            gSC_CalificacionServicio.IdProyecto = idProyecto;
+            gSC_CalificacionServicio.IdRequerimiento = idRequerimiento;
+            gSC_CalificacionServicio.IdCorDetReq = idCorDetReq;
+            return gSC_CalificacionServicio;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdCalificacion
+        {
+            get
+            {
+                return _IdCalificacion;
+            }
+            set
+            {
+                if (_IdCalificacion != value)
+                {
+                    OnIdCalificacionChanging(value);
+                    ReportPropertyChanging("IdCalificacion");
+                    _IdCalificacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("IdCalificacion");
+                    OnIdCalificacionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdCalificacion;
+        partial void OnIdCalificacionChanging(global::System.Int32 value);
+        partial void OnIdCalificacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdProyecto
+        {
+            get
+            {
+                return _IdProyecto;
+            }
+            set
+            {
+                OnIdProyectoChanging(value);
+                ReportPropertyChanging("IdProyecto");
+                _IdProyecto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdProyecto");
+                OnIdProyectoChanged();
+            }
+        }
+        private global::System.Int32 _IdProyecto;
+        partial void OnIdProyectoChanging(global::System.Int32 value);
+        partial void OnIdProyectoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdRequerimiento
+        {
+            get
+            {
+                return _IdRequerimiento;
+            }
+            set
+            {
+                OnIdRequerimientoChanging(value);
+                ReportPropertyChanging("IdRequerimiento");
+                _IdRequerimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdRequerimiento");
+                OnIdRequerimientoChanged();
+            }
+        }
+        private global::System.Int32 _IdRequerimiento;
+        partial void OnIdRequerimientoChanging(global::System.Int32 value);
+        partial void OnIdRequerimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdCorDetReq
         {
             get
             {
@@ -877,9 +1437,177 @@ namespace DemoMVC.Models
                 OnIdCorDetReqChanged();
             }
         }
-        private Nullable<global::System.Int32> _IdCorDetReq;
-        partial void OnIdCorDetReqChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _IdCorDetReq;
+        partial void OnIdCorDetReqChanging(global::System.Int32 value);
         partial void OnIdCorDetReqChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaCalificacion
+        {
+            get
+            {
+                return _FechaCalificacion;
+            }
+            set
+            {
+                OnFechaCalificacionChanging(value);
+                ReportPropertyChanging("FechaCalificacion");
+                _FechaCalificacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaCalificacion");
+                OnFechaCalificacionChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaCalificacion;
+        partial void OnFechaCalificacionChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaCalificacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaFinServicio
+        {
+            get
+            {
+                return _FechaFinServicio;
+            }
+            set
+            {
+                OnFechaFinServicioChanging(value);
+                ReportPropertyChanging("FechaFinServicio");
+                _FechaFinServicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaFinServicio");
+                OnFechaFinServicioChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaFinServicio;
+        partial void OnFechaFinServicioChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaFinServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Observacion
+        {
+            get
+            {
+                return _Observacion;
+            }
+            set
+            {
+                OnObservacionChanging(value);
+                ReportPropertyChanging("Observacion");
+                _Observacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Observacion");
+                OnObservacionChanged();
+            }
+        }
+        private global::System.String _Observacion;
+        partial void OnObservacionChanging(global::System.String value);
+        partial void OnObservacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdParametroCalificacionPuntualidad
+        {
+            get
+            {
+                return _IdParametroCalificacionPuntualidad;
+            }
+            set
+            {
+                OnIdParametroCalificacionPuntualidadChanging(value);
+                ReportPropertyChanging("IdParametroCalificacionPuntualidad");
+                _IdParametroCalificacionPuntualidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdParametroCalificacionPuntualidad");
+                OnIdParametroCalificacionPuntualidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdParametroCalificacionPuntualidad;
+        partial void OnIdParametroCalificacionPuntualidadChanging(Nullable<global::System.Int32> value);
+        partial void OnIdParametroCalificacionPuntualidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdParametroCalificacionCalidad
+        {
+            get
+            {
+                return _IdParametroCalificacionCalidad;
+            }
+            set
+            {
+                OnIdParametroCalificacionCalidadChanging(value);
+                ReportPropertyChanging("IdParametroCalificacionCalidad");
+                _IdParametroCalificacionCalidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdParametroCalificacionCalidad");
+                OnIdParametroCalificacionCalidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdParametroCalificacionCalidad;
+        partial void OnIdParametroCalificacionCalidadChanging(Nullable<global::System.Int32> value);
+        partial void OnIdParametroCalificacionCalidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdParametroCalificacionIncidencia
+        {
+            get
+            {
+                return _IdParametroCalificacionIncidencia;
+            }
+            set
+            {
+                OnIdParametroCalificacionIncidenciaChanging(value);
+                ReportPropertyChanging("IdParametroCalificacionIncidencia");
+                _IdParametroCalificacionIncidencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdParametroCalificacionIncidencia");
+                OnIdParametroCalificacionIncidenciaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdParametroCalificacionIncidencia;
+        partial void OnIdParametroCalificacionIncidenciaChanging(Nullable<global::System.Int32> value);
+        partial void OnIdParametroCalificacionIncidenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdEstado
+        {
+            get
+            {
+                return _IdEstado;
+            }
+            set
+            {
+                OnIdEstadoChanging(value);
+                ReportPropertyChanging("IdEstado");
+                _IdEstado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdEstado");
+                OnIdEstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdEstado;
+        partial void OnIdEstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnIdEstadoChanged();
 
         #endregion
 
@@ -892,16 +1620,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio", "GSC_ParametroCalificacionTipoServicio")]
-        public GSC_ParametroCalificacionTipoServicio GSC_ParametroCalificacionTipoServicio
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GSC_ParametroCalificacion", "GSC_ParametroCalificacion")]
+        public GSC_ParametroCalificacion GSC_ParametroCalificacion
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacionTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio", "GSC_ParametroCalificacionTipoServicio").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion", "GSC_ParametroCalificacion").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacionTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio", "GSC_ParametroCalificacionTipoServicio").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion", "GSC_ParametroCalificacion").Value = value;
             }
         }
         /// <summary>
@@ -909,17 +1637,17 @@ namespace DemoMVC.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<GSC_ParametroCalificacionTipoServicio> GSC_ParametroCalificacionTipoServicioReference
+        public EntityReference<GSC_ParametroCalificacion> GSC_ParametroCalificacionReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacionTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio", "GSC_ParametroCalificacionTipoServicio");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion", "GSC_ParametroCalificacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_ParametroCalificacionTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio", "GSC_ParametroCalificacionTipoServicio", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion", "GSC_ParametroCalificacion", value);
                 }
             }
         }
@@ -930,16 +1658,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio", "GSC_ProveedorTipoServicio")]
-        public GSC_ProveedorTipoServicio GSC_ProveedorTipoServicio
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GSC_ParametroCalificacion1", "GSC_ParametroCalificacion")]
+        public GSC_ParametroCalificacion GSC_ParametroCalificacion1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ProveedorTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio", "GSC_ProveedorTipoServicio").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion1", "GSC_ParametroCalificacion").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ProveedorTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio", "GSC_ProveedorTipoServicio").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion1", "GSC_ParametroCalificacion").Value = value;
             }
         }
         /// <summary>
@@ -947,17 +1675,93 @@ namespace DemoMVC.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<GSC_ProveedorTipoServicio> GSC_ProveedorTipoServicioReference
+        public EntityReference<GSC_ParametroCalificacion> GSC_ParametroCalificacion1Reference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ProveedorTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio", "GSC_ProveedorTipoServicio");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion1", "GSC_ParametroCalificacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_ProveedorTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio", "GSC_ProveedorTipoServicio", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion1", "GSC_ParametroCalificacion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GSC_ParametroCalificacion2", "GSC_ParametroCalificacion")]
+        public GSC_ParametroCalificacion GSC_ParametroCalificacion2
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion2", "GSC_ParametroCalificacion").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion2", "GSC_ParametroCalificacion").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GSC_ParametroCalificacion> GSC_ParametroCalificacion2Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion2", "GSC_ParametroCalificacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion2", "GSC_ParametroCalificacion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento")]
+        public GPP_DetalleRequerimiento GPP_DetalleRequerimiento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK_GSC_CalificacionServicio_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK_GSC_CalificacionServicio_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GPP_DetalleRequerimiento> GPP_DetalleRequerimientoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK_GSC_CalificacionServicio_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK_GSC_CalificacionServicio_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento", value);
                 }
             }
         }
@@ -1341,44 +2145,6 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Cotiz__IdEst__3C69FB99", "GSC_Estado")]
-        public GSC_Estado GSC_Estado
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99", "GSC_Estado").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99", "GSC_Estado").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GSC_Estado> GSC_EstadoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99", "GSC_Estado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99", "GSC_Estado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Cotiz__IdSol__3D5E1FD2", "GSC_SolicitudCotizacion")]
         public GSC_SolicitudCotizacion GSC_SolicitudCotizacion
         {
@@ -1603,6 +2369,44 @@ namespace DemoMVC.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_EvaluacionCotizacion>("GSC_Model.FK_GSC_EvaluiacionCotizacion_GSC_Cotizacion", "GSC_EvaluacionCotizacion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Cotiz__IdEst__46E78A0C", "GSC_Estado")]
+        public GSC_Estado GSC_Estado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Cotiz__IdEst__46E78A0C", "GSC_Estado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Cotiz__IdEst__46E78A0C", "GSC_Estado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GSC_Estado> GSC_EstadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Cotiz__IdEst__46E78A0C", "GSC_Estado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Cotiz__IdEst__46E78A0C", "GSC_Estado", value);
                 }
             }
         }
@@ -2248,6 +3052,44 @@ namespace DemoMVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_DetalleSolic__571DF1D5", "GPP_DetalleRequerimiento")]
+        public GPP_DetalleRequerimiento GPP_DetalleRequerimiento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK__GSC_DetalleSolic__571DF1D5", "GPP_DetalleRequerimiento").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK__GSC_DetalleSolic__571DF1D5", "GPP_DetalleRequerimiento").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GPP_DetalleRequerimiento> GPP_DetalleRequerimientoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK__GSC_DetalleSolic__571DF1D5", "GPP_DetalleRequerimiento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK__GSC_DetalleSolic__571DF1D5", "GPP_DetalleRequerimiento", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -2376,6 +3218,54 @@ namespace DemoMVC.Models
         private global::System.String _FlagCotizacion;
         partial void OnFlagCotizacionChanging(global::System.String value);
         partial void OnFlagCotizacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FlagParteDiario
+        {
+            get
+            {
+                return _FlagParteDiario;
+            }
+            set
+            {
+                OnFlagParteDiarioChanging(value);
+                ReportPropertyChanging("FlagParteDiario");
+                _FlagParteDiario = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FlagParteDiario");
+                OnFlagParteDiarioChanged();
+            }
+        }
+        private global::System.String _FlagParteDiario;
+        partial void OnFlagParteDiarioChanging(global::System.String value);
+        partial void OnFlagParteDiarioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FlagCalificacion
+        {
+            get
+            {
+                return _FlagCalificacion;
+            }
+            set
+            {
+                OnFlagCalificacionChanging(value);
+                ReportPropertyChanging("FlagCalificacion");
+                _FlagCalificacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FlagCalificacion");
+                OnFlagCalificacionChanged();
+            }
+        }
+        private global::System.String _FlagCalificacion;
+        partial void OnFlagCalificacionChanging(global::System.String value);
+        partial void OnFlagCalificacionChanged();
 
         #endregion
 
@@ -2388,18 +3278,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Cotiz__IdEst__3C69FB99", "GSC_Cotizacion")]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Cotiz__IdEst__46E78A0C", "GSC_Cotizacion")]
         public EntityCollection<GSC_Cotizacion> GSC_Cotizacion
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_Cotizacion>("GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99", "GSC_Cotizacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_Cotizacion>("GSC_Model.FK__GSC_Cotiz__IdEst__46E78A0C", "GSC_Cotizacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_Cotizacion>("GSC_Model.FK__GSC_Cotiz__IdEst__3C69FB99", "GSC_Cotizacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_Cotizacion>("GSC_Model.FK__GSC_Cotiz__IdEst__46E78A0C", "GSC_Cotizacion", value);
                 }
             }
         }
@@ -2410,18 +3300,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Solic__IdEst__5070F446", "GSC_SolicitudCotizacion")]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Solic__IdEst__3E52440B", "GSC_SolicitudCotizacion")]
         public EntityCollection<GSC_SolicitudCotizacion> GSC_SolicitudCotizacion
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_SolicitudCotizacion>("GSC_Model.FK__GSC_Solic__IdEst__5070F446", "GSC_SolicitudCotizacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_SolicitudCotizacion>("GSC_Model.FK__GSC_Solic__IdEst__3E52440B", "GSC_SolicitudCotizacion");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_SolicitudCotizacion>("GSC_Model.FK__GSC_Solic__IdEst__5070F446", "GSC_SolicitudCotizacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_SolicitudCotizacion>("GSC_Model.FK__GSC_Solic__IdEst__3E52440B", "GSC_SolicitudCotizacion", value);
                 }
             }
         }
@@ -2432,18 +3322,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Solic__IdEst__5165187F", "GSC_SolicitudCotizacion")]
-        public EntityCollection<GSC_SolicitudCotizacion> GSC_SolicitudCotizacion1
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_ParteDiario_GSC_Estado", "GSC_ParteDiario")]
+        public EntityCollection<GSC_ParteDiario> GSC_ParteDiario
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_SolicitudCotizacion>("GSC_Model.FK__GSC_Solic__IdEst__5165187F", "GSC_SolicitudCotizacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_ParteDiario>("GSC_Model.FK_GSC_ParteDiario_GSC_Estado", "GSC_ParteDiario");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_SolicitudCotizacion>("GSC_Model.FK__GSC_Solic__IdEst__5165187F", "GSC_SolicitudCotizacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_ParteDiario>("GSC_Model.FK_GSC_ParteDiario_GSC_Estado", "GSC_ParteDiario", value);
                 }
             }
         }
@@ -2987,48 +3877,6 @@ namespace DemoMVC.Models
         #endregion
 
     
-        #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_Incidencia_ParteDiario", "GSC_ParteDiario")]
-        public GSC_ParteDiario GSC_ParteDiario
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParteDiario>("GSC_Model.FK_Incidencia_ParteDiario", "GSC_ParteDiario").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParteDiario>("GSC_Model.FK_Incidencia_ParteDiario", "GSC_ParteDiario").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GSC_ParteDiario> GSC_ParteDiarioReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParteDiario>("GSC_Model.FK_Incidencia_ParteDiario", "GSC_ParteDiario");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_ParteDiario>("GSC_Model.FK_Incidencia_ParteDiario", "GSC_ParteDiario", value);
-                }
-            }
-        }
-
-        #endregion
-
     }
     
     /// <summary>
@@ -3984,24 +4832,24 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> PuntuacionMax
+        public Nullable<global::System.Int32> Puntuacion
         {
             get
             {
-                return _PuntuacionMax;
+                return _Puntuacion;
             }
             set
             {
-                OnPuntuacionMaxChanging(value);
-                ReportPropertyChanging("PuntuacionMax");
-                _PuntuacionMax = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("PuntuacionMax");
-                OnPuntuacionMaxChanged();
+                OnPuntuacionChanging(value);
+                ReportPropertyChanging("Puntuacion");
+                _Puntuacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Puntuacion");
+                OnPuntuacionChanged();
             }
         }
-        private Nullable<global::System.Int32> _PuntuacionMax;
-        partial void OnPuntuacionMaxChanging(Nullable<global::System.Int32> value);
-        partial void OnPuntuacionMaxChanged();
+        private Nullable<global::System.Int32> _Puntuacion;
+        partial void OnPuntuacionChanging(Nullable<global::System.Int32> value);
+        partial void OnPuntuacionChanged();
 
         #endregion
 
@@ -4014,154 +4862,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion", "GSC_ParametroCalificacionTipoServicio")]
-        public EntityCollection<GSC_ParametroCalificacionTipoServicio> GSC_ParametroCalificacionTipoServicio
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "GSC_ParametroCalificacionTipoServicio1", "GSC_TipoServicio")]
+        public EntityCollection<GSC_TipoServicio> GSC_TipoServicio
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_ParametroCalificacionTipoServicio>("GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion", "GSC_ParametroCalificacionTipoServicio");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_TipoServicio>("GSC_Model.GSC_ParametroCalificacionTipoServicio1", "GSC_TipoServicio");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_ParametroCalificacionTipoServicio>("GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion", "GSC_ParametroCalificacionTipoServicio", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GSC_Model", Name="GSC_ParametroCalificacionTipoServicio")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class GSC_ParametroCalificacionTipoServicio : EntityObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto GSC_ParametroCalificacionTipoServicio.
-        /// </summary>
-        /// <param name="idTipoServicio">Valor inicial de la propiedad IdTipoServicio.</param>
-        /// <param name="idParametroCalificacion">Valor inicial de la propiedad IdParametroCalificacion.</param>
-        public static GSC_ParametroCalificacionTipoServicio CreateGSC_ParametroCalificacionTipoServicio(global::System.Int32 idTipoServicio, global::System.Int32 idParametroCalificacion)
-        {
-            GSC_ParametroCalificacionTipoServicio gSC_ParametroCalificacionTipoServicio = new GSC_ParametroCalificacionTipoServicio();
-            gSC_ParametroCalificacionTipoServicio.IdTipoServicio = idTipoServicio;
-            gSC_ParametroCalificacionTipoServicio.IdParametroCalificacion = idParametroCalificacion;
-            return gSC_ParametroCalificacionTipoServicio;
-        }
-
-        #endregion
-
-        #region Propiedades primitivas
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IdTipoServicio
-        {
-            get
-            {
-                return _IdTipoServicio;
-            }
-            set
-            {
-                if (_IdTipoServicio != value)
-                {
-                    OnIdTipoServicioChanging(value);
-                    ReportPropertyChanging("IdTipoServicio");
-                    _IdTipoServicio = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdTipoServicio");
-                    OnIdTipoServicioChanged();
-                }
-            }
-        }
-        private global::System.Int32 _IdTipoServicio;
-        partial void OnIdTipoServicioChanging(global::System.Int32 value);
-        partial void OnIdTipoServicioChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IdParametroCalificacion
-        {
-            get
-            {
-                return _IdParametroCalificacion;
-            }
-            set
-            {
-                if (_IdParametroCalificacion != value)
-                {
-                    OnIdParametroCalificacionChanging(value);
-                    ReportPropertyChanging("IdParametroCalificacion");
-                    _IdParametroCalificacion = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdParametroCalificacion");
-                    OnIdParametroCalificacionChanged();
-                }
-            }
-        }
-        private global::System.Int32 _IdParametroCalificacion;
-        partial void OnIdParametroCalificacionChanging(global::System.Int32 value);
-        partial void OnIdParametroCalificacionChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaAsig
-        {
-            get
-            {
-                return _FechaAsig;
-            }
-            set
-            {
-                OnFechaAsigChanging(value);
-                ReportPropertyChanging("FechaAsig");
-                _FechaAsig = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FechaAsig");
-                OnFechaAsigChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _FechaAsig;
-        partial void OnFechaAsigChanging(Nullable<global::System.DateTime> value);
-        partial void OnFechaAsigChanged();
-
-        #endregion
-
-    
-        #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio", "GSC_CalificacionServicioProveedorTipoServicio")]
-        public EntityCollection<GSC_CalificacionServicioProveedorTipoServicio> GSC_CalificacionServicioProveedorTipoServicio
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_CalificacionServicioProveedorTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio", "GSC_CalificacionServicioProveedorTipoServicio");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_CalificacionServicioProveedorTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ParametrosCalificacionTipoServicio", "GSC_CalificacionServicioProveedorTipoServicio", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_TipoServicio>("GSC_Model.GSC_ParametroCalificacionTipoServicio1", "GSC_TipoServicio", value);
                 }
             }
         }
@@ -4172,34 +4884,18 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion", "GSC_ParametroCalificacion")]
-        public GSC_ParametroCalificacion GSC_ParametroCalificacion
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GSC_ParametroCalificacion", "GSC_CalificacionServicio")]
+        public EntityCollection<GSC_CalificacionServicio> GSC_CalificacionServicio
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion", "GSC_ParametroCalificacion").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion", "GSC_ParametroCalificacion").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GSC_ParametroCalificacion> GSC_ParametroCalificacionReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion", "GSC_ParametroCalificacion");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_CalificacionServicio>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion", "GSC_CalificacionServicio");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_ParametroCalificacion>("GSC_Model.FK_ParametrosCalificacionTipoServicio_ParametrosCalificacion", "GSC_ParametroCalificacion", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_CalificacionServicio>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion", "GSC_CalificacionServicio", value);
                 }
             }
         }
@@ -4210,34 +4906,40 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_ParametrosCalificacionTipoServicio_TipoServicio", "GSC_TipoServicio")]
-        public GSC_TipoServicio GSC_TipoServicio
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GSC_ParametroCalificacion1", "GSC_CalificacionServicio")]
+        public EntityCollection<GSC_CalificacionServicio> GSC_CalificacionServicio1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_TipoServicio>("GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio", "GSC_TipoServicio").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_TipoServicio>("GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio", "GSC_TipoServicio").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GSC_TipoServicio> GSC_TipoServicioReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_TipoServicio>("GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio", "GSC_TipoServicio");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_CalificacionServicio>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion1", "GSC_CalificacionServicio");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_TipoServicio>("GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio", "GSC_TipoServicio", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_CalificacionServicio>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion1", "GSC_CalificacionServicio", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_CalificacionServicio_GSC_ParametroCalificacion2", "GSC_CalificacionServicio")]
+        public EntityCollection<GSC_CalificacionServicio> GSC_CalificacionServicio2
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_CalificacionServicio>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion2", "GSC_CalificacionServicio");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_CalificacionServicio>("GSC_Model.FK_GSC_CalificacionServicio_GSC_ParametroCalificacion2", "GSC_CalificacionServicio", value);
                 }
             }
         }
@@ -4259,16 +4961,16 @@ namespace DemoMVC.Models
         /// <summary>
         /// Crear un nuevo objeto GSC_ParteDiario.
         /// </summary>
+        /// <param name="idParteDiario">Valor inicial de la propiedad IdParteDiario.</param>
         /// <param name="idProyecto">Valor inicial de la propiedad IdProyecto.</param>
         /// <param name="idRequerimiento">Valor inicial de la propiedad IdRequerimiento.</param>
-        /// <param name="idParteDiario">Valor inicial de la propiedad IdParteDiario.</param>
         /// <param name="idCorDetReq">Valor inicial de la propiedad IdCorDetReq.</param>
-        public static GSC_ParteDiario CreateGSC_ParteDiario(global::System.Int32 idProyecto, global::System.Int32 idRequerimiento, global::System.Int32 idParteDiario, global::System.Int32 idCorDetReq)
+        public static GSC_ParteDiario CreateGSC_ParteDiario(global::System.Int32 idParteDiario, global::System.Int32 idProyecto, global::System.Int32 idRequerimiento, global::System.Int32 idCorDetReq)
         {
             GSC_ParteDiario gSC_ParteDiario = new GSC_ParteDiario();
+            gSC_ParteDiario.IdParteDiario = idParteDiario;
             gSC_ParteDiario.IdProyecto = idProyecto;
             gSC_ParteDiario.IdRequerimiento = idRequerimiento;
-            gSC_ParteDiario.IdParteDiario = idParteDiario;
             gSC_ParteDiario.IdCorDetReq = idCorDetReq;
             return gSC_ParteDiario;
         }
@@ -4276,60 +4978,6 @@ namespace DemoMVC.Models
         #endregion
 
         #region Propiedades primitivas
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IdProyecto
-        {
-            get
-            {
-                return _IdProyecto;
-            }
-            set
-            {
-                if (_IdProyecto != value)
-                {
-                    OnIdProyectoChanging(value);
-                    ReportPropertyChanging("IdProyecto");
-                    _IdProyecto = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdProyecto");
-                    OnIdProyectoChanged();
-                }
-            }
-        }
-        private global::System.Int32 _IdProyecto;
-        partial void OnIdProyectoChanging(global::System.Int32 value);
-        partial void OnIdProyectoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IdRequerimiento
-        {
-            get
-            {
-                return _IdRequerimiento;
-            }
-            set
-            {
-                if (_IdRequerimiento != value)
-                {
-                    OnIdRequerimientoChanging(value);
-                    ReportPropertyChanging("IdRequerimiento");
-                    _IdRequerimiento = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdRequerimiento");
-                    OnIdRequerimientoChanged();
-                }
-            }
-        }
-        private global::System.Int32 _IdRequerimiento;
-        partial void OnIdRequerimientoChanging(global::System.Int32 value);
-        partial void OnIdRequerimientoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -4361,7 +5009,55 @@ namespace DemoMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdProyecto
+        {
+            get
+            {
+                return _IdProyecto;
+            }
+            set
+            {
+                OnIdProyectoChanging(value);
+                ReportPropertyChanging("IdProyecto");
+                _IdProyecto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdProyecto");
+                OnIdProyectoChanged();
+            }
+        }
+        private global::System.Int32 _IdProyecto;
+        partial void OnIdProyectoChanging(global::System.Int32 value);
+        partial void OnIdProyectoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdRequerimiento
+        {
+            get
+            {
+                return _IdRequerimiento;
+            }
+            set
+            {
+                OnIdRequerimientoChanging(value);
+                ReportPropertyChanging("IdRequerimiento");
+                _IdRequerimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdRequerimiento");
+                OnIdRequerimientoChanged();
+            }
+        }
+        private global::System.Int32 _IdRequerimiento;
+        partial void OnIdRequerimientoChanging(global::System.Int32 value);
+        partial void OnIdRequerimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 IdCorDetReq
         {
@@ -4371,14 +5067,11 @@ namespace DemoMVC.Models
             }
             set
             {
-                if (_IdCorDetReq != value)
-                {
-                    OnIdCorDetReqChanging(value);
-                    ReportPropertyChanging("IdCorDetReq");
-                    _IdCorDetReq = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdCorDetReq");
-                    OnIdCorDetReqChanged();
-                }
+                OnIdCorDetReqChanging(value);
+                ReportPropertyChanging("IdCorDetReq");
+                _IdCorDetReq = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdCorDetReq");
+                OnIdCorDetReqChanged();
             }
         }
         private global::System.Int32 _IdCorDetReq;
@@ -4480,6 +5173,30 @@ namespace DemoMVC.Models
         private global::System.String _Observacion;
         partial void OnObservacionChanging(global::System.String value);
         partial void OnObservacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdEstado
+        {
+            get
+            {
+                return _IdEstado;
+            }
+            set
+            {
+                OnIdEstadoChanging(value);
+                ReportPropertyChanging("IdEstado");
+                _IdEstado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdEstado");
+                OnIdEstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdEstado;
+        partial void OnIdEstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnIdEstadoChanged();
 
         #endregion
 
@@ -4492,18 +5209,72 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_Incidencia_ParteDiario", "GSC_Incidencia")]
-        public EntityCollection<GSC_Incidencia> GSC_Incidencia
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_ParteDiario_GSC_Estado", "GSC_Estado")]
+        public GSC_Estado GSC_Estado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_Incidencia>("GSC_Model.FK_Incidencia_ParteDiario", "GSC_Incidencia");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK_GSC_ParteDiario_GSC_Estado", "GSC_Estado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK_GSC_ParteDiario_GSC_Estado", "GSC_Estado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GSC_Estado> GSC_EstadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK_GSC_ParteDiario_GSC_Estado", "GSC_Estado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_Incidencia>("GSC_Model.FK_Incidencia_ParteDiario", "GSC_Incidencia", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_Estado>("GSC_Model.FK_GSC_ParteDiario_GSC_Estado", "GSC_Estado", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_ParteDiario_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento")]
+        public GPP_DetalleRequerimiento GPP_DetalleRequerimiento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK_GSC_ParteDiario_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK_GSC_ParteDiario_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GPP_DetalleRequerimiento> GPP_DetalleRequerimientoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK_GSC_ParteDiario_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPP_DetalleRequerimiento>("GSC_Model.FK_GSC_ParteDiario_GPP_DetalleRequerimiento", "GPP_DetalleRequerimiento", value);
                 }
             }
         }
@@ -5255,28 +6026,6 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio", "GSC_CalificacionServicioProveedorTipoServicio")]
-        public EntityCollection<GSC_CalificacionServicioProveedorTipoServicio> GSC_CalificacionServicioProveedorTipoServicio
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_CalificacionServicioProveedorTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio", "GSC_CalificacionServicioProveedorTipoServicio");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_CalificacionServicioProveedorTipoServicio>("GSC_Model.FK_CalificacionServicioProveedorTipoServicio_ProveedorTipoServicio", "GSC_CalificacionServicioProveedorTipoServicio", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_ProveedorTipoServicio_Proveedor", "GSC_Proveedor")]
         public GSC_Proveedor GSC_Proveedor
         {
@@ -5648,82 +6397,6 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Solic__IdEst__5070F446", "GSC_Estado")]
-        public GSC_Estado GSC_Estado
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__5070F446", "GSC_Estado").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__5070F446", "GSC_Estado").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GSC_Estado> GSC_EstadoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__5070F446", "GSC_Estado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__5070F446", "GSC_Estado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Solic__IdEst__5165187F", "GSC_Estado")]
-        public GSC_Estado GSC_Estado1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__5165187F", "GSC_Estado").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__5165187F", "GSC_Estado").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GSC_Estado> GSC_Estado1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__5165187F", "GSC_Estado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__5165187F", "GSC_Estado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_GSC_EvaluiacionCotizacion_GSC_SolicitudCotizacion", "GSC_EvaluacionCotizacion")]
         public EntityCollection<GSC_EvaluacionCotizacion> GSC_EvaluacionCotizacion
         {
@@ -5796,6 +6469,44 @@ namespace DemoMVC.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_SolicitudProveedorTipoServicio>("GSC_Model.FK_SolicitudProveedorTipoServicio_SolicitudCotizacion", "GSC_SolicitudProveedorTipoServicio", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK__GSC_Solic__IdEst__3E52440B", "GSC_Estado")]
+        public GSC_Estado GSC_Estado
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__3E52440B", "GSC_Estado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__3E52440B", "GSC_Estado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GSC_Estado> GSC_EstadoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__3E52440B", "GSC_Estado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GSC_Estado>("GSC_Model.FK__GSC_Solic__IdEst__3E52440B", "GSC_Estado", value);
                 }
             }
         }
@@ -6178,28 +6889,6 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_ParametrosCalificacionTipoServicio_TipoServicio", "GSC_ParametroCalificacionTipoServicio")]
-        public EntityCollection<GSC_ParametroCalificacionTipoServicio> GSC_ParametroCalificacionTipoServicio
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_ParametroCalificacionTipoServicio>("GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio", "GSC_ParametroCalificacionTipoServicio");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_ParametroCalificacionTipoServicio>("GSC_Model.FK_ParametrosCalificacionTipoServicio_TipoServicio", "GSC_ParametroCalificacionTipoServicio", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "FK_ProveedorTipoServicio_TipoServicio", "GSC_ProveedorTipoServicio")]
         public EntityCollection<GSC_ProveedorTipoServicio> GSC_ProveedorTipoServicio
         {
@@ -6234,6 +6923,28 @@ namespace DemoMVC.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_SolicitudCotizacion>("GSC_Model.FK_GSC_SolicitudCotizacion_GSC_TipoServicio", "GSC_SolicitudCotizacion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GSC_Model", "GSC_ParametroCalificacionTipoServicio1", "GSC_ParametroCalificacion")]
+        public EntityCollection<GSC_ParametroCalificacion> GSC_ParametroCalificacion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GSC_ParametroCalificacion>("GSC_Model.GSC_ParametroCalificacionTipoServicio1", "GSC_ParametroCalificacion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GSC_ParametroCalificacion>("GSC_Model.GSC_ParametroCalificacionTipoServicio1", "GSC_ParametroCalificacion", value);
                 }
             }
         }

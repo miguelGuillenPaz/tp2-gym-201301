@@ -8,6 +8,17 @@ namespace GYM.SIG.Business
 {
       public class DetalleRequerimientoCN : Singleton<DetalleRequerimientoCN>
     {
+          public List<DetalleRequerimiento> RequerimientoPorProyecto(int idProyecto)
+          {
+              try
+              {
+                  return DetalleRequerimientodalc.Instancia.RequerimientoPorProyecto(idProyecto);
+              }
+              catch (Exception ex)
+              {
+                  throw new Exception(ex.Message);
+              }
+          }
 
         public List<DetalleRequerimiento> listaporSolicitud(int codSolCotizacion)
         {

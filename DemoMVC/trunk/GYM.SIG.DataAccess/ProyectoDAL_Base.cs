@@ -14,6 +14,32 @@ namespace GYM.SIG.DataAccess
         private const String NombreTabla = "Proyecto";
         private Database db = DatabaseFactory.CreateDatabase();
 
+        public List<Proyecto> ListarRequeridos()
+        {
+            try
+            {
+                var coleccion = new List<Proyecto>();
+                var sql = db.GetStoredProcCommand("pa_GSC_Proyecto_Requeridos");                
+                using (var lector = db.ExecuteReader(sql))
+                {
+                    while (lector.Read())
+                    {
+                        coleccion.Add(new Proyecto
+                        {
+                            codPro = lector.GetInt32(lector.GetOrdinal("IdProyecto")),
+                            nomPro = lector.IsDBNull(lector.GetOrdinal("Nombre")) ? default(String) : lector.GetString(lector.GetOrdinal("Nombre"))                            
+                        });
+                    }
+                }
+                sql.Dispose();
+                return coleccion;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<Proyecto> listartodos()
         {
             try

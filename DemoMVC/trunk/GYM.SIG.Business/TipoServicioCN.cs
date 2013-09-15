@@ -9,6 +9,18 @@ namespace GYM.SIG.Business
     public class TipoServicioCN : Singleton<TipoServicioCN>
     {
 
+        public List<TipoServicio> ListarTipoServicioPorProyectoYRequerimiento(int idProyecto, int idRequerimiento)
+        {
+            try
+            {                
+                return TipoServiciodalc.Instancia.ListarTipoServicioPorProyectoYRequerimiento(idProyecto,idRequerimiento);;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<TipoServicio> listartodos(bool seleccione = false)
         {
             try

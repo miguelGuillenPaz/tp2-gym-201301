@@ -737,5 +737,25 @@ namespace DemoMVC.Controllers
 
             return item != null ? item.Nombre : string.Empty;
         }
+
+        public static string GetTipoServicio(int idRequerimiento)
+        {
+            var entities = new GSC_Entities();
+            var resultado = string.Empty;
+            var item =
+                (from r in entities.GPP_Requerimiento select r).FirstOrDefault(f => f.IdRequerimiento == idRequerimiento);
+
+            if (item != null)
+            {
+                var id = item.IdRequerimiento;
+                var gscTipoServicio = (from r in entities.GSC_TipoServicio select r).FirstOrDefault(f => f.IdTipoServicio == id);
+                if (
+                    gscTipoServicio != null)
+                {
+                    resultado = gscTipoServicio.DescripTServicio;
+                }                
+            }
+            return resultado;
+        }
     }
 }
