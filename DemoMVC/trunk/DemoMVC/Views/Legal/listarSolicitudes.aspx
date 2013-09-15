@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<DemoMVC.Models.Requerimiento>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Requerimientos
+    listarSolicitudes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
@@ -56,6 +56,14 @@
                <input id="txtFecFin" name="txtFecFin" type="text" value="31/12/2013"/>
         </div>
     </div>
+    <div class="fila">
+    <div class="col2 paddingTop">
+        Usuario solicitante:
+    </div>
+    <div class="col4 final">
+        
+    </div>
+    </div>
      <div class="fila">
      <p><input type="submit" value="Buscar Requerimiento"/></p>
     </div>
@@ -70,22 +78,23 @@
             <th>Estado</th>
             <th>Fecha de Solicitud</th>
             <th>Detalle</th>
+            <th>Asignar</th>
         </tr>
         <%
             if (Model != null)
             {
                 foreach (var item in Model)
                 {%>
-                <tr>
+                 <tr>
                     <td><%: item.idReq%></td>
                     <td><%: item.desProyecto%></td>
                     <td><%: item.descTipoReq%></td>
                     <td><%: item.desEstado%></td>
                     <td><%: string.Format("{0:yyyy-MM-dd}",item.fecha)%></td>
-                     <td align="center">
-                    <%: Html.ActionLink("Ver Detalle", "DetalleRequerimiento", "Legal", new { idRequerimiento = item.idReq }, null)%></td>
-                </tr>         
-                
+                    <td align="center"><%: Html.ActionLink("Ver Detalle", "DetalleRequerimiento", "Legal", new { idRequerimiento = item.idReq }, null)%></td>
+                    <td align="center"><%: Html.ActionLink("Asignar Recurso", "Recursos", "Legal", new { idRequerimiento = item.idReq }, null)%></td>
+                 </tr>
+               
            
                
            

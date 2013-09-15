@@ -461,5 +461,133 @@ namespace DemoMVC.Persistencia
             return nuevoIdReqLegal;
         }
 
+        public List<AsesorLegal> ListarAsesorLegal()
+        {
+            List<AsesorLegal> listadoAsesores = null;
+            AsesorLegal asesor = null;
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                SqlCommand com = new SqlCommand("pa_GJ_AsesorLegal_Listar", con);
+                com.CommandType = System.Data.CommandType.StoredProcedure;
+
+                con.Open();
+                using (com)
+                {
+                    using (SqlDataReader resultado = com.ExecuteReader())
+                    {
+                        if (resultado.HasRows)
+                        {
+                            listadoAsesores = new List<AsesorLegal>();
+                            while (resultado.Read())
+                            {
+                                asesor = new AsesorLegal()
+                                {
+                                    IdAsesorLegal = (Int32)resultado["IdAsesorLegal"],
+                                    Apellido = resultado["Apellido"].ToString(),
+                                    Nombre = resultado["Nombre"].ToString(),
+                                    CasosAsignados = (Int32)resultado["Casos Asignados"]
+                                };
+                                listadoAsesores.Add(asesor);
+                            }
+                        }
+                        else
+                        {
+                            Debug.WriteLine("No retornó registros");
+                        }
+                    }
+                }
+            }
+
+            return listadoAsesores;
+        }
+
+        public List<LegalRequerimiento> ListarCasosAsignados(int idAsesorLegal)
+        {
+            List<LegalRequerimiento> listadoRequerimientos = null;
+            LegalRequerimiento reqLegal = null;
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                SqlCommand com = new SqlCommand("pa_GJ_AsesorLegal_ListarCasosAsignados", con);
+                com.CommandType = System.Data.CommandType.StoredProcedure;
+
+                con.Open();
+                using (com)
+                {
+                    com.Parameters.Add(new SqlParameter("@idAsesorLegal", idAsesorLegal));
+
+                    using (SqlDataReader resultado = com.ExecuteReader())
+                    {
+                        if (resultado.HasRows)
+                        {
+                            listadoRequerimientos = new List<LegalRequerimiento>();
+                            while (resultado.Read())
+                            {
+                                reqLegal = new LegalRequerimiento()
+                                {
+                                    idReqLegal = (Int32)resultado["IdRequerimientoLegal"],
+                                    cDescripcionReqLegalTipo = resultado["Descripcion"].ToString(),
+                                    cFechaAtencion = resultado["FechaAtencion"].ToString(),
+                                    nomProyecto = resultado["Nombre"].ToString(),
+                                    cDescripcionReqLegalEstado = resultado["Descripcion"].ToString()
+                                };
+                                listadoRequerimientos.Add(reqLegal);
+                            }
+                        }
+                        else
+                        {
+                            Debug.WriteLine("No retornó registros");
+                        }
+                    }
+                }
+            }
+
+            return listadoRequerimientos;
+        }
+
+        public bool AsignarAsesorLegal(LegalRequerimiento reqLegal)
+        {
+            bool exito = false;
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                SqlTransaction sqlTransaction = null;
+                try
+                {
+                    SqlCommand cmdIns = new SqlCommand("pa_GJ_RequerimientoLegal_AsignarAsesorLegal", con);
+                    cmdIns.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    con.Open();
+                    sqlTransaction = con.BeginTransaction();
+
+                    cmdIns.Parameters.Add(new SqlParameter("@idReqLegal", reqLegal.idReqLegal));
+                    cmdIns.Parameters.Add(new SqlParameter("@idAsesorLegal", reqLegal.idAsesorLegal));
+                    cmdIns.Parameters.Add(new SqlParameter("@PrioridadAtencion", reqLegal.cPrioridadAtencion));
+
+                    cmdIns.Transaction = sqlTransaction;
+                    cmdIns.ExecuteNonQuery();
+                    sqlTransaction.Commit();
+
+                    exito = true;
+
+                    con.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    if (sqlTransaction != null) sqlTransaction.Rollback();
+                    exito = false;
+                    throw new Exception(ex.ToString(), ex);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open) con.Close();
+                    sqlTransaction.Dispose();
+                }
+            }
+            return exito;
+        }
+
     }
 }

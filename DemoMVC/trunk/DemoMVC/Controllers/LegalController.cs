@@ -304,17 +304,14 @@ namespace DemoMVC.Controllers
             LegalDAO proye = new LegalDAO();
             ProyectoDAO proyecto = new ProyectoDAO();
 
-            //ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE"), "codPro", "nomPro");
             ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR"), "codPro", "nomPro");
 
             ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
 
             ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion");
-            //return View(proye);
-
+            
             List<Requerimiento> listadoRequerimiento = null;
 
-            listadoRequerimiento = proye.listarRequerimiento(0, 0, 0, 0, Convert.ToDateTime("2013-01-01"), Convert.ToDateTime("2013-12-31"));
 
             return View(listadoRequerimiento);
         }
@@ -331,11 +328,7 @@ namespace DemoMVC.Controllers
 
             try
             {
-                //ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PRE").ToList(), "codPro", "nomPro");
-                ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
-                ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
-                ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion");
-
+                
                 String txtFecIni = formCollection["txtFecIni"];
                 String txtFecFin = formCollection["txtFecFin"];
                 String txtCodSolicitud = formCollection["txtCodSolicitud"].ToString();
@@ -343,9 +336,17 @@ namespace DemoMVC.Controllers
                 String txtTipoReq = formCollection["codTipoReq"].ToString();
                 string txtEstado = formCollection["codEstado"].ToString();
 
+                ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro",txtCodPro);
+                ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion",txtTipoReq);
+                ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion",txtEstado);
+
                 if (txtCodSolicitud == "")
                 {
                     txtCodSolicitud = "0";
+                }
+                if (txtCodPro == "")
+                {
+                    txtCodPro = "0";
                 }
                 listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin));
 
@@ -500,6 +501,193 @@ namespace DemoMVC.Controllers
 
                     Utils.ShowMessage(ViewData, "Registro exitoso", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
                 }
+            }
+
+            return View();
+        }
+        public ActionResult listarSolicitudes()
+        {
+            LegalDAO proye = new LegalDAO();
+            ProyectoDAO proyecto = new ProyectoDAO();
+
+            ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR"), "codPro", "nomPro");
+
+            ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
+
+            ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion");
+            
+            List<Requerimiento> listadoRequerimiento = null;
+
+            return View(listadoRequerimiento);
+        }
+
+
+        [HttpPost]
+        public ActionResult listarSolicitudes(FormCollection formCollection)
+        {
+
+            LegalDAO proye = new LegalDAO();
+            ProyectoDAO proyecto = new ProyectoDAO();
+
+            List<Requerimiento> listadoRequerimiento = null;
+
+            try
+            {
+
+                String txtFecIni = formCollection["txtFecIni"];
+                String txtFecFin = formCollection["txtFecFin"];
+                String txtCodSolicitud = formCollection["txtCodSolicitud"].ToString();
+                String txtCodPro = formCollection["codPro"].ToString();
+                String txtTipoReq = formCollection["codTipoReq"].ToString();
+                string txtEstado = formCollection["codEstado"].ToString();
+
+                ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro", txtCodPro);
+                ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion", txtTipoReq);
+                ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion", txtEstado);
+
+                if (txtCodSolicitud == "")
+                {
+                    txtCodSolicitud = "0";
+                }
+                if (txtCodPro == "")
+                {
+                    txtCodPro = "0";
+                }
+                listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin));
+
+                if (listadoRequerimiento == null)
+                {
+                    Utils.ShowMessage(ViewData, "No existen datos", Url.Action("listarRequerimientos", "Legal", new { id = 0 }));
+                }
+            }
+            catch (Exception e)
+            {
+                Utils.ShowMessage(ViewData, "Datos Incorrectos", Url.Action("listarRequerimientos", "Legal", new { id = 0 }));
+            }
+
+
+            return View(listadoRequerimiento);
+        }
+
+         [HttpGet]
+        public ActionResult Recursos()
+        {
+            LegalDAO legal = new LegalDAO();
+
+            List<AsesorLegal> listadoAsesores = null;
+
+            listadoAsesores = legal.ListarAsesorLegal();
+
+            int IdAsesorLegal = 0;
+            string Apellido = "";
+            string Nombre = "";
+            int CasosAsignados = 0;
+
+            foreach (AsesorLegal asesor in listadoAsesores)
+            {
+                IdAsesorLegal = asesor.IdAsesorLegal;
+                Apellido = asesor.Apellido;
+                Nombre = asesor.Nombre;
+                CasosAsignados = asesor.CasosAsignados;
+            }
+
+            ViewData["IdAsesorLegal"] = IdAsesorLegal;
+            ViewData["Apellido"] = Apellido;
+            ViewData["Nombre"] = Nombre;
+            ViewData["CasosAsignados"] = CasosAsignados;
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult CasosAsignados(Int32 idAsesorLegal)
+        {
+            LegalDAO legal = new LegalDAO();
+
+            List<LegalRequerimiento> listadoRequerimientos = null;
+
+            listadoRequerimientos = legal.ListarCasosAsignados(idAsesorLegal);
+
+            int idReqLegal = 0;
+            string cDescripcionReqLegalTipo = "";
+            string cFechaAtencion = "";
+            string nomProyecto = "";
+            string cDescripcionReqLegalEstado = "";
+
+            foreach (LegalRequerimiento req in listadoRequerimientos)
+            {
+                idReqLegal = req.idReqLegal;
+                cDescripcionReqLegalTipo = req.cDescripcionReqLegalTipo;
+                cFechaAtencion = req.cFechaAtencion;
+                nomProyecto = req.nomProyecto;
+                cDescripcionReqLegalEstado = req.cDescripcionReqLegalEstado;
+            }
+
+            ViewData["idReqLegal"] = idReqLegal;
+            ViewData["cDescripcionReqLegalTipo"] = cDescripcionReqLegalTipo;
+            ViewData["cFechaAtencion"] = cFechaAtencion;
+            ViewData["nomProyecto"] = nomProyecto;
+            ViewData["cDescripcionReqLegalEstado"] = cDescripcionReqLegalEstado;
+
+            return View();
+        }
+
+        [HttpPost]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult RegistrarAsignarAsesorLegal(FormCollection formCollection)
+        {
+            if (ModelState.IsValid)
+            {
+                bool valida = false;
+
+                if (formCollection["optSeleccion"] == null)
+                {
+                    Utils.ShowMessage(ViewData, "Seleccione un Asesor Legal", Url.Action("RegistrarAsignarAsesorLegal", "Legal", new { id = 0 }));
+                    valida = true;
+
+                    if (valida == true)
+                    {
+
+                    }
+                    else
+                    {
+                        int idReqLegal = Convert.ToInt32(formCollection["idProyecto"]);
+                        int prioridad = Convert.ToInt32(formCollection["txtPrioridad"]);
+                        string cPrioridadAtencion = "";
+                        switch (prioridad)
+                        {
+                            case 1:
+                                cPrioridadAtencion = "BAJ";
+                                break;
+                            case 2:
+                                cPrioridadAtencion = "MED";
+                                break;
+                            case 3:
+                                cPrioridadAtencion = "ALT";
+                                break;
+                        }
+
+                        LegalDAO legalDAO = new LegalDAO();
+                        LegalRequerimiento legalReq = new LegalRequerimiento();
+
+                        legalReq.idReqLegal = idReqLegal;
+                        legalReq.idAsesorLegal = 1;
+                        legalReq.cPrioridadAtencion = cPrioridadAtencion;
+
+                        bool insExito = legalDAO.AsignarAsesorLegal(legalReq);
+
+                        if (insExito)
+                        {
+                            Utils.ShowMessage(ViewData, "Se asignó el Asesor Legal exitosamente.", Url.Action("RegistrarAsignarAsesorLegal", "Legal", new { id = 0 }));
+                        }
+                        else
+                        {
+                            Utils.ShowMessage(ViewData, "ERROR. No se pudo asignar el Asesor Legal.", Url.Action("RegistrarAsignarAsesorLegal", "Legal", new { id = 0 }));
+                        }
+
+                    }
+                }
+
             }
 
             return View();

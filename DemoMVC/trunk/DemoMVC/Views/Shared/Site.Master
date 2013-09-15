@@ -74,6 +74,9 @@
                         <li>
                             <%= Html.ActionLink("Registrar Plantilla Declaración de fábrica", "RegistrarDeclaracionFabrica", "Legal")%>
                         </li>
+                        <li>
+                            <%= Html.ActionLink("Consultar Solicitudes", "listarSolicitudes", "Legal")%>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="#">Recursos Humanos</a>
