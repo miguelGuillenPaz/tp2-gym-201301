@@ -636,7 +636,7 @@ namespace DemoMVC.Persistencia
 
 
             }
-            return listaTipoRequerimiento;
+            return listaUsuarios;
         }
 
     }
