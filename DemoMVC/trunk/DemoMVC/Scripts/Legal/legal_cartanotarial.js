@@ -246,8 +246,8 @@ function grabarReqLegal() {
             datatype: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
-                alert('La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.');
-                //document.location.href = config.contextPath + 'Legal/Registrar';
+                //alert('La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.');
+                document.location.href = config.contextPath + 'Legal/Registrar';
             },
             error: function (request, status, err) {
             }

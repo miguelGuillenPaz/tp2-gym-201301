@@ -30,6 +30,7 @@ namespace DemoMVC.Controllers
 
         public ActionResult Registrar()
         {
+            Session["bEsConfirmacion"] = false;
 
             ProyectoDAO proye = new ProyectoDAO();
 
@@ -53,6 +54,7 @@ namespace DemoMVC.Controllers
         public ActionResult Confirmacion(int idPro, string desc, string arrVecinos)
         {
             Session["bInsertSuccess"] = false;
+            Session["bEsConfirmacion"] = true;
 
             //Insertar Req Legal CN
             LegalRequerimiento legalReq = new LegalRequerimiento();
@@ -99,10 +101,12 @@ namespace DemoMVC.Controllers
             {
                 Session["bInsertSuccess"] = true;
                 //EnviarMail(nuevoIdReqLegal);
+                //Utils.ShowMessage(ViewData, "Se registró el requerimiento exitosamente.", Url.Action("Registrar", "Legal", new { id = 0 }));
             }
             else
             {
                 Session["bInsertSuccess"] = false;
+                //Utils.ShowMessage(ViewData, "ERROR. No se pudo registrar el requerimiento.", Url.Action("Registrar", "Legal", new { id = 0 }));
             }
 
             ProyectoDAO proye = new ProyectoDAO();
@@ -182,6 +186,7 @@ namespace DemoMVC.Controllers
             string arrClausulas)
         {
             Session["bInsertSuccess"] = false;
+            Session["bEsConfirmacion"] = true;
 
             LegalRequerimiento legalReq = new LegalRequerimiento();
             legalReq.idReqLegalTipo = 2;
@@ -400,6 +405,8 @@ namespace DemoMVC.Controllers
         //Plantilla Contratos
         public ActionResult RegistrarContratos()
         {
+            Session["bEsConfirmacion"] = false;
+
             ProyectoDAO proye = new ProyectoDAO();
             ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
             return View();
@@ -505,6 +512,7 @@ namespace DemoMVC.Controllers
 
             return View();
         }
+        
         public ActionResult listarSolicitudes()
         {
             LegalDAO proye = new LegalDAO();
@@ -520,7 +528,6 @@ namespace DemoMVC.Controllers
 
             return View(listadoRequerimiento);
         }
-
 
         [HttpPost]
         public ActionResult listarSolicitudes(FormCollection formCollection)

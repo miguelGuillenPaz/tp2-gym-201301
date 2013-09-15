@@ -21,8 +21,11 @@
 
         $("document").ready(function () {
             var bSuccess = '<%= Session["bInsertSuccess"] %>';
-            if (bSuccess) {
-                alert("La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.");
+            var bEsConfirmacion = '<%= Session["bEsConfirmacion"] %>';
+            if (bEsConfirmacion) {
+                if (bSuccess) {
+                    alert("La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.");
+                }
             }
         });
 
