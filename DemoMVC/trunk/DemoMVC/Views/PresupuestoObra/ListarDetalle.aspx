@@ -4,6 +4,12 @@
     ListarDetalle
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/kendo/kendo.flat.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../Scripts/kendo/kendo.web.min.js"></script>
+
     <script type="text/javascript">
         //Ajax setup config==================================================================================
         $.ajaxSetup({
@@ -72,7 +78,38 @@
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    $('#ListarCronograma').html(data);
+                    $("#ListarCronograma").kendoGrid({
+                        dataSource: {
+                            data: data,
+                            pageSize: 10
+                        },
+                        groupable: false,
+                        sortable: false,
+                        pageable: true,
+                        columns: [{
+                            field: "Fecha",
+                            width: 50,
+                            title: "<center>Fecha</center>",
+                            attributes: { style: "text-align: center;" },
+                            template: "#= kendo.toString(kendo.parseDate(Fecha, 'yyyy-MM-dd'), 'dd/MM/yyyy') #"
+                        }, {
+                            field: "Hito",
+                            width: 70,
+                            title: "<center>Hito</center>",
+                            attributes: { style: "text-align: left;" }
+                        }, {
+                            field: "Nombre",
+                            width: 100,
+                            title: "<center>Nombre</center>",
+                            attributes: { style: "text-align: left;" }
+                        }, {
+                            field: "Responsable",
+                            width: 70,
+                            title: "<center>Responsable</center>",
+                            attributes: { style: "text-align: left;" }
+                        }]
+                    });
+                    //$('#ListarCronograma').html(data);
                 },
                 error: function (request, status, err) {
                 }
@@ -232,81 +269,49 @@
     </script>
     <div class="contenido-top">
         <div style="width: 100%; float: left; display: block;">
-            <h1>
-                Aprobación de Presupuestos</h1>
-            <br />
-            <h3 class="gpc-subtitulo">
-                Datos del Presupuesto</h3>
+            <h1 style="height: 20px;">Aprobación de Presupuestos</h1>
+            <h3 style="height: 20px; font-size: 15px; text-decoration: underline;">Datos del Presupuesto</h3>
         </div>
         <div class="gpc-separador">
         </div>
         <div style="width: 100%; float: left; display: block;">
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    <input type="hidden" id="IDPresupuesto" value="<%=Model.IDPresupuestoObra%>" />
-                    Número de Presupuesto:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.Numero %>
-                </div>
-                <div style="float: left; padding: .5em;">
-                    Nombre:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.Nombre %>
-                </div>
-                <div style="float: left; padding: .5em;">
-                    Cliente:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.RazonSocial %></div>
+                <input type="hidden" id="IDPresupuesto" value="<%=Model.IDPresupuestoObra%>" />
+                <div style="float: left; padding: .3em; font-weight: bold;">Número de Presupuesto: </div>
+                <div style="float: left; padding: .3em;"><%=Model.Numero %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">Nombre:</div>
+                <div style="float: left; padding: .3em;"><%=Model.Nombre %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">Cliente:</div>
+                <div style="float: left; padding: .3em;"><%=Model.RazonSocial %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    Dirección de la Obra:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.Direccion %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">Dirección de la Obra:</div>
+                <div style="float: left; padding: .3em;"><%=Model.Direccion %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    Fecha Inicio:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.FechaInicio %>
-                </div>
-                <div style="float: left; padding: .5em;">
-                    Fecha Fin:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.FechaFin %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">Fecha Inicio:</div>
+                <div style="float: left; padding: .3em;"><%=Model.FechaInicio %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">Fecha Fin:</div>
+                <div style="float: left; padding: .3em;"><%=Model.FechaFin %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    Fecha Cambio de Estado:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.FechaCambioEstado %></div>
-                <div style="float: left; padding: .5em;">
-                    Usuario Cambio de Estado:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.UsuarioCambioEstado %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">Fecha Cambio de Estado:</div>
+                <div style="float: left; padding: .3em;"><%=Model.FechaCambioEstado %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">Usuario Cambio de Estado:</div>
+                <div style="float: left; padding: .3em;"><%=Model.UsuarioCambioEstado %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    Total Presupuestado:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.TotalPresupuestado %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">Total Presupuestado:</div>
+                <div style="float: left; padding: .3em;"><%=Model.TotalPresupuestado %></div>
             </div>
         </div>
         <div class="gpc-separador">
         </div>
         <div style="width: 100%; float: left;">
-            <a href="" class="gpc-aprobar">Aprobar</a> <a href="" class="gpc-rechazar">Rechazar</a>
-            <a href="" class="gpc-anular">Anular </a><a href="javascript:history.back(1)" class="gpc-cancelar">
-                Cancelar</a>
+            <a href="" class="gpc-aprobar" style='width:70px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:22px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;'>Aprobar</a> 
+            <a href="" class="gpc-rechazar" style='width:70px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:22px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;'>Rechazar</a>
+            <a href="" class="gpc-anular" style='width:70px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:22px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;'>Anular </a>
+            <a href="javascript:history.back(1)" class="gpc-cancelar" style='width:70px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:22px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;'>Cancelar</a>
         </div>
         <div class="gpc-separador">
         </div>
@@ -335,10 +340,11 @@
                 Observaciones
             </div>
             <div class="gpc-modals-row">
-                <textarea id="tbAprobar" rows="3" cols="60" style="width: 100%;"></textarea>
+                <textarea id="tbAprobar" rows="3" cols="60" style="width: 98%;"></textarea>
             </div>
             <div class="gpc-modals-row">
-                <a href="" class="gpc-aprobarOK" style="color: #ffffff; float: right;">Confirmar Cambios</a>
+                <br />
+                <a href="" class="gpc-aprobarOK" style="color: #ffffff; float: right;width:140px;height:22px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;">Confirmar Cambios</a>
             </div>
         </div>
     </div>
@@ -352,10 +358,11 @@
                     Observaciones </span>
             </div>
             <div class="gpc-modals-row">
-                <textarea id="tbRechazar" rows="3" cols="60" style="width: 100%;"></textarea>
+                <textarea id="tbRechazar" rows="3" cols="60" style="width: 98%;"></textarea>
             </div>
             <div class="gpc-modals-row">
-                <a href="" class="gpc-rechazarOK" style="color: #ffffff; float: right;">Confirmar Cambios</a>
+                <br />
+                <a href="" class="gpc-rechazarOK" style="color: #ffffff; float: right;width:140px;height:22px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;">Confirmar Cambios</a>
             </div>
         </div>
     </div>
@@ -370,10 +377,11 @@
                     Justificación </span>
             </div>
             <div class="gpc-modals-row">
-                <textarea id="tbAnular" rows="3" cols="60" style="width: 100%;"></textarea>
+                <textarea id="tbAnular" rows="3" cols="60" style="width: 98%;"></textarea>
             </div>
             <div class="gpc-modals-row">
-                <a href="" class="gpc-anularOK" style="color: #ffffff; float: right;">Confirmar Anulación</a>
+                <br />
+                <a href="" class="gpc-anularOK" style="color: #ffffff; float: right; width:140px;height:22px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;">Confirmar Anulación</a>
             </div>
         </div>
     </div>
