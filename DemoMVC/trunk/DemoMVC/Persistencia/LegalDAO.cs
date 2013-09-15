@@ -283,7 +283,6 @@ namespace DemoMVC.Persistencia
             return listaRequerimiento;
         }
 
-
         public List<TipoRequerimiento> listarTipoRequerimiento()
         {
             List<TipoRequerimiento> listaTipoRequerimiento = null;
@@ -587,6 +586,57 @@ namespace DemoMVC.Persistencia
                 }
             }
             return exito;
+        }
+
+        public List<Usuario> listarUsuariosSolicitantes()
+        {
+            List<Usuario> listaUsuarios = null;
+            Usuario usuario = null;
+
+            string sql = "";
+            sql += "select u.IdUsuario, u.Nombre, u.ApellidoPaterno, u.ApellidoMaterno ";
+            sql += "from SEG_Usuario u ";
+            sql += "inner join GJ_RequerimientoLegal l on u.IdUsuario=l.IdUsuario ";
+            sql += "order by u.Nombre asc";
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand(sql, con))
+                {
+
+                    using (SqlDataReader resultado = com.ExecuteReader())
+                    {
+                        if (resultado.HasRows)
+                        {
+                            listaUsuarios = new List<Usuario>();
+                            usuario = new Usuario()
+                            {
+                                IdUsuario = 0,
+                                Nombre = "Todos"
+                            };
+                            listaUsuarios.Add(usuario);
+                            while (resultado.Read())
+                            {
+                                usuario = new Usuario()
+                                {
+                                    IdUsuario = (Int32)resultado["IdUsuario"],
+                                    Nombre = (String)resultado["Nombre"] + " " + (String)resultado["ApellidoPaterno"] + " " + (String)resultado["ApellidoMaterno"]
+                                };
+                                listaUsuarios.Add(usuario);
+                            }
+                        }
+                        else
+                        {
+                            Debug.WriteLine("No retornó registros");
+                        }
+
+                    }
+                }
+
+
+            }
+            return listaTipoRequerimiento;
         }
 
     }

@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="Models\TipoProyecto.cs" />
     <Compile Include="Models\Ubigeo.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\VariablesPresupuesto.cs" />
     <Compile Include="Parameters\EstadosParameters.cs" />
     <Compile Include="Persistencia\ActividadDAO.cs" />
