@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParteDiarioCN.cs" />
     <Compile Include="CotizacionCN.cs" />
     <Compile Include="DetalleCotizacionCN.cs" />
     <Compile Include="DetalleRequerimientoCN.cs" />

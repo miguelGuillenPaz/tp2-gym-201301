@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DemoMVC.Models;
 using GYM.SIG.Business;
@@ -21,94 +20,79 @@ namespace DemoMVC.Controllers
             _entities = new GSC_Entities();
             ViewData["Proyecto"] = Proyecto();
             ViewData["Situacion"] = Situacion();
-            var parte = (from r in _entities.GSC_ParteDiario select r).ToList();                
-            return View(parte);
+            //var parte = (from r in _entities.GSC_ParteDiario select r).ToList();
+            var lista = new ParteDiarioCN().ListarTodos();
+            return View(lista);
+        }
+        public virtual ActionResult Anular(int idParte)
+        {
+            _entities = new GSC_Entities();
+            //editar
+            var parte = (from r in _entities.GSC_ParteDiario where r.IdParteDiario == idParte select r).FirstOrDefault();
+
+            if (parte != null)
+            {                
+                parte.IdEstado = 3;
+                _entities.SaveChanges();
+            }
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true }, behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
         }
 
-        //
-        // GET: /Parte/Details/5
-
-        public ActionResult Details(int id)
+        public virtual ActionResult SetParteDiario(int idParte, int idProyecto, int idRequerimiento, string fecha, string horaInicio, string horaFin, string observacion, int idTipoServicio)
         {
-            return View();
-        }
+            DateTime? inicio = null;
+            if (!string.IsNullOrEmpty(horaInicio))
+                inicio = new DateTime(Convert.ToInt32(fecha.Substring(0, 4)), Convert.ToInt32(fecha.Substring(5, 2)),
+                                      Convert.ToInt32(fecha.Substring(8, 2)), Convert.ToInt32(horaInicio.Substring(0, 2)), Convert.ToInt32(horaInicio.Substring(3, 2)), 0);
+            DateTime? fin = null;
+            if (!string.IsNullOrEmpty(horaFin))
+                fin = new DateTime(Convert.ToInt32(fecha.Substring(0, 4)), Convert.ToInt32(fecha.Substring(5, 2)),
+                                      Convert.ToInt32(fecha.Substring(8, 2)), Convert.ToInt32(horaFin.Substring(0, 2)), Convert.ToInt32(horaFin.Substring(3, 2)), 0);
 
-        //
-        // GET: /Parte/Create
+            _entities = new GSC_Entities();
 
-        public ActionResult Create()
-        {
-            return View();
-        } 
-
-        //
-        // POST: /Parte/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            if (idParte == 0)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                
+                //Insertar
+                var parteNuevo = new GSC_ParteDiario
+                    {
+                        IdCorDetReq = idTipoServicio,
+                        IdProyecto = idProyecto,
+                        IdRequerimiento = idRequerimiento,
+                        Fecha = new DateTime(Convert.ToInt32(fecha.Substring(0, 4)), Convert.ToInt32(fecha.Substring(5, 2)), Convert.ToInt32(fecha.Substring(8, 2))),
+                        HoraInicio = inicio,
+                        HoraFin = fin,
+                        Observacion = observacion,
+                        IdEstado = 1,                       
+                    };
+                _entities.AddToGSC_ParteDiario(parteNuevo);
+                _entities.SaveChanges();
             }
-            catch
+            else
             {
-                return View();
-            }
-        }
-        
-        //
-        // GET: /Parte/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+                //editar
+                var parte = (from r in _entities.GSC_ParteDiario where r.IdParteDiario == idParte select r).FirstOrDefault();
 
-        //
-        // POST: /Parte/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                if (parte != null)
+                {
+                    parte.IdProyecto = idProyecto;
+                    parte.IdRequerimiento = idRequerimiento;
+                    parte.Fecha = new DateTime(Convert.ToInt32(fecha.Substring(0, 4)), Convert.ToInt32(fecha.Substring(5, 2)), Convert.ToInt32(fecha.Substring(8, 2)));
+                    parte.HoraInicio = inicio;
+                    parte.HoraFin = fin;
+                    parte.Observacion = observacion;
+                    _entities.SaveChanges();
+                }
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Parte/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Parte/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            
+            
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true}, behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
         }
 
         public virtual ActionResult Requerimiento(int idProyecto)
@@ -192,8 +176,8 @@ namespace DemoMVC.Controllers
             var resultado = string.Empty;
             if (hora != null)
             {
-                resultado = hora.Value.Hour + ":" +
-                            hora.Value.Minute;
+                resultado = (hora.Value.Hour + string.Empty).PadLeft(2, '0') + ":" +
+                            (hora.Value.Minute + string.Empty).PadLeft(2, '0');
             }
             return resultado;
         }

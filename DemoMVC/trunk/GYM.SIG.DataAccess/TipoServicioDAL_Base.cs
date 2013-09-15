@@ -28,7 +28,7 @@ namespace GYM.SIG.DataAccess
                     {
                         coleccion.Add(new TipoServicio
                         {
-                            codTServ = lector.GetInt32(lector.GetOrdinal("IdTipoServicio")),
+                            codTServ = lector.GetInt32(lector.GetOrdinal("IdCorDetReq")),
                             descTServ = lector.IsDBNull(lector.GetOrdinal("DescripTServicio")) ? default(String) : lector.GetString(lector.GetOrdinal("DescripTServicio"))
                         });
                     }
