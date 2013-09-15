@@ -200,7 +200,13 @@ namespace GYM.SIC.GPC.Controllers
             });
 
             CrongramaModel.ActividadesModel = ActividadesModel;
-            return View(CrongramaModel);
+            //return View(CrongramaModel);
+
+            JsonResult result = new JsonResult();
+            result.Data = ActividadesModel.ToList();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            return result;
         }
 
         [HttpPost]
