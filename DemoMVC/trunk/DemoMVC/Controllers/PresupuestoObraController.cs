@@ -59,7 +59,12 @@ namespace GYM.SIC.GPC.Controllers
                 presupuestosModel.Add(presupuestoModel);
             });
 
-            return View(presupuestosModel);
+            //return View(presupuestosModel);
+            JsonResult result = new JsonResult();
+            result.Data = presupuestosModel.ToList();
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            return result;
         }
 
         public ActionResult ListarDetalle(int PresupuestoID)
