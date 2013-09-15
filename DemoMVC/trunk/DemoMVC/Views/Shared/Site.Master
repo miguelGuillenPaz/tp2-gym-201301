@@ -89,6 +89,9 @@
                         <li>
                             <%= Html.ActionLink("Agregar Empleado", "Agregar", "Empleado")%>
                         </li>
+                        <li>
+                            <%= Html.ActionLink("Evaluar Competencias", "Index", "Evaluacion")%>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="#">Presupuesto</a>

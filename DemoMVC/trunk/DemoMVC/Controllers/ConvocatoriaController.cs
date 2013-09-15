@@ -215,7 +215,7 @@ namespace DemoMVC.Controllers
 
         private IEnumerable Perfil()
         {
-
+            
             var resultado = CargaInicial();
 
             var lista = (from r in _entities.GRH_Perfil select r);

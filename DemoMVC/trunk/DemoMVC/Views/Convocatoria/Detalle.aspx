@@ -90,7 +90,7 @@
                     <div class="content-button">
                         <% using (Html.BeginForm())
                            { %>
-                        <input class="button" type="submit" value="Participar" />
+                        <input class="button" type="submit" value="Participar" /> | <%= Html.ActionLink("Cancelar", "Participar",null, new { @class = "button" })%>
                         <%} %>
                     </div>
                 </div>

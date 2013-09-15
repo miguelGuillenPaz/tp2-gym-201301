@@ -594,7 +594,11 @@ namespace DemoMVC.Controllers
                 }
                 i++;
                 content += "<ul>";
-                content += "<li><h2><input type=\"radio\" name=\"cotizacion\"/ value=\"" + cotizacion.IdCotizacion + "\"> Opción " + i + "</h2></li>";
+                content += "<li><h2>";
+                content += "<input type=\"radio\" name=\"cotizacion\"/ ";
+                if (cotizacion.IdEstado == 5)
+                    content += "checked=\"true\"";
+                content += " value=\"" + cotizacion.IdCotizacion + "\"> Opción " + i + " - Cotización: " + (cotizacion.IdCotizacion + string.Empty).PadLeft(9, '0') + "</h2></li>";
                 content += "<li>";
                 content += "<table>";
                 content += "<tr>";
@@ -610,7 +614,7 @@ namespace DemoMVC.Controllers
                 content += "Total: ";
                 content += "</td>";
                 content += "<td>";
-                content += cotizacion.Total;
+                content += cotizacion.Monto;
                 content += "</td>";
                 content += "</tr>";
                 content += "<tr>";

@@ -85,6 +85,7 @@
     <Compile Include="Controllers\ConvocatoriaController.cs" />
     <Compile Include="Controllers\CotizacionController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\EvaluacionController.cs" />
     <Compile Include="Controllers\ExpedienteTecnicoController.cs" />
     <Compile Include="Controllers\FinanzasController.cs" />
     <Compile Include="Controllers\GestionProyController.cs" />
@@ -444,6 +445,7 @@
     <Content Include="Views\Cotizacion\Solicitud.aspx" />
     <Content Include="Views\Empleado\Agregar.aspx" />
     <Content Include="Views\Empleado\DatosAdicionales.aspx" />
+    <Content Include="Views\Evaluacion\Index.aspx" />
     <Content Include="Views\ExpedienteTecnico\ListarDetalle.aspx" />
     <Content Include="Views\ExpedienteTecnico\ListarPresupuestos.aspx" />
     <Content Include="Views\ExpedienteTecnico\RegistrarExpedienteTecnico.aspx" />
