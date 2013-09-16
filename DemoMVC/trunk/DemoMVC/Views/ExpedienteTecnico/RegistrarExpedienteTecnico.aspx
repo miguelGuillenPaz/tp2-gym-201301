@@ -3,7 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     RegistrarExpedienteTecnico
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"> 
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Scripts/kendo/kendo.flat.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Scripts/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         //Ajax setup config==================================================================================
         $.ajaxSetup({

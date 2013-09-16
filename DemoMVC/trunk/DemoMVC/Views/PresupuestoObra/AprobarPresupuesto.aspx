@@ -90,8 +90,8 @@
 <div class="contenido-top">
     <div class="gpc-page">   
         <div style="width: 100%; float: left; display: block;">
-            <h1 style="height: 20px;">Aprobación de Presupuestos</h1>
-            <h3 style="height: 20px; color: Black; font-size: 15px; text-decoration: underline;">Presupuestos Pendientes de Aprobación</h3>
+            <h1 style="height: 20px;">Evaluación de Presupuestos</h1>
+            <h3 style="height: 20px; color: Black; font-size: 15px; text-decoration: underline;">Presupuestos Pendientes de Evaluación</h3>
             <br />
             <div id="ListarPresupuesto">     
             </div>
