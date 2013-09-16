@@ -1,10 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<GYM.SIC.GPC.Models.PresupuestoModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	ListarDetalle
+    ListarDetalle
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/kendo/kendo.flat.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../Scripts/kendo/kendo.web.min.js"></script>
     <script type="text/javascript">
         //Ajax setup config==================================================================================
         $.ajaxSetup({
@@ -37,16 +41,7 @@
                         //mText = "Se ha solicitado la anulación del presupuesto.";
                         $("#modalJustificar").dialog("close");
                     }
-
-                    /*
-                    Alert  
-                    Success  
-                    Error
-                    Warning  
-                    Information  
-                    Confirm 
-                    */
-                    var n = noty({ text: result, type: 'Success' });
+                    window.location.href = config.contextPath + 'CierrePresupuestoObra/CerrarPresupuesto?MostrarConfirmacion=true';
 
                 },
                 error: function (request, status, err) {
@@ -97,26 +92,67 @@
                 return false;
             });
             $(".gpc-actualizar").click(function () {
-                if (confirm("Usted está a punto de notificar la actualizacion del presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(11, "Se debe actualizar el presupuesto.");
-                }
+
+                var n = noty({
+                    text: "Usted está a punto de notificar la actualizacion del presupuesto asignado. ¿Confirmar Cambios?",
+                    type: 'confirm',
+                    modal: true,
+                    buttons: [
+                                { addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
+
+                                    CambiarEstado(11, "Se debe actualizar el presupuesto.");
+                                    $noty.close();
+                                }
+                                },
+                                { addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+                                    $noty.close();
+                                    noty({ text: 'Usted ha cancelado la notificación de la actualización', type: 'information' });
+                                }
+                                }]
+                });
                 return false;
-            });            
+            });
             $(".gpc-justificar").click(function () {
                 $("#tbJustificar").val("");
                 $("#modalJustificar").dialog("open");
                 return false;
             });
             $(".gpc-cerrarOK").click(function () {
-                if (confirm("Usted está a punto de cerrar el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(9, $("#tbCerrar").val());
-                }
+                var n = noty({
+                    text: "Usted está a punto de cerrar el presupuesto asignado. ¿Confirmar Cambios?",
+                    type: 'confirm',
+                    modal: true,
+                    buttons: [
+                                { addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
+                                    CambiarEstado(9, $("#tbCerrar").val());
+                                    $noty.close();
+                                }
+                                },
+                                { addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+                                    $noty.close();
+                                    noty({ text: 'Usted ha cancelado el cierre de presupuesto', type: 'information' });
+                                }
+                                }]
+                });
                 return false;
             });
             $(".gpc-justificarOK").click(function () {
-                if (confirm("Usted está a punto de notificar una justificacion. ¿Confirmar Cambios?")) {
-                    CambiarEstado(10, $("#tbJustificar").val());
-                }
+                var n = noty({
+                    text: "Usted está a punto de notificar una justificacion. ¿Confirmar Cambios?",
+                    type: 'confirm',
+                    modal: true,
+                    buttons: [
+                                { addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
+                                    CambiarEstado(9, $("#tbCerrar").val());
+                                    $noty.close();
+                                }
+                                },
+                                { addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+                                    $noty.close();
+                                    noty({ text: 'Usted ha cancelado la notificación de la justificación', type: 'information' });
+                                }
+                                }]
+                });
                 return false;
             });
         });
@@ -124,7 +160,7 @@
         $(document).ready(function () {
 
             $.noty.defaults = {
-                layout: 'top',
+                layout: 'center',
                 theme: 'defaultTheme',
                 type: 'alert',
                 text: '',
@@ -229,97 +265,6 @@
 
     </script>
     <div class="contenido-top">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div style="width: 100%; float: left; display: block;">
             <h1>
                 Cierre de Presupuesto</h1>
@@ -407,10 +352,29 @@
         <div class="gpc-separador">
         </div>
         <div style="width: 100%; float: left;">
-            <a href="" class="gpc-cerrar">Cerrar Presupuesto</a>
-            <a href="" class="gpc-actualizar">Notificar Actualización </a>
-            <a href="" class="gpc-justificar">Notificar Justificación</a>
-            <a href="javascript:history.back(1)" class="gpc-cancelar">Cancelar</a>
+            <a href="" class="gpc-cerrar" style='width: 70px; text-decoration: none; text-transform: none;
+                -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; background-color: #5B74A8; border: 1px solid #29447E;
+                font-family: Tahoma,Verdana,Arial,sans-serif; font-size: 12px; font-weight: 700;
+                padding: 2px 6px; height: 22px; color: #fff; border-radius: 5px; -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;'>Cerrar Presupuesto</a> <a href="" class="gpc-actualizar"
+                    style='width: 70px; text-decoration: none; text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    background-color: #5B74A8; border: 1px solid #29447E; font-family: Tahoma,Verdana,Arial,sans-serif;
+                    font-size: 12px; font-weight: 700; padding: 2px 6px; height: 22px; color: #fff;
+                    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;'>Notificar
+                    Actualización</a> <a href="" class="gpc-justificar" style='width: 70px; text-decoration: none;
+                        text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                        box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; background-color: #5B74A8; border: 1px solid #29447E;
+                        font-family: Tahoma,Verdana,Arial,sans-serif; font-size: 12px; font-weight: 700;
+                        padding: 2px 6px; height: 22px; color: #fff; border-radius: 5px; -moz-border-radius: 5px;
+                        -webkit-border-radius: 5px;'>Notificar Justificación </a><a href="javascript:history.back(1)"
+                            class="gpc-cancelar" style='width: 70px; text-decoration: none; text-transform: none;
+                            -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                            box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; background-color: #5B74A8; border: 1px solid #29447E;
+                            font-family: Tahoma,Verdana,Arial,sans-serif; font-size: 12px; font-weight: 700;
+                            padding: 2px 6px; height: 22px; color: #fff; border-radius: 5px; -moz-border-radius: 5px;
+                            -webkit-border-radius: 5px;'>Cancelar</a>
         </div>
         <div class="gpc-separador">
         </div>
@@ -455,7 +419,8 @@
     <div id="modalJustificar" class="gpc-modals" title="Notificar Justificación">
         <div class="gpc-modals-container">
             <div class="gpc-modals-row">
-                <span class="gpc-indicaciones">Usted está a punto de notificar la justificación de inconsistencias en el presupuesto asignado. 
+                <span class="gpc-indicaciones">Usted está a punto de notificar la justificación de inconsistencias
+                    en el presupuesto asignado.
                     <br />
                     Ingrese las inconsistencias a justificar.
                     <br />

@@ -46,12 +46,14 @@ namespace GYM.SIC.GPC.Controllers
         //
         // GET: /CierrePresupuestoObra/
 
-        public ActionResult CerrarPresupuesto()
+        public ActionResult CerrarPresupuesto(bool MostrarConfirmacion = false)
         {
-            return View();
+            var Model = new ListadoPresupuestosModel();
+            Model.MostrarConfirmacion = MostrarConfirmacion;
+            return View("CerrarPresupuesto", Model);
         }
 
-        public ActionResult ListarPresupuestos()
+        public JsonResult ListarPresupuestos()
         {
             var presupuestos = EFPresupuesto.Presupuestos.Where(x => x.IDEstado == EstadosParameters.Pendiente_de_Cierre_por_el_Supervisor_de_Presupuesto || x.IDEstado == EstadosParameters.Con_Inconsistencias).ToList();
 
@@ -66,7 +68,7 @@ namespace GYM.SIC.GPC.Controllers
                 presupuestosModel.Add(presupuestoModel);
             });
 
-            return View(presupuestosModel);
+            return new JsonResult() { Data = presupuestosModel, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         public ActionResult ListarDetalle(int PresupuestoID)

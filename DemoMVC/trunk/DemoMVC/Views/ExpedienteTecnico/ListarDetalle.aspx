@@ -4,6 +4,11 @@
     ListarDetalle
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/kendo/kendo.flat.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../Scripts/kendo/kendo.web.min.js"></script>
     <script type="text/javascript">
         //Ajax setup config==================================================================================
         $.ajaxSetup({
@@ -24,8 +29,13 @@
                 },
                 beforeSubmit: function () {
                 },
-                success: function (result) {
-                    var n = noty({ text: result, type: 'success' });
+                success: function (result) {                
+                    if (result == "") {
+                        window.location.href = config.contextPath + 'ExpedienteTecnico/RegistrarExpedienteTecnico?MostrarConfirmacion=true';
+                    }
+                    else {
+                        var n = noty({ text: result, type: 'error' });
+                    }
                 }
             });
 
@@ -84,16 +94,30 @@
             });
 
             $(".gpc-registrar").click(function () {
-                if (confirm("Usted está a punto de registrar el expediente técnico. ¿Confirmar Cambios?")) {
-                    $('#ActualizarExpediente').submit();
-                }
+                var n = noty({
+                    text: "Usted está a punto de registrar el expediente técnico. ¿Confirmar Cambios?",
+                    type: 'confirm',
+                    modal: true,
+                    buttons: [
+                                { addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
+
+                                    $('#ActualizarExpediente').submit();
+                                    $noty.close();
+                                }
+                                },
+                                { addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+                                    $noty.close();
+                                    noty({ text: 'Usted ha cancelado el registro', type: 'information' });
+                                }
+                                }]
+                }); 
                 return false;
             });
         });
 
         $(document).ready(function () {
             $.noty.defaults = {
-                layout: 'top',
+                layout: 'center',
                 theme: 'defaultTheme',
                 type: 'alert',
                 text: '',
@@ -105,7 +129,7 @@
                     easing: 'swing',
                     speed: 500 // opening & closing animation speed
                 },
-                timeout: 2000, // delay for closing event. Set false for sticky notifications
+                timeout: 4000, // delay for closing event. Set false for sticky notifications
                 force: false, // adds notification to the beginning of queue when set to true
                 modal: false,
                 maxVisible: 1, // you can set max visible notification for dismissQueue true option
@@ -243,16 +267,22 @@
         <form id="ActualizarExpediente" action='<%=ResolveUrl("~/ExpedienteTecnico/ActualizarExpedienteTecnico")%>'
         enctype="multipart/form-data" method="post">
         <input type="hidden" id="IDPresupuesto" name="IDPresupuesto" value="<%=Model.IDPresupuestoObra%>" />
-        <table style="width:900px;">
+        <table style="width: 900px;">
             <tr>
                 <td>
-                    Observación: 
+                    Observación:
                 </td>
-                <td><textarea id="Observacion" name="Observacion" rows="10" cols="1" style="width:700px"></textarea></td>
+                <td>
+                    <textarea id="Observacion" name="Observacion" rows="10" cols="1" style="width: 700px"></textarea>
+                </td>
             </tr>
             <tr>
-                 <td>Adjuntar Análisis:  </td>
-                 <td><input type="file" id="Archivo" name="Archivo" /></td>
+                <td>
+                    Adjuntar Análisis:
+                </td>
+                <td>
+                    <input type="file" id="Archivo" name="Archivo" />
+                </td>
             </tr>
         </table>
         <div class="gpc-separador">

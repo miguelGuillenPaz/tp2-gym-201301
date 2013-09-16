@@ -15,7 +15,7 @@ using DemoMVC.Helpers;
 namespace GYM.SIC.GPC.Controllers
 {
     public class ExpedienteTecnicoController : Controller
-    { 
+    {
         // BD GYM
         private IGPCPresupuestoRepository EFPresupuesto;
         private IGPCPartidaRespository EFPartida;
@@ -31,19 +31,21 @@ namespace GYM.SIC.GPC.Controllers
             this.EFPresupuesto = EFPresupuesto;
             this.EFPartida = EFPartida;
             this.EFCronograma = EFCronograma;
-            this.EFExpedienteTecnico = EFExpedienteTecnico; 
+            this.EFExpedienteTecnico = EFExpedienteTecnico;
         }
-      
 
-        public ActionResult RegistrarExpedienteTecnico()
+
+        public ActionResult RegistrarExpedienteTecnico(bool MostrarConfirmacion = false)
         {
-            return View();
+            var Model = new ListadoPresupuestosModel();
+            Model.MostrarConfirmacion = MostrarConfirmacion;
+            return View("RegistrarExpedienteTecnico", Model);
         }
 
         public JsonResult ListarPresupuestos()
         {
             var presupuestos = EFPresupuesto.Presupuestos.Where(x => x.IDEstado == EstadosParameters.Aprobado).ToList();
-
+             
             var presupuestosModel = new List<PresupuestoModel>();
 
             presupuestos.ForEach((presupuesto) =>
@@ -53,7 +55,7 @@ namespace GYM.SIC.GPC.Controllers
                 presupuestoModel.Direccion = presupuesto.GPC_Obra.Direccion;
                 ModelCopier.CopyModel(presupuesto, presupuestoModel);
                 presupuestosModel.Add(presupuestoModel);
-            });
+            }); 
 
             return new JsonResult() { Data = presupuestosModel, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
@@ -66,7 +68,7 @@ namespace GYM.SIC.GPC.Controllers
             presupuestoModel.Direccion = presupuesto.GPC_Obra.Direccion;
             ModelCopier.CopyModel(presupuesto, presupuestoModel);
             return View(presupuestoModel);
-        } 
+        }
 
         [HttpPost]
         public JsonResult ActualizarExpedienteTecnico(int IDPresupuesto, string Observacion, HttpPostedFileBase Archivo)
@@ -106,7 +108,7 @@ namespace GYM.SIC.GPC.Controllers
             {
                 return new JsonResult() { ContentType = "text/html", Data = "No ha adjuntado ningún archivo.", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            return new JsonResult() { ContentType = "text/html", Data = "Se ha registrado el Expediente Técnico Satisfactoriamente", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult() { ContentType = "text/html", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }

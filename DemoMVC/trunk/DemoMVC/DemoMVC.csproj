@@ -147,6 +147,7 @@
     <Compile Include="Models\LegalRequerimientoCN.cs" />
     <Compile Include="Models\LegalRequerimientoDeclaracionFabrica.cs" />
     <Compile Include="Models\LegalRequerimientoPlantillaContrato.cs" />
+    <Compile Include="Models\ListadoPresupuestosModel.cs" />
     <Compile Include="Models\ListarForm.cs" />
     <Compile Include="Models\PartidasModel.cs" />
     <Compile Include="Models\PlanProyecto.cs" />
@@ -425,7 +426,6 @@
     <Content Include="Views\CalificacionServicio\Index.aspx" />
     <Content Include="Views\CierrePresupuestoObra\CerrarPresupuesto.aspx" />
     <Content Include="Views\CierrePresupuestoObra\ListarDetalle.aspx" />
-    <Content Include="Views\CierrePresupuestoObra\ListarPresupuestos.aspx" />
     <Content Include="Views\Compras\infoItemSolAdq.aspx" />
     <Content Include="Views\Compras\infoPlanAba.aspx" />
     <Content Include="Views\Compras\mainItemsSolAdq.aspx" />

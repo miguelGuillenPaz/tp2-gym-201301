@@ -9,7 +9,6 @@
     <link href="../../Scripts/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../../Scripts/kendo/kendo.web.min.js"></script>
-
     <script type="text/javascript">
         //Ajax setup config==================================================================================
         $.ajaxSetup({
@@ -42,17 +41,7 @@
                         //mText = "Se ha solicitado la anulación del presupuesto.";
                         $("#modalAnular").dialog("close");
                     }
-
-                    /*
-                    Alert  
-                    Success  
-                    Error
-                    Warning  
-                    Information  
-                    Confirm 
-                    */
-                    var n = noty({ text: result, type: 'Success' });
-
+                    window.location.href = config.contextPath + 'PresupuestoObra/AprobarPresupuesto?MostrarConfirmacion=true';
                 },
                 error: function (request, status, err) {
                 }
@@ -91,7 +80,7 @@
                             width: 50,
                             title: "<center>Fecha</center>",
                             attributes: { style: "text-align: center;" },
-                            template: "#= kendo.toString(kendo.parseDate(Fecha, 'yyyy-MM-dd'), 'dd/MM/yyyy') #" 
+                            template: "#= kendo.toString(kendo.parseDate(Fecha, 'yyyy-MM-dd'), 'dd/MM/yyyy') #"
                         }, {
                             field: "Hito",
                             width: 70,
@@ -108,7 +97,7 @@
                             title: "<center>Responsable</center>",
                             attributes: { style: "text-align: left;" }
                         }]
-                    }); 
+                    });
                 },
                 error: function (request, status, err) {
                 }
@@ -130,21 +119,64 @@
                 return false;
             });
             $(".gpc-aprobarOK").click(function () {
-                if (confirm("Usted está a punto de aprobar el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(6, $("#tbAprobar").val());
-                }
+
+                var n = noty({
+                    text: "Usted está a punto de aprobar el presupuesto asignado. ¿Confirmar Cambios?",
+                    type: 'confirm',
+                    modal: true,
+                    buttons: [
+                                { addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
+
+                                    CambiarEstado(6, $("#tbAprobar").val());
+                                    $noty.close();
+                                }
+                                },
+                                { addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+                                    $noty.close();
+                                    noty({ text: 'Usted ha cancelado el cambio de estado', type: 'information' });
+                                }
+                                }]
+                });  
                 return false;
             });
             $(".gpc-rechazarOK").click(function () {
-                if (confirm("Usted está a punto de rechazar el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(3, $("#tbRechazar").val());
-                }
+                var n = noty({
+                    text: "Usted está a punto de rechazar el presupuesto asignado. ¿Confirmar Cambios?",
+                    type: 'confirm',
+                    modal: true,
+                    buttons: [
+                                { addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
+
+                                    CambiarEstado(3, $("#tbRechazar").val());
+                                    $noty.close();
+                                }
+                                },
+                                { addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+                                    $noty.close();
+                                    noty({ text: 'Usted ha cancelado el cambio de estado', type: 'information' });
+                                }
+                                }]
+                });   
                 return false;
             });
             $(".gpc-anularOK").click(function () {
-                if (confirm("Usted está a punto de anular el presupuesto asignado. ¿Confirmar Cambios?")) {
-                    CambiarEstado(4, $("#tbAnular").val());
-                }
+                var n = noty({
+                    text: "Usted está a punto de anular el presupuesto asignado. ¿Confirmar Cambios?",
+                    type: 'confirm',
+                    modal: true,
+                    buttons: [
+                                { addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
+
+                                    CambiarEstado(4, $("#tbAnular").val());
+                                    $noty.close();
+                                }
+                                },
+                                { addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+                                    $noty.close();
+                                    noty({ text: 'Usted ha cancelado el cambio de estado', type: 'information' });
+                                }
+                                }]
+                });   
                 return false;
             });
         });
@@ -152,7 +184,7 @@
         $(document).ready(function () {
 
             $.noty.defaults = {
-                layout: 'top',
+                layout: 'center',
                 theme: 'defaultTheme',
                 type: 'alert',
                 text: '',
@@ -268,49 +300,88 @@
     </script>
     <div class="contenido-top">
         <div style="width: 100%; float: left; display: block;">
-            <h1 style="height: 20px;">Aprobación de Presupuestos</h1>
-            <h3 style="height: 20px; font-size: 15px; text-decoration: underline;">Datos del Presupuesto</h3>
+            <h1 style="height: 20px;">
+                Aprobación de Presupuestos</h1>
+            <h3 style="height: 20px; font-size: 15px; text-decoration: underline;">
+                Datos del Presupuesto</h3>
         </div>
         <div class="gpc-separador">
         </div>
         <div style="width: 100%; float: left; display: block;">
             <div style="width: 100%; overflow: hidden;">
                 <input type="hidden" id="IDPresupuesto" value="<%=Model.IDPresupuestoObra%>" />
-                <div style="float: left; padding: .3em; font-weight: bold;">Número de Presupuesto: </div>
-                <div style="float: left; padding: .3em;"><%=Model.Numero %></div>
-                <div style="float: left; padding: .3em; font-weight: bold;">Nombre:</div>
-                <div style="float: left; padding: .3em;"><%=Model.Nombre %></div>
-                <div style="float: left; padding: .3em; font-weight: bold;">Cliente:</div>
-                <div style="float: left; padding: .3em;"><%=Model.RazonSocial %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Número de Presupuesto:
+                </div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.Numero %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Nombre:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.Nombre %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Cliente:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.RazonSocial %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .3em; font-weight: bold;">Dirección de la Obra:</div>
-                <div style="float: left; padding: .3em;"><%=Model.Direccion %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Dirección de la Obra:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.Direccion %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .3em; font-weight: bold;">Fecha Inicio:</div>
-                <div style="float: left; padding: .3em;"><%=Model.FechaInicio %></div>
-                <div style="float: left; padding: .3em; font-weight: bold;">Fecha Fin:</div>
-                <div style="float: left; padding: .3em;"><%=Model.FechaFin %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Fecha Inicio:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.FechaInicio %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Fecha Fin:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.FechaFin %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .3em; font-weight: bold;">Fecha Cambio de Estado:</div>
-                <div style="float: left; padding: .3em;"><%=Model.FechaCambioEstado %></div>
-                <div style="float: left; padding: .3em; font-weight: bold;">Usuario Cambio de Estado:</div>
-                <div style="float: left; padding: .3em;"><%=Model.UsuarioCambioEstado %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Fecha Cambio de Estado:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.FechaCambioEstado %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Usuario Cambio de Estado:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.UsuarioCambioEstado %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .3em; font-weight: bold;">Total Presupuestado:</div>
-                <div style="float: left; padding: .3em;"><%=Model.TotalPresupuestado %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Total Presupuestado:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.TotalPresupuestado %></div>
             </div>
         </div>
         <div class="gpc-separador">
         </div>
         <div style="width: 100%; float: left;">
-            <a href="" class="gpc-aprobar" style='width:70px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:22px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;'>Aprobar</a> 
-            <a href="" class="gpc-rechazar" style='width:70px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:22px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;'>Rechazar</a>
-            <a href="" class="gpc-anular" style='width:70px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:22px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;'>Anular </a>
-            <a href="javascript:history.back(1)" class="gpc-cancelar" style='width:70px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:22px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;'>Cancelar</a>
+            <a href="" class="gpc-aprobar" style='width: 70px; text-decoration: none; text-transform: none;
+                -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; background-color: #5B74A8; border: 1px solid #29447E;
+                font-family: Tahoma,Verdana,Arial,sans-serif; font-size: 12px; font-weight: 700;
+                padding: 2px 6px; height: 22px; color: #fff; border-radius: 5px; -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;'>Aprobar</a> <a href="" class="gpc-rechazar" style='width: 70px;
+                    text-decoration: none; text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    background-color: #5B74A8; border: 1px solid #29447E; font-family: Tahoma,Verdana,Arial,sans-serif;
+                    font-size: 12px; font-weight: 700; padding: 2px 6px; height: 22px; color: #fff;
+                    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;'>Rechazar</a>
+            <a href="" class="gpc-anular" style='width: 70px; text-decoration: none; text-transform: none;
+                -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; background-color: #5B74A8; border: 1px solid #29447E;
+                font-family: Tahoma,Verdana,Arial,sans-serif; font-size: 12px; font-weight: 700;
+                padding: 2px 6px; height: 22px; color: #fff; border-radius: 5px; -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;'>Anular </a><a href="javascript:history.back(1)" class="gpc-cancelar"
+                    style='width: 70px; text-decoration: none; text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    background-color: #5B74A8; border: 1px solid #29447E; font-family: Tahoma,Verdana,Arial,sans-serif;
+                    font-size: 12px; font-weight: 700; padding: 2px 6px; height: 22px; color: #fff;
+                    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;'>Cancelar</a>
         </div>
         <div class="gpc-separador">
         </div>
@@ -343,7 +414,12 @@
             </div>
             <div class="gpc-modals-row">
                 <br />
-                <a href="" class="gpc-aprobarOK" style="color: #ffffff; float: right;width:140px;height:22px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;">Confirmar Cambios</a>
+                <a href="" class="gpc-aprobarOK" style="color: #ffffff; float: right; width: 140px;
+                    height: 22px; text-decoration: none; text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    background-color: #5B74A8; border: 1px solid #29447E; font-family: Tahoma,Verdana,Arial,sans-serif;
+                    font-size: 12px; font-weight: 700; padding: 2px 6px; color: #fff; border-radius: 5px;
+                    -moz-border-radius: 5px; -webkit-border-radius: 5px;">Confirmar Cambios</a>
             </div>
         </div>
     </div>
@@ -361,7 +437,12 @@
             </div>
             <div class="gpc-modals-row">
                 <br />
-                <a href="" class="gpc-rechazarOK" style="color: #ffffff; float: right;width:140px;height:22px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;">Confirmar Cambios</a>
+                <a href="" class="gpc-rechazarOK" style="color: #ffffff; float: right; width: 140px;
+                    height: 22px; text-decoration: none; text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    background-color: #5B74A8; border: 1px solid #29447E; font-family: Tahoma,Verdana,Arial,sans-serif;
+                    font-size: 12px; font-weight: 700; padding: 2px 6px; color: #fff; border-radius: 5px;
+                    -moz-border-radius: 5px; -webkit-border-radius: 5px;">Confirmar Cambios</a>
             </div>
         </div>
     </div>
@@ -380,7 +461,12 @@
             </div>
             <div class="gpc-modals-row">
                 <br />
-                <a href="" class="gpc-anularOK" style="color: #ffffff; float: right; width:140px;height:22px;text-decoration: none;text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;">Confirmar Anulación</a>
+                <a href="" class="gpc-anularOK" style="color: #ffffff; float: right; width: 140px;
+                    height: 22px; text-decoration: none; text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    background-color: #5B74A8; border: 1px solid #29447E; font-family: Tahoma,Verdana,Arial,sans-serif;
+                    font-size: 12px; font-weight: 700; padding: 2px 6px; color: #fff; border-radius: 5px;
+                    -moz-border-radius: 5px; -webkit-border-radius: 5px;">Confirmar Anulación</a>
             </div>
         </div>
     </div>

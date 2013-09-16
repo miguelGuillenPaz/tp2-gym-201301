@@ -1,13 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DemoMVC.Models.ListadoPresupuestosModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     RegistrarExpedienteTecnico
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server"> 
-    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/Scripts/kendo/kendo.flat.min.css" rel="stylesheet" type="text/css" />
-    <link href="/Scripts/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
-    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/kendo/kendo.flat.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../Scripts/kendo/kendo.web.min.js"></script>
     <script type="text/javascript">
         //Ajax setup config==================================================================================
         $.ajaxSetup({
@@ -25,7 +26,8 @@
                 type: 'POST',
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
-                success: function (data) {
+                success: function (data) { 
+
                     $("#ListarPresupuesto").kendoGrid({
                         dataSource: {
                             data: data,
@@ -84,7 +86,18 @@
         }
 
         $(function () {
-            CargarGrilla(); 
+
+            var valor = $("#Mensaje").val(); 
+            if (valor == "True") {
+                var n = noty({
+                    text: "Se ha registrado el expediente técnico",
+                    layout: 'center',
+                    type: 'success',
+                    timeout: 4000
+                });
+            }
+
+            CargarGrilla();
         });
     </script>
     <div class="contenido-top">
@@ -102,5 +115,6 @@
         </div>
         <div class="clear">
         </div>
+        <input type="hidden" id="Mensaje" value="<%= Model.MostrarConfirmacion %>" />
     </div>
 </asp:Content>

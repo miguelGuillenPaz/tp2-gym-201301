@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DemoMVC.Models.ListadoPresupuestosModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	AprobarPresupuesto
@@ -22,12 +22,24 @@
         };
         //====================================================================================================
         $(function () {
+         
+            var valor = $("#Mensaje").val();
+            if (valor == "True") {
+                var n = noty({
+                    text: "Se ha cambiado de estado al presupuesto",
+                    layout: 'center',
+                    type: 'success',
+                    timeout: 4000
+                });
+            }
+
             $.ajax({
                 url: config.contextPath + 'PresupuestoObra/ListarPresupuestos',
                 type: 'POST',
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
-                success: function (data) {
+                success: function (data) { 
+
                     $("#ListarPresupuesto").kendoGrid({
                         dataSource: {
                             data: data,
@@ -61,7 +73,7 @@
                             width: 50,
                             title: "<center>Fecha<br />Estado</center>",
                             attributes: { style: "text-align: center;" },
-                            template: "#= kendo.toString(kendo.parseDate(FechaCambioEstado, 'yyyy-MM-dd'), 'dd/MM/yyyy') #" 
+                            template: "#= kendo.toString(kendo.parseDate(FechaCambioEstado, 'yyyy-MM-dd'), 'dd/MM/yyyy') #"
                         }, {
                             field: "UsuarioCambioEstado",
                             width: 60,
@@ -74,7 +86,7 @@
                                 return "<input type='button' value='Evaluar' onclick='mostrarEvaluar(" + kendo.htmlEncode(dataItem.IDPresupuestoObra) + ")' style='text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:28px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;' />";
                             }
                         }]
-                    }); 
+                    });
                 },
                 error: function (request, status, err) {
                 }
@@ -98,6 +110,7 @@
         </div>
     </div>            
     <div class="clear"></div>
+      <input type="hidden" id="Mensaje" value="<%= Model.MostrarConfirmacion %>" />
 </div>
 
 </asp:Content>

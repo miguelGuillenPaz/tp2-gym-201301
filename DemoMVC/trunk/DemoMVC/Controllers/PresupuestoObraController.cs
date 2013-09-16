@@ -39,9 +39,11 @@ namespace GYM.SIC.GPC.Controllers
         }
 
 
-        public ActionResult AprobarPresupuesto()
+        public ActionResult AprobarPresupuesto(bool MostrarConfirmacion = false)
         {
-            return View();
+            var Model = new ListadoPresupuestosModel();
+            Model.MostrarConfirmacion = MostrarConfirmacion;
+            return View("AprobarPresupuesto", Model);
         }
 
         public ActionResult ListarPresupuestos()
