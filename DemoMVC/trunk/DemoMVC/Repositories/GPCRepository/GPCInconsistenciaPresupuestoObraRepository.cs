@@ -25,6 +25,11 @@ namespace GYM.SIC.GPC.Repositories.GPCRepository
                 contexto.GPC_InconsistenciaPresupuestoObra.AddObject(Inconsistencias);
             }
             contexto.SaveChanges();
-        } 
+        }
+
+        public GPC_InconsistenciaPresupuestoObra InconsistenciaPorId(int ID)
+        {
+            return Inconsistencias.Where(x => x.IDPresupuestoObra == ID).ToList().FirstOrDefault();
+        }
     }
 }
