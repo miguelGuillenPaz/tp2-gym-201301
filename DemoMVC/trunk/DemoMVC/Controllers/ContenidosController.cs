@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using DemoMVC.HelperClass;
 using DemoMVC.Models;
 
+using Viafirma;
+
 namespace DemoMVC.Controllers
 {
     public class ContenidosController : Controller
@@ -29,7 +31,6 @@ namespace DemoMVC.Controllers
 
 
         [HttpPost]
-        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(GD_Documento model, HttpPostedFileBase upload, FormCollection frmCollection)
         {
             var msg = string.Empty;
@@ -43,15 +44,25 @@ namespace DemoMVC.Controllers
                     if (model.IdDocumento == 0)
                     {
                         #region Create
-
+                        
                         var estadoCodigo = model.IdEstado;
                         // guardando datos
                         model.FechaRegistro = DateTime.Now;
-                        model.IdEstado = 1;
-                        model.RutaFisica = "null";
+                        //model.IdEstado = 1;
+                        String idFirma = "";
+                        if (model.RutaFisica == "0")
+                        {
+                            idFirma = AplicarFirmaDigital(upload.FileName);
+                        }
+                        model.RutaFisica = upload.FileName;
+                        //model.RutaFisica = Path.GetFullPath(upload.FileName);
+                        //model.RutaFisica = System.IO.Path.GetDirectoryName(upload.FileName);
+                        //model.RutaFisica = new FileInfo(upload.FileName).Directory.FullName;
+                        //model.RutaFisica = Request.MapPath(Request.Form["upload"]);
                         db.GD_Documento.AddObject(model);
-                        //db.SaveChanges();
-
+                        db.SaveChanges();                       
+                        
+                        model.Clave = idFirma;
                         // guardando el historial del documento
                         var histDoc = new GD_DocumentoHistorial
                         {
@@ -61,7 +72,8 @@ namespace DemoMVC.Controllers
                             IdUsuarioPerfil = 4
                         };
                         db.GD_DocumentoHistorial.AddObject(histDoc);
-                        msg = "El documento se guardó satisfactoriamente.";
+
+                        msg = "El documento se guardó satisfactoriamente." + idFirma;
 
                         #endregion
                     }
@@ -81,6 +93,8 @@ namespace DemoMVC.Controllers
                             doc.IdEstado = model.IdEstado;
                             doc.IdArea = model.IdArea;
                             doc.IdTipoDocumento = model.IdTipoDocumento;
+                            doc.Clave = model.Clave;
+                            doc.RutaFisica = upload.FileName;
                             //db.SaveChanges();
                             msg = "El documento se actualizó satisfactoriamente.";
                         }
@@ -111,12 +125,14 @@ namespace DemoMVC.Controllers
 
                     db.SaveChanges();
                     trx.Commit();
-
                     if (upload != null && upload.ContentLength > 0)
                     {
                         var filePath = Path.Combine(HttpContext.Server.MapPath("\\App_Data\\"),
                                                     model.IdDocumento.ToString(CultureInfo.InvariantCulture) + Path.GetExtension(upload.FileName));
                         upload.SaveAs(filePath);
+                        var filePath2 = Path.Combine(HttpContext.Server.MapPath("\\Content\\"),
+                                                    model.IdDocumento.ToString(CultureInfo.InvariantCulture) + Path.GetExtension(upload.FileName));
+                        upload.SaveAs(filePath2);
                     }
                 }
                 catch
@@ -127,10 +143,10 @@ namespace DemoMVC.Controllers
                 {
                     db.Connection.Close();
                 }
-
                 if (!string.IsNullOrEmpty(msg)) Utils.ShowMessage(ViewData, msg, Url.Action("Create", "Contenidos", new { id = 0 }));
             }
             loadData();
+            ViewData["hola"] = "Monjurul Habib";
             return View(model);
         }
         
@@ -138,7 +154,23 @@ namespace DemoMVC.Controllers
         {
             loadData();
             var doc = db.GD_Documento.Include("GD_DocumentoHistorial").Include("GD_Estado").Include("GD_DocumentoPerfilAcceso").FirstOrDefault(d => d.IdDocumento == id);
-            if (doc == null) return View(new GD_Documento());
+            ViewData["filename"] = "";
+            if (doc == null)
+            {
+                ViewData["hola"] = "";
+                return View(new GD_Documento());
+            }
+            ViewData["filename"] = doc.RutaFisica;
+            if (doc.RutaFisica != null)
+            {
+                
+                ViewData["hola"] = "1";
+            }
+            if (doc.RutaFisica != null && doc.Clave != "")
+            {
+                ViewData["hola"] = "2";
+            }
+            
             return View(doc);
 
         }
@@ -150,6 +182,7 @@ namespace DemoMVC.Controllers
             if (d != null)
             {
                 d.IdEstado = 5;
+                db.GD_Documento.DeleteObject(d);
                 //db.Documento.DeleteObject(d);
                 db.SaveChanges();
             }
@@ -158,9 +191,23 @@ namespace DemoMVC.Controllers
 
         public ActionResult PrestarDocumento(int id = 0)
         {
-            if (id == 0) return View(new GD_Documento());
-            var doc = db.GD_Documento.Include("GPP_Proyecto").Include("GD_Estado").Include("GRH_Area").Include("GD_TipoDocumento").FirstOrDefault(d => d.IdDocumento == id);
-            if (doc == null) return View(new GD_Documento());
+            ViewData["firma"] = "";
+            if (id == 0)
+            {
+                ViewData["firma"] = "0";
+                return View(new GD_Documento());
+            }
+            var doc = db.GD_Documento.Include("GPP_Proyecto").Include("GD_Estado").Include("GD_TipoDocumento").FirstOrDefault(d => d.IdDocumento == id);
+            //var doc = db.GD_Documento.Include("GPP_Proyecto").Include("GD_Estado").Include("GRH_Area").Include("GD_TipoDocumento").FirstOrDefault(d => d.IdDocumento == id);
+            //if (doc != null) ViewData["PDF"] = Convert.ToString(doc.IdDocumento);
+            if (doc.Clave != null) ViewData["firma"] = "1";
+            if (doc == null)
+            {
+                ViewData["firma"] = "0";
+                return View(new GD_Documento());
+            }
+            //byte[] pdfData = System.IO.File.ReadAllBytes(@"C:\demo.pdf");
+            
             return View(doc);
         }
 
@@ -252,6 +299,9 @@ namespace DemoMVC.Controllers
                 list = list.Where(x => x.FechaDocumento <= varDate);
             }
 
+            ViewData["hola"] = "Monjurul Habib";
+
+            //System.Web.UI.ClientScriptManager cs = 
             return View(list.ToList());
         }
 
@@ -270,7 +320,80 @@ namespace DemoMVC.Controllers
             // PERFIL
             ViewData["Perfil"] = (from d in db2.SEG_Perfil select d).ToList();
         }
+        private String AplicarFirmaDigital(String filename)        
+        {
+            Inicializar();
+            Viafirma.ViafirmaClient clienteViaFirma;
+            clienteViaFirma = new ViafirmaClient();
+            
+            
+                 
+            String ALIAS = "xnoccio";
+            //Pass del certificado instalado en servidor
+            String PASS_CERT = "12345";
+            var idFirma = "";
+            clienteViaFirma = ViafirmaClientFactory.GetInstance();
+            
+            //colocamos pdf de prueba
 
+            String pdfprueba = @"C:\Users\Administrator\Desktop\pruebas\GuiaRefFrameworkDNIeCsharp12.pdf";
+            FileStream fs = System.IO.File.OpenRead(pdfprueba);
+            //enviamos un arreglos de bytes
+            byte[] datos_a_firmar = new byte[fs.Length];
+            fs.Read(datos_a_firmar, 0, datos_a_firmar.Length);
+
+            //recuperaos imagen:
+            String ruta_imagen = @"C:\Users\Administrator\Desktop\pruebas\gdoc.png";
+            FileStream fs_img = System.IO.File.OpenRead(ruta_imagen);
+            //enviamos un arreglos de bytes
+            byte[] imagen = new byte[fs_img.Length];
+            fs.Read(imagen, 0, imagen.Length);
+
+            //Creamos el rectangle donde se posicionará el sello
+            rectangle _rectangle = new rectangle();
+            _rectangle.height = 50;
+            _rectangle.width = 100;
+            _rectangle.x = 200;
+            _rectangle.y = 100;
+
+            System.Console.Write(clienteViaFirma.ping("Prueba Conexión") + "\n");
+
+            // Enviamos a firmar el documento al servidor y obtenemos el identificador final de la firma.
+            idFirma = clienteViaFirma.signByServerPDFWithImageStamp("FicheroEjemploServer.pdf", datos_a_firmar, ALIAS, PASS_CERT, _rectangle, imagen);
+            
+            //recuperar archivo firmado:
+            System.IO.Stream stream = null;
+            Viafirma.ViafirmaClient clienteViafirma = Viafirma.ViafirmaClientFactory.GetInstance();
+//            String id = (string)Session["idFirma"];
+            byte[] documento = clienteViafirma.getDocumentoCustodiado(idFirma);
+
+            try
+            {
+                // Open the file into a stream. 
+                stream = new System.IO.MemoryStream(documento);
+                // Total bytes to read: 
+                long bytesToRead = stream.Length;
+                Response.Clear();
+                Response.ContentType = "application/octet-stream";
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + filename+"");
+                Response.Buffer = true;
+                ((System.IO.MemoryStream)stream).WriteTo(Response.OutputStream);
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+                // An error occurred.. 
+            }
+            return idFirma;
+        }
+        private void Inicializar()
+        {
+            String URL_VIAFIRMA = "http://services.viafirma.com/viafirma";
+            //String URL_WS_VIAFIRMA = "http://testservices.viafirma.com/viafirma";
+            String URL_WS_VIAFIRMA = "http://services.viafirma.com/viafirma"; 
+            ViafirmaClientFactory.Init(URL_VIAFIRMA, URL_WS_VIAFIRMA, "ViafirmaDotNetClientWebExample", "WKGLMRX439ETZF49DLMRXMR9Y29DE");
+        }
         #endregion
 
     }
