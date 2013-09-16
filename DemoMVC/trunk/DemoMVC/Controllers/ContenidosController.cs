@@ -146,7 +146,7 @@ namespace DemoMVC.Controllers
                 if (!string.IsNullOrEmpty(msg)) Utils.ShowMessage(ViewData, msg, Url.Action("Create", "Contenidos", new { id = 0 }));
             }
             loadData();
-            ViewData["hola"] = "Monjurul Habib";
+            //ViewData["hola"] = "Monjurul Habib";
             return View(model);
         }
         
@@ -357,7 +357,8 @@ namespace DemoMVC.Controllers
             _rectangle.y = 100;
 
             System.Console.Write(clienteViaFirma.ping("Prueba Conexión") + "\n");
-
+            try
+            {
             // Enviamos a firmar el documento al servidor y obtenemos el identificador final de la firma.
             idFirma = clienteViaFirma.signByServerPDFWithImageStamp("FicheroEjemploServer.pdf", datos_a_firmar, ALIAS, PASS_CERT, _rectangle, imagen);
             
@@ -367,8 +368,6 @@ namespace DemoMVC.Controllers
 //            String id = (string)Session["idFirma"];
             byte[] documento = clienteViafirma.getDocumentoCustodiado(idFirma);
 
-            try
-            {
                 // Open the file into a stream. 
                 stream = new System.IO.MemoryStream(documento);
                 // Total bytes to read: 
@@ -376,10 +375,13 @@ namespace DemoMVC.Controllers
                 Response.Clear();
                 Response.ContentType = "application/octet-stream";
                 Response.AddHeader("Content-Disposition", "attachment; filename=" + filename+"");
+                //var filePath2 = Path.Combine(HttpContext.Server.MapPath("\\Content\\"),
+                //                                    model.IdDocumento.ToString(CultureInfo.InvariantCulture) + Path.GetExtension(filename));
+                // upload.SaveAs(filePath2);
                 Response.Buffer = true;
                 ((System.IO.MemoryStream)stream).WriteTo(Response.OutputStream);
                 Response.End();
-            }
+            }    
             catch (Exception ex)
             {
                 Response.Write(ex.Message);
