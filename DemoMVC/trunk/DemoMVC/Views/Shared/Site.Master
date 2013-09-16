@@ -120,14 +120,15 @@
                             <%= Html.ActionLink("Inconsistencias por Partida", "ActualizarInconsistenciaPartida", "Partidas")%></li>
                     </ul>
                 </li>
+                
                 <li><a href="#">Contenidos</a>
-                    <ul>
-                        <li>
-                            <%: Html.ActionLink("Gestión Documentaria","Create","Contenidos") %></li>
-                        <li>
-                            <%: Html.ActionLink("Prestamo Documentario","PrestarDocumento","Contenidos") %></li>
-                    </ul>
-                </li>
+                <ul>
+                <li><%: Html.ActionLink("Gestión Documentaria","Create","Contenidos") %></li>
+                <li><%: Html.ActionLink("Prestamo Documentario","PrestarDocumento","Contenidos") %></li>
+                <li><%: Html.ActionLink("Gestión Tipo Documento","Index","TipoDocumento") %></li>
+                <li><%: Html.ActionLink("Gestión de Estados","Index","Estado") %></li>
+                </ul>
+                </li> 
                 <li>
                     <%= Html.ActionLink("Seguridad", "Register", "Account")%></li>
             </ul>

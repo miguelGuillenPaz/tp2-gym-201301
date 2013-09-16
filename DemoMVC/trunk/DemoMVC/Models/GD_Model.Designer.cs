@@ -8,22 +8,24 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_Documento_GD_Estado", "GD_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Estado), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_TipoDocumento), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
-[assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPP_Proyecto), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_DocumentoHistorial_GD_Documento1", "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Documento), "GD_DocumentoHistorial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_DocumentoHistorial), true)]
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Documento), "GD_DocumentoPerfilAcceso", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_DocumentoPerfilAcceso), true)]
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_DocumentoHistorial_GD_Estado", "GD_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Estado), "GD_DocumentoHistorial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_DocumentoHistorial), true)]
+[assembly: EdmRelationshipAttribute("GD_Model", "FK_Documento_Proyecto", "GPP_Proyecto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPP_Proyecto), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
+[assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPP_Proyecto), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
 
 #endregion
 
@@ -172,6 +174,7 @@ namespace DemoMVC.Models
         private ObjectSet<GPP_Proyecto> _GPP_Proyecto;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -223,11 +226,11 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -264,6 +267,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -556,8 +560,33 @@ namespace DemoMVC.Models
         private global::System.String _Ubicacion;
         partial void OnUbicacionChanging(global::System.String value);
         partial void OnUbicacionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Clave
+        {
+            get
+            {
+                return _Clave;
+            }
+            set
+            {
+                OnClaveChanging(value);
+                ReportPropertyChanging("Clave");
+                _Clave = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Clave");
+                OnClaveChanged();
+            }
+        }
+        private global::System.String _Clave;
+        partial void OnClaveChanging(global::System.String value);
+        partial void OnClaveChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -643,44 +672,6 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto")]
-        public GPP_Proyecto GPP_Proyecto
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Proyecto>("GD_Model.FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Proyecto>("GD_Model.FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GPP_Proyecto> GPP_ProyectoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Proyecto>("GD_Model.FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPP_Proyecto>("GD_Model.FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_DocumentoHistorial_GD_Documento1", "GD_DocumentoHistorial")]
         public EntityCollection<GD_DocumentoHistorial> GD_DocumentoHistorial
         {
@@ -718,8 +709,85 @@ namespace DemoMVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_Documento_Proyecto", "GPP_Proyecto")]
+        public GPP_Proyecto GPP_Proyecto
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Proyecto>("GD_Model.FK_Documento_Proyecto", "GPP_Proyecto").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Proyecto>("GD_Model.FK_Documento_Proyecto", "GPP_Proyecto").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GPP_Proyecto> GPP_ProyectoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Proyecto>("GD_Model.FK_Documento_Proyecto", "GPP_Proyecto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPP_Proyecto>("GD_Model.FK_Documento_Proyecto", "GPP_Proyecto", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto")]
+        public GPP_Proyecto GPP_Proyecto1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Proyecto>("GD_Model.FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Proyecto>("GD_Model.FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GPP_Proyecto> GPP_Proyecto1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GPP_Proyecto>("GD_Model.FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GPP_Proyecto>("GD_Model.FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto", value);
+                }
+            }
+        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -752,6 +820,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -902,6 +971,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -982,6 +1052,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1010,6 +1081,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1088,6 +1160,7 @@ namespace DemoMVC.Models
         partial void OnIdPerfilChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1130,6 +1203,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1154,6 +1228,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1208,6 +1283,7 @@ namespace DemoMVC.Models
         partial void OnNombreChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1256,6 +1332,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1280,6 +1357,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1358,6 +1436,7 @@ namespace DemoMVC.Models
         partial void OnVigenciaChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1384,6 +1463,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1408,6 +1488,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1514,7 +1595,7 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaHojaEnvio
+        public global::System.String FechaHojaEnvio
         {
             get
             {
@@ -1524,13 +1605,13 @@ namespace DemoMVC.Models
             {
                 OnFechaHojaEnvioChanging(value);
                 ReportPropertyChanging("FechaHojaEnvio");
-                _FechaHojaEnvio = StructuralObject.SetValidValue(value);
+                _FechaHojaEnvio = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("FechaHojaEnvio");
                 OnFechaHojaEnvioChanged();
             }
         }
-        private Nullable<global::System.DateTime> _FechaHojaEnvio;
-        partial void OnFechaHojaEnvioChanging(Nullable<global::System.DateTime> value);
+        private global::System.String _FechaHojaEnvio;
+        partial void OnFechaHojaEnvioChanging(global::System.String value);
         partial void OnFechaHojaEnvioChanged();
     
         /// <summary>
@@ -1538,7 +1619,7 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaInicioPlaneada
+        public global::System.String FechaInicioPlaneada
         {
             get
             {
@@ -1548,13 +1629,13 @@ namespace DemoMVC.Models
             {
                 OnFechaInicioPlaneadaChanging(value);
                 ReportPropertyChanging("FechaInicioPlaneada");
-                _FechaInicioPlaneada = StructuralObject.SetValidValue(value);
+                _FechaInicioPlaneada = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("FechaInicioPlaneada");
                 OnFechaInicioPlaneadaChanged();
             }
         }
-        private Nullable<global::System.DateTime> _FechaInicioPlaneada;
-        partial void OnFechaInicioPlaneadaChanging(Nullable<global::System.DateTime> value);
+        private global::System.String _FechaInicioPlaneada;
+        partial void OnFechaInicioPlaneadaChanging(global::System.String value);
         partial void OnFechaInicioPlaneadaChanged();
     
         /// <summary>
@@ -1562,7 +1643,7 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaFinPlaneada
+        public global::System.String FechaFinPlaneada
         {
             get
             {
@@ -1572,13 +1653,13 @@ namespace DemoMVC.Models
             {
                 OnFechaFinPlaneadaChanging(value);
                 ReportPropertyChanging("FechaFinPlaneada");
-                _FechaFinPlaneada = StructuralObject.SetValidValue(value);
+                _FechaFinPlaneada = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("FechaFinPlaneada");
                 OnFechaFinPlaneadaChanged();
             }
         }
-        private Nullable<global::System.DateTime> _FechaFinPlaneada;
-        partial void OnFechaFinPlaneadaChanging(Nullable<global::System.DateTime> value);
+        private global::System.String _FechaFinPlaneada;
+        partial void OnFechaFinPlaneadaChanging(global::System.String value);
         partial void OnFechaFinPlaneadaChanged();
     
         /// <summary>
@@ -1586,7 +1667,7 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaInicioReal
+        public global::System.String FechaInicioReal
         {
             get
             {
@@ -1596,13 +1677,13 @@ namespace DemoMVC.Models
             {
                 OnFechaInicioRealChanging(value);
                 ReportPropertyChanging("FechaInicioReal");
-                _FechaInicioReal = StructuralObject.SetValidValue(value);
+                _FechaInicioReal = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("FechaInicioReal");
                 OnFechaInicioRealChanged();
             }
         }
-        private Nullable<global::System.DateTime> _FechaInicioReal;
-        partial void OnFechaInicioRealChanging(Nullable<global::System.DateTime> value);
+        private global::System.String _FechaInicioReal;
+        partial void OnFechaInicioRealChanging(global::System.String value);
         partial void OnFechaInicioRealChanged();
     
         /// <summary>
@@ -1610,7 +1691,7 @@ namespace DemoMVC.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaFinReal
+        public global::System.String FechaFinReal
         {
             get
             {
@@ -1620,13 +1701,13 @@ namespace DemoMVC.Models
             {
                 OnFechaFinRealChanging(value);
                 ReportPropertyChanging("FechaFinReal");
-                _FechaFinReal = StructuralObject.SetValidValue(value);
+                _FechaFinReal = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("FechaFinReal");
                 OnFechaFinRealChanged();
             }
         }
-        private Nullable<global::System.DateTime> _FechaFinReal;
-        partial void OnFechaFinRealChanging(Nullable<global::System.DateTime> value);
+        private global::System.String _FechaFinReal;
+        partial void OnFechaFinRealChanging(global::System.String value);
         partial void OnFechaFinRealChanged();
     
         /// <summary>
@@ -1748,8 +1829,81 @@ namespace DemoMVC.Models
         private Nullable<global::System.Int32> _Prioridad;
         partial void OnPrioridadChanging(Nullable<global::System.Int32> value);
         partial void OnPrioridadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdTipoProyecto
+        {
+            get
+            {
+                return _IdTipoProyecto;
+            }
+            set
+            {
+                OnIdTipoProyectoChanging(value);
+                ReportPropertyChanging("IdTipoProyecto");
+                _IdTipoProyecto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdTipoProyecto");
+                OnIdTipoProyectoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdTipoProyecto;
+        partial void OnIdTipoProyectoChanging(Nullable<global::System.Int32> value);
+        partial void OnIdTipoProyectoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MontoFacturado
+        {
+            get
+            {
+                return _MontoFacturado;
+            }
+            set
+            {
+                OnMontoFacturadoChanging(value);
+                ReportPropertyChanging("MontoFacturado");
+                _MontoFacturado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MontoFacturado");
+                OnMontoFacturadoChanged();
+            }
+        }
+        private global::System.String _MontoFacturado;
+        partial void OnMontoFacturadoChanging(global::System.String value);
+        partial void OnMontoFacturadoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdUbigeo
+        {
+            get
+            {
+                return _IdUbigeo;
+            }
+            set
+            {
+                OnIdUbigeoChanging(value);
+                ReportPropertyChanging("IdUbigeo");
+                _IdUbigeo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdUbigeo");
+                OnIdUbigeoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdUbigeo;
+        partial void OnIdUbigeoChanging(Nullable<global::System.Int32> value);
+        partial void OnIdUbigeoChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1759,8 +1913,30 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GPP_Proyecto", "GD_Documento")]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_Documento_Proyecto", "GD_Documento")]
         public EntityCollection<GD_Documento> GD_Documento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_Documento>("GD_Model.FK_Documento_Proyecto", "GD_Documento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_Documento>("GD_Model.FK_Documento_Proyecto", "GD_Documento", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GPP_Proyecto", "GD_Documento")]
+        public EntityCollection<GD_Documento> GD_Documento1
         {
             get
             {
@@ -1776,8 +1952,10 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }
