@@ -232,8 +232,7 @@
                 idPuntualidad: puntualidad,
                 idCalidad: calidad,
                 idIncidencia: incidencia
-            };
-            alert(JSON.stringify(data));
+            };            
             $.ajax({
                 type: 'POST',
                 url: '/CalificacionServicio/SetCalificacionServicio',
