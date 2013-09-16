@@ -8,7 +8,7 @@ namespace GYM.SIG.Business
 {
       public class DetalleRequerimientoCN : Singleton<DetalleRequerimientoCN>
     {
-          public List<DetalleRequerimiento> RequerimientoPorProyecto(int idProyecto)
+          public List<Combo> RequerimientoPorProyecto(int idProyecto)
           {
               try
               {

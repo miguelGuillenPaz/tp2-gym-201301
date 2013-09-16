@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalificacionServicio.cs" />
+    <Compile Include="Combo.cs" />
     <Compile Include="ParteDiario.cs" />
     <Compile Include="Cotizacion.cs" />
     <Compile Include="DetalleCotizacion.cs" />
