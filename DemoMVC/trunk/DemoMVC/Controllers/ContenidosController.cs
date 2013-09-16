@@ -216,7 +216,7 @@ namespace DemoMVC.Controllers
         {
             var doc = db.GD_Documento.FirstOrDefault(d => d.IdDocumento == id);
             if (doc == null) return View(new GD_Documento());
-            doc.IdEstado = 4;
+            doc.IdEstado = 34;
             db.SaveChanges();
 
             var hist = new GD_DocumentoHistorial
@@ -224,7 +224,8 @@ namespace DemoMVC.Controllers
                 Descripcion = collection["descripcion"],
                 IdDocumento = doc.IdDocumento,
                 IdEstado = doc.IdEstado,
-                FechaAcceso = DateTime.Now
+                FechaAcceso = DateTime.Now,
+                IdUsuarioPerfil = 1
             };
             db.AddToGD_DocumentoHistorial(hist);
             db.SaveChanges();
