@@ -8,55 +8,52 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
 
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_28", "GRH_Area", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Area), "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Empleado), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_27", "GRH_Cargo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Cargo), "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Empleado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_47", "GRH_ParametroCriterio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_ParametroCriterio), "GRH_CartillaCuestionario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_CartillaCuestionario), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_54", "GRH_CartillaCuestionario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_CartillaCuestionario), "GRH_EvaluacionCompetenciaCuestionario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetenciaCuestionario), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_55", "GRH_CartillaCuestionario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_CartillaCuestionario), "GRH_EvaluacionCompetenciaEvaluador", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetenciaEvaluador), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_31", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_ContratoPersonal", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ContratoPersonal), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_36", "GRH_Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GRH_Perfil), "GRH_Convocatoria", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Convocatoria), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_65", "GRH_Convocatoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Convocatoria), "GRH_ConvocatoriaPostulante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ConvocatoriaPostulante), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_63", "GRH_Postulante", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Postulante), "GRH_ConvocatoriaPostulante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ConvocatoriaPostulante), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_20", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Correo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Correo), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_61", "GRH_Criterio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Criterio), "GRH_ParametroCriterio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ParametroCriterio), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_26", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_DerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DerechoHabiente), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_29", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_DerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DerechoHabiente), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_30", "GRH_TipoDerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_TipoDerechoHabiente), "GRH_DerechoHabiente", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DerechoHabiente), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_58", "GRH_PlanEvaluacionCompetencias", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_PlanEvaluacionCompetencias), "GRH_DetallePlanEvaluacionCompetencias", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DetallePlanEvaluacionCompetencias), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_59", "GRH_EvaluacionCompetencia", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_EvaluacionCompetencia), "GRH_DetallePlanEvaluacionCompetencias", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_DetallePlanEvaluacionCompetencias), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_18", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Documento), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_19", "GRH_TipoDocumento", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_TipoDocumento), "GRH_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Documento), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_1", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Empleado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_41", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_EvaluacionCompetencia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetencia), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_66", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_Legajo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Legajo), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_34", "GRH_Especialidad", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Especialidad), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_13", "GRH_EstadoCivil", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_EstadoCivil), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_25", "GRH_SituacionEstudio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_SituacionEstudio), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_32", "GRH_NivelEducativo", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_NivelEducativo), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_33", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_EstudioRealizado", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EstudioRealizado), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_35", "GRH_Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Perfil), "GRH_EvaluacionCompetencia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetencia), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_57", "GRH_EvaluacionCompetencia", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_EvaluacionCompetencia), "GRH_EvaluacionCompetenciaCuestionario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetenciaCuestionario), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_60", "GRH_EvaluacionCompetencia", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_EvaluacionCompetencia), "GRH_EvaluacionCompetenciaEvaluador", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetenciaEvaluador), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_56", "GRH_Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Perfil), "GRH_EvaluacionCompetenciaEvaluador", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetenciaEvaluador), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_3", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_ExperienciaLaboral", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ExperienciaLaboral), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_16", "GRH_Idioma", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GRH_Idioma), "GRH_IdiomaPersona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_IdiomaPersona), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_15", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GRH_Persona), "GRH_IdiomaPersona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_IdiomaPersona), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_17", "GRH_NivelIdioma", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_NivelIdioma), "GRH_IdiomaPersona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_IdiomaPersona), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_6", "GRH_Pais", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Pais), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_8", "GRH_Pais", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Pais), "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Persona), true)]
-[assembly: EdmRelationshipAttribute("GRH_Model", "R_62", "GRH_Parametro", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Parametro), "GRH_ParametroCriterio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ParametroCriterio), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_2", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Postulante", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Postulante), true)]
 [assembly: EdmRelationshipAttribute("GRH_Model", "R_4", "GRH_Persona", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Persona), "GRH_Telefono", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Telefono), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_47", "GRH_ParametroCriterio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_ParametroCriterio), "GRH_CartillaCuestionario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_CartillaCuestionario), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_54", "GRH_CartillaCuestionario", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_CartillaCuestionario), "GRH_EvaluacionCompetenciaCuestionario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetenciaCuestionario), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_36", "GRH_Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GRH_Perfil), "GRH_Convocatoria", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_Convocatoria), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_61", "GRH_Criterio", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Criterio), "GRH_ParametroCriterio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ParametroCriterio), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado", "GRH_Empleado", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Empleado), "GRH_EvaluacionCompetenciaEvaluador", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetenciaEvaluador), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_35", "GRH_Perfil", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Perfil), "GRH_EvaluacionCompetencia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetencia), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_57", "GRH_EvaluacionCompetencia", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_EvaluacionCompetencia), "GRH_EvaluacionCompetenciaCuestionario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetenciaCuestionario), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_60", "GRH_EvaluacionCompetencia", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_EvaluacionCompetencia), "GRH_EvaluacionCompetenciaEvaluador", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_EvaluacionCompetenciaEvaluador), true)]
+[assembly: EdmRelationshipAttribute("GRH_Model", "R_62", "GRH_Parametro", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GRH_Parametro), "GRH_ParametroCriterio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GRH_ParametroCriterio), true)]
 
 #endregion
 
@@ -143,22 +140,6 @@ namespace DemoMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<GRH_CartillaCuestionario> GRH_CartillaCuestionario
-        {
-            get
-            {
-                if ((_GRH_CartillaCuestionario == null))
-                {
-                    _GRH_CartillaCuestionario = base.CreateObjectSet<GRH_CartillaCuestionario>("GRH_CartillaCuestionario");
-                }
-                return _GRH_CartillaCuestionario;
-            }
-        }
-        private ObjectSet<GRH_CartillaCuestionario> _GRH_CartillaCuestionario;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<GRH_ContratoPersonal> GRH_ContratoPersonal
         {
             get
@@ -223,22 +204,6 @@ namespace DemoMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<GRH_Criterio> GRH_Criterio
-        {
-            get
-            {
-                if ((_GRH_Criterio == null))
-                {
-                    _GRH_Criterio = base.CreateObjectSet<GRH_Criterio>("GRH_Criterio");
-                }
-                return _GRH_Criterio;
-            }
-        }
-        private ObjectSet<GRH_Criterio> _GRH_Criterio;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<GRH_DerechoHabiente> GRH_DerechoHabiente
         {
             get
@@ -251,22 +216,6 @@ namespace DemoMVC.Models
             }
         }
         private ObjectSet<GRH_DerechoHabiente> _GRH_DerechoHabiente;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GRH_DetallePlanEvaluacionCompetencias> GRH_DetallePlanEvaluacionCompetencias
-        {
-            get
-            {
-                if ((_GRH_DetallePlanEvaluacionCompetencias == null))
-                {
-                    _GRH_DetallePlanEvaluacionCompetencias = base.CreateObjectSet<GRH_DetallePlanEvaluacionCompetencias>("GRH_DetallePlanEvaluacionCompetencias");
-                }
-                return _GRH_DetallePlanEvaluacionCompetencias;
-            }
-        }
-        private ObjectSet<GRH_DetallePlanEvaluacionCompetencias> _GRH_DetallePlanEvaluacionCompetencias;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -347,54 +296,6 @@ namespace DemoMVC.Models
             }
         }
         private ObjectSet<GRH_EstudioRealizado> _GRH_EstudioRealizado;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GRH_EvaluacionCompetencia> GRH_EvaluacionCompetencia
-        {
-            get
-            {
-                if ((_GRH_EvaluacionCompetencia == null))
-                {
-                    _GRH_EvaluacionCompetencia = base.CreateObjectSet<GRH_EvaluacionCompetencia>("GRH_EvaluacionCompetencia");
-                }
-                return _GRH_EvaluacionCompetencia;
-            }
-        }
-        private ObjectSet<GRH_EvaluacionCompetencia> _GRH_EvaluacionCompetencia;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GRH_EvaluacionCompetenciaCuestionario> GRH_EvaluacionCompetenciaCuestionario
-        {
-            get
-            {
-                if ((_GRH_EvaluacionCompetenciaCuestionario == null))
-                {
-                    _GRH_EvaluacionCompetenciaCuestionario = base.CreateObjectSet<GRH_EvaluacionCompetenciaCuestionario>("GRH_EvaluacionCompetenciaCuestionario");
-                }
-                return _GRH_EvaluacionCompetenciaCuestionario;
-            }
-        }
-        private ObjectSet<GRH_EvaluacionCompetenciaCuestionario> _GRH_EvaluacionCompetenciaCuestionario;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GRH_EvaluacionCompetenciaEvaluador> GRH_EvaluacionCompetenciaEvaluador
-        {
-            get
-            {
-                if ((_GRH_EvaluacionCompetenciaEvaluador == null))
-                {
-                    _GRH_EvaluacionCompetenciaEvaluador = base.CreateObjectSet<GRH_EvaluacionCompetenciaEvaluador>("GRH_EvaluacionCompetenciaEvaluador");
-                }
-                return _GRH_EvaluacionCompetenciaEvaluador;
-            }
-        }
-        private ObjectSet<GRH_EvaluacionCompetenciaEvaluador> _GRH_EvaluacionCompetenciaEvaluador;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -511,54 +412,6 @@ namespace DemoMVC.Models
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<GRH_Parametro> GRH_Parametro
-        {
-            get
-            {
-                if ((_GRH_Parametro == null))
-                {
-                    _GRH_Parametro = base.CreateObjectSet<GRH_Parametro>("GRH_Parametro");
-                }
-                return _GRH_Parametro;
-            }
-        }
-        private ObjectSet<GRH_Parametro> _GRH_Parametro;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GRH_ParametroCriterio> GRH_ParametroCriterio
-        {
-            get
-            {
-                if ((_GRH_ParametroCriterio == null))
-                {
-                    _GRH_ParametroCriterio = base.CreateObjectSet<GRH_ParametroCriterio>("GRH_ParametroCriterio");
-                }
-                return _GRH_ParametroCriterio;
-            }
-        }
-        private ObjectSet<GRH_ParametroCriterio> _GRH_ParametroCriterio;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GRH_Perfil> GRH_Perfil
-        {
-            get
-            {
-                if ((_GRH_Perfil == null))
-                {
-                    _GRH_Perfil = base.CreateObjectSet<GRH_Perfil>("GRH_Perfil");
-                }
-                return _GRH_Perfil;
-            }
-        }
-        private ObjectSet<GRH_Perfil> _GRH_Perfil;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<GRH_Persona> GRH_Persona
         {
             get
@@ -571,22 +424,6 @@ namespace DemoMVC.Models
             }
         }
         private ObjectSet<GRH_Persona> _GRH_Persona;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<GRH_PlanEvaluacionCompetencias> GRH_PlanEvaluacionCompetencias
-        {
-            get
-            {
-                if ((_GRH_PlanEvaluacionCompetencias == null))
-                {
-                    _GRH_PlanEvaluacionCompetencias = base.CreateObjectSet<GRH_PlanEvaluacionCompetencias>("GRH_PlanEvaluacionCompetencias");
-                }
-                return _GRH_PlanEvaluacionCompetencias;
-            }
-        }
-        private ObjectSet<GRH_PlanEvaluacionCompetencias> _GRH_PlanEvaluacionCompetencias;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -667,8 +504,137 @@ namespace DemoMVC.Models
             }
         }
         private ObjectSet<GRH_TipoDocumento> _GRH_TipoDocumento;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_CartillaCuestionario> GRH_CartillaCuestionario
+        {
+            get
+            {
+                if ((_GRH_CartillaCuestionario == null))
+                {
+                    _GRH_CartillaCuestionario = base.CreateObjectSet<GRH_CartillaCuestionario>("GRH_CartillaCuestionario");
+                }
+                return _GRH_CartillaCuestionario;
+            }
+        }
+        private ObjectSet<GRH_CartillaCuestionario> _GRH_CartillaCuestionario;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_Criterio> GRH_Criterio
+        {
+            get
+            {
+                if ((_GRH_Criterio == null))
+                {
+                    _GRH_Criterio = base.CreateObjectSet<GRH_Criterio>("GRH_Criterio");
+                }
+                return _GRH_Criterio;
+            }
+        }
+        private ObjectSet<GRH_Criterio> _GRH_Criterio;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_EvaluacionCompetencia> GRH_EvaluacionCompetencia
+        {
+            get
+            {
+                if ((_GRH_EvaluacionCompetencia == null))
+                {
+                    _GRH_EvaluacionCompetencia = base.CreateObjectSet<GRH_EvaluacionCompetencia>("GRH_EvaluacionCompetencia");
+                }
+                return _GRH_EvaluacionCompetencia;
+            }
+        }
+        private ObjectSet<GRH_EvaluacionCompetencia> _GRH_EvaluacionCompetencia;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_EvaluacionCompetenciaCuestionario> GRH_EvaluacionCompetenciaCuestionario
+        {
+            get
+            {
+                if ((_GRH_EvaluacionCompetenciaCuestionario == null))
+                {
+                    _GRH_EvaluacionCompetenciaCuestionario = base.CreateObjectSet<GRH_EvaluacionCompetenciaCuestionario>("GRH_EvaluacionCompetenciaCuestionario");
+                }
+                return _GRH_EvaluacionCompetenciaCuestionario;
+            }
+        }
+        private ObjectSet<GRH_EvaluacionCompetenciaCuestionario> _GRH_EvaluacionCompetenciaCuestionario;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_EvaluacionCompetenciaEvaluador> GRH_EvaluacionCompetenciaEvaluador
+        {
+            get
+            {
+                if ((_GRH_EvaluacionCompetenciaEvaluador == null))
+                {
+                    _GRH_EvaluacionCompetenciaEvaluador = base.CreateObjectSet<GRH_EvaluacionCompetenciaEvaluador>("GRH_EvaluacionCompetenciaEvaluador");
+                }
+                return _GRH_EvaluacionCompetenciaEvaluador;
+            }
+        }
+        private ObjectSet<GRH_EvaluacionCompetenciaEvaluador> _GRH_EvaluacionCompetenciaEvaluador;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_Parametro> GRH_Parametro
+        {
+            get
+            {
+                if ((_GRH_Parametro == null))
+                {
+                    _GRH_Parametro = base.CreateObjectSet<GRH_Parametro>("GRH_Parametro");
+                }
+                return _GRH_Parametro;
+            }
+        }
+        private ObjectSet<GRH_Parametro> _GRH_Parametro;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_ParametroCriterio> GRH_ParametroCriterio
+        {
+            get
+            {
+                if ((_GRH_ParametroCriterio == null))
+                {
+                    _GRH_ParametroCriterio = base.CreateObjectSet<GRH_ParametroCriterio>("GRH_ParametroCriterio");
+                }
+                return _GRH_ParametroCriterio;
+            }
+        }
+        private ObjectSet<GRH_ParametroCriterio> _GRH_ParametroCriterio;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<GRH_Perfil> GRH_Perfil
+        {
+            get
+            {
+                if ((_GRH_Perfil == null))
+                {
+                    _GRH_Perfil = base.CreateObjectSet<GRH_Perfil>("GRH_Perfil");
+                }
+                return _GRH_Perfil;
+            }
+        }
+        private ObjectSet<GRH_Perfil> _GRH_Perfil;
 
         #endregion
+
         #region Métodos AddTo
     
         /// <summary>
@@ -685,14 +651,6 @@ namespace DemoMVC.Models
         public void AddToGRH_Cargo(GRH_Cargo gRH_Cargo)
         {
             base.AddObject("GRH_Cargo", gRH_Cargo);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_CartillaCuestionario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_CartillaCuestionario(GRH_CartillaCuestionario gRH_CartillaCuestionario)
-        {
-            base.AddObject("GRH_CartillaCuestionario", gRH_CartillaCuestionario);
         }
     
         /// <summary>
@@ -728,27 +686,11 @@ namespace DemoMVC.Models
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_Criterio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_Criterio(GRH_Criterio gRH_Criterio)
-        {
-            base.AddObject("GRH_Criterio", gRH_Criterio);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet GRH_DerechoHabiente. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToGRH_DerechoHabiente(GRH_DerechoHabiente gRH_DerechoHabiente)
         {
             base.AddObject("GRH_DerechoHabiente", gRH_DerechoHabiente);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_DetallePlanEvaluacionCompetencias. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_DetallePlanEvaluacionCompetencias(GRH_DetallePlanEvaluacionCompetencias gRH_DetallePlanEvaluacionCompetencias)
-        {
-            base.AddObject("GRH_DetallePlanEvaluacionCompetencias", gRH_DetallePlanEvaluacionCompetencias);
         }
     
         /// <summary>
@@ -789,30 +731,6 @@ namespace DemoMVC.Models
         public void AddToGRH_EstudioRealizado(GRH_EstudioRealizado gRH_EstudioRealizado)
         {
             base.AddObject("GRH_EstudioRealizado", gRH_EstudioRealizado);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_EvaluacionCompetencia. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_EvaluacionCompetencia(GRH_EvaluacionCompetencia gRH_EvaluacionCompetencia)
-        {
-            base.AddObject("GRH_EvaluacionCompetencia", gRH_EvaluacionCompetencia);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_EvaluacionCompetenciaCuestionario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_EvaluacionCompetenciaCuestionario(GRH_EvaluacionCompetenciaCuestionario gRH_EvaluacionCompetenciaCuestionario)
-        {
-            base.AddObject("GRH_EvaluacionCompetenciaCuestionario", gRH_EvaluacionCompetenciaCuestionario);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_EvaluacionCompetenciaEvaluador. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_EvaluacionCompetenciaEvaluador(GRH_EvaluacionCompetenciaEvaluador gRH_EvaluacionCompetenciaEvaluador)
-        {
-            base.AddObject("GRH_EvaluacionCompetenciaEvaluador", gRH_EvaluacionCompetenciaEvaluador);
         }
     
         /// <summary>
@@ -872,43 +790,11 @@ namespace DemoMVC.Models
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_Parametro. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_Parametro(GRH_Parametro gRH_Parametro)
-        {
-            base.AddObject("GRH_Parametro", gRH_Parametro);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_ParametroCriterio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_ParametroCriterio(GRH_ParametroCriterio gRH_ParametroCriterio)
-        {
-            base.AddObject("GRH_ParametroCriterio", gRH_ParametroCriterio);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_Perfil. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_Perfil(GRH_Perfil gRH_Perfil)
-        {
-            base.AddObject("GRH_Perfil", gRH_Perfil);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet GRH_Persona. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToGRH_Persona(GRH_Persona gRH_Persona)
         {
             base.AddObject("GRH_Persona", gRH_Persona);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_PlanEvaluacionCompetencias. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToGRH_PlanEvaluacionCompetencias(GRH_PlanEvaluacionCompetencias gRH_PlanEvaluacionCompetencias)
-        {
-            base.AddObject("GRH_PlanEvaluacionCompetencias", gRH_PlanEvaluacionCompetencias);
         }
     
         /// <summary>
@@ -950,13 +836,77 @@ namespace DemoMVC.Models
         {
             base.AddObject("GRH_TipoDocumento", gRH_TipoDocumento);
         }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_CartillaCuestionario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_CartillaCuestionario(GRH_CartillaCuestionario gRH_CartillaCuestionario)
+        {
+            base.AddObject("GRH_CartillaCuestionario", gRH_CartillaCuestionario);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_Criterio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_Criterio(GRH_Criterio gRH_Criterio)
+        {
+            base.AddObject("GRH_Criterio", gRH_Criterio);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_EvaluacionCompetencia. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_EvaluacionCompetencia(GRH_EvaluacionCompetencia gRH_EvaluacionCompetencia)
+        {
+            base.AddObject("GRH_EvaluacionCompetencia", gRH_EvaluacionCompetencia);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_EvaluacionCompetenciaCuestionario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_EvaluacionCompetenciaCuestionario(GRH_EvaluacionCompetenciaCuestionario gRH_EvaluacionCompetenciaCuestionario)
+        {
+            base.AddObject("GRH_EvaluacionCompetenciaCuestionario", gRH_EvaluacionCompetenciaCuestionario);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_EvaluacionCompetenciaEvaluador. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_EvaluacionCompetenciaEvaluador(GRH_EvaluacionCompetenciaEvaluador gRH_EvaluacionCompetenciaEvaluador)
+        {
+            base.AddObject("GRH_EvaluacionCompetenciaEvaluador", gRH_EvaluacionCompetenciaEvaluador);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_Parametro. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_Parametro(GRH_Parametro gRH_Parametro)
+        {
+            base.AddObject("GRH_Parametro", gRH_Parametro);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_ParametroCriterio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_ParametroCriterio(GRH_ParametroCriterio gRH_ParametroCriterio)
+        {
+            base.AddObject("GRH_ParametroCriterio", gRH_ParametroCriterio);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet GRH_Perfil. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToGRH_Perfil(GRH_Perfil gRH_Perfil)
+        {
+            base.AddObject("GRH_Perfil", gRH_Perfil);
+        }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entidades
     
     /// <summary>
@@ -981,6 +931,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1035,6 +986,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1061,6 +1013,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1085,6 +1038,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1139,6 +1093,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1165,6 +1120,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1189,6 +1145,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1267,6 +1224,7 @@ namespace DemoMVC.Models
         partial void OnIdParametroCriterioChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1329,30 +1287,9 @@ namespace DemoMVC.Models
                 }
             }
         }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_55", "GRH_EvaluacionCompetenciaEvaluador")]
-        public EntityCollection<GRH_EvaluacionCompetenciaEvaluador> GRH_EvaluacionCompetenciaEvaluador
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EvaluacionCompetenciaEvaluador>("GRH_Model.R_55", "GRH_EvaluacionCompetenciaEvaluador");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EvaluacionCompetenciaEvaluador>("GRH_Model.R_55", "GRH_EvaluacionCompetenciaEvaluador", value);
-                }
-            }
-        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1377,6 +1314,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1503,6 +1441,7 @@ namespace DemoMVC.Models
         partial void OnFechaFinChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1545,6 +1484,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1581,6 +1521,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1755,8 +1696,31 @@ namespace DemoMVC.Models
         partial void OnIdPerfilChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_65", "GRH_ConvocatoriaPostulante")]
+        public EntityCollection<GRH_ConvocatoriaPostulante> GRH_ConvocatoriaPostulante
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_ConvocatoriaPostulante>("GRH_Model.R_65", "GRH_ConvocatoriaPostulante");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_ConvocatoriaPostulante>("GRH_Model.R_65", "GRH_ConvocatoriaPostulante", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -1795,30 +1759,9 @@ namespace DemoMVC.Models
                 }
             }
         }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_65", "GRH_ConvocatoriaPostulante")]
-        public EntityCollection<GRH_ConvocatoriaPostulante> GRH_ConvocatoriaPostulante
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_ConvocatoriaPostulante>("GRH_Model.R_65", "GRH_ConvocatoriaPostulante");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_ConvocatoriaPostulante>("GRH_Model.R_65", "GRH_ConvocatoriaPostulante", value);
-                }
-            }
-        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1843,6 +1786,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1945,6 +1889,7 @@ namespace DemoMVC.Models
         partial void OnIdConvocatoriaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2025,6 +1970,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2049,6 +1995,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2127,6 +2074,7 @@ namespace DemoMVC.Models
         partial void OnCuentaCorreoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2169,6 +2117,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2193,6 +2142,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2247,6 +2197,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2273,6 +2224,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2297,6 +2249,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2399,6 +2352,7 @@ namespace DemoMVC.Models
         partial void OnIdTipoDerechoHabienteChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2517,260 +2471,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
-    }
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GRH_Model", Name="GRH_DetallePlanEvaluacionCompetencias")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class GRH_DetallePlanEvaluacionCompetencias : EntityObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto GRH_DetallePlanEvaluacionCompetencias.
-        /// </summary>
-        /// <param name="idDetallePlanEvaluacionCompetencias">Valor inicial de la propiedad IdDetallePlanEvaluacionCompetencias.</param>
-        public static GRH_DetallePlanEvaluacionCompetencias CreateGRH_DetallePlanEvaluacionCompetencias(global::System.Int32 idDetallePlanEvaluacionCompetencias)
-        {
-            GRH_DetallePlanEvaluacionCompetencias gRH_DetallePlanEvaluacionCompetencias = new GRH_DetallePlanEvaluacionCompetencias();
-            gRH_DetallePlanEvaluacionCompetencias.IdDetallePlanEvaluacionCompetencias = idDetallePlanEvaluacionCompetencias;
-            return gRH_DetallePlanEvaluacionCompetencias;
-        }
 
-        #endregion
-        #region Propiedades primitivas
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaIncio
-        {
-            get
-            {
-                return _FechaIncio;
-            }
-            set
-            {
-                OnFechaIncioChanging(value);
-                ReportPropertyChanging("FechaIncio");
-                _FechaIncio = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FechaIncio");
-                OnFechaIncioChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _FechaIncio;
-        partial void OnFechaIncioChanging(Nullable<global::System.DateTime> value);
-        partial void OnFechaIncioChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaFin
-        {
-            get
-            {
-                return _FechaFin;
-            }
-            set
-            {
-                OnFechaFinChanging(value);
-                ReportPropertyChanging("FechaFin");
-                _FechaFin = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FechaFin");
-                OnFechaFinChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _FechaFin;
-        partial void OnFechaFinChanging(Nullable<global::System.DateTime> value);
-        partial void OnFechaFinChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaEnvio
-        {
-            get
-            {
-                return _FechaEnvio;
-            }
-            set
-            {
-                OnFechaEnvioChanging(value);
-                ReportPropertyChanging("FechaEnvio");
-                _FechaEnvio = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FechaEnvio");
-                OnFechaEnvioChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _FechaEnvio;
-        partial void OnFechaEnvioChanging(Nullable<global::System.DateTime> value);
-        partial void OnFechaEnvioChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> IdPlanEvaluacionCompetencias
-        {
-            get
-            {
-                return _IdPlanEvaluacionCompetencias;
-            }
-            set
-            {
-                OnIdPlanEvaluacionCompetenciasChanging(value);
-                ReportPropertyChanging("IdPlanEvaluacionCompetencias");
-                _IdPlanEvaluacionCompetencias = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IdPlanEvaluacionCompetencias");
-                OnIdPlanEvaluacionCompetenciasChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _IdPlanEvaluacionCompetencias;
-        partial void OnIdPlanEvaluacionCompetenciasChanging(Nullable<global::System.Int32> value);
-        partial void OnIdPlanEvaluacionCompetenciasChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> IdEvaluacionCompetencia
-        {
-            get
-            {
-                return _IdEvaluacionCompetencia;
-            }
-            set
-            {
-                OnIdEvaluacionCompetenciaChanging(value);
-                ReportPropertyChanging("IdEvaluacionCompetencia");
-                _IdEvaluacionCompetencia = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IdEvaluacionCompetencia");
-                OnIdEvaluacionCompetenciaChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _IdEvaluacionCompetencia;
-        partial void OnIdEvaluacionCompetenciaChanging(Nullable<global::System.Int32> value);
-        partial void OnIdEvaluacionCompetenciaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IdDetallePlanEvaluacionCompetencias
-        {
-            get
-            {
-                return _IdDetallePlanEvaluacionCompetencias;
-            }
-            set
-            {
-                if (_IdDetallePlanEvaluacionCompetencias != value)
-                {
-                    OnIdDetallePlanEvaluacionCompetenciasChanging(value);
-                    ReportPropertyChanging("IdDetallePlanEvaluacionCompetencias");
-                    _IdDetallePlanEvaluacionCompetencias = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdDetallePlanEvaluacionCompetencias");
-                    OnIdDetallePlanEvaluacionCompetenciasChanged();
-                }
-            }
-        }
-        private global::System.Int32 _IdDetallePlanEvaluacionCompetencias;
-        partial void OnIdDetallePlanEvaluacionCompetenciasChanging(global::System.Int32 value);
-        partial void OnIdDetallePlanEvaluacionCompetenciasChanged();
-
-        #endregion
-    
-        #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_58", "GRH_PlanEvaluacionCompetencias")]
-        public GRH_PlanEvaluacionCompetencias GRH_PlanEvaluacionCompetencias
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_PlanEvaluacionCompetencias>("GRH_Model.R_58", "GRH_PlanEvaluacionCompetencias").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_PlanEvaluacionCompetencias>("GRH_Model.R_58", "GRH_PlanEvaluacionCompetencias").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GRH_PlanEvaluacionCompetencias> GRH_PlanEvaluacionCompetenciasReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_PlanEvaluacionCompetencias>("GRH_Model.R_58", "GRH_PlanEvaluacionCompetencias");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_PlanEvaluacionCompetencias>("GRH_Model.R_58", "GRH_PlanEvaluacionCompetencias", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_59", "GRH_EvaluacionCompetencia")]
-        public GRH_EvaluacionCompetencia GRH_EvaluacionCompetencia
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_EvaluacionCompetencia>("GRH_Model.R_59", "GRH_EvaluacionCompetencia").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_EvaluacionCompetencia>("GRH_Model.R_59", "GRH_EvaluacionCompetencia").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GRH_EvaluacionCompetencia> GRH_EvaluacionCompetenciaReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_EvaluacionCompetencia>("GRH_Model.R_59", "GRH_EvaluacionCompetencia");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_EvaluacionCompetencia>("GRH_Model.R_59", "GRH_EvaluacionCompetencia", value);
-                }
-            }
-        }
-
-        #endregion
     }
     
     /// <summary>
@@ -2795,6 +2496,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2897,6 +2599,7 @@ namespace DemoMVC.Models
         partial void OnNumeroDocumentoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2977,6 +2680,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3001,6 +2705,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3151,6 +2856,7 @@ namespace DemoMVC.Models
         partial void OnFechaCeseChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3318,28 +3024,6 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_41", "GRH_EvaluacionCompetencia")]
-        public EntityCollection<GRH_EvaluacionCompetencia> GRH_EvaluacionCompetencia
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EvaluacionCompetencia>("GRH_Model.R_41", "GRH_EvaluacionCompetencia");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EvaluacionCompetencia>("GRH_Model.R_41", "GRH_EvaluacionCompetencia", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_66", "GRH_Legajo")]
         public EntityCollection<GRH_Legajo> GRH_Legajo
         {
@@ -3355,8 +3039,31 @@ namespace DemoMVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado", "GRH_EvaluacionCompetenciaEvaluador")]
+        public EntityCollection<GRH_EvaluacionCompetenciaEvaluador> GRH_EvaluacionCompetenciaEvaluador
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EvaluacionCompetenciaEvaluador>("GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado", "GRH_EvaluacionCompetenciaEvaluador");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EvaluacionCompetenciaEvaluador>("GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado", "GRH_EvaluacionCompetenciaEvaluador", value);
+                }
+            }
+        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3381,6 +3088,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3435,6 +3143,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3461,6 +3170,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3485,6 +3195,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3539,6 +3250,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3565,6 +3277,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3589,6 +3302,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3811,6 +3525,7 @@ namespace DemoMVC.Models
         partial void OnIdEspecialidadChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3967,6 +3682,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3991,6 +3707,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4067,94 +3784,11 @@ namespace DemoMVC.Models
         private Nullable<global::System.Int32> _IdPerfil;
         partial void OnIdPerfilChanging(Nullable<global::System.Int32> value);
         partial void OnIdPerfilChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> IdEmpleado
-        {
-            get
-            {
-                return _IdEmpleado;
-            }
-            set
-            {
-                OnIdEmpleadoChanging(value);
-                ReportPropertyChanging("IdEmpleado");
-                _IdEmpleado = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IdEmpleado");
-                OnIdEmpleadoChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _IdEmpleado;
-        partial void OnIdEmpleadoChanging(Nullable<global::System.Int32> value);
-        partial void OnIdEmpleadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_59", "GRH_DetallePlanEvaluacionCompetencias")]
-        public EntityCollection<GRH_DetallePlanEvaluacionCompetencias> GRH_DetallePlanEvaluacionCompetencias
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_DetallePlanEvaluacionCompetencias>("GRH_Model.R_59", "GRH_DetallePlanEvaluacionCompetencias");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_DetallePlanEvaluacionCompetencias>("GRH_Model.R_59", "GRH_DetallePlanEvaluacionCompetencias", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_41", "GRH_Empleado")]
-        public GRH_Empleado GRH_Empleado
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_41", "GRH_Empleado").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_41", "GRH_Empleado").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GRH_Empleado> GRH_EmpleadoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.R_41", "GRH_Empleado");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Empleado>("GRH_Model.R_41", "GRH_Empleado", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -4239,6 +3873,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4263,6 +3898,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4341,6 +3977,7 @@ namespace DemoMVC.Models
         partial void OnIdEvaluacionCompetenciaCuestionarioChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4421,6 +4058,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4445,6 +4083,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4470,30 +4109,6 @@ namespace DemoMVC.Models
         private Nullable<global::System.Int32> _IdCuestionario;
         partial void OnIdCuestionarioChanging(Nullable<global::System.Int32> value);
         partial void OnIdCuestionarioChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> IdPerfil
-        {
-            get
-            {
-                return _IdPerfil;
-            }
-            set
-            {
-                OnIdPerfilChanging(value);
-                ReportPropertyChanging("IdPerfil");
-                _IdPerfil = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IdPerfil");
-                OnIdPerfilChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _IdPerfil;
-        partial void OnIdPerfilChanging(Nullable<global::System.Int32> value);
-        partial void OnIdPerfilChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -4545,8 +4160,33 @@ namespace DemoMVC.Models
         private global::System.Int32 _IdEvaluacionCompetenciaEvaluador;
         partial void OnIdEvaluacionCompetenciaEvaluadorChanging(global::System.Int32 value);
         partial void OnIdEvaluacionCompetenciaEvaluadorChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> IdEmpleado
+        {
+            get
+            {
+                return _IdEmpleado;
+            }
+            set
+            {
+                OnIdEmpleadoChanging(value);
+                ReportPropertyChanging("IdEmpleado");
+                _IdEmpleado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IdEmpleado");
+                OnIdEmpleadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _IdEmpleado;
+        partial void OnIdEmpleadoChanging(Nullable<global::System.Int32> value);
+        partial void OnIdEmpleadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4556,16 +4196,16 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_55", "GRH_CartillaCuestionario")]
-        public GRH_CartillaCuestionario GRH_CartillaCuestionario
+        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado", "GRH_Empleado")]
+        public GRH_Empleado GRH_Empleado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_CartillaCuestionario>("GRH_Model.R_55", "GRH_CartillaCuestionario").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado", "GRH_Empleado").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_CartillaCuestionario>("GRH_Model.R_55", "GRH_CartillaCuestionario").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado", "GRH_Empleado").Value = value;
             }
         }
         /// <summary>
@@ -4573,17 +4213,17 @@ namespace DemoMVC.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<GRH_CartillaCuestionario> GRH_CartillaCuestionarioReference
+        public EntityReference<GRH_Empleado> GRH_EmpleadoReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_CartillaCuestionario>("GRH_Model.R_55", "GRH_CartillaCuestionario");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Empleado>("GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado", "GRH_Empleado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_CartillaCuestionario>("GRH_Model.R_55", "GRH_CartillaCuestionario", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Empleado>("GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado", "GRH_Empleado", value);
                 }
             }
         }
@@ -4625,46 +4265,9 @@ namespace DemoMVC.Models
                 }
             }
         }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_56", "GRH_Perfil")]
-        public GRH_Perfil GRH_Perfil
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Perfil>("GRH_Model.R_56", "GRH_Perfil").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Perfil>("GRH_Model.R_56", "GRH_Perfil").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GRH_Perfil> GRH_PerfilReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GRH_Perfil>("GRH_Model.R_56", "GRH_Perfil");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GRH_Perfil>("GRH_Model.R_56", "GRH_Perfil", value);
-                }
-            }
-        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4689,6 +4292,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4863,6 +4467,7 @@ namespace DemoMVC.Models
         partial void OnEmpresaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4905,6 +4510,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4929,6 +4535,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4983,6 +4590,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -5009,6 +4617,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5037,6 +4646,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5163,6 +4773,7 @@ namespace DemoMVC.Models
         partial void OnIdIdiomaPersonaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -5281,6 +4892,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5305,6 +4917,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5407,6 +5020,7 @@ namespace DemoMVC.Models
         partial void OnIdEmpleadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -5449,6 +5063,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5473,6 +5088,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5527,6 +5143,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -5553,6 +5170,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5577,6 +5195,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5631,6 +5250,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -5657,6 +5277,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5681,6 +5302,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5735,6 +5357,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -5783,6 +5406,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5807,6 +5431,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5861,6 +5486,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -5887,6 +5513,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5911,6 +5538,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -5989,6 +5617,7 @@ namespace DemoMVC.Models
         partial void OnIdParametroCriterioChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -6091,6 +5720,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -6115,6 +5745,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -6193,6 +5824,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -6239,30 +5871,9 @@ namespace DemoMVC.Models
                 }
             }
         }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_56", "GRH_EvaluacionCompetenciaEvaluador")]
-        public EntityCollection<GRH_EvaluacionCompetenciaEvaluador> GRH_EvaluacionCompetenciaEvaluador
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_EvaluacionCompetenciaEvaluador>("GRH_Model.R_56", "GRH_EvaluacionCompetenciaEvaluador");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_EvaluacionCompetenciaEvaluador>("GRH_Model.R_56", "GRH_EvaluacionCompetenciaEvaluador", value);
-                }
-            }
-        }
 
         #endregion
+
     }
     
     /// <summary>
@@ -6287,6 +5898,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -6533,6 +6145,7 @@ namespace DemoMVC.Models
         partial void OnFechaNacimientoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -6849,134 +6462,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
-    }
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="GRH_Model", Name="GRH_PlanEvaluacionCompetencias")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class GRH_PlanEvaluacionCompetencias : EntityObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto GRH_PlanEvaluacionCompetencias.
-        /// </summary>
-        /// <param name="idPlanEvaluacionCompetencias">Valor inicial de la propiedad IdPlanEvaluacionCompetencias.</param>
-        public static GRH_PlanEvaluacionCompetencias CreateGRH_PlanEvaluacionCompetencias(global::System.Int32 idPlanEvaluacionCompetencias)
-        {
-            GRH_PlanEvaluacionCompetencias gRH_PlanEvaluacionCompetencias = new GRH_PlanEvaluacionCompetencias();
-            gRH_PlanEvaluacionCompetencias.IdPlanEvaluacionCompetencias = idPlanEvaluacionCompetencias;
-            return gRH_PlanEvaluacionCompetencias;
-        }
 
-        #endregion
-        #region Propiedades primitivas
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 IdPlanEvaluacionCompetencias
-        {
-            get
-            {
-                return _IdPlanEvaluacionCompetencias;
-            }
-            set
-            {
-                if (_IdPlanEvaluacionCompetencias != value)
-                {
-                    OnIdPlanEvaluacionCompetenciasChanging(value);
-                    ReportPropertyChanging("IdPlanEvaluacionCompetencias");
-                    _IdPlanEvaluacionCompetencias = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdPlanEvaluacionCompetencias");
-                    OnIdPlanEvaluacionCompetenciasChanged();
-                }
-            }
-        }
-        private global::System.Int32 _IdPlanEvaluacionCompetencias;
-        partial void OnIdPlanEvaluacionCompetenciasChanging(global::System.Int32 value);
-        partial void OnIdPlanEvaluacionCompetenciasChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Descripcion
-        {
-            get
-            {
-                return _Descripcion;
-            }
-            set
-            {
-                OnDescripcionChanging(value);
-                ReportPropertyChanging("Descripcion");
-                _Descripcion = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Descripcion");
-                OnDescripcionChanged();
-            }
-        }
-        private global::System.String _Descripcion;
-        partial void OnDescripcionChanging(global::System.String value);
-        partial void OnDescripcionChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Anho
-        {
-            get
-            {
-                return _Anho;
-            }
-            set
-            {
-                OnAnhoChanging(value);
-                ReportPropertyChanging("Anho");
-                _Anho = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Anho");
-                OnAnhoChanged();
-            }
-        }
-        private global::System.String _Anho;
-        partial void OnAnhoChanging(global::System.String value);
-        partial void OnAnhoChanged();
-
-        #endregion
-    
-        #region Propiedades de navegación
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GRH_Model", "R_58", "GRH_DetallePlanEvaluacionCompetencias")]
-        public EntityCollection<GRH_DetallePlanEvaluacionCompetencias> GRH_DetallePlanEvaluacionCompetencias
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GRH_DetallePlanEvaluacionCompetencias>("GRH_Model.R_58", "GRH_DetallePlanEvaluacionCompetencias");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GRH_DetallePlanEvaluacionCompetencias>("GRH_Model.R_58", "GRH_DetallePlanEvaluacionCompetencias", value);
-                }
-            }
-        }
-
-        #endregion
     }
     
     /// <summary>
@@ -7001,6 +6487,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7103,6 +6590,7 @@ namespace DemoMVC.Models
         partial void OnAprobadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -7167,6 +6655,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -7191,6 +6680,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7245,6 +6735,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -7271,6 +6762,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -7295,6 +6787,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7373,6 +6866,7 @@ namespace DemoMVC.Models
         partial void OnNumeroTelefonoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -7415,6 +6909,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -7439,6 +6934,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7493,6 +6989,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -7519,6 +7016,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -7543,6 +7041,7 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -7597,6 +7096,7 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -7623,8 +7123,10 @@ namespace DemoMVC.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

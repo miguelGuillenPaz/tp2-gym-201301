@@ -15,7 +15,6 @@
           <EntitySet Name="GRH_Correo" EntityType="GRH_Model.Store.GRH_Correo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Criterio" EntityType="GRH_Model.Store.GRH_Criterio" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_DerechoHabiente" EntityType="GRH_Model.Store.GRH_DerechoHabiente" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GRH_DetallePlanEvaluacionCompetencias" EntityType="GRH_Model.Store.GRH_DetallePlanEvaluacionCompetencias" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Documento" EntityType="GRH_Model.Store.GRH_Documento" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Empleado" EntityType="GRH_Model.Store.GRH_Empleado" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Especialidad" EntityType="GRH_Model.Store.GRH_Especialidad" store:Type="Tables" Schema="dbo" />
@@ -35,12 +34,15 @@
           <EntitySet Name="GRH_ParametroCriterio" EntityType="GRH_Model.Store.GRH_ParametroCriterio" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Perfil" EntityType="GRH_Model.Store.GRH_Perfil" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Persona" EntityType="GRH_Model.Store.GRH_Persona" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="GRH_PlanEvaluacionCompetencias" EntityType="GRH_Model.Store.GRH_PlanEvaluacionCompetencias" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Postulante" EntityType="GRH_Model.Store.GRH_Postulante" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_SituacionEstudio" EntityType="GRH_Model.Store.GRH_SituacionEstudio" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_Telefono" EntityType="GRH_Model.Store.GRH_Telefono" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_TipoDerechoHabiente" EntityType="GRH_Model.Store.GRH_TipoDerechoHabiente" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GRH_TipoDocumento" EntityType="GRH_Model.Store.GRH_TipoDocumento" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado" Association="GRH_Model.Store.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado">
+            <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
+            <End Role="GRH_EvaluacionCompetenciaEvaluador" EntitySet="GRH_EvaluacionCompetenciaEvaluador" />
+          </AssociationSet>
           <AssociationSet Name="R_1" Association="GRH_Model.Store.R_1">
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
@@ -133,10 +135,6 @@
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_Telefono" EntitySet="GRH_Telefono" />
           </AssociationSet>
-          <AssociationSet Name="R_41" Association="GRH_Model.Store.R_41">
-            <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
-            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
-          </AssociationSet>
           <AssociationSet Name="R_47" Association="GRH_Model.Store.R_47">
             <End Role="GRH_ParametroCriterio" EntitySet="GRH_ParametroCriterio" />
             <End Role="GRH_CartillaCuestionario" EntitySet="GRH_CartillaCuestionario" />
@@ -145,25 +143,9 @@
             <End Role="GRH_CartillaCuestionario" EntitySet="GRH_CartillaCuestionario" />
             <End Role="GRH_EvaluacionCompetenciaCuestionario" EntitySet="GRH_EvaluacionCompetenciaCuestionario" />
           </AssociationSet>
-          <AssociationSet Name="R_55" Association="GRH_Model.Store.R_55">
-            <End Role="GRH_CartillaCuestionario" EntitySet="GRH_CartillaCuestionario" />
-            <End Role="GRH_EvaluacionCompetenciaEvaluador" EntitySet="GRH_EvaluacionCompetenciaEvaluador" />
-          </AssociationSet>
-          <AssociationSet Name="R_56" Association="GRH_Model.Store.R_56">
-            <End Role="GRH_Perfil" EntitySet="GRH_Perfil" />
-            <End Role="GRH_EvaluacionCompetenciaEvaluador" EntitySet="GRH_EvaluacionCompetenciaEvaluador" />
-          </AssociationSet>
           <AssociationSet Name="R_57" Association="GRH_Model.Store.R_57">
             <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
             <End Role="GRH_EvaluacionCompetenciaCuestionario" EntitySet="GRH_EvaluacionCompetenciaCuestionario" />
-          </AssociationSet>
-          <AssociationSet Name="R_58" Association="GRH_Model.Store.R_58">
-            <End Role="GRH_PlanEvaluacionCompetencias" EntitySet="GRH_PlanEvaluacionCompetencias" />
-            <End Role="GRH_DetallePlanEvaluacionCompetencias" EntitySet="GRH_DetallePlanEvaluacionCompetencias" />
-          </AssociationSet>
-          <AssociationSet Name="R_59" Association="GRH_Model.Store.R_59">
-            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
-            <End Role="GRH_DetallePlanEvaluacionCompetencias" EntitySet="GRH_DetallePlanEvaluacionCompetencias" />
           </AssociationSet>
           <AssociationSet Name="R_6" Association="GRH_Model.Store.R_6">
             <End Role="GRH_Pais" EntitySet="GRH_Pais" />
@@ -264,7 +246,7 @@
             <PropertyRef Name="IdCriterio" />
           </Key>
           <Property Name="IdCriterio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="char" MaxLength="18" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="GRH_DerechoHabiente">
           <Key>
@@ -274,17 +256,6 @@
           <Property Name="IdPersona" Type="int" />
           <Property Name="IdEmpleado" Type="int" />
           <Property Name="IdTipoDerechoHabiente" Type="int" />
-        </EntityType>
-        <EntityType Name="GRH_DetallePlanEvaluacionCompetencias">
-          <Key>
-            <PropertyRef Name="IdDetallePlanEvaluacionCompetencias" />
-          </Key>
-          <Property Name="FechaIncio" Type="datetime" />
-          <Property Name="FechaFin" Type="datetime" />
-          <Property Name="FechaEnvio" Type="datetime" />
-          <Property Name="IdPlanEvaluacionCompetencias" Type="int" />
-          <Property Name="IdEvaluacionCompetencia" Type="int" />
-          <Property Name="IdDetallePlanEvaluacionCompetencias" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="GRH_Documento">
           <Key>
@@ -338,10 +309,9 @@
           <Key>
             <PropertyRef Name="IdEvaluacionCompetencia" />
           </Key>
-          <Property Name="IdEvaluacionCompetencia" Type="int" Nullable="false" />
+          <Property Name="IdEvaluacionCompetencia" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Fecha" Type="datetime" />
           <Property Name="IdPerfil" Type="int" />
-          <Property Name="IdEmpleado" Type="int" />
         </EntityType>
         <EntityType Name="GRH_EvaluacionCompetenciaCuestionario">
           <Key>
@@ -356,9 +326,9 @@
             <PropertyRef Name="IdEvaluacionCompetenciaEvaluador" />
           </Key>
           <Property Name="IdCuestionario" Type="int" />
-          <Property Name="IdPerfil" Type="int" />
           <Property Name="IdEvaluacionCompetencia" Type="int" />
           <Property Name="IdEvaluacionCompetenciaEvaluador" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpleado" Type="int" />
         </EntityType>
         <EntityType Name="GRH_ExperienciaLaboral">
           <Key>
@@ -457,14 +427,6 @@
           <Property Name="Sexo" Type="bit" />
           <Property Name="FechaNacimiento" Type="datetime" />
         </EntityType>
-        <EntityType Name="GRH_PlanEvaluacionCompetencias">
-          <Key>
-            <PropertyRef Name="IdPlanEvaluacionCompetencias" />
-          </Key>
-          <Property Name="IdPlanEvaluacionCompetencias" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="150" />
-          <Property Name="Anho" Type="char" MaxLength="18" />
-        </EntityType>
         <EntityType Name="GRH_Postulante">
           <Key>
             <PropertyRef Name="IdPostulante" />
@@ -503,6 +465,20 @@
           <Property Name="IdTipoDocumento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="varchar" MaxLength="30" />
         </EntityType>
+        <Association Name="FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado">
+          <End Role="GRH_Empleado" Type="GRH_Model.Store.GRH_Empleado" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GRH_EvaluacionCompetenciaEvaluador" Type="GRH_Model.Store.GRH_EvaluacionCompetenciaEvaluador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_Empleado">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="GRH_EvaluacionCompetenciaEvaluador">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="R_1">
           <End Role="GRH_Persona" Type="GRH_Model.Store.GRH_Persona" Multiplicity="0..1" />
           <End Role="GRH_Empleado" Type="GRH_Model.Store.GRH_Empleado" Multiplicity="*" />
@@ -779,18 +755,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_41">
-          <End Role="GRH_Empleado" Type="GRH_Model.Store.GRH_Empleado" Multiplicity="0..1" />
-          <End Role="GRH_EvaluacionCompetencia" Type="GRH_Model.Store.GRH_EvaluacionCompetencia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_Empleado">
-              <PropertyRef Name="IdEmpleado" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetencia">
-              <PropertyRef Name="IdEmpleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_47">
           <End Role="GRH_ParametroCriterio" Type="GRH_Model.Store.GRH_ParametroCriterio" Multiplicity="0..1" />
           <End Role="GRH_CartillaCuestionario" Type="GRH_Model.Store.GRH_CartillaCuestionario" Multiplicity="*" />
@@ -815,30 +779,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_55">
-          <End Role="GRH_CartillaCuestionario" Type="GRH_Model.Store.GRH_CartillaCuestionario" Multiplicity="0..1" />
-          <End Role="GRH_EvaluacionCompetenciaEvaluador" Type="GRH_Model.Store.GRH_EvaluacionCompetenciaEvaluador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_CartillaCuestionario">
-              <PropertyRef Name="IdCuestionario" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetenciaEvaluador">
-              <PropertyRef Name="IdCuestionario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_56">
-          <End Role="GRH_Perfil" Type="GRH_Model.Store.GRH_Perfil" Multiplicity="0..1" />
-          <End Role="GRH_EvaluacionCompetenciaEvaluador" Type="GRH_Model.Store.GRH_EvaluacionCompetenciaEvaluador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_Perfil">
-              <PropertyRef Name="IdPerfil" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetenciaEvaluador">
-              <PropertyRef Name="IdPerfil" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_57">
           <End Role="GRH_EvaluacionCompetencia" Type="GRH_Model.Store.GRH_EvaluacionCompetencia" Multiplicity="0..1" />
           <End Role="GRH_EvaluacionCompetenciaCuestionario" Type="GRH_Model.Store.GRH_EvaluacionCompetenciaCuestionario" Multiplicity="*" />
@@ -847,30 +787,6 @@
               <PropertyRef Name="IdEvaluacionCompetencia" />
             </Principal>
             <Dependent Role="GRH_EvaluacionCompetenciaCuestionario">
-              <PropertyRef Name="IdEvaluacionCompetencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_58">
-          <End Role="GRH_PlanEvaluacionCompetencias" Type="GRH_Model.Store.GRH_PlanEvaluacionCompetencias" Multiplicity="0..1" />
-          <End Role="GRH_DetallePlanEvaluacionCompetencias" Type="GRH_Model.Store.GRH_DetallePlanEvaluacionCompetencias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_PlanEvaluacionCompetencias">
-              <PropertyRef Name="IdPlanEvaluacionCompetencias" />
-            </Principal>
-            <Dependent Role="GRH_DetallePlanEvaluacionCompetencias">
-              <PropertyRef Name="IdPlanEvaluacionCompetencias" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_59">
-          <End Role="GRH_EvaluacionCompetencia" Type="GRH_Model.Store.GRH_EvaluacionCompetencia" Multiplicity="0..1" />
-          <End Role="GRH_DetallePlanEvaluacionCompetencias" Type="GRH_Model.Store.GRH_DetallePlanEvaluacionCompetencias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_EvaluacionCompetencia">
-              <PropertyRef Name="IdEvaluacionCompetencia" />
-            </Principal>
-            <Dependent Role="GRH_DetallePlanEvaluacionCompetencias">
               <PropertyRef Name="IdEvaluacionCompetencia" />
             </Dependent>
           </ReferentialConstraint>
@@ -978,22 +894,16 @@
         <EntityContainer Name="GRH_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="GRH_Area" EntityType="GRH_Model.GRH_Area" />
           <EntitySet Name="GRH_Cargo" EntityType="GRH_Model.GRH_Cargo" />
-          <EntitySet Name="GRH_CartillaCuestionario" EntityType="GRH_Model.GRH_CartillaCuestionario" />
           <EntitySet Name="GRH_ContratoPersonal" EntityType="GRH_Model.GRH_ContratoPersonal" />
           <EntitySet Name="GRH_Convocatoria" EntityType="GRH_Model.GRH_Convocatoria" />
           <EntitySet Name="GRH_ConvocatoriaPostulante" EntityType="GRH_Model.GRH_ConvocatoriaPostulante" />
           <EntitySet Name="GRH_Correo" EntityType="GRH_Model.GRH_Correo" />
-          <EntitySet Name="GRH_Criterio" EntityType="GRH_Model.GRH_Criterio" />
           <EntitySet Name="GRH_DerechoHabiente" EntityType="GRH_Model.GRH_DerechoHabiente" />
-          <EntitySet Name="GRH_DetallePlanEvaluacionCompetencias" EntityType="GRH_Model.GRH_DetallePlanEvaluacionCompetencias" />
           <EntitySet Name="GRH_Documento" EntityType="GRH_Model.GRH_Documento" />
           <EntitySet Name="GRH_Empleado" EntityType="GRH_Model.GRH_Empleado" />
           <EntitySet Name="GRH_Especialidad" EntityType="GRH_Model.GRH_Especialidad" />
           <EntitySet Name="GRH_EstadoCivil" EntityType="GRH_Model.GRH_EstadoCivil" />
           <EntitySet Name="GRH_EstudioRealizado" EntityType="GRH_Model.GRH_EstudioRealizado" />
-          <EntitySet Name="GRH_EvaluacionCompetencia" EntityType="GRH_Model.GRH_EvaluacionCompetencia" />
-          <EntitySet Name="GRH_EvaluacionCompetenciaCuestionario" EntityType="GRH_Model.GRH_EvaluacionCompetenciaCuestionario" />
-          <EntitySet Name="GRH_EvaluacionCompetenciaEvaluador" EntityType="GRH_Model.GRH_EvaluacionCompetenciaEvaluador" />
           <EntitySet Name="GRH_ExperienciaLaboral" EntityType="GRH_Model.GRH_ExperienciaLaboral" />
           <EntitySet Name="GRH_Idioma" EntityType="GRH_Model.GRH_Idioma" />
           <EntitySet Name="GRH_IdiomaPersona" EntityType="GRH_Model.GRH_IdiomaPersona" />
@@ -1001,11 +911,7 @@
           <EntitySet Name="GRH_NivelEducativo" EntityType="GRH_Model.GRH_NivelEducativo" />
           <EntitySet Name="GRH_NivelIdioma" EntityType="GRH_Model.GRH_NivelIdioma" />
           <EntitySet Name="GRH_Pais" EntityType="GRH_Model.GRH_Pais" />
-          <EntitySet Name="GRH_Parametro" EntityType="GRH_Model.GRH_Parametro" />
-          <EntitySet Name="GRH_ParametroCriterio" EntityType="GRH_Model.GRH_ParametroCriterio" />
-          <EntitySet Name="GRH_Perfil" EntityType="GRH_Model.GRH_Perfil" />
           <EntitySet Name="GRH_Persona" EntityType="GRH_Model.GRH_Persona" />
-          <EntitySet Name="GRH_PlanEvaluacionCompetencias" EntityType="GRH_Model.GRH_PlanEvaluacionCompetencias" />
           <EntitySet Name="GRH_Postulante" EntityType="GRH_Model.GRH_Postulante" />
           <EntitySet Name="GRH_SituacionEstudio" EntityType="GRH_Model.GRH_SituacionEstudio" />
           <EntitySet Name="GRH_Telefono" EntityType="GRH_Model.GRH_Telefono" />
@@ -1019,25 +925,9 @@
             <End Role="GRH_Cargo" EntitySet="GRH_Cargo" />
             <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
           </AssociationSet>
-          <AssociationSet Name="R_47" Association="GRH_Model.R_47">
-            <End Role="GRH_ParametroCriterio" EntitySet="GRH_ParametroCriterio" />
-            <End Role="GRH_CartillaCuestionario" EntitySet="GRH_CartillaCuestionario" />
-          </AssociationSet>
-          <AssociationSet Name="R_54" Association="GRH_Model.R_54">
-            <End Role="GRH_CartillaCuestionario" EntitySet="GRH_CartillaCuestionario" />
-            <End Role="GRH_EvaluacionCompetenciaCuestionario" EntitySet="GRH_EvaluacionCompetenciaCuestionario" />
-          </AssociationSet>
-          <AssociationSet Name="R_55" Association="GRH_Model.R_55">
-            <End Role="GRH_CartillaCuestionario" EntitySet="GRH_CartillaCuestionario" />
-            <End Role="GRH_EvaluacionCompetenciaEvaluador" EntitySet="GRH_EvaluacionCompetenciaEvaluador" />
-          </AssociationSet>
           <AssociationSet Name="R_31" Association="GRH_Model.R_31">
             <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
             <End Role="GRH_ContratoPersonal" EntitySet="GRH_ContratoPersonal" />
-          </AssociationSet>
-          <AssociationSet Name="R_36" Association="GRH_Model.R_36">
-            <End Role="GRH_Perfil" EntitySet="GRH_Perfil" />
-            <End Role="GRH_Convocatoria" EntitySet="GRH_Convocatoria" />
           </AssociationSet>
           <AssociationSet Name="R_65" Association="GRH_Model.R_65">
             <End Role="GRH_Convocatoria" EntitySet="GRH_Convocatoria" />
@@ -1051,10 +941,6 @@
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_Correo" EntitySet="GRH_Correo" />
           </AssociationSet>
-          <AssociationSet Name="R_61" Association="GRH_Model.R_61">
-            <End Role="GRH_Criterio" EntitySet="GRH_Criterio" />
-            <End Role="GRH_ParametroCriterio" EntitySet="GRH_ParametroCriterio" />
-          </AssociationSet>
           <AssociationSet Name="R_26" Association="GRH_Model.R_26">
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_DerechoHabiente" EntitySet="GRH_DerechoHabiente" />
@@ -1067,14 +953,6 @@
             <End Role="GRH_TipoDerechoHabiente" EntitySet="GRH_TipoDerechoHabiente" />
             <End Role="GRH_DerechoHabiente" EntitySet="GRH_DerechoHabiente" />
           </AssociationSet>
-          <AssociationSet Name="R_58" Association="GRH_Model.R_58">
-            <End Role="GRH_PlanEvaluacionCompetencias" EntitySet="GRH_PlanEvaluacionCompetencias" />
-            <End Role="GRH_DetallePlanEvaluacionCompetencias" EntitySet="GRH_DetallePlanEvaluacionCompetencias" />
-          </AssociationSet>
-          <AssociationSet Name="R_59" Association="GRH_Model.R_59">
-            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
-            <End Role="GRH_DetallePlanEvaluacionCompetencias" EntitySet="GRH_DetallePlanEvaluacionCompetencias" />
-          </AssociationSet>
           <AssociationSet Name="R_18" Association="GRH_Model.R_18">
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_Documento" EntitySet="GRH_Documento" />
@@ -1086,10 +964,6 @@
           <AssociationSet Name="R_1" Association="GRH_Model.R_1">
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
-          </AssociationSet>
-          <AssociationSet Name="R_41" Association="GRH_Model.R_41">
-            <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
-            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
           </AssociationSet>
           <AssociationSet Name="R_66" Association="GRH_Model.R_66">
             <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
@@ -1115,22 +989,6 @@
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_EstudioRealizado" EntitySet="GRH_EstudioRealizado" />
           </AssociationSet>
-          <AssociationSet Name="R_35" Association="GRH_Model.R_35">
-            <End Role="GRH_Perfil" EntitySet="GRH_Perfil" />
-            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
-          </AssociationSet>
-          <AssociationSet Name="R_57" Association="GRH_Model.R_57">
-            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
-            <End Role="GRH_EvaluacionCompetenciaCuestionario" EntitySet="GRH_EvaluacionCompetenciaCuestionario" />
-          </AssociationSet>
-          <AssociationSet Name="R_60" Association="GRH_Model.R_60">
-            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
-            <End Role="GRH_EvaluacionCompetenciaEvaluador" EntitySet="GRH_EvaluacionCompetenciaEvaluador" />
-          </AssociationSet>
-          <AssociationSet Name="R_56" Association="GRH_Model.R_56">
-            <End Role="GRH_Perfil" EntitySet="GRH_Perfil" />
-            <End Role="GRH_EvaluacionCompetenciaEvaluador" EntitySet="GRH_EvaluacionCompetenciaEvaluador" />
-          </AssociationSet>
           <AssociationSet Name="R_3" Association="GRH_Model.R_3">
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_ExperienciaLaboral" EntitySet="GRH_ExperienciaLaboral" />
@@ -1155,10 +1013,6 @@
             <End Role="GRH_Pais" EntitySet="GRH_Pais" />
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
           </AssociationSet>
-          <AssociationSet Name="R_62" Association="GRH_Model.R_62">
-            <End Role="GRH_Parametro" EntitySet="GRH_Parametro" />
-            <End Role="GRH_ParametroCriterio" EntitySet="GRH_ParametroCriterio" />
-          </AssociationSet>
           <AssociationSet Name="R_2" Association="GRH_Model.R_2">
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_Postulante" EntitySet="GRH_Postulante" />
@@ -1166,6 +1020,50 @@
           <AssociationSet Name="R_4" Association="GRH_Model.R_4">
             <End Role="GRH_Persona" EntitySet="GRH_Persona" />
             <End Role="GRH_Telefono" EntitySet="GRH_Telefono" />
+          </AssociationSet>
+          <EntitySet Name="GRH_CartillaCuestionario" EntityType="GRH_Model.GRH_CartillaCuestionario" />
+          <EntitySet Name="GRH_Criterio" EntityType="GRH_Model.GRH_Criterio" />
+          <EntitySet Name="GRH_EvaluacionCompetencia" EntityType="GRH_Model.GRH_EvaluacionCompetencia" />
+          <EntitySet Name="GRH_EvaluacionCompetenciaCuestionario" EntityType="GRH_Model.GRH_EvaluacionCompetenciaCuestionario" />
+          <EntitySet Name="GRH_EvaluacionCompetenciaEvaluador" EntityType="GRH_Model.GRH_EvaluacionCompetenciaEvaluador" />
+          <EntitySet Name="GRH_Parametro" EntityType="GRH_Model.GRH_Parametro" />
+          <EntitySet Name="GRH_ParametroCriterio" EntityType="GRH_Model.GRH_ParametroCriterio" />
+          <EntitySet Name="GRH_Perfil" EntityType="GRH_Model.GRH_Perfil" />
+          <AssociationSet Name="R_47" Association="GRH_Model.R_47">
+            <End Role="GRH_ParametroCriterio" EntitySet="GRH_ParametroCriterio" />
+            <End Role="GRH_CartillaCuestionario" EntitySet="GRH_CartillaCuestionario" />
+          </AssociationSet>
+          <AssociationSet Name="R_54" Association="GRH_Model.R_54">
+            <End Role="GRH_CartillaCuestionario" EntitySet="GRH_CartillaCuestionario" />
+            <End Role="GRH_EvaluacionCompetenciaCuestionario" EntitySet="GRH_EvaluacionCompetenciaCuestionario" />
+          </AssociationSet>
+          <AssociationSet Name="R_36" Association="GRH_Model.R_36">
+            <End Role="GRH_Perfil" EntitySet="GRH_Perfil" />
+            <End Role="GRH_Convocatoria" EntitySet="GRH_Convocatoria" />
+          </AssociationSet>
+          <AssociationSet Name="R_61" Association="GRH_Model.R_61">
+            <End Role="GRH_Criterio" EntitySet="GRH_Criterio" />
+            <End Role="GRH_ParametroCriterio" EntitySet="GRH_ParametroCriterio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado" Association="GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado">
+            <End Role="GRH_Empleado" EntitySet="GRH_Empleado" />
+            <End Role="GRH_EvaluacionCompetenciaEvaluador" EntitySet="GRH_EvaluacionCompetenciaEvaluador" />
+          </AssociationSet>
+          <AssociationSet Name="R_35" Association="GRH_Model.R_35">
+            <End Role="GRH_Perfil" EntitySet="GRH_Perfil" />
+            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
+          </AssociationSet>
+          <AssociationSet Name="R_57" Association="GRH_Model.R_57">
+            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
+            <End Role="GRH_EvaluacionCompetenciaCuestionario" EntitySet="GRH_EvaluacionCompetenciaCuestionario" />
+          </AssociationSet>
+          <AssociationSet Name="R_60" Association="GRH_Model.R_60">
+            <End Role="GRH_EvaluacionCompetencia" EntitySet="GRH_EvaluacionCompetencia" />
+            <End Role="GRH_EvaluacionCompetenciaEvaluador" EntitySet="GRH_EvaluacionCompetenciaEvaluador" />
+          </AssociationSet>
+          <AssociationSet Name="R_62" Association="GRH_Model.R_62">
+            <End Role="GRH_Parametro" EntitySet="GRH_Parametro" />
+            <End Role="GRH_ParametroCriterio" EntitySet="GRH_ParametroCriterio" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="GRH_Area">
@@ -1183,17 +1081,6 @@
           <Property Type="Int32" Name="IdCargo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Descripcion" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="GRH_Empleado" Relationship="GRH_Model.R_27" FromRole="GRH_Cargo" ToRole="GRH_Empleado" />
-        </EntityType>
-        <EntityType Name="GRH_CartillaCuestionario">
-          <Key>
-            <PropertyRef Name="IdCuestionario" />
-          </Key>
-          <Property Type="Int32" Name="IdCuestionario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="IdParametroCriterio" />
-          <NavigationProperty Name="GRH_ParametroCriterio" Relationship="GRH_Model.R_47" FromRole="GRH_CartillaCuestionario" ToRole="GRH_ParametroCriterio" />
-          <NavigationProperty Name="GRH_EvaluacionCompetenciaCuestionario" Relationship="GRH_Model.R_54" FromRole="GRH_CartillaCuestionario" ToRole="GRH_EvaluacionCompetenciaCuestionario" />
-          <NavigationProperty Name="GRH_EvaluacionCompetenciaEvaluador" Relationship="GRH_Model.R_55" FromRole="GRH_CartillaCuestionario" ToRole="GRH_EvaluacionCompetenciaEvaluador" />
         </EntityType>
         <EntityType Name="GRH_ContratoPersonal">
           <Key>
@@ -1217,8 +1104,8 @@
           <Property Type="String" Name="Detalle" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="CantidadVacantes" Nullable="false" />
           <Property Type="Int32" Name="IdPerfil" Nullable="false" />
-          <NavigationProperty Name="GRH_Perfil" Relationship="GRH_Model.R_36" FromRole="GRH_Convocatoria" ToRole="GRH_Perfil" />
           <NavigationProperty Name="GRH_ConvocatoriaPostulante" Relationship="GRH_Model.R_65" FromRole="GRH_Convocatoria" ToRole="GRH_ConvocatoriaPostulante" />
+          <NavigationProperty Name="GRH_Perfil" Relationship="GRH_Model.R_36" FromRole="GRH_Convocatoria" ToRole="GRH_Perfil" />
         </EntityType>
         <EntityType Name="GRH_ConvocatoriaPostulante">
           <Key>
@@ -1240,14 +1127,6 @@
           <Property Type="String" Name="CuentaCorreo" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="GRH_Persona" Relationship="GRH_Model.R_20" FromRole="GRH_Correo" ToRole="GRH_Persona" />
         </EntityType>
-        <EntityType Name="GRH_Criterio">
-          <Key>
-            <PropertyRef Name="IdCriterio" />
-          </Key>
-          <Property Type="Int32" Name="IdCriterio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Descripcion" MaxLength="18" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="GRH_ParametroCriterio" Relationship="GRH_Model.R_61" FromRole="GRH_Criterio" ToRole="GRH_ParametroCriterio" />
-        </EntityType>
         <EntityType Name="GRH_DerechoHabiente">
           <Key>
             <PropertyRef Name="IdDerechoHabiente" />
@@ -1259,19 +1138,6 @@
           <NavigationProperty Name="GRH_Persona" Relationship="GRH_Model.R_26" FromRole="GRH_DerechoHabiente" ToRole="GRH_Persona" />
           <NavigationProperty Name="GRH_Empleado" Relationship="GRH_Model.R_29" FromRole="GRH_DerechoHabiente" ToRole="GRH_Empleado" />
           <NavigationProperty Name="GRH_TipoDerechoHabiente" Relationship="GRH_Model.R_30" FromRole="GRH_DerechoHabiente" ToRole="GRH_TipoDerechoHabiente" />
-        </EntityType>
-        <EntityType Name="GRH_DetallePlanEvaluacionCompetencias">
-          <Key>
-            <PropertyRef Name="IdDetallePlanEvaluacionCompetencias" />
-          </Key>
-          <Property Type="DateTime" Name="FechaIncio" />
-          <Property Type="DateTime" Name="FechaFin" />
-          <Property Type="DateTime" Name="FechaEnvio" />
-          <Property Type="Int32" Name="IdPlanEvaluacionCompetencias" />
-          <Property Type="Int32" Name="IdEvaluacionCompetencia" />
-          <Property Type="Int32" Name="IdDetallePlanEvaluacionCompetencias" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="GRH_PlanEvaluacionCompetencias" Relationship="GRH_Model.R_58" FromRole="GRH_DetallePlanEvaluacionCompetencias" ToRole="GRH_PlanEvaluacionCompetencias" />
-          <NavigationProperty Name="GRH_EvaluacionCompetencia" Relationship="GRH_Model.R_59" FromRole="GRH_DetallePlanEvaluacionCompetencias" ToRole="GRH_EvaluacionCompetencia" />
         </EntityType>
         <EntityType Name="GRH_Documento">
           <Key>
@@ -1299,8 +1165,8 @@
           <NavigationProperty Name="GRH_ContratoPersonal" Relationship="GRH_Model.R_31" FromRole="GRH_Empleado" ToRole="GRH_ContratoPersonal" />
           <NavigationProperty Name="GRH_DerechoHabiente" Relationship="GRH_Model.R_29" FromRole="GRH_Empleado" ToRole="GRH_DerechoHabiente" />
           <NavigationProperty Name="GRH_Persona" Relationship="GRH_Model.R_1" FromRole="GRH_Empleado" ToRole="GRH_Persona" />
-          <NavigationProperty Name="GRH_EvaluacionCompetencia" Relationship="GRH_Model.R_41" FromRole="GRH_Empleado" ToRole="GRH_EvaluacionCompetencia" />
           <NavigationProperty Name="GRH_Legajo" Relationship="GRH_Model.R_66" FromRole="GRH_Empleado" ToRole="GRH_Legajo" />
+          <NavigationProperty Name="GRH_EvaluacionCompetenciaEvaluador" Relationship="GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado" FromRole="GRH_Empleado" ToRole="GRH_EvaluacionCompetenciaEvaluador" />
         </EntityType>
         <EntityType Name="GRH_Especialidad">
           <Key>
@@ -1335,42 +1201,6 @@
           <NavigationProperty Name="GRH_SituacionEstudio" Relationship="GRH_Model.R_25" FromRole="GRH_EstudioRealizado" ToRole="GRH_SituacionEstudio" />
           <NavigationProperty Name="GRH_NivelEducativo" Relationship="GRH_Model.R_32" FromRole="GRH_EstudioRealizado" ToRole="GRH_NivelEducativo" />
           <NavigationProperty Name="GRH_Persona" Relationship="GRH_Model.R_33" FromRole="GRH_EstudioRealizado" ToRole="GRH_Persona" />
-        </EntityType>
-        <EntityType Name="GRH_EvaluacionCompetencia">
-          <Key>
-            <PropertyRef Name="IdEvaluacionCompetencia" />
-          </Key>
-          <Property Type="Int32" Name="IdEvaluacionCompetencia" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" />
-          <Property Type="Int32" Name="IdPerfil" />
-          <Property Type="Int32" Name="IdEmpleado" />
-          <NavigationProperty Name="GRH_DetallePlanEvaluacionCompetencias" Relationship="GRH_Model.R_59" FromRole="GRH_EvaluacionCompetencia" ToRole="GRH_DetallePlanEvaluacionCompetencias" />
-          <NavigationProperty Name="GRH_Empleado" Relationship="GRH_Model.R_41" FromRole="GRH_EvaluacionCompetencia" ToRole="GRH_Empleado" />
-          <NavigationProperty Name="GRH_Perfil" Relationship="GRH_Model.R_35" FromRole="GRH_EvaluacionCompetencia" ToRole="GRH_Perfil" />
-          <NavigationProperty Name="GRH_EvaluacionCompetenciaCuestionario" Relationship="GRH_Model.R_57" FromRole="GRH_EvaluacionCompetencia" ToRole="GRH_EvaluacionCompetenciaCuestionario" />
-          <NavigationProperty Name="GRH_EvaluacionCompetenciaEvaluador" Relationship="GRH_Model.R_60" FromRole="GRH_EvaluacionCompetencia" ToRole="GRH_EvaluacionCompetenciaEvaluador" />
-        </EntityType>
-        <EntityType Name="GRH_EvaluacionCompetenciaCuestionario">
-          <Key>
-            <PropertyRef Name="IdEvaluacionCompetenciaCuestionario" />
-          </Key>
-          <Property Type="Int32" Name="IdCuestionario" />
-          <Property Type="Int32" Name="IdEvaluacionCompetencia" />
-          <Property Type="Int32" Name="IdEvaluacionCompetenciaCuestionario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="GRH_CartillaCuestionario" Relationship="GRH_Model.R_54" FromRole="GRH_EvaluacionCompetenciaCuestionario" ToRole="GRH_CartillaCuestionario" />
-          <NavigationProperty Name="GRH_EvaluacionCompetencia" Relationship="GRH_Model.R_57" FromRole="GRH_EvaluacionCompetenciaCuestionario" ToRole="GRH_EvaluacionCompetencia" />
-        </EntityType>
-        <EntityType Name="GRH_EvaluacionCompetenciaEvaluador">
-          <Key>
-            <PropertyRef Name="IdEvaluacionCompetenciaEvaluador" />
-          </Key>
-          <Property Type="Int32" Name="IdCuestionario" />
-          <Property Type="Int32" Name="IdPerfil" />
-          <Property Type="Int32" Name="IdEvaluacionCompetencia" />
-          <Property Type="Int32" Name="IdEvaluacionCompetenciaEvaluador" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="GRH_CartillaCuestionario" Relationship="GRH_Model.R_55" FromRole="GRH_EvaluacionCompetenciaEvaluador" ToRole="GRH_CartillaCuestionario" />
-          <NavigationProperty Name="GRH_EvaluacionCompetencia" Relationship="GRH_Model.R_60" FromRole="GRH_EvaluacionCompetenciaEvaluador" ToRole="GRH_EvaluacionCompetencia" />
-          <NavigationProperty Name="GRH_Perfil" Relationship="GRH_Model.R_56" FromRole="GRH_EvaluacionCompetenciaEvaluador" ToRole="GRH_Perfil" />
         </EntityType>
         <EntityType Name="GRH_ExperienciaLaboral">
           <Key>
@@ -1441,36 +1271,6 @@
           <NavigationProperty Name="GRH_Persona" Relationship="GRH_Model.R_6" FromRole="GRH_Pais" ToRole="GRH_Persona" />
           <NavigationProperty Name="GRH_Persona1" Relationship="GRH_Model.R_8" FromRole="GRH_Pais" ToRole="GRH_Persona" />
         </EntityType>
-        <EntityType Name="GRH_Parametro">
-          <Key>
-            <PropertyRef Name="IdParametro" />
-          </Key>
-          <Property Type="Int32" Name="IdParametro" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Descripcion" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="GRH_ParametroCriterio" Relationship="GRH_Model.R_62" FromRole="GRH_Parametro" ToRole="GRH_ParametroCriterio" />
-        </EntityType>
-        <EntityType Name="GRH_ParametroCriterio">
-          <Key>
-            <PropertyRef Name="IdParametroCriterio" />
-          </Key>
-          <Property Type="Int32" Name="IdCriterio" />
-          <Property Type="Int32" Name="IdParametro" />
-          <Property Type="Int32" Name="IdParametroCriterio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="GRH_CartillaCuestionario" Relationship="GRH_Model.R_47" FromRole="GRH_ParametroCriterio" ToRole="GRH_CartillaCuestionario" />
-          <NavigationProperty Name="GRH_Criterio" Relationship="GRH_Model.R_61" FromRole="GRH_ParametroCriterio" ToRole="GRH_Criterio" />
-          <NavigationProperty Name="GRH_Parametro" Relationship="GRH_Model.R_62" FromRole="GRH_ParametroCriterio" ToRole="GRH_Parametro" />
-        </EntityType>
-        <EntityType Name="GRH_Perfil">
-          <Key>
-            <PropertyRef Name="IdPerfil" />
-          </Key>
-          <Property Type="Int32" Name="IdPerfil" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Descripcion" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="GRH_Convocatoria" Relationship="GRH_Model.R_36" FromRole="GRH_Perfil" ToRole="GRH_Convocatoria" />
-          <NavigationProperty Name="GRH_EvaluacionCompetencia" Relationship="GRH_Model.R_35" FromRole="GRH_Perfil" ToRole="GRH_EvaluacionCompetencia" />
-          <NavigationProperty Name="GRH_EvaluacionCompetenciaEvaluador" Relationship="GRH_Model.R_56" FromRole="GRH_Perfil" ToRole="GRH_EvaluacionCompetenciaEvaluador" />
-        </EntityType>
         <EntityType Name="GRH_Persona">
           <Key>
             <PropertyRef Name="IdPersona" />
@@ -1497,15 +1297,6 @@
           <NavigationProperty Name="GRH_Pais1" Relationship="GRH_Model.R_8" FromRole="GRH_Persona" ToRole="GRH_Pais" />
           <NavigationProperty Name="GRH_Postulante" Relationship="GRH_Model.R_2" FromRole="GRH_Persona" ToRole="GRH_Postulante" />
           <NavigationProperty Name="GRH_Telefono" Relationship="GRH_Model.R_4" FromRole="GRH_Persona" ToRole="GRH_Telefono" />
-        </EntityType>
-        <EntityType Name="GRH_PlanEvaluacionCompetencias">
-          <Key>
-            <PropertyRef Name="IdPlanEvaluacionCompetencias" />
-          </Key>
-          <Property Type="Int32" Name="IdPlanEvaluacionCompetencias" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Descripcion" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Anho" MaxLength="18" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="GRH_DetallePlanEvaluacionCompetencias" Relationship="GRH_Model.R_58" FromRole="GRH_PlanEvaluacionCompetencias" ToRole="GRH_DetallePlanEvaluacionCompetencias" />
         </EntityType>
         <EntityType Name="GRH_Postulante">
           <Key>
@@ -1575,42 +1366,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_47">
-          <End Type="GRH_Model.GRH_ParametroCriterio" Role="GRH_ParametroCriterio" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_CartillaCuestionario" Role="GRH_CartillaCuestionario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_ParametroCriterio">
-              <PropertyRef Name="IdParametroCriterio" />
-            </Principal>
-            <Dependent Role="GRH_CartillaCuestionario">
-              <PropertyRef Name="IdParametroCriterio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_54">
-          <End Type="GRH_Model.GRH_CartillaCuestionario" Role="GRH_CartillaCuestionario" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_EvaluacionCompetenciaCuestionario" Role="GRH_EvaluacionCompetenciaCuestionario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_CartillaCuestionario">
-              <PropertyRef Name="IdCuestionario" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetenciaCuestionario">
-              <PropertyRef Name="IdCuestionario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_55">
-          <End Type="GRH_Model.GRH_CartillaCuestionario" Role="GRH_CartillaCuestionario" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_EvaluacionCompetenciaEvaluador" Role="GRH_EvaluacionCompetenciaEvaluador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_CartillaCuestionario">
-              <PropertyRef Name="IdCuestionario" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetenciaEvaluador">
-              <PropertyRef Name="IdCuestionario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_31">
           <End Type="GRH_Model.GRH_Empleado" Role="GRH_Empleado" Multiplicity="0..1" />
           <End Type="GRH_Model.GRH_ContratoPersonal" Role="GRH_ContratoPersonal" Multiplicity="*" />
@@ -1620,18 +1375,6 @@
             </Principal>
             <Dependent Role="GRH_ContratoPersonal">
               <PropertyRef Name="IdEmpleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_36">
-          <End Type="GRH_Model.GRH_Perfil" Role="GRH_Perfil" Multiplicity="1" />
-          <End Type="GRH_Model.GRH_Convocatoria" Role="GRH_Convocatoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_Perfil">
-              <PropertyRef Name="IdPerfil" />
-            </Principal>
-            <Dependent Role="GRH_Convocatoria">
-              <PropertyRef Name="IdPerfil" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1671,18 +1414,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_61">
-          <End Type="GRH_Model.GRH_Criterio" Role="GRH_Criterio" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_ParametroCriterio" Role="GRH_ParametroCriterio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_Criterio">
-              <PropertyRef Name="IdCriterio" />
-            </Principal>
-            <Dependent Role="GRH_ParametroCriterio">
-              <PropertyRef Name="IdCriterio" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_26">
           <End Type="GRH_Model.GRH_Persona" Role="GRH_Persona" Multiplicity="0..1" />
           <End Type="GRH_Model.GRH_DerechoHabiente" Role="GRH_DerechoHabiente" Multiplicity="*" />
@@ -1719,30 +1450,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_58">
-          <End Type="GRH_Model.GRH_PlanEvaluacionCompetencias" Role="GRH_PlanEvaluacionCompetencias" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_DetallePlanEvaluacionCompetencias" Role="GRH_DetallePlanEvaluacionCompetencias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_PlanEvaluacionCompetencias">
-              <PropertyRef Name="IdPlanEvaluacionCompetencias" />
-            </Principal>
-            <Dependent Role="GRH_DetallePlanEvaluacionCompetencias">
-              <PropertyRef Name="IdPlanEvaluacionCompetencias" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_59">
-          <End Type="GRH_Model.GRH_EvaluacionCompetencia" Role="GRH_EvaluacionCompetencia" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_DetallePlanEvaluacionCompetencias" Role="GRH_DetallePlanEvaluacionCompetencias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_EvaluacionCompetencia">
-              <PropertyRef Name="IdEvaluacionCompetencia" />
-            </Principal>
-            <Dependent Role="GRH_DetallePlanEvaluacionCompetencias">
-              <PropertyRef Name="IdEvaluacionCompetencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_18">
           <End Type="GRH_Model.GRH_Persona" Role="GRH_Persona" Multiplicity="0..1" />
           <End Type="GRH_Model.GRH_Documento" Role="GRH_Documento" Multiplicity="*" />
@@ -1776,18 +1483,6 @@
             </Principal>
             <Dependent Role="GRH_Empleado">
               <PropertyRef Name="IdPersona" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_41">
-          <End Type="GRH_Model.GRH_Empleado" Role="GRH_Empleado" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_EvaluacionCompetencia" Role="GRH_EvaluacionCompetencia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_Empleado">
-              <PropertyRef Name="IdEmpleado" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetencia">
-              <PropertyRef Name="IdEmpleado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1863,54 +1558,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_35">
-          <End Type="GRH_Model.GRH_Perfil" Role="GRH_Perfil" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_EvaluacionCompetencia" Role="GRH_EvaluacionCompetencia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_Perfil">
-              <PropertyRef Name="IdPerfil" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetencia">
-              <PropertyRef Name="IdPerfil" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_57">
-          <End Type="GRH_Model.GRH_EvaluacionCompetencia" Role="GRH_EvaluacionCompetencia" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_EvaluacionCompetenciaCuestionario" Role="GRH_EvaluacionCompetenciaCuestionario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_EvaluacionCompetencia">
-              <PropertyRef Name="IdEvaluacionCompetencia" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetenciaCuestionario">
-              <PropertyRef Name="IdEvaluacionCompetencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_60">
-          <End Type="GRH_Model.GRH_EvaluacionCompetencia" Role="GRH_EvaluacionCompetencia" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_EvaluacionCompetenciaEvaluador" Role="GRH_EvaluacionCompetenciaEvaluador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_EvaluacionCompetencia">
-              <PropertyRef Name="IdEvaluacionCompetencia" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetenciaEvaluador">
-              <PropertyRef Name="IdEvaluacionCompetencia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="R_56">
-          <End Type="GRH_Model.GRH_Perfil" Role="GRH_Perfil" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_EvaluacionCompetenciaEvaluador" Role="GRH_EvaluacionCompetenciaEvaluador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_Perfil">
-              <PropertyRef Name="IdPerfil" />
-            </Principal>
-            <Dependent Role="GRH_EvaluacionCompetenciaEvaluador">
-              <PropertyRef Name="IdPerfil" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_3">
           <End Type="GRH_Model.GRH_Persona" Role="GRH_Persona" Multiplicity="0..1" />
           <End Type="GRH_Model.GRH_ExperienciaLaboral" Role="GRH_ExperienciaLaboral" Multiplicity="*" />
@@ -1983,18 +1630,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="R_62">
-          <End Type="GRH_Model.GRH_Parametro" Role="GRH_Parametro" Multiplicity="0..1" />
-          <End Type="GRH_Model.GRH_ParametroCriterio" Role="GRH_ParametroCriterio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GRH_Parametro">
-              <PropertyRef Name="IdParametro" />
-            </Principal>
-            <Dependent Role="GRH_ParametroCriterio">
-              <PropertyRef Name="IdParametro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="R_2">
           <End Type="GRH_Model.GRH_Persona" Role="GRH_Persona" Multiplicity="0..1" />
           <End Type="GRH_Model.GRH_Postulante" Role="GRH_Postulante" Multiplicity="*" />
@@ -2019,6 +1654,193 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="GRH_CartillaCuestionario">
+          <Key>
+            <PropertyRef Name="IdCuestionario" />
+          </Key>
+          <Property Type="Int32" Name="IdCuestionario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="IdParametroCriterio" />
+          <NavigationProperty Name="GRH_ParametroCriterio" Relationship="GRH_Model.R_47" FromRole="GRH_CartillaCuestionario" ToRole="GRH_ParametroCriterio" />
+          <NavigationProperty Name="GRH_EvaluacionCompetenciaCuestionario" Relationship="GRH_Model.R_54" FromRole="GRH_CartillaCuestionario" ToRole="GRH_EvaluacionCompetenciaCuestionario" />
+        </EntityType>
+        <EntityType Name="GRH_Criterio">
+          <Key>
+            <PropertyRef Name="IdCriterio" />
+          </Key>
+          <Property Type="Int32" Name="IdCriterio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRH_ParametroCriterio" Relationship="GRH_Model.R_61" FromRole="GRH_Criterio" ToRole="GRH_ParametroCriterio" />
+        </EntityType>
+        <EntityType Name="GRH_EvaluacionCompetencia">
+          <Key>
+            <PropertyRef Name="IdEvaluacionCompetencia" />
+          </Key>
+          <Property Type="Int32" Name="IdEvaluacionCompetencia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Fecha" />
+          <Property Type="Int32" Name="IdPerfil" />
+          <NavigationProperty Name="GRH_Perfil" Relationship="GRH_Model.R_35" FromRole="GRH_EvaluacionCompetencia" ToRole="GRH_Perfil" />
+          <NavigationProperty Name="GRH_EvaluacionCompetenciaCuestionario" Relationship="GRH_Model.R_57" FromRole="GRH_EvaluacionCompetencia" ToRole="GRH_EvaluacionCompetenciaCuestionario" />
+          <NavigationProperty Name="GRH_EvaluacionCompetenciaEvaluador" Relationship="GRH_Model.R_60" FromRole="GRH_EvaluacionCompetencia" ToRole="GRH_EvaluacionCompetenciaEvaluador" />
+        </EntityType>
+        <EntityType Name="GRH_EvaluacionCompetenciaCuestionario">
+          <Key>
+            <PropertyRef Name="IdEvaluacionCompetenciaCuestionario" />
+          </Key>
+          <Property Type="Int32" Name="IdCuestionario" />
+          <Property Type="Int32" Name="IdEvaluacionCompetencia" />
+          <Property Type="Int32" Name="IdEvaluacionCompetenciaCuestionario" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="GRH_CartillaCuestionario" Relationship="GRH_Model.R_54" FromRole="GRH_EvaluacionCompetenciaCuestionario" ToRole="GRH_CartillaCuestionario" />
+          <NavigationProperty Name="GRH_EvaluacionCompetencia" Relationship="GRH_Model.R_57" FromRole="GRH_EvaluacionCompetenciaCuestionario" ToRole="GRH_EvaluacionCompetencia" />
+        </EntityType>
+        <EntityType Name="GRH_EvaluacionCompetenciaEvaluador">
+          <Key>
+            <PropertyRef Name="IdEvaluacionCompetenciaEvaluador" />
+          </Key>
+          <Property Type="Int32" Name="IdCuestionario" />
+          <Property Type="Int32" Name="IdEvaluacionCompetencia" />
+          <Property Type="Int32" Name="IdEvaluacionCompetenciaEvaluador" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IdEmpleado" />
+          <NavigationProperty Name="GRH_Empleado" Relationship="GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado" FromRole="GRH_EvaluacionCompetenciaEvaluador" ToRole="GRH_Empleado" />
+          <NavigationProperty Name="GRH_EvaluacionCompetencia" Relationship="GRH_Model.R_60" FromRole="GRH_EvaluacionCompetenciaEvaluador" ToRole="GRH_EvaluacionCompetencia" />
+        </EntityType>
+        <EntityType Name="GRH_Parametro">
+          <Key>
+            <PropertyRef Name="IdParametro" />
+          </Key>
+          <Property Type="Int32" Name="IdParametro" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descripcion" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRH_ParametroCriterio" Relationship="GRH_Model.R_62" FromRole="GRH_Parametro" ToRole="GRH_ParametroCriterio" />
+        </EntityType>
+        <EntityType Name="GRH_ParametroCriterio">
+          <Key>
+            <PropertyRef Name="IdParametroCriterio" />
+          </Key>
+          <Property Type="Int32" Name="IdCriterio" />
+          <Property Type="Int32" Name="IdParametro" />
+          <Property Type="Int32" Name="IdParametroCriterio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="GRH_CartillaCuestionario" Relationship="GRH_Model.R_47" FromRole="GRH_ParametroCriterio" ToRole="GRH_CartillaCuestionario" />
+          <NavigationProperty Name="GRH_Criterio" Relationship="GRH_Model.R_61" FromRole="GRH_ParametroCriterio" ToRole="GRH_Criterio" />
+          <NavigationProperty Name="GRH_Parametro" Relationship="GRH_Model.R_62" FromRole="GRH_ParametroCriterio" ToRole="GRH_Parametro" />
+        </EntityType>
+        <EntityType Name="GRH_Perfil">
+          <Key>
+            <PropertyRef Name="IdPerfil" />
+          </Key>
+          <Property Type="Int32" Name="IdPerfil" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Descripcion" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRH_Convocatoria" Relationship="GRH_Model.R_36" FromRole="GRH_Perfil" ToRole="GRH_Convocatoria" />
+          <NavigationProperty Name="GRH_EvaluacionCompetencia" Relationship="GRH_Model.R_35" FromRole="GRH_Perfil" ToRole="GRH_EvaluacionCompetencia" />
+        </EntityType>
+        <Association Name="R_47">
+          <End Type="GRH_Model.GRH_ParametroCriterio" Role="GRH_ParametroCriterio" Multiplicity="0..1" />
+          <End Type="GRH_Model.GRH_CartillaCuestionario" Role="GRH_CartillaCuestionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_ParametroCriterio">
+              <PropertyRef Name="IdParametroCriterio" />
+            </Principal>
+            <Dependent Role="GRH_CartillaCuestionario">
+              <PropertyRef Name="IdParametroCriterio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_54">
+          <End Type="GRH_Model.GRH_CartillaCuestionario" Role="GRH_CartillaCuestionario" Multiplicity="0..1" />
+          <End Type="GRH_Model.GRH_EvaluacionCompetenciaCuestionario" Role="GRH_EvaluacionCompetenciaCuestionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_CartillaCuestionario">
+              <PropertyRef Name="IdCuestionario" />
+            </Principal>
+            <Dependent Role="GRH_EvaluacionCompetenciaCuestionario">
+              <PropertyRef Name="IdCuestionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_36">
+          <End Type="GRH_Model.GRH_Perfil" Role="GRH_Perfil" Multiplicity="1" />
+          <End Type="GRH_Model.GRH_Convocatoria" Role="GRH_Convocatoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_Perfil">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="GRH_Convocatoria">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_61">
+          <End Type="GRH_Model.GRH_Criterio" Role="GRH_Criterio" Multiplicity="0..1" />
+          <End Type="GRH_Model.GRH_ParametroCriterio" Role="GRH_ParametroCriterio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_Criterio">
+              <PropertyRef Name="IdCriterio" />
+            </Principal>
+            <Dependent Role="GRH_ParametroCriterio">
+              <PropertyRef Name="IdCriterio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado">
+          <End Type="GRH_Model.GRH_Empleado" Role="GRH_Empleado" Multiplicity="0..1" />
+          <End Type="GRH_Model.GRH_EvaluacionCompetenciaEvaluador" Role="GRH_EvaluacionCompetenciaEvaluador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_Empleado">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="GRH_EvaluacionCompetenciaEvaluador">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_35">
+          <End Type="GRH_Model.GRH_Perfil" Role="GRH_Perfil" Multiplicity="0..1" />
+          <End Type="GRH_Model.GRH_EvaluacionCompetencia" Role="GRH_EvaluacionCompetencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_Perfil">
+              <PropertyRef Name="IdPerfil" />
+            </Principal>
+            <Dependent Role="GRH_EvaluacionCompetencia">
+              <PropertyRef Name="IdPerfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_57">
+          <End Type="GRH_Model.GRH_EvaluacionCompetencia" Role="GRH_EvaluacionCompetencia" Multiplicity="0..1" />
+          <End Type="GRH_Model.GRH_EvaluacionCompetenciaCuestionario" Role="GRH_EvaluacionCompetenciaCuestionario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_EvaluacionCompetencia">
+              <PropertyRef Name="IdEvaluacionCompetencia" />
+            </Principal>
+            <Dependent Role="GRH_EvaluacionCompetenciaCuestionario">
+              <PropertyRef Name="IdEvaluacionCompetencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_60">
+          <End Type="GRH_Model.GRH_EvaluacionCompetencia" Role="GRH_EvaluacionCompetencia" Multiplicity="0..1" />
+          <End Type="GRH_Model.GRH_EvaluacionCompetenciaEvaluador" Role="GRH_EvaluacionCompetenciaEvaluador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_EvaluacionCompetencia">
+              <PropertyRef Name="IdEvaluacionCompetencia" />
+            </Principal>
+            <Dependent Role="GRH_EvaluacionCompetenciaEvaluador">
+              <PropertyRef Name="IdEvaluacionCompetencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_62">
+          <End Type="GRH_Model.GRH_Parametro" Role="GRH_Parametro" Multiplicity="0..1" />
+          <End Type="GRH_Model.GRH_ParametroCriterio" Role="GRH_ParametroCriterio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRH_Parametro">
+              <PropertyRef Name="IdParametro" />
+            </Principal>
+            <Dependent Role="GRH_ParametroCriterio">
+              <PropertyRef Name="IdParametro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2038,15 +1860,6 @@
               <MappingFragment StoreEntitySet="GRH_Cargo">
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="IdCargo" ColumnName="IdCargo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GRH_CartillaCuestionario">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_CartillaCuestionario">
-              <MappingFragment StoreEntitySet="GRH_CartillaCuestionario">
-                <ScalarProperty Name="IdParametroCriterio" ColumnName="IdParametroCriterio" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdCuestionario" ColumnName="IdCuestionario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2093,14 +1906,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GRH_Criterio">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_Criterio">
-              <MappingFragment StoreEntitySet="GRH_Criterio">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdCriterio" ColumnName="IdCriterio" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GRH_DerechoHabiente">
             <EntityTypeMapping TypeName="GRH_Model.GRH_DerechoHabiente">
               <MappingFragment StoreEntitySet="GRH_DerechoHabiente">
@@ -2108,18 +1913,6 @@
                 <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
                 <ScalarProperty Name="IdDerechoHabiente" ColumnName="IdDerechoHabiente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GRH_DetallePlanEvaluacionCompetencias">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_DetallePlanEvaluacionCompetencias">
-              <MappingFragment StoreEntitySet="GRH_DetallePlanEvaluacionCompetencias">
-                <ScalarProperty Name="IdDetallePlanEvaluacionCompetencias" ColumnName="IdDetallePlanEvaluacionCompetencias" />
-                <ScalarProperty Name="IdEvaluacionCompetencia" ColumnName="IdEvaluacionCompetencia" />
-                <ScalarProperty Name="IdPlanEvaluacionCompetencias" ColumnName="IdPlanEvaluacionCompetencias" />
-                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
-                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
-                <ScalarProperty Name="FechaIncio" ColumnName="FechaIncio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2173,35 +1966,6 @@
                 <ScalarProperty Name="CentroEstudio" ColumnName="CentroEstudio" />
                 <ScalarProperty Name="IdSituacionEstudio" ColumnName="IdSituacionEstudio" />
                 <ScalarProperty Name="IdEstudioRealizado" ColumnName="IdEstudioRealizado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GRH_EvaluacionCompetencia">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_EvaluacionCompetencia">
-              <MappingFragment StoreEntitySet="GRH_EvaluacionCompetencia">
-                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdEvaluacionCompetencia" ColumnName="IdEvaluacionCompetencia" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GRH_EvaluacionCompetenciaCuestionario">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_EvaluacionCompetenciaCuestionario">
-              <MappingFragment StoreEntitySet="GRH_EvaluacionCompetenciaCuestionario">
-                <ScalarProperty Name="IdEvaluacionCompetenciaCuestionario" ColumnName="IdEvaluacionCompetenciaCuestionario" />
-                <ScalarProperty Name="IdEvaluacionCompetencia" ColumnName="IdEvaluacionCompetencia" />
-                <ScalarProperty Name="IdCuestionario" ColumnName="IdCuestionario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GRH_EvaluacionCompetenciaEvaluador">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_EvaluacionCompetenciaEvaluador">
-              <MappingFragment StoreEntitySet="GRH_EvaluacionCompetenciaEvaluador">
-                <ScalarProperty Name="IdEvaluacionCompetenciaEvaluador" ColumnName="IdEvaluacionCompetenciaEvaluador" />
-                <ScalarProperty Name="IdEvaluacionCompetencia" ColumnName="IdEvaluacionCompetencia" />
-                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
-                <ScalarProperty Name="IdCuestionario" ColumnName="IdCuestionario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2271,32 +2035,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GRH_Parametro">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_Parametro">
-              <MappingFragment StoreEntitySet="GRH_Parametro">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GRH_ParametroCriterio">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_ParametroCriterio">
-              <MappingFragment StoreEntitySet="GRH_ParametroCriterio">
-                <ScalarProperty Name="IdParametroCriterio" ColumnName="IdParametroCriterio" />
-                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
-                <ScalarProperty Name="IdCriterio" ColumnName="IdCriterio" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GRH_Perfil">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_Perfil">
-              <MappingFragment StoreEntitySet="GRH_Perfil">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="GRH_Persona">
             <EntityTypeMapping TypeName="GRH_Model.GRH_Persona">
               <MappingFragment StoreEntitySet="GRH_Persona">
@@ -2310,15 +2048,6 @@
                 <ScalarProperty Name="IdPaisNacionalidad" ColumnName="IdPaisNacionalidad" />
                 <ScalarProperty Name="IdPaisResidencia" ColumnName="IdPaisResidencia" />
                 <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GRH_PlanEvaluacionCompetencias">
-            <EntityTypeMapping TypeName="GRH_Model.GRH_PlanEvaluacionCompetencias">
-              <MappingFragment StoreEntitySet="GRH_PlanEvaluacionCompetencias">
-                <ScalarProperty Name="Anho" ColumnName="Anho" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdPlanEvaluacionCompetencias" ColumnName="IdPlanEvaluacionCompetencias" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2365,6 +2094,77 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="GRH_CartillaCuestionario">
+            <EntityTypeMapping TypeName="GRH_Model.GRH_CartillaCuestionario">
+              <MappingFragment StoreEntitySet="GRH_CartillaCuestionario">
+                <ScalarProperty Name="IdParametroCriterio" ColumnName="IdParametroCriterio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdCuestionario" ColumnName="IdCuestionario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRH_Criterio">
+            <EntityTypeMapping TypeName="GRH_Model.GRH_Criterio">
+              <MappingFragment StoreEntitySet="GRH_Criterio">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdCriterio" ColumnName="IdCriterio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRH_EvaluacionCompetencia">
+            <EntityTypeMapping TypeName="GRH_Model.GRH_EvaluacionCompetencia">
+              <MappingFragment StoreEntitySet="GRH_EvaluacionCompetencia">
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdEvaluacionCompetencia" ColumnName="IdEvaluacionCompetencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRH_EvaluacionCompetenciaCuestionario">
+            <EntityTypeMapping TypeName="GRH_Model.GRH_EvaluacionCompetenciaCuestionario">
+              <MappingFragment StoreEntitySet="GRH_EvaluacionCompetenciaCuestionario">
+                <ScalarProperty Name="IdEvaluacionCompetenciaCuestionario" ColumnName="IdEvaluacionCompetenciaCuestionario" />
+                <ScalarProperty Name="IdEvaluacionCompetencia" ColumnName="IdEvaluacionCompetencia" />
+                <ScalarProperty Name="IdCuestionario" ColumnName="IdCuestionario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRH_EvaluacionCompetenciaEvaluador">
+            <EntityTypeMapping TypeName="GRH_Model.GRH_EvaluacionCompetenciaEvaluador">
+              <MappingFragment StoreEntitySet="GRH_EvaluacionCompetenciaEvaluador">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdEvaluacionCompetenciaEvaluador" ColumnName="IdEvaluacionCompetenciaEvaluador" />
+                <ScalarProperty Name="IdEvaluacionCompetencia" ColumnName="IdEvaluacionCompetencia" />
+                <ScalarProperty Name="IdCuestionario" ColumnName="IdCuestionario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRH_Parametro">
+            <EntityTypeMapping TypeName="GRH_Model.GRH_Parametro">
+              <MappingFragment StoreEntitySet="GRH_Parametro">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRH_ParametroCriterio">
+            <EntityTypeMapping TypeName="GRH_Model.GRH_ParametroCriterio">
+              <MappingFragment StoreEntitySet="GRH_ParametroCriterio">
+                <ScalarProperty Name="IdParametroCriterio" ColumnName="IdParametroCriterio" />
+                <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+                <ScalarProperty Name="IdCriterio" ColumnName="IdCriterio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRH_Perfil">
+            <EntityTypeMapping TypeName="GRH_Model.GRH_Perfil">
+              <MappingFragment StoreEntitySet="GRH_Perfil">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2385,25 +2185,19 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="GRH_DB" ZoomLevel="11">
+      <Diagram Name="GRH_DB" ZoomLevel="72">
         <EntityTypeShape EntityType="GRH_Model.GRH_Area" Width="1.5" PointX="6" PointY="30.25" Height="1.595683593749996" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Cargo" Width="1.5" PointX="6" PointY="32.625" Height="1.595683593749996" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_CartillaCuestionario" Width="1.5" PointX="13.5" PointY="11.125" Height="2.1725878906250102" />
         <EntityTypeShape EntityType="GRH_Model.GRH_ContratoPersonal" Width="1.5" PointX="10.5" PointY="19.75" Height="2.172587890624996" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Convocatoria" Width="1.5" PointX="5.25" PointY="47.75" Height="2.7494921875000102" />
         <EntityTypeShape EntityType="GRH_Model.GRH_ConvocatoriaPostulante" Width="1.5" PointX="7.5" PointY="42.125" Height="2.1725878906250102" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Correo" Width="1.5" PointX="5.25" PointY="17" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_Criterio" Width="1.5" PointX="9" PointY="10.25" Height="1.595683593749996" />
         <EntityTypeShape EntityType="GRH_Model.GRH_DerechoHabiente" Width="1.5" PointX="5.25" PointY="21.125" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_DetallePlanEvaluacionCompetencias" Width="1.5" PointX="15.75" PointY="21" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Documento" Width="1.5" PointX="5.25" PointY="24.125" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Empleado" Width="1.5" PointX="8.25" PointY="20.5" Height="3.5186979166666674" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Especialidad" Width="1.5" PointX="6" PointY="14.125" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="GRH_Model.GRH_EstadoCivil" Width="1.5" PointX="0.75" PointY="18.5" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="GRH_Model.GRH_EstudioRealizado" Width="1.5" PointX="8.25" PointY="15.5" Height="3.5186979166666674" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_EvaluacionCompetencia" Width="1.5" PointX="13.5" PointY="20.875" Height="2.7494921874999818" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_EvaluacionCompetenciaCuestionario" Width="1.5" PointX="15.75" PointY="18.25" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_EvaluacionCompetenciaEvaluador" Width="1.5" PointX="18.75" PointY="21.125" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="GRH_Model.GRH_ExperienciaLaboral" Width="1.5" PointX="5.25" PointY="35.5" Height="2.557190755208353" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Idioma" Width="1.5" PointX="6" PointY="39.25" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="GRH_Model.GRH_IdiomaPersona" Width="1.5" PointX="8.25" PointY="25" Height="2.5571907552083246" />
@@ -2411,11 +2205,7 @@
         <EntityTypeShape EntityType="GRH_Model.GRH_NivelEducativo" Width="1.5" PointX="6" PointY="11.5" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="GRH_Model.GRH_NivelIdioma" Width="1.5" PointX="6" PointY="8.625" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Pais" Width="1.5" PointX="0.75" PointY="21.375" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_Parametro" Width="1.5" PointX="9" PointY="12.625" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_ParametroCriterio" Width="1.5" PointX="11.25" PointY="11.125" Height="2.1725878906249818" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_Perfil" Width="1.5" PointX="11.25" PointY="23.125" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Persona" Width="1.5" PointX="3" PointY="19.625" Height="5.2494108072916674" />
-        <EntityTypeShape EntityType="GRH_Model.GRH_PlanEvaluacionCompetencias" Width="1.5" PointX="13.5" PointY="17.375" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Postulante" Width="1.5" PointX="5.25" PointY="42.125" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="GRH_Model.GRH_SituacionEstudio" Width="1.5" PointX="6" PointY="27.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="GRH_Model.GRH_Telefono" Width="1.5" PointX="5.25" PointY="45" Height="1.7879850260416674" />
@@ -2423,48 +2213,25 @@
         <EntityTypeShape EntityType="GRH_Model.GRH_TipoDocumento" Width="1.5" PointX="3" PointY="26.5" Height="1.5956835937499818" />
         <AssociationConnector Association="GRH_Model.R_28" >
           <ConnectorPoint PointX="7.5" PointY="30.251152846153843" />
-          <ConnectorPoint PointX="7.875" PointY="29.876152846153843" />
-          <ConnectorPoint PointX="7.875" PointY="22.259348958333334" />
-          <ConnectorPoint PointX="8.0729166666666661" PointY="22.259348958333334" />
-          <ConnectorPoint PointX="8.2395833333333339" PointY="22.259348958333334" />
-          <ConnectorPoint PointX="8.25" PointY="22.259348958333334" />
+          <ConnectorPoint PointX="7.8785744349011209" PointY="29.872578411252722" />
+          <ConnectorPoint PointX="7.9964255650988791" PointY="29.754727281054965" />
+          <ConnectorPoint PointX="8" PointY="29.751152846153843" />
+          <ConnectorPoint PointX="8" PointY="22.418369903067035" />
+          <ConnectorPoint PointX="8.25" PointY="22.418369903067035" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_27" >
           <ConnectorPoint PointX="7.5" PointY="32.687306692307693" />
-          <ConnectorPoint PointX="8.0625" PointY="32.124806692307693" />
-          <ConnectorPoint PointX="8.0625" PointY="23.170275437499996" />
-          <ConnectorPoint PointX="8.0729166666666661" PointY="23.170275437499996" />
-          <ConnectorPoint PointX="8.2395833333333339" PointY="23.170275437499996" />
-          <ConnectorPoint PointX="8.25" PointY="23.170275437499996" />
-        </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_47" >
-          <ConnectorPoint PointX="12.75" PointY="12.211293945312491" />
-          <ConnectorPoint PointX="13.5" PointY="12.211293945312491" />
-        </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_54" >
-          <ConnectorPoint PointX="15" PointY="12.211293945312505" />
-          <ConnectorPoint PointX="16.5" PointY="12.211293945312505" />
-          <ConnectorPoint PointX="16.5" PointY="18.25" />
-        </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_55" >
-          <ConnectorPoint PointX="15" PointY="12.785693417968751" />
-          <ConnectorPoint PointX="16.416666666666668" PointY="12.785693417968751" />
-          <ConnectorPoint PointX="16.583333333333332" PointY="12.785693417968751" />
-          <ConnectorPoint PointX="19.5" PointY="12.785693417968751" />
-          <ConnectorPoint PointX="19.5" PointY="21.125" />
+          <ConnectorPoint PointX="7.9375" PointY="32.249806692307693" />
+          <ConnectorPoint PointX="7.9375" PointY="23.249785909866844" />
+          <ConnectorPoint PointX="8.25" PointY="23.249785909866844" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_31" >
           <ConnectorPoint PointX="9.75" PointY="21.211293945312498" />
           <ConnectorPoint PointX="10.5" PointY="21.211293945312498" />
         </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_36" >
-          <ConnectorPoint PointX="12.40625" PointY="25.297587890624982" />
-          <ConnectorPoint PointX="12.40625" PointY="49.124746093750005" />
-          <ConnectorPoint PointX="6.75" PointY="49.124746093750005" />
-        </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_65" >
-          <ConnectorPoint PointX="6.75" PointY="48.406120546875009" />
-          <ConnectorPoint PointX="8.25" PointY="48.406120546875009" />
+          <ConnectorPoint PointX="6.75" PointY="49.124746093750005" />
+          <ConnectorPoint PointX="8.25" PointY="49.124746093750005" />
           <ConnectorPoint PointX="8.25" PointY="44.29758789062501" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_63" >
@@ -2473,52 +2240,44 @@
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_20" >
           <ConnectorPoint PointX="4.5" PointY="19.63307592307692" />
+          <ConnectorPoint PointX="4.5973244349011209" PointY="19.535751488175798" />
+          <ConnectorPoint PointX="4.7151755650988791" PointY="19.417900357978041" />
           <ConnectorPoint PointX="4.90625" PointY="19.22682592307692" />
           <ConnectorPoint PointX="4.90625" PointY="17.893992513020834" />
           <ConnectorPoint PointX="5.25" PointY="17.893992513020834" />
         </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_61" >
-          <ConnectorPoint PointX="10.5" PointY="11.485341796874998" />
-          <ConnectorPoint PointX="11.25" PointY="11.485341796874998" />
-        </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_26" >
           <ConnectorPoint PointX="4.5" PointY="22.307444661458334" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="22.307444661458334" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="22.307444661458334" />
           <ConnectorPoint PointX="5.25" PointY="22.307444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_29" >
-          <ConnectorPoint PointX="8.25" PointY="21.629674479166667" />
-          <ConnectorPoint PointX="8.2395833333333339" PointY="21.629674479166667" />
-          <ConnectorPoint PointX="8.0729166666666661" PointY="21.629674479166667" />
-          <ConnectorPoint PointX="8.0208333333333339" PointY="21.629674479166667" />
-          <ConnectorPoint PointX="7.854166666666667" PointY="21.629674479166667" />
-          <ConnectorPoint PointX="6.75" PointY="21.629674479166667" />
+          <ConnectorPoint PointX="8.25" PointY="21.709184951533516" />
+          <ConnectorPoint PointX="7.989583333333333" PointY="21.709184951533516" />
+          <ConnectorPoint PointX="7.807291666666667" PointY="21.709184951533516" />
+          <ConnectorPoint PointX="6.75" PointY="21.709184951533516" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_30" >
           <ConnectorPoint PointX="4.5" PointY="18.65837490144229" />
+          <ConnectorPoint PointX="4.5973244349011217" PointY="18.755699336343412" />
+          <ConnectorPoint PointX="4.7151755650988791" PointY="18.873550466541168" />
           <ConnectorPoint PointX="4.8473244349011217" PointY="19.005699336343412" />
           <ConnectorPoint PointX="4.9651755650988791" PointY="19.123550466541168" />
           <ConnectorPoint PointX="5.0625" PointY="19.22087490144229" />
           <ConnectorPoint PointX="5.0625" PointY="21.684970330729172" />
           <ConnectorPoint PointX="5.25" PointY="21.684970330729172" />
         </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_58" >
-          <ConnectorPoint PointX="15" PointY="19.162985026041667" />
-          <ConnectorPoint PointX="15.375" PointY="19.537985026041667" />
-          <ConnectorPoint PointX="15.375" PointY="22.278595377604162" />
-          <ConnectorPoint PointX="15.75" PointY="22.278595377604162" />
-        </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_59" >
-          <ConnectorPoint PointX="15" PointY="21.576797688802081" />
-          <ConnectorPoint PointX="15.291666666666666" PointY="21.576797688802081" />
-          <ConnectorPoint PointX="15.458333333333334" PointY="21.576797688802081" />
-          <ConnectorPoint PointX="15.75" PointY="21.576797688802081" />
-        </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_18" >
           <ConnectorPoint PointX="4.5" PointY="24.499705403645834" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="24.499705403645834" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="24.499705403645834" />
           <ConnectorPoint PointX="5.25" PointY="24.499705403645834" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_19" >
           <ConnectorPoint PointX="4.5" PointY="27.09375" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="27.09375" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="27.09375" />
           <ConnectorPoint PointX="4.791666666666667" PointY="27.09375" />
           <ConnectorPoint PointX="4.958333333333333" PointY="27.09375" />
           <ConnectorPoint PointX="5.010416666666667" PointY="27.09375" />
@@ -2528,20 +2287,16 @@
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_1" >
           <ConnectorPoint PointX="4.5" PointY="20.78125" />
+          <ConnectorPoint PointX="4.572916666666667" PointY="20.78125" />
+          <ConnectorPoint PointX="4.739583333333333" PointY="20.78125" />
           <ConnectorPoint PointX="4.979166666666667" PointY="20.78125" />
           <ConnectorPoint PointX="5.145833333333333" PointY="20.78125" />
-          <ConnectorPoint PointX="7.854166666666667" PointY="20.78125" />
-          <ConnectorPoint PointX="8.0208333333333339" PointY="20.78125" />
-          <ConnectorPoint PointX="8.0729166666666661" PointY="20.78125" />
-          <ConnectorPoint PointX="8.2395833333333339" PointY="20.78125" />
+          <ConnectorPoint PointX="7.807291666666667" PointY="20.78125" />
+          <ConnectorPoint PointX="7.989583333333333" PointY="20.78125" />
           <ConnectorPoint PointX="8.25" PointY="20.78125" />
         </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_41" >
-          <ConnectorPoint PointX="9.75" PointY="22.523793945312498" />
-          <ConnectorPoint PointX="13.5" PointY="22.523793945312498" />
-        </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_66" >
-          <ConnectorPoint PointX="9.75" PointY="24.018697916666667" />
+          <ConnectorPoint PointX="9.7500000000000036" PointY="24.018697916666671" />
           <ConnectorPoint PointX="10.125" PointY="24.393697916666667" />
           <ConnectorPoint PointX="10.125" PointY="27.240143229166677" />
           <ConnectorPoint PointX="10.5" PointY="27.240143229166677" />
@@ -2560,61 +2315,35 @@
           <ConnectorPoint PointX="3" PointY="19.860341796874991" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_25" >
-          <ConnectorPoint PointX="7.5" PointY="27.813460538461534" />
-          <ConnectorPoint PointX="7.8160744349011209" PointY="27.497386103560412" />
-          <ConnectorPoint PointX="7.9339255650988791" PointY="27.379534973362656" />
-          <ConnectorPoint PointX="7.9375" PointY="27.375960538461534" />
-          <ConnectorPoint PointX="7.9375" PointY="17.259348958333334" />
-          <ConnectorPoint PointX="8.0729166666666661" PointY="17.259348958333334" />
-          <ConnectorPoint PointX="8.2395833333333339" PointY="17.259348958333334" />
+          <ConnectorPoint PointX="7.5" PointY="27.782306692307689" />
+          <ConnectorPoint PointX="7.90625" PointY="27.376056692307685" />
+          <ConnectorPoint PointX="7.90625" PointY="17.259348958333334" />
           <ConnectorPoint PointX="8.25" PointY="17.259348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_32" >
           <ConnectorPoint PointX="7.5" PointY="12.235341796874998" />
-          <ConnectorPoint PointX="8.0729166666666661" PointY="12.235341796874998" />
-          <ConnectorPoint PointX="8.2395833333333339" PointY="12.235341796874998" />
+          <ConnectorPoint PointX="7.807291666666667" PointY="12.235341796874998" />
+          <ConnectorPoint PointX="7.973958333333333" PointY="12.235341796874998" />
           <ConnectorPoint PointX="8.3906225" PointY="12.235341796874998" />
           <ConnectorPoint PointX="8.3906225" PointY="15.5" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_33" >
           <ConnectorPoint PointX="4.5" PointY="19.65153746153846" />
+          <ConnectorPoint PointX="4.6122052258942237" PointY="19.471319055230794" />
+          <ConnectorPoint PointX="4.7002947741057755" PointY="19.32983404092305" />
           <ConnectorPoint PointX="4.75" PointY="19.25" />
-          <ConnectorPoint PointX="4.75" PointY="19.393697916666667" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="19.393697916666667" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="19.393697916666667" />
-          <ConnectorPoint PointX="7.875" PointY="19.393697916666667" />
+          <ConnectorPoint PointX="4.75" PointY="19.390123481765546" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="19.390123481765546" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="19.390123481765546" />
           <ConnectorPoint PointX="7.8785744349011209" PointY="19.390123481765546" />
-          <ConnectorPoint PointX="7.9964255650988791" PointY="19.272272351567789" />
-          <ConnectorPoint PointX="8.09732443490112" PointY="19.171373481765546" />
-          <ConnectorPoint PointX="8.2151755650988783" PointY="19.053522351567789" />
-          <ConnectorPoint PointX="8.25" PointY="19.018697916666667" />
-        </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_35" >
-          <ConnectorPoint PointX="12.75" PointY="23.374746093749991" />
-          <ConnectorPoint PointX="13.5" PointY="23.374746093749991" />
-        </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_57" >
-          <ConnectorPoint PointX="15" PointY="20.93730669230769" />
-          <ConnectorPoint PointX="15.31607443490112" PointY="20.621232257406565" />
-          <ConnectorPoint PointX="15.433925565098878" PointY="20.503381127208808" />
-          <ConnectorPoint PointX="15.6875" PointY="20.249806692307686" />
-          <ConnectorPoint PointX="15.6875" PointY="20.292786458333325" />
-          <ConnectorPoint PointX="15.75" PointY="20.230286458333325" />
-        </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_60" >
-          <ConnectorPoint PointX="15" PointY="23.624492187499982" />
-          <ConnectorPoint PointX="15.375" PointY="23.999492187499982" />
-          <ConnectorPoint PointX="15.375" PointY="23.864889322916667" />
-          <ConnectorPoint PointX="18.375" PointY="23.864889322916667" />
-          <ConnectorPoint PointX="18.75" PointY="23.489889322916667" />
-        </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_56" >
-          <ConnectorPoint PointX="12.75" PointY="24.581238606770825" />
-          <ConnectorPoint PointX="19.5312525" PointY="24.581238606770825" />
-          <ConnectorPoint PointX="19.5312525" PointY="23.489889322916667" />
+          <ConnectorPoint PointX="7.8791638481079618" PointY="19.385878620076326" />
+          <ConnectorPoint PointX="7.9177111518920391" PointY="19.108266969782868" />
+          <ConnectorPoint PointX="8.25" PointY="16.71517467948718" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_3" >
           <ConnectorPoint PointX="4.5" PointY="24.837486730368589" />
+          <ConnectorPoint PointX="4.5973244349011217" PointY="24.934811165269711" />
+          <ConnectorPoint PointX="4.7151755650988791" PointY="25.052662295467467" />
           <ConnectorPoint PointX="5.15625" PointY="25.493736730368589" />
           <ConnectorPoint PointX="5.15625" PointY="36.778595377604177" />
           <ConnectorPoint PointX="5.25" PointY="36.778595377604177" />
@@ -2642,10 +2371,12 @@
           <ConnectorPoint PointX="8.25" PointY="26.278595377604162" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_17" >
-          <ConnectorPoint PointX="7.5" PointY="10.189528747596135" />
-          <ConnectorPoint PointX="8.15625" PointY="10.845778747596135" />
-          <ConnectorPoint PointX="8.15625" PointY="25.608045688802086" />
-          <ConnectorPoint PointX="8.25" PointY="25.608045688802086" />
+          <ConnectorPoint PointX="7.875" PointY="10.205682593749982" />
+          <ConnectorPoint PointX="7.890625" PointY="10.596307593749982" />
+          <ConnectorPoint PointX="7.890625" PointY="26.278595377604162" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="26.278595377604162" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="26.278595377604162" />
+          <ConnectorPoint PointX="8.25" PointY="26.278595377604162" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_6" >
           <ConnectorPoint PointX="2.25" PointY="22.268992513020834" />
@@ -2655,21 +2386,74 @@
           <ConnectorPoint PointX="2.25" PointY="21.759496256510417" />
           <ConnectorPoint PointX="3" PointY="21.759496256510417" />
         </AssociationConnector>
-        <AssociationConnector Association="GRH_Model.R_62" >
-          <ConnectorPoint PointX="10.5" PointY="12.961293945312491" />
-          <ConnectorPoint PointX="11.25" PointY="12.961293945312491" />
-        </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_2" >
           <ConnectorPoint PointX="4.5" PointY="24.843255961137821" />
+          <ConnectorPoint PointX="4.5973244349011217" PointY="24.940580396038943" />
+          <ConnectorPoint PointX="4.7151755650988791" PointY="25.0584315262367" />
           <ConnectorPoint PointX="5.09375" PointY="25.437005961137821" />
           <ConnectorPoint PointX="5.09375" PointY="43.211293945312491" />
           <ConnectorPoint PointX="5.25" PointY="43.211293945312491" />
         </AssociationConnector>
         <AssociationConnector Association="GRH_Model.R_4" >
           <ConnectorPoint PointX="4.4630769230769225" PointY="24.874410807291667" />
+          <ConnectorPoint PointX="4.5973244349011217" PointY="25.008658319115867" />
+          <ConnectorPoint PointX="4.7151755650988791" PointY="25.126509449313623" />
           <ConnectorPoint PointX="4.875" PointY="25.286333884214745" />
           <ConnectorPoint PointX="4.875" PointY="45.893992513020834" />
           <ConnectorPoint PointX="5.25" PointY="45.893992513020834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GRH_Model.GRH_CartillaCuestionario" Width="1.5" PointX="5.25" PointY="1" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="GRH_Model.GRH_Criterio" Width="1.5" PointX="0.75" PointY="1.25" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="GRH_Model.GRH_EvaluacionCompetencia" Width="1.5" PointX="5.25" PointY="4.875" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="GRH_Model.GRH_EvaluacionCompetenciaCuestionario" Width="1.5" PointX="7.5" PointY="1" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="GRH_Model.GRH_EvaluacionCompetenciaEvaluador" Width="1.5" PointX="10.875" PointY="13.375" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="GRH_Model.GRH_Parametro" Width="1.5" PointX="0.75" PointY="5.25" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="GRH_Model.GRH_ParametroCriterio" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="GRH_Model.GRH_Perfil" Width="1.5" PointX="3.375" PointY="48.125" Height="1.9802864583333246" />
+        <AssociationConnector Association="GRH_Model.R_47" >
+          <ConnectorPoint PointX="4.5" PointY="1.9901432291666694" />
+          <ConnectorPoint PointX="5.25" PointY="1.9901432291666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRH_Model.R_54" >
+          <ConnectorPoint PointX="6.75" PointY="1.9901432291666694" />
+          <ConnectorPoint PointX="7.5" PointY="1.9901432291666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRH_Model.R_36" >
+          <ConnectorPoint PointX="4.875" PointY="49.115143229166662" />
+          <ConnectorPoint PointX="5.25" PointY="49.115143229166662" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRH_Model.R_61" >
+          <ConnectorPoint PointX="2.25" PointY="2.047841796874998" />
+          <ConnectorPoint PointX="3" PointY="2.047841796874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRH_Model.FK_GRH_EvaluacionCompetenciaEvaluador_GRH_Empleado" >
+          <ConnectorPoint PointX="9.75" PointY="22.970640403645838" />
+          <ConnectorPoint PointX="12.21875" PointY="22.970640403645838" />
+          <ConnectorPoint PointX="12.21875" PointY="15.54758789062501" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRH_Model.R_35" >
+          <ConnectorPoint PointX="4.65625" PointY="48.125" />
+          <ConnectorPoint PointX="4.65625" PointY="5.9612939453125051" />
+          <ConnectorPoint PointX="5.25" PointY="5.9612939453125051" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRH_Model.R_57" >
+          <ConnectorPoint PointX="6.75" PointY="5.9612939453125051" />
+          <ConnectorPoint PointX="8.25" PointY="5.9612939453125051" />
+          <ConnectorPoint PointX="8.25" PointY="2.9802864583333388" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRH_Model.R_60" >
+          <ConnectorPoint PointX="5.59375" PointY="7.04758789062501" />
+          <ConnectorPoint PointX="5.59375" PointY="13.71875" />
+          <ConnectorPoint PointX="7.807291666666667" PointY="13.71875" />
+          <ConnectorPoint PointX="7.973958333333333" PointY="13.71875" />
+          <ConnectorPoint PointX="8.3072891666666653" PointY="13.71875" />
+          <ConnectorPoint PointX="8.4739558333333331" PointY="13.71875" />
+          <ConnectorPoint PointX="10.875" PointY="13.71875" />
+        </AssociationConnector>
+        <AssociationConnector Association="GRH_Model.R_62" >
+          <ConnectorPoint PointX="2.25" PointY="6.047841796874998" />
+          <ConnectorPoint PointX="3.75" PointY="6.047841796874998" />
+          <ConnectorPoint PointX="3.75" PointY="3.0475878906250102" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
