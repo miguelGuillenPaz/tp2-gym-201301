@@ -19,8 +19,7 @@ namespace DemoMVC.Controllers
         {
             _entities = new GSC_Entities();
             ViewData["Proyecto"] = Proyecto();
-            ViewData["Situacion"] = Situacion();
-            //var parte = (from r in _entities.GSC_ParteDiario select r).ToList();
+            ViewData["Situacion"] = Situacion();            
             var lista = new ParteDiarioCN().ListarTodos();
             return View(lista);
         }
@@ -174,10 +173,22 @@ namespace DemoMVC.Controllers
         public static string GetHoraFormateada(DateTime? hora)
         {            
             var resultado = string.Empty;
-            if (hora != null)
+            if (hora != default(DateTime))
             {
-                resultado = (hora.Value.Hour + string.Empty).PadLeft(2, '0') + ":" +
-                            (hora.Value.Minute + string.Empty).PadLeft(2, '0');
+                if (hora != null)
+                    resultado = (hora.Value.Hour + string.Empty).PadLeft(2, '0') + ":" +
+                                (hora.Value.Minute + string.Empty).PadLeft(2, '0');
+            }
+            return resultado;
+        }
+
+        public static string GetFechaFormateada(DateTime? fecha)
+        {
+            var resultado = string.Empty;
+            if (fecha != default(DateTime))
+            {
+                var fechaUtil = Convert.ToDateTime(fecha);
+                resultado = fechaUtil.ToString("yyyy-MM-dd");
             }
             return resultado;
         }

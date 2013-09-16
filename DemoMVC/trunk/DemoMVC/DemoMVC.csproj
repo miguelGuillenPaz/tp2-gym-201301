@@ -79,6 +79,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalificacionServicioController.cs" />
     <Compile Include="Controllers\CierrePresupuestoObraController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\ContenidosController.cs" />
@@ -420,6 +421,7 @@
     <Content Include="Scripts\Presupuesto\presupuesto.js" />
     <Content Include="Scripts\show.me.js" />
     <Content Include="Scripts\sliderman.1.3.7.js" />
+    <Content Include="Views\CalificacionServicio\Index.aspx" />
     <Content Include="Views\CierrePresupuestoObra\CerrarPresupuesto.aspx" />
     <Content Include="Views\CierrePresupuestoObra\ListarDetalle.aspx" />
     <Content Include="Views\CierrePresupuestoObra\ListarPresupuestos.aspx" />

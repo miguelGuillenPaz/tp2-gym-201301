@@ -57,6 +57,7 @@
                         <li><%: Html.ActionLink("Cotización", "Index", "Cotizacion")%></li>
                         <li><%: Html.ActionLink("Evaluar Cotización", "Evaluar", "Cotizacion")%></li>
                          <li><%: Html.ActionLink("Parte Diario", "Index", "Parte")%></li>
+                         <li><%: Html.ActionLink("Calificación de Servicio", "Index", "CalificacionServicio")%></li>
                     </ul>
                 </li>
                 <li>
