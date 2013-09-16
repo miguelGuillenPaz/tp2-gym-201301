@@ -462,8 +462,10 @@
     <Content Include="Views\Home\Prueba.aspx" />
     <Content Include="Views\Legal\AsignarRecurso.aspx" />
     <Content Include="Views\Legal\DetalleRequerimiento.aspx" />
+    <Content Include="Views\Legal\DetalleRequerimientosAsesores.aspx" />
     <Content Include="Views\Legal\ListarRequerimientos.aspx" />
     <Content Include="Views\Legal\listarSolicitudes.aspx" />
+    <Content Include="Views\Legal\Recursos.aspx" />
     <Content Include="Views\Legal\Registrar.aspx" />
     <Content Include="Views\Legal\RegistrarContratos.aspx" />
     <Content Include="Views\Legal\RegistrarDeclaracionFabrica.aspx" />

@@ -64,7 +64,9 @@
             </div>
        </div>
        <div class="fila">
-         <%: Html.ActionLink("Volver", "listarRequerimientos", "Legal")%></td>
+         <%: 
+             Html.ActionLink("Volver", "listarRequerimientos", "Legal")
+             %>
        </div>
     <% } %>
 

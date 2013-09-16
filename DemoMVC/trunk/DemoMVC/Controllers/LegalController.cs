@@ -353,7 +353,7 @@ namespace DemoMVC.Controllers
                 {
                     txtCodPro = "0";
                 }
-                listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin));
+                listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin),0);
 
                 if (listadoRequerimiento == null)
                 {
@@ -376,7 +376,7 @@ namespace DemoMVC.Controllers
 
             List<Requerimiento> listadoRequerimiento = null;
 
-            listadoRequerimiento = legal.listarRequerimiento(idRequerimiento, 0, 0, 0, Convert.ToDateTime("2013-01-01"), Convert.ToDateTime("2013-12-31"));
+            listadoRequerimiento = legal.listarRequerimiento(idRequerimiento, 0, 0, 0, Convert.ToDateTime("2013-01-01"), Convert.ToDateTime("2013-12-31"),0);
 
             int idReq = 0;
             String nomProy = "";
@@ -523,6 +523,8 @@ namespace DemoMVC.Controllers
             ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion");
 
             ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion");
+
+            ViewData["usuario"] = new SelectList(proye.listarUsuariosSolicitantes().ToList(), "IdUsuario", "Nombre");
             
             List<Requerimiento> listadoRequerimiento = null;
 
@@ -546,11 +548,13 @@ namespace DemoMVC.Controllers
                 String txtCodSolicitud = formCollection["txtCodSolicitud"].ToString();
                 String txtCodPro = formCollection["codPro"].ToString();
                 String txtTipoReq = formCollection["codTipoReq"].ToString();
-                string txtEstado = formCollection["codEstado"].ToString();
+                String txtEstado = formCollection["codEstado"].ToString();
+                String txtUsuario = formCollection["IdUsuario"].ToString();
 
                 ViewData["Proyectos"] = new SelectList(proyecto.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro", txtCodPro);
                 ViewData["TipoReq"] = new SelectList(proye.listarTipoRequerimiento().ToList(), "idTipoReq", "descripcion", txtTipoReq);
                 ViewData["Estado"] = new SelectList(proye.listarEstadoRequerimiento().ToList(), "idEstadoReq", "descripcion", txtEstado);
+                ViewData["usuario"] = new SelectList(proye.listarUsuariosSolicitantes().ToList(), "IdUsuario", "Nombre",txtUsuario);
 
                 if (txtCodSolicitud == "")
                 {
@@ -560,7 +564,8 @@ namespace DemoMVC.Controllers
                 {
                     txtCodPro = "0";
                 }
-                listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin));
+
+                listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin),Convert.ToInt16(txtUsuario));
 
                 if (listadoRequerimiento == null)
                 {
@@ -577,37 +582,41 @@ namespace DemoMVC.Controllers
         }
 
          [HttpGet]
-        public ActionResult Recursos()
+        public ActionResult Recursos(Int16 idRequerimiento)
         {
             LegalDAO legal = new LegalDAO();
+
+            List<Requerimiento> listadoRequerimiento = null;
+
+            listadoRequerimiento = legal.listarRequerimiento(idRequerimiento, 0, 0, 0, Convert.ToDateTime("2013-01-01"), Convert.ToDateTime("2013-12-31"), 0);
+
+            int idReq = 0;
+            String nomProy = "";
+            DateTime FechaSolicitud=DateTime.Now;
+
+            foreach (Requerimiento req in listadoRequerimiento)
+            {
+                idReq = req.idReq;
+                nomProy = req.desProyecto;
+                FechaSolicitud = Convert.ToDateTime(req.fecha);
+            }
+
+            ViewData["idReq"] = idReq;
+            ViewData["Proyecto"] = nomProy;
+            ViewData["Fecha"] = Convert.ToString(FechaSolicitud);
+
+            Session.Add("idReq", idReq);
 
             List<AsesorLegal> listadoAsesores = null;
 
             listadoAsesores = legal.ListarAsesorLegal();
 
-            int IdAsesorLegal = 0;
-            string Apellido = "";
-            string Nombre = "";
-            int CasosAsignados = 0;
-
-            foreach (AsesorLegal asesor in listadoAsesores)
-            {
-                IdAsesorLegal = asesor.IdAsesorLegal;
-                Apellido = asesor.Apellido;
-                Nombre = asesor.Nombre;
-                CasosAsignados = asesor.CasosAsignados;
-            }
-
-            ViewData["IdAsesorLegal"] = IdAsesorLegal;
-            ViewData["Apellido"] = Apellido;
-            ViewData["Nombre"] = Nombre;
-            ViewData["CasosAsignados"] = CasosAsignados;
-
-            return View();
+        
+            return View(listadoAsesores);
         }
 
         [HttpGet]
-        public ActionResult CasosAsignados(Int32 idAsesorLegal)
+         public ActionResult DetalleRequerimientosAsesores(Int32 idAsesorLegal)
         {
             LegalDAO legal = new LegalDAO();
 
@@ -615,42 +624,22 @@ namespace DemoMVC.Controllers
 
             listadoRequerimientos = legal.ListarCasosAsignados(idAsesorLegal);
 
-            int idReqLegal = 0;
-            string cDescripcionReqLegalTipo = "";
-            string cFechaAtencion = "";
-            string nomProyecto = "";
-            string cDescripcionReqLegalEstado = "";
-
-            foreach (LegalRequerimiento req in listadoRequerimientos)
-            {
-                idReqLegal = req.idReqLegal;
-                cDescripcionReqLegalTipo = req.cDescripcionReqLegalTipo;
-                cFechaAtencion = req.cFechaAtencion;
-                nomProyecto = req.nomProyecto;
-                cDescripcionReqLegalEstado = req.cDescripcionReqLegalEstado;
-            }
-
-            ViewData["idReqLegal"] = idReqLegal;
-            ViewData["cDescripcionReqLegalTipo"] = cDescripcionReqLegalTipo;
-            ViewData["cFechaAtencion"] = cFechaAtencion;
-            ViewData["nomProyecto"] = nomProyecto;
-            ViewData["cDescripcionReqLegalEstado"] = cDescripcionReqLegalEstado;
-
-            return View();
+            return View(listadoRequerimientos);
         }
+
 
         [HttpPost]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult RegistrarAsignarAsesorLegal(FormCollection formCollection)
+        public ActionResult Recursos(FormCollection formCollection)
         {
             if (ModelState.IsValid)
             {
                 bool valida = false;
 
-                if (formCollection["optSeleccion"] == null)
-                {
-                    Utils.ShowMessage(ViewData, "Seleccione un Asesor Legal", Url.Action("RegistrarAsignarAsesorLegal", "Legal", new { id = 0 }));
-                    valida = true;
+                //if (formCollection["optSeleccion"] == null)
+                //{
+                    //Utils.ShowMessage(ViewData, "Seleccione un Asesor Legal", Url.Action("RegistrarAsignarAsesorLegal", "Legal", new { id = 0 }));
+                //valida = true;
 
                     if (valida == true)
                     {
@@ -658,7 +647,7 @@ namespace DemoMVC.Controllers
                     }
                     else
                     {
-                        int idReqLegal = Convert.ToInt32(formCollection["idProyecto"]);
+                        int idReqLegal = Convert.ToInt32(formCollection["txtCodSolicitud"]);
                         int prioridad = Convert.ToInt32(formCollection["txtPrioridad"]);
                         string cPrioridadAtencion = "";
                         switch (prioridad)
@@ -685,17 +674,17 @@ namespace DemoMVC.Controllers
 
                         if (insExito)
                         {
-                            Utils.ShowMessage(ViewData, "Se asignó el Asesor Legal exitosamente.", Url.Action("RegistrarAsignarAsesorLegal", "Legal", new { id = 0 }));
+                            Utils.ShowMessage(ViewData, "Se asignó el Asesor Legal exitosamente.", Url.Action("Recursos", "Legal", new { id = 0 }));
                         }
                         else
                         {
-                            Utils.ShowMessage(ViewData, "ERROR. No se pudo asignar el Asesor Legal.", Url.Action("RegistrarAsignarAsesorLegal", "Legal", new { id = 0 }));
+                            Utils.ShowMessage(ViewData, "ERROR. No se pudo asignar el Asesor Legal.", Url.Action("Recursos", "Legal", new { id = 0 }));
                         }
 
                     }
                 }
 
-            }
+            //}
 
             return View();
         }

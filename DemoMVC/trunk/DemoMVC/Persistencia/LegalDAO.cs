@@ -184,7 +184,7 @@ namespace DemoMVC.Persistencia
             return exito;
         }
 
-        public List<Requerimiento> listarRequerimiento(Int16 idRequerimiento, Int16 idProyecto, Int16 idTipo, Int16 idEstado, DateTime fecIni, DateTime fecFin)
+        public List<Requerimiento> listarRequerimiento(Int16 idRequerimiento, Int16 idProyecto, Int16 idTipo, Int16 idEstado, DateTime fecIni, DateTime fecFin, Int16 idUsuario)
         {
             List<Requerimiento> listaRequerimiento = null;
             Requerimiento req = null;
@@ -195,10 +195,12 @@ namespace DemoMVC.Persistencia
            sql = sql + "inner join GPP_Proyecto p on p.IdProyecto = r.IdProyecto ";
            sql = sql + "inner join dbo.GJ_RequerimientoLegalTipo rt on rt.IdRequerimientoLegalTipo = r.IdRequerimientoLegalTipo ";
            sql = sql + "inner join dbo.GJ_RequerimientoLegalEstado re on re.IdRequerimientoLegalEstado= r.IdRequerimientoLegalEstado ";
+           sql = sql + "inner join dbo.SEG_Usuario u on u.IdUsuario = r.IdUsuario ";
            sql = sql + "where (@idEstado is null or r.IdRequerimientoLegalEstado=@idEstado)  ";
            sql = sql + "and (@idTipo is null or r.IdRequerimientoLegalTipo =@idTipo)  ";
            sql = sql + "and (@idProyecto is null or r.IdProyecto = @idProyecto) ";
            sql = sql + "and (@idReqLegal is null or r.IdRequerimientoLegal =@idReqLegal)  ";
+           sql = sql + "and (@idUsuario is null or r.IdUsuario =@idUsuario)";
            sql = sql + "and r.FechaRegistro>= @fecIni  ";
            sql = sql + "and r.FechaRegistro <= @fecFin";
             
@@ -240,6 +242,15 @@ namespace DemoMVC.Persistencia
                     {
                         com.Parameters.Add(new SqlParameter("@idTipo", idTipo));
                     }
+                    if (idUsuario == 0)
+                    {
+                        com.Parameters.Add(new SqlParameter("@idUsuario",DBNull.Value));
+                    }
+                    else
+                    {
+                        com.Parameters.Add(new SqlParameter("@idUsuario", idUsuario));
+                    }
+                   
                     com.Parameters.Add(new SqlParameter("@fecIni", fecIni));
                     com.Parameters.Add(new SqlParameter("@fecFin", fecFin));
 
@@ -594,7 +605,7 @@ namespace DemoMVC.Persistencia
             Usuario usuario = null;
 
             string sql = "";
-            sql += "select u.IdUsuario, u.Nombre, u.ApellidoPaterno, u.ApellidoMaterno ";
+            sql += "select distinct u.IdUsuario, u.Nombre, u.ApellidoPaterno, u.ApellidoMaterno ";
             sql += "from SEG_Usuario u ";
             sql += "inner join GJ_RequerimientoLegal l on u.IdUsuario=l.IdUsuario ";
             sql += "order by u.Nombre asc";

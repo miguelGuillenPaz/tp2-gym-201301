@@ -61,7 +61,7 @@
         Usuario solicitante:
     </div>
     <div class="col4 final">
-        
+           <%: Html.DropDownList("IdUsuario", (SelectList)ViewData["usuario"])  %>
     </div>
     </div>
      <div class="fila">
