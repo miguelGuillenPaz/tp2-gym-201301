@@ -79,6 +79,18 @@
                 }
             });
 
+            $.ajax({
+                url: config.contextPath + 'CierrePresupuestoObra/ListarInconsistencias?PresupuestoID=' + $("#IDPresupuesto").val(),
+                type: 'POST',
+                datatype: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    $('#ListarInconsistencias').html(data);
+                },
+                error: function (request, status, err) {
+                }
+            });
+
             $(".gpc-cerrar").click(function () {
                 $("#tbCerrar").val("");
                 $("#modalCerrar").dialog("open");
@@ -308,27 +320,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div style="width: 100%; float: left; display: block;">
             <h1>
                 Cierre de Presupuesto</h1>
@@ -420,6 +411,10 @@
             <a href="" class="gpc-actualizar">Notificar Actualización </a>
             <a href="" class="gpc-justificar">Notificar Justificación</a>
             <a href="javascript:history.back(1)" class="gpc-cancelar">Cancelar</a>
+        </div>
+        <div class="gpc-separador">
+        </div>
+        <div id="ListarInconsistencias" class="gpc-listas">
         </div>
         <div class="gpc-separador">
         </div>
