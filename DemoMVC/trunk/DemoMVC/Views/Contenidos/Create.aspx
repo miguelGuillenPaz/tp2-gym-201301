@@ -7,7 +7,13 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<link href="../../Content/SiteGD.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/SiteGD.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    function Alerta(){
+        var resultados = document.getElementById('hola');
+        resultados.innerHTML = "pelota";
+    }
+</script>
 <div class="contenido-top">
         <div>
             <h1>
@@ -15,13 +21,13 @@
             </h1>
 
 
-<% using (Html.BeginForm("Create", "Contenidos", FormMethod.Post, new { enctype = "multipart/form-data",id="createForm" }))
+<% using (Html.BeginForm("Create", "Contenidos", new { r = ViewData["hola"] , s=ViewData["filename"] }, FormMethod.Post, new { enctype = "multipart/form-data", id = "createForm" }))//,bool FirmaDigital)
        {%>
     <div>
       <fieldset>          
           <%:Html.HiddenFor(m=>m.IdDocumento) %>
           <div style="color:Red; font-weight:bold;"><%:Html.ValidationSummary() %></div>
-          <br>
+          <br />
           <table cellpadding="0" cellspacing="0"   class="tabla-gestion" border="1">
           <tr>
           <td><div class="editor-label"><%: Html.LabelFor(m=>m.Nombre) %> <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div>&nbsp;&nbsp;</td>
@@ -38,7 +44,6 @@
                                                         "IDPerfil", "Nombre")), "SEG_Perfil",
                                                         Model != null ? Model.GD_DocumentoPerfilAcceso.Select(x => x.IdPerfil).ToList() : new List<int>())%>
                                                         <%:Html.ValidationMessage("Documento","Seleccionar un permiso") %>
-
           </div>
           </td>
           </tr>
@@ -57,17 +62,51 @@
           <tr>         
           <td><div class="editor-label"><%: Html.LabelFor(m=>m.Descripcion) %></div></td>
           <td><div class="editor-label"><%: Html.TextAreaFor(m => m.Descripcion, new { style = "width:200px;height:40px" })%></div></td>
-          <td><div class="editor-label">Digital <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
-          <td><div class="editor-field"><input type="file" id="upload" name="upload" required="true"/></div></td>
+
+          <td>
+            <div class="editor-label">Digital <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*) </span></div>          
+          </td>        
+          <td><div class="editor-field" id="hola" >
+          <% String filename = Model.RutaFisica;
+       if (@ViewData["hola"] == "2")
+             { %>
+          <input type="file" id="upload" name="upload" required="true" <%= "value='"+filename+"'" %> disabled/>
+          <%}
+             else
+             {%>
+          <input type="file" id="File1" name="upload" required="true"/>
+          <% } %>
+          </div> </td>
           </tr>          
           <tr>         
           <td><div class="editor-label"><%: Html.LabelFor(m=>m.Tags) %> <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
           <td><div class="editor-field"><%: Html.TextBoxFor(m => m.Tags, new { style = "width:200px;height:20px" })%></div></td>
-          <td></td>
-          <td></td>
+          <% if (@ViewData["hola"] != "2")
+             { %>
+          <td>Firma Digital</td>
+          <td>
+            <!--label class="radio inline">
+                <input type="radio" id="rdbtnSI" name="type" value="first">Sí
+                <input type="radio" id="rdbtnNO" name="type" value="first" checked>No
+            </label-->
+            <%=Html.RadioButtonFor(m => m.RutaFisica, "0", new { _checked="checked"} ) %>Sí
+            <%=Html.RadioButtonFor(m => m.RutaFisica, "1")%>No           
+
+          </td>
+          <% } %>
           </tr>          
           </table>
-          <br /><br /><br />
+         
+          <% if (@ViewData["hola"] == "2")
+             { %>
+          <div style="text-align: center;">
+            <img src="../../Content/llave.png" id="llave" />
+            <strong>Documento Firmado Digitalmente</strong>
+            <% } %>
+           
+          </div>
+          
+           <br /><br /><br />
           <div class="editor-label"><b>Historial de Accesos</b></div>
           <div id="historial">
               <table width="90%">
@@ -81,12 +120,17 @@
          </div>
          <br /><br /><br />
          <p>
-            <input type="submit" value="Guardar" />
-            <input type="button" value="Eliminar" id="btnEliminar"/>
-            <input type="button" value="Cancelar" id="btnCancelar"/>
+            <input class="button" type="submit" value="Enviar" />
+            <input class="button" type="button" value="Eliminar" id="btnEliminar"/>
+            <input class="button" type="button" value="Cancelar" id="btnCancelar"/>
+            
         </p>
         <br />
-     
+     <p>
+                                        <strong>Tipo de documento:</strong> Archivo PDF<br />                                    
+                                        <strong>Id de firma:</strong>
+                                    </p>
+                                    </fieldset>
   </div>
 <%} %>
 <% using (Html.BeginForm("Delete", "Contenidos",new {id=(Model==null?0:Model.IdDocumento)}, FormMethod.Post,new {id="deleteForm"}))

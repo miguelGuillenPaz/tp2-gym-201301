@@ -5,7 +5,10 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <p>
 <link href="../../Content/SiteGD.css" rel="stylesheet" type="text/css" />
+
+    </p>
 
     <div class="contenido-top">
         <div>
@@ -54,7 +57,28 @@
           {%>
           <input type="submit" value="Solicitar Original" <%=Model.IdEstado!=2?"":"disabled='disabled'" %> />
           <%} %>
+
+
     </p>
+     <%//using (Html.BeginForm())
+       //{
+           if (ViewData["firma"] =="1")
+           { %>
+          <div style="text-align: center;">
+            <img src="../../Content/llave.png" id="llave" /><br />
+            <strong>Documento Firmado Digitalmente</strong>
+          </div>
+          <% //}
+       }%>
+    <div class="editor-label">
+    
+    <% String prueba = "data='../../Content/" + Model.IdDocumento.ToString() + ".pdf'";
+
+       %>
+            <object  <%= prueba %> type="application/pdf" width="100%" height="350px">
+                <param wmode="transparent"/>
+            </object>
+          </div>
     </div>
 </div>
 </asp:Content>
