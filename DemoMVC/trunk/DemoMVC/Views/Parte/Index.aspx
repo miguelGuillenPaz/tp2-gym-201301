@@ -479,7 +479,7 @@
                                             <%= parteDiario.DescripTServicio %>
                                         </td>
                                         <td>
-                                            <%= parteDiario.Fecha.ToString().Substring(6, 4) + "-" + parteDiario.Fecha.ToString().Substring(3, 2) + "-" + parteDiario.Fecha.ToString().Substring(0, 2)%>
+                                            <%= DemoMVC.Controllers.ParteController.GetFechaFormateada(parteDiario.Fecha) %>
                                         </td>
                                         <td>
                                             <%= parteDiario.DescripEstado %>
