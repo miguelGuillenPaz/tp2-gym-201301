@@ -53,7 +53,7 @@ namespace GYM.SIC.GPC.Controllers
 
         public ActionResult ListarPresupuestos()
         {
-            var presupuestos = EFPresupuesto.Presupuestos.Where(x => x.IDEstado == EstadosParameters.Pendiente_de_Cierre_por_el_Supervisor_de_Presupuesto).ToList();
+            var presupuestos = EFPresupuesto.Presupuestos.Where(x => x.IDEstado == EstadosParameters.Pendiente_de_Cierre_por_el_Supervisor_de_Presupuesto || x.IDEstado == EstadosParameters.Con_Inconsistencias).ToList();
 
             var presupuestosModel = new List<PresupuestoModel>();
 
@@ -133,6 +133,25 @@ namespace GYM.SIC.GPC.Controllers
             return new JsonResult() { Data = mensaje, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
 
         }
+
+        public ActionResult ListarInconsistencias(int PresupuestoID)
+        {
+            var inconsistencia = EFInconsistencia.InconsistenciaPorId(PresupuestoID);
+            var InconsistenciaModel = new InconsistenciaPresupuestoObra();
+
+            if (inconsistencia != null)
+            {
+                ModelCopier.CopyModel(inconsistencia, InconsistenciaModel);
+            }
+
+           
+            JsonResult result = new JsonResult();
+            result.Data = InconsistenciaModel;
+            result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+
+            return result;
+        }
+
 
     }
 }
