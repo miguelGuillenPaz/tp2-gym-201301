@@ -71,12 +71,10 @@
                             title: "&nbsp;",
                             width: 40,
                             template: function (dataItem) {
-                                return "<input type='button' value='Generar' onclick='mostrarEvaluar(" + kendo.htmlEncode(dataItem.IDPresupuestoObra) + ")' style='text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:28px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;' />";
+                                return "<input type='button' value='Evaluar' onclick='mostrarEvaluar(" + kendo.htmlEncode(dataItem.IDPresupuestoObra) + ")' style='text-transform:none;-webkit-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow:rgba(0,0,0,0.0.1) 0 1px 0 0; background-color:#5B74A8; border:1px solid #29447E; font-family:Tahoma,Verdana,Arial,sans-serif; font-size:12px; font-weight:700; padding:2px 6px; height:28px; color:#fff; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;' />";
                             }
                         }]
-                    });
-                    
-                    //$('#ListarPresupuesto').html(data);
+                    }); 
                 },
                 error: function (request, status, err) {
                 }

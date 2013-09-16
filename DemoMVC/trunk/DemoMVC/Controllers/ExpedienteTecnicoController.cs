@@ -40,7 +40,7 @@ namespace GYM.SIC.GPC.Controllers
             return View();
         }
 
-        public ActionResult ListarPresupuestos()
+        public JsonResult ListarPresupuestos()
         {
             var presupuestos = EFPresupuesto.Presupuestos.Where(x => x.IDEstado == EstadosParameters.Aprobado).ToList();
 
@@ -55,7 +55,7 @@ namespace GYM.SIC.GPC.Controllers
                 presupuestosModel.Add(presupuestoModel);
             });
 
-            return View(presupuestosModel);
+            return new JsonResult() { Data = presupuestosModel, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         public ActionResult ListarDetalle(int PresupuestoID)

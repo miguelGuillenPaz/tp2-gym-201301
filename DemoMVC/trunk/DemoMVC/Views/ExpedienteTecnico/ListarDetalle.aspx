@@ -47,7 +47,37 @@
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    $('#ListarCronograma').html(data);
+                    $("#ListarCronograma").kendoGrid({
+                        dataSource: {
+                            data: data,
+                            pageSize: 10
+                        },
+                        groupable: false,
+                        sortable: false,
+                        pageable: true,
+                        columns: [{
+                            field: "Fecha",
+                            width: 50,
+                            title: "<center>Fecha</center>",
+                            attributes: { style: "text-align: center;" },
+                            template: "#= kendo.toString(kendo.parseDate(Fecha, 'yyyy-MM-dd'), 'dd/MM/yyyy') #"
+                        }, {
+                            field: "Hito",
+                            width: 70,
+                            title: "<center>Hito</center>",
+                            attributes: { style: "text-align: left;" }
+                        }, {
+                            field: "Nombre",
+                            width: 100,
+                            title: "<center>Nombre</center>",
+                            attributes: { style: "text-align: left;" }
+                        }, {
+                            field: "Responsable",
+                            width: 70,
+                            title: "<center>Responsable</center>",
+                            attributes: { style: "text-align: left;" }
+                        }]
+                    });
                 },
                 error: function (request, status, err) {
                 }
@@ -158,64 +188,53 @@
         </div>
         <div class="gpc-separador">
         </div>
-               <div style="width: 100%; float: left; display: block;">
+        <div style="width: 100%; float: left; display: block;">
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    <input type="hidden" id="Hidden1" value="<%=Model.IDPresupuestoObra%>" />
+                <input type="hidden" id="Hidden1" value="<%=Model.IDPresupuestoObra%>" />
+                <div style="float: left; padding: .3em; font-weight: bold;">
                     Número de Presupuesto:
                 </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.Numero %>
-                </div>
-                <div style="float: left; padding: .5em;">
-                    Nombre:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.Nombre %>
-                </div>
-                <div style="float: left; padding: .5em;">
-                    Cliente:
-                </div>
-                <div style="float: left; padding: .5em;">
+                <div style="float: left; padding: .3em;">
+                    <%=Model.Numero %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Nombre:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.Nombre %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Cliente:</div>
+                <div style="float: left; padding: .3em;">
                     <%=Model.RazonSocial %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    Dirección de la Obra:
-                </div>
-                <div style="float: left; padding: .5em;">
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Dirección de la Obra:</div>
+                <div style="float: left; padding: .3em;">
                     <%=Model.Direccion %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    Fecha Inicio:
-                </div>
-                <div style="float: left; padding: .5em;">
-                    <%=Model.FechaInicio %>
-                </div>
-                <div style="float: left; padding: .5em;">
-                    Fecha Fin:
-                </div>
-                <div style="float: left; padding: .5em;">
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Fecha Inicio:</div>
+                <div style="float: left; padding: .3em;">
+                    <%=Model.FechaInicio %></div>
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Fecha Fin:</div>
+                <div style="float: left; padding: .3em;">
                     <%=Model.FechaFin %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    Fecha Cambio de Estado:
-                </div>
-                <div style="float: left; padding: .5em;">
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Fecha Cambio de Estado:</div>
+                <div style="float: left; padding: .3em;">
                     <%=Model.FechaCambioEstado %></div>
-                <div style="float: left; padding: .5em;">
-                    Usuario Cambio de Estado:
-                </div>
-                <div style="float: left; padding: .5em;">
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Usuario Cambio de Estado:</div>
+                <div style="float: left; padding: .3em;">
                     <%=Model.UsuarioCambioEstado %></div>
             </div>
             <div style="width: 100%; overflow: hidden;">
-                <div style="float: left; padding: .5em;">
-                    Total Presupuestado:
-                </div>
-                <div style="float: left; padding: .5em;">
+                <div style="float: left; padding: .3em; font-weight: bold;">
+                    Total Presupuestado:</div>
+                <div style="float: left; padding: .3em;">
                     <%=Model.TotalPresupuestado %></div>
             </div>
         </div>
@@ -224,15 +243,32 @@
         <form id="ActualizarExpediente" action='<%=ResolveUrl("~/ExpedienteTecnico/ActualizarExpedienteTecnico")%>'
         enctype="multipart/form-data" method="post">
         <input type="hidden" id="IDPresupuesto" name="IDPresupuesto" value="<%=Model.IDPresupuestoObra%>" />
-        <div style="width: 100%; float: left; vertical-align: top;">
-            Observación:
-            <textarea id="Observacion" name="Observacion" rows="10" cols="50"></textarea>
-            Adjuntar Análisis:
-            <input type="file" id="Archivo" name="Archivo" />
+        <table style="width:900px;">
+            <tr>
+                <td>
+                    Observación: 
+                </td>
+                <td><textarea id="Observacion" name="Observacion" rows="10" cols="1" style="width:700px"></textarea></td>
+            </tr>
+            <tr>
+                 <td>Adjuntar Análisis:  </td>
+                 <td><input type="file" id="Archivo" name="Archivo" /></td>
+            </tr>
+        </table>
+        <div class="gpc-separador">
         </div>
-        <div>
-            <a href="" class="gpc-registrar">Registrar</a> <a href="javascript:history.back(1)"
-                class="gpc-cancelar">Cancelar</a>
+        <div style="width: 100%; float: left;">
+            <a href="" class="gpc-registrar" style='width: 70px; text-decoration: none; text-transform: none;
+                -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; background-color: #5B74A8; border: 1px solid #29447E;
+                font-family: Tahoma,Verdana,Arial,sans-serif; font-size: 12px; font-weight: 700;
+                padding: 2px 6px; height: 22px; color: #fff; border-radius: 5px; -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;'>Registrar</a> <a href="javascript:history.back(1)" class="gpc-cancelar"
+                    style='width: 70px; text-decoration: none; text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    background-color: #5B74A8; border: 1px solid #29447E; font-family: Tahoma,Verdana,Arial,sans-serif;
+                    font-size: 12px; font-weight: 700; padding: 2px 6px; height: 22px; color: #fff;
+                    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;'>Cancelar</a>
         </div>
         </form>
         <div class="gpc-separador">

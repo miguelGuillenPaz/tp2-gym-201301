@@ -452,7 +452,6 @@
     <Content Include="Views\Empleado\DatosAdicionales.aspx" />
     <Content Include="Views\Evaluacion\Index.aspx" />
     <Content Include="Views\ExpedienteTecnico\ListarDetalle.aspx" />
-    <Content Include="Views\ExpedienteTecnico\ListarPresupuestos.aspx" />
     <Content Include="Views\ExpedienteTecnico\RegistrarExpedienteTecnico.aspx" />
     <Content Include="Views\Finanzas\Index.aspx" />
     <Content Include="Views\GestionProy\Gestion.aspx" />
@@ -486,11 +485,9 @@
     <Content Include="Views\Planificacion\ListadoProyPlan2.aspx" />
     <Content Include="Views\PresupuestoObra\AprobarPresupuesto.aspx" />
     <Content Include="Views\PresupuestoObra\ListarCategorias.aspx" />
-    <Content Include="Views\PresupuestoObra\ListarCronograma.aspx" />
     <Content Include="Views\PresupuestoObra\ListarDetalle.aspx" />
     <Content Include="Views\PresupuestoObra\ListarItems.aspx" />
     <Content Include="Views\PresupuestoObra\ListarPartidas.aspx" />
-    <Content Include="Views\PresupuestoObra\ListarPresupuestos.aspx" />
     <Content Include="Views\Presupuesto\Detalle.aspx" />
     <Content Include="Views\Presupuesto\Editar.aspx" />
     <Content Include="Views\Presupuesto\Index.aspx" />

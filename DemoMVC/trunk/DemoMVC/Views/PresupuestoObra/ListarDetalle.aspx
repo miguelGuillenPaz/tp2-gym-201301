@@ -108,8 +108,7 @@
                             title: "<center>Responsable</center>",
                             attributes: { style: "text-align: left;" }
                         }]
-                    });
-                    //$('#ListarCronograma').html(data);
+                    }); 
                 },
                 error: function (request, status, err) {
                 }

@@ -58,8 +58,7 @@ namespace GYM.SIC.GPC.Controllers
                 ModelCopier.CopyModel(presupuesto, presupuestoModel);
                 presupuestosModel.Add(presupuestoModel);
             });
-
-            //return View(presupuestosModel);
+             
             JsonResult result = new JsonResult();
             result.Data = presupuestosModel.ToList();
             result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
