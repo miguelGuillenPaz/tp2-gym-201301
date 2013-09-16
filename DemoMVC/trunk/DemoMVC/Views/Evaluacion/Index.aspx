@@ -21,7 +21,10 @@
             $('#lstPerfil').change(function () {
                 $('#IdPerfil').val($('#lstPerfil').val());
                 $('#txtSeleccionado').val($('#lstPerfil option:selected').text());
+                GetEvaluador($('#IdPerfil').val());
+                GetCuestionario($('#IdPerfil').val());
             });
+
 
             $('#btnEvaluador').click(function () {
                 if ($('#IdPerfil').val() > 0) {
@@ -60,6 +63,64 @@
             });
 
         });
+
+        function GetCuestionario(idPerfil) {
+            $('#lstCuestionario').attr('disabled', true);
+            var data = {
+                idPerfil: idPerfil
+            };
+            $.ajax({
+                type: 'POST',
+                url: '/Evaluacion/GetCuestionario',
+                data: data,
+                success: function (result) {
+                    var options = '';
+                    if (result.result) {
+                        try {
+                            for (var i = 0; i < result.cuestionario.length; i++) {
+                                options += '<option value="' + result.cuestionario[i].Value + '">' + result.cuestionario[i].Text + '</option>';
+                            }
+                        } catch (ex2) {
+                            __ShowMessage(ex2.message);
+                        }
+                        $('#lstCuestionario').html(options);
+                        $('#lstCuestionario').removeAttr('disabled');
+                    }
+                },
+                error: function () {
+                    __ShowMessage('No se pudo cargar el combo');
+                }
+            });
+        }
+
+        function GetEvaluador(idPerfil) {
+//            $('#lstEvaluador').attr('disabled', true);
+//            var data = {
+//                idPerfil: idPerfil
+//            };
+//            $.ajax({
+//                type: 'POST',
+//                url: '/Evaluacion/GetEvaluador',
+//                data: data,
+//                success: function (result) {
+//                    var options = '';
+//                    if (result.result) {
+//                        try {
+//                            for (var i = 0; i < result.evaluador.length; i++) {
+//                                options += '<option value="' + result.evaluador[i].Value + '">' + result.evaluador[i].Text + '</option>';
+//                            }
+//                        } catch (ex2) {
+//                            __ShowMessage(ex2.message);
+//                        }
+//                        $('#lstEvaluador').html(options);
+//                        $('#lstEvaluador').removeAttr('disabled');
+//                    }
+//                },
+//                error: function () {
+//                    __ShowMessage('No se pudo cargar el combo');
+//                }
+//            });
+        }
     </script>
     <div class="contenido-top">
         <div>
@@ -106,7 +167,8 @@
                                                 <tr>
                                                     <td>
                                                         <input type="hidden" id="IdPerfil" value="0" />
-                                                        <input id="txtSeleccionado" type="text" disabled="disabled" value="Seleccione un Perfil de Empleado" style="width: 99%;" />
+                                                        <input id="txtSeleccionado" type="text" disabled="disabled" value="Seleccione un Perfil de Empleado"
+                                                            style="width: 99%;" />
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -126,19 +188,14 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <select name="lstCuestionario" id="lstCuestionario" size="5" style="width: 100%;" >
-                                                            <option value="1">item 1</option>
-                                                            <option value="2">item 2</option>
-                                                            <option value="3">item 3</option>
-                                                            <option value="4">item 4</option>
-                                                            <option value="0">All</option>
+                                                        <select name="lstCuestionario" id="lstCuestionario" size="5" style="width: 100%;">
                                                         </select>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th style="text-align: right;font-weight: normal;">
+                                                    <th style="text-align: right; font-weight: normal;">
                                                         <a id="btnCuestionario" href="javascript:;" class="button">Cuestionarios</a>
                                                     </th>
                                                 </tr>
@@ -159,25 +216,19 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <select name="lstEvaluador" id="lstEvaluador" size="5" style="width: 100%;" >
-                                                            <option value="1">item 1</option>
-                                                            <option value="2">item 2</option>
-                                                            <option value="3">item 3</option>
-                                                            <option value="4">item 4</option>
-                                                            <option value="0">All</option>
+                                                        <select name="lstEvaluador" id="lstEvaluador" size="5" style="width: 100%;">
                                                         </select>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th style="text-align: right;font-weight: normal;">
+                                                    <th style="text-align: right; font-weight: normal;">
                                                         <a id="btnEvaluador" href="javascript:;" class="button">Evaluadores</a>
                                                     </th>
                                                 </tr>
                                             </tfoot>
                                         </table>
-
                                     </td>
                                 </tr>
                             </table>
@@ -191,9 +242,12 @@
     <div id="dialogEvaluador" style="display: none;">
         <table>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
             </tr>
         </table>
     </div>

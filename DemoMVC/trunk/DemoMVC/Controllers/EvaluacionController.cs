@@ -5,12 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DemoMVC.Models;
+using GYM.SIG.Business;
 
 namespace DemoMVC.Controllers
 {
     public class EvaluacionController : Controller
     {
-        private GRH_Entities _entities;
+        private readonly GRH_Entities _entities = new GRH_Entities();
         private readonly string[] _seleccione = new[] { string.Empty, "--Seleccione--" };
 
         //
@@ -18,95 +19,55 @@ namespace DemoMVC.Controllers
 
         public ActionResult Index()
         {
-            _entities = new GRH_Entities();
+            
             ViewData["Perfil"] = Perfil();            
             return View();
         }
 
-        //
-        // GET: /Evaluacion/Details/5
-
-        public ActionResult Details(int id)
+        public virtual ActionResult GetEvaluador(int idPerfil)
         {
-            return View();
+            var resultado = new List<SelectListItem>();
+            var evaluacionCompetencia = _entities.GRH_EvaluacionCompetencia.FirstOrDefault(f => f.IdPerfil == idPerfil);
+
+            if (evaluacionCompetencia != null)
+            {
+                var idEvaluacionCompetencia = evaluacionCompetencia.IdEvaluacionCompetencia;
+                var lista =
+                    _entities.GRH_EvaluacionCompetenciaEvaluador.Where(
+                        f => f.IdEvaluacionCompetencia == idEvaluacionCompetencia);
+                foreach (var item in lista)
+                {
+                    var selListItem = new SelectListItem {Value = item.IdEvaluacionCompetenciaEvaluador + string.Empty, Text = item.GRH_EvaluacionCompetencia.GRH_Empleado.GRH_Persona.Nombre};
+                    resultado.Add(selListItem);
+                }
+            }
+
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true, evaluador = resultado }, behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
         }
 
-        //
-        // GET: /Evaluacion/Create
-
-        public ActionResult Create()
+        public virtual ActionResult GetCuestionario(int idPerfil)
         {
-            return View();
-        } 
+            var resultado = new List<SelectListItem>();
+            var evaluacionCompetencia = _entities.GRH_EvaluacionCompetencia.FirstOrDefault(f => f.IdPerfil == idPerfil);
 
-        //
-        // POST: /Evaluacion/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            if (evaluacionCompetencia != null)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var idEvaluacionCompetencia = evaluacionCompetencia.IdEvaluacionCompetencia;
+                var lista =
+                    _entities.GRH_EvaluacionCompetenciaCuestionario.Where(
+                        f => f.IdEvaluacionCompetencia == idEvaluacionCompetencia);
+                foreach (var item in lista)
+                {
+                var selListItem = new SelectListItem { Value = item.IdEvaluacionCompetenciaCuestionario + string.Empty, Text = item.GRH_CartillaCuestionario.Nombre };
+                    resultado.Add(selListItem);
+                }
             }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        //
-        // GET: /Evaluacion/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        //
-        // POST: /Evaluacion/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Evaluacion/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Evaluacion/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            // ReSharper disable RedundantArgumentName
+            return Json(data: new { result = true, cuestionario = resultado }, behavior: JsonRequestBehavior.AllowGet);
+            // ReSharper restore RedundantArgumentName
         }
 
         private List<SelectListItem> CargaInicial()
