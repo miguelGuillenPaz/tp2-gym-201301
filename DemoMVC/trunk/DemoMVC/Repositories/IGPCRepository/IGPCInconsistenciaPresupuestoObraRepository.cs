@@ -9,6 +9,7 @@ namespace GYM.SIC.GPC.Repositories.GPCRepository
     public interface IGPCInconsistenciaPresupuestoObraRepository
     {
         IQueryable<GPC_InconsistenciaPresupuestoObra> Inconsistencias { get; }
-        void ActualizarInconsistencias(GPC_InconsistenciaPresupuestoObra Inconsistencias);  
+        void ActualizarInconsistencias(GPC_InconsistenciaPresupuestoObra Inconsistencias);
+        GPC_InconsistenciaPresupuestoObra InconsistenciaPorId(int ID);
     }
 }
