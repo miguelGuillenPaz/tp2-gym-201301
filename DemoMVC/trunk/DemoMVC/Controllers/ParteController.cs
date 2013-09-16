@@ -101,7 +101,7 @@ namespace DemoMVC.Controllers
 
             foreach (var item in lista)
             {
-                var selListItem = new SelectListItem { Value = item.codReq + string.Empty, Text = item.nomReq };
+                var selListItem = new SelectListItem { Value = item.Value + string.Empty, Text = item.Text };
                 resultado.Add(selListItem);
             }
 
