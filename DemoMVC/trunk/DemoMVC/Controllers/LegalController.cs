@@ -306,6 +306,7 @@ namespace DemoMVC.Controllers
 
         public ActionResult listarRequerimientos()
         {
+            Session["Vista"] = "consultar";
             LegalDAO proye = new LegalDAO();
             ProyectoDAO proyecto = new ProyectoDAO();
 
@@ -515,6 +516,7 @@ namespace DemoMVC.Controllers
         
         public ActionResult listarSolicitudes()
         {
+            Session["Vista"] = "asignar";
             LegalDAO proye = new LegalDAO();
             ProyectoDAO proyecto = new ProyectoDAO();
 
