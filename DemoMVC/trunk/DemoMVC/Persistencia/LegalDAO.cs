@@ -538,9 +538,9 @@ namespace DemoMVC.Persistencia
                                 {
                                     idReqLegal = (Int32)resultado["IdRequerimientoLegal"],
                                     cDescripcionReqLegalTipo = resultado["Descripcion"].ToString(),
-                                    cFechaAtencion = resultado["FechaAtencion"].ToString(),
+                                    cFechaAsignacion = resultado["FechaAtencion"].ToString(),
                                     nomProyecto = resultado["Nombre"].ToString(),
-                                    cDescripcionReqLegalEstado = resultado["Descripcion"].ToString()
+                                    cDescripcionReqLegalEstado = resultado["estado"].ToString()
                                 };
                                 listadoRequerimientos.Add(reqLegal);
                             }

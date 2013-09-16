@@ -30,7 +30,7 @@
                     <td><%: item.idReqLegal%></td>
                     <td><%: item.cDescripcionReqLegalTipo%></td>
                     <td><%: string.Format("{0:yyyy-MM-dd}", item.cFechaAsignacion)%></td>
-                    <td><%: item.nomPro%></td>
+                    <td><%: item.nomProyecto%></td>
                     <td><%: item.cDescripcionReqLegalEstado%></td>
                     </tr>          
            
