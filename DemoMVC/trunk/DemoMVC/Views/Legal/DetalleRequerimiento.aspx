@@ -5,6 +5,34 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+<script type="text/javascript">
+
+    //Ajax setup config==================================================================================
+    $.ajaxSetup({
+        // Disable caching of AJAX responses */
+        cache: false
+    });
+    //Context Route======================================================================================
+    var config = {
+        contextPath: '<%=ResolveUrl("~")%>'
+    };
+
+    $("document").ready(function () {
+        var vista = '<%= Session["Vista"] %>';
+        var ruta;
+        if (vista == "asignar") {
+            ruta = config.contextPath + "Legal/listarSolicitudes";
+            $("#volver").attr("href", ruta); //ruta para el asignar
+        }
+        else if (vista == "consultar") {
+            ruta = config.contextPath + "Legal/listarRequerimientos";
+            $("#volver").attr("href", ruta); //ruta para el consultar
+        }
+    });
+
+</script>
+
 <section id="seccionReqLegal">
     <h1>Detalle del Requerimiento</h1>
     <% using (Html.BeginForm())
@@ -64,9 +92,10 @@
             </div>
        </div>
        <div class="fila">
-         <%: 
+         <%--<%: 
              Html.ActionLink("Volver", "listarRequerimientos", "Legal")
-             %>
+             %>--%>
+             <a id="volver" href="">Volver</a>
        </div>
     <% } %>
 
