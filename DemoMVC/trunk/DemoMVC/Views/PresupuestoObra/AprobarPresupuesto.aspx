@@ -60,7 +60,8 @@
                             field: "FechaCambioEstado",
                             width: 50,
                             title: "<center>Fecha<br />Estado</center>",
-                            attributes: { style: "text-align: center;" }
+                            attributes: { style: "text-align: center;" },
+                            template: "#= kendo.toString(kendo.parseDate(FechaCambioEstado, 'yyyy-MM-dd'), 'dd/MM/yyyy') #" 
                         }, {
                             field: "UsuarioCambioEstado",
                             width: 60,
