@@ -91,7 +91,7 @@
                             width: 50,
                             title: "<center>Fecha</center>",
                             attributes: { style: "text-align: center;" },
-                            template: "#= kendo.toString(kendo.parseDate(Fecha, 'yyyy-MM-dd'), 'dd/MM/yyyy') #"
+                            template: "#= kendo.toString(kendo.parseDate(Fecha, 'yyyy-MM-dd'), 'dd/MM/yyyy') #" 
                         }, {
                             field: "Hito",
                             width: 70,
