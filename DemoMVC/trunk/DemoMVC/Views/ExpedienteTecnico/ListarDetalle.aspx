@@ -25,7 +25,7 @@
                 beforeSubmit: function () {
                 },
                 success: function (result) {
-                    var n = noty({ text: result, type: 'information' });
+                    var n = noty({ text: result, type: 'success' });
                 }
             });
 
