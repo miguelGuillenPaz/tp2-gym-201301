@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="registrarDeclaracionFabrica">
-     <% using (Html.BeginForm())
+     <% using (Html.BeginForm("RegistrarDeclaracionFabrica", "Legal", FormMethod.Post, new { enctype = "multipart/form-data" }))
     { %>
         <div class="fila">
             <div class="col2">

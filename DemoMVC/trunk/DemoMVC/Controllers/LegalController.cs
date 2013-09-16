@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using System.IO;
 using System.Net.Mail;
 using System.Globalization;
 using System.Web.Script.Serialization;
@@ -425,7 +426,7 @@ namespace DemoMVC.Controllers
 
         [HttpPost]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult RegistrarDeclaracionFabrica(HttpPostedFileBase file1, FormCollection formCollection)
+        public ActionResult RegistrarDeclaracionFabrica(HttpPostedFileBase file1, HttpPostedFileBase file2, HttpPostedFileBase file3, FormCollection formCollection)
         {
             if (ModelState.IsValid)
             {
@@ -434,30 +435,30 @@ namespace DemoMVC.Controllers
                 ProyectoDAO proye = new ProyectoDAO();
                 ViewData["Proyectos"] = new SelectList(proye.obtenerProyectoPorFiltro(1, 0, "PR").ToList(), "codPro", "nomPro");
 
-                if (formCollection["file1"] == null)
+                if (file1 == null)
                 {
-                    Utils.ShowMessage(ViewData, "Cargar el archivo de declaración de fábrica", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    Utils.ShowMessage(ViewData, "Cargar el archivo de declaración de fábrica");
                     valida = true;
                 }
                                
-                if (formCollection["file2"] == null)
+                if (file2 == null)
                 {
-                    Utils.ShowMessage(ViewData, "Cargar el archivo de Planos", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    Utils.ShowMessage(ViewData, "Cargar el archivo de Planos");
                     valida = true;
                 }
-                if (formCollection["file3"] == null)
+                if (file3 == null)
                 {
-                    Utils.ShowMessage(ViewData, "Cargar el archivo de verificación técnica", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    Utils.ShowMessage(ViewData, "Cargar el archivo de verificación técnica");
                     valida = true;
                 }
                 if (formCollection["txtDescripcion"].ToString().Trim() == "")
                 {
-                    Utils.ShowMessage(ViewData, "Registrar descripción del requerimiento", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    Utils.ShowMessage(ViewData, "Registrar descripción del requerimiento");
                     valida = true;
                 }
                 if (formCollection["idProyecto"] == "")
                 {
-                    Utils.ShowMessage(ViewData, "Seleccionar un proyecto", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
+                    Utils.ShowMessage(ViewData, "Seleccionar un proyecto");
                     valida = true;                
                 }
                 
@@ -483,29 +484,42 @@ namespace DemoMVC.Controllers
 
                     legalDAO.insertarRequerimientoDeclaracionFabrica(legalReqDec);
 
+                    var filePath = Path.Combine(HttpContext.Server.MapPath("\\App_Data\\"),
+                               nuevoIdReqLegal.ToString(CultureInfo.InvariantCulture) + "1" + Path.GetExtension(file1.FileName));
+                    file1.SaveAs(filePath);
+
                     LegalDeclaracionFabricaDocumento legalDoc = new LegalDeclaracionFabricaDocumento();
                     legalDoc.idDeclaracionFabricaDocumento = nuevoIdReqLegal;
                     legalDoc.idDeclaracionFabricaTipo = 1;
                     legalDoc.descripcionDocumento = "Declaración de fábrica";
-                    legalDoc.ruta = formCollection["file1"].ToString();
+                    legalDoc.ruta = filePath.ToString();
 
                     legalDAO.insertarRequerimientoDeclaracionFabricaDocumento(legalDoc);
+
+                    var filepath2 = Path.Combine(HttpContext.Server.MapPath("\\App_Data\\"),
+                        nuevoIdReqLegal.ToString(CultureInfo.InvariantCulture) + "2" + Path.GetExtension(file2.FileName));
+                    file2.SaveAs(filepath2);
 
                     LegalDeclaracionFabricaDocumento legaldoc2 = new LegalDeclaracionFabricaDocumento();
                     legaldoc2.idDeclaracionFabricaDocumento = nuevoIdReqLegal;
                     legaldoc2.idDeclaracionFabricaTipo = 2;
                     legaldoc2.descripcionDocumento = "Planos";
-                    legaldoc2.ruta = formCollection["file2"].ToString();
+                    legaldoc2.ruta = filepath2.ToString();
 
                     legalDAO.insertarRequerimientoDeclaracionFabricaDocumento(legaldoc2);
 
+                    var filepath3 = Path.Combine(HttpContext.Server.MapPath("\\App_Data\\"),
+                    nuevoIdReqLegal.ToString(CultureInfo.InvariantCulture) + "3"  +  Path.GetExtension(file3.FileName));
+                    file2.SaveAs(filepath3);
+                    
                     LegalDeclaracionFabricaDocumento legaldoc3 = new LegalDeclaracionFabricaDocumento();
                     legaldoc3.idDeclaracionFabricaDocumento = nuevoIdReqLegal;
                     legaldoc3.idDeclaracionFabricaTipo = 2;
                     legaldoc3.descripcionDocumento = "Informe de verificación técnica";
-                    legaldoc3.ruta = formCollection["file3"].ToString();
+                    legaldoc3.ruta = filepath3.ToString();
 
-                    legalDAO.insertarRequerimientoDeclaracionFabricaDocumento(legaldoc2);
+                    legalDAO.insertarRequerimientoDeclaracionFabricaDocumento(legaldoc3);
+
 
                     Utils.ShowMessage(ViewData, "Registro exitoso", Url.Action("RegistrarDeclaracionFabrica", "Legal", new { id = 0 }));
                 }
@@ -672,15 +686,23 @@ namespace DemoMVC.Controllers
                         legalReq.idAsesorLegal = 1;
                         legalReq.cPrioridadAtencion = cPrioridadAtencion;
 
+                        //foreach (var p in formCollection.AllKeys)
+                        //{
+                        //    if (!p.Contains("Checked") || !formCollection[p].Contains("true")) continue;
+                        //    Int32 idAsesor;
+                        //    idAsesor = Convert.ToInt32(p.Split(new[] { ':' })[1]);
+                        //}
+
+
                         bool insExito = legalDAO.AsignarAsesorLegal(legalReq);
 
                         if (insExito)
                         {
-                            Utils.ShowMessage(ViewData, "Se asignó el Asesor Legal exitosamente.", Url.Action("Recursos", "Legal", new { id = 0 }));
+                            Utils.ShowMessage(ViewData, "Se asignó el Asesor Legal exitosamente.", Url.Action("listarSolicitudes", "Legal", new { id = 0 }));
                         }
                         else
                         {
-                            Utils.ShowMessage(ViewData, "ERROR. No se pudo asignar el Asesor Legal.", Url.Action("Recursos", "Legal", new { id = 0 }));
+                            Utils.ShowMessage(ViewData, "ERROR. No se pudo asignar el Asesor Legal.", Url.Action("listarSolicitudes", "Legal", new { id = 0 }));
                         }
 
                     }

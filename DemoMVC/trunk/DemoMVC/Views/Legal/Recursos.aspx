@@ -59,6 +59,7 @@
                  <tr>
                     <td><%: item.Nombre + " " + item.Apellido%></td>
                     <td align="center"><%: Html.ActionLink(Convert.ToString(item.CasosAsignados), "DetalleRequerimientosAsesores", "Legal", new { idAsesorLegal = item.IdAsesorLegal }, null)%></td>
+                    <td><%: Html.RadioButton("checked:" + item.IdAsesorLegal.ToString(), "",false)  %></td>
                  </tr>
            <% } %>
     <% } %>
