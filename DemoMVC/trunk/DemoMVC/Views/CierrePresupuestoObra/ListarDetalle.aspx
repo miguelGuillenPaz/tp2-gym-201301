@@ -68,7 +68,37 @@
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    $('#ListarCronograma').html(data);
+                    $("#ListarCronograma").kendoGrid({
+                        dataSource: {
+                            data: data,
+                            pageSize: 10
+                        },
+                        groupable: false,
+                        sortable: false,
+                        pageable: true,
+                        columns: [{
+                            field: "Fecha",
+                            width: 50,
+                            title: "<center>Fecha</center>",
+                            attributes: { style: "text-align: center;" },
+                            template: "#= kendo.toString(kendo.parseDate(Fecha, 'yyyy-MM-dd'), 'dd/MM/yyyy') #"
+                        }, {
+                            field: "Hito",
+                            width: 70,
+                            title: "<center>Hito</center>",
+                            attributes: { style: "text-align: left;" }
+                        }, {
+                            field: "Nombre",
+                            width: 100,
+                            title: "<center>Nombre</center>",
+                            attributes: { style: "text-align: left;" }
+                        }, {
+                            field: "Responsable",
+                            width: 70,
+                            title: "<center>Responsable</center>",
+                            attributes: { style: "text-align: left;" }
+                        }]
+                    });                     
                 },
                 error: function (request, status, err) {
                 }
@@ -79,7 +109,7 @@
                 type: 'POST',
                 datatype: 'json',
                 contentType: 'application/json; charset=utf-8',
-                success: function (data) {
+                success: function (data) { 
                     $('#ListarInconsistencias').html(data);
                 },
                 error: function (request, status, err) {
