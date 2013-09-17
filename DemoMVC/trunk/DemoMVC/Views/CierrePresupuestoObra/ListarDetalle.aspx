@@ -382,18 +382,18 @@
         <div class="gpc-separador">
         </div>
         <div style="width: 100%; float: left;">
-            <a href="" class="gpc-cerrar" style='width: 70px; text-decoration: none; text-transform: none;
+            <a href="" class="gpc-cerrar" style='width: 130px; text-decoration: none; text-transform: none;
                 -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
                 box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; background-color: #5B74A8; border: 1px solid #29447E;
                 font-family: Tahoma,Verdana,Arial,sans-serif; font-size: 12px; font-weight: 700;
                 padding: 2px 6px; height: 22px; color: #fff; border-radius: 5px; -moz-border-radius: 5px;
                 -webkit-border-radius: 5px;'>Cerrar Presupuesto</a> <a href="" class="gpc-actualizar"
-                    style='width: 70px; text-decoration: none; text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
+                    style='width: 150px; text-decoration: none; text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
                     -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
                     background-color: #5B74A8; border: 1px solid #29447E; font-family: Tahoma,Verdana,Arial,sans-serif;
                     font-size: 12px; font-weight: 700; padding: 2px 6px; height: 22px; color: #fff;
                     border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;'>Notificar
-                    Actualización</a> <a href="" class="gpc-justificar" style='width: 70px; text-decoration: none;
+                    Actualización</a> <a href="" class="gpc-justificar" style='width: 130px; text-decoration: none;
                         text-transform: none; -webkit-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; -moz-box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0;
                         box-shadow: rgba(0,0,0,0.0.1) 0 1px 0 0; background-color: #5B74A8; border: 1px solid #29447E;
                         font-family: Tahoma,Verdana,Arial,sans-serif; font-size: 12px; font-weight: 700;
@@ -439,7 +439,7 @@
                 Análisis
             </div>
             <div class="gpc-modals-row">
-                <textarea id="tbCerrar" rows="3" cols="60" style="width: 100%;"></textarea>
+                <textarea id="tbCerrar" rows="3" cols="60" style="width: 98%;"></textarea>
             </div>
             <div class="gpc-modals-row">
                 <a href="" class="gpc-cerrarOK" style="color: #ffffff; float: right;">Confirmar Cierre</a>
@@ -457,7 +457,7 @@
                     Inconsistencias</span>
             </div>
             <div class="gpc-modals-row">
-                <textarea id="tbJustificar" rows="3" cols="60" style="width: 100%;"></textarea>
+                <textarea id="tbJustificar" rows="3" cols="60" style="width: 98%%;"></textarea>
             </div>
             <div class="gpc-modals-row">
                 <a href="" class="gpc-justificarOK" style="color: #ffffff; float: right;">Enviar Notificación</a>
