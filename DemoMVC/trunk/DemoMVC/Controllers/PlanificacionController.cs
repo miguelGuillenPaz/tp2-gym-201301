@@ -6,6 +6,12 @@ using System.Web.Mvc;
 using DemoMVC.Models;
 using DemoMVC.Persistencia;
 
+using System.IO;
+using NPOI.HSSF.UserModel;
+using NPOI.HPSF;
+using NPOI.POIFS.FileSystem;
+
+
 namespace DemoMVC.Controllers
 {
     [HandleError]
@@ -16,6 +22,277 @@ namespace DemoMVC.Controllers
         public List<Actividad> listadoActividadesTemp = new List<Actividad>();
 
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        //Muestra pantalla principal para asignacion de recursos
+        [HttpGet]
+        public ActionResult AsignarRecursos()
+        {
+
+            //Listado Proyecto - combo
+            List<Proyecto> listadoProyectos = null;
+            ProyectoDAO Proyecto = new ProyectoDAO();
+            int totalProy = 0;
+
+            //Listado Actividades
+            List<Actividad> listadoActividades = null;
+            ActividadDAO Actividad = new ActividadDAO();
+
+            listadoProyectos = Proyecto.obtenerProyectoPorFiltro(1, 0, "SR");
+            listadoProyectos.Insert(0, new Models.Proyecto() { codPro = 0, nomPro = "-- Escoja el proyecto --" });
+
+            //<option value='prueba'>-- Escoja el proyecto --</option>
+
+            //Si acción = 1 (mostrar las actividades)
+            //listadoActividades = 
+
+            //Adjuntamos listados en objeto formulario para ser llamado en la estimacion rapida
+            AsignarRecursoForm parametros = new AsignarRecursoForm();
+            parametros.ListadoActividad = null;
+            parametros.ListadoProyecto = listadoProyectos;
+
+            if (listadoProyectos.Count != null) totalProy = listadoProyectos.Count;
+
+            ViewData["totReg"] = 0;
+            ViewData["accion"] = "0";
+            ViewData["codProyIns"] = "0";
+
+            return View(parametros);
+
+        }
+
+        //Muestra pantalla principal - pero con datos de formulario
+        [HttpPost]
+        public ActionResult AsignarRecursos(FormCollection formCollection)
+        {
+            string accion = formCollection["submitButton"].ToString();
+
+            //Obtenemos código de proyecto
+            String txtCodigo = formCollection["selProy"].ToString();
+
+            //Adjuntamos listados en objeto formulario para ser llamado en la estimacion rapida
+            AsignarRecursoForm parametros = new AsignarRecursoForm();
+
+            if (accion.Equals("Buscar"))
+            {
+                if (!txtCodigo.Equals("0"))
+                {
+                    //Listado Actividades
+                    List<Actividad> listadoActividades = null;
+                    ActividadDAO Actividad = new ActividadDAO();
+
+                    listadoActividades = Actividad.obtenerActividad2(Convert.ToInt32(txtCodigo));
+
+                    parametros.ListadoActividad = listadoActividades;
+
+                    ViewData["totReg"] = listadoActividades.Count;
+                    ViewData["accion"] = "0";
+                    ViewData["codProyIns"] = txtCodigo;
+
+                    ViewData["idProyecto"] = "" + int.Parse(txtCodigo);
+
+                }
+
+                ProyectoDAO Proyecto = new ProyectoDAO();
+                List<Proyecto> listadoProyectos = null;
+                listadoProyectos = Proyecto.obtenerProyectoPorFiltro(1, 0, "SR");
+                listadoProyectos.Insert(0, new Models.Proyecto() { codPro = 0, nomPro = "-- Escoja el proyecto --" });
+
+                
+
+
+                parametros.ListadoProyecto = listadoProyectos;
+
+                return View(parametros);
+
+            }
+            else
+            {
+                // accion.Equals("Exportar a Excel")
+
+                string proyecto = formCollection["idProyecto"].ToString();
+                int idProyecto = int.Parse(proyecto);
+
+                List<Actividad> listadoActividades = null;
+                ActividadDAO Actividad = new ActividadDAO();
+
+                listadoActividades = Actividad.obtenerActividad2(idProyecto);
+
+                FileStream fs = new FileStream(AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "\\Content\\reports\\AsignarRecursosPlantilla.xls", FileMode.Open, FileAccess.Read);
+                HSSFWorkbook templateWorkbook = new HSSFWorkbook(fs, true);
+                HSSFSheet sheet = templateWorkbook.GetSheet("Actividades");
+
+                int indice = 1;
+
+                foreach (Actividad item in listadoActividades)
+                {
+                    sheet.GetRow(indice).GetCell(0).SetCellValue("" + item.corAct);
+                    sheet.GetRow(indice).GetCell(1).SetCellValue("" + item.desAct);
+                    sheet.GetRow(indice).GetCell(2).SetCellValue("" + item.descripcionEntregable);
+                    sheet.GetRow(indice).GetCell(3).SetCellValue("" + item.duracion);
+                    sheet.GetRow(indice).GetCell(4).SetCellValue("" + item.feciniAct);
+                    sheet.GetRow(indice).GetCell(5).SetCellValue("" + item.fecfinAct);
+                    sheet.GetRow(indice).GetCell(6).SetCellValue("" + item.estado);
+                    indice++;
+                }
+
+                MemoryStream ms = new MemoryStream();
+                templateWorkbook.Write(ms);
+
+                return File(ms.ToArray(), "application/vnd.ms-excel", "Asignar_Actividad_" + idProyecto);
+
+            }
+
+        }
+
+        //Muestra pantalla detalle para asignacion de recursos
+        [HttpGet]
+        public ActionResult DetalleAsignarRecursos(string codAct, string txtCodigo)
+        {
+
+            //Listado Actividades
+            List<Actividad> listadoActividades = null;
+            ActividadDAO Actividad = new ActividadDAO();
+            listadoActividades = Actividad.obtenerActividad(Convert.ToInt32(txtCodigo), Convert.ToInt32(codAct));
+
+            //Recursos por Cargo
+            List<Cargo> listadoCargo = null;
+            CargoDAO Cargo = new CargoDAO();
+            listadoCargo = Cargo.obtenerCargo();
+
+            //Recursos por Equipo
+            List<Recurso> listadoEquipos = null;
+            RecursoDAO Equipo = new RecursoDAO();
+            listadoEquipos = Equipo.obtenerRecurso(1);
+
+            //Recursos por Materiales
+            List<Recurso> listadoMateriales = null;
+            RecursoDAO Materiales = new RecursoDAO();
+            listadoMateriales = Materiales.obtenerRecurso(2);
+
+            //Recursos por Empleados
+            List<Recurso> listadoEmpleados = null;
+            RecursoDAO Empleados = new RecursoDAO();
+            listadoEmpleados = Empleados.obtenerRecurso(3);
+
+            //TABLA DE RECURSOS POR ACTIVIDAD
+            List<PlanRecursosActividad> listadoRecAct = null;
+            PlanRecursosActividadDAO recursosAct = new PlanRecursosActividadDAO();
+            listadoRecAct = recursosAct.obtenerPlanRecursosPorActividad(Convert.ToInt32(codAct));
+
+            //Adjuntamos listados en objeto formulario para ser llamado en la estimacion rapida
+            AsignarRecursoForm parametros = new AsignarRecursoForm();
+            parametros.ListadoActividad = listadoActividades;
+            parametros.ListadoCargo = listadoCargo;
+            parametros.ListadoEquipos = listadoEquipos;
+            parametros.ListadoMateriales = listadoMateriales;
+            parametros.ListadoEmpleados = listadoEmpleados;
+            parametros.ListadoRecursoActividad = listadoRecAct;
+            ViewData["tipoRecursos"] = "0";
+            ViewData["codProyIns"] = txtCodigo;
+            ViewData["codAct"] = codAct;
+
+            return View(parametros);       
+
+        }
+
+        //Muestra pantalla detalle para asignacion de recursos - post
+        [HttpPost]
+        public ActionResult DetalleAsignarRecursos(FormCollection formCollection)
+        {
+            int cantidad = int.Parse(formCollection["cantidad"]);
+            double horas = 8;
+
+
+            int codProyIns = int.Parse(formCollection["codProyIns"]);
+            int idActividad = int.Parse(formCollection["codAct"]);
+
+            int idRecurso = 0;
+
+            if (formCollection["selRecCargo"] != null)
+            {
+                idRecurso = int.Parse(formCollection["selRecCargo"]);
+            }
+
+
+            PlanRecursosActividadDAO objPlanRecursosActividadDAO = new PlanRecursosActividadDAO();
+
+            objPlanRecursosActividadDAO.RegistrarPlanRecursosPorActividad(idActividad, idRecurso, cantidad, horas);
+
+
+            return DetalleAsignarRecursos("" + idActividad, "" + codProyIns);
+
+            ////Listado Actividades
+            //List<Actividad> listadoActividades = null;
+            //ActividadDAO Actividad = new ActividadDAO();
+            //listadoActividades = Actividad.obtenerActividad(idActividad, codProyIns);
+
+            ////Recursos por Cargo
+            //List<Cargo> listadoCargo = null;
+            //CargoDAO Cargo = new CargoDAO();
+            //listadoCargo = Cargo.obtenerCargo();
+
+            ////Recursos por Equipo
+            //List<Recurso> listadoEquipos = null;
+            //RecursoDAO Equipo = new RecursoDAO();
+            //listadoEquipos = Equipo.obtenerRecurso(1);
+
+            ////Recursos por Materiales
+            //List<Recurso> listadoMateriales = null;
+            //RecursoDAO Materiales = new RecursoDAO();
+            //listadoMateriales = Materiales.obtenerRecurso(2);
+
+            ////Recursos por Empleados
+            //List<Recurso> listadoEmpleados = null;
+            //RecursoDAO Empleados = new RecursoDAO();
+            //listadoEmpleados = Empleados.obtenerRecurso(3);
+
+            ////TABLA DE RECURSOS POR ACTIVIDAD
+            //List<PlanRecursosActividad> listadoRecAct = null;
+            //PlanRecursosActividadDAO recursosAct = new PlanRecursosActividadDAO();
+            //listadoRecAct = recursosAct.obtenerPlanRecursosPorActividad(idActividad);
+
+            ////Adjuntamos listados en objeto formulario para ser llamado en la estimacion rapida
+            //AsignarRecursoForm parametros = new AsignarRecursoForm();
+            //parametros.ListadoActividad = listadoActividades;
+            //parametros.ListadoCargo = listadoCargo;
+            //parametros.ListadoEquipos = listadoEquipos;
+            //parametros.ListadoMateriales = listadoMateriales;
+            //parametros.ListadoEmpleados = listadoEmpleados;
+            //parametros.ListadoRecursoActividad = listadoRecAct;
+            //ViewData["tipoRecursos"] = "0";
+            //ViewData["codProyIns"] = codProyIns;
+            //ViewData["codAct"] = idActividad;
+
+
+            //return View(parametros);
+
+
+
+
+
+        }
+
+
+        public ActionResult EliminarPlanRecurso(int idActividad, int idProyecto, int idRecurso)
+        {
+            
+            PlanRecursosActividadDAO objPlanRecursosActividadDAO = new PlanRecursosActividadDAO();
+
+            objPlanRecursosActividadDAO.EliminarPlanRecursosPorActividad(idActividad, idRecurso);
+
+
+            return RedirectToAction("DetalleAsignarRecursos", new { codAct = idActividad, txtCodigo = idProyecto }); 
+            
+            //return DetalleAsignarRecursos("" + idActividad, "" + idProyecto);
+        }
+
+
+
+        //Muestra pantalla principal para informe de requerimientos
+        public ActionResult InformesReq()
         {
             return View();
         }
@@ -215,7 +492,7 @@ namespace DemoMVC.Controllers
             if (totReg > 0) {
                 //Si es que ya se agrego por planificación rápida, mostrar:
                 ActividadDAO actividadDAO = new ActividadDAO();
-                listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy));
+                listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy),0);
                 if (listadoActividadesTemp != null) totRegAct = listadoActividadesTemp.Count;                
             }            
 
@@ -238,7 +515,14 @@ namespace DemoMVC.Controllers
             String fechIniFin = formCollection["txtFecFinPro"].ToString();
             String accion = formCollection["txtAccion"].ToString();
             String message = "";
+
+
+            string nombreBoton = formCollection["submitButton"].ToString();
+
             int accionAct = Convert.ToInt32(accion);
+
+
+
             //List<Actividad> listadoActividades = new List<Actividad>();
             ActividadDAO actividadDAO = new ActividadDAO();
             Actividad actividad = new Actividad();
@@ -256,15 +540,17 @@ namespace DemoMVC.Controllers
             //if (totReg > 0)
             //{
                 //Si es que ya se agrego por planificación rápida, mostrar:
-            //    listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy));
+            //    listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy),0);
             //}            
 
             //Segun el tipo de accion, hace algunas cosas:
-            if (accionAct == 1)
+            if (nombreBoton.Equals("     1      "))
             {
                 //????                
             }
-            if (accionAct == 2)
+
+
+            if (nombreBoton.Equals("Guardar Cambios"))
             {
                 //Insertamos nuevo registro pero buscamos actividad ultima correlativa
                 int totRegCorr = 0;
@@ -291,6 +577,8 @@ namespace DemoMVC.Controllers
                     actividad.codAct = (totRegCorr + 1);
                     actividad.corAct = i;
                     actividad.codEnt = Convert.ToInt32(codEnt);
+
+
                     if (actividad.codEnt == 1) ViewData["entSel1"] = "selected";
                     if (actividad.codEnt == 2) ViewData["entSel2"] = "selected";
                     if (actividad.codEnt == 3) ViewData["entSel3"] = "selected";    
@@ -314,16 +602,24 @@ namespace DemoMVC.Controllers
                     //upd = actividadDAO.actualizarActividad(actividad);
                 };
                 listadoActividadesTemp = null;
-                listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy));
+                listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy),0);
                 message = "Se guardaron las actividades seleccionadas";
+
+                ViewData["Message"] = message;
+                ViewData["totReg"] = totReg;
+                ViewData["accion"] = "0";
+
+                return View(listadoActividadesTemp);
+
             }
-            if (accionAct == 3)
+
+            if (nombreBoton.Equals("    3       "))
             { 
                 //Eliminamos actividades
-
-
             }
-            if (accionAct == 4)
+
+            
+            if (nombreBoton.Equals("Crear Plan"))
             {
                 //Se da por finalizada la planificacion. Se graba el proyecto con status "SRE" (Planificado-actividades)
                 ProyectoDAO proyDAO = new ProyectoDAO();
@@ -332,9 +628,50 @@ namespace DemoMVC.Controllers
                 estatusProy = proyDAO.actualizarProyecto(Convert.ToInt32(codProy), "SR");
 
                 listadoActividadesTemp = null;
-                listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy));
+                listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy),0);
                 
                 message = "El Plan de Proyecto ha sido creado satisfactoriamente";
+
+                ViewData["Message"] = message;
+                ViewData["totReg"] = totReg;
+                ViewData["accion"] = "0";
+
+                return View(listadoActividadesTemp);
+
+            }
+            
+            if (nombreBoton.Equals("Exportar a Excel"))
+            {
+                int idProyecto = int.Parse(codProy);
+
+                List<Actividad> listadoActividades = null;
+                ActividadDAO Actividad = new ActividadDAO();
+
+                listadoActividades = Actividad.obtenerActividad(idProyecto, 0);
+                listadoActividadesTemp = listadoActividades;
+
+                FileStream fs = new FileStream(AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "\\Content\\reports\\AsignarActividadesPlantilla.xls", FileMode.Open, FileAccess.Read);
+                HSSFWorkbook templateWorkbook = new HSSFWorkbook(fs, true);
+                HSSFSheet sheet = templateWorkbook.GetSheet("Actividades");
+
+                int indice = 1;
+
+                foreach (Actividad item in listadoActividades)
+                {
+                    sheet.GetRow(indice).GetCell(0).SetCellValue("" + item.corAct);
+                    sheet.GetRow(indice).GetCell(1).SetCellValue("" + item.descripcionEntregable);
+                    sheet.GetRow(indice).GetCell(2).SetCellValue("" + item.desAct);
+                    sheet.GetRow(indice).GetCell(3).SetCellValue("" + item.feciniAct);
+                    sheet.GetRow(indice).GetCell(4).SetCellValue("" + item.fecfinAct);
+                    sheet.GetRow(indice).GetCell(5).SetCellValue("" + item.preAct);
+                    indice++;
+                }
+
+                MemoryStream ms = new MemoryStream();
+                templateWorkbook.Write(ms);
+
+                return File(ms.ToArray(), "application/vnd.ms-excel", "Asignar_Actividad_" + idProyecto);            
+
             }
 
             ViewData["Message"] = message;
