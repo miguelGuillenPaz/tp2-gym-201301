@@ -5,6 +5,31 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form runat="server">
+    
+     <script type="text/javascript">
+
+         function valida() {
+             var valor = $("#Text1").val();
+             if (valor > 3 || valor < 1) {
+                 alert("La prioridad debe estar indicada entre 1 y 3.");
+                 return false;
+             }
+             var val = false;
+             var chx = document.getElementsByTagName('input');
+             for (var i=0; i<chx.length; i++) {
+                if (chx[i].type == 'radio' && chx[i].checked) {
+                    val = true;
+                } 
+              }
+            if (!val) {
+                alert("Debe seleccionar un Asesor Legal.");
+                return false;
+              }
+             return true;
+         }
+
+     </script>
+    
     <section id="seccionReqLegal">
     <h1>Detalle del Requerimiento</h1>
     <% using (Html.BeginForm())
@@ -41,7 +66,7 @@
             <label for="Username">Prioridad:</label>
         </div>
         <div class="col6">
-            <input id="Text1" name="txtPrioridad" type="text" value=""/>
+            <input id="Text1" style="width:60px;" name="txtPrioridad" type="text" value=""/> &nbsp;<span style="font-size:12px;">(1: BAJA, 2: MEDIA, 3: ALTA)</span>
         </div>
         </div>
        <div id="editor-field">
@@ -65,7 +90,7 @@
     <% } %>
     </table>
     <div class="fila">
-     <p><input type="submit" value="Asignar"/></p>
+     <p><input type="submit" onclick="return valida();" value="Asignar"/></p>
     </div>
      </div>
     <% } %>

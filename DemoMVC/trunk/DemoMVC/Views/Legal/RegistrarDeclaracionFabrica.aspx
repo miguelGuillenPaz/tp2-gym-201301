@@ -17,7 +17,7 @@
         </div>
         <div class="fila">
             <div class="col2">
-                Descripcion
+                Descripción
             </div>
             <div class="col2 final">
                 <textarea id="txtDescripcion" name="txtDescripcion" cols="" rows=""></textarea>

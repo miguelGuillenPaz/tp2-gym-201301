@@ -21,12 +21,14 @@
 
         $("document").ready(function () {
             var bSuccess = '<%= Session["bInsertSuccess"] %>';
-            var bEsConfirmacion = '<%= Session["bEsConfirmacion"] %>';
-            if (bEsConfirmacion) {
+            //var bEsConfirmacion = '<%= Session["bEsConfirmacion"] %>';
+            //alert("bSuccess: " + bSuccess + " - bEsConfirmacion: " + bEsConfirmacion);
+            //if (bEsConfirmacion == true) {
+            /*alert("bSuccess: " + bSuccess);
                 if (bSuccess) {
                     alert("La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.");
-                }
-            }
+                }*/
+            //}
         });
 
     </script>

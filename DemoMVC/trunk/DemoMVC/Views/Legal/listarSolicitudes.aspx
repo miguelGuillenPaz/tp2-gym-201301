@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
     <section id="seccionReqLegal">
-    <h1>Listado de Requerimientos</h1>
+    <h1>Listado de Solicitudes</h1>
     <br />
     <% using (Html.BeginForm())
        { %>

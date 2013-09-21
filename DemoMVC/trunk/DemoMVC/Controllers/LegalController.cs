@@ -31,6 +31,9 @@ namespace DemoMVC.Controllers
 
         public ActionResult Registrar()
         {
+            Session.Clear();
+            bool sesion = Convert.ToBoolean(Session["bInsertSuccess"]);
+            Session["bInsertSuccess"] = false;
             Session["bEsConfirmacion"] = false;
 
             ProyectoDAO proye = new ProyectoDAO();
@@ -54,7 +57,6 @@ namespace DemoMVC.Controllers
 
         public ActionResult Confirmacion(int idPro, string desc, string arrVecinos)
         {
-            Session["bInsertSuccess"] = false;
             Session["bEsConfirmacion"] = true;
 
             //Insertar Req Legal CN
@@ -355,11 +357,20 @@ namespace DemoMVC.Controllers
                 {
                     txtCodPro = "0";
                 }
-                listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin),0);
 
-                if (listadoRequerimiento == null)
+                if (Convert.ToDateTime(txtFecIni).Date > Convert.ToDateTime(txtFecFin).Date)
                 {
-                    Utils.ShowMessage(ViewData, "No existen datos", Url.Action("listarRequerimientos", "Legal", new { id = 0 }));
+                    Utils.ShowMessage(ViewData, "El rango de fechas es incorrecto", Url.Action("listarRequerimientos", "Legal", new { id = 0 }));
+                }
+                else
+                {
+
+                    listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin), 0);
+
+                    if (listadoRequerimiento == null)
+                    {
+                        Utils.ShowMessage(ViewData, "No existen datos", Url.Action("listarRequerimientos", "Legal", new { id = 0 }));
+                    }
                 }
             }
             catch (Exception e)
@@ -407,6 +418,8 @@ namespace DemoMVC.Controllers
         //Plantilla Contratos
         public ActionResult RegistrarContratos()
         {
+            Session.Clear();
+            Session["bInsertSuccess"] = false;
             Session["bEsConfirmacion"] = false;
 
             ProyectoDAO proye = new ProyectoDAO();
@@ -581,7 +594,14 @@ namespace DemoMVC.Controllers
                     txtCodPro = "0";
                 }
 
-                listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin),Convert.ToInt16(txtUsuario));
+                if (Convert.ToDateTime(txtFecIni).Date > Convert.ToDateTime(txtFecFin).Date)
+                {
+                    Utils.ShowMessage(ViewData, "El rango de fechas es incorrecto", Url.Action("listarRequerimientos", "Legal", new { id = 0 }));
+                }
+                else
+                {
+                    listadoRequerimiento = proye.listarRequerimiento(Convert.ToInt16(txtCodSolicitud), Convert.ToInt16(txtCodPro), Convert.ToInt16(txtTipoReq), Convert.ToInt16(txtEstado), Convert.ToDateTime(txtFecIni), Convert.ToDateTime(txtFecFin), Convert.ToInt16(txtUsuario));
+                }
 
                 if (listadoRequerimiento == null)
                 {
@@ -683,7 +703,7 @@ namespace DemoMVC.Controllers
                         LegalRequerimiento legalReq = new LegalRequerimiento();
 
                         legalReq.idReqLegal = idReqLegal;
-                        legalReq.idAsesorLegal = 1;
+                        legalReq.idAsesorLegal = 3;
                         legalReq.cPrioridadAtencion = cPrioridadAtencion;
 
                         //foreach (var p in formCollection.AllKeys)

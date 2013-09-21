@@ -21,12 +21,12 @@
 
         $("document").ready(function () {
             var bSuccess = '<%= Session["bInsertSuccess"] %>';
-            var bEsConfirmacion = '<%= Session["bEsConfirmacion"] %>';
-            if (bEsConfirmacion) {
-                if (bSuccess) {
-                    alert("La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.");
-                }
-            }
+            //var bEsConfirmacion = '<%= Session["bEsConfirmacion"] %>';
+            //if (bEsConfirmacion == true) {
+            /*if (bSuccess) {
+                alert("La solicitud de su requerimiento legal ha sido registrada.\nEspere por su atención.");
+            }*/
+            //}
         });
 
     </script>
@@ -63,13 +63,13 @@
             <fieldset id="">
                 <legend>Datos de Contrato</legend>
                 <div class="fila">
-                    <div class="col3 paddingTop">Nombre del trabajador:</div>
+                    <div class="col3 paddingTop">Nombre del personal a contratar:</div>
                     <div class="col6"><input id="txtNombre" name="txtNombre" type="text" class="text1" /></div>
                     <div class="col2 paddingTop">Horario de trabajo:</div>
                     <div class="col5 final">de <input id="txtIniTrabajo" name="txtIniTrabajo" type="text" class="text0" /> a <input id="txtFinTrabajo" name="txtFinTrabajo" type="text" class="text0" /></div>
                 </div>
                 <div class="fila">
-                    <div class="col3 paddingTop">DNI del trabajador:</div>
+                    <div class="col3 paddingTop">DNI del personal a contratar:</div>
                     <div class="col6"><input id="txtDni" name="txtDni" type="text" class="text1" /></div>
                     <div class="col2 paddingTop">Horario de refrigerio:</div>
                     <div class="col5 final">de <input id="txtIniRefri" name="txtIniRefri" type="text" class="text0" /> a <input id="txtFinRefri" name="txtFinRefri" type="text" class="text0" /></div>
@@ -127,13 +127,13 @@
             <fieldset id="Fieldset2">
                 <legend>Datos de Contrato</legend>
                 <div class="fila">
-                    <div class="col3 paddingTop">Nombre del trabajador:</div>
+                    <div class="col3 paddingTop">Nombre del personal a contratar:</div>
                     <div class="col6"><input id="txtNombreMod" name="txtNombreMod" type="text" class="text1" /></div>
                     <div class="col3 paddingTop">Horario de trabajo:</div>
                     <div class="col5 final">de <input id="txtIniTrabajoMod" name="txtIniTrabajoMod" type="text" class="text0" /> a <input id="txtFinTrabajoMod" name="txtFinTrabajoMod" type="text" class="text0" /></div>
                 </div>
                 <div class="fila">
-                    <div class="col3 paddingTop">DNI del trabajador:</div>
+                    <div class="col3 paddingTop">DNI del personal a contratar:</div>
                     <div class="col6"><input id="txtDniMod" name="txtDniMod" type="text" maxlength="8" class="text1" /></div>
                     <div class="col3 paddingTop">Horario de refrigerio:</div>
                     <div class="col5 final">de <input id="txtIniRefriMod" name="txtIniRefriMod" type="text" class="text0" /> a <input id="txtFinRefriMod" name="txtFinRefriMod" type="text" class="text0" /></div>
