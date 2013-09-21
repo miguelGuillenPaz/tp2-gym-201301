@@ -12,12 +12,11 @@ namespace DemoMVC.Persistencia
     public class ActividadDAO
     {
 
-        //Listado de actividades
-        public List<Actividad> obtenerActividad(int codPlanPro)
+        public List<Actividad> obtenerActividad2(int codPlanPro)
         {
             List<Actividad> listadoAct = null;
             Actividad actividad = null;
-            string sql = "select * from dbo.GPP_Actividad where IdPlanProyecto=@codPlaPro";
+            string sql = "select IdActividad, Correlativo, a.Descripcion, e.Descripcion DescripcionEntregable, FechaInicio, FechaFin, Tipo from  GPP_Actividad a inner join GPP_Entregable e on a.IdEntregable = e.IdEntregable where IdPlanProyecto=@codPlaPro";
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
             {
@@ -41,10 +40,72 @@ namespace DemoMVC.Persistencia
                                     desAct = (string)resultado["Descripcion"],
                                     feciniAct = (string)resultado["FechaInicio"],
                                     fecfinAct = (string)resultado["FechaFin"],
+                                    //preAct = (string)resultado["Predecesor"],
+                                    tipAct = (string)resultado["Tipo"],
+                                    //codEnt = (int)resultado["IdEntregable"],
+                                    //codPlaPro = (int)resultado["IdPlanProyecto"], 
+                                    descripcionEntregable = (string)resultado["DescripcionEntregable"]
+
+                                };
+                                //Añadimos al listado
+                                listadoAct.Add(actividad);
+                            }
+                        }
+                        else
+                        {
+                            Debug.WriteLine("No retornó registros");
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return listadoAct;
+        }
+
+        //Listado de actividades
+        public List<Actividad> obtenerActividad(int codPlanPro, int codAct)
+        {
+            List<Actividad> listadoAct = null;
+            Actividad actividad = null;
+            string sql = "";
+            if (codAct != 0)
+            {
+                sql = "select a.*, e.Descripcion descripcionEntregable from dbo.GPP_Actividad a inner join GPP_Entregable e on a.IdEntregable = e.IdEntregable  where a.IdPlanProyecto=@codPlaPro and a.IdActividad=@codAct";
+            }
+            else {
+                sql = "select a.*, e.Descripcion descripcionEntregable from dbo.GPP_Actividad a inner join GPP_Entregable e on a.IdEntregable = e.IdEntregable  where a.IdPlanProyecto=@codPlaPro";
+            }
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand(sql, con))
+                {
+                    com.Parameters.Add(new SqlParameter("@codPlaPro", codPlanPro));
+                    if (codAct != 0) {
+                        com.Parameters.Add(new SqlParameter("@codAct", codAct));
+                    }
+                    using (SqlDataReader resultado = com.ExecuteReader())
+                    {
+                        if (resultado.HasRows)
+                        {
+                            //Obtenemos uno por uno
+                            listadoAct = new List<Actividad>();
+                            while (resultado.Read())
+                            {
+                                //Recorremos objeto por objeto y anadimos
+                                actividad = new Actividad
+                                {
+                                    codAct = (int)resultado["IdActividad"],
+                                    corAct = (int)resultado["Correlativo"],
+                                    desAct = (string)resultado["Descripcion"],
+                                    feciniAct = (string)resultado["FechaInicio"],
+                                    fecfinAct = (string)resultado["FechaFin"],
                                     preAct = (string)resultado["Predecesor"],
                                     tipAct = (string)resultado["Tipo"],
                                     codEnt = (int)resultado["IdEntregable"],
                                     codPlaPro = (int)resultado["IdPlanProyecto"],
+                                    descripcionEntregable = (string)resultado["descripcionEntregable"],
                                 };
                                 //Añadimos al listado
                                 listadoAct.Add(actividad);
