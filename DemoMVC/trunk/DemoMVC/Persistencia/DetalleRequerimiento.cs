@@ -12,6 +12,9 @@ namespace DemoMVC.Models
         }
         public int numero { get; set; }
 
+        public int idDetalleRequerimiento { get; set; }
+        
+
         public int codPro { get; set; }
         public int codReq { get; set; }
         public int codcorDetReq { get; set; }

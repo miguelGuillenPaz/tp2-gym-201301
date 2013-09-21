@@ -8,6 +8,34 @@ namespace DemoMVC.Persistencia
 {
     public class RequerimientoDAO
     {
+
+        public int Registrar(int proyecto, int tipoRecurso , string descripcion, int prioridad)
+        {
+            
+            string sql = "insert into GPP_Requerimiento (IdProyecto, DescripReq, PriReq, IdTipoRecurso, FechaReq, IdRequerimiento) values (@IdProyecto, @DescripReq, @PriReq, @IdTipoRecurso, @FechaReq, (select max(IdRequerimiento)+1 from GPP_Requerimiento) )";
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                try
+                {
+                    // @IdRecurso, @Cantidad, @Horas
+                    SqlCommand cmdIns = new SqlCommand(sql, con);
+                    cmdIns.Parameters.Add(new SqlParameter("@IdProyecto", proyecto));
+                    cmdIns.Parameters.Add(new SqlParameter("@DescripReq", descripcion));
+                    cmdIns.Parameters.Add(new SqlParameter("@PriReq", prioridad));
+                    cmdIns.Parameters.Add(new SqlParameter("@IdTipoRecurso", tipoRecurso));
+                    cmdIns.Parameters.Add(new SqlParameter("@FechaReq", DateTime.Now));
+                    con.Open();
+                    return cmdIns.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
+        }
+
         public List<TipoRequerimiento> ListarTipoRecurso()
         {
             List<TipoRequerimiento> listarTipoRecurso = null;
@@ -134,30 +162,33 @@ namespace DemoMVC.Persistencia
                     con.Close();
                 }
             }            
-            if (requerimiento != null)
-            {                
-                requerimiento.ListaDetalleRequerimiento = ListarDetalleRequerimiento(id);          
-            }
+            //if (requerimiento != null)
+            //{                
+            //    requerimiento.ListaDetalleRequerimiento = ListarDetalleRequerimiento(id);          
+            //}
             return requerimiento;
         }
 
-        private static List<DetalleRequerimiento> ListarDetalleRequerimiento(int id)
+
+        public List<DetalleRequerimiento> ListarDetalleRequerimiento(int id)
         {
             List<DetalleRequerimiento> listarDetalleRequerimiento = null;
-            const string sql = "select d.IdCorDetReq,d.DesServicio,d.IdUnidadMedida,u.AbrviaUMedi,d.CanDetReq,d.IdTipoServicio,t.DescripTServicio " +
-                               "from GPP_DetalleRequerimiento d inner join " +
-                               "GSC_UnidadMedida u on d.IdUnidadMedida=u.IdUnidadMedida " +
-                               "inner join GSC_TipoServicio t on d.IdTipoServicio=t.IdTipoServicio " +
-                               "where d.IdRequerimiento=@id";                               
-
+            //const string sql = "select d.IdCorDetReq,d.DesServicio,d.IdUnidadMedida,u.AbrviaUMedi,d.CanDetReq,d.IdTipoServicio,t.DescripTServicio " +
+            //                   "from GPP_DetalleRequerimiento d inner join " +
+            //                   "GSC_UnidadMedida u on d.IdUnidadMedida=u.IdUnidadMedida " +
+            //                   "inner join GSC_TipoServicio t on d.IdTipoServicio=t.IdTipoServicio " +
+            //                   "where d.IdRequerimiento=@id";
+            
+            string sql = "select dr.idDetalleRequerimiento, dr.Cantidad, dr.idEmpleado, dr.idRequerimientoPlanProy, dr.IdRecurso, r.Descripcion from GPP_DetalleRequerimiento dr inner join GPP_Recurso r on dr.IdRecurso = r.IdRecurso where idRequerimientoPlanProy = @idRequerimientoPlanProy";
+            
             using (var con = new SqlConnection(ConexionUtil.Cadena))
             {
                 con.Open();
                 using (var com = new SqlCommand(sql, con))
                 {
-                    com.Parameters.Add(new SqlParameter("@id", id));    
+                    com.Parameters.Add(new SqlParameter("@idRequerimientoPlanProy", id));
                     using (var resultado = com.ExecuteReader())
-                    {                        
+                    {
                         if (resultado.HasRows)
                         {
                             //Obtenemos uno por uno
@@ -166,14 +197,11 @@ namespace DemoMVC.Persistencia
                             {
                                 //Recorremos objeto por objeto y anadimos
                                 var detalleRequerimiento = new DetalleRequerimiento
-                                {                                    
-                                    codcorDetReq = (int)resultado["IdCorDetReq"],
-                                    desReq = resultado["DesServicio"].ToString(),
-                                    codUM = (int)resultado["IdUnidadMedida"],
-                                    descUM = resultado["AbrviaUMedi"].ToString(),
-                                    canDetReq = (int)resultado["CanDetReq"],
-                                    codTipoServ = (int)resultado["IdTipoServicio"],
-                                    descTipoServ = resultado["DescripTServicio"].ToString()
+                                {
+                                    idDetalleRequerimiento = (int)resultado["idDetalleRequerimiento"],
+                                    canDetReq = (int)resultado["Cantidad"],
+                                    desServicio = (string)resultado["Descripcion"],
+
                                 };
                                 listarDetalleRequerimiento.Add(detalleRequerimiento);
                             }
@@ -188,5 +216,7 @@ namespace DemoMVC.Persistencia
             }
             return listarDetalleRequerimiento;
         }
+
+
     }
 }

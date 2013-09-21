@@ -50,14 +50,14 @@ namespace DemoMVC.Persistencia
                 sql = sql + "inner join dbo.GPP_TipoProyecto tipProy on tipProy.IdTipoProyecto = proy.IdTipoProyecto ";
                 sql = sql + "inner join dbo.GPP_Presupuesto preProy on preProy.IdProyecto = proy.IdProyecto ";
                 sql = sql + "inner join dbo.GPP_Ubigeo ubigeo on ubigeo.IdUbigeo = proy.IdUbigeo ";
-                sql = sql + "where proy.IdProyecto=@codPro";
+                sql = sql + "where proy.IdProyecto=@codPro order by proy.IdProyecto";
             }
             if (tipoFiltro == 1) {
                 sql = "select proy.*, tipProy.NombreTipoProy, preProy.ImporteTotal, ubigeo.NombreDep, ubigeo.NombreProv, ubigeo.NombreDist from dbo.GPP_Proyecto proy ";
                 sql = sql + "inner join dbo.GPP_TipoProyecto tipProy on tipProy.IdTipoProyecto = proy.IdTipoProyecto ";
                 sql = sql + "inner join dbo.GPP_Presupuesto preProy on preProy.IdProyecto = proy.IdProyecto ";
                 sql = sql + "inner join dbo.GPP_Ubigeo ubigeo on ubigeo.IdUbigeo = proy.IdUbigeo ";
-                sql = sql + "where proy.Estado=@estPro";
+                sql = sql + "where proy.Estado=@estPro order by proy.IdProyecto";
             }
             if (tipoFiltro == 2) 
             {
@@ -65,7 +65,7 @@ namespace DemoMVC.Persistencia
                 sql = sql + "inner join dbo.GPP_TipoProyecto tipProy on tipProy.IdTipoProyecto = proy.IdTipoProyecto ";
                 sql = sql + "inner join dbo.GPP_Presupuesto preProy on preProy.IdProyecto = proy.IdProyecto ";
                 sql = sql + "inner join dbo.GPP_Ubigeo ubigeo on ubigeo.IdUbigeo = proy.IdUbigeo ";
-                sql = sql + "where proy.IdProyecto=@codPro and proy.Estado=@estPro";
+                sql = sql + "where proy.IdProyecto=@codPro and proy.Estado=@estPro order by proy.IdProyecto";
             } 
 
             using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena)) {

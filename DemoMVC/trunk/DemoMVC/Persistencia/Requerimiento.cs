@@ -21,9 +21,9 @@ namespace DemoMVC.Models
         public DateTime? fecha { get; set; }
         public Int16 idEstado { get; set; }
         public string desEstado { get; set; }
-        public  Estado estado { get; set; }
-        public TipoRequerimiento tipoRequerimiento{ get; set; }
-        public Proyecto Proyecto { get; set; }
-        public List<DetalleRequerimiento> ListaDetalleRequerimiento { get; set; }
+        //public Estado estado { get; set; }
+        //public TipoRequerimiento tipoRequerimiento{ get; set; }
+        //public Proyecto Proyecto { get; set; }
+        //public List<DetalleRequerimiento> ListaDetalleRequerimiento { get; set; }
     }
 }
