@@ -76,7 +76,8 @@
                                         </td>
                                         <td style="text-align: center;">
                                             <%= Html.ActionLink("Editar","Editar", new { id = requerimiento.idReq }, new{@class="button"})%>
-                                            | <a class="eliminar button" href="javascript:;">Eliminar</a>
+                                           |<%= Html.ActionLink("Eliminar", "Eliminar", new { id = requerimiento.idReq }, new { onclick = "return confirm('¿Desea eliminar este requerimiento?');", @class = "button" } )%>
+
                                         </td>
                                     </tr>
                                     <%

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Title" Language="C#" Inherits="System.Web.Mvc.ViewPage<DemoMVC.Models.Requerimiento>"
+﻿<%@ Page Title="Title" Language="C#" Inherits="System.Web.Mvc.ViewPage<DemoMVC.Models.RequerimientoForm>"
     MasterPageFile="~/Views/Shared/Site.Master" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -162,8 +162,8 @@
                     <div class="noticia">
                         <div class="head-noticia">
                             <span class="titulo-noticia">Requerimiento:
-                                <%= Model.idReq %></span>
-                                <%= Html.HiddenFor(m=> m.idReq) %>
+                                <%= Model.Requerimiento.idReq %></span>
+                                <%= Html.HiddenFor(m => m.Requerimiento.idReq)%>
                         </div>
                         <div class="texto-noticia">
                             <table id="tblHead">
@@ -175,7 +175,9 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DropDownListFor(m => m.idProyecto, (IEnumerable<SelectListItem>)ViewData["Proyecto"])%>
+                                                                               
+                                        <%: Html.DropDownList("proyecto", Model.ListadoProyectos, new { style = "width:300px" })%>    
+
                                     </td>
                                     <td>
                                     </td>
@@ -186,7 +188,11 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DropDownListFor(m => m.prioridad, (IEnumerable<SelectListItem>)ViewData["Prioridad"])%>
+                                        <select id='prioridad' name='prioridad'>
+                                            <option value='1'>Alta</option>
+                                            <option value='2'>Media</option>
+                                            <option value='3'>Baja</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -197,7 +203,7 @@
                                         :
                                     </td>
                                     <td colspan="5">
-                                        <%= Html.TextBoxFor(m => m.descripcion)%>
+                                        <%= Html.TextBoxFor(m => m.Requerimiento.descripcion)%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -208,7 +214,7 @@
                                         :
                                     </td>
                                     <td>
-                                        <input id="fecha" type="date" value="<%= Model.fecha.ToString().Substring(6, 4) + "-" + Model.fecha.ToString().Substring(3, 2) + "-" + Model.fecha.ToString().Substring(0, 2)%>" />
+                                        <input id="fecha" type="date" value="" />
                                     </td>
                                     <td>
                                     </td>
@@ -219,7 +225,11 @@
                                         :
                                     </td>
                                     <td>
-                                        <%= Html.DropDownListFor(m => m.idTipoRequerimiento, (IEnumerable<SelectListItem>)ViewData["TipoRecurso"])%>
+                                        <select id='tipoRecurso' name='tipoRecurso'>
+                                                <option value='3'>Empleados</option>
+                                                <option value='2'>Materiales</option>
+                                                <option value='1'>Maquinarias</option>
+                                        </select>
                                     </td>
                                 </tr>
                             </table>
@@ -235,10 +245,7 @@
                                         </th>
                                         <th>
                                             Descripción
-                                        </th>
-                                        <th>
-                                            IdUM
-                                        </th>
+                                        </th>                                        
                                         <th>
                                             Unidad Medida
                                         </th>
@@ -257,15 +264,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% if (Model.ListaDetalleRequerimiento != null)
+                                    <% if (Model.ListadoDetalleRequerimiento != null)
                                        {
-                                           foreach (var requerimiento in Model.ListaDetalleRequerimiento)
+                                           foreach (var requerimiento in Model.ListadoDetalleRequerimiento)
                                            {
                                     %>
                                     <tr>
-                                        <td><%= requerimiento.codcorDetReq %></td>
-                                        <td><%= requerimiento.desReq %></td>
-                                        <td><%= requerimiento.codUM %></td>
+                                        <td><%= requerimiento.idDetalleRequerimiento%></td>
+                                        <td><%= requerimiento.desServicio%></td>                                        
                                         <td><%= requerimiento.descUM %></td>
                                         <td><%= requerimiento.canDetReq %></td>
                                         <td><%= requerimiento.codTipoServ %></td>
@@ -311,7 +317,7 @@
                         :
                     </td>
                     <td>
-                        <%= Html.DropDownList("idUnidadMedida", (IEnumerable<SelectListItem>)ViewData["UnidadMedida"], new{@class="required"})%>
+                        <%: Html.DropDownList("idUnidadMedida", Model.ListadoProyectos, new { style = "width:300px" })%>
                     </td>
                 </tr>
                 <tr>
@@ -333,7 +339,7 @@
                         :
                     </td>
                     <td>
-                        <%= Html.DropDownList("idTipoServicio", (IEnumerable<SelectListItem>)ViewData["TipoServicio"], new { @class = "required" })%>
+                        <%: Html.DropDownList("tipoServicio", Model.ListadoProyectos, new { style = "width:300px" })%>
                     </td>
                 </tr>
             </tbody>
