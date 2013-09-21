@@ -25,20 +25,80 @@ namespace DemoMVC.Controllers
 
         public ActionResult Crear()
         {
-            return View();
+
+            RequerimientoCrearForm parametros = new RequerimientoCrearForm();
+
+            ProyectoDAO Proyecto = new ProyectoDAO();
+            List<Proyecto> listadoProyectos = null;
+            listadoProyectos = Proyecto.obtenerProyectoPorFiltro(1, 0, "SR");
+
+            parametros.ListaProyectos = new SelectList(listadoProyectos, "codPro", "nomPro");
+            parametros.Fecha = DateTime.Now.ToString("dd/MM/yyyy");
+
+            //<%: Html.DropDownList("prioridad", Model.ListadoProyectos, new { style = "width:300px" })%>    
+
+
+
+            return View(parametros);
         }
+
+
+        [HttpPost]
+        public ActionResult Crear(FormCollection form)
+        {
+
+            string proyecto = form["selProy"];
+            string tipoRecurso = form["SelRec"];
+            string prioridad = form["SelPrioridad"];
+            string descripcion = form["txtDes"];
+
+            RequerimientoDAO objRequerimientoDAO = new RequerimientoDAO();
+            objRequerimientoDAO.Registrar(int.Parse(proyecto), int.Parse(tipoRecurso), descripcion, int.Parse(prioridad));
+
+            //ProyectoDAO Proyecto = new ProyectoDAO();
+            //List<Proyecto> listadoProyectos = null;
+            //listadoProyectos = Proyecto.obtenerProyectoPorFiltro(1, 0, "SR");
+
+            //parametros.ListaProyectos = new SelectList(listadoProyectos, "codPro", "nomPro");
+            //parametros.Fecha = DateTime.Now.ToString("dd/MM/yyyy");
+
+            ////<%: Html.DropDownList("prioridad", Model.ListadoProyectos, new { style = "width:300px" })%>    
+
+            
+
+            return RedirectToAction("Index");
+        }
+
 
         public ActionResult Editar(int id)
         {
-            ViewData["Proyecto"] = Proyecto();
-            ViewData["TipoRecurso"] = TipoRecurso();
-            ViewData["Prioridad"] = Prioridad();
-            ViewData["UnidadMedida"] = UnidadMedida();
-            ViewData["TipoServicio"] = TipoServicio();
-            Requerimiento requerimiento = null;
-            var requerimientoDAO = new RequerimientoDAO();
-            requerimiento = requerimientoDAO.ObtenerRequerimiento(id);
-            return View(requerimiento);
+            //ViewData["Proyecto"] = Proyecto();
+            //ViewData["TipoRecurso"] = TipoRecurso();
+            //ViewData["Prioridad"] = Prioridad();
+            //ViewData["UnidadMedida"] = UnidadMedida();
+            //ViewData["TipoServicio"] = TipoServicio();
+                        
+            RequerimientoForm parametros = new RequerimientoForm();
+
+            RequerimientoDAO requerimientoDAO = new RequerimientoDAO();
+
+            Requerimiento objRequerimiento = null;
+            objRequerimiento = requerimientoDAO.ObtenerRequerimiento(id);
+            parametros.Requerimiento = objRequerimiento;
+            
+            ProyectoDAO Proyecto = new ProyectoDAO();
+            IList<Proyecto> proyectos = Proyecto.obtenerProyectoPorFiltro(1, 0, "SR");
+            SelectList listadoDeProyectos = new SelectList(proyectos, "codPro", "nomPro", objRequerimiento.idProyecto);
+
+            parametros.ListadoProyectos = listadoDeProyectos;
+
+
+
+            parametros.ListadoDetalleRequerimiento = requerimientoDAO.ListarDetalleRequerimiento(id);
+
+
+
+            return View(parametros);
         }
 
         public ViewResult ObtenerDeSolicitud(FormCollection collection, int codSolCotizacion = 0)
