@@ -4,8 +4,24 @@
 	EstimadoRapido
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+<asp:Content ID="ContentPlan" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                var textoNoticia = $('.head-noticia').next();
+                if (textoNoticia.hasClass('texto-noticia')) {
+                    if (textoNoticia.css('display') == 'none') {
+                        textoNoticia.slideDown();
+                    }
+                    else {
+                        textoNoticia.slideUp();
+                    }
+                }
+            } catch (ex) {
+            }
+        });
+    </script>
+    <div class="contenido-top">
     <h2>Planificación de Proyectos > Estimación Rápida</h2>
      <p>
        Por favor, seleccione un tipo de consulta (Planes de Proyecto Histórico) para la estimación: PROY<b><%: ViewData["codProy"]%></b>
@@ -118,6 +134,7 @@
                 <center><h2><%: ViewData["msgErr"] %></h2></center>
            </fieldset>
       <% } %>	    
+      </div>
 
     <SCRIPT language=Javascript>
         //Funcion que permite validar que solo se ingresen numeros

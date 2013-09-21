@@ -4,8 +4,24 @@
 	DetallePlanHistorico
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+<asp:Content ID="ContentPlan" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                var textoNoticia = $('.head-noticia').next();
+                if (textoNoticia.hasClass('texto-noticia')) {
+                    if (textoNoticia.css('display') == 'none') {
+                        textoNoticia.slideDown();
+                    }
+                    else {
+                        textoNoticia.slideUp();
+                    }
+                }
+            } catch (ex) {
+            }
+        });
+    </script>
+    <div class="contenido-top">
     <h2>Planificación de Proyectos > Detalle Plan Historico</h2>
     <hr/>
     <p>
@@ -83,6 +99,7 @@
         <input type="submit" value="Asignar a Proyecto Actual" />
          &nbsp;<%: Html.ActionLink("Regresar a Proyecto Actual", "CrearPlan", "Planificacion", new { codProy = ViewData["codProy"] },null)%>
         <br/><br/><center><b><%: ViewData["msg"]%></b></center><br/>
+    </div>
     </div>
     <% } %>	 
 </asp:Content>

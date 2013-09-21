@@ -4,7 +4,24 @@
 	IngresoActividades
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="ContentPlan" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                var textoNoticia = $('.head-noticia').next();
+                if (textoNoticia.hasClass('texto-noticia')) {
+                    if (textoNoticia.css('display') == 'none') {
+                        textoNoticia.slideDown();
+                    }
+                    else {
+                        textoNoticia.slideUp();
+                    }
+                }
+            } catch (ex) {
+            }
+        });
+    </script>
+    <div class="contenido-top">
     <h2>Planificación de Proyectos > Nuevo Plan de Proyecto (Actividades)</h2>
     <p>
         Cree un nuevo Cronograma para el Plan de Proyecto en base a Actividades - PROY<%: ViewData["codProy"]%>:
@@ -72,11 +89,22 @@
             </fieldset>
             <center><b><%: ViewData["Message"] %></b></center>
     <br>
+
+    <!-- 
     <input type="button" value="Adicionar Actividad" onclick="javascript:fAccion(1)" />&nbsp;&nbsp;
     <input type="button" value="Guardar Cambios" onclick="javascript:fAccion(2)" />&nbsp;&nbsp;
     <input type="button" value="Crear Plan" onclick="javascript:fAccion(4)" />&nbsp;&nbsp;
-    <input type="button" value="Exportar a Excel" />&nbsp;&nbsp;
+    <input type="button" value="Exportar a Excel" onclick="javascript:fAccion(5)" />&nbsp;&nbsp;
+    -->
+
+    <input type="submit" name="submitButton" value="Adicionar Actividad" />&nbsp;&nbsp;
+    <input type="submit" name="submitButton" value="Guardar Cambios" />&nbsp;&nbsp;
+    <input type="submit" name="submitButton" value="Crear Plan"  />&nbsp;&nbsp;
+    <input type="submit" name="submitButton" value="Exportar a Excel" />&nbsp;&nbsp;
+
+
     <% } %>	    
+    </div>
     <script type='text/javascript'>
 
         function fAccion(nroAccion) {
@@ -106,9 +134,7 @@
                     alert("En estos momentos no se puede exportar a Excel pues no hay actividades a ingresar al archivo");
                 }
                 else {
-                    alert("Coming soon");
-                    //document.getElementById("txtAccion").value = nroAccion;
-                    //document.forms[0].submit();                
+                    document.forms[0].submit();                
                 }
             }
             
