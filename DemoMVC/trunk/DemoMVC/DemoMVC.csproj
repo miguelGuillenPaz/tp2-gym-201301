@@ -280,7 +280,10 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\style_ie.css" />
     <Content Include="Content\webticker.css" />
+    <Content Include="dll\BouncyCastle.Crypto.dll" />
+    <Content Include="dll\DotNetOpenId.dll" />
     <Content Include="dll\Ninject.dll" />
+    <Content Include="dll\ViafirmaClientDotNet.dll" />
     <Content Include="Global.asax" />
     <Content Include="Images\arrow2.png" />
     <Content Include="Images\background\static_80_anios.jpg" />
