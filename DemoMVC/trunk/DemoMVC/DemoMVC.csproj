@@ -46,6 +46,30 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="NPOI, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.DDF, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\NPOI.DDF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.HPSF, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\NPOI.HPSF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.HSSF, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\NPOI.HSSF.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.POIFS, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\NPOI.POIFS.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.Util, Version=1.2.2.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\NPOI.Util.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -125,6 +149,8 @@
     <Compile Include="Models\ActividadHist.cs" />
     <Compile Include="Models\ActividadModel.cs" />
     <Compile Include="Models\AsesorLegal.cs" />
+    <Compile Include="Models\AsignarRecursoForm.cs" />
+    <Compile Include="Models\Cargo.cs" />
     <Compile Include="Models\CategoriaModel.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\CronogramaModel.cs" />
@@ -163,6 +189,7 @@
     <Compile Include="Models\PartidasModel.cs" />
     <Compile Include="Models\PlanProyecto.cs" />
     <Compile Include="Models\PlanProyectoHist.cs" />
+    <Compile Include="Models\PlanRecursosActividad.cs" />
     <Compile Include="Models\PMP_Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,6 +201,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\ProyectoHist.cs" />
+    <Compile Include="Models\Recurso.cs" />
+    <Compile Include="Models\RequerimientoCrearForm.cs" />
+    <Compile Include="Models\RequerimientoForm.cs" />
     <Compile Include="Models\S10_DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -186,6 +216,7 @@
     <Compile Include="Parameters\EstadosParameters.cs" />
     <Compile Include="Persistencia\ActividadDAO.cs" />
     <Compile Include="Persistencia\ActividadHistDAO.cs" />
+    <Compile Include="Persistencia\CargoDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\DetallePresupuestoDAO.cs" />
     <Compile Include="Persistencia\DetalleRequerimiento.cs" />
@@ -197,8 +228,10 @@
     <Compile Include="Persistencia\LegalVecinoColindante.cs" />
     <Compile Include="Persistencia\PlanProyectoDAO.cs" />
     <Compile Include="Persistencia\PlanProyectoHistDAO.cs" />
+    <Compile Include="Persistencia\PlanRecursosActividadDAO.cs" />
     <Compile Include="Persistencia\PresupuestoDAO.cs" />
     <Compile Include="Persistencia\ProyectoDAO.cs" />
+    <Compile Include="Persistencia\RecursoDAO.cs" />
     <Compile Include="Persistencia\Requerimiento.cs" />
     <Compile Include="Persistencia\RequerimientoDAO.cs" />
     <Compile Include="Persistencia\TipoProyectoDAO.cs" />
@@ -283,6 +316,12 @@
     <Content Include="dll\BouncyCastle.Crypto.dll" />
     <Content Include="dll\DotNetOpenId.dll" />
     <Content Include="dll\Ninject.dll" />
+    <Content Include="dll\NPOI.DDF.dll" />
+    <Content Include="dll\NPOI.dll" />
+    <Content Include="dll\NPOI.HPSF.dll" />
+    <Content Include="dll\NPOI.HSSF.dll" />
+    <Content Include="dll\NPOI.POIFS.dll" />
+    <Content Include="dll\NPOI.Util.dll" />
     <Content Include="dll\ViafirmaClientDotNet.dll" />
     <Content Include="Global.asax" />
     <Content Include="Images\arrow2.png" />
