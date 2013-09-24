@@ -56,7 +56,7 @@
           <tr>         
           <td><div class="editor-label"><%: Html.LabelFor(m=>m.Ubicacion) %> <span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
           <td><div class="editor-field"><%: Html.TextBoxFor(m => m.Ubicacion, new { style = "width:200px;height:20px" })%></div></td>
-          <td><div class="editor-label"><label for="IdArea">Area</label><span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
+          <td><div class="editor-label"><label for="IdArea">Área</label><span style="font-size:8px; color:Red; vertical-align:top; line-height:15px;">(*)</span></div></td>
           <td><div class="editor-field"><%: Html.DropDownListFor(m => m.IdArea, new SelectList((IEnumerable<GRH_Area>)ViewData["Area"], "IdArea", "Descripcion"), "-- Seleccionar --")%></div></td>
           </tr>          
           <tr>         
@@ -125,12 +125,12 @@
             <input class="button" type="button" value="Cancelar" id="btnCancelar"/>
             
         </p>
-        <br />
+<%--        <br />
      <p>
                                         <strong>Tipo de documento:</strong> Archivo PDF<br />                                    
                                         <strong>Id de firma:</strong>
                                     </p>
-                                    </fieldset>
+                                    </fieldset>--%>
   </div>
 <%} %>
 <% using (Html.BeginForm("Delete", "Contenidos",new {id=(Model==null?0:Model.IdDocumento)}, FormMethod.Post,new {id="deleteForm"}))

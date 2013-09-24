@@ -8,24 +8,28 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
+[assembly: EdmRelationshipAttribute("GD_Model", "FK_Accesos_Documento", "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Documento), "GD_DocumentoPerfilAcceso", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_DocumentoPerfilAcceso), true)]
+[assembly: EdmRelationshipAttribute("GD_Model", "FK_Documento_Estado", "GD_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Estado), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
+[assembly: EdmRelationshipAttribute("GD_Model", "FK_Documento_Proyecto", "GPP_Proyecto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPP_Proyecto), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
+[assembly: EdmRelationshipAttribute("GD_Model", "FK_Documento_TipoDocumento", "GD_TipoDocumento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_TipoDocumento), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_Documento_GD_Estado", "GD_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Estado), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_TipoDocumento), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
+[assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPP_Proyecto), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_DocumentoHistorial_GD_Documento1", "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Documento), "GD_DocumentoHistorial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_DocumentoHistorial), true)]
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Documento), "GD_DocumentoPerfilAcceso", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_DocumentoPerfilAcceso), true)]
+[assembly: EdmRelationshipAttribute("GD_Model", "FK_HistorialDocumento_Documento", "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Documento), "GD_DocumentoHistorial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_DocumentoHistorial), true)]
 [assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_DocumentoHistorial_GD_Estado", "GD_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Estado), "GD_DocumentoHistorial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_DocumentoHistorial), true)]
-[assembly: EdmRelationshipAttribute("GD_Model", "FK_Documento_Proyecto", "GPP_Proyecto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPP_Proyecto), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
-[assembly: EdmRelationshipAttribute("GD_Model", "FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DemoMVC.Models.GPP_Proyecto), "GD_Documento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_Documento), true)]
+[assembly: EdmRelationshipAttribute("GD_Model", "FK_HistorialDocumento_Estado", "GD_Estado", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DemoMVC.Models.GD_Estado), "GD_DocumentoHistorial", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DemoMVC.Models.GD_DocumentoHistorial), true)]
 
 #endregion
 
@@ -174,7 +178,6 @@ namespace DemoMVC.Models
         private ObjectSet<GPP_Proyecto> _GPP_Proyecto;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -226,11 +229,11 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -267,7 +270,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -586,7 +588,6 @@ namespace DemoMVC.Models
         partial void OnClaveChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -596,16 +597,38 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GD_Estado", "GD_Estado")]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_Accesos_Documento", "GD_DocumentoPerfilAcceso")]
+        public EntityCollection<GD_DocumentoPerfilAcceso> GD_DocumentoPerfilAcceso
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_DocumentoPerfilAcceso>("GD_Model.FK_Accesos_Documento", "GD_DocumentoPerfilAcceso");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_DocumentoPerfilAcceso>("GD_Model.FK_Accesos_Documento", "GD_DocumentoPerfilAcceso", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_Documento_Estado", "GD_Estado")]
         public GD_Estado GD_Estado
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_GD_Documento_GD_Estado", "GD_Estado").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_Documento_Estado", "GD_Estado").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_GD_Documento_GD_Estado", "GD_Estado").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_Documento_Estado", "GD_Estado").Value = value;
             }
         }
         /// <summary>
@@ -617,95 +640,13 @@ namespace DemoMVC.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_GD_Documento_GD_Estado", "GD_Estado");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_Documento_Estado", "GD_Estado");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GD_Estado>("GD_Model.FK_GD_Documento_GD_Estado", "GD_Estado", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento")]
-        public GD_TipoDocumento GD_TipoDocumento
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_TipoDocumento>("GD_Model.FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_TipoDocumento>("GD_Model.FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<GD_TipoDocumento> GD_TipoDocumentoReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_TipoDocumento>("GD_Model.FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GD_TipoDocumento>("GD_Model.FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_DocumentoHistorial_GD_Documento1", "GD_DocumentoHistorial")]
-        public EntityCollection<GD_DocumentoHistorial> GD_DocumentoHistorial
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_DocumentoHistorial>("GD_Model.FK_GD_DocumentoHistorial_GD_Documento1", "GD_DocumentoHistorial");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_DocumentoHistorial>("GD_Model.FK_GD_DocumentoHistorial_GD_Documento1", "GD_DocumentoHistorial", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_DocumentoPerfilAcceso")]
-        public EntityCollection<GD_DocumentoPerfilAcceso> GD_DocumentoPerfilAcceso
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_DocumentoPerfilAcceso>("GD_Model.FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_DocumentoPerfilAcceso");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_DocumentoPerfilAcceso>("GD_Model.FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_DocumentoPerfilAcceso", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GD_Estado>("GD_Model.FK_Documento_Estado", "GD_Estado", value);
                 }
             }
         }
@@ -754,6 +695,120 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_Documento_TipoDocumento", "GD_TipoDocumento")]
+        public GD_TipoDocumento GD_TipoDocumento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_TipoDocumento>("GD_Model.FK_Documento_TipoDocumento", "GD_TipoDocumento").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_TipoDocumento>("GD_Model.FK_Documento_TipoDocumento", "GD_TipoDocumento").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GD_TipoDocumento> GD_TipoDocumentoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_TipoDocumento>("GD_Model.FK_Documento_TipoDocumento", "GD_TipoDocumento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GD_TipoDocumento>("GD_Model.FK_Documento_TipoDocumento", "GD_TipoDocumento", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GD_Estado", "GD_Estado")]
+        public GD_Estado GD_Estado1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_GD_Documento_GD_Estado", "GD_Estado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_GD_Documento_GD_Estado", "GD_Estado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GD_Estado> GD_Estado1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_GD_Documento_GD_Estado", "GD_Estado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GD_Estado>("GD_Model.FK_GD_Documento_GD_Estado", "GD_Estado", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento")]
+        public GD_TipoDocumento GD_TipoDocumento1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_TipoDocumento>("GD_Model.FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_TipoDocumento>("GD_Model.FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GD_TipoDocumento> GD_TipoDocumento1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_TipoDocumento>("GD_Model.FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GD_TipoDocumento>("GD_Model.FK_GD_Documento_GD_TipoDocumento", "GD_TipoDocumento", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GPP_Proyecto", "GPP_Proyecto")]
         public GPP_Proyecto GPP_Proyecto1
         {
@@ -785,9 +840,74 @@ namespace DemoMVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_DocumentoHistorial_GD_Documento1", "GD_DocumentoHistorial")]
+        public EntityCollection<GD_DocumentoHistorial> GD_DocumentoHistorial
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_DocumentoHistorial>("GD_Model.FK_GD_DocumentoHistorial_GD_Documento1", "GD_DocumentoHistorial");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_DocumentoHistorial>("GD_Model.FK_GD_DocumentoHistorial_GD_Documento1", "GD_DocumentoHistorial", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_DocumentoPerfilAcceso")]
+        public EntityCollection<GD_DocumentoPerfilAcceso> GD_DocumentoPerfilAcceso1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_DocumentoPerfilAcceso>("GD_Model.FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_DocumentoPerfilAcceso");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_DocumentoPerfilAcceso>("GD_Model.FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_DocumentoPerfilAcceso", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_HistorialDocumento_Documento", "GD_DocumentoHistorial")]
+        public EntityCollection<GD_DocumentoHistorial> GD_DocumentoHistorial1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_DocumentoHistorial>("GD_Model.FK_HistorialDocumento_Documento", "GD_DocumentoHistorial");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_DocumentoHistorial>("GD_Model.FK_HistorialDocumento_Documento", "GD_DocumentoHistorial", value);
+                }
+            }
+        }
 
         #endregion
-
     }
     
     /// <summary>
@@ -820,7 +940,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -971,7 +1090,6 @@ namespace DemoMVC.Models
         partial void OnDescripcionChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1019,6 +1137,44 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_HistorialDocumento_Documento", "GD_Documento")]
+        public GD_Documento GD_Documento1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Documento>("GD_Model.FK_HistorialDocumento_Documento", "GD_Documento").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Documento>("GD_Model.FK_HistorialDocumento_Documento", "GD_Documento").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GD_Documento> GD_Documento1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Documento>("GD_Model.FK_HistorialDocumento_Documento", "GD_Documento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GD_Documento>("GD_Model.FK_HistorialDocumento_Documento", "GD_Documento", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_DocumentoHistorial_GD_Estado", "GD_Estado")]
         public GD_Estado GD_Estado
         {
@@ -1050,9 +1206,46 @@ namespace DemoMVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_HistorialDocumento_Estado", "GD_Estado")]
+        public GD_Estado GD_Estado1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_HistorialDocumento_Estado", "GD_Estado").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_HistorialDocumento_Estado", "GD_Estado").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GD_Estado> GD_Estado1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Estado>("GD_Model.FK_HistorialDocumento_Estado", "GD_Estado");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GD_Estado>("GD_Model.FK_HistorialDocumento_Estado", "GD_Estado", value);
+                }
+            }
+        }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1081,7 +1274,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1160,7 +1352,6 @@ namespace DemoMVC.Models
         partial void OnIdPerfilChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1170,8 +1361,46 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_Documento")]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_Accesos_Documento", "GD_Documento")]
         public GD_Documento GD_Documento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Documento>("GD_Model.FK_Accesos_Documento", "GD_Documento").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Documento>("GD_Model.FK_Accesos_Documento", "GD_Documento").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GD_Documento> GD_DocumentoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GD_Documento>("GD_Model.FK_Accesos_Documento", "GD_Documento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GD_Documento>("GD_Model.FK_Accesos_Documento", "GD_Documento", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_DocumentoPerfilAcceso_GD_Documento", "GD_Documento")]
+        public GD_Documento GD_Documento1
         {
             get
             {
@@ -1187,7 +1416,7 @@ namespace DemoMVC.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<GD_Documento> GD_DocumentoReference
+        public EntityReference<GD_Documento> GD_Documento1Reference
         {
             get
             {
@@ -1203,7 +1432,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1228,7 +1456,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1283,7 +1510,6 @@ namespace DemoMVC.Models
         partial void OnNombreChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1293,8 +1519,30 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GD_Estado", "GD_Documento")]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_Documento_Estado", "GD_Documento")]
         public EntityCollection<GD_Documento> GD_Documento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_Documento>("GD_Model.FK_Documento_Estado", "GD_Documento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_Documento>("GD_Model.FK_Documento_Estado", "GD_Documento", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GD_Estado", "GD_Documento")]
+        public EntityCollection<GD_Documento> GD_Documento1
         {
             get
             {
@@ -1330,9 +1578,30 @@ namespace DemoMVC.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_HistorialDocumento_Estado", "GD_DocumentoHistorial")]
+        public EntityCollection<GD_DocumentoHistorial> GD_DocumentoHistorial1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_DocumentoHistorial>("GD_Model.FK_HistorialDocumento_Estado", "GD_DocumentoHistorial");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_DocumentoHistorial>("GD_Model.FK_HistorialDocumento_Estado", "GD_DocumentoHistorial", value);
+                }
+            }
+        }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1357,7 +1626,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1436,7 +1704,6 @@ namespace DemoMVC.Models
         partial void OnVigenciaChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1446,8 +1713,30 @@ namespace DemoMVC.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GD_TipoDocumento", "GD_Documento")]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_Documento_TipoDocumento", "GD_Documento")]
         public EntityCollection<GD_Documento> GD_Documento
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GD_Documento>("GD_Model.FK_Documento_TipoDocumento", "GD_Documento");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GD_Documento>("GD_Model.FK_Documento_TipoDocumento", "GD_Documento", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("GD_Model", "FK_GD_Documento_GD_TipoDocumento", "GD_Documento")]
+        public EntityCollection<GD_Documento> GD_Documento1
         {
             get
             {
@@ -1463,7 +1752,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1488,7 +1776,6 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1903,7 +2190,6 @@ namespace DemoMVC.Models
         partial void OnIdUbigeoChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1952,10 +2238,8 @@ namespace DemoMVC.Models
         }
 
         #endregion
-
     }
 
     #endregion
-
     
 }
