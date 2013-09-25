@@ -20,7 +20,7 @@
         <br />
           <table cellpadding="1" cellspacing="1" class="tabla-gestion">
           <tr>
-          <td><div class="display-label">Nombre: </div> </td>
+          <td width="120"><div class="display-label">Nombre: </div> </td>
           <td width="300"><div class="display-field"><%: Model.Nombre %></div></td>
           <td><div class="display-field"><%:Html.ActionLink("Buscar","Buscar",new {@r="PrestarDocumento"}) %></div></td>
           </tr>
@@ -32,7 +32,7 @@
           <tr>
           <td><div class="display-label">Descripción:</div></td>
           <td><div class="display-field"><%: Html.TextArea("descripcion", new { style = "width:150px;height:60px" })%></div></td>
-          <td><%if (ViewData["firma"] =="1")
+          <td><%if (Model.EsFirmado == true)
                 { %>
                 <div style="text-align: center;">
                     <img src="../../Images/llave.png" id="llave" /><br />

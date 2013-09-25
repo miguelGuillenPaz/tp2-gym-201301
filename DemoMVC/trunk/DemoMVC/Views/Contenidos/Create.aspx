@@ -68,7 +68,7 @@
           </td>        
           <td><div class="editor-field" id="hola" >
           <% String filename = Model.RutaFisica;
-       if (@ViewData["hola"] == "2")
+       if (Model.EsFirmado == true)
              { %>
           <input type="file" id="upload" name="upload" required="true" <%= "value='"+filename+"'" %> disabled/>
           <%}
@@ -89,18 +89,18 @@
                 <input type="radio" id="rdbtnSI" name="type" value="first">Sí
                 <input type="radio" id="rdbtnNO" name="type" value="first" checked>No
             </label-->
-            <%=Html.RadioButtonFor(m => m.RutaFisica, "0", new { _checked="checked"} ) %>Sí
-            <%=Html.RadioButtonFor(m => m.RutaFisica, "1")%>No           
+            <%=Html.RadioButtonFor(m => m.EsFirmado, true)%>Sí
+            <%=Html.RadioButtonFor(m => m.EsFirmado, false)%>No
 
           </td>
           <% } %>
           </tr>          
           </table>
          
-          <% if (@ViewData["hola"] == "2")
+          <% if (Model.EsFirmado == true)
              { %>
           <div style="text-align: center;">
-            <img src="../../Content/llave.png" id="llave" />
+            <img src="../../Images/llave.png" id="llave" />
             <strong>Documento Firmado Digitalmente</strong>
             <% } %>
            

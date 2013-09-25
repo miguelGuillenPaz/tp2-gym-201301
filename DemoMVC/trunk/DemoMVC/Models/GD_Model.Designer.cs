@@ -586,6 +586,30 @@ namespace DemoMVC.Models
         private global::System.String _Clave;
         partial void OnClaveChanging(global::System.String value);
         partial void OnClaveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> EsFirmado
+        {
+            get
+            {
+                return _EsFirmado;
+            }
+            set
+            {
+                OnEsFirmadoChanging(value);
+                ReportPropertyChanging("EsFirmado");
+                _EsFirmado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EsFirmado");
+                OnEsFirmadoChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _EsFirmado;
+        partial void OnEsFirmadoChanging(Nullable<global::System.Boolean> value);
+        partial void OnEsFirmadoChanged();
 
         #endregion
     

@@ -132,56 +132,66 @@ namespace DemoMVC.Controllers
                     if (upload != null && upload.ContentLength > 0)
                     {
                         string idFirma;
-                        string filePath1 = Path.Combine(HttpContext.Server.MapPath("\\Upload\\"),
-                                                    model.IdDocumento.ToString(CultureInfo.InvariantCulture) + "T" + Path.GetExtension(upload.FileName));
-                        upload.SaveAs(filePath1);
+                        string filePath1 = string.Empty;
 
-                        //string filePath1 = Path.Combine(HttpContext.Server.MapPath("\\App_Data\\"),
-                        //                                model.IdDocumento.ToString(CultureInfo.InvariantCulture) + "T" + Path.GetExtension(upload.FileName));
-                        string filePath1T = Path.Combine(HttpContext.Server.MapPath("\\Upload\\"),
+                        if (model.EsFirmado == false )
+                        {
+                            filePath1 = Path.Combine(HttpContext.Server.MapPath("\\Upload\\"),
                                                         model.IdDocumento.ToString(CultureInfo.InvariantCulture) + Path.GetExtension(upload.FileName));
-                        string filePathImage = HttpContext.Server.MapPath("..\\images\\") + "viafirma-400x400.png";
-                        ViafirmaClientFactory.Init(Global.URL_VIAFIRMA, Global.URL_WS_VIAFIRMA, "ViafirmaDotNetClientWebExample", "WKGLMRX439ETZF49DLMRXMR9Y29DE");
-                        ViafirmaClient clienteViafirma = ViafirmaClientFactory.GetInstance();
+                            upload.SaveAs(filePath1);
 
-                        // Recuperamos el documento a firmar.
-                        FileStream fs = System.IO.File.OpenRead(filePath1);
-                        byte[] datos_a_firmar = new byte[fs.Length];
-                        fs.Read(datos_a_firmar, 0, datos_a_firmar.Length);
-
-                        //Recuperamos la imagen de sello
-                        FileStream fsImage = System.IO.File.OpenRead(filePathImage);
-                        byte[] image = new byte[fsImage.Length];
-                        fsImage.Read(image, 0, image.Length);
-
-                        rectangle _rectangle = new rectangle();
-                        _rectangle.height = 25;
-                        _rectangle.width = 50;
-                        _rectangle.x = 100;
-                        _rectangle.y = 50;
-
-                        System.Console.Write(clienteViafirma.ping("Prueba Conexión") + "\n");
-                        idFirma = clienteViafirma.signByServerPDFWithImageStamp("FicheroEjemploServer.pdf", datos_a_firmar, Global.ALIAS, Global.PASS_CERT, _rectangle, image);
-                        System.Web.HttpContext.Current.Session["idFirma"] = idFirma;
-                        
-                        System.IO.Stream stream = null;
-                        Viafirma.ViafirmaClient clienteViafirma1 = Viafirma.ViafirmaClientFactory.GetInstance();
-                        String id = (string)Session["idFirma"];
-                        byte[] documento = clienteViafirma1.getDocumentoCustodiado(id);
-
-                        try
-                        {
-                            stream = new System.IO.MemoryStream(documento);
-                            string saveTo = filePath1T;
-                            FileStream writeStream = new FileStream(saveTo, FileMode.Create, FileAccess.Write);
-                            ReadWriteStream(stream, writeStream);
-                            System.IO.File.Delete(filePath1);
                         }
-                        catch (Exception ex)
+                        else
                         {
-                        }
-                        finally
-                        {
+                            filePath1 = Path.Combine(HttpContext.Server.MapPath("\\Upload\\"),
+                                                        model.IdDocumento.ToString(CultureInfo.InvariantCulture) + "T" + Path.GetExtension(upload.FileName));
+                            upload.SaveAs(filePath1);
+                            
+                            string filePath1T = Path.Combine(HttpContext.Server.MapPath("\\Upload\\"),
+                                                            model.IdDocumento.ToString(CultureInfo.InvariantCulture) + Path.GetExtension(upload.FileName));
+                            string filePathImage = HttpContext.Server.MapPath("..\\images\\") + "viafirma-400x400.png";
+                            ViafirmaClientFactory.Init(Global.URL_VIAFIRMA, Global.URL_WS_VIAFIRMA, "ViafirmaDotNetClientWebExample", "WKGLMRX439ETZF49DLMRXMR9Y29DE");
+                            ViafirmaClient clienteViafirma = ViafirmaClientFactory.GetInstance();
+
+                            // Recuperamos el documento a firmar.
+                            FileStream fs = System.IO.File.OpenRead(filePath1);
+                            byte[] datos_a_firmar = new byte[fs.Length];
+                            fs.Read(datos_a_firmar, 0, datos_a_firmar.Length);
+
+                            //Recuperamos la imagen de sello
+                            FileStream fsImage = System.IO.File.OpenRead(filePathImage);
+                            byte[] image = new byte[fsImage.Length];
+                            fsImage.Read(image, 0, image.Length);
+
+                            rectangle _rectangle = new rectangle();
+                            _rectangle.height = 25;
+                            _rectangle.width = 50;
+                            _rectangle.x = 100;
+                            _rectangle.y = 50;
+
+                            System.Console.Write(clienteViafirma.ping("Prueba Conexión") + "\n");
+                            idFirma = clienteViafirma.signByServerPDFWithImageStamp("FicheroEjemploServer.pdf", datos_a_firmar, Global.ALIAS, Global.PASS_CERT, _rectangle, image);
+                            System.Web.HttpContext.Current.Session["idFirma"] = idFirma;
+
+                            System.IO.Stream stream = null;
+                            Viafirma.ViafirmaClient clienteViafirma1 = Viafirma.ViafirmaClientFactory.GetInstance();
+                            String id = (string)Session["idFirma"];
+                            byte[] documento = clienteViafirma1.getDocumentoCustodiado(id);
+
+                            try
+                            {
+                                stream = new System.IO.MemoryStream(documento);
+                                string saveTo = filePath1T;
+                                FileStream writeStream = new FileStream(saveTo, FileMode.Create, FileAccess.Write);
+                                ReadWriteStream(stream, writeStream);
+                                //System.IO.File.Delete(filePath1);
+                            }
+                            catch (Exception ex)
+                            {
+                            }
+                            finally
+                            {
+                            }
                         }
                     }
                 }

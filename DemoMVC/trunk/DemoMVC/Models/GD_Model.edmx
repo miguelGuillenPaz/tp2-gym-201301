@@ -78,6 +78,7 @@
           <Property Name="IdTipoDocumento" Type="int" Nullable="false" />
           <Property Name="Ubicacion" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="Clave" Type="varchar" MaxLength="150" />
+          <Property Name="EsFirmado" Type="bit" />
         </EntityType>
         <EntityType Name="GD_DocumentoHistorial">
           <Key>
@@ -370,6 +371,7 @@
           <NavigationProperty Name="GD_DocumentoHistorial" Relationship="GD_Model.FK_GD_DocumentoHistorial_GD_Documento1" FromRole="GD_Documento" ToRole="GD_DocumentoHistorial" />
           <NavigationProperty Name="GD_DocumentoPerfilAcceso1" Relationship="GD_Model.FK_GD_DocumentoPerfilAcceso_GD_Documento" FromRole="GD_Documento" ToRole="GD_DocumentoPerfilAcceso" />
           <NavigationProperty Name="GD_DocumentoHistorial1" Relationship="GD_Model.FK_HistorialDocumento_Documento" FromRole="GD_Documento" ToRole="GD_DocumentoHistorial" />
+          <Property Type="Boolean" Name="EsFirmado" />
         </EntityType>
         <EntityType Name="GD_DocumentoHistorial">
           <Key>
@@ -594,6 +596,7 @@
           <EntitySetMapping Name="GD_Documento">
             <EntityTypeMapping TypeName="GD_Model.GD_Documento">
               <MappingFragment StoreEntitySet="GD_Documento">
+                <ScalarProperty Name="EsFirmado" ColumnName="EsFirmado" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
                 <ScalarProperty Name="IdTipoDocumento" ColumnName="IdTipoDocumento" />
