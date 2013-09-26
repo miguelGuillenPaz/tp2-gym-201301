@@ -44,10 +44,10 @@
                     <%= Html.ActionLink("Gestión", "Gestion", "GestionProy")%></li>
                 <li><a href="#">Planificación</a>
                     <ul>
-                        <li>
-                            <%= Html.ActionLink("Planificación de Proyectos", "ListadoProyPlan", "Planificacion")%></li>
-                        <li>
-                            <%: Html.ActionLink("Informes de Requerimiento", "Index", "Requerimiento")%></li>
+                        <li><%= Html.ActionLink("Planificación de Proyectos", "ListadoProyPlan", "Planificacion")%></li>
+                        <li><%= Html.ActionLink("Asignación de Recursos", "AsignarRecursos", "Planificacion")%></li>
+                        <li><%: Html.ActionLink("Informes de Requerimiento", "Index", "Requerimiento")%></li>
+
                     </ul>
                 </li>
                 <li><a href="#">SubContrataciones</a>
