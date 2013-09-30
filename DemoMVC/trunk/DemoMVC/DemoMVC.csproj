@@ -268,6 +268,11 @@
     <Content Include="Content\fancy\fancybox_overlay.png" />
     <Content Include="Content\fancy\fancybox_sprite.png" />
     <Content Include="Content\fancy\jquery.fancybox.css" />
+    <Content Include="Content\fonts\pt_sans-bold-webfont.svg" />
+    <Content Include="Content\fonts\pt_sans-bolditalic-webfont.svg" />
+    <Content Include="Content\fonts\pt_sans-regular-webfont.svg" />
+    <Content Include="Content\fonts\vagrounded-bold-webfont.svg" />
+    <Content Include="Content\fonts\VAGRounded-Light.svg" />
     <Content Include="Content\gpc.css" />
     <Content Include="Content\images\animated-overlay.gif" />
     <Content Include="Content\images\ui-bg_diagonals-medium_20_d34d17_40x40.png" />
@@ -610,6 +615,9 @@
     <None Include="Content\fonts\pt_sans-bold-webfont.eot" />
     <None Include="Content\fonts\pt_sans-bold-webfont.ttf" />
     <None Include="Content\fonts\pt_sans-bold-webfont.woff" />
+    <None Include="Content\fonts\pt_sans-bolditalic-webfont.eot" />
+    <None Include="Content\fonts\pt_sans-bolditalic-webfont.ttf" />
+    <None Include="Content\fonts\pt_sans-bolditalic-webfont.woff" />
     <None Include="Content\fonts\pt_sans-regular-webfont.eot" />
     <None Include="Content\fonts\pt_sans-regular-webfont.ttf" />
     <None Include="Content\fonts\pt_sans-regular-webfont.woff" />
