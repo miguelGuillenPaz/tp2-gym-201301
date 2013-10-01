@@ -281,7 +281,18 @@ namespace DemoMVC.Controllers
                 return View(new GD_Documento());
             }
             //byte[] pdfData = System.IO.File.ReadAllBytes(@"C:\demo.pdf");
-            
+
+            var hist = new GD_DocumentoHistorial
+            {
+                Descripcion = "Documento visualizado desde el mòdulo de prestamo",
+                IdDocumento = doc.IdDocumento,
+                IdEstado = 3,
+                FechaAcceso = DateTime.Now,
+                IdUsuarioPerfil = 1
+            };
+            db.AddToGD_DocumentoHistorial(hist);
+            db.SaveChanges();
+
             return View(doc);
         }
 

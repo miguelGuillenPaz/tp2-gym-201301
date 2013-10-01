@@ -114,7 +114,7 @@
           <% if(Model==null)return;
              foreach (GD_DocumentoHistorial h in Model.GD_DocumentoHistorial)
              {%>
-                <tr><td>Usuario1</td><td><%=h.GD_Estado.Nombre %></td><td><%=h.FechaAcceso==null?string.Empty:h.FechaAcceso.ToString("dd/MM/yyyy") %></td><td><%=Model.Descripcion %></td></tr>
+                <tr><td>Usuario1</td><td><%=h.GD_Estado.Nombre %></td><td><%=h.FechaAcceso==null?string.Empty:h.FechaAcceso.ToString("dd/MM/yyyy") %></td><td><%= (string.IsNullOrEmpty(h.Descripcion)? Model.Descripcion: h.Descripcion) %></td></tr>
              <%} %>
              </table>
          </div>
@@ -123,6 +123,7 @@
             <input class="button" type="submit" value="Enviar" />
             <input class="button" type="button" value="Eliminar" id="btnEliminar"/>
             <input class="button" type="button" value="Cancelar" id="btnCancelar"/>
+            <%: Html.ActionLink("Cancelar","Create/0","Contenidos") %>
             
         </p>
 <%--        <br />

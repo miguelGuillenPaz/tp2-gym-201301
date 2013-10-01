@@ -69,12 +69,16 @@
     <div class="editor-label">
     <% String prueba = string.Empty;
         if (Model.IdDocumento.ToString() == "0")
-           prueba = "data='../../Upload/Inicio.pdf'";
-       else
-           prueba = "data='../../Upload/" + Model.IdDocumento.ToString() + ".pdf'";%>
+        {
+            prueba = "data='../../Upload/Inicio.pdf'";
+        }           
+        else
+        {
+            prueba = "data='../../Upload/" + Model.IdDocumento.ToString() + ".pdf'";%>
             <object  <%= prueba %> type="application/pdf" width="100%" height="350px">
                 <param wmode="transparent"/>
             </object>
+        <%}%>
           </div>
     </div>
 </div>
