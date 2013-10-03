@@ -149,7 +149,7 @@ namespace DemoMVC.Controllers
                             
                             string filePath1T = Path.Combine(HttpContext.Server.MapPath("\\Upload\\"),
                                                             model.IdDocumento.ToString(CultureInfo.InvariantCulture) + Path.GetExtension(upload.FileName));
-                            string filePathImage = HttpContext.Server.MapPath("..\\images\\") + "viafirma-400x400.png";
+                            string filePathImage = HttpContext.Server.MapPath("..\\..\\images\\") + "viafirma-400x400.png";
                             ViafirmaClientFactory.Init(Global.URL_VIAFIRMA, Global.URL_WS_VIAFIRMA, "ViafirmaDotNetClientWebExample", "WKGLMRX439ETZF49DLMRXMR9Y29DE");
                             ViafirmaClient clienteViafirma = ViafirmaClientFactory.GetInstance();
 
