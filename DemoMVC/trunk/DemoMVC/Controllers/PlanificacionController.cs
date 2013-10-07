@@ -215,7 +215,20 @@ namespace DemoMVC.Controllers
             {
                 idRecurso = int.Parse(formCollection["selRecCargo"]);
             }
-
+            else 
+            {
+                if (formCollection["selRecEquipo"] != null)
+                {
+                    idRecurso = int.Parse(formCollection["selRecEquipo"]);
+                }
+                else 
+                {
+                    if (formCollection["selRecMaterial"] != null) 
+                    {
+                        idRecurso = int.Parse(formCollection["selRecMaterial"]);
+                    }
+                }
+            }
 
             PlanRecursosActividadDAO objPlanRecursosActividadDAO = new PlanRecursosActividadDAO();
 
@@ -568,38 +581,53 @@ namespace DemoMVC.Controllers
                 for (int i = 1; i <= totReg; i++)
                 {
                     //Obtenemos el valor de cada objeto seleccionado:
-                    string codEnt = formCollection["sel_Ent" + i].ToString();
-                    string descAct = formCollection["txt_nomAct_" + i].ToString();
-                    string fecIniAct = formCollection["txt_fecIni" + i].ToString();
-                    string fecFinAct = formCollection["txt_fecFin" + i].ToString();
-                    string predecAct = formCollection["txt_Pred" + i].ToString();
-                    //Adicionamos a un objeto actividad
-                    actividad.codAct = (totRegCorr + 1);
-                    actividad.corAct = i;
-                    actividad.codEnt = Convert.ToInt32(codEnt);
+                    string valEli = formCollection["chk_Eli" + i];
+                    if (valEli == null)
+                    {
+                        valEli = "ok";
+                    }
+                    else {
+                        valEli = formCollection["chk_Eli" + i].ToString();
+                    }
 
+                    //En caso de que se elimine, no agregar actividad
+                    if (valEli.Equals("ok")) {
 
-                    if (actividad.codEnt == 1) ViewData["entSel1"] = "selected";
-                    if (actividad.codEnt == 2) ViewData["entSel2"] = "selected";
-                    if (actividad.codEnt == 3) ViewData["entSel3"] = "selected";    
-                    actividad.codPlaPro = Convert.ToInt32(codPlanProy);
-                    actividad.desAct = descAct;
-                    actividad.feciniAct = fecIniAct;
-                    actividad.fecfinAct = fecFinAct;
-                    actividad.preAct = predecAct;
-                    actividad.tipAct = "0";
-                    int ins = 0;
-                    ins = actividadDAO.insertarActividad(actividad);
-                    totRegCorr = totRegCorr + 1;
-                    //Caso modificar
-                    //int upd = 0;
-                    //actividad.corAct = i;
-                    //actividad.codPlaPro = Convert.ToInt32(codPlanProy);
-                    //actividad.desAct = descAct;
-                    //actividad.feciniAct = fecIniAct;
-                    //actividad.fecfinAct = fecFinAct;
-                    //actividad.preAct = predecAct;
-                    //upd = actividadDAO.actualizarActividad(actividad);
+                        string codEnt = formCollection["sel_Ent" + i].ToString();
+                        string descAct = formCollection["txt_nomAct_" + i].ToString();
+                        string fecIniAct = formCollection["txt_fecIni" + i].ToString();
+                        string fecFinAct = formCollection["txt_fecFin" + i].ToString();
+                        string predecAct = formCollection["txt_Pred" + i].ToString();
+
+                        //Adicionamos a un objeto actividad
+                        actividad.codAct = (totRegCorr + 1);
+                        actividad.corAct = i;
+                        actividad.codEnt = Convert.ToInt32(codEnt);
+
+                        if (actividad.codEnt == 1) ViewData["entSel1"] = "selected";
+                        if (actividad.codEnt == 2) ViewData["entSel2"] = "selected";
+                        if (actividad.codEnt == 3) ViewData["entSel3"] = "selected";
+                        actividad.codPlaPro = Convert.ToInt32(codPlanProy);
+                        actividad.desAct = descAct;
+                        actividad.feciniAct = fecIniAct;
+                        actividad.fecfinAct = fecFinAct;
+                        actividad.preAct = predecAct;
+                        actividad.tipAct = "0";
+                        int ins = 0;
+                        ins = actividadDAO.insertarActividad(actividad);
+                        totRegCorr = totRegCorr + 1;
+                        //Caso modificar
+                        //int upd = 0;
+                        //actividad.corAct = i;
+                        //actividad.codPlaPro = Convert.ToInt32(codPlanProy);
+                        //actividad.desAct = descAct;
+                        //actividad.feciniAct = fecIniAct;
+                        //actividad.fecfinAct = fecFinAct;
+                        //actividad.preAct = predecAct;
+                        //upd = actividadDAO.actualizarActividad(actividad);
+
+                    }
+                    
                 };
                 listadoActividadesTemp = null;
                 listadoActividadesTemp = actividadDAO.obtenerActividad(Convert.ToInt32(codProy),0);
