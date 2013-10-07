@@ -97,7 +97,7 @@
     <input type="button" value="Exportar a Excel" onclick="javascript:fAccion(5)" />&nbsp;&nbsp;
     -->
 
-    <input type="submit" name="submitButton" value="Adicionar Actividad" />&nbsp;&nbsp;
+    <input type="button" value="Adicionar Actividad" onclick="javascript:fAccion(1);" />&nbsp;&nbsp;
     <input type="submit" name="submitButton" value="Guardar Cambios" />&nbsp;&nbsp;
     <input type="submit" name="submitButton" value="Crear Plan"  />&nbsp;&nbsp;
     <input type="submit" name="submitButton" value="Exportar a Excel" />&nbsp;&nbsp;
@@ -144,7 +144,10 @@
         function insertaActividad() {
             var table = document.getElementById("Tabla1");
             var totReg = 0;
+            var totRows = 0;
             totReg = document.getElementById('txtTotReg').value;
+            //totRows = document.getElementById("Tabla1").rows.length;
+            //alert("totRows: " + totRows + " totReg: " + totReg);
             var totRegID = parseInt(totReg) + 1;
             var row;
             if (totReg == 0) {
@@ -163,12 +166,12 @@
 
             totReg = parseInt(totReg) + 1;
             cell1.innerHTML = "<input type='checkbox' id='chk_eli" + totReg + "' name='chk_eli" + totReg + "' />";
-            cell2.innerHTML = "" + totRegID;
+            cell2.innerHTML = "" + totReg;
             cell3.innerHTML = "<select name='sel_Ent" + totReg + "' id='sel_Ent" + totReg + "'><option value='1'>Entregable 01</option><option value='2'>Entregable 02</option><option value='3'>Entregable 03</option></select>";
             cell4.innerHTML = "<input type='text' name='txt_nomAct_" + totReg + "' id='txt_nomAct_" + totReg + "' />";
             cell5.innerHTML = "<input type='text' id='txt_fecIni" + totReg + "' name='txt_fecIni" + totReg + "' size='10' value='dd/mm/aaaa' />";
             cell6.innerHTML = "<input type='text' id='txt_fecFin" + totReg + "' name='txt_fecFin" + totReg + "' size='10' value='dd/mm/aaaa' />";
-            cell7.innerHTML = "<input type='text' id='txt_Pred" + totReg + "' name='txt_Pred" + totReg + "' size='10' value=' ' />";
+            cell7.innerHTML = "<input type='text' id='txt_Pred" + totReg + "' name='txt_Pred" + totReg + "' size='10' value='' />";
             document.getElementById("txtTotReg").value = totReg;
         };
 
