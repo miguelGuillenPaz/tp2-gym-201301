@@ -153,8 +153,7 @@
 
                     
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href='javascript:window.history.back();'>Regresar</a></center>
-
+                    <center><%= Html.ActionLink("Regresar", "AsignarRecursos", "Planificacion")%>&nbsp;&nbsp;<input type="submit" name="submitButton" value="Grabar" /></center>
                 </div>
             </div>
         </div>
